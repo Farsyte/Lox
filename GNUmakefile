@@ -3,8 +3,8 @@
 # Adjust verbosity of the output
 
 Q               := @
-I               := -
-C               := $Q $I
+I               := $Q -
+C               := $Q
 
 # Command shortcuts
 
