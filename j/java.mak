@@ -57,13 +57,13 @@ clean::
 	$X $(FROM) $(INTO)
 
 ifneq ($(INTO),)
-RED_OUT		:= > $(INTO)
+RED_OUT		:= > $(INTO) 2>&1
 else
 RED_OUT		:= 
 endif
 
 ifneq ($(TEE),)
-RED_TEE		:= | tee $(TEE)
+RED_TEE		:= |& tee $(TEE)
 else
 RED_TEE		:= 
 endif

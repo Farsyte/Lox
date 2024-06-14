@@ -1,0 +1,12 @@
+> Tokens scanned:
+LEFT_PAREN ( null
+LEFT_BRACE { null
+DOT . null
+PLUS + null
+MINUS - null
+SEMICOLON ; null
+STAR * null
+RIGHT_BRACE } null
+RIGHT_PAREN ) null
+EOF  null
+> 
