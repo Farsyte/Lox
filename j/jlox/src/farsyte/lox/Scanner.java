@@ -51,11 +51,15 @@ class Scanner {
     }
 
     private char advance() {
-        System.out.println("STUB: advance()");
-        return '\n';
+        return source.charAt(current++);
     }
 
     private void addToken(TokenType type) {
-        System.out.println("STUB: addToken("+type+")");
+        addToken(type, null);
+    }
+
+    private void addToken(TokenType type, Object literal) {
+        String text = source.substring(start, current);
+        tokens.add(new Token(type, text, literal, line));
     }
 }
