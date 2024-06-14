@@ -1,0 +1,43 @@
+* Lox: My Journey through Crafting Interpreters
+
+** Welcome.
+
+So, I worked for about four decades behind the keyboard doing
+operating systems, real time systems, embedded systems, network
+stacks, distributed applications, ... and even Java microservices in a
+large data handling system.
+
+I've been retired two years, and have not even looked at any Java code
+during that time. That is long enough that, to be honest, I could not
+have written a simple "Hello Java" program -- but it comes back fast.
+
+I swore, when I retired, JAVA: NEVER AGAIN.
+
+Breaking that oath, for this project (at least the first half) because
+I really want to follow closely along with what is happening in
+Crafting Interpreters, before the major distraction of working through
+the book in a different language.
+
+** Who wrote this code?
+
+UNTIL OTHERWISE NOTED, all of the code being added to this repository
+comes directly from the book "Crafting Interpreters" by Bob Nystrom.
+
+This repository is MIT licensed, to match the licensing on his official
+repository for the book for the code snips. In any case, if you want
+to see the Real Good Stuff, hit up the official repo.
+
+The files in this repository are likely to deviate. First, because
+everyone makes a typo from time to time. Second, because I may tweak
+stuff to match my ideas of what makes better code.
+
+Third, because I want to arrange my Makefiles the way I like them!
+
+** My Environment
+
+- Linux (using Pop! OS 22, an Ubuntu variant)
+- Java 11 (using their "default-jdk" package)
+- GNU Make 4.3 (YES, WE WILL NEED THE "&:" CONSTRUCT)
+- GNU Emacs 29.3 and VIM 8.2
+- GCC 11.4.0
+
