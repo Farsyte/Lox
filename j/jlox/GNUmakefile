@@ -15,10 +15,8 @@ default all clean::
 run::
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak $@
 
-hello::
+tests::
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak run ARGS='hello.lox'
-
-hello-v::
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak irun ARGS='-v hello.lox'
 
 RTIF            := $(wildcard $(TID)repl*.in)
@@ -27,7 +25,7 @@ ifneq ($(RTIF),)
 
 RTOF            := $(RTIF:$(TID)repl%.in=$(TOD)repl%.out)
 
-repltest:	$(RTOF)
+tests::         $(RTOF)
 
 $(TOD)repl%.out:	$(TID)repl%.in
 	$C [ -d $(TOD) ] || mkdir -p $(TOD)

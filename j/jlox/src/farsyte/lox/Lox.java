@@ -37,5 +37,14 @@ public class Lox {
         }
         System.out.println();
     }
-    private static void run(String s) {System.out.println("STUB: run(\"" + s + "\")");}
+
+    private static void run(String source) {
+        Scanner scanner = new Scanner(source);
+        List<Token> tokens = scanner.scanTokens();
+
+        // For now, just print the tokens.
+        for (Token token : tokens) {
+            System.out.println(token);
+        }
+    }
 }
