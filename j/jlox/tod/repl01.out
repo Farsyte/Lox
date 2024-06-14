@@ -1,3 +1,5 @@
-> STUB: Scanner.scanTokens() over "repl test input line 1"
-> STUB: Scanner.scanTokens() over "repl test input line 2"
+> STUB: scanToken()
+EOF  null
+> STUB: scanToken()
+EOF  null
 > 

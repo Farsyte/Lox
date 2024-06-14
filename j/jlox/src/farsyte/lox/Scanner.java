@@ -10,13 +10,31 @@ import static farsyte.lox.TokenType.*;
 class Scanner {
     private final String source;
     private final List<Token> tokens = new ArrayList<>();
+    private int start = 0;
+    private int current = 0;
+    private int line = 1;
 
     Scanner(String source) {
         this.source = source;
     }
 
     List<Token> scanTokens() {
-        System.out.println("STUB: Scanner.scanTokens() over \"" + source + "\"");
-        return new ArrayList<Token>();
+        while (!isAtEnd()) {
+            // We are at the beginning of the next lexeme.
+            start = current;
+            scanToken();
+        }
+
+        tokens.add(new Token(EOF, "", null, line));
+        return tokens;
+    }
+
+    private void scanToken() {
+        System.out.println("STUB: scanToken()");
+    }
+
+    private boolean isAtEnd() {
+        System.out.println("STUB: scanToken()");
+        return true;
     }
 }
