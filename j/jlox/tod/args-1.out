@@ -1,4 +1,3 @@
-STUB: Scanner(// example LOX code
+STUB: Scanner.scanTokens() over "// example LOX code
 print "Hello, LOX!";
-)
-STUB: Scanner.scanTokens()
+"
