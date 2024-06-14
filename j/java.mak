@@ -72,6 +72,10 @@ run:: $(JCLS)
 	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN)"
 	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_OUT) $(RED_IN)
 
+irun:: $(JCLS)
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN)"
+	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_OUT) $(RED_IN)
+
 .PHONY: run
 
 endif
