@@ -16,8 +16,13 @@ run::
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak $@
 
 tests::
-	$M PACKAGE=lox MAIN=Lox -f ../java.mak run ARGS='hello.lox'
-	$M PACKAGE=lox MAIN=Lox -f ../java.mak irun ARGS='-v hello.lox'
+	$C [ -d $(TOD) ] || mkdir -p $(TOD)
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak  run ARGS='hello.lox'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v hello.lox'
+
+clean::
+	$X $(TOD)args-1.out
+	$X $(TOD)args-2.out
 
 RTIF            := $(wildcard $(TID)repl*.in)
 
@@ -25,14 +30,15 @@ ifneq ($(RTIF),)
 
 RTOF            := $(RTIF:$(TID)repl%.in=$(TOD)repl%.out)
 
-tests::         $(RTOF)
+tests::
+	$X $(RTOF)
+	$M $(RTOF)
 
 $(TOD)repl%.out:	$(TID)repl%.in
 	$C [ -d $(TOD) ] || mkdir -p $(TOD)
-	$M PACKAGE=lox MAIN=Lox FROM=$< TEE=$@ -f ../java.mak run
+	$M PACKAGE=lox MAIN=Lox FROM=$< INTO=$@ -f ../java.mak run
 
 clean::
 	$X $(RTOF)
-	$C [ ! -d $(TOD) ] || $Y $(TOD)
 
 endif

@@ -1,0 +1,4 @@
+STUB: Scanner(// example LOX code
+print "Hello, LOX!";
+)
+STUB: Scanner.scanTokens()

@@ -63,9 +63,9 @@ RED_OUT		:=
 endif
 
 ifneq ($(TEE),)
-RED_OUT		:= | tee $(TEE)
+RED_TEE		:= | tee $(TEE)
 else
-RED_OUT		:= 
+RED_TEE		:= 
 endif
 
 ifneq ($(FROM),)
@@ -75,12 +75,12 @@ RED_IN		:=
 endif
 
 run:: $(JCLS)
-	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT)"
-	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT)
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 irun:: $(JCLS)
-	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT)"
-	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT)
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 .PHONY: run
 
