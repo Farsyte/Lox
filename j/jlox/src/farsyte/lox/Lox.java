@@ -20,6 +20,11 @@ public class Lox {
         }
     }
 
-    private static void runFile(String s) {System.out.println("STUB: runFile(\"" + s + "\")");}
+    private static void runFile(String path) throws IOException {
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
+        run(new String(bytes, Charset.defaultCharset()));
+    }
+
     private static void runPrompt() {System.out.println("STUB: runPrompt()");}
+    private static void run(String s) {System.out.println("STUB: run(\"" + s + "\")");}
 }
