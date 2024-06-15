@@ -2,6 +2,10 @@ package farsyte.lox;
 
 class Interpreter implements Expr.Visitor<Object> {
 
+    private Object evaluate(Expr expr) {
+        throw new NotImplementedException(", unreachable at end.");        
+    }
+
     @Override
     public Object visitLiteralExpr(Expr.Literal expr) {
         return expr.value;
@@ -9,7 +13,7 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitGroupingExpr(Expr.Grouping expr) {
-        throw new NotImplementedException(", unreachable at end.");
+        return evaluate(expr.expression);
     }
 
     @Override
