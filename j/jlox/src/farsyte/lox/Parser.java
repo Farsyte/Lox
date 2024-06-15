@@ -48,23 +48,23 @@ class Parser {
         return previous();
     }
 
+    private boolean isAtEnd() {
+        return peek().type == EOF;
+    }
+
+    private Token peek() {
+        return tokens.get(current);
+    }
+
+    private Token previous() {
+        return tokens.get(current - 1);
+    }
+
     /* **** **** **** **** **** **** **** **** **** ****
      *                       STUBS
      * **** **** **** **** **** **** **** **** **** **** */
 
     private Expr comparison() {
         throw new NotImplementedException();
-    }
-
-    private Token previous() {
-        throw new NotImplementedException();
-    }
-
-    private boolean isAtEnd() {
-        throw new NotImplementedException();
-    }
-
-    private Token peek() {
-        return tokens.get(current);
     }
 }
