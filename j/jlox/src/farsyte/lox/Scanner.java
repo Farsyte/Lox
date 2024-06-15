@@ -56,6 +56,15 @@ class Scanner {
             addToken(match('=') ? GREATER_EQUAL : GREATER);
             break;
 
+        case '/':
+            if (match('/')) {
+                while (peek() != '\n' && !isAtEnd()) advance();
+                // NOTE: does not consume the newline.
+            } else {
+                addToken(SLASH);
+            }
+            break;
+
         default:
             Lox.error(line, "Unexpected character.");
             break;
@@ -68,6 +77,11 @@ class Scanner {
             return false;
         current++;
         return true;
+    }
+
+    private char peek() {
+        if (isAtEnd()) return '\0';
+        return source.charAt(current);
     }
 
     private boolean isAtEnd() {
