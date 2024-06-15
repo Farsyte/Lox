@@ -3,7 +3,7 @@ package farsyte.lox;
 class Interpreter implements Expr.Visitor<Object> {
 
     private Object evaluate(Expr expr) {
-        throw new NotImplementedException(", unreachable at end.");        
+        return expr.accept(this);
     }
 
     @Override
