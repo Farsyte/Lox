@@ -34,8 +34,8 @@ class Interpreter implements Expr.Visitor<Object> ,
     }
 
     @Override
-    public Void visitVariableExpr(Expr.Variable stmt) {
-        throw new NotImplementedException();
+    public Object visitVariableExpr(Expr.Variable expr) {
+        return environment.get(expr.name);
     }
 
     @Override
