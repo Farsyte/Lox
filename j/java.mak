@@ -57,9 +57,15 @@ clean::
 	$X $(FROM) $(INTO)
 
 ifneq ($(INTO),)
-RED_OUT		:= > $(INTO)
+RED_OUT		:= > $(INTO) 2>&1
 else
 RED_OUT		:= 
+endif
+
+ifneq ($(TEE),)
+RED_TEE		:= |& tee $(TEE)
+else
+RED_TEE		:= 
 endif
 
 ifneq ($(FROM),)
@@ -69,8 +75,12 @@ RED_IN		:=
 endif
 
 run:: $(JCLS)
-	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN)"
-	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_OUT) $(RED_IN)
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
+
+irun:: $(JCLS)
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 .PHONY: run
 

@@ -1,0 +1,5 @@
+Tokens scanned:
+PRINT print null
+STRING "Hello, LOX!" Hello, LOX!
+SEMICOLON ; null
+EOF  null

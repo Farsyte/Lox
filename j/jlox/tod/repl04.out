@@ -1,0 +1,17 @@
+> Tokens scanned:
+IDENTIFIER ident1 null
+IDENTIFIER ident2 null
+EOF  null
+> [line 1] Error: Unterminated comment.
+Tokens scanned:
+IDENTIFIER ident3 null
+EOF  null
+> Tokens scanned:
+IDENTIFIER continued null
+IDENTIFIER comment null
+STAR * null
+SLASH / null
+IDENTIFIER ident null
+NUMBER 4 4.0
+EOF  null
+> 

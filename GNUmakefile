@@ -3,8 +3,8 @@
 # Adjust verbosity of the output
 
 Q               := @
-I               := -
-C               := $Q $I
+I               := $Q -
+C               := $Q
 
 # Command shortcuts
 
@@ -62,4 +62,8 @@ $(SUBA):
 $(SUBC):
 	$M -C "$(@:%.clean=%)" clean
 
-.PHONY:                 default all clean world $(SUBD) $(SUBA) $(SUBC)
+stubs::
+	git grep -n STUB
+
+.PHONY:                 default all clean world stubs $(SUBD) $(SUBA) $(SUBC)
+

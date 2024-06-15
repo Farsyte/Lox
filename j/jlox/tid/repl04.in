@@ -1,0 +1,3 @@
+ident1 /* comment */ ident2
+ident3 /* unterminated comment
+continued comment */ ident 4
