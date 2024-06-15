@@ -21,6 +21,8 @@ class Interpreter implements Expr.Visitor<Object> {
         Object right = evaluate(expr.right);
 
         switch (expr.operator.type) {
+        case BANG:
+            return !isTruthy(right);
         case MINUS:
             return -(double)right;
         }
@@ -31,6 +33,10 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
+        throw new NotImplementedException();
+    }
+
+    private boolean isTruthy(Object obj) {
         throw new NotImplementedException();
     }
 
