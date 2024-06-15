@@ -68,8 +68,13 @@ class Parser {
     }
 
     private Expr expression() {
-        // expression → equality ;
-        return equality();
+        // expression → assignment ;
+        return assignment();
+    }
+
+    private Expr assignment() {
+        // assignment → IDENTIFIER = assignment | equality ;
+        throw new NotImplementedException();
     }
 
     private Expr equality() {
