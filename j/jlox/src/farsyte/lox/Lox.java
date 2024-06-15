@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Lox {
+    private static final Interpreter interpreter = new Interpreter();
+
     static boolean hadError = false;
     static boolean hadRuntimeError = false;
 
@@ -64,7 +66,8 @@ public class Lox {
         // Stop if the line had no tokens.
         if (expression == null) return;
 
-        System.out.println(new AstPrinter().print(expression));
+        // System.out.println(new AstPrinter().print(expression));
+        interpreter.interpret(expression);
     }
 
     static void error(int line, String message) {
