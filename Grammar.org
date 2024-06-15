@@ -38,3 +38,26 @@ and set things up to be recursive-descent friendly:
 
 #+end_src
 
+* 8.1 Statements
+
+Adding Statements to the grammer gives us:
+
+#+begin_src text
+  program         → statement* EOF ;
+  statement       → exprStmt | printStmt ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → equalithy
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → NUMBER | STRING | "true" | "false" | "nil"
+                  | "(" expression ")" ;
+
+#+end_src
