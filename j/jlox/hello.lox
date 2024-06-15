@@ -1,2 +1,11 @@
 // example LOX code
+
+/* one-line C-style comment */
+
+/*
+ * multi-line
+ * C-style
+ * comment
+ */
+
 print "Hello, LOX!";

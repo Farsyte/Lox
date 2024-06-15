@@ -82,6 +82,22 @@ class Scanner {
             if (match('/')) {
                 while (peek() != '\n' && !isAtEnd()) advance();
                 // NOTE: does not consume the newline.
+            } else if (match('*')) {
+                for (;;) {
+                    if (isAtEnd()) {
+                        Lox.error(line, "Unterminated comment.");
+                        break;
+                    }
+                    if (peek() == '\n') {
+                        line++;
+                    }
+                    if (peek() == '*' && peekNext() == '/') {
+                        advance();
+                        advance();
+                        break;
+                    }
+                    advance();
+                }
             } else {
                 addToken(SLASH);
             }
