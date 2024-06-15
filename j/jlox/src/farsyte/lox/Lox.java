@@ -58,16 +58,18 @@ public class Lox {
         List<Token> tokens = scanner.scanTokens();
         Parser parser = new Parser(tokens);
         List<String> results = new ArrayList<String>();
-        Expr expression = parser.parse();
+
+        throw new NotImplementedException(", ready to parse and interpret");
+        // Expr expression = parser.parse();
 
         // Stop if there was a syntax error.
-        if (hadError) return;
+        // if (hadError) return;
 
         // Stop if the line had no tokens.
-        if (expression == null) return;
+        // if (expression == null) return;
 
         // System.out.println(new AstPrinter().print(expression));
-        interpreter.interpret(expression);
+        // interpreter.interpret(expression);
     }
 
     static void error(int line, String message) {
