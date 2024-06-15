@@ -1,6 +1,7 @@
 package farsyte.lox;
 
-class Interpreter implements Expr.Visitor<Object> {
+class Interpreter implements Expr.Visitor<Object> ,
+                             Stmt.Visitor<Void> {
 
     void interpret(Expr expression) {
         try {
@@ -13,6 +14,16 @@ class Interpreter implements Expr.Visitor<Object> {
 
     private Object evaluate(Expr expr) {
         return expr.accept(this);
+    }
+
+    @Override
+    public Void visitExpressionStmt(Stmt.Expression stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public Void visitPrintStmt(Stmt.Print stmt) {
+        throw new NotImplementedException();
     }
 
     @Override
