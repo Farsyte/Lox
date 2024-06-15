@@ -24,7 +24,9 @@ class Interpreter implements Expr.Visitor<Object> ,
 
     @Override
     public Void visitPrintStmt(Stmt.Print stmt) {
-        throw new NotImplementedException();
+        Object value = evaluate(stmt.expression);
+        System.out.println(stringify(value));
+        return null;
     }
 
     @Override
