@@ -38,6 +38,15 @@ class Parser {
         return false;
     }
 
+    private boolean check(TokenType type) {
+        if (isAtEnd()) return false;
+        return peek().type == type;
+    }
+
+    /* **** **** **** **** **** **** **** **** **** ****
+     *                       STUBS
+     * **** **** **** **** **** **** **** **** **** **** */
+
     private Expr comparison() {
         throw new NotImplementedException();
     }
@@ -46,11 +55,15 @@ class Parser {
         throw new NotImplementedException();
     }
 
-    private boolean check(TokenType type) {
+    private Token advance() {
         throw new NotImplementedException();
     }
 
-    private Token advance() {
+    private boolean isAtEnd() {
         throw new NotImplementedException();
+    }
+
+    private Token peek() {
+        return tokens.get(current);
     }
 }
