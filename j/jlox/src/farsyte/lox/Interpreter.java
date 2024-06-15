@@ -36,8 +36,10 @@ class Interpreter implements Expr.Visitor<Object> {
         throw new NotImplementedException();
     }
 
-    private boolean isTruthy(Object obj) {
-        throw new NotImplementedException();
+    private boolean isTruthy(Object object) {
+        if (object == null) return false;
+        if (object instanceof Boolean) return (boolean)object;
+        return true;
     }
 
 }
