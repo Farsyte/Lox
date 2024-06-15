@@ -42,6 +42,19 @@ class Parser {
     }
 
     private Expr term() {
+        // term → factor ( ( "-" | "+" ) factor )* ;
+        Expr expr = factor();
+
+        while (match(MINUS, PLUS)) {
+            Token operator = previous();
+            Expr right = factor();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+
+        return expr;
+    }
+
+    private Expr factor() {
         throw new NotImplementedException();
     }
 
