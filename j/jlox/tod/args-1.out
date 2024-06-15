@@ -3,18 +3,7 @@
 [line 2] Error: Unexpected character.
 [line 2] Error: Unexpected character.
 [line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
-[line 2] Error: Unexpected character.
 Tokens scanned:
-COMMA , null
-BANG ! null
+STRING "Hello, LOX!" Hello, LOX!
 SEMICOLON ; null
 EOF  null
