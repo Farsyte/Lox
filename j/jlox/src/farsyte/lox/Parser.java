@@ -43,6 +43,11 @@ class Parser {
         return peek().type == type;
     }
 
+    private Token advance() {
+        if (!isAtEnd()) current++;
+        return previous();
+    }
+
     /* **** **** **** **** **** **** **** **** **** ****
      *                       STUBS
      * **** **** **** **** **** **** **** **** **** **** */
@@ -52,10 +57,6 @@ class Parser {
     }
 
     private Token previous() {
-        throw new NotImplementedException();
-    }
-
-    private Token advance() {
         throw new NotImplementedException();
     }
 
