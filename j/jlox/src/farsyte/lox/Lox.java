@@ -12,13 +12,18 @@ public class Lox {
     static boolean hadError = false;
 
     public static void main(String[] args) throws IOException {
-        if (args.length > 1) {
-            System.out.println("Usage: jlox [script]");
-            System.exit(64);
-        } else if (args.length == 1) {
-            runFile(args[0]);
-        } else {
-            runPrompt();
+        try {
+            if (args.length > 1) {
+                System.out.println("Usage: jlox [script]");
+                System.exit(64);
+            } else if (args.length == 1) {
+                runFile(args[0]);
+            } else {
+                runPrompt();
+            }
+            
+        } catch (NotImplementedException e) {
+            System.err.println(e.toString());
         }
     }
 
