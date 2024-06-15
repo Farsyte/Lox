@@ -24,6 +24,15 @@ class Parser {
     }
 
     private Stmt statement() {
+        if (match(PRINT)) return printStatement();
+        return expressionStatement();
+    }
+
+    private Stmt printStatement() {
+        throw new NotImplementedException();
+    }
+
+    private Stmt expressionStatement() {
         throw new NotImplementedException();
     }
 
