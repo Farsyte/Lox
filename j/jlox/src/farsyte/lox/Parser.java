@@ -11,4 +11,15 @@ class Parser {
     Parser(List<Token> tokens) {
         this.tokens = tokens;
     }
+
+    private Expr expression() {
+        // expression → equality ;
+        return equality();
+    }
+
+    private Expr equality() {
+        System.out.println("STUB: equality()");
+        return null;
+    }
+
 }
