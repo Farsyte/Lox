@@ -16,31 +16,31 @@ include ../GNUmakefile
 SRCD            := src/
 CLSD            := cls/
 
-PTOP		:= farsyte
+PTOP            := farsyte
 
 PKGD            := $(PTOP)/$(PACKAGE)/
 
 # Set up conventional name lists
 
 JSRC            := $(wildcard $(SRCD)$(PKGD)*.java)
-JCLS		:= $(JSRC:$(SRCD)$(PKGD)%.java=$(CLSD)$(PKGD)%.class)
+JCLS            := $(JSRC:$(SRCD)$(PKGD)%.java=$(CLSD)$(PKGD)%.class)
 
 # Pick compiler and set up command line options
 
-JC		:= javac
-JCFLAGS		:= -cp $(SRCD) -d $(CLSD) -g -Werror -implicit:none
+JC              := javac
+JCFLAGS         := -cp $(SRCD) -d $(CLSD) -g -Werror -implicit:none
 
-JR		:= java
-JRFLAGS		:= -cp $(CLSD) -ea -esa
+JR              := java
+JRFLAGS         := -cp $(CLSD) -ea -esa
 
-default::	$(JCLS)
-all::		$(JCLS)
-
+default::       build
+all::           build
+build::         $(JCLS)
 clean::
 	$X $(JCLS)
 	$C [ ! -d $(CLSD)$(PKGD) ] || $Y $(CLSD)$(PKGD)
 
-$(CLSD)$(PKGD)%.class:	$(SRCD)$(PKGD)%.java
+$(CLSD)$(PKGD)%.class:  $(SRCD)$(PKGD)%.java
 	$P '  %-14s %s\n' "JAVAC" "$*"
 	$C $(JC) $(JCFLAGS) $<
 
@@ -57,21 +57,21 @@ clean::
 	$X $(FROM) $(INTO)
 
 ifneq ($(INTO),)
-RED_OUT		:= > $(INTO) 2>&1
+RED_OUT         := > $(INTO) 2>&1
 else
-RED_OUT		:= 
+RED_OUT         := 
 endif
 
 ifneq ($(TEE),)
-RED_TEE		:= |& tee $(TEE)
+RED_TEE         := |& tee $(TEE)
 else
-RED_TEE		:= 
+RED_TEE         := 
 endif
 
 ifneq ($(FROM),)
-RED_IN		:= < $(FROM)
+RED_IN          := < $(FROM)
 else
-RED_IN		:= 
+RED_IN          := 
 endif
 
 run:: $(JCLS)

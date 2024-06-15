@@ -6,15 +6,19 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 TID             := tid/
 TOD             := tod/
 
-# make: the default build is "make all"
+# make: the default build is to build the interpreter
 
-default::       all
+default::       build
+
+# make all: build the interpreter and run the tests (see below)
+
+all::           build
 
 # make all: use ../java.mak to build all buildables
-# in the main package, after checking that $(AstImplSrcs)
+# in the main package, AFTER checking that $(AstImplSrcs)
 # containing the AST code (Expr.java) is ready.
 
-all::           generate
+build::         generate
 	$M PACKAGE=lox  -f ../java.mak $@
 
 # make clean: use ../java.mak to clean each package.
@@ -37,7 +41,7 @@ clean::
 # This starts an interactive Lox interpreter, or whatever
 # parts of the interpreter have been implemented so far.
 
-run::           generate
+run::           build
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak $@
 
 
@@ -51,12 +55,14 @@ world::
 # - use "git status" to detect missing or added output files
 # - use "git diff" to detect changes in test outputs
 
-tests::
+tests::         build
 	$X $(TOD)*.out
 	$C [ ! -d $(TOD) ] || $Y $(TOD)
 	$C mkdir $(TOD)
 	$M eachtest
 
+all::           tests
+# 
 # Parameter Parsing Tests
 # testing requires changing how the program is run.
 
@@ -106,7 +112,7 @@ clean::
 # to generate them. If the list is empty, skip over all
 # the cruft related to them.
 
-AstImplClasses  := Expr
+AstImplClasses  := Expr Stmt
 
 ifneq ($(AstImplClasses),)
 
