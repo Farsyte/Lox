@@ -61,3 +61,31 @@ Adding Statements to the grammer gives us:
                   | "(" expression ")" ;
 
 #+end_src
+
+* 8.2.1 Variable Syntax
+
+Adding Statements to the grammer gives us:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+  statement       → exprStmt | printStmt ;
+
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → equalithy
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src
