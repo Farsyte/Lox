@@ -28,6 +28,23 @@ class Parser {
         return expr;
     }
 
+    private Expr comparison() {
+        // comparison → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+        Expr expr = term();
+
+        while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)) {
+            Token operator = previous();
+            Expr right = term();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+
+        return expr;
+    }
+
+    private Expr term() {
+        throw new NotImplementedException();
+    }
+
     private boolean match(TokenType... types) {
         for (TokenType type : types) {
             if (check(type)) {
@@ -58,13 +75,5 @@ class Parser {
 
     private Token previous() {
         return tokens.get(current - 1);
-    }
-
-    /* **** **** **** **** **** **** **** **** **** ****
-     *                       STUBS
-     * **** **** **** **** **** **** **** **** **** **** */
-
-    private Expr comparison() {
-        throw new NotImplementedException();
     }
 }
