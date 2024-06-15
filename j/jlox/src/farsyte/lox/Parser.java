@@ -55,6 +55,19 @@ class Parser {
     }
 
     private Expr factor() {
+        // factor → unary ( ( "/" | "*" ) unary )* ;
+        Expr expr = unary();
+
+        while (match(SLASH, STAR)) {
+            Token operator = previous();
+            Expr right = unary();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+
+        return expr;
+    }
+
+    private Expr unary() {
         throw new NotImplementedException();
     }
 
