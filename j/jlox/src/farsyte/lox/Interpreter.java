@@ -62,6 +62,11 @@ class Interpreter implements Expr.Visitor<Object> {
         case LESS_EQUAL:
             return (double)left <= (double)right;
 
+         case BANG_EQUAL:
+             return !isEqual(left, right);
+         case EQUAL_EQUAL:
+             return isEqual(left, right);
+
         }
 
         // Unreachable.
@@ -72,6 +77,10 @@ class Interpreter implements Expr.Visitor<Object> {
         if (object == null) return false;
         if (object instanceof Boolean) return (boolean)object;
         return true;
+    }
+
+    private boolean isEqual(Object a, Object b) {
+        throw new NotImplementedException();
     }
 
 }
