@@ -16,6 +16,7 @@ class Parser {
     }
 
     List<Stmt> parse() {
+        // program → statement* EOF ;
         List<Stmt> statements = new ArrayList<>();
         while (!isAtEnd()) {
             statements.add(statement());
@@ -24,18 +25,23 @@ class Parser {
     }
 
     private Stmt statement() {
+        // statement → exprStmt | printStmt ;
         if (match(PRINT)) return printStatement();
         return expressionStatement();
     }
 
     private Stmt printStatement() {
+        // printStmt → "print" expression ";" ;
         Expr value = expression();
         consume(SEMICOLON, "Expect ';' after value.");
         return new Stmt.Print(value);
     }
 
     private Stmt expressionStatement() {
-        throw new NotImplementedException();
+        // exprStmt → expression ";" ;
+        Expr expr = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Stmt.Expression(expr);
     }
 
     private Expr expression() {
