@@ -18,8 +18,25 @@ class Parser {
     }
 
     private Expr equality() {
-        System.out.println("STUB: equality()");
-        return null;
+        // equality → comparison ( ( "!=" | "==" ) comparison )* ;
+        Expr expr = comparison();
+        while (!match(BANG_EQUAL, EQUAL_EQUAL)) {
+            Token operator = previous();
+            Expr right = comparison();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+        return expr;
     }
 
+    private Expr comparison() {
+        throw new NotImplementedException();
+    }
+
+    private boolean match(TokenType... types) {
+        throw new NotImplementedException();
+    }
+
+    private Token previous() {
+        throw new NotImplementedException();
+    }
 }
