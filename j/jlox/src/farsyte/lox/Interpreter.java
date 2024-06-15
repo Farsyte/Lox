@@ -64,7 +64,15 @@ class Interpreter implements Expr.Visitor<Object> {
 
         case SLASH:
             checkNumberOperands(expr.operator, left, right);
-            return (double)left / (double)right;
+            if (0.0 == (double)right)
+                throw new RuntimeError(expr.operator, "Division of zero.");
+            double result = (double)left / (double)right;
+            if (Double.isNaN(result))
+                throw new RuntimeError(expr.operator, "Division produced a NaN.");
+            if (Double.isInfinite(result))
+                throw new RuntimeError(expr.operator, "Division produced Infinity.");
+            return result;
+
         case STAR:
             checkNumberOperands(expr.operator, left, right);
             return (double)left * (double)right;
