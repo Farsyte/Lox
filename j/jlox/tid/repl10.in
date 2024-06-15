@@ -1,0 +1,32 @@
+// REPL wants one expression per line.
+// Comments are discarded.
+// Lines with no tokens are discarded.
+
+        // primary → NUMBER | STRING | "true" | "false" | "nil"
+123
+123.5
+"fred"
+false
+true
+nil
+
+        // unary → ( "!" | "-" ) unary | primary ;
+-123
+-123.5
+!false
+!true
+
+        // factor → unary ( ( "/" | "*" ) unary )* ;
+123.5 * 0.2 * 10 / -2 * 5.1
+
+        // term → factor ( ( "-" | "+" ) factor )* ;
+5*5 + 2*3 - 3/5
+
+        // comparison → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+5*5+2*3 > 5*3+2*2
+
+        // equality → comparison ( ( "!=" | "==" ) comparison )* ;
+5*5+2*3 > 5*3+2*2 == true
+
+        // primary → "(" expression ")" ;
+(5+10+15) / (15-5)

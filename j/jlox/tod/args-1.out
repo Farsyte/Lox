@@ -1,5 +1,1 @@
-Tokens scanned:
-PRINT print null
-STRING "Hello, LOX!" Hello, LOX!
-SEMICOLON ; null
-EOF  null
+[line 11] Error at 'print': Expect expression.
