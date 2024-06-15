@@ -18,12 +18,20 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitUnaryExpr(Expr.Unary expr) {
+        Object right = evaluate(expr.right);
+
+        switch (expr.operator.type) {
+        case MINUS:
+            return -(double)right;
+        }
+
+        // Unreachable.
         throw new NotImplementedException(", unreachable at end.");
     }
 
     @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
-        throw new NotImplementedException(", unreachable at end.");
+        throw new NotImplementedException();
     }
 
 }
