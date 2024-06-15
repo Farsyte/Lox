@@ -16,10 +16,19 @@ class Parser {
 
     Expr parse() {
         try {
-            return expression();
+            return empty_or_one_expression();
         } catch (ParseError error) {
             return null;
         }
+    }
+
+    private Expr empty_or_one_expression() {
+        if (isAtEnd())
+            return null;
+        Expr ret = expression();
+        if (!isAtEnd())
+            throw error(peek(), "Extra tokens after expression.");
+        return ret;
     }
 
     private Expr expression() {
@@ -30,7 +39,7 @@ class Parser {
     private Expr equality() {
         // equality → comparison ( ( "!=" | "==" ) comparison )* ;
         Expr expr = comparison();
-        while (!match(BANG_EQUAL, EQUAL_EQUAL)) {
+        while (match(BANG_EQUAL, EQUAL_EQUAL)) {
             Token operator = previous();
             Expr right = comparison();
             expr = new Expr.Binary(expr, operator, right);
@@ -104,6 +113,7 @@ class Parser {
             consume(RIGHT_PAREN, "Expect ')' after expression.");
             return new Expr.Grouping(expr);
         }
+
         throw error(peek(), "Expect expression.");
     }
 
