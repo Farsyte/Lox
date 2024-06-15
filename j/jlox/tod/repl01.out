@@ -1,41 +1,15 @@
-> [line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-Tokens scanned:
+> Tokens scanned:
+IDENTIFIER repl null
+IDENTIFIER test null
+IDENTIFIER input null
+IDENTIFIER line null
 NUMBER 1 1.0
 EOF  null
-> [line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
-Tokens scanned:
+> Tokens scanned:
+IDENTIFIER repl null
+IDENTIFIER test null
+IDENTIFIER input null
+IDENTIFIER line null
 NUMBER 2 2.0
 EOF  null
 > 
