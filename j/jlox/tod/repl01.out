@@ -15,8 +15,8 @@
 [line 1] Error: Unexpected character.
 [line 1] Error: Unexpected character.
 [line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
 Tokens scanned:
+NUMBER 1 1.0
 EOF  null
 > [line 1] Error: Unexpected character.
 [line 1] Error: Unexpected character.
@@ -35,7 +35,7 @@ EOF  null
 [line 1] Error: Unexpected character.
 [line 1] Error: Unexpected character.
 [line 1] Error: Unexpected character.
-[line 1] Error: Unexpected character.
 Tokens scanned:
+NUMBER 2 2.0
 EOF  null
 > 
