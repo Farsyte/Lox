@@ -33,6 +33,16 @@ class Interpreter implements Expr.Visitor<Object> ,
     }
 
     @Override
+    public Void visitVariableExpr(Expr.Variable stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public Void visitVarStmt(Stmt.Var stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
         evaluate(stmt.expression);
         return null;

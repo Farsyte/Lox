@@ -19,9 +19,23 @@ class Parser {
         // program → statement* EOF ;
         List<Stmt> statements = new ArrayList<>();
         while (!isAtEnd()) {
-            statements.add(statement());
+            statements.add(declaration());
         }
         return statements;
+    }
+
+    private Stmt declaration() {
+        try {
+            if (match(VAR)) return varDeclaration();
+            return statement();
+        } catch (ParseError error) {
+            synchronize();
+            return null;
+        } 
+    }
+
+    private Stmt varDeclaration() {
+        throw new NotImplementedException();
     }
 
     private Stmt statement() {
