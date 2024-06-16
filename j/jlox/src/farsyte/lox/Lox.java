@@ -32,7 +32,16 @@ public class Lox {
     }
 
     private static void runPrompt() throws IOException {
-        throw new NotImplementedException();
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
+
+        for (;;) {
+            System.out.print("> ");
+            String line = reader.readLine();
+            if (line == null) break;
+            run(line);
+        }
+        System.out.println();
     }
 
     private static void run(String source) {
