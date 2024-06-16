@@ -85,6 +85,12 @@ class Parser {
 
         Stmt body = statement();
 
+        if (increment != null) {
+            body = new Stmt.Block
+                (Arrays.asList
+                 (body, new Stmt.Expression(increment)));
+        }
+
         throw new NotImplementedException(", not yet complete");
     }
 
