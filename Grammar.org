@@ -6,7 +6,14 @@ This file will record the various grammars used.
 
   program         → declaration* EOF ;
   declaration     → varDecl | statement ;
-  statement       → exprStmt | printStmt  | block ;
+
+  statement       → exprStmt
+                  | ifStmt
+                  | printStmt
+                  | block
+                  ;
+
+  ifStmt          → "if" "(" expression ")" statement ( "else" statement )? ;
 
   block           → "{" declaration* "}" ;
   varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
@@ -37,3 +44,4 @@ Grammer above includes text from these sections:
 - 8.2.1 Variable Syntax
 - 8.4.1 Assignment Syntax
 - 8.5.2 Block syntax and semantics
+- 9.2 Conditional Execution
