@@ -148,3 +148,40 @@ Adding blocks to the grammar:
                   | "(" expression ")"
                   | IDENTIFIER ;
 #+end_src
+
+* 9.2 Conditional Execution
+
+Adding "if" statements to the grammar:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+
+  statement       → exprStmt
+                  | ifStmt
+                  | printStmt
+                  | block
+                  ;
+  
+  ifStmt          → "if" "(" expression ")" statement ( "else" statement )? ;
+
+  block           → "{" declaration* "}" ;
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → assignment ;
+  assignment      → IDENTIFIER = assignment | equality ;
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src
