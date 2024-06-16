@@ -8,11 +8,17 @@ This file will record the various grammars used.
   declaration     → varDecl | statement ;
 
   statement       → exprStmt
+                  | forStmt
                   | ifStmt
                   | printStmt
                   | whileStmt
                   | block
                   ;
+
+  forStmt         → "for" "("
+                     ( varDecl | exprStmt | ";" )
+                     expression? ";"
+                     expression? ")" statement ;
 
   whileStmt       → "while" "(" expression ")" statement ;
 
@@ -52,3 +58,4 @@ Grammer above includes text from these sections:
 - 9.2 Conditional Execution
 - 9.3 Logical Operators
 - 9.4 While Loops
+- 9.5 For Loops
