@@ -6,6 +6,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitWhileStmt(Stmt.While stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public String visitBlockStmt(Stmt.Block stmt) {
         throw new NotImplementedException();
     }
