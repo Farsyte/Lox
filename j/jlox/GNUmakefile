@@ -104,6 +104,29 @@ endif
 clean::
 	$C [ ! -d $(TOD) ] || $Y $(TOD)
 
+# PROG testing: run the program with no parameters,
+# change the input file from test to test.
+
+PTIF            := $(wildcard $(TID)prog*.lox)
+
+ifneq ($(PTIF),)
+
+RTOF            := $(PTIF:$(TID)prog%.lox=$(TOD)prog%.out)
+
+eachtest::      $(RTOF)
+
+$(TOD)prog%.out:        $(TID)prog%.lox
+	$P '  %-14s %s\n' "Lox" "$< > $@"
+	$M PACKAGE=lox MAIN=Lox INTO=$@ -f ../java.mak run $< ARGS="$<"
+
+clean::
+	$X $(RTOF)
+
+endif
+
+clean::
+	$C [ ! -d $(TOD) ] || $Y $(TOD)
+
 # The AST Implementation is currently auto-generated,
 # and at the moment, there is only one (Expr). There
 # will be another ... soon.
