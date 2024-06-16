@@ -6,8 +6,9 @@ This file will record the various grammars used.
 
   program         → declaration* EOF ;
   declaration     → varDecl | statement ;
-  statement       → exprStmt | printStmt ;
+  statement       → exprStmt | printStmt  | block ;
 
+  block           → "{" declaration* "}" ;
   varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
   exprStmt        → expression ";" ;
   printStmt       → "print" expression ";" ;
@@ -35,3 +36,4 @@ Grammer above includes text from these sections:
 - 8.1 Statements
 - 8.2.1 Variable Syntax
 - 8.4.1 Assignment Syntax
+- 8.5.2 Block syntax and semantics
