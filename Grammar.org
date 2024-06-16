@@ -38,3 +38,113 @@ and set things up to be recursive-descent friendly:
 
 #+end_src
 
+* 8.1 Statements
+
+Adding Statements to the grammer gives us:
+
+#+begin_src text
+  program         → statement* EOF ;
+  statement       → exprStmt | printStmt ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → equalithy
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → NUMBER | STRING | "true" | "false" | "nil"
+                  | "(" expression ")" ;
+
+#+end_src
+
+* 8.2.1 Variable Syntax
+
+Adding Variables to the grammer gives us:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+  statement       → exprStmt | printStmt ;
+
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → equalithy
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src
+
+* 8.4.1 Assignment Syntax
+
+Adding Assignments to the grammer gives us:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+  statement       → exprStmt | printStmt ;
+
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → assignment ;
+  assignment      → IDENTIFIER = assignment | equality ;
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src
+
+* 8.5.2 Block syntax and semantics
+
+Adding blocks to the grammar:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+  statement       → exprStmt | printStmt  | block ;
+
+  block           → "{" declaration* "}" ;
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → assignment ;
+  assignment      → IDENTIFIER = assignment | equality ;
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src

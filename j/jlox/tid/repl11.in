@@ -3,30 +3,30 @@
 // Lines with no tokens are discarded.
 
         // primary → NUMBER | STRING | "true" | "false" | "nil"
-print 123;
-print 123.5;
-print "fred";
-print false;
-print true;
-print nil;
+123;
+123.5;
+"fred";
+false;
+true;
+nil;
 
         // unary → ( "!" | "-" ) unary | primary ;
-print -123;
-print -123.5;
-print !false;
-print !true;
+-123;
+-123.5;
+!false;
+!true;
 
         // factor → unary ( ( "/" | "*" ) unary )* ;
-print 123.5 * 0.2 * 10 / -2 * 5.1;
+123.5 * 0.2 * 10 / -2 * 5.1;
 
         // term → factor ( ( "-" | "+" ) factor )* ;
-print 5*5 + 2*3 - 3/5;
+5*5 + 2*3 - 3/5;
 
         // comparison → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
-print 5*5+2*3 > 5*3+2*2;
+5*5+2*3 > 5*3+2*2;
 
         // equality → comparison ( ( "!=" | "==" ) comparison )* ;
-print 5*5+2*3 > 5*3+2*2 == true;
+5*5+2*3 > 5*3+2*2 == true;
 
         // primary → "(" expression ")" ;
-print (5+10+15) / (15-5);
+(5+10+15) / (15-5);

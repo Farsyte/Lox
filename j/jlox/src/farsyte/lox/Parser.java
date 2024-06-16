@@ -1,6 +1,7 @@
 package farsyte.lox;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import static farsyte.lox.TokenType.*;
 
@@ -14,26 +15,103 @@ class Parser {
         this.tokens = tokens;
     }
 
-    Expr parse() {
-        try {
-            return empty_or_one_expression();
-        } catch (ParseError error) {
-            return null;
+    List<Stmt> parse() {
+        // program → declaration* EOF ;
+        List<Stmt> statements = new ArrayList<>();
+        while (!isAtEnd()) {
+            statements.add(declaration());
         }
+        return statements;
     }
 
-    private Expr empty_or_one_expression() {
-        if (isAtEnd())
+    private Stmt declaration() {
+        // declaration → varDecl | statement ;
+        try {
+            if (match(VAR)) return varDeclaration();
+            return statement();
+        } catch (ParseError error) {
+            synchronize();
             return null;
-        Expr ret = expression();
-        if (!isAtEnd())
-            throw error(peek(), "Extra tokens after expression.");
-        return ret;
+        } 
+    }
+
+    private Stmt varDeclaration() {
+        // varDecl → "var" IDENTIFIER ( "=" expression )? ";" ;
+        Token name = consume(IDENTIFIER, "Expect variable name.");
+
+        Expr initializer = null;
+        if (match(EQUAL)) {
+            initializer = expression();
+        }
+        consume(SEMICOLON, "Expect ';' after variable declaration.");
+        return new Stmt.Var(name, initializer);
+    }
+
+    private Stmt statement() {
+        // statement → exprStmt | printStmt ;
+        if (match(PRINT)) return printStatement();
+        // NOTE: see block() for why its returnt type is different.
+        if (match(LEFT_BRACE)) return new Stmt.Block(block());
+        return expressionStatement();
+    }
+
+    private List<Stmt> block() {
+        // block → "{" declaration* "}" ;
+        List<Stmt> statements = new ArrayList<>();
+
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            statements.add(declaration());
+        }
+
+        consume(RIGHT_BRACE, "Expect '}' after block.");
+
+        // From Crafting Interpreters, and worth including here:
+        //
+        // having block() return the raw list of statements and leaving
+        // it to statement() to wrap the list in a Stmt.Block looks a
+        // bit odd. I did it that way because we'll reuse block() later
+        // for parsing function bodies and we don't want that body
+        // wrapped in a Stmt.Block. [§8.5.2 of Crafting Interpreters]
+
+        return statements;
+    }
+
+    private Stmt printStatement() {
+        // printStmt → "print" expression ";" ;
+        Expr value = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Stmt.Print(value);
+    }
+
+    private Stmt expressionStatement() {
+        // exprStmt → expression ";" ;
+        Expr expr = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Stmt.Expression(expr);
     }
 
     private Expr expression() {
-        // expression → equality ;
-        return equality();
+        // expression → assignment ;
+        return assignment();
+    }
+
+    private Expr assignment() {
+        // assignment → IDENTIFIER = assignment | equality ;
+        Expr expr = equality();
+
+        if (match(EQUAL)) {
+            Token equals = previous();
+            Expr value = assignment();
+
+            if (expr instanceof Expr.Variable) {
+                Token name = ((Expr.Variable)expr).name;
+                return new Expr.Assign(name, value);
+            }
+
+            error(equals, "Invalid assignment target.");
+        }
+
+        return expr;
     }
 
     private Expr equality() {
@@ -98,14 +176,20 @@ class Parser {
     }
 
     private Expr primary() {
-        // primary → NUMBER | STRING | "true" | "false" | "nil"
-        //         | "(" expression ")" ;
+        // primary         → "true" | "false" | "nil"
+        //                 | NUMBER | STRING
+        //                 | "(" expression ")"
+        //                 | IDENTIFIER ;
         if (match(FALSE)) return new Expr.Literal(false);
         if (match(TRUE)) return new Expr.Literal(true);
         if (match(NIL)) return new Expr.Literal(null);
 
         if (match(NUMBER, STRING)) {
             return new Expr.Literal(previous().literal);
+        }
+
+        if (match(IDENTIFIER)) {
+            return new Expr.Variable(previous());
         }
 
         if (match(LEFT_PAREN)) {
