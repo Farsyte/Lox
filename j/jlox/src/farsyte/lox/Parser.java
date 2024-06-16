@@ -71,6 +71,12 @@ class Parser {
             initializer = expressionStatement();
         }
 
+        Expr condition = null;
+        if (!check(SEMICOLON)) {
+            condition = expression();
+        }
+        consume(SEMICOLON, "Expect ';' after loop condition.");
+
         throw new NotImplementedException(", not yet complete");
     }
 
