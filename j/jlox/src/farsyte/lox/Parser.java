@@ -48,12 +48,21 @@ class Parser {
     }
 
     private Stmt statement() {
-        // statement → exprStmt | ifStmt | printStmt | block ;
+        // statement → exprStmt | ifStmt | printStmt | whileStmt | block ;
         if (match(IF)) return ifStatement();
+        if (match(WHILE)) return whileStatement();
         if (match(PRINT)) return printStatement();
         // NOTE: see block() for why its returnt type is different.
         if (match(LEFT_BRACE)) return new Stmt.Block(block());
         return expressionStatement();
+    }
+
+    private Stmt whileStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'while'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ')' after condition.");
+        Stmt body = statement();
+        return new Stmt.While(condition, body);
     }
 
     private Stmt ifStatement() {
