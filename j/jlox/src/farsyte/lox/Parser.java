@@ -91,6 +91,11 @@ class Parser {
                  (body, new Stmt.Expression(increment)));
         }
 
+        if (condition == null) {
+            condition = new Expr.Literal(true);
+        }
+        body = new Stmt.While(condition, body);
+
         throw new NotImplementedException(", not yet complete");
     }
 
