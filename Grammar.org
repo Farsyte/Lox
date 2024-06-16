@@ -224,3 +224,45 @@ Adding "and" and "or" operators to the grammar:
                   | "(" expression ")"
                   | IDENTIFIER ;
 #+end_src
+
+* 9.4 While Loops
+
+Adding "while" statements to the grammar:
+
+#+begin_src text
+  program         → declaration* EOF ;
+  declaration     → varDecl | statement ;
+
+  statement       → exprStmt
+                  | ifStmt
+                  | printStmt
+                  | whileStmt
+                  | block
+                  ;
+
+  whileStmt       → "while" "(" expression ")" statement ;
+
+  ifStmt          → "if" "(" expression ")" statement ( "else" statement )? ;
+
+  block           → "{" declaration* "}" ;
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → assignment ;
+  assignment      → IDENTIFIER = assignment | logic_or ;
+  logic_or        → logic_and ( "or" logic_and )* ;
+  logic_and       → equality ( "and" equality )* ;
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
+
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → "true" | "false" | "nil"
+                  | NUMBER | STRING
+                  | "(" expression ")"
+                  | IDENTIFIER ;
+#+end_src
