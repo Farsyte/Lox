@@ -66,18 +66,17 @@ all::           tests
 # Parameter Parsing Tests
 # testing requires changing how the program is run.
 
-# Note that parsing "hello.lox" starts throwing failures
-# when the scanner is being implemented, and will continue
-# to fail until much later in the implementation process.
+# Note that parsing "tid/hello.lox" starts throwing failures
+# when the scanner is being implemented.
 
 ARGSTESTS       := $(TOD)args-1.out $(TOD)args-2.out
 eachtest::      $(ARGSTESTS)
 
 $(TOD)args-1.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='hello.lox'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='tid/hello.lox'
 
 $(TOD)args-2.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v hello.lox'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v tid/hello.lox'
 
 clean::
 	$X $(ARGSTESTS)
