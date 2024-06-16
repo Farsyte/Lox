@@ -45,8 +45,8 @@ class Scanner {
         case ';': addToken(SEMICOLON); break;
         case '*': addToken(STAR); break;
 
-
         default:
+            Lox.error(line, "Unexpected character.");
             throw new NotImplementedException(", parse more tokens");
         }
     }
