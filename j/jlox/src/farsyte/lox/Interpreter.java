@@ -49,7 +49,10 @@ class Interpreter implements Expr.Visitor<Object> ,
 
     @Override
     public Void visitWhileStmt(Stmt.While stmt) {
-        throw new NotImplementedException();
+        while (isTruthy(evaluate(stmt.condition))) {
+            execute(stmt.body);
+        }
+        return null;
     }
 
     @Override
