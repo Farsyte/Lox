@@ -83,6 +83,8 @@ class Parser {
         }
         consume(RIGHT_PAREN, "Expect ')' after for clauses.");
 
+        Stmt body = statement();
+
         throw new NotImplementedException(", not yet complete");
     }
 
