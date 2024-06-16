@@ -1,9 +1,15 @@
-inner a
-outer b
-global c
-outer a
-outer b
-global c
-global a
-global b
-global c
+inner scope:
+PASS: a = inner a
+PASS: b = outer b
+PASS: c = global c
+
+outer scope:
+PASS: a = outer a
+PASS: b = outer b
+PASS: c = global c
+
+global scope:
+PASS: a = global a
+PASS: b = global b
+PASS: c = global c
+
