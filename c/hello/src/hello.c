@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "list.h"
 
 int main(int argc, char **argv)
 {
@@ -8,5 +9,6 @@ int main(int argc, char **argv)
 
     printf("Hello C!\n");
 
+    list_test();
     return 0;
 }
