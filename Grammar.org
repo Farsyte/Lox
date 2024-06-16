@@ -21,7 +21,9 @@ This file will record the various grammars used.
   printStmt       → "print" expression ";" ;
 
   expression      → assignment ;
-  assignment      → IDENTIFIER = assignment | equality ;
+  assignment      → IDENTIFIER = assignment | logic_or ;
+  logic_or        → logic_and ( "or" logic_and )* ;
+  logic_and       → equality ( "and" equality )* ;
   equality        → comparison ( ( "!=" | "==" ) comparison )* ;
   comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
   term            → factor ( ( "-" | "+" ) factor )* ;
@@ -45,3 +47,4 @@ Grammer above includes text from these sections:
 - 8.4.1 Assignment Syntax
 - 8.5.2 Block syntax and semantics
 - 9.2 Conditional Execution
+- 9.3 Logical Operators
