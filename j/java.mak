@@ -40,9 +40,17 @@ clean::
 	$X $(JCLS)
 	$C [ ! -d $(CLSD)$(PKGD) ] || $Y $(CLSD)$(PKGD)
 
-$(CLSD)$(PKGD)%.class:  $(SRCD)$(PKGD)%.java
-	$P '  %-14s %s\n' "JAVAC" "$*"
-	$C $(JC) $(JCFLAGS) $<
+# If any class file needs to be rebuilt, build them all.
+# - javac is slow to start, do it in one run of javac.
+# - dependencies are not captured,
+# Case demonstrating why the latter is important:
+# - Add a class to the Expr (or Stmt) AST.
+# - Java files using Visitor<Expr> need to be rebuilt,
+#   to catch that they need to Overload another function.
+
+$(JCLS) &: $(JSRC)
+	$P '  %-14s %s\n' "JAVAC" "$(PACKAGE).*"
+	$C $(JC) $(JCFLAGS) $(JSRC)
 
 # If the caller sets MAIN=Cls, then add ruiles to
 # run the main function from the $(PTOP).$(PACKAGE).$(MAIN) class.

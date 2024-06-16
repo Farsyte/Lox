@@ -1,8 +1,43 @@
 package farsyte.lox;
 
-class AstPrinter implements Expr.Visitor<String> {
+class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     String print(Expr expr) {
         return expr.accept(this);
+    }
+
+    @Override
+    public String visitWhileStmt(Stmt.While stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitBlockStmt(Stmt.Block stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitExpressionStmt(Stmt.Expression stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitIfStmt(Stmt.If stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitPrintStmt(Stmt.Print stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitVarStmt(Stmt.Var stmt) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitLogicalExpr(Expr.Logical expr) {
+        throw new NotImplementedException();
     }
 
     @Override

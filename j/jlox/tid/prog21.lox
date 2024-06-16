@@ -1,0 +1,39 @@
+// demonstrate variable scopes
+// PASS lines are "all match"
+// FAIL lines are "any match"
+// ERROR lines indicate bugs in "and" or "or"
+// ... or inconsistencies in "==" and "!="
+
+var a = "global a";
+var b = "global b";
+var c = "global c";
+{
+  var a = "outer a";
+  var b = "outer b";
+  {
+    var a = "inner a";
+    if (a == "inner a" and b == "outer b" and c == "global c") {
+      print "PASS at inner:   " + a + ", " + b + ", " + c;
+    } else if (a != "inner a" or b != "outer b" or c != "global c") {
+      print "FAIL at inner:   " + a + ", " + b + ", " + c;
+    } else {
+      print "ERROR at inner:  " + a + ", " + b + ", " + c;
+    }
+  }
+
+  if (a == "outer a" and b == "outer b" and c == "global c") {
+     print "PASS at outer:   " + a + ", " + b + ", " + c;
+  } else if (a != "outer a" or b != "outer b" or c != "global c") {
+    print "FAIL at outer:   " + a + ", " + b + ", " + c;
+  } else {
+    print "ERROR at outer:  " + a + ", " + b + ", " + c;
+  }
+}
+
+if (a == "global a" and b == "global b" and c == "global c") {
+  print "PASS at global:  " + a + ", " + b + ", " + c;
+} else if (a != "global a" or b != "global b" or c != "global c") {
+  print "FAIL at global:  " + a + ", " + b + ", " + c;
+} else {
+  print "ERROR at global: " + a + ", " + b + ", " + c;
+}

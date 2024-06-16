@@ -7,15 +7,66 @@ var c = "global c";
   var a = "outer a";
   var b = "outer b";
   {
+    print "inner scope:";
     var a = "inner a";
-    print a;
-    print b;
-    print c;
+
+    if (a == "inner a") {
+      print "PASS: a = " + a;
+    } else {
+      print "FAIL: a = " + a;
+    }
+
+    if (b == "outer b") {
+      print "PASS: b = " + b;
+    } else {
+      print "FAIL: b = " + b;
+    }
+
+    if (c == "global c") {
+      print "PASS: c = " + c;
+    } else {
+      print "FAIL: c = " + c;
+    }
+    print "";
   }
-  print a;
-  print b;
-  print c;
+
+  print "outer scope:";
+  if (a == "outer a") {
+    print "PASS: a = " + a;
+  } else {
+    print "FAIL: a = " + a;
+  }
+
+  if (b == "outer b") {
+    print "PASS: b = " + b;
+  } else {
+    print "FAIL: b = " + b;
+  }
+
+  if (c == "global c") {
+    print "PASS: c = " + c;
+  } else {
+    print "FAIL: c = " + c;
+  }
+  print "";
 }
-print a;
-print b;
-print c;
+
+print "global scope:";
+if (a == "global a") {
+  print "PASS: a = " + a;
+} else {
+  print "FAIL: a = " + a;
+}
+
+if (b == "global b") {
+  print "PASS: b = " + b;
+} else {
+  print "FAIL: b = " + b;
+}
+
+if (c == "global c") {
+  print "PASS: c = " + c;
+} else {
+  print "FAIL: c = " + c;
+}
+print "";
