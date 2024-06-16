@@ -77,6 +77,12 @@ class Parser {
         }
         consume(SEMICOLON, "Expect ';' after loop condition.");
 
+        Expr increment = null;
+        if (!check(RIGHT_PAREN)) {
+            increment = expression();
+        }
+        consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+
         throw new NotImplementedException(", not yet complete");
     }
 
