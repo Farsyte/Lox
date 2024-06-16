@@ -60,7 +60,18 @@ class Parser {
     }
 
     private Stmt forStatement() {
-        throw new NotImplementedException();
+        consume(LEFT_PAREN, "expect '(' after 'for'.");
+
+        Stmt initializer;
+        if (match(SEMICOLON)) {
+            initializer = null;
+        } else if (match(VAR)) {
+            initializer = varDeclaration();
+        } else {
+            initializer = expressionStatement();
+        }
+
+        throw new NotImplementedException(", not yet complete");
     }
 
     private Stmt whileStatement() {
