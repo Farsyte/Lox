@@ -1,7 +1,8 @@
 package farsyte.lox;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static farsyte.lox.TokenType.*;
 
@@ -48,13 +49,18 @@ class Parser {
     }
 
     private Stmt statement() {
-        // statement → exprStmt | ifStmt | printStmt | whileStmt | block ;
+        // statement → forStmt | exprStmt | ifStmt | printStmt | whileStmt | block ;
+        if (match(FOR)) return forStatement();
         if (match(IF)) return ifStatement();
         if (match(WHILE)) return whileStatement();
         if (match(PRINT)) return printStatement();
         // NOTE: see block() for why its returnt type is different.
         if (match(LEFT_BRACE)) return new Stmt.Block(block());
         return expressionStatement();
+    }
+
+    private Stmt forStatement() {
+        throw new NotImplementedException();
     }
 
     private Stmt whileStatement() {
