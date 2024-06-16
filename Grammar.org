@@ -10,8 +10,11 @@ This file will record the various grammars used.
   statement       → exprStmt
                   | ifStmt
                   | printStmt
+                  | whileStmt
                   | block
                   ;
+
+  whileStmt       → "while" "(" expression ")" statement ;
 
   ifStmt          → "if" "(" expression ")" statement ( "else" statement )? ;
 
@@ -48,3 +51,4 @@ Grammer above includes text from these sections:
 - 8.5.2 Block syntax and semantics
 - 9.2 Conditional Execution
 - 9.3 Logical Operators
+- 9.4 While Loops
