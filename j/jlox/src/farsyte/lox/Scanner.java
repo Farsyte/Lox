@@ -32,6 +32,35 @@ class Scanner {
     }
 
     private void scanToken() {
-        throw new NotImplementedException();
+        char c = advance();
+        switch (c) {
+        case '(': addToken(LEFT_PAREN); break;
+        case ')': addToken(RIGHT_PAREN); break;
+        case '{': addToken(LEFT_BRACE); break;
+        case '}': addToken(RIGHT_BRACE); break;
+        case ',': addToken(COMMA); break;
+        case '.': addToken(DOT); break;
+        case '-': addToken(MINUS); break;
+        case '+': addToken(PLUS); break;
+        case ';': addToken(SEMICOLON); break;
+        case '*': addToken(STAR); break;
+
+
+        default:
+            throw new NotImplementedException(", parse more tokens");
+        }
+    }
+
+    private char advance() {
+        return source.charAt(current++);
+    }
+
+    private void addToken(TokenType type) {
+        addToken(type, null);
+    }
+
+    private void addToken(TokenType type, Object literal) {
+        String text = source.substring(start, current);
+        tokens.add(new Token(type, text, literal, line));
     }
 }
