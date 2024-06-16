@@ -64,6 +64,11 @@ class Interpreter implements Expr.Visitor<Object> ,
     }
 
     @Override
+    public Object visitLogicalExpr(Expr.Logical expr) {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public Object visitAssignExpr(Expr.Assign expr) {
         Object value = evaluate(expr.value);
         environment.assign(expr.name, value);
