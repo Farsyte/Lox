@@ -4,20 +4,21 @@ This file will record the various grammars used.
 
 #+begin_src text
 
-  expression      → literal
-                  | unary
-                  | binary
-                  | grouping ;
+  expression      → equality
+  equality        → comparison ( ( "!=" | "==" ) comparison )* ;
+  comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+  term            → factor ( ( "-" | "+" ) factor )* ;
+  factor          → unary ( ( "/" | "*" ) unary )* ;
 
-  literal         → NUMBER | STRING | "true" | "false" | "nil" ;
-  grouping        → "(" expression ")" ;
-  unary           → ( "-" | "!" ) expression ;
-  binary          → expression operator expression ;
-  operator        → "==" | "!=" | "<" | "<=" | ">" | ">="
-                  | "+" | "-" | "*" | "/" ;
+  unary           → ( "!" | "-" ) unary
+                  | primary ;
+
+  primary         → NUMBER | STRING | "true" | "false" | "nil"
+                  | "(" expression ")" ;
 
 #+end_src
 
 Grammer above includes text from these sections:
 
 - 5.1.3 A Grammar for Lox expressions
+- 6.1 Ambiguity and the Parsing Game
