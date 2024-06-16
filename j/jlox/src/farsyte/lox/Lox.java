@@ -45,6 +45,12 @@ public class Lox {
     }
 
     private static void run(String source) {
-        throw new NotImplementedException();
+        Scanner scanner = new Scanner(source);
+        List<Token> tokens = scanner.scanTokens();
+
+        // For now, just print the tokens.
+        for (Token token : tokens) {
+            System.out.println(token);
+        }
     }
 }
