@@ -48,11 +48,26 @@ class Parser {
     }
 
     private Stmt statement() {
-        // statement → exprStmt | printStmt ;
+        // statement → exprStmt | ifStmt | printStmt | block ;
+        if (match(IF)) return ifStatement();
         if (match(PRINT)) return printStatement();
         // NOTE: see block() for why its returnt type is different.
         if (match(LEFT_BRACE)) return new Stmt.Block(block());
         return expressionStatement();
+    }
+
+    private Stmt ifStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'íf'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ')' after if condition.");
+
+        Stmt thenBranch = statement();
+        Stmt elseBranch = null;
+        if (match(ELSE)) {
+            elseBranch = statement();
+        }
+
+        return new Stmt.If(condition, thenBranch, elseBranch);
     }
 
     private List<Stmt> block() {
