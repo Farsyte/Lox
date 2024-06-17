@@ -1,0 +1,5 @@
+> NUMBER 123 123.0
+EOF  null
+> NUMBER 123.5 123.5
+EOF  null
+> 
