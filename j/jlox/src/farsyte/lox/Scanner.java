@@ -103,6 +103,22 @@ class Scanner {
                 // If it did, it would need to remember to
                 // advance the line counter.
                 while (peek() != '\n' && !isAtEnd()) advance();
+            } else if (match('*')) {
+                for (;;) {
+                    if (isAtEnd()) {
+                        Lox.error(line, "Unterminated comment.");
+                        break;
+                    }
+                    if (peek() == '\n') {
+                        line++;
+                    }
+                    if (peek() == '*' && peekNext() == '/') {
+                        advance();
+                        advance();
+                        break;
+                    }
+                    advance();
+                }
             } else {
                 addToken(SLASH);
             }
