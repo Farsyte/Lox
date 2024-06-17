@@ -19,7 +19,15 @@ class Parser {
 
     private Expr equality() {
 	// equality → comparison ( ( "!=" | "==" ) comparison )* ;
-	throw new NotImplementedException();
+	Expr expr = comparison();
+
+	while (match(BANG_EQUAL, EQUAL_EQUAL)) {
+	    Token operator = previous();
+	    Expr right = comparison();
+	    expr = new Expr.Binary(expr, operator, right);
+	}
+
+	return expr;
     }
 
     private Expr comparison() {
@@ -44,6 +52,14 @@ class Parser {
 
     private Expr primary() {
 	// primary → NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" ;
+	throw new NotImplementedException();
+    }
+
+    private boolean match(TokenType... types) {
+	throw new NotImplementedException();
+    }
+
+    private Token previous() {
 	throw new NotImplementedException();
     }
 }
