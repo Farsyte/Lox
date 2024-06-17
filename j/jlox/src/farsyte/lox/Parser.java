@@ -71,7 +71,8 @@ class Parser {
     }
 
     private Token advance() {
-	throw new NotImplementedException();
+	if (!isAtEnd()) current++;
+	return previous();
     }
 
     private Token peek() {
