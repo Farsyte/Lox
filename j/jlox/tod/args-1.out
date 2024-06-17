@@ -1,1 +1,25 @@
-src/farsyte/lox/Scanner.java:91: STUB: Scanner.peek Unimplemented.
+[line 1] Error: Unexpected character ('
+').
+[line 1] Error: Unexpected character ('p').
+[line 1] Error: Unexpected character ('r').
+[line 1] Error: Unexpected character ('i').
+[line 1] Error: Unexpected character ('n').
+[line 1] Error: Unexpected character ('t').
+[line 1] Error: Unexpected character (' ').
+[line 1] Error: Unexpected character ('"').
+[line 1] Error: Unexpected character ('H').
+[line 1] Error: Unexpected character ('e').
+[line 1] Error: Unexpected character ('l').
+[line 1] Error: Unexpected character ('l').
+[line 1] Error: Unexpected character ('o').
+[line 1] Error: Unexpected character (' ').
+[line 1] Error: Unexpected character ('L').
+[line 1] Error: Unexpected character ('o').
+[line 1] Error: Unexpected character ('x').
+[line 1] Error: Unexpected character ('"').
+[line 1] Error: Unexpected character ('
+').
+COMMA , null
+BANG ! null
+SEMICOLON ; null
+EOF  null

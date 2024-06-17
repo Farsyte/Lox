@@ -88,7 +88,8 @@ class Scanner {
     }
 
     private char peek() {
-	throw new NotImplementedException();
+	if (isAtEnd()) return '\0';
+	return source.charAt(current);
     }
 
     private char advance() {
