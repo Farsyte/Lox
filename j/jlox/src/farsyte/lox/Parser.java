@@ -111,8 +111,8 @@ class Parser {
     }
 
     private Expr assignment() {
-	// assignment → IDENTIFIER = assignment | equality ;
-	Expr expr = equality();
+	// assignment → IDENTIFIER = assignment | logical_or ;
+	Expr expr = or();
 
 	if (match(EQUAL)) {
 	    Token equals = previous();
@@ -127,6 +127,16 @@ class Parser {
 	}
 
 	return expr;
+    }
+
+    private Expr or() {
+	// logic_or → logic_and ( "or" logic_and )* ;
+	return and();		// initial MOCK
+    }
+
+    private Expr and() {
+	// logic_and → equality ( "and" equality )* ;
+	return equality();	// initial MOCK
     }
 
     private Expr equality() {
