@@ -21,19 +21,26 @@ class Interpreter implements Expr.Visitor<Object> {
 	    break;
 
 	case MINUS:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left - (double)right;
 	case SLASH:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left / (double)right;
 	case STAR:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left * (double)right;
 
 	case GREATER:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left > (double)right;
 	case GREATER_EQUAL:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left >= (double)right;
 	case LESS:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left < (double)right;
 	case LESS_EQUAL:
+	    checkNumberOperands(expr.operator, left, right);
 	    return (double)left <= (double)right;
 
 	case BANG_EQUAL:
@@ -80,6 +87,11 @@ class Interpreter implements Expr.Visitor<Object> {
     private void checkNumberOperand(Token operator, Object operand) {
 	if (operand instanceof Double) return;
 	throw new RuntimeError(operator, "Operand must be a Number.");
+    }
+
+    private void checkNumberOperands(Token operator, Object left, Object right) {
+	if (left instanceof Double && right instanceof Double) return;
+	throw new RuntimeError(operator, "Operands must be Numbers.");
     }
 
     private boolean isTruthy(Object object) {
