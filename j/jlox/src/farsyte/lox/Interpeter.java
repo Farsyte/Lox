@@ -24,6 +24,8 @@ class Interpreter implements Expr.Visitor<Object> {
 	Object right = evaluate(expr.right);
 
 	switch (expr.operator.type) {
+	case BANG:
+	    return !isTruthy(right);
 	case MINUS:
 	    return -(double)right;
 	}
@@ -34,5 +36,9 @@ class Interpreter implements Expr.Visitor<Object> {
 
     private Object evaluate(Expr expr) {
 	return expr.accept(this);
+    }
+
+    private boolean isTruthy(Object object) {
+	throw new NotImplementedException();
     }
 }
