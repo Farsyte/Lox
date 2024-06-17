@@ -44,7 +44,7 @@ class Scanner {
 	case '*': addToken(STAR); break;
 
 	default:
-	    throw new NotImplementedException(", needs more cases (no match for '" + c + "')");
+	    Lox.error(line, "Unexpected character ('" + c + "').");
 	}
     }
 
