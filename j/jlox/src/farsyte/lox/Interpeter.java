@@ -4,6 +4,11 @@ import java.util.List;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
+    // No harm in keeping around the ability to
+    // interpret just an expression. Might come
+    // in handy in the future (for example, if we
+    // allow the REPL to accept expressions).
+
     void interpret(Expr expression) {
 	try {
 	    Object value = evaluate(expression);
@@ -11,6 +16,20 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	} catch (RuntimeError error) {
 	    Lox.runtimeError(error);
 	}
+    }
+
+    void interpret(List<Stmt> statements) {
+	try {
+	    for (Stmt statement : statements) {
+		execute(statement);
+	    }
+	} catch (RuntimeError error) {
+	    Lox.runtimeError(error);
+	}
+    }
+
+    private void execute(Stmt stmt) {
+	stmt.accept(this);
     }
 
     @Override
