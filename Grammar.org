@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §8.5.2  "Block syntax and semantics"
+As of §9 Challenge 3, "Break Statements"
 the current grammar definition is:
 
 #+begin_src text
@@ -13,7 +13,24 @@ the current grammar definition is:
   statement       → exprStmt
                   | printStmt
                   | block
+                  | ifStmt
+                  | whileStmt
+                  | forStmt
+                  | breakStmt
                   ;
+
+  # Not encoded in grammar: "break" must only exist
+  # within the body of a "for" or "while" statement.
+
+  breakStmt       → "break" ";"
+
+  forStmt         → "for" "(" ( varDecl | exprStmt | ";" )
+                     expression? ";" expression? ")" statement ;
+
+  ifStmt          → "if" "(" expression ")" statement
+                  ( "else" statement )? ;
+
+  whileStmt       → "while" "(" expression ")" statement ;
 
   block           → "{" declaration* "}" ;
 
@@ -24,8 +41,11 @@ the current grammar definition is:
   expression      → assignment
 
   assignment      → IDENTIFIER = assignment
-                  | equality
+                  | logic_or
                   ;
+
+  logic_or        → logic_and ( "or" logic_and )* ;
+  logic_and       → equality ( "and" equality )* ;
 
   equality        → comparison ( ( "!=" | "==" ) comparison )* ;
   comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;

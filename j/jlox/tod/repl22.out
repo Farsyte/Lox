@@ -1,11 +1,3 @@
-> LISPish AST: (var a "before")
-RPNish AST:  "before" var a
-> LISPish AST: (print a)
-RPNish AST:  a print
-before
-> LISPish AST: (var a "after")
-RPNish AST:  "after" var a
-> LISPish AST: (print a)
-RPNish AST:  a print
-after
+> > before
+> > after
 > 

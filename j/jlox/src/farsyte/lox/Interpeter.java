@@ -3,6 +3,7 @@ package farsyte.lox;
 import java.util.List;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
+    private static class LoxBreakException extends RuntimeException {}
     private Environment environment = new Environment();
 
     // No harm in keeping around the ability to
@@ -22,8 +23,6 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     void interpret(List<Stmt> statements) {
 	try {
 	    for (Stmt statement : statements) {
-		System.out.println("LISPish AST: " + new AstPrinter().print(statement));
-		System.out.println("RPNish AST:  " + new AstRpnPrinter().print(statement));
 		execute(statement);
 	    }
 	} catch (RuntimeError error) {
@@ -64,6 +63,33 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     public Void visitBlockStmt(Stmt.Block blk) {
 	executeBlock(blk.statements, new Environment(environment));
 	return null;
+    }
+
+    @Override
+    public Void visitIfStmt(Stmt.If stmt) {
+	if (isTruthy(evaluate(stmt.condition))) {
+	    execute(stmt.thenBranch);
+	} else if (stmt.elseBranch != null) {
+	    execute(stmt.elseBranch);
+	}
+	return null;
+    }
+
+    @Override
+    public Void visitWhileStmt(Stmt.While stmt) {
+	try {
+	    while (isTruthy(evaluate(stmt.condition))) {
+		execute(stmt.body);
+	    }
+	} catch (LoxBreakException error) {
+	    ;
+	}
+	return null;
+    }
+
+    @Override
+    public Void visitBreakStmt(Stmt.Break stmt) {
+	throw new LoxBreakException();
     }
 
     @Override
@@ -184,6 +210,19 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	Object value = evaluate(expr.value);
 	environment.assign(expr.name, value);
 	return value;
+    }
+
+    @Override
+    public Object visitLogicalExpr(Expr.Logical expr) {
+	Object left = evaluate(expr.left);
+
+	if (expr.operator.type == TokenType.OR) {
+	    if (isTruthy(left)) return left;
+	} else {
+	    if (!isTruthy(left)) return left;
+	}
+
+	return evaluate(expr.right);
     }
 
     private void executeBlock(

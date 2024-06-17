@@ -1,6 +1,7 @@
 package farsyte.lox;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static farsyte.lox.TokenType.*;
@@ -9,7 +10,8 @@ class Parser {
     private static class ParseError extends RuntimeException {}
 
     private final List<Token> tokens;
-    private int current;
+    private int current = 0;
+    private boolean canBreak = false;
 
     Parser(List<Token> tokens) {
 	this.tokens = tokens;
@@ -48,10 +50,102 @@ class Parser {
     }
 
     private Stmt statement() {
-	// statement → exprStmt | printStmt | block;
+	// statement → exprStmt | printStmt | ifStmt | block;
+	if (match(IF)) return ifStatement();
+	if (match(BREAK)) return breakStatement();
+	if (match(FOR)) return forStatement();
+	if (match(WHILE)) return whileStatement();
 	if (match(PRINT)) return printStatement();
 	if (match(LEFT_BRACE)) return new Stmt.Block(block());
 	return expressionStatement();
+    }
+
+    private Stmt breakStatement() {
+	if (!canBreak) {
+	    throw error(previous(), "Break must be inside a 'for' or 'while' loop body.");
+	}
+
+	consume(SEMICOLON, "Expect ';' after variable declaration.");
+	return new Stmt.Break();
+    }
+
+    private Stmt whileStatement() {
+	consume(LEFT_PAREN, "Expect '(' after 'while'.");
+	Expr condition = expression();
+	consume(RIGHT_PAREN, "Expect ')' after condition.");
+	boolean couldBreak = canBreak;
+	canBreak = true;
+	Stmt body = statement();
+	canBreak = couldBreak;
+	return new Stmt.While(condition, body);
+    }
+
+    private Stmt ifStatement() {
+	// ifStmt → "if" "(" expression ")" statement ( "else" statement )? ;
+	consume(LEFT_PAREN, "Expect '(' after 'íf'.");
+	Expr condition = expression();
+	consume(RIGHT_PAREN, "Expect ')' after if condition.");
+
+	Stmt thenBranch = statement();
+	Stmt elseBranch = null;
+	if (match(ELSE)) {
+	    elseBranch = statement();
+	}
+
+	return new Stmt.If(condition, thenBranch, elseBranch);
+    }
+
+    private Stmt forStatement() {
+	consume(LEFT_PAREN, "expect '(' after 'for'.");
+
+	Stmt initializer;
+	if (match(SEMICOLON)) {
+	    initializer = null;
+	} else if (match(VAR)) {
+	    initializer = varDeclaration();
+	} else {
+	    initializer = expressionStatement();
+	}
+
+	Expr condition = null;
+	if (!check(SEMICOLON)) {
+	    condition = expression();
+	}
+	consume(SEMICOLON, "Expect ';' after loop condition.");
+
+	Expr increment = null;
+	if (!check(RIGHT_PAREN)) {
+	    increment = expression();
+	}
+	consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+
+	boolean couldBreak = canBreak;
+	canBreak = true;
+
+	Stmt body = statement();
+
+	if (increment != null) {
+	    body = new Stmt.Block(
+		Arrays.asList(
+		    body,
+		    new Stmt.Expression(increment)));
+	}
+
+	if (condition == null) {
+	    condition = new Expr.Literal(true);
+	}
+	body = new Stmt.While(condition, body);
+
+	canBreak = couldBreak;
+
+	if (initializer != null) {
+	    body = new Stmt.Block(
+		Arrays.asList(
+		    initializer,
+		    body));
+	}
+
+	return body;
     }
 
     private List<Stmt> block() {
@@ -91,12 +185,12 @@ class Parser {
 
     private Expr expression() {
 	// expression → assignment
-	return equality();
+	return assignment();
     }
 
     private Expr assignment() {
-	// assignment → IDENTIFIER = assignment | equality ;
-	Expr expr = equality();
+	// assignment → IDENTIFIER = assignment | logical_or ;
+	Expr expr = or();
 
 	if (match(EQUAL)) {
 	    Token equals = previous();
@@ -107,7 +201,33 @@ class Parser {
 		return new Expr.Assign(name, value);
 	    }
 
-	    error(equals, "Invalid assignment target.");
+	    throw error(equals, "Invalid assignment target.");
+	}
+
+	return expr;
+    }
+
+    private Expr or() {
+	// logic_or → logic_and ( "or" logic_and )* ;
+	Expr expr = and();
+
+	while (match(OR)) {
+	    Token operator = previous();
+	    Expr right = and();
+	    expr = new Expr.Logical(expr, operator, right);
+	}
+
+	return expr;
+    }
+
+    private Expr and() {
+	// logic_and → equality ( "and" equality )* ;
+	Expr expr = equality();
+
+	while (match(AND)) {
+	    Token operator = previous();
+	    Expr right = equality();
+	    expr = new Expr.Logical(expr, operator, right);
 	}
 
 	return expr;

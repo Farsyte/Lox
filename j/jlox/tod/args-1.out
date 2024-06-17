@@ -1,4 +1,2 @@
-LISPish AST: (print "Hello,\n\tLox!")
-RPNish AST:  "Hello,\n\tLox!" print
 Hello,
 	Lox!

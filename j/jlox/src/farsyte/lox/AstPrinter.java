@@ -39,6 +39,29 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitIfStmt(Stmt.If stmt) {
+	StringBuilder builder = new StringBuilder();
+	builder.append(format("IF", stmt.condition));
+	builder.append(format("THEN", stmt.thenBranch));
+	builder.append(format("ELSE", stmt.elseBranch));
+	return builder.toString();
+    }
+
+    @Override
+    public String visitWhileStmt(Stmt.While stmt) {
+	StringBuilder builder = new StringBuilder();
+	builder.append(format("WHILE", stmt.condition));
+	builder.append(format("DO", stmt.body));
+	return builder.toString();
+    }
+
+    @Override
+    public String visitBreakStmt(Stmt.Break stmt) {
+	Expr expr = null;
+	return format("break", expr);
+    }
+
+    @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
@@ -71,6 +94,12 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 		      expr.value);
     }
 
+    @Override
+    public String visitLogicalExpr(Expr.Logical expr) {
+	return format(expr.operator.lexeme,
+		      expr.left, expr.right);
+    }
+
     protected String format(String name, Expr... exprs) {
 	StringBuilder builder = new StringBuilder();
 
@@ -84,6 +113,20 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	    }
 	}
 	builder.append(")");
+	return builder.toString();
+    }
+
+    protected String format(String name, Stmt... stmts) {
+	StringBuilder builder = new StringBuilder();
+
+	builder.append("{ ").append(name).append("\n");
+	for (Stmt stmt : stmts) {
+	    if (stmt != null) {
+		builder.append(stmt.accept(this));
+	    }
+	    builder.append(";");
+	}
+	builder.append("}\n");
 	return builder.toString();
     }
 

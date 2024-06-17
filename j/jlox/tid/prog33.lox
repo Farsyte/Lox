@@ -1,0 +1,11 @@
+var i = 10;
+while (i > 0) {
+  print i;
+  i = i - 1;
+}
+
+if (i == 0) {
+  print "PASS: i = " + i;
+} else {
+  print "FAIL: i = " + i;
+}

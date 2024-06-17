@@ -1,0 +1,3 @@
+PASS: a = inner a, b = outer b, c = global c
+PASS: a = outer a, b = outer b, c = global c
+PASS: a = global a, b = global b, c = global c

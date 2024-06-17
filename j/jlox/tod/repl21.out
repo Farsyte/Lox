@@ -1,10 +1,4 @@
-> LISPish AST: (print "one")
-RPNish AST:  "one" print
-one
-> LISPish AST: (print true)
-RPNish AST:  true print
-true
-> LISPish AST: (print (+ 2 1))
-RPNish AST:  2 1 + print
-3
+> one
+> true
+> 3
 > 
