@@ -1,6 +1,6 @@
-> LISPish AST: (print (+ 10.0 20.0))
-RPNish AST:  10.0 20.0 + print
+> LISPish AST: (print (+ 10 20))
+RPNish AST:  10 20 + print
 30
-> LISPish AST: (discard (+ 10.0 20.0))
-RPNish AST:  10.0 20.0 + discard
+> LISPish AST: (discard (+ 10 20))
+RPNish AST:  10 20 + discard
 > 

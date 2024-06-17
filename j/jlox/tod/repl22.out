@@ -1,1 +1,3 @@
-> src/farsyte/lox/AstPrinter.java:26: STUB: AstPrinter.visitVarStmt Unimplemented.
+> LISPish AST: (var a "before")
+RPNish AST:  "before" var a
+src/farsyte/lox/Interpreter.java:52: STUB: Interpreter.visitVarStmt Unimplemented.

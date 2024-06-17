@@ -22,8 +22,9 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
-    public String visitVarStmt(Stmt.Var expr) {
-	throw new NotImplementedException();
+    public String visitVarStmt(Stmt.Var stmt) {
+	return format("var " + stmt.name.lexeme,
+		      stmt.initializer);
     }
 
     @Override
@@ -39,8 +40,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
     @Override
     public String visitLiteralExpr(Expr.Literal expr) {
-	if (expr.value == null) return "nil";
-	return expr.value.toString();
+	return stringify(expr.value);
     }
 
     @Override
@@ -60,9 +60,45 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	builder.append("(").append(name);
 	for (Expr expr : exprs) {
 	    builder.append(" ");
-	    builder.append(expr.accept(this));
+	    if (expr == null) {
+		builder.append("nil");
+	    } else {
+		builder.append(expr.accept(this));
+	    }
 	}
 	builder.append(")");
 	return builder.toString();
+    }
+
+    private String stringify(Object object) {
+	if (object == null) return "nil";
+
+	if (object instanceof String) {
+	    StringBuilder builder = new StringBuilder();
+	    builder.append("\"");
+	    for (char ch : ((String)object).toCharArray()) {
+		switch (ch) {
+		case '\b': builder.append("\\b"); break;
+		case '\f': builder.append("\\f"); break;
+		case '\n': builder.append("\\n"); break;
+		case '\r': builder.append("\\r"); break;
+		case '\t': builder.append("\\t"); break;
+		case '"': builder.append("\\\""); break;
+		case '\\': builder.append("\\\\"); break;
+		default: builder.append(ch); break;
+		}
+	    }
+	    builder.append("\"");
+	    return builder.toString();
+	}
+	if (object instanceof Double) {
+	    String text = object.toString();
+	    if (text.endsWith(".0")) {
+		text = text.substring(0, text.length() - 2);
+	    }
+	    return text;
+	}
+
+	return object.toString();
     }
 }
