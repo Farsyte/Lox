@@ -28,6 +28,17 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitBlockStmt(Stmt.Block blk) {
+	StringBuilder builder = new StringBuilder();
+	builder.append("{\n");
+	for (Stmt stmt : blk.statements) {
+	    builder.append(stmt.accept(this) + "\n");
+	}
+	builder.append("}");
+	return builder.toString();
+    }
+
+    @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
