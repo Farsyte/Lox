@@ -71,7 +71,13 @@ class Parser {
 
     private Expr unary() {
 	// unary → ( "!" | "-" ) unary | primary ;
-	throw new NotImplementedException();
+	if (match(BANG, MINUS)) {
+	    Token operator = previous();
+	    Expr right = unary();
+	    return new Expr.Unary(operator, right);
+	}
+
+	return primary();
     }
 
     private Expr primary() {
