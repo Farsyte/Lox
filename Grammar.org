@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §9.4 "While Loops"
+As of §9.5 "For Loops"
 the current grammar definition is:
 
 #+begin_src text
@@ -15,7 +15,11 @@ the current grammar definition is:
                   | block
                   | ifStmt
                   | whileStmt
+                  | forStmt
                   ;
+
+  forStmt         → "for" "(" ( varDecl | exprStmt | ";" )
+                     expression? ";" expression? ")" statement ;
 
   ifStmt          → "if" "(" expression ")" statement
                   ( "else" statement )? ;
