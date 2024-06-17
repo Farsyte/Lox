@@ -1,0 +1,24 @@
+> EOF  null
+> LEFT_BRACE { null
+LEFT_BRACE { null
+EOF  null
+> LEFT_PAREN ( null
+LEFT_PAREN ( null
+RIGHT_PAREN ) null
+RIGHT_PAREN ) null
+EOF  null
+> BANG ! null
+STAR * null
+PLUS + null
+MINUS - null
+SLASH / null
+EQUAL = null
+LESS < null
+GREATER > null
+LESS_EQUAL <= null
+EQUAL_EQUAL == null
+EOF  null
+> RIGHT_BRACE } null
+RIGHT_BRACE } null
+EOF  null
+> 
