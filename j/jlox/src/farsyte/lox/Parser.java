@@ -10,7 +10,8 @@ class Parser {
     private static class ParseError extends RuntimeException {}
 
     private final List<Token> tokens;
-    private int current;
+    private int current = 0;
+    private boolean canBreak = false;
 
     Parser(List<Token> tokens) {
 	this.tokens = tokens;
@@ -51,6 +52,7 @@ class Parser {
     private Stmt statement() {
 	// statement → exprStmt | printStmt | ifStmt | block;
 	if (match(IF)) return ifStatement();
+	if (match(BREAK)) return breakStatement();
 	if (match(FOR)) return forStatement();
 	if (match(WHILE)) return whileStatement();
 	if (match(PRINT)) return printStatement();
@@ -58,11 +60,23 @@ class Parser {
 	return expressionStatement();
     }
 
+    private Stmt breakStatement() {
+	if (!canBreak) {
+	    throw error(previous(), "Break must be inside a 'for' or 'while' loop body.");
+	}
+
+	consume(SEMICOLON, "Expect ';' after variable declaration.");
+	return new Stmt.Break();
+    }
+
     private Stmt whileStatement() {
 	consume(LEFT_PAREN, "Expect '(' after 'while'.");
 	Expr condition = expression();
 	consume(RIGHT_PAREN, "Expect ')' after condition.");
+	boolean couldBreak = canBreak;
+	canBreak = true;
 	Stmt body = statement();
+	canBreak = couldBreak;
 	return new Stmt.While(condition, body);
     }
 
@@ -105,6 +119,9 @@ class Parser {
 	}
 	consume(RIGHT_PAREN, "Expect ')' after for clauses.");
 
+	boolean couldBreak = canBreak;
+	canBreak = true;
+
 	Stmt body = statement();
 
 	if (increment != null) {
@@ -118,6 +135,8 @@ class Parser {
 	    condition = new Expr.Literal(true);
 	}
 	body = new Stmt.While(condition, body);
+
+	canBreak = couldBreak;
 
 	if (initializer != null) {
 	    body = new Stmt.Block(
@@ -182,7 +201,7 @@ class Parser {
 		return new Expr.Assign(name, value);
 	    }
 
-	    error(equals, "Invalid assignment target.");
+	    throw error(equals, "Invalid assignment target.");
 	}
 
 	return expr;
