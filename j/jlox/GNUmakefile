@@ -134,7 +134,7 @@ clean::
 # to generate them. If the list is empty, skip over all
 # the cruft related to them.
 
-AstImplClasses  := Expr Stmt
+AstImplClasses  := Expr
 
 ifneq ($(AstImplClasses),)
 
