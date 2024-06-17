@@ -1,2 +1,6 @@
+LISPish AST: (print Hello,
+	Lox!)
+RPNish AST:  Hello,
+	Lox! print
 Hello,
 	Lox!

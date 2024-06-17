@@ -1,1 +1,1 @@
-> src/farsyte/lox/Interpreter.java:50: STUB: Interpreter.visitVarStmt Unimplemented.
+> src/farsyte/lox/AstPrinter.java:26: STUB: AstPrinter.visitVarStmt Unimplemented.

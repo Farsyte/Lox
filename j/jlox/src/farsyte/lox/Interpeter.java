@@ -21,6 +21,8 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     void interpret(List<Stmt> statements) {
 	try {
 	    for (Stmt statement : statements) {
+		System.out.println("LISPish AST: " + new AstPrinter().print(statement));
+		System.out.println("RPNish AST:  " + new AstRpnPrinter().print(statement));
 		execute(statement);
 	    }
 	} catch (RuntimeError error) {
