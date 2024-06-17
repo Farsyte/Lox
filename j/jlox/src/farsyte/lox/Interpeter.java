@@ -18,7 +18,7 @@ class Interpreter implements Expr.Visitor<Object> {
 	    if (left instanceof String && right instanceof String) {
 		return (String)left + (String)right;
 	    }
-	    break;
+	    throw new RuntimeError(expr.operator, "Operands must be two Numbers, or two Strings.");
 
 	case MINUS:
 	    checkNumberOperands(expr.operator, left, right);
