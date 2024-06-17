@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §9.3 "Logical Operators"
+As of §9.4 "While Loops"
 the current grammar definition is:
 
 #+begin_src text
@@ -14,10 +14,13 @@ the current grammar definition is:
                   | printStmt
                   | block
                   | ifStmt
+                  | whileStmt
                   ;
 
   ifStmt          → "if" "(" expression ")" statement
                   ( "else" statement )? ;
+
+  whileStmt       → "while" "(" expression ")" statement ;
 
   block           → "{" declaration* "}" ;
 
