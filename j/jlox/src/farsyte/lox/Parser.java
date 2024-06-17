@@ -5,6 +5,8 @@ import java.util.List;
 import static farsyte.lox.TokenType.*;
 
 class Parser {
+    private static class ParseError extends RuntimeException {}
+
     private final List<Token> tokens;
     private int current;
 
@@ -110,7 +112,9 @@ class Parser {
     }
 
     private Token consume(TokenType type, String message) {
-	throw new NotImplementedException();
+	if (check(type)) return advance();
+
+	throw error(peek(), message);
     }
 
     private boolean check(TokenType type) {
@@ -133,5 +137,9 @@ class Parser {
 
     private boolean isAtEnd() {
 	return peek().type == EOF;
+    }
+
+    private ParseError error(Token token, String message) {
+	throw new NotImplementedException();
     }
 }
