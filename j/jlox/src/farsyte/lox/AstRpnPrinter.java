@@ -13,4 +13,18 @@ class AstRpnPrinter extends AstPrinter {
 	builder.append(name);
 	return builder.toString();
     }
+
+    @Override
+    protected String format(String name, Stmt... stmts) {
+	StringBuilder builder = new StringBuilder();
+
+	builder.append("{\n");
+	for (Stmt stmt : stmts) {
+	    builder.append(stmt.accept(this));
+	    builder.append("\n");
+	}
+	builder.append("} ");
+	builder.append(name);
+	return builder.toString();
+    }
 }
