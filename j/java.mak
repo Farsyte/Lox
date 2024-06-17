@@ -37,7 +37,7 @@ default::       build
 all::           build
 build::         $(JCLS)
 clean::
-	$X $(JCLS)
+	$X $(CLSD)$(PKGD)*.class
 	$C [ ! -d $(CLSD)$(PKGD) ] || $Y $(CLSD)$(PKGD)
 
 # If any class file needs to be rebuilt, build them all.

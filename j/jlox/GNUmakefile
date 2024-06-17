@@ -129,14 +129,13 @@ clean::
 
 
 # The AST Implementation is currently auto-generated,
-# and at the moment, there is only one (Expr). There
-# will be another ... soon.
+# currently comprising the Expr and Stmt classes.
 #
 # Identify the files we intend to generate and the class
 # to generate them. If the list is empty, skip over all
 # the cruft related to them.
 
-AstImplClasses  := Expr
+AstImplClasses  := Expr Stmt
 
 ifneq ($(AstImplClasses),)
 

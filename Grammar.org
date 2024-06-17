@@ -1,18 +1,44 @@
 * Cumulative Grammar Definitions
 
-As of §6.1 ""Ambiguity and the Parsing Game"
+As of §8.5.2  "Block syntax and semantics"
 the current grammar definition is:
 
 #+begin_src text
-  expression      → equality
+  program         → declaration* EOF ;
+
+  declaration     → varDecl
+                  | statement
+                  ;
+
+  statement       → exprStmt
+                  | printStmt
+                  | block
+                  ;
+
+  block           → "{" declaration* "}" ;
+
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
+  exprStmt        → expression ";" ;
+  printStmt       → "print" expression ";" ;
+
+  expression      → assignment
+
+  assignment      → IDENTIFIER = assignment
+                  | equality
+                  ;
+
   equality        → comparison ( ( "!=" | "==" ) comparison )* ;
   comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
   term            → factor ( ( "-" | "+" ) factor )* ;
   factor          → unary ( ( "/" | "*" ) unary )* ;
 
   unary           → ( "!" | "-" ) unary
-                  | primary ;
+                  | primary
+                  ;
 
-  primary         → NUMBER | STRING | "true" | "false" | "nil"
-                  | "(" expression ")" ;
+  primary         → "true" | "false" | "nil"
+                  | "(" expression ")"
+                  | STRING
+                  | NUMBER
+                  ;
 #+end_src
