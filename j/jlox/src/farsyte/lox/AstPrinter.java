@@ -7,13 +7,13 @@ class AstPrinter implements Expr.Visitor<String> {
 
     @Override
     public String visitBinaryExpr(Expr.Binary expr) {
-	return parenthesize(expr.operator.lexeme,
-			    expr.left, expr.right);
+	return format(expr.operator.lexeme,
+		      expr.left, expr.right);
     }
 
     @Override
     public String visitGroupingExpr(Expr.Grouping expr) {
-	return parenthesize("group", expr.expression);
+	return format("group", expr.expression);
     }
 
     @Override
@@ -24,11 +24,11 @@ class AstPrinter implements Expr.Visitor<String> {
 
     @Override
     public String visitUnaryExpr(Expr.Unary expr) {
-	return parenthesize(expr.operator.lexeme,
-			    expr.right);
+	return format(expr.operator.lexeme,
+		      expr.right);
     }
 
-    private String parenthesize(String name, Expr... exprs) {
+    protected String format(String name, Expr... exprs) {
 	StringBuilder builder = new StringBuilder();
 
 	builder.append("(").append(name);
