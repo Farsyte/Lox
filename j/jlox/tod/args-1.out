@@ -1,1 +1,1 @@
-src/farsyte/lox/Scanner.java:37: STUB: Scanner.isAtEnd Unimplemented.
+src/farsyte/lox/Scanner.java:33: STUB: Scanner.scanToken Unimplemented.

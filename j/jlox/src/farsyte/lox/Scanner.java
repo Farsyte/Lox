@@ -34,6 +34,6 @@ class Scanner {
     }
 
     private boolean isAtEnd() {
-	throw new NotImplementedException();
+	return current >= source.length();
     }
 }
