@@ -62,10 +62,22 @@ class Scanner {
             if (match('/')) {
                 // A comment goes until the end of the line.
                 // This code does not consume the newline.
+                // If it did, it would need to remember to
+                // advance the line counter.
                 while (peek() != '\n' && !isAtEnd()) advance();
             } else {
                 addToken(SLASH);
             }
+            break;
+
+        case ' ':
+        case '\r':
+        case '\t':
+            // ignore whitespace.
+            break;
+
+        case '\n':
+            line++;
             break;
 
         default:
