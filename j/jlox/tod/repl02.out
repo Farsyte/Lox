@@ -1,0 +1,10 @@
+> BANG ! null
+BANG_EQUAL != null
+EQUAL_EQUAL == null
+EQUAL = null
+LESS < null
+LESS_EQUAL <= null
+GREATER > null
+GREATER_EQUAL >= null
+EOF  null
+> 
