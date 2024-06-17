@@ -48,6 +48,14 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitWhileStmt(Stmt.While stmt) {
+	StringBuilder builder = new StringBuilder();
+	builder.append(format("WHILE", stmt.condition));
+	builder.append(format("DO", stmt.body));
+	return builder.toString();
+    }
+
+    @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
