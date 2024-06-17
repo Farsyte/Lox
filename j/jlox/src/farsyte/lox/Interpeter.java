@@ -65,6 +65,7 @@ class Interpreter implements Expr.Visitor<Object> {
 	case BANG:
 	    return !isTruthy(right);
 	case MINUS:
+	    checkNumberOperand(expr.operator, right);
 	    return -(double)right;
 	}
 
@@ -74,6 +75,11 @@ class Interpreter implements Expr.Visitor<Object> {
 
     private Object evaluate(Expr expr) {
 	return expr.accept(this);
+    }
+
+    private void checkNumberOperand(Token operator, Object operand) {
+	if (operand instanceof Double) return;
+	throw new RuntimeError(operator, "Operand must be a Number.");
     }
 
     private boolean isTruthy(Object object) {
