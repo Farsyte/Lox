@@ -15,7 +15,8 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
-	throw new NotImplementedException();
+	evaluate(stmt.expression);
+	return null;
     }
 
     @Override
