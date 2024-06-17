@@ -22,6 +22,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitVarStmt(Stmt.Var expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
@@ -42,6 +47,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     public String visitUnaryExpr(Expr.Unary expr) {
 	return format(expr.operator.lexeme,
 		      expr.right);
+    }
+
+    @Override
+    public String visitVariableExpr(Expr.Variable expr) {
+	throw new NotImplementedException();
     }
 
     protected String format(String name, Expr... exprs) {

@@ -46,6 +46,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
+    public Void visitVarStmt(Stmt.Var expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
 	Object left = evaluate(expr.left);
 	Object right = evaluate(expr.right);
@@ -151,6 +156,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
 	// Unreachable.
 	throw new NotImplementedException(", unreachable at end.");
+    }
+
+    @Override
+    public Object visitVariableExpr(Expr.Variable expr) {
+	throw new NotImplementedException();
     }
 
     private Object evaluate(Expr expr) {
