@@ -82,7 +82,21 @@ class Parser {
 
     private Expr primary() {
 	// primary → NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" ;
-	throw new NotImplementedException();
+	if (match(FALSE)) return new Expr.Literal(false);
+	if (match(TRUE)) return new Expr.Literal(true);
+	if (match(NIL)) return new Expr.Literal(null);
+
+	if (match(NUMBER, STRING)) {
+	    return new Expr.Literal(previous().literal);
+	}
+
+	if (match(LEFT_PAREN)) {
+	    Expr expr = expression();
+	    consume(RIGHT_PAREN, "Expect ')' after expression.");
+	    return new Expr.Grouping(expr);
+	}
+
+	throw new NotImplementedException(", falling off bottom?");
     }
 
     private boolean match(TokenType... types) {
@@ -93,6 +107,10 @@ class Parser {
 	    }
 	}
 	return false;
+    }
+
+    private Token consume(TokenType type, String message) {
+	throw new NotImplementedException();
     }
 
     private boolean check(TokenType type) {
