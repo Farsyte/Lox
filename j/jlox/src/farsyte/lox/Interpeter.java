@@ -10,12 +10,23 @@ class Interpreter implements Expr.Visitor<Object> {
 	Object right = evaluate(expr.right);
 
 	switch (expr.operator.type) {
+
+	case PLUS:
+	    if (left instanceof Double && right instanceof Double) {
+		return (double)left + (double)right;
+	    }
+	    if (left instanceof String && right instanceof String) {
+		return (String)left + (String)right;
+	    }
+	    break;
+
 	case MINUS:
 	    return (double)left - (double)right;
 	case SLASH:
 	    return (double)left / (double)right;
 	case STAR:
 	    return (double)left * (double)right;
+
 	}
 
 	// Unreachable.
