@@ -4,7 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Environment {
+    private final Environment enclosing;
     private final Map<String, Object> values = new HashMap<>();
+
+    Environment() {
+	this(null);
+    }
+
+    Environment(Environment enclosing) {
+	this.enclosing = enclosing;
+    }
 
     void define(String name, Object value) {
 	values.put(name, value);
