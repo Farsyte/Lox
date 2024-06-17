@@ -40,11 +40,4 @@
 [line 1] Error: Unexpected character ('L').
 [line 1] Error: Unexpected character ('o').
 [line 1] Error: Unexpected character ('x').
-[line 1] Error: Unexpected character ('!').
-[line 1] Error: Unexpected character ('"').
-[line 1] Error: Unexpected character ('
-').
-DOT . null
-COMMA , null
-SEMICOLON ; null
-EOF  null
+src/farsyte/lox/Scanner.java:74: STUB: Scanner.match Unimplemented.
