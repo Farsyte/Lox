@@ -107,7 +107,7 @@ class Parser {
 
     private Expr expression() {
 	// expression → assignment
-	return equality();
+	return assignment();
     }
 
     private Expr assignment() {

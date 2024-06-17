@@ -22,8 +22,6 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     void interpret(List<Stmt> statements) {
 	try {
 	    for (Stmt statement : statements) {
-		System.out.println("LISPish AST: " + new AstPrinter().print(statement));
-		System.out.println("RPNish AST:  " + new AstRpnPrinter().print(statement));
 		execute(statement);
 	    }
 	} catch (RuntimeError error) {
@@ -194,6 +192,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	Object value = evaluate(expr.value);
 	environment.assign(expr.name, value);
 	return value;
+    }
+
+    @Override
+    public Object visitLogicalExpr(Expr.Logical expr) {
+	throw new NotImplementedException();
     }
 
     private void executeBlock(

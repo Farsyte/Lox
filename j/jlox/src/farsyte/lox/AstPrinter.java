@@ -80,6 +80,12 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 		      expr.value);
     }
 
+    @Override
+    public String visitLogicalExpr(Expr.Logical expr) {
+	return format(expr.operator.lexeme,
+		      expr.left, expr.right);
+    }
+
     protected String format(String name, Expr... exprs) {
 	StringBuilder builder = new StringBuilder();
 
