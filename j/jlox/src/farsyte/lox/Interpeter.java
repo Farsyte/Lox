@@ -26,6 +26,6 @@ class Interpreter implements Expr.Visitor<Object> {
     }
 
     private Object evaluate(Expr expr) {
-	throw new NotImplementedException();
+	return expr.accept(this);
     }
 }
