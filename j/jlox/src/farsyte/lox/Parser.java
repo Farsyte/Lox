@@ -98,7 +98,7 @@ class Parser {
 	    return new Expr.Grouping(expr);
 	}
 
-	throw new NotImplementedException(", falling off bottom?");
+	throw error(peek(), "Expect expression.");
     }
 
     private boolean match(TokenType... types) {
