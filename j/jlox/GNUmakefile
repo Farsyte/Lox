@@ -50,7 +50,7 @@ run::		build
 tests::		build
 	$X $(TOD)*.out
 	$C [ ! -d $(TOD) ] || $Y $(TOD)
-	$C mkdir $(TOD)
+	$C [ -d $(TOD) ] || mkdir $(TOD)
 	$M eachtest
 
 # include the tests in "make world"
