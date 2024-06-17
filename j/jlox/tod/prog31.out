@@ -1,0 +1,119 @@
+LISPish AST: (var a "global a")
+RPNish AST:  "global a" var a
+LISPish AST: (var b "global b")
+RPNish AST:  "global b" var b
+LISPish AST: (var c "global c")
+RPNish AST:  "global c" var c
+LISPish AST: {
+(var a "outer a")
+(var b "outer b")
+{
+(var a "inner a")
+(IF (== a "inner a")){ THEN
+(print (+ "PASS: a = " a));}
+{ ELSE
+(print (+ "FAIL: a = " a));}
+
+(IF (== b "outer b")){ THEN
+(print (+ "PASS: b = " b));}
+{ ELSE
+(print (+ "FAIL: b = " b));}
+
+(IF (== c "global c")){ THEN
+(print (+ "PASS: c = " c));}
+{ ELSE
+(print (+ "FAIL: c = " c));}
+
+}
+(IF (== a "outer a")){ THEN
+(print (+ "PASS: a = " a));}
+{ ELSE
+(print (+ "FAIL: a = " a));}
+
+(IF (== b "outer b")){ THEN
+(print (+ "PASS: b = " b));}
+{ ELSE
+(print (+ "FAIL: b = " b));}
+
+(IF (== c "global c")){ THEN
+(print (+ "PASS: c = " c));}
+{ ELSE
+(print (+ "FAIL: c = " c));}
+
+}
+RPNish AST:  {
+"outer a" var a
+"outer b" var b
+{
+"inner a" var a
+a "inner a" == IF{
+"PASS: a = " a + print
+} THEN{
+"FAIL: a = " a + print
+} ELSE
+b "outer b" == IF{
+"PASS: b = " b + print
+} THEN{
+"FAIL: b = " b + print
+} ELSE
+c "global c" == IF{
+"PASS: c = " c + print
+} THEN{
+"FAIL: c = " c + print
+} ELSE
+}
+a "outer a" == IF{
+"PASS: a = " a + print
+} THEN{
+"FAIL: a = " a + print
+} ELSE
+b "outer b" == IF{
+"PASS: b = " b + print
+} THEN{
+"FAIL: b = " b + print
+} ELSE
+c "global c" == IF{
+"PASS: c = " c + print
+} THEN{
+"FAIL: c = " c + print
+} ELSE
+}
+PASS: a = inner a
+PASS: b = outer b
+PASS: c = global c
+PASS: a = outer a
+PASS: b = outer b
+PASS: c = global c
+LISPish AST: (IF (== a "global a")){ THEN
+(print (+ "PASS: a = " a));}
+{ ELSE
+(print (+ "FAIL: a = " a));}
+
+RPNish AST:  a "global a" == IF{
+"PASS: a = " a + print
+} THEN{
+"FAIL: a = " a + print
+} ELSE
+PASS: a = global a
+LISPish AST: (IF (== b "global b")){ THEN
+(print (+ "PASS: b = " b));}
+{ ELSE
+(print (+ "FAIL: b = " b));}
+
+RPNish AST:  b "global b" == IF{
+"PASS: b = " b + print
+} THEN{
+"FAIL: b = " b + print
+} ELSE
+PASS: b = global b
+LISPish AST: (IF (== c "global c")){ THEN
+(print (+ "PASS: c = " c));}
+{ ELSE
+(print (+ "FAIL: c = " c));}
+
+RPNish AST:  c "global c" == IF{
+"PASS: c = " c + print
+} THEN{
+"FAIL: c = " c + print
+} ELSE
+PASS: c = global c
