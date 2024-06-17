@@ -76,14 +76,14 @@ class Parser {
     }
 
     private Token peek() {
-	throw new NotImplementedException();
+	return tokens.get(current);
     }
 
     private Token previous() {
-	throw new NotImplementedException();
+	return tokens.get(current - 1);
     }
 
     private boolean isAtEnd() {
-	throw new NotImplementedException();
+	return peek().type == EOF;
     }
 }
