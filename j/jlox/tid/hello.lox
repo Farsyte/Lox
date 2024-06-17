@@ -1,9 +1,10 @@
 // The first Lox program.
-// Yes, strings can contain newlines.
-// Be sure to have at least one tab
-// and at least one "return" to verify
-// that the scanner handles these
-// as whitespace.
 
-print	 "Hello,
+/* Yes, strings can contain newlines.
+ * Be sure to have at least one tab
+ * and at least one "return" to verify
+ * that the scanner handles these
+ * as whitespace. */
+
+print/*ignored*/	 "Hello,
 	Lox!";
