@@ -11,4 +11,39 @@ class Parser {
     Parser(List<Token> tokens) {
 	this.tokens = tokens;
     }
+
+    private Expr expression() {
+	// expression → equality ;
+	throw new NotImplementedException();
+    }
+
+    private Expr equality() {
+	// equality → comparison ( ( "!=" | "==" ) comparison )* ;
+	throw new NotImplementedException();
+    }
+
+    private Expr comparison() {
+	// comparison → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+	throw new NotImplementedException();
+    }
+
+    private Expr term() {
+	// term → factor ( ( "-" | "+" ) factor )* ;
+	throw new NotImplementedException();
+    }
+
+    private Expr factor() {
+	// factor → unary ( ( "/" | "*" ) unary )* ;
+	throw new NotImplementedException();
+    }
+
+    private Expr unary() {
+	// unary → ( "!" | "-" ) unary | primary ;
+	throw new NotImplementedException();
+    }
+
+    private Expr primary() {
+	// primary → NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" ;
+	throw new NotImplementedException();
+    }
 }
