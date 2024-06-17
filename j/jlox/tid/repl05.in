@@ -1,0 +1,3 @@
+""		// check empty string
+"hello"         // check nonempty string
+"καλημέρα"	// expect unicode to work

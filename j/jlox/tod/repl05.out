@@ -1,0 +1,7 @@
+> STRING "" 
+EOF  null
+> STRING "hello" hello
+EOF  null
+> STRING "καλημέρα" καλημέρα
+EOF  null
+> 
