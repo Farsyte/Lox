@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Lox {
+    private static final Interpreter interpreter = new Interpreter();
+
     private static boolean hadError = false;
     private static boolean hadRuntimeError = false;
 
@@ -62,6 +64,8 @@ public class Lox {
 
 	System.out.println("AST: " + new AstPrinter().print(expression));
 	System.out.println("RPN: " + new AstRpnPrinter().print(expression));
+
+	interpreter.interpret(expression);
     }
 
     static void error(Token token, String message) {
