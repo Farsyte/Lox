@@ -173,6 +173,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	return environment.get(expr.name);
     }
 
+    @Override
+    public Void visitAssignExpr(Expr.Assign expr) {
+	throw new NotImplementedException();
+    }
+
     private Object evaluate(Expr expr) {
 	return expr.accept(this);
     }
