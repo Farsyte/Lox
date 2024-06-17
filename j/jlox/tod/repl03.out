@@ -1,5 +1,5 @@
-> NUMBER 123 123.0
-EOF  null
-> NUMBER 123.5 123.5
-EOF  null
+> AST: 123.0
+RPN: 123.0
+> AST: 123.5
+RPN: 123.5
 > 
