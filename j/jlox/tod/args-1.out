@@ -1,4 +1,4 @@
-IDENTIFIER print null
+PRINT print null
 STRING "Hello,
 	Lox!" Hello,
 	Lox!
