@@ -2,7 +2,6 @@ package farsyte.lox;
 
 import java.util.List;
 
-// throw new NotImplementedException();
 class Interpreter implements Expr.Visitor<Object> {
 
     @Override
@@ -22,7 +21,15 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitUnaryExpr(Expr.Unary expr) {
-	throw new NotImplementedException();
+	Object right = evaluate(expr.right);
+
+	switch (expr.operator.type) {
+	case MINUS:
+	    return -(double)right;
+	}
+
+	// Unreachable.
+	throw new NotImplementedException(", unreachable at end.");
     }
 
     private Object evaluate(Expr expr) {
