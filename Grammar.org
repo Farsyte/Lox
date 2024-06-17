@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §8.2.1 "Variable Syntax"
+As of §8.4.1 "Assignment Syntax"
 the current grammar definition is:
 
 #+begin_src text
@@ -18,7 +18,12 @@ the current grammar definition is:
   exprStmt        → expression ";" ;
   printStmt       → "print" expression ";" ;
 
-  expression      → equality
+  expression      → assignment
+
+  assignment      → IDENTIFIER = assignment
+                  | equality
+                  ;
+
   equality        → comparison ( ( "!=" | "==" ) comparison )* ;
   comparison      → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
   term            → factor ( ( "-" | "+" ) factor )* ;
