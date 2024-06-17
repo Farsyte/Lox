@@ -66,14 +66,23 @@ class Parser {
     }
 
     private boolean check(TokenType type) {
-	throw new NotImplementedException();
+	if (isAtEnd()) return false;
+	return peek().type == type;
     }
 
     private Token advance() {
 	throw new NotImplementedException();
     }
 
+    private Token peek() {
+	throw new NotImplementedException();
+    }
+
     private Token previous() {
+	throw new NotImplementedException();
+    }
+
+    private boolean isAtEnd() {
 	throw new NotImplementedException();
     }
 }
