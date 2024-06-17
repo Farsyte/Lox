@@ -1,3 +1,11 @@
 > LISPish AST: (var a "before")
 RPNish AST:  "before" var a
-> src/farsyte/lox/AstPrinter.java:54: STUB: AstPrinter.visitVariableExpr Unimplemented.
+> LISPish AST: (print a)
+RPNish AST:  a print
+before
+> LISPish AST: (var a "after")
+RPNish AST:  "after" var a
+> LISPish AST: (print a)
+RPNish AST:  a print
+after
+> 

@@ -51,7 +51,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 
     @Override
     public String visitVariableExpr(Expr.Variable expr) {
-	throw new NotImplementedException();
+	return expr.name.lexeme;
     }
 
     protected String format(String name, Expr... exprs) {
@@ -91,6 +91,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	    builder.append("\"");
 	    return builder.toString();
 	}
+
 	if (object instanceof Double) {
 	    String text = object.toString();
 	    if (text.endsWith(".0")) {

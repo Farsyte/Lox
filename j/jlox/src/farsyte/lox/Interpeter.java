@@ -170,7 +170,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitVariableExpr(Expr.Variable expr) {
-	throw new NotImplementedException();
+	return environment.get(expr.name);
     }
 
     private Object evaluate(Expr expr) {
