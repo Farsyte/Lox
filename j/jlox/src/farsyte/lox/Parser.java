@@ -48,9 +48,31 @@ class Parser {
     }
 
     private Stmt statement() {
-	// statement → exprStmt | printStmt ;
+	// statement → exprStmt | printStmt | block;
 	if (match(PRINT)) return printStatement();
+	if (match(LEFT_BRACE)) return new Stmt.Block(block());
 	return expressionStatement();
+    }
+
+    private List<Stmt> block() {
+	// block → "{" declaration* "}" ;
+	List<Stmt> statements = new ArrayList<>();
+
+	while (!check(RIGHT_BRACE) && !isAtEnd()) {
+	    statements.add(declaration());
+	}
+
+	consume(RIGHT_BRACE, "Expect '}' after block.");
+
+	// From Crafting Interpreters, and worth including here:
+	//
+	// having block() return the raw list of statements and leaving
+	// it to statement() to wrap the list in a Stmt.Block looks a
+	// bit odd. I did it that way because we'll reuse block() later
+	// for parsing function bodies and we don't want that body
+	// wrapped in a Stmt.Block. [§8.5.2 of Crafting Interpreters]
+
+	return statements;
     }
 
     private Stmt expressionStatement() {
