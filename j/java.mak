@@ -47,10 +47,18 @@ clean::
 # - Add a class to the Expr (or Stmt) AST.
 # - Java files using Visitor<Expr> need to be rebuilt,
 #   to catch that they need to Overload another function.
+#
+# Special case: sometimes we will build with a file Foo.java
+# present in JSRC, which will not create Foo.class ... touch
+# the output so we do not repeatedly build the package.
+#
+# Also note: If Foo.java has inner classes, we will also
+# see Foo$Subclass.java.
 
 $(JCLS) &: $(JSRC)
 	$P '  %-14s %s\n' "JAVAC" "$(PACKAGE).*"
 	$C $(JC) $(JCFLAGS) $(JSRC)
+	$I touch $(JCLS)
 
 # If the caller sets MAIN=Cls, then add ruiles to
 # run the main function from the $(PTOP).$(PACKAGE).$(MAIN) class.
