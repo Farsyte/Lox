@@ -1,8 +1,4 @@
-[line 8] Error: Unexpected character ('p').
-[line 8] Error: Unexpected character ('r').
-[line 8] Error: Unexpected character ('i').
-[line 8] Error: Unexpected character ('n').
-[line 8] Error: Unexpected character ('t').
+IDENTIFIER print null
 STRING "Hello,
 	Lox!" Hello,
 	Lox!
