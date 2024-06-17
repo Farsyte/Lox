@@ -56,6 +56,20 @@ class Parser {
     }
 
     private boolean match(TokenType... types) {
+	for (TokenType type : types) {
+	    if (check(type)) {
+		advance();
+		return true;
+	    }
+	}
+	return false;
+    }
+
+    private boolean check(TokenType type) {
+	throw new NotImplementedException();
+    }
+
+    private Token advance() {
 	throw new NotImplementedException();
     }
 
