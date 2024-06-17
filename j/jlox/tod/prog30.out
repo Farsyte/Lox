@@ -1,47 +1,9 @@
-LISPish AST: (var a "global a")
-RPNish AST:  "global a" var a
-LISPish AST: (var b "global b")
-RPNish AST:  "global b" var b
-LISPish AST: (var c "global c")
-RPNish AST:  "global c" var c
-LISPish AST: {
-(var a "outer a")
-(var b "outer b")
-{
-(var a "inner a")
-(print a)
-(print b)
-(print c)
-}
-(print a)
-(print b)
-(print c)
-}
-RPNish AST:  {
-"outer a" var a
-"outer b" var b
-{
-"inner a" var a
-a print
-b print
-c print
-}
-a print
-b print
-c print
-}
 inner a
 outer b
 global c
 outer a
 outer b
 global c
-LISPish AST: (print a)
-RPNish AST:  a print
 global a
-LISPish AST: (print b)
-RPNish AST:  b print
 global b
-LISPish AST: (print c)
-RPNish AST:  c print
 global c

@@ -131,12 +131,28 @@ class Parser {
 
     private Expr or() {
 	// logic_or → logic_and ( "or" logic_and )* ;
-	return and();		// initial MOCK
+	Expr expr = and();
+
+	while (match(OR)) {
+	    Token operator = previous();
+	    Expr right = and();
+	    expr = new Expr.Logical(expr, operator, right);
+	}
+
+	return expr;
     }
 
     private Expr and() {
 	// logic_and → equality ( "and" equality )* ;
-	return equality();	// initial MOCK
+	Expr expr = equality();
+
+	while (match(AND)) {
+	    Token operator = previous();
+	    Expr right = equality();
+	    expr = new Expr.Logical(expr, operator, right);
+	}
+
+	return expr;
     }
 
     private Expr equality() {
