@@ -4,6 +4,15 @@ import java.util.List;
 
 class Interpreter implements Expr.Visitor<Object> {
 
+    void interpret(Expr expression) {
+	try {
+	    Object value = evaluate(expression);
+	    System.out.println(stringify(value));
+	} catch (RuntimeError error) {
+	    Lox.runtimeError(error);
+	}
+    }
+
     @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
 	Object left = evaluate(expr.left);
@@ -104,5 +113,19 @@ class Interpreter implements Expr.Visitor<Object> {
 	if (a == null && b == null) return true;
 	if (a == null) return false;
 	return a.equals(b);
+    }
+
+    private String stringify(Object object) {
+	if (object == null) return "nil";
+
+	if (object instanceof Double) {
+	    String text = object.toString();
+	    if (text.endsWith(".0")) {
+		text = text.substring(0, text.length() - 2);
+	    }
+	    return text;
+	}
+
+	return object.toString();
     }
 }
