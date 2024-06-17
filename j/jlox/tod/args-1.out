@@ -1,0 +1,6 @@
+PRINT print null
+STRING "Hello,
+	Lox!" Hello,
+	Lox!
+SEMICOLON ; null
+EOF  null

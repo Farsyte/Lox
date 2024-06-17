@@ -1,0 +1,5 @@
+> PRINT print null
+STRING "hello!" hello!
+SEMICOLON ; null
+EOF  null
+> 
