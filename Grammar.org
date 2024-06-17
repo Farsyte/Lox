@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §9.5 "For Loops"
+As of §9 Challenge 3, "Break Statements"
 the current grammar definition is:
 
 #+begin_src text
@@ -16,7 +16,13 @@ the current grammar definition is:
                   | ifStmt
                   | whileStmt
                   | forStmt
+                  | breakStmt
                   ;
+
+  # Not encoded in grammar: "break" must only exist
+  # within the body of a "for" or "while" statement.
+
+  breakStmt       → "break" ";"
 
   forStmt         → "for" "(" ( varDecl | exprStmt | ";" )
                      expression? ";" expression? ")" statement ;
