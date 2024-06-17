@@ -3,17 +3,8 @@
 [line 8] Error: Unexpected character ('i').
 [line 8] Error: Unexpected character ('n').
 [line 8] Error: Unexpected character ('t').
-[line 8] Error: Unexpected character ('"').
-[line 8] Error: Unexpected character ('H').
-[line 8] Error: Unexpected character ('e').
-[line 8] Error: Unexpected character ('l').
-[line 8] Error: Unexpected character ('l').
-[line 8] Error: Unexpected character ('o').
-[line 9] Error: Unexpected character ('L').
-[line 9] Error: Unexpected character ('o').
-[line 9] Error: Unexpected character ('x').
-[line 9] Error: Unexpected character ('"').
-COMMA , null
-BANG ! null
+STRING "Hello,
+	Lox!" Hello,
+	Lox!
 SEMICOLON ; null
 EOF  null
