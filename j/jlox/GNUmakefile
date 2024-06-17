@@ -64,14 +64,17 @@ world::
 # when the scanner is being implemented, and will continue
 # to fail until much later in the implementation process.
 
-ARGSTESTS       := $(TOD)args-1.out $(TOD)args-2.out
+ARGSTESTS       := $(TOD)args-0.out $(TOD)args-1.out $(TOD)args-2.out
 eachtest::      $(ARGSTESTS)
 
+$(TOD)args-0.out:
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-0.out -f ../java.mak irun ARGS='' < /dev/null
+
 $(TOD)args-1.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='hello.lox'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='"$(TID)hello.lox"'
 
 $(TOD)args-2.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v hello.lox'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v "$(TID)hello.lox"'
 
 clean::
 	$X $(ARGSTESTS)
