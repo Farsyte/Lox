@@ -57,15 +57,8 @@ public class Lox {
 	Scanner scanner = new Scanner(source);
 	List<Token> tokens = scanner.scanTokens();
 	Parser parser = new Parser(tokens);
-	Expr expression = parser.parse();
 
-	// Stop if there was a syntax error.
-	if (hadError) return;
-
-	System.out.println("AST: " + new AstPrinter().print(expression));
-	System.out.println("RPN: " + new AstRpnPrinter().print(expression));
-
-	interpreter.interpret(expression);
+	throw new NotImplementedException();
     }
 
     static void error(Token token, String message) {

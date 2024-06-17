@@ -1,5 +1,6 @@
 package farsyte.lox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static farsyte.lox.TokenType.*;
@@ -14,12 +15,27 @@ class Parser {
 	this.tokens = tokens;
     }
 
-    Expr parse() {
-	try {
-	    return expression();
-	} catch (ParseError error) {
-	    return null;
+    List<Stmt> parse() {
+	// program → declaration* EOF ;
+	List<Stmt> statements = new ArrayList<>();
+	while (!isAtEnd()) {
+	    statements.add(statement());
 	}
+	return statements;
+    }
+
+    private Stmt statement() {
+	// statement → exprStmt | printStmt ;
+	if (match(PRINT)) return printStatement();
+	return expressionStatement();
+    }
+
+    private Stmt expressionStatement() {
+	throw new NotImplementedException();
+    }
+
+    private Stmt printStatement() {
+	throw new NotImplementedException();
     }
 
     private Expr expression() {
