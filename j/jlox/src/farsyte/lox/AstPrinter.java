@@ -1,6 +1,7 @@
 package farsyte.lox;
 
 class AstPrinter implements Expr.Visitor<String> {
+
     String print(Expr expr) {
         return expr.accept(this);
     }
@@ -34,7 +35,7 @@ class AstPrinter implements Expr.Visitor<String> {
 	    expr.right);
     }
 
-    private String parenthesize(String name, Expr... exprs) {
+    protected String parenthesize(String name, Expr... exprs) {
         StringBuilder builder = new StringBuilder();
 
         builder.append("(").append(name);
