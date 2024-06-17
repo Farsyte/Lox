@@ -1,15 +1,20 @@
 * Cumulative Grammar Definitions
 
-As of §8.1 "Statements"
+As of §8.2.1 "Variable Syntax"
 the current grammar definition is:
 
 #+begin_src text
-  program         → statement* EOF ;
+  program         → declaration* EOF ;
+
+  declaration     → varDecl
+                  | statement
+                  ;
 
   statement       → exprStmt
                   | printStmt
                   ;
 
+  varDecl         → "var" IDENTIFIER ( "=" expression )? ";" ;
   exprStmt        → expression ";" ;
   printStmt       → "print" expression ";" ;
 
@@ -20,8 +25,12 @@ the current grammar definition is:
   factor          → unary ( ( "/" | "*" ) unary )* ;
 
   unary           → ( "!" | "-" ) unary
-                  | primary ;
+                  | primary
+                  ;
 
-  primary         → NUMBER | STRING | "true" | "false" | "nil"
-                  | "(" expression ")" ;
+  primary         → "true" | "false" | "nil"
+                  | "(" expression ")"
+                  | STRING
+                  | NUMBER
+                  ;
 #+end_src
