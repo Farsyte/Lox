@@ -140,6 +140,7 @@ class Parser {
     }
 
     private ParseError error(Token token, String message) {
-	throw new NotImplementedException();
+	Lox.error(token, message);
+	return new ParseError();
     }
 }

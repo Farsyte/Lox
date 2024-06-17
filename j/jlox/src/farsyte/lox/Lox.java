@@ -57,6 +57,10 @@ public class Lox {
 	}
     }
 
+    static void error(Token token, String message) {
+	throw new NotImplementedException();
+    }
+
     static void error(int line, String message) {
 	report(line, "", message);
     }
