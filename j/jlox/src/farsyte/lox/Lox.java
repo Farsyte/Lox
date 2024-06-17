@@ -26,11 +26,15 @@ public class Lox {
     }
 
     private static void runFile(String path) throws IOException {
-	System.out.println("path is " + path);
-	throw new NotImplementedException();
+	byte[] bytes = Files.readAllBytes(Paths.get(path));
+	run(new String(bytes, Charset.defaultCharset()));
     }
 
     private static void runPrompt() throws IOException {
+	throw new NotImplementedException();
+    }
+
+    private static void run(String source) {
 	throw new NotImplementedException();
     }
 }

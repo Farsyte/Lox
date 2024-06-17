@@ -1,2 +1,1 @@
-path is tid/hello.lox
-src/farsyte/lox/Lox.java:30: STUB: Lox.runFile Unimplemented.
+src/farsyte/lox/Lox.java:38: STUB: Lox.run Unimplemented.
