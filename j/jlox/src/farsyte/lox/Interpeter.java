@@ -83,6 +83,8 @@ class Interpreter implements Expr.Visitor<Object> {
     }
 
     private boolean isEqual(Object a, Object b) {
-	throw new NotImplementedException();
+	if (a == null && b == null) return true;
+	if (a == null) return false;
+	return a.equals(b);
     }
 }
