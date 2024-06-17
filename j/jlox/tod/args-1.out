@@ -1,1 +1,1 @@
-src/farsyte/lox/Scanner.java:56: STUB: Scanner.advance Unimplemented.
+src/farsyte/lox/Scanner.java:47: STUB: Scanner.scanToken, needs more cases (no match for '/')

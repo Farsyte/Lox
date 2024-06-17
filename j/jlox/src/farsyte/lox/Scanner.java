@@ -44,16 +44,21 @@ class Scanner {
 	case '*': addToken(STAR); break;
 
 	default:
-	    throw new NotImplementedException(", needs more cases.");
+	    throw new NotImplementedException(", needs more cases (no match for '" + c + "')");
 	}
     }
 
     private void addToken(TokenType type) {
-	throw new NotImplementedException();
+	addToken(type, null);
+    }
+
+    private void addToken(TokenType type, Object literal) {
+	String text = source.substring(start, current);
+	tokens.add(new Token(type, text, literal, line));
     }
 
     private char advance() {
-	throw new NotImplementedException();
+	return source.charAt(current++);
     }
 
     private boolean isAtEnd() {
