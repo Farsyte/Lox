@@ -71,10 +71,10 @@ $(TOD)args-0.out:
 	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-0.out -f ../java.mak irun ARGS='' < /dev/null
 
 $(TOD)args-1.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='"$(TID)hello.lox"'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-1.out -f ../java.mak irun ARGS='"$(TID)hello.lox"' < /dev/null
 
 $(TOD)args-2.out:
-	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v "$(TID)hello.lox"'
+	$M PACKAGE=lox MAIN=Lox FROM=/dev/null INTO=$(TOD)args-2.out -f ../java.mak irun ARGS='-v "$(TID)hello.lox"' < /dev/null
 
 clean::
 	$X $(ARGSTESTS)
