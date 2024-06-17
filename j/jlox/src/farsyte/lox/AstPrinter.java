@@ -1,8 +1,24 @@
 package farsyte.lox;
 
-class AstPrinter implements Expr.Visitor<String> {
+class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     String print(Expr expr) {
 	return expr.accept(this);
+    }
+
+    String print(Stmt stmt) {
+	return stmt.accept(this);
+    }
+
+    @Override
+    public String visitExpressionStmt(Stmt.Expression stmt) {
+	return format("discard",
+		      stmt.expression);
+    }
+
+    @Override
+    public String visitPrintStmt(Stmt.Print stmt) {
+	return format("print",
+		      stmt.expression);
     }
 
     @Override
