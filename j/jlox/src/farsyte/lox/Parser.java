@@ -1,6 +1,7 @@
 package farsyte.lox;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static farsyte.lox.TokenType.*;
@@ -50,6 +51,7 @@ class Parser {
     private Stmt statement() {
 	// statement → exprStmt | printStmt | ifStmt | block;
 	if (match(IF)) return ifStatement();
+	if (match(FOR)) return forStatement();
 	if (match(WHILE)) return whileStatement();
 	if (match(PRINT)) return printStatement();
 	if (match(LEFT_BRACE)) return new Stmt.Block(block());
@@ -77,6 +79,54 @@ class Parser {
 	}
 
 	return new Stmt.If(condition, thenBranch, elseBranch);
+    }
+
+    private Stmt forStatement() {
+	consume(LEFT_PAREN, "expect '(' after 'for'.");
+
+	Stmt initializer;
+	if (match(SEMICOLON)) {
+	    initializer = null;
+	} else if (match(VAR)) {
+	    initializer = varDeclaration();
+	} else {
+	    initializer = expressionStatement();
+	}
+
+	Expr condition = null;
+	if (!check(SEMICOLON)) {
+	    condition = expression();
+	}
+	consume(SEMICOLON, "Expect ';' after loop condition.");
+
+	Expr increment = null;
+	if (!check(RIGHT_PAREN)) {
+	    increment = expression();
+	}
+	consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+
+	Stmt body = statement();
+
+	if (increment != null) {
+	    body = new Stmt.Block(
+		Arrays.asList(
+		    body,
+		    new Stmt.Expression(increment)));
+	}
+
+	if (condition == null) {
+	    condition = new Expr.Literal(true);
+	}
+	body = new Stmt.While(condition, body);
+
+	if (initializer != null) {
+	    body = new Stmt.Block(
+		Arrays.asList(
+		    initializer,
+		    body));
+	}
+
+	return body;
     }
 
     private List<Stmt> block() {
