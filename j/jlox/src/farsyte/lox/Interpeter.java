@@ -12,7 +12,7 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitGroupingExpr(Expr.Grouping expr) {
-	throw new NotImplementedException();
+	return evaluate(expr.expression);
     }
 
     @Override
@@ -22,6 +22,10 @@ class Interpreter implements Expr.Visitor<Object> {
 
     @Override
     public Object visitUnaryExpr(Expr.Unary expr) {
+	throw new NotImplementedException();
+    }
+
+    private Object evaluate(Expr expr) {
 	throw new NotImplementedException();
     }
 }
