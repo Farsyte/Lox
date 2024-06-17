@@ -36,7 +36,15 @@ class Parser {
     }
 
     private Stmt varDeclaration() {
-	throw new NotImplementedException();
+	// varDecl → "var" IDENTIFIER ( "=" expression )? ";" ;
+	Token name = consume(IDENTIFIER, "Expect variable name.");
+
+	Expr initializer = null;
+	if (match(EQUAL)) {
+	    initializer = expression();
+	}
+	consume(SEMICOLON, "Expect ';' after variable declaration.");
+	return new Stmt.Var(name, initializer);
     }
 
     private Stmt statement() {
