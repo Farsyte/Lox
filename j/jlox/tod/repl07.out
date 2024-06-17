@@ -1,0 +1,30 @@
+> IDENTIFIER foo null
+IDENTIFIER bar null
+IDENTIFIER baz null
+EOF  null
+> AND and null
+OR or null
+EOF  null
+> IF if null
+ELSE else null
+EOF  null
+> CLASS class null
+EOF  null
+> NIL nil null
+TRUE true null
+FALSE false null
+EOF  null
+> WHILE while null
+FOR for null
+EOF  null
+> FUN fun null
+VAR var null
+EOF  null
+> PRINT print null
+RETURN return null
+EOF  null
+> SUPER super null
+THIS this null
+EOF  null
+> EOF  null
+> 
