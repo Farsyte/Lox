@@ -14,7 +14,7 @@ class Parser {
 
     private Expr expression() {
 	// expression → equality ;
-	throw new NotImplementedException();
+	return equality();
     }
 
     private Expr equality() {
