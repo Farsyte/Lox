@@ -1,12 +1,13 @@
 * Cumulative Grammar Definitions
 
-As of §9 Challenge 3, "Break Statements"
+As of §10.5 "Return Statements"
 the current grammar definition is:
 
 #+begin_src text
   program         → declaration* EOF ;
 
   declaration     → varDecl
+                  | funDecl
                   | statement
                   ;
 
@@ -17,7 +18,14 @@ the current grammar definition is:
                   | whileStmt
                   | forStmt
                   | breakStmt
+                  | returnStmt
                   ;
+
+  funDecl         → "fun" function ;
+  function        → IDENTIFIER "(" parameters? ")" block ;
+  parameters      → IDENTIFIER ( "," IDENTIFIER )* ;
+
+  returnStmt      → "return" expression? ";" ;
 
   # Not encoded in grammar: "break" must only exist
   # within the body of a "for" or "while" statement.
@@ -53,8 +61,11 @@ the current grammar definition is:
   factor          → unary ( ( "/" | "*" ) unary )* ;
 
   unary           → ( "!" | "-" ) unary
-                  | primary
+                  | call
                   ;
+
+  call            → primary ( "(" arguments? ")" )* ;
+  arguments       → expression ( "," expression )* ;
 
   primary         → "true" | "false" | "nil"
                   | "(" expression ")"

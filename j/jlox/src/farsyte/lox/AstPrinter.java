@@ -62,6 +62,16 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitFunctionStmt(Stmt.Function stmt) {
+	throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitReturnStmt(Stmt.Return stmt) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
@@ -98,6 +108,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     public String visitLogicalExpr(Expr.Logical expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
+    }
+
+    @Override
+    public String visitCallExpr(Expr.Call expr) {
+	throw new NotImplementedException();
     }
 
     protected String format(String name, Expr... exprs) {
