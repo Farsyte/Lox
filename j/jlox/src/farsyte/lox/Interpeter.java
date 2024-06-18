@@ -236,7 +236,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitVariableExpr(Expr.Variable expr) {
-	return environment.get(expr.name);
+	return lookUpVariable(expr.name, expr);
     }
 
     @Override
@@ -342,4 +342,12 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	locals.put(expr, depth);
     }
 
+    public Object lookUpVariable(Token name, Expr expr) {
+	Integer distance = locals.get(expr);
+	if (distance != null) {
+	    return environment.getAt(distance, name.lexeme);
+	} else {
+	    return globals.get(name);
+	}
+    }
 }
