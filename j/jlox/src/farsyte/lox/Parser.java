@@ -29,6 +29,7 @@ class Parser {
     private Stmt declaration() {
 	// declaration → varDecl | statement ;
 	try {
+	    if (match(FUN)) return function("function");
 	    if (match(VAR)) return varDeclaration();
 	    return statement();
 	} catch (ParseError error) {
@@ -47,6 +48,16 @@ class Parser {
 	}
 	consume(SEMICOLON, "Expect ';' after variable declaration.");
 	return new Stmt.Var(name, initializer);
+    }
+
+    private Stmt function(String kind) {
+	// funDecl → "fun" function ;
+	// function → IDENTIFIER "(" parameters? ")" block ;
+	// parameters → IDENTIFIER ( "," IDENTIFIER )* ;
+
+	Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
+
+	throw new NotImplementedException(", continue implementing");
     }
 
     private Stmt statement() {
