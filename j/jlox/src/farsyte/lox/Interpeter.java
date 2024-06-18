@@ -1,13 +1,16 @@
 package farsyte.lox;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     private static class LoxBreakException extends RuntimeException {}
 
     final Environment globals = new Environment();
     private Environment environment = globals;
+    private final Map<Expr, Integer> locals = new HashMap<>();
 
     Interpreter() {
 
@@ -335,8 +338,8 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	return object.toString();
     }
 
-    public void resolve(Expr expr, int scope) {
-	throw new NotImplementedException();
+    public void resolve(Expr expr, int depth) {
+	locals.put(expr, depth);
     }
 
 }
