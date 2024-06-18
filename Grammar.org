@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §10.3 "Function Declarations"
+As of §10.5 "Return Statements"
 the current grammar definition is:
 
 #+begin_src text
@@ -18,11 +18,14 @@ the current grammar definition is:
                   | whileStmt
                   | forStmt
                   | breakStmt
+                  | returnStmt
                   ;
 
   funDecl         → "fun" function ;
   function        → IDENTIFIER "(" parameters? ")" block ;
   parameters      → IDENTIFIER ( "," IDENTIFIER )* ;
+
+  returnStmt      → "return" expression? ";" ;
 
   # Not encoded in grammar: "break" must only exist
   # within the body of a "for" or "while" statement.
