@@ -69,7 +69,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitWhileStmt(Stmt.While stmt) {
-	throw new NotImplementedException();
+	resolve(stmt.condition);
+	resolve(stmt.body);
+	return null;
     }
 
     @Override
