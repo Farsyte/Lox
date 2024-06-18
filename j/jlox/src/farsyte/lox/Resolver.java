@@ -144,7 +144,13 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitCallExpr(Expr.Call expr) {
-	throw new NotImplementedException();
+	resolve(expr.callee);
+
+	for (Expr argument : expr.arguments) {
+	    resolve(argument);
+	}
+
+	return null;
     }
 
     private void beginScope() {
