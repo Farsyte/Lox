@@ -76,7 +76,7 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitBreakStmt(Stmt.Break stmt) {
-	throw new NotImplementedException();
+	return null;
     }
 
     @Override
