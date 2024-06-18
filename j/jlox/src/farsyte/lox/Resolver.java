@@ -105,7 +105,8 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitGroupingExpr(Expr.Grouping expr) {
-	throw new NotImplementedException();
+	resolve(expr.expression);
+	return null;
     }
 
     @Override
