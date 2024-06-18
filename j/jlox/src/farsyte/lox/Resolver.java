@@ -72,7 +72,11 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-	throw new NotImplementedException();
+	declare(stmt.name);
+	define(stmt.name);
+
+	resolveFunction(stmt);
+	return null;
     }
 
     @Override
@@ -156,5 +160,15 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 		return;
 	    }
 	}
+    }
+
+    private void resolveFunction(Stmt.Function function) {
+	beginScope();
+	for (Token param : function.params) {
+	    declare(param);
+	    define(param);
+	}
+	resolve(function.body);
+	endScope();
     }
 }
