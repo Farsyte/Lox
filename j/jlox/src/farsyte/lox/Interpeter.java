@@ -334,4 +334,9 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
 	return object.toString();
     }
+
+    public void resolve(Expr expr, int scope) {
+	throw new NotImplementedException();
+    }
+
 }
