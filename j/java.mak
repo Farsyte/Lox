@@ -91,11 +91,11 @@ RED_IN          :=
 endif
 
 run:: $(JCLS)
-	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)"
 	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 irun:: $(JCLS)
-	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(RED_IN) $(RED_OUT) $(RED_TEE)"
+	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)"
 	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 .PHONY: run
