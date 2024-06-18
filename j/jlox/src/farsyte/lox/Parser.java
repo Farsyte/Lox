@@ -316,6 +316,11 @@ class Parser {
 	List<Expr> arguments = new ArrayList<>();
 	if (!check(RIGHT_PAREN)) {
 	    do {
+		if (arguments.size() >= 255) {
+		    // Report the problem but DO NOT throw it.
+		    // This is how we do warnings.
+		    error(peek(), "Can't have more than 255 arguments.");
+		}
 		arguments.add(expression());
 	    } while (match(COMMA));
 	}
