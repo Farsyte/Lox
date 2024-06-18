@@ -58,7 +58,12 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitIfStmt(Stmt.If stmt) {
-	throw new NotImplementedException();
+	resolve(stmt.condition);
+	resolve(stmt.thenBranch);
+	if (stmt.elseBranch != null) {
+	    resolve(stmt.elseBranch);
+	}
+	return null;
     }
 
     @Override
