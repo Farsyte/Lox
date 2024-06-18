@@ -1,12 +1,13 @@
 * Cumulative Grammar Definitions
 
-As of §10.1 "Function Calls"
+As of §10.3 "Function Declarations"
 the current grammar definition is:
 
 #+begin_src text
   program         → declaration* EOF ;
 
   declaration     → varDecl
+                  | funDecl
                   | statement
                   ;
 
@@ -18,6 +19,10 @@ the current grammar definition is:
                   | forStmt
                   | breakStmt
                   ;
+
+  funDecl         → "fun" function ;
+  function        → IDENTIFIER "(" parameters? ")" block ;
+  parameters      → IDENTIFIER ( "," IDENTIFIER )* ;
 
   # Not encoded in grammar: "break" must only exist
   # within the body of a "for" or "while" statement.
