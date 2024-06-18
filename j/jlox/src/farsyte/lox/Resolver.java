@@ -7,11 +7,26 @@ import java.util.Stack;
 
 class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private final Interpreter interpreter;
+    private final Stack<Map<String, Boolean>> scopes = new Stack<>();
 
     Resolver (Interpreter interpreter) {
 	this.interpreter = interpreter;
     }
     
+    void resolve(List<Stmt> statements) {
+	for (Stmt statement : statements) {
+	    resolve(statement);
+	}
+    }
+
+    private void resolve(Stmt stmt) {
+	stmt.accept(this);
+    }
+
+    private void resolve(Expr expr) {
+	expr.accept(this);
+    }
+
     @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
 	throw new NotImplementedException();
@@ -28,8 +43,11 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Void visitBlockStmt(Stmt.Block blk) {
-	throw new NotImplementedException();
+    public Void visitBlockStmt(Stmt.Block stmt) {
+	beginScope();
+	resolve(stmt.statements);
+	endScope();
+	return null;
     }
 
     @Override
@@ -95,4 +113,13 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     @Override
     public Void visitCallExpr(Expr.Call expr) {
 	throw new NotImplementedException();
+    }
+
+    private void beginScope() {
+	scopes.push(new HashMap<String, Boolean>());
+    }
+
+    private void endScope() {
+	scopes.pop();
+    }
 }
