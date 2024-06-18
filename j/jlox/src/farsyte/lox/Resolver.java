@@ -29,7 +29,8 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
-	throw new NotImplementedException();
+	resolve(stmt.expression);
+	return null;
     }
 
     @Override
