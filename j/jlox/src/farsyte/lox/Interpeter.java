@@ -6,7 +6,7 @@ import java.util.List;
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     private static class LoxBreakException extends RuntimeException {}
 
-    private final Environment globals = new Environment();
+    final Environment globals = new Environment();
     private Environment environment = globals;
 
     Interpreter() {
@@ -109,7 +109,9 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-	throw new NotImplementedException();
+	LoxFunction function = new LoxFunction(stmt);
+	environment.define(stmt.name.lexeme, function);
+	return null;
     }
 
     @Override
@@ -269,7 +271,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	return function.call(this, arguments);
     }
 
-    private void executeBlock(
+    void executeBlock(
 	List<Stmt> statements, Environment environment) {
 
 	Environment previous = this.environment;
