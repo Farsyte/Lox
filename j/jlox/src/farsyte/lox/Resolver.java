@@ -140,7 +140,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitLogicalExpr(Expr.Logical expr) {
-	throw new NotImplementedException();
+	resolve(expr.left);
+	resolve(expr.right);
+	return null;
     }
 
     @Override
