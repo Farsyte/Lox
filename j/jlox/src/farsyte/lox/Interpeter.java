@@ -225,6 +225,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	return evaluate(expr.right);
     }
 
+    @Override
+    public Object visitCallExpr(Expr.Call expr) {
+	throw new NotImplementedException();
+    }
+
     private void executeBlock(
 	List<Stmt> statements, Environment environment) {
 
