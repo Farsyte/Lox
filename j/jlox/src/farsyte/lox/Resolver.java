@@ -114,7 +114,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitAssignExpr(Expr.Assign expr) {
-	throw new NotImplementedException();
+	resolve(expr.value);
+	resolveLocal(expr, expr.name);
+	return null;
     }
 
     @Override
