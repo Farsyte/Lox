@@ -4,18 +4,18 @@ var a = "global a";
 var b = "global b";
 var c = "global c";
 {
-  var a = "outer a";
-  var b = "outer b";
-  {
-    var a = "inner a";
+    var a = "outer a";
+    var b = "outer b";
+    {
+        var a = "inner a";
 
-    if (a == "inner a") print "PASS: a = " + a; else print "FAIL: a = " + a;
+        if (a == "inner a") print "PASS: a = " + a; else print "FAIL: a = " + a;
+        if (b == "outer b") print "PASS: b = " + b; else print "FAIL: b = " + b;
+        if (c == "global c") print "PASS: c = " + c; else print "FAIL: c = " + c;
+    }
+    if (a == "outer a") print "PASS: a = " + a; else print "FAIL: a = " + a;
     if (b == "outer b") print "PASS: b = " + b; else print "FAIL: b = " + b;
     if (c == "global c") print "PASS: c = " + c; else print "FAIL: c = " + c;
-  }
-  if (a == "outer a") print "PASS: a = " + a; else print "FAIL: a = " + a;
-  if (b == "outer b") print "PASS: b = " + b; else print "FAIL: b = " + b;
-  if (c == "global c") print "PASS: c = " + c; else print "FAIL: c = " + c;
 }
 if (a == "global a") print "PASS: a = " + a; else print "FAIL: a = " + a;
 if (b == "global b") print "PASS: b = " + b; else print "FAIL: b = " + b;

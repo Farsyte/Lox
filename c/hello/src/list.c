@@ -111,9 +111,9 @@ list list_find(list l, str s)
     assert(NULL != s);
 
     for (l = l->next; l->that; l = l->next) {
-	assert(NULL != l);
-	if (0 == strcmp(s, l->that))
-	    return l;
+        assert(NULL != l);
+        if (0 == strcmp(s, l->that))
+            return l;
     }
 
     return NULL;
@@ -137,7 +137,7 @@ list list_delete(list l, str s)
     assert(NULL != s);
     list                f = list_find(l, s);
     if (NULL == f)
-	return NULL;
+        return NULL;
     return list_del(f);
 }
 
@@ -149,7 +149,7 @@ list list_delete(list l, str s)
 void list_free(list l)
 {
     while (l)
-	l = list_del(l->next);
+        l = list_del(l->next);
 }
 
 /** Create a new node.
@@ -169,8 +169,8 @@ static list list_ctor(str that)
 
     hstr                d = 0;
     if (that) {
-	d = strdup(that);
-	assert(NULL != d);
+        d = strdup(that);
+        assert(NULL != d);
     }
 
     n->next = n;
