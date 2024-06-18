@@ -98,7 +98,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitBinaryExpr(Expr.Binary expr) {
-	throw new NotImplementedException();
+	resolve(expr.left);
+	resolve(expr.right);
+	return null;
     }
 
     @Override
