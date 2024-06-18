@@ -88,7 +88,10 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitReturnStmt(Stmt.Return stmt) {
-	throw new NotImplementedException();
+	if (stmt.value != null) {
+	    resolve(stmt.value);
+	}
+	return null;
     }
 
     @Override
