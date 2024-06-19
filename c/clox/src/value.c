@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "memory.h"
 #include "value.h"
@@ -25,4 +26,8 @@ void writeValueArray(ValueArray* array, Value value) {
 
     array->values[array->count] = value;
     array->count++;
+}
+
+void printValue(Value value) {
+    printf("%g", value);
 }
