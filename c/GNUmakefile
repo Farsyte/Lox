@@ -47,11 +47,15 @@ all::           $(EXES)
 # set of source and header dependencies in a .d file. That way,
 # if a source or header change is made, all .o files that used
 # it in their previous compile will be recompiled.
+#
+# Side note: if $(DEPD)%.d had dependencies for %.o, then printing $^
+# will print the headers it depends on. This would get cumbersome, so
+# flip to just printing $* (the basename of the file).
 
 $(OBJD)%.o:     $(SRCD)%.c
 	$C [ -d $(OBJD) ] || mkdir -p $(OBJD)
 	$C [ -d $(DEPD) ] || mkdir -p $(DEPD)
-	$P '  %-6s %s\n' "CC" "$^"
+	$P '  %-6s %s\n' "CC" "$*"
 	$Q $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) $< -MM | \
 	 sed '1s|^$*\.o: |$@: |' > ${DEPD}$*.d
 	$Q $(COMPILE.c) $(OUTPUT_OPTION) $<
