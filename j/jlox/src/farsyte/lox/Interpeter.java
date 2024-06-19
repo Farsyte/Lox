@@ -306,7 +306,16 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitSetExpr(Expr.Set expr) {
-	throw new NotImplementedException();
+	Object object = evaluate(expr.object);
+
+	if (!(object instanceof LoxInstance)) {
+	    throw new RuntimeError(
+		expr.name, "Only instances have fields.");
+	}
+
+	Object value = evaluate(expr.value);
+	((LoxInstance)object).set(expr.name, value);
+	return value;
     }
 
     @Override
