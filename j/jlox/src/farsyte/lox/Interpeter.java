@@ -297,6 +297,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	return function.call(this, arguments);
     }
 
+    @Override
+    public Object visitGetExpr(Expr.Get expr) {
+	throw new NotImplementedException();
+    }
+
     void executeBlock(
 	List<Stmt> statements, Environment environment) {
 

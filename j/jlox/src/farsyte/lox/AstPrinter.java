@@ -120,6 +120,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	throw new NotImplementedException();
     }
 
+    @Override
+    public String visitGetExpr(Expr.Get expr) {
+	throw new NotImplementedException();
+    }
+
     protected String format(String name, Expr... exprs) {
 	StringBuilder builder = new StringBuilder();
 

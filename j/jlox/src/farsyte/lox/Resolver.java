@@ -176,6 +176,11 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 	return null;
     }
 
+    @Override
+    public Void visitGetExpr(Expr.Get expr) {
+	throw new NotImplementedException();
+    }
+
     private void beginScope() {
 	scopes.push(new HashMap<String, Boolean>());
     }
