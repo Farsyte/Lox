@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §12.4 "Properties on Instances"
+As of §12.4.2 "Set expressions"
 the current grammar definition is:
 
 #+begin_src text
@@ -50,7 +50,7 @@ the current grammar definition is:
 
   expression      → assignment
 
-  assignment      → IDENTIFIER = assignment
+  assignment      → ( call "." )? IDENTIFIER = assignment
                   | logic_or
                   ;
 
