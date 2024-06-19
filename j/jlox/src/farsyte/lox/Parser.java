@@ -39,7 +39,7 @@ class Parser {
 	}
     }
 
-    private Stmt classDeclaration() {
+    private Stmt.Class classDeclaration() {
 	Token name = consume(IDENTIFIER, "Expect class name.");
 	consume(LEFT_BRACE, "Expect '{' before class body.");
 
@@ -53,7 +53,7 @@ class Parser {
 	return new Stmt.Class(name, methods);
     }
 
-    private Stmt varDeclaration() {
+    private Stmt.Var varDeclaration() {
 	// varDecl → "var" IDENTIFIER ( "=" expression )? ";" ;
 	Token name = consume(IDENTIFIER, "Expect variable name.");
 
@@ -103,7 +103,7 @@ class Parser {
 	return expressionStatement();
     }
 
-    private Stmt returnStatement() {
+    private Stmt.Return returnStatement() {
 	Token keyword = previous();
 	Expr value = null;
 	if (!check(SEMICOLON)) {
@@ -114,7 +114,7 @@ class Parser {
 	return new Stmt.Return(keyword, value);
     }
 
-    private Stmt breakStatement() {
+    private Stmt.Break breakStatement() {
 	if (!canBreak) {
 	    throw error(previous(), "Break must be inside a 'for' or 'while' loop body.");
 	}
@@ -123,7 +123,7 @@ class Parser {
 	return new Stmt.Break();
     }
 
-    private Stmt whileStatement() {
+    private Stmt.While whileStatement() {
 	consume(LEFT_PAREN, "Expect '(' after 'while'.");
 	Expr condition = expression();
 	consume(RIGHT_PAREN, "Expect ')' after condition.");
@@ -134,7 +134,7 @@ class Parser {
 	return new Stmt.While(condition, body);
     }
 
-    private Stmt ifStatement() {
+    private Stmt.If ifStatement() {
 	// ifStmt → "if" "(" expression ")" statement ( "else" statement )? ;
 	consume(LEFT_PAREN, "Expect '(' after 'íf'.");
 	Expr condition = expression();
@@ -223,14 +223,14 @@ class Parser {
 	return statements;
     }
 
-    private Stmt expressionStatement() {
+    private Stmt.Expression expressionStatement() {
 	// exprStmt → expression ";" ;
 	Expr expr = expression();
 	consume(SEMICOLON, "Expect ';' after value.");
 	return new Stmt.Expression(expr);
     }
 
-    private Stmt printStatement() {
+    private Stmt.Print printStatement() {
 	// printStmt → "print" expression ";" ;
 	Expr value = expression();
 	consume(SEMICOLON, "Expect ';' after value.");
@@ -366,7 +366,7 @@ class Parser {
 	// throw new NotImplementedException();
     }
 
-    private Expr finishCall(Expr callee) {
+    private Expr.Call finishCall(Expr callee) {
 	List<Expr> arguments = new ArrayList<>();
 	if (!check(RIGHT_PAREN)) {
 	    do {
