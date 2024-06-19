@@ -11,3 +11,5 @@ typedef struct {
     int capacity;
     uint8_t* code;
 } Chunk;
+
+void initChunk(Chunk* chunk);
