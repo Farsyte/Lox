@@ -116,7 +116,6 @@ RTOF            := $(PTIF:$(TID)prog%.lox=$(TOD)prog%.out)
 eachtest::      $(RTOF)
 
 $(TOD)prog%.out:        $(TID)prog%.lox
-	$P '  %-14s %s\n' "Lox" "$< > $@"
 	$M PACKAGE=lox MAIN=Lox INTO=$@ -f ../java.mak run $< ARGS="$<"
 
 clean::
