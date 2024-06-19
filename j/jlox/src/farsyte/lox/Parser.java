@@ -29,6 +29,7 @@ class Parser {
     private Stmt declaration() {
 	// declaration → varDecl | statement ;
 	try {
+	    if (match(CLASS)) return classDeclaration();
 	    if (match(FUN)) return function("function");
 	    if (match(VAR)) return varDeclaration();
 	    return statement();
@@ -38,7 +39,21 @@ class Parser {
 	}
     }
 
-    private Stmt varDeclaration() {
+    private Stmt.Class classDeclaration() {
+	Token name = consume(IDENTIFIER, "Expect class name.");
+	consume(LEFT_BRACE, "Expect '{' before class body.");
+
+	List<Stmt.Function> methods = new ArrayList<>();
+	while (!check(RIGHT_BRACE) && !isAtEnd()) {
+	    methods.add(function("method"));
+	}
+
+	consume(RIGHT_BRACE, "Expect '}' after class body.");
+
+	return new Stmt.Class(name, methods);
+    }
+
+    private Stmt.Var varDeclaration() {
 	// varDecl → "var" IDENTIFIER ( "=" expression )? ";" ;
 	Token name = consume(IDENTIFIER, "Expect variable name.");
 
@@ -50,7 +65,7 @@ class Parser {
 	return new Stmt.Var(name, initializer);
     }
 
-    private Stmt function(String kind) {
+    private Stmt.Function function(String kind) {
 	// funDecl → "fun" function ;
 	// function → IDENTIFIER "(" parameters? ")" block ;
 	// parameters → IDENTIFIER ( "," IDENTIFIER )* ;
@@ -88,7 +103,7 @@ class Parser {
 	return expressionStatement();
     }
 
-    private Stmt returnStatement() {
+    private Stmt.Return returnStatement() {
 	Token keyword = previous();
 	Expr value = null;
 	if (!check(SEMICOLON)) {
@@ -99,7 +114,7 @@ class Parser {
 	return new Stmt.Return(keyword, value);
     }
 
-    private Stmt breakStatement() {
+    private Stmt.Break breakStatement() {
 	if (!canBreak) {
 	    throw error(previous(), "Break must be inside a 'for' or 'while' loop body.");
 	}
@@ -108,7 +123,7 @@ class Parser {
 	return new Stmt.Break();
     }
 
-    private Stmt whileStatement() {
+    private Stmt.While whileStatement() {
 	consume(LEFT_PAREN, "Expect '(' after 'while'.");
 	Expr condition = expression();
 	consume(RIGHT_PAREN, "Expect ')' after condition.");
@@ -119,7 +134,7 @@ class Parser {
 	return new Stmt.While(condition, body);
     }
 
-    private Stmt ifStatement() {
+    private Stmt.If ifStatement() {
 	// ifStmt → "if" "(" expression ")" statement ( "else" statement )? ;
 	consume(LEFT_PAREN, "Expect '(' after 'íf'.");
 	Expr condition = expression();
@@ -208,14 +223,14 @@ class Parser {
 	return statements;
     }
 
-    private Stmt expressionStatement() {
+    private Stmt.Expression expressionStatement() {
 	// exprStmt → expression ";" ;
 	Expr expr = expression();
 	consume(SEMICOLON, "Expect ';' after value.");
 	return new Stmt.Expression(expr);
     }
 
-    private Stmt printStatement() {
+    private Stmt.Print printStatement() {
 	// printStmt → "print" expression ";" ;
 	Expr value = expression();
 	consume(SEMICOLON, "Expect ';' after value.");
@@ -228,7 +243,8 @@ class Parser {
     }
 
     private Expr assignment() {
-	// assignment → IDENTIFIER = assignment | logical_or ;
+	// assignment → ( call "." )? IDENTIFIER = assignment | logic_or ;
+
 	Expr expr = or();
 
 	if (match(EQUAL)) {
@@ -238,6 +254,9 @@ class Parser {
 	    if (expr instanceof Expr.Variable) {
 		Token name = ((Expr.Variable)expr).name;
 		return new Expr.Assign(name, value);
+	    } else if (expr instanceof Expr.Get) {
+		Expr.Get get = (Expr.Get)expr;
+		return new Expr.Set(get.object, get.name, value);
 	    }
 
 	    throw error(equals, "Invalid assignment target.");
@@ -336,22 +355,26 @@ class Parser {
     }
 
     private Expr call() {
-	// call → primary ( "(" arguments? ")" )* ;
+	// call → primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
 	Expr expr = primary();
 
 	while (true) {
 	    if (match(LEFT_PAREN)) {
 		expr = finishCall(expr);
+	    } else if (match(DOT)) {
+		Token name = consume(
+		    IDENTIFIER,
+		    "Expect property anme after '.'.");
+		expr = new Expr.Get(expr, name);
 	    } else {
 		break;
 	    }
 	}
 
 	return expr;
-	// throw new NotImplementedException();
     }
 
-    private Expr finishCall(Expr callee) {
+    private Expr.Call finishCall(Expr callee) {
 	List<Expr> arguments = new ArrayList<>();
 	if (!check(RIGHT_PAREN)) {
 	    do {
@@ -375,6 +398,8 @@ class Parser {
 	if (match(FALSE)) return new Expr.Literal(false);
 	if (match(TRUE)) return new Expr.Literal(true);
 	if (match(NIL)) return new Expr.Literal(null);
+
+	if (match(THIS)) return new Expr.This(previous());
 
 	if (match(IDENTIFIER)) {
 	    return new Expr.Variable(previous());

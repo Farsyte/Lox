@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §10.5 "Return Statements"
+As of §12.4.2 "Set expressions"
 the current grammar definition is:
 
 #+begin_src text
@@ -9,6 +9,7 @@ the current grammar definition is:
   declaration     → varDecl
                   | funDecl
                   | statement
+                  | classDecl
                   ;
 
   statement       → exprStmt
@@ -21,6 +22,7 @@ the current grammar definition is:
                   | returnStmt
                   ;
 
+  classDecl       → "class" IDENTIFIER "{" function* "}" ;
   funDecl         → "fun" function ;
   function        → IDENTIFIER "(" parameters? ")" block ;
   parameters      → IDENTIFIER ( "," IDENTIFIER )* ;
@@ -48,7 +50,7 @@ the current grammar definition is:
 
   expression      → assignment
 
-  assignment      → IDENTIFIER = assignment
+  assignment      → ( call "." )? IDENTIFIER = assignment
                   | logic_or
                   ;
 
@@ -64,7 +66,10 @@ the current grammar definition is:
                   | call
                   ;
 
-  call            → primary ( "(" arguments? ")" )* ;
+  call            → primary ( "(" arguments? ")"
+                            | "." IDENTIFIER
+                            )* ;
+
   arguments       → expression ( "," expression )* ;
 
   primary         → "true" | "false" | "nil"

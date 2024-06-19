@@ -1,6 +1,7 @@
 package farsyte.lox;
 
 class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
+
     String print(Expr expr) {
 	return expr.accept(this);
     }
@@ -9,23 +10,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	return stmt.accept(this);
     }
 
-    @Override
-    public String visitExpressionStmt(Stmt.Expression stmt) {
-	return format("discard",
-		      stmt.expression);
-    }
-
-    @Override
-    public String visitPrintStmt(Stmt.Print stmt) {
-	return format("print",
-		      stmt.expression);
-    }
-
-    @Override
-    public String visitVarStmt(Stmt.Var stmt) {
-	return format("var " + stmt.name.lexeme,
-		      stmt.initializer);
-    }
+    ////////////////////////////////////////////////////////////////////////
 
     @Override
     public String visitBlockStmt(Stmt.Block blk) {
@@ -39,12 +24,51 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitBreakStmt(Stmt.Break stmt) {
+	Expr expr = null;
+	return format("break", expr);
+    }
+
+    @Override
+    public String visitClassStmt(Stmt.Class stmt) {
+	throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitExpressionStmt(Stmt.Expression stmt) {
+	return format("discard",
+		      stmt.expression);
+    }
+
+    @Override
+    public String visitFunctionStmt(Stmt.Function stmt) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public String visitIfStmt(Stmt.If stmt) {
 	StringBuilder builder = new StringBuilder();
 	builder.append(format("IF", stmt.condition));
 	builder.append(format("THEN", stmt.thenBranch));
 	builder.append(format("ELSE", stmt.elseBranch));
 	return builder.toString();
+    }
+
+    @Override
+    public String visitPrintStmt(Stmt.Print stmt) {
+	return format("print",
+		      stmt.expression);
+    }
+
+    @Override
+    public String visitReturnStmt(Stmt.Return stmt) {
+	throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitVarStmt(Stmt.Var stmt) {
+	return format("var " + stmt.name.lexeme,
+		      stmt.initializer);
     }
 
     @Override
@@ -56,25 +80,25 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
-    public String visitBreakStmt(Stmt.Break stmt) {
-	Expr expr = null;
-	return format("break", expr);
-    }
-
-    @Override
-    public String visitFunctionStmt(Stmt.Function stmt) {
-	throw new NotImplementedException();
-    }
-
-    @Override
-    public String visitReturnStmt(Stmt.Return stmt) {
-	throw new NotImplementedException();
+    public String visitAssignExpr(Expr.Assign expr) {
+	return format("assign " + expr.name.lexeme,
+		      expr.value);
     }
 
     @Override
     public String visitBinaryExpr(Expr.Binary expr) {
 	return format(expr.operator.lexeme,
 		      expr.left, expr.right);
+    }
+
+    @Override
+    public String visitCallExpr(Expr.Call expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitGetExpr(Expr.Get expr) {
+	throw new NotImplementedException();
     }
 
     @Override
@@ -88,6 +112,22 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitLogicalExpr(Expr.Logical expr) {
+	return format(expr.operator.lexeme,
+		      expr.left, expr.right);
+    }
+
+    @Override
+    public String visitSetExpr(Expr.Set expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
+    public String visitThisExpr(Expr.This expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public String visitUnaryExpr(Expr.Unary expr) {
 	return format(expr.operator.lexeme,
 		      expr.right);
@@ -98,22 +138,7 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
 	return expr.name.lexeme;
     }
 
-    @Override
-    public String visitAssignExpr(Expr.Assign expr) {
-	return format("assign " + expr.name.lexeme,
-		      expr.value);
-    }
-
-    @Override
-    public String visitLogicalExpr(Expr.Logical expr) {
-	return format(expr.operator.lexeme,
-		      expr.left, expr.right);
-    }
-
-    @Override
-    public String visitCallExpr(Expr.Call expr) {
-	throw new NotImplementedException();
-    }
+    ////////////////////////////////////////////////////////////////////////
 
     protected String format(String name, Expr... exprs) {
 	StringBuilder builder = new StringBuilder();
