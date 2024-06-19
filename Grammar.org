@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §13.1 "Superclasses and Subclasses"
+As of §13.3.1 "Calling Superclass Methods -- Syntax"
 the current grammar definition is:
 
 #+begin_src text
@@ -76,5 +76,7 @@ the current grammar definition is:
                   | "(" expression ")"
                   | STRING
                   | NUMBER
+                  | "this"
+                  | "super" "." IDENTIFIER
                   ;
 #+end_src
