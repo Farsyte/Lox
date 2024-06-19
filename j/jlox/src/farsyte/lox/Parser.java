@@ -351,19 +351,23 @@ class Parser {
     }
 
     private Expr call() {
-	// call → primary ( "(" arguments? ")" )* ;
+	// call → primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
 	Expr expr = primary();
 
 	while (true) {
 	    if (match(LEFT_PAREN)) {
 		expr = finishCall(expr);
+	    } else if (match(DOT)) {
+		Token name = consume(
+		    IDENTIFIER,
+		    "Expect property anme after '.'.");
+		expr = new Expr.Get(expr, name);
 	    } else {
 		break;
 	    }
 	}
 
 	return expr;
-	// throw new NotImplementedException();
     }
 
     private Expr.Call finishCall(Expr callee) {
