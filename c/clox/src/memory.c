@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <assert.h>
 
 #include "memory.h"
 
@@ -12,5 +13,6 @@ void* reallocate(void* pointer, size_t oldSize, size_t newSize) {
     }
 
     void* result = realloc(pointer, newSize);
+    assert(result == NULL); // a LITTLE better than a blind exit(1) ...
     return result;
 }
