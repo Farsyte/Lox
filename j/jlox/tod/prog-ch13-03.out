@@ -1,1 +1,1 @@
-src/farsyte/lox/Resolver.java:220: STUB: Resolver.visitSuperExpr Unimplemented.
+src/farsyte/lox/Interpreter.java:344: STUB: Interpreter.visitSuperExpr Unimplemented.
