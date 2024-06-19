@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §12.2 "Class Declaration"
+As of §12.4 "Properties on Instances"
 the current grammar definition is:
 
 #+begin_src text
@@ -66,7 +66,10 @@ the current grammar definition is:
                   | call
                   ;
 
-  call            → primary ( "(" arguments? ")" )* ;
+  call            → primary ( "(" arguments? ")"
+                            | "." IDENTIFIER
+                            )* ;
+
   arguments       → expression ( "," expression )* ;
 
   primary         → "true" | "false" | "nil"
