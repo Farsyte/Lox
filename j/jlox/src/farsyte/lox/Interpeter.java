@@ -48,13 +48,66 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	}
     }
 
+    void executeBlock(
+	List<Stmt> statements, Environment environment) {
+
+	Environment previous = this.environment;
+	try {
+	    this.environment = environment;
+
+	    for (Stmt statement : statements) {
+		execute(statement);
+	    }
+	} finally {
+	    this.environment = previous;
+	}
+    }
+
     private void execute(Stmt stmt) {
 	stmt.accept(this);
+    }
+
+    ////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public Void visitBlockStmt(Stmt.Block blk) {
+	executeBlock(blk.statements, new Environment(environment));
+	return null;
+    }
+
+    @Override
+    public Void visitBreakStmt(Stmt.Break stmt) {
+	throw new LoxBreakException();
+    }
+
+    @Override
+    public Void visitClassStmt(Stmt.Class stmt) {
+	environment.define(stmt.name.lexeme, null);
+	LoxClass klass = new LoxClass(stmt.name.lexeme);
+	environment.assign(stmt.name, klass);
+	return null;
     }
 
     @Override
     public Void visitExpressionStmt(Stmt.Expression stmt) {
 	evaluate(stmt.expression);
+	return null;
+    }
+
+    @Override
+    public Void visitFunctionStmt(Stmt.Function stmt) {
+	LoxFunction function = new LoxFunction(stmt, environment);
+	environment.define(stmt.name.lexeme, function);
+	return null;
+    }
+
+    @Override
+    public Void visitIfStmt(Stmt.If stmt) {
+	if (isTruthy(evaluate(stmt.condition))) {
+	    execute(stmt.thenBranch);
+	} else if (stmt.elseBranch != null) {
+	    execute(stmt.elseBranch);
+	}
 	return null;
     }
 
@@ -66,6 +119,15 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
+    public Void visitReturnStmt(Stmt.Return stmt) {
+	Object value = null;
+	if (stmt.value != null) {
+	    value = evaluate(stmt.value);
+	}
+	throw new Return(value);
+    }
+
+    @Override
     public Void visitVarStmt(Stmt.Var stmt) {
 	Object value = null;
 
@@ -74,22 +136,6 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	}
 
 	environment.define(stmt.name.lexeme, value);
-	return null;
-    }
-
-    @Override
-    public Void visitBlockStmt(Stmt.Block blk) {
-	executeBlock(blk.statements, new Environment(environment));
-	return null;
-    }
-
-    @Override
-    public Void visitIfStmt(Stmt.If stmt) {
-	if (isTruthy(evaluate(stmt.condition))) {
-	    execute(stmt.thenBranch);
-	} else if (stmt.elseBranch != null) {
-	    execute(stmt.elseBranch);
-	}
 	return null;
     }
 
@@ -106,32 +152,16 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Void visitBreakStmt(Stmt.Break stmt) {
-	throw new LoxBreakException();
-    }
-
-    @Override
-    public Void visitFunctionStmt(Stmt.Function stmt) {
-	LoxFunction function = new LoxFunction(stmt, environment);
-	environment.define(stmt.name.lexeme, function);
-	return null;
-    }
-
-    @Override
-    public Void visitReturnStmt(Stmt.Return stmt) {
-	Object value = null;
-	if (stmt.value != null) {
-	    value = evaluate(stmt.value);
+    public Object visitAssignExpr(Expr.Assign expr) {
+	Object value = evaluate(expr.value);
+	Integer distance = locals.get(expr);
+	if (distance != null) {
+	    environment.assignAt(distance, expr.name, value);
+	} else {
+	    globals.assign(expr.name, value);
 	}
-	throw new Return(value);
-    }
 
-    @Override
-    public Void visitClassStmt(Stmt.Class stmt) {
-	environment.define(stmt.name.lexeme, null);
-	LoxClass klass = new LoxClass(stmt.name.lexeme);
-	environment.assign(stmt.name, klass);
-	return null;
+	return value;
     }
 
     @Override
@@ -217,63 +247,6 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Object visitGroupingExpr(Expr.Grouping expr) {
-	return evaluate(expr.expression);
-    }
-
-    @Override
-    public Object visitLiteralExpr(Expr.Literal expr) {
-	return expr.value;
-    }
-
-    @Override
-    public Object visitUnaryExpr(Expr.Unary expr) {
-	Object right = evaluate(expr.right);
-
-	switch (expr.operator.type) {
-	case BANG:
-	    return !isTruthy(right);
-	case MINUS:
-	    checkNumberOperand(expr.operator, right);
-	    return -(double)right;
-	}
-
-	// Unreachable.
-	throw new NotImplementedException(", unreachable at end.");
-    }
-
-    @Override
-    public Object visitVariableExpr(Expr.Variable expr) {
-	return lookUpVariable(expr.name, expr);
-    }
-
-    @Override
-    public Object visitAssignExpr(Expr.Assign expr) {
-	Object value = evaluate(expr.value);
-	Integer distance = locals.get(expr);
-	if (distance != null) {
-	    environment.assignAt(distance, expr.name, value);
-	} else {
-	    globals.assign(expr.name, value);
-	}
-
-	return value;
-    }
-
-    @Override
-    public Object visitLogicalExpr(Expr.Logical expr) {
-	Object left = evaluate(expr.left);
-
-	if (expr.operator.type == TokenType.OR) {
-	    if (isTruthy(left)) return left;
-	} else {
-	    if (!isTruthy(left)) return left;
-	}
-
-	return evaluate(expr.right);
-    }
-
-    @Override
     public Object visitCallExpr(Expr.Call expr) {
 	Object callee = evaluate(expr.callee);
 
@@ -308,20 +281,51 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	    expr.name, "Only instances have properties.");
     }
 
-    void executeBlock(
-	List<Stmt> statements, Environment environment) {
-
-	Environment previous = this.environment;
-	try {
-	    this.environment = environment;
-
-	    for (Stmt statement : statements) {
-		execute(statement);
-	    }
-	} finally {
-	    this.environment = previous;
-	}
+    @Override
+    public Object visitGroupingExpr(Expr.Grouping expr) {
+	return evaluate(expr.expression);
     }
+
+    @Override
+    public Object visitLiteralExpr(Expr.Literal expr) {
+	return expr.value;
+    }
+
+    @Override
+    public Object visitLogicalExpr(Expr.Logical expr) {
+	Object left = evaluate(expr.left);
+
+	if (expr.operator.type == TokenType.OR) {
+	    if (isTruthy(left)) return left;
+	} else {
+	    if (!isTruthy(left)) return left;
+	}
+
+	return evaluate(expr.right);
+    }
+
+    @Override
+    public Object visitUnaryExpr(Expr.Unary expr) {
+	Object right = evaluate(expr.right);
+
+	switch (expr.operator.type) {
+	case BANG:
+	    return !isTruthy(right);
+	case MINUS:
+	    checkNumberOperand(expr.operator, right);
+	    return -(double)right;
+	}
+
+	// Unreachable.
+	throw new NotImplementedException(", unreachable at end.");
+    }
+
+    @Override
+    public Object visitVariableExpr(Expr.Variable expr) {
+	return lookUpVariable(expr.name, expr);
+    }
+
+    ////////////////////////////////////////////////////////////////////////
 
     private Object evaluate(Expr expr) {
 	return expr.accept(this);

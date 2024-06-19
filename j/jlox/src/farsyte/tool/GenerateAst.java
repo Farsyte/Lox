@@ -15,28 +15,32 @@ public class GenerateAst {
 
 	defineAst
 	    (outputDir, "Expr", Arrays.asList
-	     ("Binary : Expr left, Token operator, Expr right",
-	      "Grouping : Expr expression",
-	      "Literal : Object value",
-	      "Unary : Token operator, Expr right",
-	      "Variable : Token name",
-	      "Assign : Token name, Expr value",
-	      "Logical : Expr left, Token operator, Expr right",
-	      "Call : Expr callee, Token paren, List<Expr> arguments",
-	      "Get : Expr object, Token name"));
+	     (
+		 "Assign : Token name, Expr value",
+		 "Binary : Expr left, Token operator, Expr right",
+		 "Call : Expr callee, Token paren, List<Expr> arguments",
+		 "Get : Expr object, Token name",
+		 "Grouping : Expr expression",
+		 "Literal : Object value",
+		 "Logical : Expr left, Token operator, Expr right",
+		 "Unary : Token operator, Expr right",
+		 "Variable : Token name",
+		 ""));
 
 	defineAst
 	    (outputDir, "Stmt", Arrays.asList
-	     ("Expression : Expr expression",
-	      "Print : Expr expression",
-	      "Var : Token name, Expr initializer",
-	      "Block : List<Stmt> statements",
-	      "If : Expr condition, Stmt thenBranch, Stmt elseBranch",
-	      "While : Expr condition, Stmt body",
-	      "Function : Token name, List<Token> params, List<Stmt> body",
-	      "Return : Token keyword, Expr value",
-	      "Class : Token name, List<Stmt.Function> methods",
-	      "Break : "));
+	     (
+		 "Block : List<Stmt> statements",
+		 "Break : ",
+		 "Class : Token name, List<Stmt.Function> methods",
+		 "Expression : Expr expression",
+		 "Function : Token name, List<Token> params, List<Stmt> body",
+		 "If : Expr condition, Stmt thenBranch, Stmt elseBranch",
+		 "Print : Expr expression",
+		 "Return : Token keyword, Expr value",
+		 "Var : Token name, Expr initializer",
+		 "While : Expr condition, Stmt body",
+		 ""));
     }
 
     private static void defineAst(
@@ -59,6 +63,7 @@ public class GenerateAst {
 
 	// The AST classes.
 	for (String type : types) {
+	    if (type == "") continue;
 	    String className = type.split(":")[0].trim();
 	    String fields = type.split(":")[1].trim();
 	    defineType(writer, baseName, className, fields);
@@ -78,6 +83,7 @@ public class GenerateAst {
 	writer.println("    interface Visitor<R> {");
 
 	for (String type : types) {
+	    if (type == "") continue;
 	    String typeName = type.split(":")[0].trim();
 	    writer.println("        R visit" + typeName + baseName + "(" +
 			   typeName + " " + baseName.toLowerCase() + ");");
