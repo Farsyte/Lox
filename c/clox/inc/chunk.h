@@ -15,7 +15,7 @@ typedef struct {
     int capacity;
     Byte* code;
     int* lines;
-    ValueArray constants;
+    ValueArray constants[1];
 } Chunk;
 
 void initChunk(Chunk* chunk);

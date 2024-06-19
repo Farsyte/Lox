@@ -10,16 +10,18 @@ int main(int argc, char **argv)
 
     initVM();
 
-    Chunk chunk;
-    initChunk(&chunk);
+    Chunk chunk[1];
+    initChunk(chunk);
 
-    int constant = addConstant(&chunk, 1.2);
-    writeChunk(&chunk, OP_CONSTANT, 123);
-    writeChunk(&chunk, constant, 123);
+    int constant = addConstant(chunk, 1.2);
+    writeChunk(chunk, OP_CONSTANT, 123);
+    writeChunk(chunk, constant, 123);
 
-    writeChunk(&chunk, OP_RETURN, 123);
-    disassembleChunk(&chunk, "test chunk");
-    freeChunk(&chunk);
+    writeChunk(chunk, OP_RETURN, 123);
+    disassembleChunk(chunk, "test chunk");
+    interpret(chunk);
+
+    freeChunk(chunk);
 
     freeVM();
     return 0;
