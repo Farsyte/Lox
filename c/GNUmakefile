@@ -18,9 +18,17 @@ OBJS            := $(SRCS:$(SRCD)%.c=$(OBJD)%.o)
 DEPS            := $(SRCS:$(SRCD)%.c=$(DEPD)%.d)
 EXES            := $(MAIN:%=$(BIND)%)
 
+ifeq ($(C_DBG_OPT),)
+C_DBG_OPT	:= -g -O2
+endif
+
+ifeq ($(C_WARNINGS),)
+C_WARNINGS	:= -W -Wall -Wextra
+endif
+
 # Pick compiler and set up command line options
 CC              := gcc
-CFLAGS          := -g -O2 -W -Wall -Wextra -I$(INCD)
+CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) -I$(INCD)
 
 # The default build is "make all"
 default::       all
