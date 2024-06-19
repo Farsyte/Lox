@@ -168,7 +168,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitSetExpr(Expr.Set expr) {
-	throw new NotImplementedException();
+	resolve(expr.value);
+	resolve(expr.object);
+	return null;
     }
 
     @Override
