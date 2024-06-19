@@ -299,7 +299,13 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Object visitGetExpr(Expr.Get expr) {
-	throw new NotImplementedException();
+	Object object = evaluate(expr.object);
+	if (object instanceof LoxInstance) {
+	    return ((LoxInstance) object).get(expr.name);
+	}
+
+	throw new RuntimeError(
+	    expr.name, "Only instances have properties.");
     }
 
     void executeBlock(
