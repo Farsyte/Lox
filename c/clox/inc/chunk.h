@@ -7,6 +7,7 @@ typedef uint8_t Byte;
 
 typedef enum {
     OP_CONSTANT,
+    OP_NEGATE,
     OP_RETURN,
 } OpCode;
 
