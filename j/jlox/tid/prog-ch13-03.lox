@@ -4,7 +4,7 @@ class A {
     }
 }
 
-class B {
+class B < A {
     method() {
 	print "B method";
     }
