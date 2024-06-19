@@ -1,0 +1,67 @@
+* Quick Benchmark: "fib"
+
+** System Specification
+
+- CPU: AMD Ryzen 9 5950X 16-Core Processor
+- MEM: 64 GiB: 4x 16 GiB sticks at 2667 Mt/s
+
+** Using j/jlox
+
+#+begin_src lox
+  fun fib(n) {
+      if (n < 2) return n;
+      return fib(n - 1) + fib(n - 2);
+  }
+
+  var before = clock();
+  print fib(40);
+  var after = clock();
+  print after - before;
+#+end_src
+
+The above code (in "fib.lox" at the top of the project) reports
+elapsed time of around 28 seconds on my desktop.
+
+** using c/fib
+
+Stripped of headers and other cruft,
+
+#+begin_src c
+  #include <stdio.h>
+  #include <time.h>
+
+  double fib(int n) {
+      if (n < 2) return n;
+      return fib(n - 1) + fib(n - 2);
+  }
+
+  int main(int argc, char **argv)
+  {
+      double spc = 1000.0 / (double)CLOCKS_PER_SEC;
+      for (unsigned i = 0; i <= 64; ++i) {
+          clock_t t0 = clock();
+          double res = fib(40);
+          clock_t tF = clock();
+          double dt = (tF - t0) * spc;
+          if (0 == (i & (i-1)))
+              printf("%3d.\t%e\t%.1f ms\n",
+                     i, res, dt);
+      }
+
+      return 0;
+  }
+#+end_src
+
+When compiled "-O3" I see reports of 4.0 to 4.5 ms. Times may be
+slower if running on "cold" cores; runtimes are not long enough for
+the system to ramp up clock speeds.
+
+** Comparison
+
+Even if we generously use elapsed times of 5.0 milliseconds for the
+compiled version and 25.0 seconds for interpreted, we still get the
+compiled code running 5000x as fast.
+
+As original author notes, "you can't polish an AMC Gremlin into an
+SR-71 Blackbrird" ;)
+
