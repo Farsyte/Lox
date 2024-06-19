@@ -118,6 +118,11 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitSetExpr(Expr.Set expr) {
+	throw new NotImplementedException();
+    }
+
+    @Override
     public String visitUnaryExpr(Expr.Unary expr) {
 	return format(expr.operator.lexeme,
 		      expr.right);
