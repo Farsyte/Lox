@@ -178,7 +178,8 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitGetExpr(Expr.Get expr) {
-	throw new NotImplementedException();
+	resolve(expr.object);
+	return null;
     }
 
     private void beginScope() {
