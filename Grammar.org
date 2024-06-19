@@ -1,6 +1,6 @@
 * Cumulative Grammar Definitions
 
-As of §12.4.2 "Set expressions"
+As of §13.3.1 "Calling Superclass Methods -- Syntax"
 the current grammar definition is:
 
 #+begin_src text
@@ -22,7 +22,7 @@ the current grammar definition is:
                   | returnStmt
                   ;
 
-  classDecl       → "class" IDENTIFIER "{" function* "}" ;
+  classDecl       → "class" IDENTIFIER ( "<" IDENTIFIER )? "{" function* "}" ;
   funDecl         → "fun" function ;
   function        → IDENTIFIER "(" parameters? ")" block ;
   parameters      → IDENTIFIER ( "," IDENTIFIER )* ;
@@ -76,5 +76,7 @@ the current grammar definition is:
                   | "(" expression ")"
                   | STRING
                   | NUMBER
+                  | "this"
+                  | "super" "." IDENTIFIER
                   ;
 #+end_src

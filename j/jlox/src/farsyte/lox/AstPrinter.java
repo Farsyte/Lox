@@ -123,6 +123,12 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
     }
 
     @Override
+    public String visitSuperExpr(Expr.Super expr) {
+	Expr enil = null;
+	return format("super " + expr.method.lexeme, enil);
+    }
+
+    @Override
     public String visitThisExpr(Expr.This expr) {
 	throw new NotImplementedException();
     }
