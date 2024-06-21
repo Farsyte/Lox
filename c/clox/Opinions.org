@@ -191,3 +191,36 @@ a manual process.
 
 Following that, the ~include <foo.h>~ lines including system headers
 that are required by the body of the source file.
+
+** POST: Power-On Self Test
+
+This may be familiar as a step in booting a computer, where the
+bootstrap process validates the hardware is working before trying
+to run an operating system.
+
+As a general concept but rarely seen today, this is a collection of
+procedures that a software system runs before doing anything else to
+validate internal behaviors. I have found these useful for detecting
+where "upgrades" to a library cause it to now violate the assumptions
+baked into my code.
+
+Because these run every time the program starts, their cost must
+be kept small: they must run in very little time relative to a typical
+run of the program, and must not inflate any other resource costs
+such as memory footprint.
+
+** BIST: Built-In Self Test
+
+This is an extension of POST: a collection of tests that can be
+run by the program as deployed. This can be used as part of the
+test suite run in a branch before it is merged to trunk, and can
+be used in the field (so to speak) if there is concern that some
+of the conditions tested by BIST may not hold in that environment.
+
+This is more interesting when externalities can influence the
+correctness of the program. Notably, use of external libraries
+is just one of these issues.
+
+While I do not anticipate using such libraries, this is still a
+good framework to use for basic testing of internals.
+
