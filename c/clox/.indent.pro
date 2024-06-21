@@ -1,0 +1,4 @@
+--braces-after-func-def-line
+--break-function-decl-args
+--indent-level 4
+--no-tabs

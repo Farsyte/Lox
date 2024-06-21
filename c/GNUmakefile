@@ -23,7 +23,7 @@ C_DBG_OPT	:= -g -O2
 endif
 
 ifeq ($(C_WARNINGS),)
-C_WARNINGS	:= -W -Wall -Wextra
+C_WARNINGS	:= -W -Wall -Wextra -Werror
 endif
 
 # Pick compiler and set up command line options

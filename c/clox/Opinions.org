@@ -10,6 +10,31 @@ parts.
     *(In My Honest Opinion). My opinions are not Humble.*
 
 
+** Warnings are Errors
+
+Compiler writers do not go to the extra effort to detect and report
+not-quite-right things in your code for their amusement. Well, maybe
+they do, but not *ONLY* for that reason.
+
+I treat warnings as errors in any nontrivial project. From here on, if
+the compiler warns me about something, I need to be intentional about
+addressing that warning.
+
+*** Unused Parameters
+
+Add statements at the TOP of the function casting the parameter to
+void, with an appropraite comment. In some cases, mentioning why the
+parameter is unused might be appropriate; in others, a TODO with what
+we are going to do that will use it is best.
+
+This might be preseint inside ~main()~ initially:
+
+#+begin_src c
+      (void) argc;                // TODO: argument parsing
+      (void) argv;                // TODO: argument parsing
+#+end_src
+
+
 ** Code Formatting
 
 Much is sacrificed when formatting code to be presented in printed
@@ -36,3 +61,104 @@ it does require some tweaking.
 As C sources are added to this directory, I will extend .indent.pro to
 either commit to the style of the text from the book, or commit to an
 intentional change to that style.
+
+*** Tabs: never use spaces, always use tabs.
+
+Different engineers in different environments will see TAB characters
+expanded to different positions. As a result, text using TAB that
+looks right for one viewer will be different and sometimes confusingly
+wrong for other viewers.
+
+This project does not use tabs.
+
+*** Indentation: 4 spaces
+
+Engineers that habitually work in more deeply nested code will be more
+motivated to have smaller amounts of indent per nesting than
+otherwise, and over time, the customary indent width has tended to
+vary with the coding practices.
+
+I prefer four spaces, as it allows me to visually pick out code at the
+same indentation level across dozens of lines on my screen. Wider
+indents, for me, add little value and force me to use wider windows.
+
+*** Declarations: ~char* foo~ vs ~char *foo~
+
+I have strong opinions here, and so does ~indent~ ...
+
+Writing ~char* foo~ reinforces the incorrect notion that the asterisk is
+coupled to the type, not the variable, in the declaration. This is a
+very bad idea to encourage. Consider ~char* foo, bar~ where the idea
+that the star groups with ~char~ would lead one to the wrong conclusion
+about the type of ~bar~ ... better to just put the star where it belongs.
+
+Besides, if ~Type* foo, bar~ built two pointers to type, then one might
+reasonably ask why ~Type[5] foo, bar~ is not a thing. It is a thing, and
+it is a good thing, but it isn't C. Or at least it's not C99, and if it
+has been added to C recently, *DO NOT TELL ME, I DO NOT WANT TO KNOW.*
+
+My formatting pass will use ~char *foo~ instead.
+
+*** Function Definitions
+
+**** Break the line before the function name.
+
+This makes it significantly easier to find the definition
+of a function with generic text tools. It also makes the
+visual layout of the function consistent even when the
+return type can be very short or very involved.
+
+**** Break the line before parameter declarations
+
+This is an ancient habit, which I now use as a way
+to make it easy and consistent to add comments about
+individual parameters.
+
+**** Break the line before the open-brace.
+
+Similar reasoning as above: it makes it easier to find
+the start of the statement block for generic text tools,
+and keeps things consistent betwen the simplest and the
+most complicated function definitions.
+
+** Unused Parameters
+
+Where a function must take a parameter due to an externally imposed
+function signature, but it does not use it, the compiler will be
+helpful and give us a warning.
+
+** Header Protection: #pragma once
+
+Author and I concur on the need to protect the body of header files from
+being included multiple times in a compilation unit, and author uses a
+mature form of protection via the preprocessor:
+
+#+begin_src c
+  #ifndef clox_common_h
+  #define clox_common_h
+
+  // ... stuff that is only processed once per compilaition unit
+
+  #endif
+#+end_src
+
+This makes ~#include "common.h"~ idempotent -- including it multiple
+times has exactly the same effect as including it only once. This is an
+important property that headers need to have, with a very small number
+of very intentional exceptions.
+
+This is not without risk. The macro name used to protect the header must
+not conflict with guards in other headers, or identifiers used in any
+source file in the project, or in any system header that might be
+included. This falls under the "namespace pollution" problem endemic to
+the global namespace in most if not all large C projects.
+
+The better alternative ~#pragma once~ appeared about twenty years ago
+and spread across popular compilers quickly (as quickly as new features
+can, so years but not many). Currently, it is vanishingly unlikely that
+you will be using a compiler that lacks it.
+
+I will be reflexively using ~#pragma once~ in all my headers. Exceptions
+will be announced loudly and intentionally, because that strays over
+into the kind of preprocessor work that needs extra care.
+
