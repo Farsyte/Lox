@@ -1,5 +1,7 @@
 #pragma once
 
+#include "assert.h"             /* for build_msg */
+
 #define BIST_PASS	0
 #define BIST_FAIL	1
 

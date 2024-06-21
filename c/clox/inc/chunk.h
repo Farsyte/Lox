@@ -1,9 +1,5 @@
 #pragma once
 
-#include "common.h"
-
-typedef uint8_t Code;
-
 typedef enum
 {
     OP_RETURN,
