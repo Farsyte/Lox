@@ -57,8 +57,8 @@ clean::
 
 $(JCLS) &: $(JSRC)
 	$P '  %-14s %s\n' "JAVAC" "$(PACKAGE).*"
-	$C $(JC) $(JCFLAGS) $(JSRC)
-	$I touch $(JCLS)
+	$Q $(JC) $(JCFLAGS) $(JSRC)
+	$C touch $(JCLS)
 
 # If the caller sets MAIN=Cls, then add ruiles to
 # run the main function from the $(PTOP).$(PACKAGE).$(MAIN) class.
@@ -92,11 +92,11 @@ endif
 
 run:: $(JCLS)
 	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)"
-	$C $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
+	$Q $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 irun:: $(JCLS)
 	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)"
-	$I $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
+	$Q $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 .PHONY: run
 
