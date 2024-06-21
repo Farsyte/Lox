@@ -130,6 +130,13 @@ of horizontal space for very little value.
 
 For now, using --dont-line-up-parentheses ...
 
+*** Braces and "if" statements
+
+I am willing to sacrifice a line for the opening brace of
+the function body, but not for every "if" statement. In
+the same vein, "else" needs to be pulled up onto the same
+line as the closing "}" if there was one.
+
 ** Unused Parameters
 
 Where a function must take a parameter due to an externally imposed

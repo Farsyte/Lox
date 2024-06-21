@@ -6,7 +6,7 @@ int
 post_all (
     )
 {
-    int exit_status = 0;
+    int exit_status = POST_PASS;
     exit_status |= post_chunk ();
     return exit_status;
 }

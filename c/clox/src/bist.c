@@ -3,43 +3,38 @@
 #include "assert.h"
 #include "chunk.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>              /* fprintf, stderr */
+#include <string.h>             /* strcmp */
 
 int
 bist_all (
     int argc,
     const char *argv[])
 {
-    int exit_code = 0;
+    int exit_code = BIST_PASS;
 
-    if (argc < 2)
-      {
-          // add tests here
+    if (argc < 3) {
 
-          exit_code |= bist_chunk ();
-      }
-    else
-      {
+        exit_code |= bist_chunk ();
 
-          (void) argv;          // TODO parse parameters
+        // add tests here
 
-          for (int argi = 2; argi < argc; ++argi)
-            {
-                const char *opt = argv[argi];
+    } else {
 
-                if (!strcmp (opt, "chunk"))
-                  {
-                      exit_code |= bist_chunk ();
-                  }
+        for (int argi = 2; argi < argc; ++argi) {
+            const char *opt = argv[argi];
 
-                // add calls to bist_foo here
+            if (!strcmp (opt, "chunk"))
+                exit_code |= bist_chunk ();
 
+            // add calls to bist_foo here
+
+            else {
                 fprintf (stderr, "BIST: unrecognized option '%s'\n", opt);
-                exit_code = 1;
+                exit_code = BIST_FAIL;
             }
+        }
 
-      }
+    }
     return (exit_code);
 }
