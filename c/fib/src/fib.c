@@ -15,6 +15,9 @@ double fib(int n) {
 
 int main(int argc, char **argv)
 {
+    (void)argc;			/* intentionally unused */
+    (void)argv;			/* intentionally unused */
+
     double spc = 1000.0 / (double)CLOCKS_PER_SEC;
     for (unsigned i = 0; i <= 64; ++i) {
 	clock_t t0 = clock();
