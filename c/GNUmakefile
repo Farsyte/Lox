@@ -27,8 +27,14 @@ C_WARNINGS	:= -W -Wall -Wextra
 endif
 
 # Pick compiler and set up command line options
+ifeq ($(CC),)
 CC              := gcc
+endif
+
+ifeq ($(CFLAGS),)
 CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) -I$(INCD)
+endif
+
 
 # The default build is "make all"
 default::       all
@@ -41,14 +47,18 @@ all::           $(EXES)
 # set of source and header dependencies in a .d file. That way,
 # if a source or header change is made, all .o files that used
 # it in their previous compile will be recompiled.
+#
+# Side note: if $(DEPD)%.d had dependencies for %.o, then printing $^
+# will print the headers it depends on. This would get cumbersome, so
+# flip to just printing $* (the basename of the file).
 
 $(OBJD)%.o:     $(SRCD)%.c
 	$C [ -d $(OBJD) ] || mkdir -p $(OBJD)
 	$C [ -d $(DEPD) ] || mkdir -p $(DEPD)
-	$P '  %-6s %s\n' "CC" "$^"
+	$P '  %-6s %s\n' "CC" "$*"
 	$Q $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) $< -MM | \
 	 sed '1s|^$*\.o: |$@: |' > ${DEPD}$*.d
-	$C $(COMPILE.c) $(OUTPUT_OPTION) $<
+	$Q $(COMPILE.c) $(OUTPUT_OPTION) $<
 
 # This includes all of the dependencies we have recorded.
 # The trailing /dev/null is needed in case there are no .d files.
@@ -84,7 +94,7 @@ ifneq ($(MAIN),)
 $(BIND)$(MAIN): $(OBJS)
 	$C [ -d $(BIND) ] || mkdir -p $(BIND)
 	$P '  %-6s %s\n' "LD" "$@"
-	$C $(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+	$Q $(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
 # If the caller sets ARGS, it has arguments to hand to $(MAIN)
 # If the caller sets FROM, redirect the input from that file.
