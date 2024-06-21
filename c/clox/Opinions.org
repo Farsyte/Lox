@@ -1,0 +1,38 @@
+* I have opinions.
+
+As I read through the next chapter in preparation to start blasting code
+into the project, I keep disagreeing with coding decisions being made.
+However, in the spirit of how Section II went, I will follow through
+with implementing the code from the book before I start refactoring big
+parts.
+
+    *Every statement in this file should be prefixed with IMHO*
+    *(In My Honest Opinion). My opinions are not Humble.*
+
+
+** Code Formatting
+
+Much is sacrificed when formatting code to be presented in printed
+media, whether in a book or in a paper. I do not feel at all bad about
+reversing this process, using "indent" to apply a style with different
+and usually more whitespace.
+
+However, I also have some strong opinions about code style, particularly
+when it comes to using style elements that misrepresent the semantics of
+the code, and wil ruthlessly call out and repair that code.
+
+The file ~c/clox/.indent.pro~ captures the style rules that will be
+applied to the source code project. It will start out with a few options
+to set up the "additional whitespace" that I would normally sacrifice
+when publishing code in a paper (I've never done a book but I imagine
+the constraints are similar), but this file will also accumulate options
+to lock down other style points.
+
+Note that "GNU indent 2.2.12" makes specific choices about each style
+option whether it is specified in this file or not, and defaults to the
+common style used in the GNU projects. This is a good baseline, even if
+it does require some tweaking.
+
+As C sources are added to this directory, I will extend .indent.pro to
+either commit to the style of the text from the book, or commit to an
+intentional change to that style.
