@@ -6,6 +6,8 @@ top=$(dirname "$dp")
 td="$top/tmp"
 tmp="$td/.hfix"
 
+export LC_COLLATE="C"
+
 for h in "$@"
 do
     [ -r "$h" ] || continue
