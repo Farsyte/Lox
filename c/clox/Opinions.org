@@ -166,3 +166,28 @@ into the kind of preprocessor work that needs extra care.
 
 When a commit adds a header file, it must assure that the header file
 is used during compilation.
+
+** Header File Order
+
+Each header is expected to include all headers it requires in order to
+compile properly.
+
+The first line of every ~foo.c~ should be ~#include "foo.h"~ unless
+for some reason there is no corresponding header (main.c is a notable
+exception to the generral "C files have H files" observation).
+
+The first line of every ~foo.h~ file should be ~pragma once~ as noted
+above. Repeating it here for emphasis. Generally H files have C files,
+and if an H file does not include something it needs, that is where we
+will see the compile error.
+
+Following that, the ~#include "bar.h"~ lines for all of the headers
+that the C or H file requires. Some effort should be made to remove
+headers that are not directly used by the source file, but it is still
+good practice to include H files the source file needs, even if they
+are indirectly included by other H files (whew). This means the whole
+mess of assuring all the H files are listed but no extra ones are, is
+a manual process.
+
+Following that, the ~include <foo.h>~ lines including system headers
+that are required by the body of the source file.

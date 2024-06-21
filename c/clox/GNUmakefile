@@ -25,3 +25,11 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 indent::
 	$P '  %-14s %s\n' "INDENT" "$(SRCD)*.c $(INCD)*.h"
 	$Q indent $(SRCD)*.c $(INCD)*.h
+
+format::
+	$P '  %s\n' "FIX HEADERS in C files"
+	$C ${BIND}fix-c-includes.sh */*.c
+	$P '  %s\n' "FIX HEADERS in H files"
+	$C ${BIND}fix-h-includes.sh */*.h
+	$P '  %s\n' "INDENT C and H files"
+	$C ${BIND}indent.sh */*.c */*.h
