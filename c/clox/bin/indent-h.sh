@@ -17,20 +17,22 @@ do
     o="$tmp.$b.c"
 
     [ -d "$td" ] || mkdir -p "$td"
+
     (
-        echo '#pragma once' > $o
+        echo '#pragma once'
         echo
         grep '#include "' < $h | sort
         echo
         grep '#include <' < $h | sort
         echo
         grep -v '#pragma once' < $h | grep -v '#include'
-    ) | cat -s >> $o
+    ) | cat -s | indent -st >> $o
 
     if cmp --silent $h $o
     then
         rm -f "$o"
     else
+        printf '  %-14s %s\n' "INDENT" "$h"
         mv "$h" "$h"~
         mv "$o" "$h"
     fi

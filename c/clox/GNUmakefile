@@ -35,9 +35,5 @@ indent::
 	$Q indent $(SRCD)*.c $(INCD)*.h
 
 format::	$(EXES)
-	$P '  %s\n' "FIX HEADERS in C files"
-	$C ${BIND}fix-c-includes.sh */*.c
-	$P '  %s\n' "FIX HEADERS in H files"
-	$C ${BIND}fix-h-includes.sh */*.h
-	$P '  %s\n' "INDENT C and H files"
-	$C ${BIND}indent.sh */*.c */*.h
+	$C ${BIND}indent-c.sh $(SRCD)*.c
+	$C ${BIND}indent-h.sh $(INCD)*.h

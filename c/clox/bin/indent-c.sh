@@ -18,6 +18,7 @@ do
 
     [ -d "$td" ] || mkdir -p "$td"
     (
+        echo
         (
             cd "$top"
             find inc -iname "$b.h" -print |
@@ -28,15 +29,16 @@ do
             echo
             grep '#include <' < $c | sort
             echo
-        ) | uniq.awk
+        ) | awk -f "$top/bin/uniq.awk"
         echo
         grep -v '#include' < $c
-    ) | cat -s > $o
+    ) | cat -s | sed '1d' | indent -st > $o
 
     if cmp --silent $c $o
     then
         rm -f "$o"
     else
+        printf '  %-14s %s\n' "INDENT" "$c"
         mv "$c" "$c"~
         mv "$o" "$c"
     fi
