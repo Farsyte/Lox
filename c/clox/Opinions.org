@@ -162,3 +162,7 @@ I will be reflexively using ~#pragma once~ in all my headers. Exceptions
 will be announced loudly and intentionally, because that strays over
 into the kind of preprocessor work that needs extra care.
 
+** Assure new headers are compiled.
+
+When a commit adds a header file, it must assure that the header file
+is used during compilation.
