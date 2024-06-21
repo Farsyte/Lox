@@ -10,9 +10,17 @@ MAIN            := clox
 
 CC		:= c99
 
+# NOTE: this is GCC-specific.
+COPTS		:= -fshort-enums
+
 # Inherit recurive build behaviors from parent
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
+# tests: run power-on and built-in self tests.
+
+tests::		$(BIND)$(MAIN)
+	$P '  %-14s\n' "POST and BIST"
+	$C $(BIND)$(MAIN) post
 
 # indent: process all source files with indent.
 #
@@ -26,7 +34,7 @@ indent::
 	$P '  %-14s %s\n' "INDENT" "$(SRCD)*.c $(INCD)*.h"
 	$Q indent $(SRCD)*.c $(INCD)*.h
 
-format::
+format::	$(EXES)
 	$P '  %s\n' "FIX HEADERS in C files"
 	$C ${BIND}fix-c-includes.sh */*.c
 	$P '  %s\n' "FIX HEADERS in H files"

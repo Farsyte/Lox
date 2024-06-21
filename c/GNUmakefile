@@ -32,7 +32,7 @@ CC              := gcc
 endif
 
 ifeq ($(CFLAGS),)
-CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) -I$(INCD)
+CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) $(COPTS) -I$(INCD)
 endif
 
 

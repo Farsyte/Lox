@@ -2,3 +2,5 @@
 --break-function-decl-args
 --indent-level 4
 --no-tabs
+--honour-newlines
+--dont-line-up-parentheses

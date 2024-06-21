@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int
 bist_all (
@@ -17,6 +18,7 @@ bist_all (
       {
           // add tests here
 
+          exit_code |= bist_chunk ();
       }
     else
       {
@@ -26,6 +28,11 @@ bist_all (
           for (int argi = 2; argi < argc; ++argi)
             {
                 const char *opt = argv[argi];
+
+                if (!strcmp (opt, "chunk"))
+                  {
+                      exit_code |= bist_chunk ();
+                  }
 
                 // add calls to bist_foo here
 

@@ -121,6 +121,15 @@ the start of the statement block for generic text tools,
 and keeps things consistent betwen the simplest and the
 most complicated function definitions.
 
+*** Alignment of stuff inside parentheses
+
+I have a number of places where I call a function, and the
+parameters land on multiple lines. Aligning the parameters
+under and to the right of the open paren sacrifices a lot
+of horizontal space for very little value.
+
+For now, using --dont-line-up-parentheses ...
+
 ** Unused Parameters
 
 Where a function must take a parameter due to an externally imposed
