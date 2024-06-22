@@ -1,6 +1,7 @@
 #include "assert.h"
 #include "bist.h"
 #include "chunk.h"
+#include "chunk_debug.h"
 
 #include <stdio.h>
 
@@ -92,6 +93,8 @@ bist_chunk_opcodes (
         "after writeChunk, code pointer must not be NULL.");
     assert (OP_RETURN == c->code[0],
         "after writeChunk, OP_RETURN must be in place.");
+
+    disassembleChunk (c, "test chunk");
 
     freeChunk (c);
     assert (0 == c->count, "after freeChunk, count must be zero.");
