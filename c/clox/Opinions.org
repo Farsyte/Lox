@@ -258,3 +258,24 @@ Files like "debug.h" and "debug.c" can end up growing without bound
 while potentially coupling independent modules. I placed the initial
 debug support for chunk in "chunk_debug.h" and "chunk_debug.c" ...
 
+** Ampersand Reduction Act
+
+I dislike APIs that look like this:
+
+#+begin_src c
+  Something thing;
+  initSomething(&thing);
+  writeSomething(&thing, zot);
+  freeSomething(&thing);
+#+end_src
+
+Some code has a ~SomeThing~ and some has a ~SomeThing *~ when by
+using a simple trick we can have something pointer-like everywhere.
+
+#+begin_src c
+  Something thing[1];
+  initSomething(thing);
+  writeSomething(thing, zot);
+  freeSomething(thing);
+#+end_src
+
