@@ -1,14 +1,9 @@
+#include "assert.h"
 #include "bist.h"
 #include "chunk.h"
 
-int
+void
 bist_chunk (
     )
 {
-    int exit_code = BIST_PASS;
-
-    BIST_CHECK (sizeof (Chunk) <= 8,
-        "Chunk objects are larger than expected");
-
-    return exit_code;
 }

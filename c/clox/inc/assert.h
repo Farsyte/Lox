@@ -1,10 +1,12 @@
 #pragma once
 
+#include <stdlib.h>             /* for abort() */
+
 #define assert(cond, msg)			\
     do {					\
 	if (cond) break;			\
 	build_msg(				\
-	    "Assert Failed: ", cond, msg);	\
+	    "Assert Failed: ", #cond, msg);	\
 	abort();				\
     } while (0)
 

@@ -2,11 +2,10 @@
 
 #include "chunk.h"
 
-int
+void
 post_all (
     )
 {
-    int exit_status = POST_PASS;
-    exit_status |= post_chunk ();
-    return exit_status;
+    post_chunk ();
+    // add more tests here.
 }

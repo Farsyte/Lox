@@ -1,14 +1,25 @@
+#include "assert.h"             //
 #include "chunk.h"
 #include "post.h"
 
-int
+void
 post_chunk (
     )
 {
-    int exit_code = POST_PASS;
 
-    POST_CHECK (16 == sizeof (OpCode[16]),
+    assert (16 == sizeof (OpCode[16]),
         "OpCode lists need to be one byte per OpCode.");
 
-    return exit_code;
+    // Generally this equality would be "overtesting"
+    // but I want to force the engineer to return to this code
+    // whenever anything is added to or taken away from Chunk.
+
+    Chunk *c;
+
+    assert (16 == sizeof *c,
+        "Expecting the base Chunk object to be 16 bytes.");
+
+    assert (1 == sizeof *c->code,
+        "Expecting the Chunk Code array entries to be 1 byte.");
+
 }

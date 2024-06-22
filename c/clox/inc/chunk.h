@@ -1,5 +1,8 @@
 #pragma once
 
+#include "bist.h"
+#include "post.h"
+
 typedef enum
 {
     OP_RETURN,
@@ -7,10 +10,13 @@ typedef enum
 
 typedef struct
 {
+
+    // TODO centralized "extensible array"
+    int count;
+    int capacity;
     OpCode *code;
+
 } Chunk;
 
-extern int post_chunk (
-    );
-extern int bist_chunk (
-    );
+post_fn post_chunk;
+bist_fn bist_chunk;
