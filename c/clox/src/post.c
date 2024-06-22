@@ -1,6 +1,7 @@
 #include "post.h"
 
 #include "chunk.h"
+#include "value.h"
 
 #include <stdlib.h>
 
@@ -12,6 +13,7 @@ post_all (
 {
     post_fnp post_list[] = {
         post_chunk,
+        post_value,
         // add more tets here.
     };
 
