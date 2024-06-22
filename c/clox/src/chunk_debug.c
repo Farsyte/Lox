@@ -13,6 +13,11 @@ static int constantInstruction (
     Chunk *chunk,
     int offset);
 
+static int constantLongInstruction (
+    const char *name,
+    Chunk *chunk,
+    int offset);
+
 void
 disassembleChunk (
     Chunk *chunk,
@@ -42,8 +47,12 @@ disassembleInstruction (
     OpCode op = chunk->code[offset];
 
     switch (op) {
+    case OP__NULL:
+        return simpleInstruction ("-- uninitialized bytecode --", offset);
     case OP_CONSTANT:
         return constantInstruction ("OP_CONSTANT", chunk, offset);
+    case OP_CONSTANT_LONG:
+        return constantLongInstruction ("OP_CONSTANT_LONG", chunk, offset);
     case OP_RETURN:
         return simpleInstruction ("OP_RETURN", offset);
     }
@@ -72,4 +81,21 @@ constantInstruction (
     printValue (chunk->constants->values[cix]);
     printf ("'\n");
     return offset + 2;
+}
+
+static int
+constantLongInstruction (
+    const char *name,
+    Chunk *chunk,
+    int offset)
+{
+    int cix = (int) chunk->code[offset + 1];
+
+    cix += 256 * (int) chunk->code[offset + 2];
+    cix += 65536 * (int) chunk->code[offset + 3];
+
+    printf ("%-16s [%04d] '", name, cix);
+    printValue (chunk->constants->values[cix]);
+    printf ("'\n");
+    return offset + 4;
 }

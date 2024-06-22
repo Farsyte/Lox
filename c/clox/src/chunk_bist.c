@@ -47,9 +47,9 @@ bist_chunk_numbers (
     assert (NULL != c->lines,
         "after 256x writeChunk, lines pointer must not be NULL.");
     for (int i = 0; i < 256; ++i) {
-        assert (i == (int) c->code[i],
+        assert (i == c->code[i],
             "after 256x writeChunk, bytes with value 0..255 must be in place.");
-        assert (123 == (int) c->lines[i],
+        assert (123 == c->lines[i],
             "after 256x writeChunk, line numbers are set correctly");
     }
 
@@ -67,9 +67,9 @@ bist_chunk_numbers (
     assert (NULL != c->lines,
         "after writeChunk of 300, lines pointer must not be NULL.");
 
-    assert (44 == (int) c->code[256],
+    assert (44 == c->code[256],
         "after writing 300, readback OpCode should be 44.");
-    assert (123 == (int) c->lines[256],
+    assert (123 == c->lines[256],
         "after writing 300, readback lines should be 123.");
 
     freeChunk (c);
@@ -85,9 +85,10 @@ bist_chunk_opcodes (
     )
 {
     int old_count;
+    int old_ccount;
     Chunk c[1];
-    Value tv = 133.7;
-    int ci;
+    Value tv1 = 133.7;
+    Value tv2 = 420.69;
 
     initChunk (c);
 
@@ -105,46 +106,73 @@ bist_chunk_opcodes (
     // Check that we can store a CONSTANT OpCode.
 
     old_count = c->count;
-    writeChunk (c, OP_CONSTANT, 123);
-    assert (old_count + 1 == c->count,
-        "after writeChunk, count must increment.");
-    assert (c->count <= c->capacity,
-        "after writeChunk, capacity must be at least the count.");
-    assert (NULL != c->code,
-        "after writeChunk, code pointer must not be NULL.");
-    assert (OP_CONSTANT == c->code[old_count],
-        "after writeChunk, OP_RETURN must be in place.");
+    old_ccount = c->constants->count;
+    writeConstant (c, tv1, 123);
 
-    // Check that we can add a constant to the constant pool.
-
-    old_count = c->constants->count;
-    ci = addConstant (c, tv);
-    assert (old_count == ci,
-        "First constant must be added at correct index.");
-    assert (old_count + 1 == c->constants->count,
+    assert (old_ccount + 1 == c->constants->count,
         "after addConstant, constants count must increment.");
     assert (c->constants->count <= c->constants->capacity,
         "after addConstant, constants capacity must be at least the count.");
     assert (NULL != c->constants->values,
         "after addConstant, constants values pointer must not be NULL.");
-    assert (tv == c->constants->values[old_count],
+    assert (tv1 == c->constants->values[old_count],
         "after addConstant, test value must be in place.");
 
-    old_count = c->count;
-    writeChunk (c, (int) ci, 123);
-    assert (old_count + 1 == c->count,
-        "after writeChunk, count must increment.");
+    assert (old_count + 2 == c->count,
+        "after writeConstant, count must increment by two.");
     assert (c->count <= c->capacity,
-        "after writeChunk, capacity must be at least the count.");
+        "after writeConstant, capacity must be at least the count.");
     assert (NULL != c->code,
-        "after writeChunk, code pointer must not be NULL.");
+        "after writeConstant, code pointer must not be NULL.");
     assert (OP_CONSTANT == c->code[old_count],
-        "after writeChunk, OP_RETURN must be in place.");
+        "after writeConstant, OP_CONSTANT must be in place.");
+    assert (old_ccount == c->code[old_count + 1],
+        "after writeConstant, constant index must be in place.");
+
+    // Check that we can store a CONSTANT_LONG OpCode.
+
+    // Need to stuff the constant pool so the next one we
+    // write must be more than one byte of index.
+
+    for (int i = 0; i < 999990; ++i) {
+        int rewind = c->count;
+
+        writeConstant (c, (double) i, 125);
+        c->count = rewind;
+    }
+
+    old_count = c->count;
+    old_ccount = c->constants->count;
+    writeConstant (c, tv2, 126);
+
+    assert (old_ccount + 1 == c->constants->count,
+        "after addConstant, constants count must increment.");
+    assert (c->constants->count <= c->constants->capacity,
+        "after addConstant, constants capacity must be at least the count.");
+    assert (NULL != c->constants->values,
+        "after addConstant, constants values pointer must not be NULL.");
+    assert (tv2 == c->constants->values[old_ccount],
+        "after addConstant, test value must be in place.");
+
+    assert (old_count + 4 == c->count,
+        "after writeConstant, count must increment by four.");
+    assert (c->count <= c->capacity,
+        "after writeConstant, capacity must be at least the count.");
+    assert (NULL != c->code,
+        "after writeConstant, code pointer must not be NULL.");
+    assert (OP_CONSTANT_LONG == c->code[old_count],
+        "after writeConstant, OP_CONSTANT must be in place.");
+    assert (((old_ccount) & 255) == c->code[old_count + 1],
+        "after writeConstant, constant index must be in place.");
+    assert (((old_ccount >> 8) & 255) == c->code[old_count + 2],
+        "after writeConstant, constant index must be in place.");
+    assert (((old_ccount >> 16) & 255) == c->code[old_count + 3],
+        "after writeConstant, constant index must be in place.");
 
     // Check that we can store a RETURN OpCode.
 
     old_count = c->count;
-    writeChunk (c, OP_RETURN, 123);
+    writeChunk (c, OP_RETURN, 126);
     assert (old_count + 1 == c->count,
         "after writeChunk, count must increment.");
     assert (c->count <= c->capacity,

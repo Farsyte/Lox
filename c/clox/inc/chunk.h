@@ -6,7 +6,9 @@
 #include "value.h"
 
 typedef enum {
+    OP__NULL = 0,               // reserve 0x00 as "not initialized"
     OP_CONSTANT,
+    OP_CONSTANT_LONG,
     OP_RETURN,
 } OpCode;
 
@@ -33,9 +35,15 @@ void writeChunk (
     OpCode op,
     int line);
 
-int addConstant (
+void writeConstant (
     Chunk *chunk,
-    Value value);
+    Value value,
+    int line);
+
+void writeConstant (
+    Chunk *chunk,
+    Value value,
+    int line);
 
 post_fn post_chunk;
 bist_fn bist_chunk;
