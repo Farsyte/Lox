@@ -1,7 +1,9 @@
 #pragma once
 
 #include "bist.h"
+#include "common.h"
 #include "post.h"
+#include "value.h"
 
 typedef enum {
     OP_RETURN,
@@ -13,6 +15,8 @@ typedef struct {
     int count;
     int capacity;
     OpCode *code;
+
+    ValueArray constants[1];
 
 } Chunk;
 

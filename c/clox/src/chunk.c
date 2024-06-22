@@ -14,6 +14,8 @@ initChunk (
     chunk->count = 0;
     chunk->capacity = 0;
     chunk->code = NULL;
+
+    initValueArray (chunk->constants);
 }
 
 void
@@ -24,6 +26,7 @@ freeChunk (
         chunk->code,
         chunk->capacity);
 
+    freeValueArray (chunk->constants);
     initChunk (chunk);
 }
 

@@ -83,6 +83,13 @@ bist_chunk_opcodes (
     assert (0 == c->capacity, "after initChunk, capacity must be zero.");
     assert (NULL == c->code, "after initChunk, code pointer must be NULL.");
 
+    assert (0 == c->constants->count,
+        "after initChunk, constants count must be zero.");
+    assert (0 == c->constants->capacity,
+        "after initChunk, constants capacity must be zero.");
+    assert (NULL == c->constants->values,
+        "after initChunk, constants pointer must be NULL.");
+
     // Check that we can store a RETURN OpCode.
 
     writeChunk (c, OP_RETURN);
@@ -100,4 +107,11 @@ bist_chunk_opcodes (
     assert (0 == c->count, "after freeChunk, count must be zero.");
     assert (0 == c->capacity, "after freeChunk, capacity must be zero.");
     assert (NULL == c->code, "after freeChunk, code pointer must be NULL.");
+
+    assert (0 == c->constants->count,
+        "after initChunk, constants count must be zero.");
+    assert (0 == c->constants->capacity,
+        "after initChunk, constants capacity must be zero.");
+    assert (NULL == c->constants->values,
+        "after initChunk, constants pointer must be NULL.");
 }
