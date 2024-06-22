@@ -249,4 +249,5 @@ does exactly what was asked with the new size is zero.
 Using ~reallocarray~ would be natural but apparently it is not
 available when using GCC in C99 mode, so use ~realloc~ directly.
 
-
+By "directly" I mean calling ~checked_grow_array~ which lives in
+memory.c and provides error reporting.

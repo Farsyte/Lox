@@ -1,5 +1,22 @@
 #include "memory.h"
 
-// See §14.3.1 if you need reallocate.
-// For now, the only caller is GROW_ARRAY
-// which has been changed to use realloc.
+#include <stdio.h>              // perror
+
+void *
+checked_grow_array (
+    size_t size,
+    void *pointer,
+    size_t oldCount,
+    size_t newCount)
+{
+    (void) oldCount;            // not needed by this implementation.
+
+    size_t newSize = newCount * size;
+    void *newPointer = realloc (pointer, newSize);
+
+    if (newSize && !newPointer) {
+        perror ("realloc");
+        abort ();
+    }
+    return newPointer;
+}

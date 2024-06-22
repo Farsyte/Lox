@@ -1,3 +1,6 @@
+--blank-lines-after-declarations
+--blank-lines-after-procedures
+--blank-lines-before-block-comments
 --braces-after-func-def-line
 --break-function-decl-args
 --indent-level 4

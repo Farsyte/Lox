@@ -21,5 +21,9 @@ typedef struct
 void initChunk (
     Chunk *chunk);
 
+void writeChunk (
+    Chunk *chunk,
+    OpCode op);
+
 post_fn post_chunk;
 bist_fn bist_chunk;
