@@ -1,14 +1,5 @@
 #include "memory.h"
 
-#include "common.h"
-
-void *
-reallocate (
-    void *pointer,
-    size_t oldSize,
-    size_t newSize)
-{
-    (void) oldSize;
-    (void) newSize;
-    return pointer;
-}
+// See §14.3.1 if you need reallocate.
+// For now, the only caller is GROW_ARRAY
+// which has been changed to use realloc.
