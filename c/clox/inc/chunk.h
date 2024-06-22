@@ -23,12 +23,16 @@ typedef struct {
 void initChunk (
     Chunk *chunk);
 
+void freeChunk (
+    Chunk *chunk);
+
 void writeChunk (
     Chunk *chunk,
     OpCode op);
 
-void freeChunk (
-    Chunk *chunk);
+int addConstant (
+    Chunk *chunk,
+    Value value);
 
 post_fn post_chunk;
 bist_fn bist_chunk;

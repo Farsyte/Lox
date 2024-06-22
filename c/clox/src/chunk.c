@@ -51,3 +51,14 @@ writeChunk (
     chunk->code[chunk->count] = op;
     chunk->count++;
 }
+
+int
+addConstant (
+    Chunk *chunk,
+    Value value)
+{
+    int at = chunk->constants->count;
+
+    writeValueArray (chunk->constants, value);
+    return at;
+}

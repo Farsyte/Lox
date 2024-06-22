@@ -101,6 +101,18 @@ bist_chunk_opcodes (
     assert (OP_RETURN == c->code[0],
         "after writeChunk, OP_RETURN must be in place.");
 
+    Value tv = 133.7;
+
+    addConstant (c, tv);
+    assert (1 == c->constants->count,
+        "after addConstant, constants count must be one.");
+    assert (1 <= c->constants->capacity,
+        "after addConstant, constants capacity must be at least one.");
+    assert (NULL != c->constants->values,
+        "after addConstant, constants values pointer must not be NULL.");
+    assert (tv == c->constants->values[0],
+        "after addConstant, test value must be in place.");
+
     disassembleChunk (c, "test chunk");
 
     freeChunk (c);
