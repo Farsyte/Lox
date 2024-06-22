@@ -1,9 +1,16 @@
 #include "chunk_debug.h"
 
+#include "value_debug.h"
+
 #include <stdio.h>
 
 static int simpleInstruction (
     const char *opname,
+    int offset);
+
+static int constantInstruction (
+    const char *name,
+    Chunk *chunk,
     int offset);
 
 void
@@ -30,6 +37,8 @@ disassembleInstruction (
     OpCode op = chunk->code[offset];
 
     switch (op) {
+    case OP_CONSTANT:
+        return constantInstruction ("OP_CONSTANT", chunk, offset);
     case OP_RETURN:
         return simpleInstruction ("OP_RETURN", offset);
     }
@@ -44,4 +53,18 @@ simpleInstruction (
 {
     printf ("%s\n", name);
     return offset + 1;
+}
+
+static int
+constantInstruction (
+    const char *name,
+    Chunk *chunk,
+    int offset)
+{
+    int cix = (int) chunk->code[offset + 1];
+
+    printf ("%-16s [%04d] '", name, cix);
+    printValue (chunk->constants->values[cix]);
+    printf ("'\n");
+    return offset + 2;
 }

@@ -35,6 +35,9 @@ ifeq ($(CFLAGS),)
 CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) $(COPTS) -I$(INCD)
 endif
 
+ifeq ($(LDLIBS),)
+LDLIBS		:= -lm
+endif
 
 # The default build is "make all"
 default::       all
