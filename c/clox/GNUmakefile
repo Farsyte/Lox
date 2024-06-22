@@ -10,9 +10,17 @@ MAIN            := clox
 
 CC		:= c99
 
+# NOTE: this is GCC-specific.
+COPTS		:= -fshort-enums
+
 # Inherit recurive build behaviors from parent
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
+# tests: run power-on and built-in self tests.
+
+tests::		$(BIND)$(MAIN)
+	$P '  %-14s\n' "POST and BIST"
+	$C $(BIND)$(MAIN) bist
 
 # indent: process all source files with indent.
 #
@@ -25,3 +33,7 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 indent::
 	$P '  %-14s %s\n' "INDENT" "$(SRCD)*.c $(INCD)*.h"
 	$Q indent $(SRCD)*.c $(INCD)*.h
+
+format::	$(EXES)
+	$C ${BIND}indent-c.sh $(SRCD)*.c
+	$C ${BIND}indent-h.sh $(INCD)*.h

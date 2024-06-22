@@ -1,0 +1,20 @@
+--blank-lines-after-declarations
+--blank-lines-after-procedures
+--blank-lines-before-block-comments
+--braces-after-func-def-line
+--braces-on-if-line
+--braces-on-struct-decl-line
+--break-function-decl-args
+--cuddle-else
+--dont-line-up-parentheses
+--honour-newlines
+--indent-level 4
+--no-tabs
+
+-TChunk
+-TOpCode
+-Ttype
+-TValue
+-TValueArray
+-TILineData
+-TILine
