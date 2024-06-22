@@ -1,4 +1,6 @@
 #!/bin/bash -
+set -euo pipefail
+# set -x
 
 rp=$(realpath "$0")
 dp=$(dirname "$rp")
@@ -21,11 +23,11 @@ do
     (
         echo '#pragma once'
         echo
-        grep '#include "' < $h | sort
+        (grep '#include "' < $h || true) | sort
         echo
-        grep '#include <' < $h | sort
+        (grep '#include <' < $h || true) | sort
         echo
-        grep -v '#pragma once' < $h | grep -v '#include'
+        (grep -v '#pragma once' < $h || true) | (grep -v '#include' || true)
     ) | cat -s | indent -st >> $o
 
     if cmp --silent $h $o

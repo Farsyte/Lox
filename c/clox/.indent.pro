@@ -6,6 +6,7 @@
 --dont-line-up-parentheses
 --braces-on-if-line
 --cuddle-else
+--honour-newlines
 
 -TChunk
 -TOpCode

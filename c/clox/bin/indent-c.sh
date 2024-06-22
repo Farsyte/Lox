@@ -1,4 +1,6 @@
 #!/bin/bash -
+set -euo pipefail
+# set -x
 
 rp=$(realpath "$0")
 dp=$(dirname "$rp")
@@ -25,13 +27,13 @@ do
                 sed 's:^inc/:#include ":' |
                 sed 's:$:":'
             echo
-            grep '#include "' < $c | sort
+            (grep '#include "' < $c || true) | sort
             echo
-            grep '#include <' < $c | sort
+            (grep '#include <' < $c || true) | sort
             echo
         ) | awk -f "$top/bin/uniq.awk"
         echo
-        grep -v '#include' < $c
+        grep -v '#include' < $c || true
     ) | cat -s | sed '1d' | indent -st > $o
 
     if cmp --silent $c $o
