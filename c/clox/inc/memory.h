@@ -12,6 +12,9 @@
     (type *)checked_grow_array(\
 	sizeof (type), pointer, oldCount, newCount)
 
+#define FREE_ARRAY(type, pointer, oldCount) \
+    GROW_ARRAY(type, pointer, oldCount, 0)
+
 void *checked_grow_array (
     size_t size,
     void *pointer,

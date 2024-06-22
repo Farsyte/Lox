@@ -25,5 +25,8 @@ void writeChunk (
     Chunk *chunk,
     OpCode op);
 
+void freeChunk (
+    Chunk *chunk);
+
 post_fn post_chunk;
 bist_fn bist_chunk;

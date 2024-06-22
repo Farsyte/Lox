@@ -61,4 +61,10 @@ bist_chunk (
 
     assert (44 == (int) c->code[257],
         "after writing 300, readback OpCode should be 44.");
+
+    freeChunk (c);
+    assert (0 == c->count, "after freeChunk, count must be zero.");
+    assert (0 == c->capacity, "after freeChunk, capacity must be zero.");
+    assert (NULL == c->code, "after freeChunk, code pointer must be NULL.");
+
 }

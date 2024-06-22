@@ -17,6 +17,17 @@ initChunk (
 }
 
 void
+freeChunk (
+    Chunk *chunk)
+{
+    FREE_ARRAY (OpCode,
+        chunk->code,
+        chunk->capacity);
+
+    initChunk (chunk);
+}
+
+void
 writeChunk (
     Chunk *chunk,
     OpCode op)
