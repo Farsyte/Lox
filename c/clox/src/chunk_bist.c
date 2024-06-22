@@ -29,13 +29,14 @@ bist_chunk_numbers (
     assert (0 == c->count, "after initChunk, count must be zero.");
     assert (0 == c->capacity, "after initChunk, capacity must be zero.");
     assert (NULL == c->code, "after initChunk, code pointer must be NULL.");
+    assert (NULL == c->lines, "after initChunk, lines pointer must be NULL.");
 
     // Check that we can actually store integers
     // with values from 0 to 255 and read back the
     // same value.
 
     for (int i = 0; i < 256; ++i) {
-        writeChunk (c, (OpCode) i);
+        writeChunk (c, (OpCode) i, 123);
     }
 
     assert (256 == c->count, "after 256x writeChunk, count must be 256.");
@@ -43,30 +44,39 @@ bist_chunk_numbers (
         "after 256x writeChunk, capacity must be at least 256.");
     assert (NULL != c->code,
         "after 256x writeChunk, code pointer must not be NULL.");
+    assert (NULL != c->lines,
+        "after 256x writeChunk, lines pointer must not be NULL.");
     for (int i = 0; i < 256; ++i) {
         assert (i == (int) c->code[i],
             "after 256x writeChunk, bytes with value 0..255 must be in place.");
+        assert (123 == (int) c->lines[i],
+            "after 256x writeChunk, line numbers are set correctly");
     }
 
     // Verify that if we attempt to store any integer
     // not in 0..255 inclusive, what we read back is
     // just the low 8 bits of the value.
 
-    writeChunk (c, (OpCode) 300);
+    writeChunk (c, (OpCode) 300, 123);
 
     assert (257 == c->count, "after writeChunk of 300, count must be 257.");
     assert (257 <= c->capacity,
         "after writeChunk of 300, capacity must be at least 257.");
     assert (NULL != c->code,
         "after writeChunk of 300, code pointer must not be NULL.");
+    assert (NULL != c->lines,
+        "after writeChunk of 300, lines pointer must not be NULL.");
 
     assert (44 == (int) c->code[256],
         "after writing 300, readback OpCode should be 44.");
+    assert (123 == (int) c->lines[256],
+        "after writing 300, readback lines should be 123.");
 
     freeChunk (c);
     assert (0 == c->count, "after freeChunk, count must be zero.");
     assert (0 == c->capacity, "after freeChunk, capacity must be zero.");
     assert (NULL == c->code, "after freeChunk, code pointer must be NULL.");
+    assert (NULL == c->lines, "after freeChunk, lines pointer must be NULL.");
 
 }
 
@@ -95,7 +105,7 @@ bist_chunk_opcodes (
     // Check that we can store a CONSTANT OpCode.
 
     old_count = c->count;
-    writeChunk (c, OP_CONSTANT);
+    writeChunk (c, OP_CONSTANT, 123);
     assert (old_count + 1 == c->count,
         "after writeChunk, count must increment.");
     assert (c->count <= c->capacity,
@@ -121,7 +131,7 @@ bist_chunk_opcodes (
         "after addConstant, test value must be in place.");
 
     old_count = c->count;
-    writeChunk (c, (int) ci);
+    writeChunk (c, (int) ci, 123);
     assert (old_count + 1 == c->count,
         "after writeChunk, count must increment.");
     assert (c->count <= c->capacity,
@@ -134,7 +144,7 @@ bist_chunk_opcodes (
     // Check that we can store a RETURN OpCode.
 
     old_count = c->count;
-    writeChunk (c, OP_RETURN);
+    writeChunk (c, OP_RETURN, 123);
     assert (old_count + 1 == c->count,
         "after writeChunk, count must increment.");
     assert (c->count <= c->capacity,

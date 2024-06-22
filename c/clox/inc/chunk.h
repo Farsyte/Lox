@@ -16,6 +16,7 @@ typedef struct {
     int count;
     int capacity;
     OpCode *code;
+    int *lines;                 // parallel line number list
 
     ValueArray constants[1];
 
@@ -29,7 +30,8 @@ void freeChunk (
 
 void writeChunk (
     Chunk *chunk,
-    OpCode op);
+    OpCode op,
+    int line);
 
 int addConstant (
     Chunk *chunk,
