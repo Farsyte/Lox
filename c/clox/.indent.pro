@@ -2,14 +2,14 @@
 --blank-lines-after-procedures
 --blank-lines-before-block-comments
 --braces-after-func-def-line
+--braces-on-if-line
+--braces-on-struct-decl-line
 --break-function-decl-args
+--cuddle-else
+--dont-line-up-parentheses
+--honour-newlines
 --indent-level 4
 --no-tabs
---honour-newlines
---dont-line-up-parentheses
---braces-on-if-line
---cuddle-else
---honour-newlines
 
 -TChunk
 -TOpCode

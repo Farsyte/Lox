@@ -3,13 +3,11 @@
 #include "bist.h"
 #include "post.h"
 
-typedef enum
-{
+typedef enum {
     OP_RETURN,
 } OpCode;
 
-typedef struct
-{
+typedef struct {
 
     // TODO centralized "extensible array"
     int count;
