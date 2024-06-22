@@ -16,13 +16,7 @@ post_chunk (
 
     Chunk *c;
 
-    assert (40 == sizeof *c,
-        "Expecting the base Chunk object to be 40 bytes.");
-
     assert (1 == sizeof *c->code,
         "Expecting the Chunk Code array entries to be 1 byte.");
-
-    assert (4 == sizeof *c->lines,
-        "Expecting the Line array entries to be 4 bytes.");
 
 }

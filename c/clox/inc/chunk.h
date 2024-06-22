@@ -2,6 +2,7 @@
 
 #include "bist.h"
 #include "common.h"
+#include "iline.h"
 #include "post.h"
 #include "value.h"
 
@@ -18,7 +19,8 @@ typedef struct {
     int count;
     int capacity;
     OpCode *code;
-    int *lines;                 // parallel line number list
+
+    ILine iline[1];             // recover line number for any op index
 
     ValueArray constants[1];
 
@@ -40,10 +42,9 @@ void writeConstant (
     Value value,
     int line);
 
-void writeConstant (
+int addConstant (
     Chunk *chunk,
-    Value value,
-    int line);
+    Value value);
 
 post_fn post_chunk;
 bist_fn bist_chunk;

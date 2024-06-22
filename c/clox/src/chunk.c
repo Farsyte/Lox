@@ -5,10 +5,6 @@
 
 #include <stdio.h>
 
-static int addConstant (
-    Chunk *chunk,
-    Value value);
-
 void
 initChunk (
     Chunk *chunk)
@@ -18,8 +14,8 @@ initChunk (
     chunk->count = 0;
     chunk->capacity = 0;
     chunk->code = NULL;
-    chunk->lines = NULL;
 
+    initILine (chunk->iline);
     initValueArray (chunk->constants);
 }
 
@@ -31,10 +27,7 @@ freeChunk (
         chunk->code,
         chunk->capacity);
 
-    FREE_ARRAY (int,
-        chunk->lines,
-        chunk->capacity);
-
+    freeILine (chunk->iline);
     freeValueArray (chunk->constants);
     initChunk (chunk);
 }
@@ -56,17 +49,13 @@ writeChunk (
             oldCapacity,
             newCapacity);
 
-        chunk->lines = GROW_ARRAY (int,
-            chunk->lines,
-            oldCapacity,
-            newCapacity);
-
         chunk->capacity = newCapacity;
     }
 
     chunk->code[chunk->count] = op;
-    chunk->lines[chunk->count] = line;
     chunk->count++;
+
+    writeILine (chunk->iline, line);
 }
 
 void

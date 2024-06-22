@@ -1,6 +1,7 @@
 #include "bist.h"
 
 #include "chunk.h"
+#include "iline.h"
 #include "value.h"
 
 #include <stdlib.h>
@@ -14,6 +15,7 @@ bist_all (
     bist_fnp bist_list[] = {
         bist_chunk,
         bist_value,
+        bist_iline,
         // add more tets here.
     };
 

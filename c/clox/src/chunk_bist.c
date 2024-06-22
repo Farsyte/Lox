@@ -29,7 +29,6 @@ bist_chunk_numbers (
     assert (0 == c->count, "after initChunk, count must be zero.");
     assert (0 == c->capacity, "after initChunk, capacity must be zero.");
     assert (NULL == c->code, "after initChunk, code pointer must be NULL.");
-    assert (NULL == c->lines, "after initChunk, lines pointer must be NULL.");
 
     // Check that we can actually store integers
     // with values from 0 to 255 and read back the
@@ -44,13 +43,9 @@ bist_chunk_numbers (
         "after 256x writeChunk, capacity must be at least 256.");
     assert (NULL != c->code,
         "after 256x writeChunk, code pointer must not be NULL.");
-    assert (NULL != c->lines,
-        "after 256x writeChunk, lines pointer must not be NULL.");
     for (int i = 0; i < 256; ++i) {
         assert (i == c->code[i],
             "after 256x writeChunk, bytes with value 0..255 must be in place.");
-        assert (123 == c->lines[i],
-            "after 256x writeChunk, line numbers are set correctly");
     }
 
     // Verify that if we attempt to store any integer
@@ -64,19 +59,14 @@ bist_chunk_numbers (
         "after writeChunk of 300, capacity must be at least 257.");
     assert (NULL != c->code,
         "after writeChunk of 300, code pointer must not be NULL.");
-    assert (NULL != c->lines,
-        "after writeChunk of 300, lines pointer must not be NULL.");
 
     assert (44 == c->code[256],
         "after writing 300, readback OpCode should be 44.");
-    assert (123 == c->lines[256],
-        "after writing 300, readback lines should be 123.");
 
     freeChunk (c);
     assert (0 == c->count, "after freeChunk, count must be zero.");
     assert (0 == c->capacity, "after freeChunk, capacity must be zero.");
     assert (NULL == c->code, "after freeChunk, code pointer must be NULL.");
-    assert (NULL == c->lines, "after freeChunk, lines pointer must be NULL.");
 
 }
 
@@ -135,10 +125,7 @@ bist_chunk_opcodes (
     // write must be more than one byte of index.
 
     for (int i = 0; i < 999990; ++i) {
-        int rewind = c->count;
-
-        writeConstant (c, (double) i, 125);
-        c->count = rewind;
+        addConstant (c, (double) i);
     }
 
     old_count = c->count;
@@ -181,6 +168,10 @@ bist_chunk_opcodes (
         "after writeChunk, code pointer must not be NULL.");
     assert (OP_RETURN == c->code[old_count],
         "after writeChunk, OP_RETURN must be in place.");
+
+    for (int i = 0; i < c->iline->count; ++i)
+        fprintf (stderr, "iline[%d]: line %d through offset %d\n",
+            i, c->iline->data[i].line, c->iline->data[i].offset);
 
     disassembleChunk (c, "test chunk");
 

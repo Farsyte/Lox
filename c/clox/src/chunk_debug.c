@@ -39,10 +39,13 @@ disassembleInstruction (
 {
     printf ("%04d ", offset);
 
-    if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1])
+    int prev = getLine (chunk->iline, offset - 1);
+    int line = getLine (chunk->iline, offset);
+
+    if (offset > 0 && line == prev)
         printf ("   | ");
     else
-        printf ("%4d ", chunk->lines[offset]);
+        printf ("%4d ", line);
 
     OpCode op = chunk->code[offset];
 
