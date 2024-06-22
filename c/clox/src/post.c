@@ -20,5 +20,4 @@ post_all (
 
     for (post_fnp * ent = post_list; ent < post_last; ++ent)
         (*ent) ();
-    exit (EXIT_SUCCESS);
 }
