@@ -18,5 +18,8 @@ typedef struct
 
 } Chunk;
 
+void initChunk (
+    Chunk *chunk);
+
 post_fn post_chunk;
 bist_fn bist_chunk;

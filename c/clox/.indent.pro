@@ -6,3 +6,6 @@
 --dont-line-up-parentheses
 --braces-on-if-line
 --cuddle-else
+
+-TChunk
+-TOpCode
