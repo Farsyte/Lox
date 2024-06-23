@@ -7,6 +7,7 @@ typedef enum {
     // reserve 0x00 as "not initialized"
     OP_CONSTANT = 1,
     OP_CONSTANT_LONG,
+    OP_NEGATE,
     OP_RETURN,
 } OpCode;
 

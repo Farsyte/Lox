@@ -16,6 +16,7 @@ bist_vm (
     for (int i = 0; i < 999990; ++i)
         addConstant (c, (double) i);
     writeConstant (c, tv2, 126);
+    writeChunk (c, OP_NEGATE, 126);
     writeChunk (c, OP_RETURN, 126);
 
     initVM ();

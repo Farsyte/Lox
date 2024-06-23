@@ -105,8 +105,5 @@ $(SUBA):
 $(SUBC):
 	$M -C "$(@:%.clean=%)" clean
 
-stubs::
-	git grep -n STUB
-
 .PHONY:         default all clean world stubs $(SUBD) $(SUBA) $(SUBC)
 

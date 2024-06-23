@@ -37,3 +37,6 @@ indent::
 format::	$(EXES)
 	$C ${BIND}indent-c.sh $(SRCD)*.c
 	$C ${BIND}indent-h.sh $(INCD)*.h
+
+stubs::
+	grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h

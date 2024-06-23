@@ -112,6 +112,10 @@ run (
             push (constant);
             break;
 
+        case OP_NEGATE:
+            push (-pop ());
+            break;
+
         case OP_RETURN:
 #ifdef DEBUG_TRACE_EXECUTION
             printf ("interpreter: return at IP=%04ld\n",
