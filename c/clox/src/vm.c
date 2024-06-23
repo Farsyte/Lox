@@ -4,6 +4,7 @@
 #include "chunk_debug.h"
 #include "value_debug.h"
 
+#include <math.h>
 #include <stdio.h>
 
 VM vm;
@@ -97,8 +98,11 @@ static InterpretResult
 run (
     )
 {
-    Value constant;
+    Value tos = NAN;
 
+    if (vm.sp > vm.stack_base) {
+        tos = pop ();
+    }
     // Book uses macros. I would reflexively use functions,
     // but it is a weak preference.
 
@@ -132,7 +136,18 @@ run (
             printf (" ");
             printValue (*slot);
         }
+        printf (" ");
+        printValue (tos);
         printf ("\n");
+
+        if (vm.sp > vm.stack_base) {
+            assert (isnan (*vm.stack_base),
+                "  Stack Sentinal should be NAN, was overwritten!\n");
+        } else {
+            assert (isnan (tos),
+                "  Stack Sentinal (cached) should be NAN, was overwritten!\n");
+        }
+
         disassembleInstruction (vm.chunk, vm.ip - vm.chunk->code);
 #endif
 
@@ -141,22 +156,16 @@ run (
         switch (op) {
 
         case OP_CONSTANT:
-            constant = READ_CONSTANT ();
-            push (constant);
+            push (tos);
+            tos = READ_CONSTANT ();
             break;
 
         case OP_CONSTANT_LONG:
-            constant = READ_CONSTANT_LONG ();
-            push (constant);
+            push (tos);
+            tos = READ_CONSTANT_LONG ();
             break;
 
-#define BINARY_OP(op)				\
-	    do {				\
-		Value b = pop();		\
-		Value a = pop();		\
-		Value r = a op b;		\
-		push(r);			\
-	    } while (0);
+#define BINARY_OP(op) tos = pop() op tos
 
         case OP_ADD:
             BINARY_OP (+);
@@ -174,7 +183,7 @@ run (
 #undef BINARY_OP
 
         case OP_NEGATE:
-            push (-pop ());
+            tos = -tos;
             break;
 
         case OP_RETURN:
@@ -182,6 +191,15 @@ run (
             printf ("interpreter: return at IP=%04ld\n",
                 vm.ip - vm.chunk->code);
 #endif
+            // flush the TOS cache to the stack, then
+            // continue with the older code.
+            //
+            // if we elide this by using printValue(tos)
+            // then the test has no way to see what value
+            // was "returned" by the VM.
+
+            push (tos);
+
             printValue (pop ());
             printf ("\n");
             return INTERPRET_OK;
