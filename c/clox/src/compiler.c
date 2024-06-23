@@ -1,20 +1,11 @@
-#include "assert.h"
 #include "compiler.h"
 
-static void initScanner (
-    const char *source);
+#include "assert.h"
+#include "scanner.h"
 
 void
 compile (
     const char *source)
 {
     initScanner (source);
-}
-
-static void
-initScanner (
-    const char *source)
-{
-    (void) source;              // not implemented yet
-    STUB ();
 }
