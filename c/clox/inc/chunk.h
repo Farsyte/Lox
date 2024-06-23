@@ -3,15 +3,9 @@
 #include "bist.h"
 #include "common.h"
 #include "iline.h"
+#include "opcode.h"
 #include "post.h"
 #include "value.h"
-
-typedef enum {
-    // reserve 0x00 as "not initialized"
-    OP_CONSTANT = 1,
-    OP_CONSTANT_LONG,
-    OP_RETURN,
-} OpCode;
 
 typedef struct {
 

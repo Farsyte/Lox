@@ -2,6 +2,7 @@
 
 #include "chunk.h"
 #include "iline.h"
+#include "opcode.h"
 #include "value.h"
 #include "vm.h"
 
@@ -14,6 +15,7 @@ bist_all (
     )
 {
     bist_fnp bist_list[] = {
+        bist_opcode,
         bist_chunk,
         bist_value,
         bist_iline,
