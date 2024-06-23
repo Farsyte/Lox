@@ -177,6 +177,7 @@ run (
             BINARY_OP (*);
             break;
         case OP_DIVIDE:
+            assert (0.0 != tos, "Attempt to divide by zero.");
             BINARY_OP (/);
             break;
 
@@ -189,7 +190,7 @@ run (
         case OP_RETURN:
 #ifdef DEBUG_TRACE_EXECUTION
             printf ("interpreter: return at IP=%04ld\n",
-                vm.ip - vm.chunk->code);
+                vm.ip - vm.chunk->code - 1);
 #endif
             // flush the TOS cache to the stack, then
             // continue with the older code.
@@ -204,6 +205,9 @@ run (
             printf ("\n");
             return INTERPRET_OK;
         }
+
+        assert (!isnan (tos), "Halting: top of stack is NaN.");
+        assert (!isinf (tos), "Halting: top of stack is Inf.");
     }
 #undef READ_CONSTANT_LONG
 #undef READ_3BYTE
