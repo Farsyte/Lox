@@ -12,3 +12,10 @@ initScanner (
     scanner.current = source;
     scanner.line = 1;
 }
+
+Token
+scanToken (
+    )
+{
+    STUB ();
+}

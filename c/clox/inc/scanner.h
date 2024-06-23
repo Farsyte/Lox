@@ -1,6 +1,6 @@
 #pragma once
 
-// Moved the typedef here so BIST and POST can peek inside.
+#include "token.h"
 
 typedef struct {
     const char *start;
@@ -10,3 +10,10 @@ typedef struct {
 
 void initScanner (
     const char *source);
+Token scanToken (
+    );
+
+void bist_scanner (
+    );
+void post_scanner (
+    );

@@ -1,11 +1,12 @@
 #include "scanner.h"
 
 #include "assert.h"
-#include "post.h"
+#include "bist.h"
 
 void
-post_scanner (
+bist_scanner (
     )
 {
+    initScanner ("");
     // yes, this code is reached.
 }

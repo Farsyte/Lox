@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "iline.h"
 #include "opcode.h"
+#include "scanner.h"
 #include "value.h"
 #include "vm.h"
 
@@ -20,6 +21,7 @@ bist_all (
         bist_value,
         bist_iline,
         bist_vm,
+        bist_scanner,
         // add more tets here.
     };
 
