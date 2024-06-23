@@ -61,7 +61,15 @@ run (
 
 #define READ_CONSTANT_LONG() (vm.chunk->constants->values[READ_3BYTE()])
 
+#ifdef DEBUG_TRACE_EXECUTION
+    printf ("interpreter: start at IP=%04ld\n", vm.ip - vm.chunk->code);
+#endif
+
     for (;;) {
+
+#ifdef DEBUG_TRACE_EXECUTION
+        disassembleInstruction (vm.chunk, vm.ip - vm.chunk->code);
+#endif
 
         OpCode op = READ_BYTE ();
 
@@ -80,6 +88,10 @@ run (
             break;
 
         case OP_RETURN:
+#ifdef DEBUG_TRACE_EXECUTION
+            printf ("interpreter: return at IP=%04ld\n",
+                vm.ip - vm.chunk->code);
+#endif
             return INTERPRET_OK;
         }
     }
