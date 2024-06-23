@@ -3,12 +3,11 @@
 #include "chunk.h"
 #include "value.h"
 
-#define	STACK_MAX	256
-
 typedef struct {
     Chunk *chunk;
     OpCode *ip;
-    Value stack[STACK_MAX];
+    Value *stack_base;
+    Value *stack_limit;
     Value *sp;
 } VM;
 

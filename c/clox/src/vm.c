@@ -22,20 +22,56 @@ void
 freeVM (
     )
 {
-
+    free (vm.stack_base);
 }
+
+#define	MIN_STACK_SIZE	256
+
+// Cap the stack size (or not, if #undef is used).
+//
+// Benefits to capping the size:
+// - detect runaway recursion faster
+//
+// Benefits to not capping the size:
+// - large stack-intensive code does not hit the limit
+
+#define	MAX_STACK_SIZE	65536
 
 void
 resetStack (
     )
 {
-    vm.sp = vm.stack;
+    size_t new_count = MIN_STACK_SIZE;
+    size_t new_size = new_count * sizeof *vm.sp;
+
+    vm.stack_base = malloc (new_size);
+    assert (NULL != vm.stack_base, "VM: unable to allocate stack.");
+    vm.stack_limit = vm.stack_base + new_count;
+    vm.sp = vm.stack_base;
 }
 
 void
 push (
     Value value)
 {
+    assert (vm.sp >= vm.stack_base, "stack underflow detected in push.");
+    assert (vm.sp <= vm.stack_limit, "stack overflow detected in push.");
+    if (vm.sp == vm.stack_limit) {
+        size_t old_count = vm.stack_limit - vm.stack_base;
+        size_t new_count = old_count * 10;
+        size_t new_size = new_count * sizeof *vm.sp;
+
+#ifdef MAX_STACK_SIZE
+        assert (new_count <= MAX_STACK_SIZE,
+            "VM: refusing to grow stack beyond MAX_STACK_SIZE.");
+#endif
+
+        vm.stack_base = realloc (vm.stack_base, new_size);
+        assert (NULL != vm.stack_base, "VM: stack reallocation failed.");
+        vm.stack_limit = vm.stack_base + new_count;
+
+        vm.sp = vm.stack_base + old_count;
+    }
     *vm.sp++ = value;
 }
 
@@ -43,6 +79,8 @@ Value
 pop (
     )
 {
+    assert (vm.sp >= vm.stack_base, "stack underflow detected in pop.");
+    assert (vm.sp <= vm.stack_limit, "stack overflow detected in pop.");
     return *--vm.sp;
 }
 
@@ -90,7 +128,7 @@ run (
 
 #ifdef DEBUG_TRACE_EXECUTION
         printf ("  stack:");
-        for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+        for (Value *slot = vm.stack_base; slot < vm.sp; slot++) {
             printf (" ");
             printValue (*slot);
         }
