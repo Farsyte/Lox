@@ -1,6 +1,7 @@
 #include "bist.h"
 #include "common.h"
 #include "post.h"
+#include "vm.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -14,6 +15,10 @@ main (
 
     if ((argc == 2) && (!strcmp (argv[1], "bist")))
         bist_all ();
+
+    initVM ();
+
+    freeVM ();
 
     return 0;
 }

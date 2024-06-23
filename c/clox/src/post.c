@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "iline.h"
 #include "value.h"
+#include "vm.h"
 
 #include <stdlib.h>
 
@@ -16,6 +17,7 @@ post_all (
         post_chunk,
         post_value,
         post_iline,
+        post_vm,
         // add more tets here.
     };
 
