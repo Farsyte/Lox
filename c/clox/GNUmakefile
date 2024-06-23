@@ -44,4 +44,5 @@ format::	$(EXES)
 # The presence of "STUB ();" calls is not a build error, but expose
 # where they all are to point out what needs to be implemented next.
 stubs::
+	$P 'Looking for stubs in %s*.c and %s*.c ...\n' '$(SRCD)' '$(INCD)'
 	$C grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h /dev/null || true
