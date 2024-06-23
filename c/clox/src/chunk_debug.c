@@ -50,8 +50,6 @@ disassembleInstruction (
     OpCode op = chunk->code[offset];
 
     switch (op) {
-    case OP__NULL:
-        return simpleInstruction ("-- uninitialized bytecode --", offset);
     case OP_CONSTANT:
         return constantInstruction ("OP_CONSTANT", chunk, offset);
     case OP_CONSTANT_LONG:
