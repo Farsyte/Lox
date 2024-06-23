@@ -279,3 +279,9 @@ using a simple trick we can have something pointer-like everywhere.
   freeSomething(thing);
 #+end_src
 
+** Brace Reduction Act
+
+While I am ambivalent about using braces around single statements in
+"if", "for" and "while" bodies, I draw the line at bracing up the
+lines of code in switch cases.
+
