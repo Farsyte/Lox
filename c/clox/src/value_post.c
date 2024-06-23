@@ -1,5 +1,6 @@
-#include "assert.h"
 #include "value.h"
+
+#include "assert.h"
 
 void
 post_value (

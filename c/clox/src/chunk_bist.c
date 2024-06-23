@@ -1,6 +1,7 @@
+#include "chunk.h"
+
 #include "assert.h"
 #include "bist.h"
-#include "chunk.h"
 #include "chunk_debug.h"
 
 #include <stdio.h>

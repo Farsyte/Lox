@@ -1,5 +1,6 @@
-#include "assert.h"
 #include "chunk.h"
+
+#include "assert.h"
 #include "post.h"
 
 void
