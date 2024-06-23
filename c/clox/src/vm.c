@@ -87,6 +87,16 @@ pop (
 
 InterpretResult
 interpret (
+    const char *source)
+{
+    (void) source;              // not yet implemented
+    STUB ();
+}
+
+// this is the original interpret function.
+// keeping it around just in case it is useful.
+InterpretResult
+interpret_chunk (
     Chunk *chunk)
 {
     vm.chunk = chunk;
