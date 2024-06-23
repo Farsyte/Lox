@@ -13,7 +13,7 @@
     do {					\
 	if (cond) break;			\
 	build_msg(				\
-	    "Assert Failed: ", #cond, msg);	\
+	    "Assertion Failed", #cond, msg);	\
 	abort();				\
     } while (0)
 

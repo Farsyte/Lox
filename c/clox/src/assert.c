@@ -11,14 +11,19 @@ _build_msg (
     const char *cond,
     const char *msg)
 {
-    fprintf (stderr, "%s:%d:", file, line);
+    printf ("\n");
+    fflush (stdout);
+
+    if (file && line)
+        fprintf (stderr, "%s:%d: ", file, line);
     if (pfx)
-        fprintf (stderr, " %s", pfx);
+        fprintf (stderr, "%s ", pfx);
     if (func)
-        fprintf (stderr, " in %s\n", func);
+        fprintf (stderr, "in %s\n", func);
     if (cond)
         fprintf (stderr, "    %s\n", cond);
-    if (cond)
+    if (msg)
         fprintf (stderr, "%s\n", msg);
+    fprintf (stderr, "\n");
     return 0;
 }

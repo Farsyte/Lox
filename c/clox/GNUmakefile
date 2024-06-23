@@ -17,10 +17,13 @@ COPTS		:= -fshort-enums
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
 # tests: run power-on and built-in self tests.
+#
+# NOTE: a nonzero exit status from BIST is now treated
+# as a build failure.
 
 tests::		$(BIND)$(MAIN)
 	$P '  %-14s\n' "POST and BIST"
-	$C $(BIND)$(MAIN) bist
+	$Q $(BIND)$(MAIN) bist
 
 # indent: process all source files with indent.
 #
