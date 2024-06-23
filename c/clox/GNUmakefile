@@ -38,5 +38,7 @@ format::	$(EXES)
 	$C ${BIND}indent-c.sh $(SRCD)*.c
 	$C ${BIND}indent-h.sh $(INCD)*.h
 
+# The presence of "STUB ();" calls is not a build error, but expose
+# where they all are to point out what needs to be implemented next.
 stubs::
-	grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h
+	$C grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h /dev/null || true
