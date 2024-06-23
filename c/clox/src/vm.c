@@ -15,7 +15,7 @@ void
 initVM (
     )
 {
-
+    resetStack ();
 }
 
 void
@@ -23,6 +23,27 @@ freeVM (
     )
 {
 
+}
+
+void
+resetStack (
+    )
+{
+    vm.sp = vm.stack;
+}
+
+void
+push (
+    Value value)
+{
+    *vm.sp++ = value;
+}
+
+Value
+pop (
+    )
+{
+    return *--vm.sp;
 }
 
 InterpretResult
@@ -68,6 +89,12 @@ run (
     for (;;) {
 
 #ifdef DEBUG_TRACE_EXECUTION
+        printf ("  stack:");
+        for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+            printf (" ");
+            printValue (*slot);
+        }
+        printf ("\n");
         disassembleInstruction (vm.chunk, vm.ip - vm.chunk->code);
 #endif
 
@@ -77,14 +104,12 @@ run (
 
         case OP_CONSTANT:
             constant = READ_CONSTANT ();
-            printValue (constant);
-            printf ("\n");
+            push (constant);
             break;
 
         case OP_CONSTANT_LONG:
             constant = READ_CONSTANT_LONG ();
-            printValue (constant);
-            printf ("\n");
+            push (constant);
             break;
 
         case OP_RETURN:
@@ -92,6 +117,8 @@ run (
             printf ("interpreter: return at IP=%04ld\n",
                 vm.ip - vm.chunk->code);
 #endif
+            printValue (pop ());
+            printf ("\n");
             return INTERPRET_OK;
         }
     }

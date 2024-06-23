@@ -285,3 +285,6 @@ While I am ambivalent about using braces around single statements in
 "if", "for" and "while" bodies, I draw the line at bracing up the
 lines of code in switch cases.
 
+** If "ip" is instruction pointer, then "sp" is value stack pointer.
+
+I will be using "vm.sp" in my code, not "vm.stackTop" ...
