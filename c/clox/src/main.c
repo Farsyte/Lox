@@ -21,18 +21,16 @@ main (
 {
     post_all ();
 
-    // Special case: do not init the VM before BIST runs.
-
-    if ((argc == 2) && (!strcmp (argv[1], "bist"))) {
-        bist_all ();
-    }
-
     initVM ();
 
     if (argc == 1) {
         repl ();
     } else if (argc == 2) {
-        runFile (argv[1]);
+        if ((argc == 2) && (!strcmp (argv[1], "bist"))) {
+            bist_all ();
+        } else {
+            runFile (argv[1]);
+        }
     } else {
         fprintf (stderr, "Usage: clox [bist | <path>]\n");
     }

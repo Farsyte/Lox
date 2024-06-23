@@ -2,6 +2,9 @@
 
 typedef enum {
 
+    // I happen to like negative numbers for error.
+    TOKEN_ERROR = -1,
+
     // I happen to like zero as a terminator.
     TOKEN_EOF = 0,
 
