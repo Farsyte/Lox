@@ -1,6 +1,10 @@
 #include "memory.h"
 
-#include <stdio.h>              // perror
+#include "assert.h"             // _build_msg
+
+#include <errno.h>              // errno
+#include <stdio.h>              // fprintf, stderr
+#include <string.h>             // strerror
 
 void *
 checked_grow_array (
@@ -14,9 +18,9 @@ checked_grow_array (
     size_t newSize = newCount * size;
     void *newPointer = realloc (pointer, newSize);
 
-    if (newSize && !newPointer) {
-        perror ("realloc");
-        abort ();
-    }
+    if (newSize)
+        assert (NULL != newPointer,
+            "Unable to allocate memory to grow the array.");
+
     return newPointer;
 }

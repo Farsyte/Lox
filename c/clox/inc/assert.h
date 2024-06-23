@@ -2,11 +2,18 @@
 
 #include <stdlib.h>             /* for abort() */
 
+#define STUB()					\
+    do {					\
+	build_msg("STUB", 0,			\
+		  "Terminating Run");		\
+	exit(0);				\
+    } while (0)
+
 #define assert(cond, msg)			\
     do {					\
 	if (cond) break;			\
 	build_msg(				\
-	    "Assert Failed: ", #cond, msg);	\
+	    "Assertion Failed", #cond, msg);	\
 	abort();				\
     } while (0)
 

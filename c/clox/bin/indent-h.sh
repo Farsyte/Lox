@@ -16,7 +16,7 @@ do
 
     d=$(dirname "$h")
     b=$(basename "$h")
-    o="$tmp.$b.c"
+    o="$tmp.$b.o"
 
     [ -d "$td" ] || mkdir -p "$td"
 

@@ -17,10 +17,13 @@ COPTS		:= -fshort-enums
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
 # tests: run power-on and built-in self tests.
+#
+# NOTE: a nonzero exit status from BIST is now treated
+# as a build failure.
 
 tests::		$(BIND)$(MAIN)
 	$P '  %-14s\n' "POST and BIST"
-	$C $(BIND)$(MAIN) bist
+	$Q $(BIND)$(MAIN) bist
 
 # indent: process all source files with indent.
 #
@@ -37,3 +40,8 @@ indent::
 format::	$(EXES)
 	$C ${BIND}indent-c.sh $(SRCD)*.c
 	$C ${BIND}indent-h.sh $(INCD)*.h
+
+# The presence of "STUB ();" calls is not a build error, but expose
+# where they all are to point out what needs to be implemented next.
+stubs::
+	$C grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h /dev/null || true

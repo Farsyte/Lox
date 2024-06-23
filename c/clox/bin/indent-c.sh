@@ -23,9 +23,16 @@ do
         echo
         (
             cd "$top"
-            find inc -iname "$b.h" -print |
-                sed 's:^inc/:#include ":' |
-                sed 's:$:":'
+            hn=''
+            sep=''
+            for fnp in $(echo $b | tr '_' ' ')
+            do
+                hn="${hn}${sep}${fnp}"
+                find inc -iname "$hn.h" -print |
+                    sed 's:^inc/:#include ":' |
+                    sed 's:$:":'
+                sep='_'
+            done | tail -1 || true
             echo
             (grep '#include "' < $c || true) | sort
             echo
