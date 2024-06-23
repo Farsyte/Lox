@@ -177,6 +177,7 @@ run (
             BINARY_OP (*);
             break;
         case OP_DIVIDE:
+            assert (0.0 != tos, "Attempt to divide by zero.");
             BINARY_OP (/);
             break;
 
@@ -189,7 +190,7 @@ run (
         case OP_RETURN:
 #ifdef DEBUG_TRACE_EXECUTION
             printf ("interpreter: return at IP=%04ld\n",
-                vm.ip - vm.chunk->code);
+                vm.ip - vm.chunk->code - 1);
 #endif
             // flush the TOS cache to the stack, then
             // continue with the older code.
@@ -203,6 +204,11 @@ run (
             printValue (pop ());
             printf ("\n");
             return INTERPRET_OK;
+        }
+
+        if (vm.sp > vm.stack_base) {
+            assert (isfinite (tos),
+                "Halting: top of value stack is not a Value.");
         }
     }
 #undef READ_CONSTANT_LONG
