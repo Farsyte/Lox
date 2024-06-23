@@ -2,6 +2,7 @@
 
 #include "assert.h"
 #include "chunk_debug.h"
+#include "compiler.h"
 #include "value_debug.h"
 
 #include <math.h>
@@ -89,8 +90,8 @@ InterpretResult
 interpret (
     const char *source)
 {
-    (void) source;              // not yet implemented
-    STUB ();
+    compile (source);
+    return INTERPRET_OK;
 }
 
 // this is the original interpret function.
