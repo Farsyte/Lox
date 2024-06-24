@@ -217,8 +217,10 @@ run (
             return INTERPRET_OK;
         }
 
-        assert (!isnan (tos), "Halting: top of stack is NaN.");
-        assert (!isinf (tos), "Halting: top of stack is Inf.");
+        if (vm.sp > vm.stack_base) {
+            assert (isfinite (tos),
+                "Halting: top of value stack is not a Value.");
+        }
     }
 #undef READ_CONSTANT_LONG
 #undef READ_3BYTE
