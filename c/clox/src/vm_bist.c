@@ -37,7 +37,7 @@ bist_vm (
     writeChunk (c, OP_RETURN, 150);
 
     initVM ();
-    interpret (c);
+    interpret_chunk (c);
 
     assert (-(1.2 + 3.4) / 5.6 == *vm.sp, "The final value must be correct.");
     freeVM ();

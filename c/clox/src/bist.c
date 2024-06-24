@@ -2,7 +2,9 @@
 
 #include "chunk.h"
 #include "iline.h"
+#include "keyword.h"
 #include "opcode.h"
+#include "scanner.h"
 #include "value.h"
 #include "vm.h"
 
@@ -20,6 +22,8 @@ bist_all (
         bist_value,
         bist_iline,
         bist_vm,
+        bist_scanner,
+        bist_keyword,
         // add more tets here.
     };
 

@@ -13,7 +13,6 @@
 
 -TChunk
 -TOpCode
--Ttype
 -TValue
 -TValueArray
 -TILineData
