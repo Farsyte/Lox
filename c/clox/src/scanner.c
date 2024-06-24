@@ -15,6 +15,10 @@ static Token makeToken (
     TokenType type);
 static Token errorToken (
     const char *message);
+static void skipWhitespace (
+    );
+static char peek (
+    );
 
 Scanner scanner;
 
@@ -31,6 +35,8 @@ Token
 scanToken (
     )
 {
+    skipWhitespace ();
+
     scanner.start = scanner.current;
     if (isAtEnd ())
         return makeToken (TOKEN_EOF);
@@ -130,4 +136,37 @@ errorToken (
     token.length = strlen (message);
     token.line = scanner.line;
     return token;
+}
+
+static void
+skipWhitespace (
+    )
+{
+    for (;;) {
+        char c = peek ();
+
+        switch (c) {
+
+        case ' ':
+        case '\r':
+        case '\t':
+            advance ();
+            break;
+
+        case '\n':
+            scanner.line++;
+            advance ();
+            break;
+
+        default:
+            return;
+        }
+    }
+}
+
+static char
+peek (
+    )
+{
+    return *scanner.current;
 }
