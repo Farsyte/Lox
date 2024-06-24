@@ -3,6 +3,7 @@
 #include "assert.h"
 #include "common.h"
 
+#include <stdio.h>
 #include <string.h>
 
 static bool isAtEnd (
@@ -16,6 +17,8 @@ static Token makeToken (
 static Token errorToken (
     const char *message);
 static void skipWhitespace (
+    );
+static Token string (
     );
 static char peek (
     );
@@ -80,6 +83,9 @@ scanToken (
         return makeToken (match ('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
     case '>':
         return makeToken (match ('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
+
+    case '"':
+        return string ();
     }
 
     return errorToken ("Unexpected character.");
@@ -173,6 +179,24 @@ skipWhitespace (
             return;
         }
     }
+}
+
+static Token
+string (
+    )
+{
+    while (peek () != '"' && !isAtEnd ()) {
+        if (peek () == '\n')
+            scanner.line++;
+        advance ();
+    }
+
+    if (isAtEnd ())
+        return errorToken ("Unterminated String.");
+
+    // the closing quote.
+    advance ();
+    return makeToken (TOKEN_STRING);
 }
 
 static char

@@ -89,6 +89,24 @@ bist_scanner (
 
         checkScanner (source, expected_type);
     }
+
+    {
+        // Strings, too.
+        const char source[] =
+            "// Line two is a string\n"
+            "\"This is a string.\"\n"
+            "// Line four starts a multiline string.\n"
+            "\"This string // this is not a comment\n"
+            "extends across two lines.\"\n";
+
+        const TokenType expected_type[] = {
+            TOKEN_STRING,
+            TOKEN_STRING,
+            TOKEN_EOF
+        };
+
+        checkScanner (source, expected_type);
+    }
 }
 
 static void
@@ -121,23 +139,47 @@ checkScanner (
 
 #ifdef SCANNER_BIST_DEBUG_TRACE
         if (source + off < t.start) {
-            printf ("scanner skipped %ld characters\n",
-                t.start - (source + off));
+            printf ("skip over '%.*s'\n",
+                (int) (t.start - (source + off)), source + off);
+#endif
+            while (source + off < t.start) {
+                if (source[off++] == '\n') {
+                    line++;
+#ifdef SCANNER_BIST_DEBUG_TRACE
+                    printf
+                        ("advanced across newline at offset %d, starting line %d\n",
+                        off - 1, line);
+#endif
+                }
+            }
+#ifdef SCANNER_BIST_DEBUG_TRACE
+            printf ("expected line is now %d (t.line is %d)\n", line, t.line);
         }
 #endif
-
-        while (off < t.start - source)
-            if (source[off++] == '\n')
-                line++;
 
         assert (0 < t.length,
             "scanToken should tell us the token length is positive.");
 
-        assert (line == t.line, "scanToken should tell us the line number.");
+#ifdef SCANNER_BIST_DEBUG_TRACE
+        if (t.length > 0) {
+            printf ("consuming lexeme '%.*s'\n", t.length, t.start);
+#endif
+            for (int i = t.length; i > 0; i--) {
+                if (source[off++] == '\n') {
+                    line++;
+#ifdef SCANNER_BIST_DEBUG_TRACE
+                    printf
+                        ("advanced across newline at offset %d, starting line %d\n",
+                        off - 1, line);
+#endif
+                }
+            }
+#ifdef SCANNER_BIST_DEBUG_TRACE
+            printf ("expected line is now %d\n", line);
+        }
+#endif
 
-        for (int i = t.length; i > 0; i--)
-            if (source[off++] == '\n')
-                line++;
+        assert (line == t.line, "scanToken should tell us the line number.");
 
         assert (off <= len, "scanToken advanced us past the EOF marker");
 
@@ -161,9 +203,21 @@ checkScanner (
     assert (source + off <= t.start,
         "scanToken should correctly report the position of the EOF.");
 
-    while (off < t.start - source)
-        if (source[off++] == '\n')
+#ifdef SCANNER_BIST_DEBUG_TRACE
+    if (source + off < t.start)
+        printf ("advancing over '%.*s'\n",
+            (int) (t.start - (source + off)), source + off);
+#endif
+    while (source + off < t.start) {
+        if (source[off++] == '\n') {
             line++;
+#ifdef SCANNER_BIST_DEBUG_TRACE
+            printf
+                ("advanced across newline at offset %d, starting line %d\n",
+                off, line);
+#endif
+        }
+    }
 
     assert (0 == t.length,
         "scanToken should tell us the TOKEN_EOF length is zero.");
