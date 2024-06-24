@@ -2,6 +2,7 @@
 
 #include "chunk.h"
 #include "iline.h"
+#include "keyword.h"
 #include "scanner.h"
 #include "value.h"
 #include "vm.h"
@@ -20,6 +21,7 @@ post_all (
         post_iline,
         post_vm,
         post_scanner,
+        post_keyword,
         // add more tets here.
     };
 

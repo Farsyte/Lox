@@ -2,6 +2,7 @@
 
 #include "assert.h"
 #include "common.h"
+#include "keyword.h"
 
 #include <ctype.h>
 #include <stdio.h>
@@ -18,6 +19,8 @@ static Token makeToken (
 static Token errorToken (
     const char *message);
 static void skipWhitespace (
+    );
+static Token identifier (
     );
 static Token number (
     );
@@ -51,6 +54,8 @@ scanToken (
 
     char c = advance ();
 
+    if (isalpha (c) || (c == '_'))
+        return identifier ();
     if (isdigit (c))
         return number ();
 
@@ -185,6 +190,20 @@ skipWhitespace (
             return;
         }
     }
+}
+
+static Token
+identifier (
+    )
+{
+    char ch = peek ();
+
+    while (isalnum (ch) || (ch == '_')) {
+        advance ();
+        ch = peek ();
+    }
+    return makeToken (keyword_token_type (scanner.start,
+            scanner.current - scanner.start));
 }
 
 static Token
