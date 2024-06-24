@@ -2,6 +2,7 @@
 
 #include "assert.h"
 #include "chunk_debug.h"
+#include "compiler.h"
 #include "value_debug.h"
 
 #include <math.h>
@@ -87,6 +88,16 @@ pop (
 
 InterpretResult
 interpret (
+    const char *source)
+{
+    compile (source);
+    return INTERPRET_OK;
+}
+
+// this is the original interpret function.
+// keeping it around just in case it is useful.
+InterpretResult
+interpret_chunk (
     Chunk *chunk)
 {
     vm.chunk = chunk;
