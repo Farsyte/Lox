@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#undef SCANNER_BIST_DEBUG_TRACE
+// define SCANNER_BIST_DEBUG_TRACE if bist_scanner reports
+// an error and you can't find it.
+// #define SCANNER_BIST_DEBUG_TRACE
 
 static void checkScanner (
     const char *source,
@@ -71,6 +73,22 @@ bist_scanner (
 
         checkScanner (source, expected_type);
     }
+
+    {
+        // Comment Sanity Check
+        const char source[] =
+            "// Komments Я Kool!\n! !=\t= ==// equalities\n< <=\t> >=// inequalities\n";
+
+        const TokenType expected_type[] = {
+            TOKEN_BANG, TOKEN_BANG_EQUAL,
+            TOKEN_EQUAL, TOKEN_EQUAL_EQUAL,
+            TOKEN_LESS, TOKEN_LESS_EQUAL,
+            TOKEN_GREATER, TOKEN_GREATER_EQUAL,
+            TOKEN_EOF
+        };
+
+        checkScanner (source, expected_type);
+    }
 }
 
 static void
@@ -89,6 +107,7 @@ checkScanner (
 #ifdef SCANNER_BIST_DEBUG_TRACE
     printf ("\n");
     printf ("scanner debug trace ...\n");
+    printf ("vvv\n%s\n^^^\n", source);
 #endif
 
     for (int i = 0; expected_type[i] != TOKEN_EOF; ++i) {

@@ -19,6 +19,8 @@ static void skipWhitespace (
     );
 static char peek (
     );
+static char peekNext (
+    );
 
 Scanner scanner;
 
@@ -78,7 +80,6 @@ scanToken (
         return makeToken (match ('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
     case '>':
         return makeToken (match ('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
-
     }
 
     return errorToken ("Unexpected character.");
@@ -158,6 +159,16 @@ skipWhitespace (
             advance ();
             break;
 
+        case '/':
+            if (peekNext () == '/') {
+                // A comment goes until the end of the line.
+                while (peek () != '\n' && !isAtEnd ())
+                    advance ();
+            } else {
+                return;
+            }
+            break;
+
         default:
             return;
         }
@@ -168,5 +179,12 @@ static char
 peek (
     )
 {
-    return *scanner.current;
+    return scanner.current[0];
+}
+
+static char
+peekNext (
+    )
+{
+    return scanner.current[1];
 }
