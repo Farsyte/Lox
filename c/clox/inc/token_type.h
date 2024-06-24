@@ -33,3 +33,6 @@ typedef enum {
     TOKEN_BREAK,
 
 } TokenType;
+
+const char *token_type_name (
+    TokenType tt);

@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#undef SCANNER_BIST_VERBOSE
+
 static void checkScanner (
     const char *source,
     const TokenType expected_type[]);
@@ -39,6 +41,21 @@ bist_scanner (
 
         checkScanner (source, expected_type);
     }
+
+    {
+        // check two-character tokens.
+        const char source[] = "!!====<<=>>=";
+
+        const TokenType expected_type[] = {
+            TOKEN_BANG, TOKEN_BANG_EQUAL,
+            TOKEN_EQUAL_EQUAL, TOKEN_EQUAL,
+            TOKEN_LESS, TOKEN_LESS_EQUAL,
+            TOKEN_GREATER, TOKEN_GREATER_EQUAL,
+            TOKEN_EOF
+        };
+
+        checkScanner (source, expected_type);
+    }
 }
 
 static void
@@ -63,6 +80,13 @@ checkScanner (
         assert (source + off <= t.start,
             "scanToken should correctly report the start of the token.");
 
+#ifdef SCANNER_BIST_VERBOSE
+        if (source + off < t.start) {
+            printf ("scanner skipped %ld characters\n",
+                t.start - (source + off));
+        }
+#endif
+
         // TODO update expected line number
         // when advancing "off"
         off = t.start - source;
@@ -77,6 +101,11 @@ checkScanner (
         off += t.length;
 
         assert (off <= len, "scanToken advanced us past the EOF marker");
+
+#ifdef SCANNER_BIST_VERBOSE
+        printf ("token %04d %-24s returned for '%.*s'\n",
+            i, token_type_name (t.type), t.length, t.start);
+#endif
     }
 
     // make sure the 1st TOKEN_EOF is correct.
