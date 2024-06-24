@@ -3,6 +3,7 @@
 #include "assert.h"
 #include "common.h"
 
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -17,6 +18,8 @@ static Token makeToken (
 static Token errorToken (
     const char *message);
 static void skipWhitespace (
+    );
+static Token number (
     );
 static Token string (
     );
@@ -47,6 +50,9 @@ scanToken (
         return makeToken (TOKEN_EOF);
 
     char c = advance ();
+
+    if (isdigit (c))
+        return number ();
 
     switch (c) {
     case '(':
@@ -179,6 +185,25 @@ skipWhitespace (
             return;
         }
     }
+}
+
+static Token
+number (
+    )
+{
+    while (isdigit (peek ()))
+        advance ();
+
+    // Allow a fractional part.
+    if (peek () == '.' && isdigit (peekNext ())) {
+        // consume the decimal point.
+        advance ();
+
+        while (isdigit (peek ()))
+            advance ();
+    }
+
+    return makeToken (TOKEN_NUMBER);
 }
 
 static Token

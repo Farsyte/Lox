@@ -107,6 +107,35 @@ bist_scanner (
 
         checkScanner (source, expected_type);
     }
+
+    {
+        // Numbers
+        // If there is a decimal point, there has to be
+        // at least one digit on either side.
+        // The scanner stores the lexeme.
+        // It does not convert it to a numeric value (yet).
+        // It does not support "1.0e6" (yet).
+        // It does not support alternate bases (yet).
+        const char source[] =
+            "0		// an integer value\n"
+            "00		// an integer value\n"
+            "123	// an integer value\n"
+            "123.	// an integer value and a dot\n"
+            ".123	// a dot and an integer value \n"
+            "123.123	// a floating point value";
+
+        const TokenType expected_type[] = {
+            TOKEN_NUMBER,
+            TOKEN_NUMBER,
+            TOKEN_NUMBER,
+            TOKEN_NUMBER, TOKEN_DOT,
+            TOKEN_DOT, TOKEN_NUMBER,
+            TOKEN_NUMBER,
+            TOKEN_EOF
+        };
+
+        checkScanner (source, expected_type);
+    }
 }
 
 static void
