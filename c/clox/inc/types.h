@@ -14,4 +14,5 @@
  * requires a bit of a rethink.
  */
 
-typedef enum opcode OpCode; /**< Enumerated Bytecode Operations */
+typedef enum opcode_e OpCode; /**< Enumerated Bytecode Operations */
+typedef struct chunk_s Chunk;

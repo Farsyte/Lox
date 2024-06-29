@@ -1,7 +1,5 @@
 #include "chunk.h"
 
-#include "error_log.h"
-
 #include <stdio.h>
 
 /** @file chunk_post.c
@@ -9,10 +7,18 @@
  */
 
 /** Run all POST cases for Chunk.
+ *
+ * - OpCode values must fit in a byte.
+ * - Managed storage must be array of bytes.
  */
 void
 postChunk (
     )
 {
-    INVAR (1 == sizeof (OpCode), "OpCode size must be one byte.");
+    Chunk *c;
+
+    INVAR (OP__LAST < 256, "OpCode values do not fit in one byte.");
+
+    INVAR (1 == sizeof (c->code[0]), "Chunk data must be array of bytes.");
+
 }

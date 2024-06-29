@@ -1,6 +1,7 @@
 #include "post.h"
 
 #include "chunk.h"
+#include "memory.h"
 
 /** @file post.c
  * @brief Power-On Self Test Framework
@@ -18,5 +19,6 @@ void
 postAll (
     )
 {
+    postMemory ();
     postChunk ();
 }

@@ -1,6 +1,7 @@
 #include "bist.h"
 
 #include "chunk.h"
+#include "memory.h"
 
 /** @file bist.c
  * @brief Built-In Self Test framework
@@ -18,6 +19,7 @@ void
 bistAll (
     )
 {
+    bistMemory ();
     bistChunk ();
     exit (0);
 }

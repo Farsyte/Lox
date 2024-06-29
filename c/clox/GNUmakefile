@@ -10,7 +10,7 @@ MAIN            := clox
 CC              := c99
 
 # NOTE: this is GCC-specific.
-COPTS           := -fshort-enums
+# COPTS           := -fshort-enums
 
 # This subproject traffics in log files.
 LOGD            := log/
