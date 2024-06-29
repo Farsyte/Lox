@@ -7,16 +7,42 @@
 
 VM vm;
 
+static void
+resetStack (
+    )
+{
+    vm.sp = vm.stack;
+}
+
 void
 initVM (
     )
 {
+    vm.chunk = NULL;
+    vm.ip = NULL;
+    resetStack ();
 }
 
 void
 freeVM (
     )
 {
+}
+
+void
+push (
+    Value value)
+{
+    *vm.sp = value;
+    vm.sp++;
+}
+
+Value
+pop (
+    )
+{
+    vm.sp--;
+    return *vm.sp;
 }
 
 static InterpretResult
