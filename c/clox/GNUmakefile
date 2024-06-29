@@ -73,7 +73,7 @@ doc/latex/refman.pdf:   doc/html/index.html
 stubs::
 	$P '\n'
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
-	$C grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no STUBs found.'
+	$C grep -ni '\<stub\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no STUBs found.'
 	$P '\n'
 
 # The presence of "TODO" comments is not a build error, but expose

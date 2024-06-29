@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "value.h"
 
 /** @file chunk.h
  * @brief API exposed by the Chunk module
@@ -20,6 +21,7 @@ struct chunk_s {
     int count;                  ///< number of bytecode bytes present
     int capacity;               ///< reallocate when we grow past this
     uint8_t *code;              ///< Storage for some bytecodes
+    ValueArray constants;       ///< Expandable pool of consetant values
 };
 
 extern void initChunk (
@@ -31,6 +33,10 @@ extern void freeChunk (
 extern void writeChunk (
     Chunk *chunk,
     uint8_t byte);
+
+extern int addConstant (
+    Chunk *chunk,
+    Value value);
 
 extern void postChunk (
     );

@@ -13,3 +13,5 @@
 
 -TChunk
 -TOpCode
+-TValue
+-TValueArray

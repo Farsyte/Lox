@@ -10,27 +10,36 @@ void
 bistChunk (
     )
 {
-    Chunk c[1];
+    Chunk chunk;
 
-    initChunk (c);
-    INVAR (0 == c->count, "initChunk did not clear the count");
-    INVAR (0 == c->capacity, "initChunk did not clear the capacity");
-    INVAR (NULL == c->code, "initChunk did not null the code pointer");
-
-    for (int i = 0; i < 256; ++i)
-        writeChunk (c, 0xAA ^ i);
-    writeChunk (c, OP_RETURN);
-
-    INVAR (257 == c->count, "writeChunk did not update the count");
-    INVAR (512 == c->capacity, "writeChunk did not update the capacity");
-    INVAR (NULL != c->code, "writeChunk did not update the code pointer");
+    initChunk (&chunk);
+    INVAR (0 == chunk.count, "initChunk did not clear the count");
+    INVAR (0 == chunk.capacity, "initChunk did not clear the capacity");
+    INVAR (NULL == chunk.code, "initChunk did not null the code pointer");
 
     for (int i = 0; i < 256; ++i)
-        INVAR ((0xAA ^ i) == c->code[i], "writeChunk did not write the data");
-    INVAR (OP_RETURN == c->code[256], "writeChunk did not write the data");
+        writeChunk (&chunk, 0xAA ^ i);
+    writeChunk (&chunk, OP_RETURN);
 
-    freeChunk (c);
-    INVAR (0 == c->count, "freeChunk did not clear the count");
-    INVAR (0 == c->capacity, "freeChunk did not clear the capacity");
-    INVAR (NULL == c->code, "freeChunk did not null the code pointer");
+    INVAR (257 == chunk.count, "writeChunk did not update the count");
+    INVAR (512 == chunk.capacity, "writeChunk did not update the capacity");
+    INVAR (NULL != chunk.code, "writeChunk did not update the code pointer");
+
+    for (int i = 0; i < 256; ++i)
+        INVAR ((0xAA ^ i) == chunk.code[i],
+            "writeChunk did not write the data");
+    INVAR (OP_RETURN == chunk.code[256], "writeChunk did not write the data");
+
+    INVAR (0 == addConstant (&chunk, 1.5),
+        "first constant is at offset zero");
+    INVAR (1.5 == chunk.constants.values[0], "verify first constant stored");
+
+    INVAR (1 == addConstant (&chunk, 3.5),
+        "second constant is at offset one");
+    INVAR (3.5 == chunk.constants.values[1], "verify second constant stored");
+
+    freeChunk (&chunk);
+    INVAR (0 == chunk.count, "freeChunk did not clear the count");
+    INVAR (0 == chunk.capacity, "freeChunk did not clear the capacity");
+    INVAR (NULL == chunk.code, "freeChunk did not null the code pointer");
 }

@@ -14,6 +14,14 @@
  * requires a bit of a rethink.
  */
 
-typedef enum opcode_e OpCode; /**< Enumerated Bytecode Operations */
-typedef struct chunk_s Chunk; /**< Chunk of Bytecodes */
-typedef double Value; /**< Value Representation */
+/** Enumerated Bytecode Operations */
+typedef enum opcode_e OpCode;
+
+/** Chunk of Bytecodes */
+typedef struct chunk_s Chunk;
+
+/** Value Representation */
+typedef double Value;
+
+/** Expandable Array of Values */
+typedef struct value_array_s ValueArray;

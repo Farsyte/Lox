@@ -1,6 +1,7 @@
 #include "chunk.h"
 
 #include "memory.h"
+#include "value.h"
 
 /** @file chunk.c
  * @brief Manage Chunks of Bytecode
@@ -25,6 +26,7 @@ initChunk (
     chunk->count = 0;
     chunk->capacity = 0;
     chunk->code = NULL;
+    initValueArray (&chunk->constants);
 }
 
 /** Release resources owned by Chunk.
@@ -42,6 +44,7 @@ freeChunk (
     Chunk *chunk)
 {
     FREE_ARRAY (uint8_t, chunk->code, chunk->capacity);
+    freeValueArray (&chunk->constants);
     initChunk (chunk);
 }
 
@@ -66,4 +69,18 @@ writeChunk (
 
     chunk->code[chunk->count] = byte;
     chunk->count++;
+}
+
+/** Add a value to the constant pool.
+ *
+ * Append the value to the constant pool, and return
+ * the index where it was stored.
+ */
+int
+addConstant (
+    Chunk *chunk,
+    Value value)
+{
+    writeValueArray (&chunk->constants, value);
+    return chunk->constants.count - 1;
 }
