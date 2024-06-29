@@ -1,5 +1,5 @@
 #pragma once
 
-#include "assert.h"
-
-#include <stdio.h>
+extern int main (
+    int argc,
+    const char **argv);

@@ -188,9 +188,9 @@ is used during compilation.
 Each header is expected to include all headers it requires in order to
 compile properly.
 
-The first line of every ~foo.c~ should be ~#include "foo.h"~ unless
-for some reason there is no corresponding header (main.c is a notable
-exception to the generral "C files have H files" observation).
+The first line of every ~foo.c~ should be ~#include "foo.h"~ which
+contains the declarations for whatever ~foo.c~ exports (and includes
+for all headers needed by them).
 
 The first line of every ~foo.h~ file should be ~pragma once~ as noted
 above. Repeating it here for emphasis. Generally H files have C files,
