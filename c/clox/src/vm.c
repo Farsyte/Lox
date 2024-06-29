@@ -57,6 +57,16 @@ run (
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
+        printf ("stack:");
+        if (vm.sp > vm.stack) {
+            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+                printf (" ");
+                printValue (*slot);
+            }
+            printf ("\n");
+        } else {
+            printf (" empty.\n");
+        }
         disassembleInstruction (vm.chunk, (int) (vm.ip - vm.chunk->code));
 #endif
         // Convert the byte to an OpCode enum value, so the C compiler
@@ -70,11 +80,12 @@ run (
 
         case OP_CONSTANT:
             constant = READ_CONSTANT ();
-            printValue (constant);
-            printf ("\n");
+            push (constant);
             break;
 
         case OP_RETURN:
+            printValue (pop ());
+            printf ("\n");
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
 #endif
