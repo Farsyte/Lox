@@ -1,6 +1,8 @@
 #pragma once
 
-typedef void bist_fn (
-    );
+/** @file bist.h
+ * @brief API exposed by the BIST module
+ */
 
-extern bist_fn bist_all;
+extern void bistAll (
+    );

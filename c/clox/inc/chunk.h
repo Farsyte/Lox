@@ -2,9 +2,17 @@
 
 #include "common.h"
 
-typedef enum {
-    OP_RETURN,
-} OpCode;
+/** @file chunk.h
+ * @brief API exposed by the Chunk module
+ */
 
-extern post_fn post_chunk;
-extern bist_fn bist_chunk;
+/** Enumerate defined operation codes.
+ */
+enum opcode {
+    OP_RETURN,                  ///< Stop executing a bytecode sequence
+};
+
+extern void postChunk (
+    );
+extern void bistChunk (
+    );

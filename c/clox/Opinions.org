@@ -258,6 +258,24 @@ Files like "debug.h" and "debug.c" can end up growing without bound
 while potentially coupling independent modules. I placed the initial
 debug support for chunk in "chunk_debug.h" and "chunk_debug.c" ...
 
+** UpperCamelCase, lowerCamelCase, UPPER_SNAKE_CASE, lower_snake_case
+
+Classically, most code I have worked with in C99 (and older versions
+of the language including K&R) preferred to use ~lower_snake_case~ for
+nearly everything, aside from UPPER_SNAKE_CASE identifying macros to
+help set expectations on how they are parsed. Additionally, a function
+doing "action" to a "thing" would often be called "thing_action" ...
+
+Book uses UpperCamelCase for types, lowerCamelCase for variables and
+functions, and "actionThing" for a function doing action to Thing.
+
+I have wavered on whether to use the case convention in the Book or to
+immediately translate to the classical snake_case on the fly as I
+type, and am currently favoring "use the book text as written" with
+the thought that I can probably do one massive refactor to change
+names from camelCase to snake_case after completing the implementation
+from the book.
+
 ** Ampersand Reduction Act
 
 I dislike APIs that look like this:
@@ -278,6 +296,10 @@ using a simple trick we can have something pointer-like everywhere.
   writeSomething(thing, zot);
   freeSomething(thing);
 #+end_src
+
+As noted above with name conventions ... I think I will keep the text
+as written in the book. Shifting between the forms above can be done
+independently inside each scope, later, if desired.
 
 ** Brace Reduction Act
 

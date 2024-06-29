@@ -20,6 +20,7 @@ do
 
     [ -d "$td" ] || mkdir -p "$td"
     (
+        # TODO: pull @file block comments up to here.
         echo
         (
             cd "$top"
@@ -41,7 +42,7 @@ do
         ) | awk -f "$top/bin/uniq.awk"
         echo
         grep -v '#include' < $c || true
-    ) | cat -s | sed '1d' | indent -st > $o
+    ) | cat -s | sed '1d' | indent -st | expand > $o
 
     if cmp --silent $c $o
     then

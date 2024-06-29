@@ -23,12 +23,13 @@ do
     (
         echo '#pragma once'
         echo
+        # TODO: pull @file block comments up to here.
         (grep '#include "' < $h || true) | sort
         echo
         (grep '#include <' < $h || true) | sort
         echo
         (grep -v '#pragma once' < $h || true) | (grep -v '#include' || true)
-    ) | cat -s | indent -st >> $o
+    ) | cat -s | indent -st | expand >> $o
 
     if cmp --silent $h $o
     then

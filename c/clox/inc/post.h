@@ -1,6 +1,8 @@
 #pragma once
 
-typedef void post_fn (
-    );
+/** @file post.h
+ * @brief API exposed by the POST module
+ */
 
-extern post_fn post_all;
+extern void postAll (
+    );

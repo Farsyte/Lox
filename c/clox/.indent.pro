@@ -1,6 +1,6 @@
 --blank-lines-after-declarations
 --blank-lines-after-procedures
---blank-lines-before-block-comments
+--no-blank-lines-before-block-comments
 --braces-after-func-def-line
 --braces-on-if-line
 --braces-on-struct-decl-line
@@ -10,3 +10,6 @@
 --honour-newlines
 --indent-level 4
 --no-tabs
+
+-TChunk
+-TOpCode
