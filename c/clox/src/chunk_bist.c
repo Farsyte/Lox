@@ -16,19 +16,27 @@ bistChunk (
     INVAR (0 == chunk.count, "initChunk did not clear the count");
     INVAR (0 == chunk.capacity, "initChunk did not clear the capacity");
     INVAR (NULL == chunk.code, "initChunk did not null the code pointer");
+    INVAR (NULL == chunk.lines, "initChunk did not null the lines pointer");
 
     for (int i = 0; i < 256; ++i)
-        writeChunk (&chunk, 0xAA ^ i);
-    writeChunk (&chunk, OP_RETURN);
+        writeChunk (&chunk, 0xAA ^ i, 123 + i);
+    writeChunk (&chunk, OP_RETURN, 1337);
 
     INVAR (257 == chunk.count, "writeChunk did not update the count");
     INVAR (512 == chunk.capacity, "writeChunk did not update the capacity");
     INVAR (NULL != chunk.code, "writeChunk did not update the code pointer");
+    INVAR (NULL != chunk.lines,
+        "writeChunk did not update the lines pointer");
 
     for (int i = 0; i < 256; ++i)
         INVAR ((0xAA ^ i) == chunk.code[i],
             "writeChunk did not write the data");
     INVAR (OP_RETURN == chunk.code[256], "writeChunk did not write the data");
+
+    for (int i = 0; i < 256; ++i)
+        INVAR ((123 + i) == chunk.lines[i],
+            "writeChunk did not write the line");
+    INVAR (1337 == chunk.lines[256], "writeChunk did not write the line");
 
     INVAR (0 == addConstant (&chunk, 1.5),
         "first constant is at offset zero");

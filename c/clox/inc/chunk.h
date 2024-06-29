@@ -22,6 +22,7 @@ struct chunk_s {
     int count;                  ///< number of bytecode bytes present
     int capacity;               ///< reallocate when we grow past this
     uint8_t *code;              ///< Storage for some bytecodes
+    int *lines;                 ///< parallel array of line numbers
     ValueArray constants;       ///< Expandable pool of consetant values
 };
 
@@ -33,7 +34,8 @@ extern void freeChunk (
 
 extern void writeChunk (
     Chunk *chunk,
-    uint8_t byte);
+    uint8_t byte,
+    int line);
 
 extern int addConstant (
     Chunk *chunk,
