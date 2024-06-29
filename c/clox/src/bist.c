@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "memory.h"
 #include "value.h"
+#include "vm.h"
 
 /** @file bist.c
  * @brief Built-In Self Test framework
@@ -23,5 +24,6 @@ bistAll (
     bistMemory ();
     bistChunk ();
     bistValue ();
+    bistVM ();
     exit (0);
 }

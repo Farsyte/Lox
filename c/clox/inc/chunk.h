@@ -11,6 +11,13 @@
  */
 enum opcode_e {
     OP_CONSTANT,                ///< Push a constant onto the stack
+
+    OP_ADD,                     ///< add top of stack to 2nd, push result
+    OP_SUBTRACT,                ///< subtract top of stack from 2nd, push result
+    OP_MULTIPLY,                ///< multiply top of stack by 2nd, push result
+    OP_DIVIDE,                  ///< divide top of stack by 2nd, push result
+
+    OP_NEGATE,                  ///< invert the sign of the top of the stack
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing

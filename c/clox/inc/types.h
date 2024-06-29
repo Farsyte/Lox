@@ -25,3 +25,9 @@ typedef double Value;
 
 /** Expandable Array of Values */
 typedef struct value_array_s ValueArray;
+
+/** Instruction Execution Virtual Machine */
+typedef struct vm_s VM;
+
+/** Result code from Interpreter */
+typedef enum interpret_result_e InterpretResult;

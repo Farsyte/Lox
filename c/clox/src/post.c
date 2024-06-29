@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "memory.h"
 #include "value.h"
+#include "vm.h"
 
 /** @file post.c
  * @brief Power-On Self Test Framework
@@ -23,4 +24,5 @@ postAll (
     postMemory ();
     postChunk ();
     postValue ();
+    postVM ();
 }
