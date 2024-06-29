@@ -5,6 +5,7 @@
 #include "common.h"
 #include "debug.h"
 #include "post.h"
+#include "vm.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -45,6 +46,10 @@ main (
 
     writeChunk (&chunk, OP_RETURN, 123);
     disassembleChunk (&chunk, "test chunk");
+
+    initVM ();
+    freeVM ();
+
     freeChunk (&chunk);
 
     bistAll ();

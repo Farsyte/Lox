@@ -25,3 +25,6 @@ typedef double Value;
 
 /** Expandable Array of Values */
 typedef struct value_array_s ValueArray;
+
+/** Instruction Execution Virtual Machine */
+typedef struct vm_s VM;
