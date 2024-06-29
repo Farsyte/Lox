@@ -255,8 +255,9 @@ memory.c and provides error reporting.
 ** Avoid catch-all debug files
 
 Files like "debug.h" and "debug.c" can end up growing without bound
-while potentially coupling independent modules. I placed the initial
-debug support for chunk in "chunk_debug.h" and "chunk_debug.c" ...
+while potentially coupling independent modules. I will relent and
+stick with the code-as-written-in-book, until we have too much in
+these files or too many files dependent on them.
 
 ** UpperCamelCase, lowerCamelCase, UPPER_SNAKE_CASE, lower_snake_case
 

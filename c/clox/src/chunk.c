@@ -13,7 +13,7 @@
  * - current capacity is zero
  * - no bytecode storage owned
  *
- * \param chunk memory to be initialized
+ * @param chunk memory to be initialized
  */
 void
 initChunk (
@@ -35,7 +35,7 @@ initChunk (
  * This does NOT include doing a ~free(chunk)~
  * because chunk itself may not have been allocated.
  *
- * \param chunk the chunk to manipulate
+ * @param chunk the chunk to manipulate
  */
 void
 freeChunk (
@@ -47,10 +47,9 @@ freeChunk (
 
 /** Write an OpCode onto the end of the chunk.
  *
- * \param chunk what to write into
- * \param code value to add to it
+ * @param chunk what to write into
+ * @param code value to add to it
  */
-
 void
 writeChunk (
     Chunk *chunk,

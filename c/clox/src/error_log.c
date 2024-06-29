@@ -18,19 +18,19 @@
  * that our error message starts at the left margin, after
  * assuring all prior output is made visible.
  *
- * \param file a path to a source file (or similar).
- * \param line the line number in the source file (or similar).
- * \param func the containing function name (or similar).
- * \param pfx a "prefix" string to print on the first line
- * \param cond the "condition" that failed
- * \param msg an extended message to follow
+ * @param file a path to a source file (or similar).
+ * @param line the line number in the source file (or similar).
+ * @param func the containing function name (or similar).
+ * @param pfx a "prefix" string to print on the first line
+ * @param cond the "condition" that failed
+ * @param msg an extended message to follow
  *
  * Any or all parameters can be NULL, "", or zero; in each case,
  * such parameters will be skipped along with connective text.
  *
  * The message ends with a blank line.
  */
-int
+void
 _error_log (
     const char *file,
     int line,
@@ -63,6 +63,4 @@ _error_log (
         fprintf (stderr, "%s\n", msg);
 
     fprintf (stderr, "\n");
-
-    return 0;
 }

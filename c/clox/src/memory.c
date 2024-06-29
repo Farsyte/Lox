@@ -14,9 +14,9 @@
  * The macro does not use realloc directly, because we want allocation
  * errors to be reported and to terminate the program.
  *
- * \param pointer address of existing storage block
- * \param oldSize size in bytes of existing storage block
- * \param newSize desired size in bytes of new storage block
+ * @param pointer address of existing storage block
+ * @param oldSize size in bytes of existing storage block
+ * @param newSize desired size in bytes of new storage block
  */
 void *
 reallocate (

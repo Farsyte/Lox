@@ -46,9 +46,9 @@
  *          <<cond>>
  *      <<msg>>
  *
- * \param pfx a "prefix" string to print on the first line
- * \param cond the "condition" that failed
- * \param msg an extended message to follow
+ * @param pfx a "prefix" string to print on the first line
+ * @param cond the "condition" that failed
+ * @param msg an extended message to follow
  *
  * Any or all of the parameters can be NULL or "" in which
  * case that message and some surrounding connective space
@@ -61,7 +61,7 @@
                    pfx, cond, msg);             \
     } while (0)
 
-extern int _error_log (
+extern void _error_log (
     const char *file,
     int line,
     const char *func,

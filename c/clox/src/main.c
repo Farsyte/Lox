@@ -1,7 +1,9 @@
 #include "main.h"
 
 #include "bist.h"
+#include "chunk.h"
 #include "common.h"
+#include "debug.h"
 #include "post.h"
 
 #include <stdio.h>
@@ -19,10 +21,12 @@
  *
  * Run POST and BIST.
  *
+ * TEMPORARILY: tinker with a Chunk.
+ *
  * \todo command line processing
  *
- * \param argc command line arg count
- * \param argv command line arg list
+ * @param argc command line arg count
+ * @param argv command line arg list
  */
 int
 main (
@@ -30,6 +34,14 @@ main (
     const char **argv)
 {
     postAll ();
+
+    Chunk chunk;
+
+    initChunk (&chunk);
+    writeChunk (&chunk, OP_RETURN);
+    disassembleChunk (&chunk, "test chunk");
+    freeChunk (&chunk);
+
     bistAll ();
 
     (void) argc;

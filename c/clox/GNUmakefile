@@ -24,8 +24,10 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 # as a build failure.
 
 tests::         $(BIND)$(MAIN)
+	$P '\n'
 	$P '  %-14s\n' "POST and BIST"
 	$Q $(BIND)$(MAIN) bist
+	$P '\n'
 
 # format: reformat all source files.
 #
@@ -56,7 +58,7 @@ clean::
 	@ [ ! -d doc/html/search ] || $Y doc/html/search
 	$X doc/html/* doc/latex/*
 
-doc/html/index.html:    $(BIND)$(MAIN)
+doc/html/index.html:    doc/Doxyfile $(BIND)$(MAIN)
 	$C [ -d log ] || mkdir -p log
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
 	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err
@@ -69,15 +71,19 @@ doc/latex/refman.pdf:   doc/html/index.html
 # where they all are to point out what needs to be implemented next.
 
 stubs::
+	$P '\n'
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
 	$C grep -n 'STUB ();' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no STUBs found.'
+	$P '\n'
 
 # The presence of "TODO" comments is not a build error, but expose
 # where they all are to point out what needs to be implemented soon.
 
 todos::
+	$P '\n'
 	$P '  %-14s %s\n' "FIND TODOs" "$(INCD)*.h $(SRCD)*.c"
 	$C grep -ni '\<todo\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no TODOs found.'
+	$P '\n'
 
 # Maintain a "TAGS" file for emacs.
 
@@ -109,3 +115,6 @@ cycle::
 	$M docs
 	$M stubs
 	$M todos
+
+world::
+	$M cycle
