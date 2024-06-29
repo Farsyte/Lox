@@ -23,7 +23,7 @@ C_DBG_OPT	:= -g -O2
 endif
 
 ifeq ($(C_WARNINGS),)
-C_WARNINGS	:= -W -Wall -Wextra
+C_WARNINGS	:= -W -Wall -Wextra -Werror
 endif
 
 # Pick compiler and set up command line options
@@ -32,9 +32,12 @@ CC              := gcc
 endif
 
 ifeq ($(CFLAGS),)
-CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) -I$(INCD)
+CFLAGS          := $(C_DBG_OPT) $(C_WARNINGS) $(COPTS) -I$(INCD)
 endif
 
+ifeq ($(LDLIBS),)
+LDLIBS		:= -lm
+endif
 
 # The default build is "make all"
 default::       all
