@@ -48,6 +48,7 @@ main (
     disassembleChunk (&chunk, "test chunk");
 
     initVM ();
+    interpret (&chunk);
     freeVM ();
 
     freeChunk (&chunk);
