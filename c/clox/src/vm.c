@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "debug.h"
 
+#include <math.h>
 #include <stdio.h>
 
 VM vm;
@@ -49,6 +50,9 @@ static InterpretResult
 run (
     )
 {
+
+    Value tos = NAN;
+
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
 #endif
@@ -57,12 +61,15 @@ run (
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
-        printf ("stack:");
-        if (vm.sp > vm.stack) {
-            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+        if (isfinite (tos)) {
+            printf ("stack:");
+            // NOTE: vm.stack[0] will have the original NAN value.
+            for (Value *slot = vm.stack + 1; slot < vm.sp; slot++) {
                 printf (" ");
                 printValue (*slot);
             }
+            printf (" ");
+            printValue (tos);
             printf ("\n");
         } else {
             printf (" empty.\n");
@@ -74,20 +81,18 @@ run (
         // the switch.
 
         OpCode instruction;
-        Value constant;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
         case OP_CONSTANT:
-            constant = READ_CONSTANT ();
-            push (constant);
+            push (tos);
+            tos = READ_CONSTANT ();
             break;
 
 #define BINARY_OP(op)                           \
             do {                                \
-                double b = pop();               \
                 double a = pop();               \
-                push (a op b);                  \
+                tos = a op tos;                 \
             } while (false)
 
         case OP_ADD:
@@ -106,11 +111,12 @@ run (
 #undef  BINARY_OP
 
         case OP_NEGATE:
-            push (-pop ());
+            tos = -tos;
             break;
 
         case OP_RETURN:
-            printValue (pop ());
+            printValue (tos);
+            tos = pop ();
             printf ("\n");
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
