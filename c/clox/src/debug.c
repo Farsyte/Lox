@@ -27,11 +27,12 @@ disassembleChunk (
     Chunk *chunk,
     const char *name)
 {
-    printf ("== %s ==\n", name);
+    printf ("\nDisassembling %s ...\n", name);
 
     for (int offset = 0; offset < chunk->count;) {
         offset = disassembleInstruction (chunk, offset);
     }
+    printf ("Disassembling %s ... done.\n\n", name);
 }
 
 /** Print disassembly of a simple constant OpCode.

@@ -1,6 +1,7 @@
 #include "vm.h"
 
 #include "chunk.h"
+#include "debug.h"
 
 #include <stdio.h>
 
@@ -22,10 +23,16 @@ static InterpretResult
 run (
     )
 {
+#ifdef  DEBUG_TRACE_EXECUTION
+    printf ("\nExecuting ...\n");
+#endif
+
 #define READ_BYTE()     (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
     for (;;) {
-
+#ifdef  DEBUG_TRACE_EXECUTION
+        disassembleInstruction (vm.chunk, (int) (vm.ip - vm.chunk->code));
+#endif
         // Convert the byte to an OpCode enum value, so the C compiler
         // can warn us if there are any OpCode num values missing from
         // the switch.
@@ -42,6 +49,9 @@ run (
             break;
 
         case OP_RETURN:
+#ifdef  DEBUG_TRACE_EXECUTION
+            printf ("Executing ... done.\n\n");
+#endif
             return INTERPRET_OK;
 
         }

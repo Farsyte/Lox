@@ -12,4 +12,10 @@
  *
  * This file includes a number of headers that will
  * be needed by most, if not all, source files.
+ *
+ * It also is the central point for turing on and off
+ * macros that control optional behaviors.
  */
+
+/** Enable (or disable) execution tracing */
+#define DEBUG_TRACE_EXECUTION
