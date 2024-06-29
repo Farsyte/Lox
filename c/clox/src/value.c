@@ -2,6 +2,8 @@
 
 #include "memory.h"
 
+#include <stdio.h>
+
 /** @file value.c
  * @brief Support functions for the value module
  */
@@ -69,4 +71,15 @@ freeValueArray (
         array->capacity);
 
     initValueArray (array);
+}
+
+void
+printValue (
+    Value value)
+{
+    if (value == (int) value) {
+        printf ("%.0f", value);
+    } else {
+        printf ("%g", value);
+    }
 }

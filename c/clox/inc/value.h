@@ -22,6 +22,9 @@ extern void writeValueArray (
 extern void freeValueArray (
     ValueArray *array);
 
+extern void printValue (
+    Value value);
+
 extern void bistValue (
     );
 extern void postValue (
