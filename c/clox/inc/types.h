@@ -15,4 +15,5 @@
  */
 
 typedef enum opcode_e OpCode; /**< Enumerated Bytecode Operations */
-typedef struct chunk_s Chunk;
+typedef struct chunk_s Chunk; /**< Chunk of Bytecodes */
+typedef double Value; /**< Value Representation */

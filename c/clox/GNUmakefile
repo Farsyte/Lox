@@ -89,17 +89,17 @@ todos::
 
 etags::		TAGS			; $T
 
-TAGS::		$(INCS) $(SRCS)
-	$P '  %-14s %s\n' "TAGS" "$(INCS) $(SRCS)"
-	etags $(INCS) $(SRCS)
+TAGS::		$(INCS) $(SRCS) GNUmakefile
+	$P '  %-14s %s\n' "TAGS" "$(INCD)*.h $(SRCD)*.c"
+	$Q etags $(INCS) $(SRCS)
 
 # Maintain a "tags" file for vi.
 
 ctags::		tags			; $T
 
-tags::		$(INCS) $(SRCS)
-	$P '  %-14s %s\n' "tags" "$(INCS) $(SRCS)"
-	ctags $(INCS) $(SRCS)
+tags::		$(INCS) $(SRCS) GNUmakefile
+	$P '  %-14s %s\n' "tags" "$(INCD)*.h $(SRCD)*.c"
+	$Q ctags $(INCS) $(SRCS)
 
 # The sequence that I want to run when I have made a change
 # where everything SHOULD be good but something MIGHT not be good.
