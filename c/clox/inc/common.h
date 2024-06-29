@@ -1,6 +1,8 @@
 #pragma once
 
 #include "assert.h"
+#include "bist.h"
+#include "post.h"
 
 #include <stdbool.h>
 #include <stddef.h>

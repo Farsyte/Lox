@@ -2,10 +2,9 @@
 
 #include <stdlib.h>             /* for abort() */
 
-#define STUB()					\
+#define STUB(msg)				\
     do {					\
-	build_msg("STUB", 0,			\
-		  "Terminating Run");		\
+	build_msg("STUB", 0, msg);		\
 	exit(0);				\
     } while (0)
 
