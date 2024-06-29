@@ -83,6 +83,12 @@ disassembleInstruction (
 {
     printf ("%04d ", offset);
 
+    if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1]) {
+        printf ("   | ");
+    } else {
+        printf ("%4d ", chunk->lines[offset]);
+    }
+
     uint8_t instruction = chunk->code[offset];
 
     // Casting instruction to type (OpCode) allows the
