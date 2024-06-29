@@ -105,8 +105,13 @@ $(SUBA):
 $(SUBC):
 	$M -C "$(@:%.clean=%)" clean
 
-stubs::
-	git grep -n STUB
+.PHONY:         default all clean world stubs $(SUBD) $(SUBA) $(SUBC) sync
 
-.PHONY:         default all clean world stubs $(SUBD) $(SUBA) $(SUBC)
+# Run this target after changing branches
+
+sync::
+	$M -k -j clean
+	$M -k -j -C j/jlox tests
+	$M -C c/clox cycle
+
 

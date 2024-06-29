@@ -10,6 +10,31 @@ parts.
     *(In My Honest Opinion). My opinions are not Humble.*
 
 
+** Warnings are Errors
+
+Compiler writers do not go to the extra effort to detect and report
+not-quite-right things in your code for their amusement. Well, maybe
+they do, but not *ONLY* for that reason.
+
+I treat warnings as errors in any nontrivial project. From here on, if
+the compiler warns me about something, I need to be intentional about
+addressing that warning.
+
+*** Unused Parameters
+
+Add statements at the TOP of the function casting the parameter to
+void, with an appropraite comment. In some cases, mentioning why the
+parameter is unused might be appropriate; in others, a TODO with what
+we are going to do that will use it is best.
+
+This might be preseint inside ~main()~ initially:
+
+#+begin_src c
+      (void) argc;                // TODO: argument parsing
+      (void) argv;                // TODO: argument parsing
+#+end_src
+
+
 ** Code Formatting
 
 Much is sacrificed when formatting code to be presented in printed
@@ -36,3 +61,230 @@ it does require some tweaking.
 As C sources are added to this directory, I will extend .indent.pro to
 either commit to the style of the text from the book, or commit to an
 intentional change to that style.
+
+*** Tabs: never use spaces, always use tabs.
+
+Different engineers in different environments will see TAB characters
+expanded to different positions. As a result, text using TAB that
+looks right for one viewer will be different and sometimes confusingly
+wrong for other viewers.
+
+This project does not use tabs.
+
+*** Indentation: 4 spaces
+
+Engineers that habitually work in more deeply nested code will be more
+motivated to have smaller amounts of indent per nesting than
+otherwise, and over time, the customary indent width has tended to
+vary with the coding practices.
+
+I prefer four spaces, as it allows me to visually pick out code at the
+same indentation level across dozens of lines on my screen. Wider
+indents, for me, add little value and force me to use wider windows.
+
+*** Declarations: ~char* foo~ vs ~char *foo~
+
+I have strong opinions here, and so does ~indent~ ...
+
+Writing ~char* foo~ reinforces the incorrect notion that the asterisk is
+coupled to the type, not the variable, in the declaration. This is a
+very bad idea to encourage. Consider ~char* foo, bar~ where the idea
+that the star groups with ~char~ would lead one to the wrong conclusion
+about the type of ~bar~ ... better to just put the star where it belongs.
+
+Besides, if ~Type* foo, bar~ built two pointers to type, then one might
+reasonably ask why ~Type[5] foo, bar~ is not a thing. It is a thing, and
+it is a good thing, but it isn't C. Or at least it's not C99, and if it
+has been added to C recently, *DO NOT TELL ME, I DO NOT WANT TO KNOW.*
+
+My formatting pass will use ~char *foo~ instead.
+
+*** Function Definitions
+
+**** Break the line before the function name.
+
+This makes it significantly easier to find the definition
+of a function with generic text tools. It also makes the
+visual layout of the function consistent even when the
+return type can be very short or very involved.
+
+**** Break the line before parameter declarations
+
+This is an ancient habit, which I now use as a way
+to make it easy and consistent to add comments about
+individual parameters.
+
+**** Break the line before the open-brace.
+
+Similar reasoning as above: it makes it easier to find
+the start of the statement block for generic text tools,
+and keeps things consistent betwen the simplest and the
+most complicated function definitions.
+
+*** Alignment of stuff inside parentheses
+
+I have a number of places where I call a function, and the
+parameters land on multiple lines. Aligning the parameters
+under and to the right of the open paren sacrifices a lot
+of horizontal space for very little value.
+
+For now, using --dont-line-up-parentheses ...
+
+*** Braces and "if" statements
+
+I am willing to sacrifice a line for the opening brace of
+the function body, but not for every "if" statement. In
+the same vein, "else" needs to be pulled up onto the same
+line as the closing "}" if there was one.
+
+** Unused Parameters
+
+Where a function must take a parameter due to an externally imposed
+function signature, but it does not use it, the compiler will be
+helpful and give us a warning.
+
+** Header Protection: #pragma once
+
+Author and I concur on the need to protect the body of header files from
+being included multiple times in a compilation unit, and author uses a
+mature form of protection via the preprocessor:
+
+#+begin_src c
+  #ifndef clox_common_h
+  #define clox_common_h
+
+  // ... stuff that is only processed once per compilaition unit
+
+  #endif
+#+end_src
+
+This makes ~#include "common.h"~ idempotent -- including it multiple
+times has exactly the same effect as including it only once. This is an
+important property that headers need to have, with a very small number
+of very intentional exceptions.
+
+This is not without risk. The macro name used to protect the header must
+not conflict with guards in other headers, or identifiers used in any
+source file in the project, or in any system header that might be
+included. This falls under the "namespace pollution" problem endemic to
+the global namespace in most if not all large C projects.
+
+The better alternative ~#pragma once~ appeared about twenty years ago
+and spread across popular compilers quickly (as quickly as new features
+can, so years but not many). Currently, it is vanishingly unlikely that
+you will be using a compiler that lacks it.
+
+I will be reflexively using ~#pragma once~ in all my headers. Exceptions
+will be announced loudly and intentionally, because that strays over
+into the kind of preprocessor work that needs extra care.
+
+** Assure new headers are compiled.
+
+When a commit adds a header file, it must assure that the header file
+is used during compilation.
+
+** Header File Order
+
+Each header is expected to include all headers it requires in order to
+compile properly.
+
+The first line of every ~foo.c~ should be ~#include "foo.h"~ unless
+for some reason there is no corresponding header (main.c is a notable
+exception to the generral "C files have H files" observation).
+
+The first line of every ~foo.h~ file should be ~pragma once~ as noted
+above. Repeating it here for emphasis. Generally H files have C files,
+and if an H file does not include something it needs, that is where we
+will see the compile error.
+
+Following that, the ~#include "bar.h"~ lines for all of the headers
+that the C or H file requires. Some effort should be made to remove
+headers that are not directly used by the source file, but it is still
+good practice to include H files the source file needs, even if they
+are indirectly included by other H files (whew). This means the whole
+mess of assuring all the H files are listed but no extra ones are, is
+a manual process.
+
+Following that, the ~include <foo.h>~ lines including system headers
+that are required by the body of the source file.
+
+** POST: Power-On Self Test
+
+This may be familiar as a step in booting a computer, where the
+bootstrap process validates the hardware is working before trying
+to run an operating system.
+
+As a general concept but rarely seen today, this is a collection of
+procedures that a software system runs before doing anything else to
+validate internal behaviors. I have found these useful for detecting
+where "upgrades" to a library cause it to now violate the assumptions
+baked into my code.
+
+Because these run every time the program starts, their cost must be
+kept small: they must run in very little time relative to a typical
+run of the program, and must not inflate any other resource costs such
+as memory footprint.
+
+** BIST: Built-In Self Test
+
+This is an extension of POST: a collection of tests that can be run by
+the program as deployed. This can be used as part of the test suite
+run in a branch before it is merged to trunk, and can be used in the
+field (so to speak) if there is concern that some of the conditions
+tested by BIST may not hold in that environment.
+
+This is more interesting when externalities can influence the
+correctness of the program. Notably, use of external libraries is just
+one of these issues.
+
+While I do not anticipate using such libraries, this is still a good
+framework to use for basic testing of internals.
+
+** Memory Reallocation
+
+GROW_ARRAY does extra work and calls reallocate, which does extra work
+and calls realloc. The test for zero size is not necessary, as realloc
+does exactly what was asked with the new size is zero.
+
+Using ~reallocarray~ would be natural but apparently it is not
+available when using GCC in C99 mode, so use ~realloc~ directly.
+
+By "directly" I mean calling ~checked_grow_array~ which lives in
+memory.c and provides error reporting.
+
+** Avoid catch-all debug files
+
+Files like "debug.h" and "debug.c" can end up growing without bound
+while potentially coupling independent modules. I placed the initial
+debug support for chunk in "chunk_debug.h" and "chunk_debug.c" ...
+
+** Ampersand Reduction Act
+
+I dislike APIs that look like this:
+
+#+begin_src c
+  Something thing;
+  initSomething(&thing);
+  writeSomething(&thing, zot);
+  freeSomething(&thing);
+#+end_src
+
+Some code has a ~SomeThing~ and some has a ~SomeThing *~ when by
+using a simple trick we can have something pointer-like everywhere.
+
+#+begin_src c
+  Something thing[1];
+  initSomething(thing);
+  writeSomething(thing, zot);
+  freeSomething(thing);
+#+end_src
+
+** Brace Reduction Act
+
+While I am ambivalent about using braces around single statements in
+"if", "for" and "while" bodies, I draw the line at bracing up the
+lines of code in switch cases.
+
+** If "ip" is instruction pointer, then "sp" is value stack pointer.
+
+I will be using "vm.sp" in my code, not "vm.stackTop" ...
