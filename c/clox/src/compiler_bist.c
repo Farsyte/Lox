@@ -13,13 +13,15 @@ void
 bistCompiler (
     )
 {
-    const char *source = "";
+    const char source[] = "(){};,.-+/*=!<>!=<=>===";
+    const size_t src_len = sizeof source - 1;
+    const char *source_end = source + src_len;
 
     compile (source);
 
-    INVAR (source == scanner.start,
+    INVAR (source_end == scanner.start,
         "initScaner must set scanner.start to the given source.");
-    INVAR (source == scanner.current,
+    INVAR (source_end == scanner.current,
         "initScaner must set scanner.current to the given source.");
     INVAR (1 == scanner.line, "initScaner must set scanner.line to 1.");
 }
