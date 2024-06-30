@@ -13,7 +13,7 @@ void
 bistCompiler (
     )
 {
-    const char *source = "...";
+    const char *source = "";
 
     compile (source);
 

@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+#include <string.h>
+
 // Does any code outside scanner.c have any reason
 // to look inside the Scanner structure?
 
@@ -16,9 +18,47 @@ initScanner (
     scanner.line = 1;
 }
 
+static bool
+isAtEnd (
+    )
+{
+    return *scanner.current == '\0';
+}
+
+static Token
+makeToken (
+    TokenType type)
+{
+    Token token;
+
+    token.type = type;
+    token.start = scanner.start;
+    token.length = (int) (scanner.current - scanner.start);
+    token.line = scanner.line;
+    return token;
+}
+
+static Token
+errorToken (
+    const char *message)
+{
+    Token token;
+
+    token.type = TOKEN_ERROR;
+    token.start = message;
+    token.length = (int) strlen (message);
+    token.line = scanner.line;
+    return token;
+}
+
 Token
 scanToken (
     )
 {
-    STUB (0);
+    scanner.start = scanner.current;
+
+    if (isAtEnd ())
+        return makeToken (TOKEN_EOF);
+
+    return errorToken ("Unexpected character.");
 }
