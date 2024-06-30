@@ -21,6 +21,11 @@ bistCompiler (
         "\t\"string\" \"line-spanning\n"
         "string\"\n"
         "123 123.5 123. .5\n"
+        "foo f00 _f_ _1_\n"
+        "and class else false\n"
+        "for fun if nil or\n"
+        "print return super this\n"
+        "true var while\n"
         ;
     // *INDENT-ON*
 
