@@ -31,3 +31,6 @@ typedef struct vm_s VM;
 
 /** Result code from Interpreter */
 typedef enum interpret_result_e InterpretResult;
+
+/** Storage relating to command line options */
+typedef struct options Options;

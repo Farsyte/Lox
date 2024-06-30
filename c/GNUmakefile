@@ -39,6 +39,8 @@ ifeq ($(LDLIBS),)
 LDLIBS		:= -lm
 endif
 
+PROG		:= $(MAIN:%=$(BIND)%)
+
 # The default build is "make all"
 default::       all
 

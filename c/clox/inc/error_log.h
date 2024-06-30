@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>             /* for abort() */
+#include <sysexits.h>
 
 /** @file error_log.h
  * @brief Error Logging Macros
@@ -19,7 +20,7 @@
 #define STUB(msg)                               \
     do {                                        \
         ERROR_LOG("STUB Encountered", 0, msg);  \
-        exit(0);                                \
+        exit(EX_OK);                            \
     } while (0)
 
 /** Abort if an invariant is violated.

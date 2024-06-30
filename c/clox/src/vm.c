@@ -50,8 +50,7 @@ static InterpretResult
 run (
     )
 {
-
-    Value tos = NAN;
+    Value tos = (vm.sp > vm.stack) ? pop () : NAN;
 
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
@@ -61,8 +60,8 @@ run (
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
+        printf ("stack:");
         if (isfinite (tos)) {
-            printf ("stack:");
             // NOTE: vm.stack[0] will have the original NAN value.
             for (Value *slot = vm.stack + 1; slot < vm.sp; slot++) {
                 printf (" ");
@@ -70,10 +69,10 @@ run (
             }
             printf (" ");
             printValue (tos);
-            printf ("\n");
         } else {
-            printf (" empty.\n");
+            printf (" empty.");
         }
+        printf ("\n");
         disassembleInstruction (vm.chunk, (int) (vm.ip - vm.chunk->code));
 #endif
         // Convert the byte to an OpCode enum value, so the C compiler
@@ -87,6 +86,7 @@ run (
         case OP_CONSTANT:
             push (tos);
             tos = READ_CONSTANT ();
+            // TODO runtime error if result is not finite
             break;
 
 #define BINARY_OP(op)                           \
@@ -97,15 +97,20 @@ run (
 
         case OP_ADD:
             BINARY_OP (+);
+            // TODO runtime error if result is not finite
             break;
         case OP_SUBTRACT:
             BINARY_OP (-);
+            // TODO runtime error if result is not finite
             break;
         case OP_MULTIPLY:
             BINARY_OP (*);
+            // TODO runtime error if result is not finite
             break;
         case OP_DIVIDE:
+            // TODO runtime error if tos is zero
             BINARY_OP (/);
+            // TODO runtime error if result is not finite
             break;
 
 #undef  BINARY_OP
@@ -115,8 +120,13 @@ run (
             break;
 
         case OP_RETURN:
-            printValue (tos);
-            tos = pop ();
+            if (vm.sp > vm.stack || isfinite (tos)) {
+                printValue (tos);
+                // leave the stack looking like tos was just popped.
+                *vm.sp = tos;
+            } else {
+                printf ("OP_RETURN but stack is empty.");
+            }
             printf ("\n");
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
@@ -130,10 +140,18 @@ run (
 }
 
 InterpretResult
-interpret (
+interpretChunk (
     Chunk *chunk)
 {
     vm.chunk = chunk;
     vm.ip = vm.chunk->code;
     return run ();
+}
+
+InterpretResult
+interpret (
+    const char *source)
+{
+    (void) source;
+    STUB (0);
 }

@@ -15,7 +15,6 @@
 /** Run all Power-On Self Tests.
  *
  * Run all of the POST methods in a hard-coded order.
- * When all tests are complete, allow the program to continue.
  */
 void
 postAll (

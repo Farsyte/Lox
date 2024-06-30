@@ -2,7 +2,6 @@
 
 # This C project builds a program called "clox"
 MAIN            := clox
-
 # I will be telling GCC to constrain us to C99
 # (formal title, INCITS ISO/IEC 9899:1999)
 # until original author deviates significantly.
@@ -15,6 +14,7 @@ CC              := c99
 # This subproject traffics in log files.
 LOGD            := log/
 
+
 # Inherit recurive build behaviors from parent
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
@@ -23,11 +23,31 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 # NOTE: a nonzero exit status from BIST is now treated
 # as a build failure.
 
-tests::         $(BIND)$(MAIN)
+
+tests::         $(PROG)
+	make -k demo bist repl help
 	$P '\n'
-	$P '  %-14s\n' "POST and BIST"
-	$Q $(BIND)$(MAIN) bist
+
+demo::
 	$P '\n'
+	$P '  %-14s %s\n' "DEMO" "$(MAIN)"
+	$(PROG) --demo
+
+bist::
+	$P '\n'
+	$P '  %-14s %s\n' "BIST" "$(MAIN)"
+	$(PROG) --bist
+	$P '\n'
+
+repl::
+	$P '\n'
+	$P '  %-14s %s\n' "REPL" "$(MAIN)"
+	$(PROG)
+
+help::
+	$P '\n'
+	$P '  %-14s %s\n' "HELP" "$(MAIN)"
+	$(PROG) --help
 
 # format: reformat all source files.
 #
@@ -36,7 +56,7 @@ tests::         $(BIND)$(MAIN)
 # This should ALWAYS be done in a Git branch as part of the last
 # commit before merging the branch back into the trunk.
 
-format::        $(BIND)$(MAIN)
+format::        $(PROG)
 	$C ${BIND}indent-c.sh $(SRCD)*.c
 	$C ${BIND}indent-h.sh $(INCD)*.h
 
@@ -58,7 +78,7 @@ clean::
 	@ [ ! -d doc/html/search ] || $Y doc/html/search
 	$X doc/html/* doc/latex/*
 
-doc/html/index.html:    doc/Doxyfile $(BIND)$(MAIN)
+doc/html/index.html:    doc/Doxyfile $(PROG)
 	$C [ -d log ] || mkdir -p log
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
 	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err
@@ -108,7 +128,7 @@ clean::
 	$X $(LOGD)*.out $(LOGD)*.err $(LOGD)*.log
 
 cycle::
-	$M -k -j $(BIND)$(MAIN)
+	$M -k -j $(PROG)
 	$M format
 	$M tests
 	$M etags ctags
