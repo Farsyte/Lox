@@ -31,3 +31,15 @@ typedef struct vm_s VM;
 
 /** Result code from Interpreter */
 typedef enum interpret_result_e InterpretResult;
+
+/** Storage relating to command line options */
+typedef struct options Options;
+
+/** Storage associated with the Scanner */
+typedef struct scanner_s Scanner;
+
+/** Datatype for enumerated TokenType constants */
+typedef enum token_type_e TokenType;
+
+/** Storage associated with each Token */
+typedef struct token_s Token;

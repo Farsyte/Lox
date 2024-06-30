@@ -1,7 +1,9 @@
 #include "bist.h"
 
 #include "chunk.h"
+#include "compiler.h"
 #include "memory.h"
+#include "scanner.h"
 #include "value.h"
 #include "vm.h"
 
@@ -15,7 +17,10 @@
 /** Run all Built-In Self Tests.
  *
  * Run all of the BIST methods in a hard-coded order.
- * When all tests are complete, terminate the program.
+ *
+ * Tests use INVAR to check the conditions, so a failed
+ * test is an immediate error termination of the program.
+ * If all tests pass
  */
 void
 bistAll (
@@ -24,6 +29,9 @@ bistAll (
     bistMemory ();
     bistChunk ();
     bistValue ();
+    bistScanner ();
+    bistCompiler ();
     bistVM ();
-    exit (0);
+
+    exit (EX_OK);
 }

@@ -1,7 +1,9 @@
 #include "post.h"
 
 #include "chunk.h"
+#include "compiler.h"
 #include "memory.h"
+#include "scanner.h"
 #include "value.h"
 #include "vm.h"
 
@@ -15,7 +17,6 @@
 /** Run all Power-On Self Tests.
  *
  * Run all of the POST methods in a hard-coded order.
- * When all tests are complete, allow the program to continue.
  */
 void
 postAll (
@@ -24,5 +25,7 @@ postAll (
     postMemory ();
     postChunk ();
     postValue ();
+    postScanner ();
+    postCompiler ();
     postVM ();
 }

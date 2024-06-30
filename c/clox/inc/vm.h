@@ -29,8 +29,11 @@ extern void initVM (
 extern void freeVM (
     );
 
-extern InterpretResult interpret (
+extern InterpretResult interpretChunk (
     Chunk *chunk);
+
+extern InterpretResult interpret (
+    const char *source);
 
 extern void push (
     Value value);
