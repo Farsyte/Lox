@@ -2,6 +2,7 @@
 
 #include "common.h"
 
+#include <stdio.h>
 #include <string.h>
 
 // Does any code outside scanner.c have any reason
@@ -29,8 +30,14 @@ static char
 advance (
     )
 {
-    scanner.current++;
-    return scanner.current[-1];
+    int ch = *scanner.current;
+
+    if (ch) {
+        scanner.current++;
+        if (ch == '\n')
+            scanner.line++;
+    }
+    return ch;
 }
 
 static char
@@ -38,6 +45,15 @@ peek (
     )
 {
     return *scanner.current;
+}
+
+static char
+peekNext (
+    )
+{
+    if (isAtEnd ())
+        return '\0';
+    return scanner.current[1];
 }
 
 static bool
@@ -90,13 +106,39 @@ skipWhitespace (
         case ' ':
         case '\r':
         case '\t':
+        case '\n':
             advance ();
             break;
 
-        case '\n':
-            scanner.line++;
-            advance ();
-            break;
+        case '/':
+
+            if (peekNext () == '/') {
+                // treat "//" as comment to end of line.
+                for (;;) {
+                    c = advance ();
+                    if (c == '\0')
+                        return;
+                    if ('\n' == c)
+                        break;
+                }
+                break;
+            }
+
+            if (peekNext () == '*') {
+                // treat "/*" as comment to "*/"
+                advance ();     // the slash
+                advance ();     // the star
+                for (;;) {
+                    c = advance ();
+                    if (c == '\0')
+                        return;
+                    if (('*' == c) && ('/' == advance ()))
+                        break;
+                }
+                break;
+            }
+            // anything else starting with '/' is not whitespace.
+            return;
 
         default:
             return;
