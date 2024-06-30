@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "compiler.h"
 #include "memory.h"
+#include "scanner.h"
 #include "value.h"
 #include "vm.h"
 
@@ -28,8 +29,9 @@ bistAll (
     bistMemory ();
     bistChunk ();
     bistValue ();
-    bistVM ();
+    bistScanner ();
     bistCompiler ();
+    bistVM ();
 
     exit (EX_OK);
 }

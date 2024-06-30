@@ -1,22 +1,18 @@
-#include "compiler.h"
-
-#include "common.h"
 #include "scanner.h"
 
-/** @file compiler_bist.c
- * @brief Built-In Self Test for the COMPILER module.
+/** @file scanner_bist.c
+ * @brief Built-In Self Test for the SCANNER module.
  */
 
-/** Run all BIST cases for Compiler.
+/** Run all BIST cases for Scanner.
  */
 void
-bistCompiler (
+bistScanner (
     )
 {
     const char *source = "...";
 
-    compile (source);
-
+    initScanner (source);
     INVAR (source == scanner.start,
         "initScaner must set scanner.start to the given source.");
     INVAR (source == scanner.current,
