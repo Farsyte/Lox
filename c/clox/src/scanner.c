@@ -33,6 +33,13 @@ advance (
     return scanner.current[-1];
 }
 
+static char
+peek (
+    )
+{
+    return *scanner.current;
+}
+
 static bool
 match (
     char expected)
@@ -71,10 +78,37 @@ errorToken (
     return token;
 }
 
+static void
+skipWhitespace (
+    )
+{
+    for (;;) {
+        char c = peek ();
+
+        switch (c) {
+
+        case ' ':
+        case '\r':
+        case '\t':
+            advance ();
+            break;
+
+        case '\n':
+            scanner.line++;
+            advance ();
+            break;
+
+        default:
+            return;
+        }
+    }
+}
+
 Token
 scanToken (
     )
 {
+    skipWhitespace ();
     scanner.start = scanner.current;
 
     if (isAtEnd ())
