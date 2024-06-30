@@ -1,6 +1,7 @@
 #include "vm.h"
 
 #include "chunk.h"
+#include "compiler.h"
 #include "debug.h"
 
 #include <math.h>
@@ -152,6 +153,6 @@ InterpretResult
 interpret (
     const char *source)
 {
-    (void) source;
-    STUB (0);
+    compile (source);
+    return INTERPRET_OK;
 }

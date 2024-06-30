@@ -1,6 +1,7 @@
 #include "post.h"
 
 #include "chunk.h"
+#include "compiler.h"
 #include "memory.h"
 #include "value.h"
 #include "vm.h"
@@ -24,4 +25,5 @@ postAll (
     postChunk ();
     postValue ();
     postVM ();
+    postCompiler ();
 }
