@@ -2,6 +2,7 @@
 
 #include "common.h"
 
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -17,6 +18,13 @@ initScanner (
     scanner.start = source;
     scanner.current = source;
     scanner.line = 1;
+}
+
+static bool
+isDigit (
+    char c)
+{
+    return (c >= '0') && (c <= '9');
 }
 
 static bool
@@ -146,6 +154,45 @@ skipWhitespace (
     }
 }
 
+static Token
+number (
+    )
+{
+    // consume the rest of the integer part.
+    while (isDigit (peek ()))
+        advance ();
+
+    // Look for a fractional part.
+    if (peek () == '.' && isDigit (peekNext ())) {
+        // consume the "."
+        advance ();
+
+        // consume the fractional part
+        while (isDigit (peek ()))
+            advance ();
+    }
+
+    return makeToken (TOKEN_NUMBER);
+}
+
+static Token
+string (
+    )
+{
+    // consume through the closing quote.
+    while ('"' != advance ()) {
+        if (isAtEnd ()) {
+            return errorToken ("Unterminated String.");
+        }
+    }
+
+    // NOTE: if the string contains a newline,
+    // the line number in the token is the number
+    // of the line the string ENDS in.
+
+    return makeToken (TOKEN_STRING);
+}
+
 Token
 scanToken (
     )
@@ -157,6 +204,9 @@ scanToken (
         return makeToken (TOKEN_EOF);
 
     char c = advance ();
+
+    if (isDigit (c))
+        return number ();
 
     switch (c) {
 
@@ -178,6 +228,8 @@ scanToken (
     case '=': return makeToken (match('=') ? TOKEN_EQUAL_EQUAL   : TOKEN_EQUAL  );
     case '<': return makeToken (match('=') ? TOKEN_LESS_EQUAL    : TOKEN_LESS   );
     case '>': return makeToken (match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
+
+    case '"': return string();
 
         // *INDENT-ON*
 

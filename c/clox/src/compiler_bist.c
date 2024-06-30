@@ -17,11 +17,21 @@ bistCompiler (
     const char source[] =
         "() {}\t; ,.-+*/\t\t// comment to eol\n"
         "= ! < >\t/* line-spanning\n"
-        "comment */\t!= <= >= ==\n";
+        "comment */\t!= <= >= ==\n"
+        "\t\"string\" \"line-spanning\n"
+        "string\"\n"
+        "123 123.5 123. .5\n"
+        ;
     // *INDENT-ON*
 
     const size_t src_len = sizeof source - 1;
     const char *source_end = source + src_len;
+
+    int ending_line = 1;
+
+    for (const char *p = source; p < source_end; ++p)
+        if ('\n' == *p)
+            ending_line++;
 
     compile (source);
 
@@ -29,5 +39,6 @@ bistCompiler (
         "initScaner must set scanner.start to the given source.");
     INVAR (source_end == scanner.current,
         "initScaner must set scanner.current to the given source.");
-    INVAR (4 == scanner.line, "initScaner must set scanner.line to 1.");
+    INVAR (ending_line == scanner.line,
+        "initScaner must set scanner.line to 1.");
 }
