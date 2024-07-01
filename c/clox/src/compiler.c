@@ -6,29 +6,42 @@
 
 #include <stdio.h>
 
-void
-compile (
-    const char *source)
+static void
+advance (
+    )
 {
+    // TODO actually construct advance()
+    ERROR_LOG (0, "not yet implemented!", 0);
+}
+
+static void
+expression (
+    )
+{
+    // TODO actually construct expression()
+    ERROR_LOG (0, "not yet implemented!", 0);
+}
+
+static void
+consume (
+    TokenType tt,
+    const char *msg)
+{
+    (void) tt;
+    (void) msg;
+    // TODO actually construct consume()
+    ERROR_LOG (0, "not yet implemented!", 0);
+}
+
+bool
+compile (
+    const char *source,
+    Chunk *chunk)
+{
+    (void) chunk;               // not used (yet)
     initScanner (source);
-
-    int line = -1;
-
-    for (;;) {
-        Token token = scanToken ();
-
-        if (token.line != line) {
-            printf ("%4d ", token.line);
-            line = token.line;
-        } else {
-            printf ("   | ");
-        }
-        printf ("%2d '%.*s'%.*s[%s]\n",
-            token.type, token.length, token.start,
-            16 - token.length, "                ",
-            tokenTypeString (token.type));
-
-        if (token.type == TOKEN_EOF)
-            break;
-    }
+    advance ();
+    expression ();
+    consume (TOKEN_EOF, "Expect end of expression.");
+    STUB ("update compile() to use chunk");
 }

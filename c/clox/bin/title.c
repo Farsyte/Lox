@@ -2,28 +2,29 @@
 
 int main(int argc, const char **argv) {
     int ch = getchar();
-    int och = '\n';
-    if (ch == EOF) return 0;
+
+    if (ch == EOF)
+	return 0;
+
     if (argc > 1) {
+	printf("\n");
 	for (int argi = 1; argi < argc; ++argi) {
 	    printf("%s ", argv[argi]);
 	}
 	printf("START OF DIFF\n");
     }
-    for (;;) {
-	if (och == '\n')
-	    printf("=====  ");
+
+    do {
 	putchar(ch);
-	och = ch;
 	ch = getchar();
-	if (ch == EOF)
-	    break;
-    }
+    } while (EOF != ch);
+
     if (argc > 1) {
 	for (int argi = 1; argi < argc; ++argi) {
 	    printf("%s ", argv[argi]);
 	}
 	printf("END OF DIFF, FAILING THE BUILD.\n");
+	printf("\n");
     }
     return 1;
 }
