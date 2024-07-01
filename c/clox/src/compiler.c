@@ -6,11 +6,19 @@
 
 #include <stdio.h>
 
+struct parser_s {
+    Token current;
+    Token previous;
+};
+
+Parser parser;
+
 static void
-advance (
-    )
+errorAtCurrent (
+    const char *source)
 {
-    // TODO actually construct advance()
+    (void) source;
+    // TODO actually construct expression()
     ERROR_LOG (0, "not yet implemented!", 0);
 }
 
@@ -31,6 +39,20 @@ consume (
     (void) msg;
     // TODO actually construct consume()
     ERROR_LOG (0, "not yet implemented!", 0);
+}
+
+static void
+advance (
+    )
+{
+    parser.previous = parser.current;
+
+    for (;;) {
+        parser.current = scanToken ();
+        if (parser.current.type != TOKEN_ERROR)
+            break;
+        errorAtCurrent (parser.current.start);
+    }
 }
 
 bool

@@ -43,3 +43,6 @@ typedef enum token_type_e TokenType;
 
 /** Storage associated with each Token */
 typedef struct token_s Token;
+
+/** Storage for the Parser (in compiler.c) */
+typedef struct parser_s Parser;

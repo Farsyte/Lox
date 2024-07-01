@@ -125,15 +125,17 @@ tags::          $(INCS) $(SRCS) GNUmakefile
 
 # The sequence that I want to run when I have made a change
 # where everything SHOULD be good but something MIGHT not be good.
+#
+# NOTE: we are not making the documentation every cycle, as
+# that takes a while.
 
 cycle::
 	$M -k -j $(PROG)
-	$M format
-	$M tests
-	$M etags ctags
-	$M docs
-	$M stubs
-	$M todos
+	$M -k format
+	$M -k tests
+	$M -k etags ctags
+	$M -k stubs
+	$M -k todos
 
 world::
 	$M cycle
