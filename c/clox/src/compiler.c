@@ -236,6 +236,11 @@ endCompiler (
     )
 {
     emitReturn ();
+#ifdef DEBUG_PRINT_CODE
+    if (!parser.hadError) {
+        disassembleChunk (currentChunk (), "code");
+    }
+#endif
 }
 
 /** Compile a binary operation to the chunk.

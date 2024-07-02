@@ -35,25 +35,25 @@ demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
 	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null
 	$Q diff -e $(REFD)$(MAIN)--demo.err $(LOGD)$(MAIN)--demo.err | $(BIND)title === CHANGES in demo stderr ===
-	$Q diff -e $(REFD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.out | $(BIND)title === CHANGES in demo stdout ===
+	$Q diff -u $(REFD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.out | $(BIND)title === CHANGES in demo stdout ===
 
 bist::          $(BIND)title
 	$P '  %-6s %s\n' "BIST" "$(MAIN)"
 	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null
 	$Q diff -e $(REFD)$(MAIN)--bist.err $(LOGD)$(MAIN)--bist.err | $(BIND)title === CHANGES in bist stderr ===
-	$Q diff -e $(REFD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.out | $(BIND)title === CHANGES in bist stdout ===
+	$Q diff -u $(REFD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.out | $(BIND)title === CHANGES in bist stdout ===
 
 repl::          $(BIND)title
 	$P '  %-6s %s\n' "REPL" "$(MAIN)"
 	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null
 	$Q diff -e $(REFD)$(MAIN)--repl.err $(LOGD)$(MAIN)--repl.err | $(BIND)title === CHANGES in repl stderr ===
-	$Q diff -e $(REFD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.out | $(BIND)title === CHANGES in repl stdout ===
+	$Q diff -u $(REFD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.out | $(BIND)title === CHANGES in repl stdout ===
 
 help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
 	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null
 	$Q diff -e $(REFD)$(MAIN)--help.err $(LOGD)$(MAIN)--help.err | $(BIND)title === CHANGES in help stderr ===
-	$Q diff -e $(REFD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.out | $(BIND)title === CHANGES in help stdout ===
+	$Q diff -u $(REFD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.out | $(BIND)title === CHANGES in help stdout ===
 
 # format: reformat all source files.
 #

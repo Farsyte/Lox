@@ -17,5 +17,8 @@
  * macros that control optional behaviors.
  */
 
+/** Enable (or disable) code printing */
+#define DEBUG_PRINT_CODE
+
 /** Enable (or disable) execution tracing */
 #define DEBUG_TRACE_EXECUTION

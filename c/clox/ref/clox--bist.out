@@ -1,0 +1,13 @@
+
+Disassembling code ...
+0000    1 OP_CONSTANT         0 '2'
+0002    2 OP_CONSTANT         1 '3'
+0004    | OP_MULTIPLY
+0005    | OP_CONSTANT         2 '5'
+0007    3 OP_CONSTANT         3 '1'
+0009    | OP_NEGATE
+0010    | OP_DIVIDE
+0011    | OP_SUBTRACT
+0012    | OP_RETURN
+Disassembling code ... done.
+
