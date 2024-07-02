@@ -20,13 +20,6 @@ struct parser_s {
     bool panicMode;             ///< if set, move forward silently.
 };
 
-static void expression (
-    // TODO remove this forward declaration?
-    );
-static void parsePrecedence (
-    // TODO remove this forward declaration?
-    Precedence precedence);
-
 /** Operator Precedence enumeration
  */
 enum precedence_e {
@@ -45,6 +38,13 @@ enum precedence_e {
 
 Parser parser;                  ///< Storage for the parser state.
 Chunk *compilingChunk;          ///< chunk currently being compiled.
+
+/* Forward Declarations */
+
+static void expression (
+    );
+static void parsePrecedence (
+    Precedence precedence);
 
 /** Return a pointer to the current target chunk */
 static Chunk *
@@ -230,6 +230,29 @@ endCompiler (
     emitReturn ();
 }
 
+/** Compile a binary operation to the chunk.
+ */
+static void
+binary (
+    )
+{
+    TokenType operatorType = parser.previous.type;
+    ParseRule *rule = getRule (operatorType);
+
+    parsePrecedence ((Precedence) (rule->precedence + 1));
+
+    switch (operatorType) {
+        // *INDENT-OFF*
+    case TOKEN_PLUS:            emitByte(OP_ADD);         break;
+    case TOKEN_MINUS:           emitByte(OP_SUBTRACT);    break;
+    case TOKEN_STAR:            emitByte(OP_MULTIPLY);    break;
+    case TOKEN_SLASH:           emitByte(OP_DIVIDE);      break;
+
+    default: ERROR_LOG (0, "Should be UNREACHABLE.", 0);  return;
+        // *INDENT-ON*
+    }
+}
+
 /** Compile a Grouping to the chunk.
  */
 static void
@@ -300,7 +323,6 @@ compile (
     const char *source,
     Chunk *chunk)
 {
-    (void) chunk;               // not used (yet)
     initScanner (source);
     compilingChunk = chunk;
     parser.hadError = false;
@@ -322,6 +344,7 @@ call_unused_compiler_functions (
     number ();                  // todo remove this line
     grouping ();                // todo remove this line
     unary ();                   // todo remove this line
+    binary ();                  // todo remove this line
     parsePrecedence (0);        // todo remove this line
     STUB (0);
 }

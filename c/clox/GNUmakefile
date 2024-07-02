@@ -133,13 +133,14 @@ cycle::
 	$M -k -j $(PROG)
 	$M -k format
 	$M -k tests
-	$M -k etags ctags
 	$M -k stubs
 	$M -k todos
 
-world::
-	$M cycle
+longer::	cycle
 	$M -k etags ctags docs
+
+world::
+	$M longer
 
 $(BIND)title:           $(BIND)title.c
 clean::         ; $X $(BIND)title
