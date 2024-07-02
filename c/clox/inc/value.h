@@ -20,11 +20,11 @@ enum value_type_e {
  * for each valid type of data in Lox.
  */
 struct value_s {
-    ValueType type; ///< selects the union member
+    ValueType type;             ///< selects the union member
     union {
-	bool boolean;///< true or false
-	double number;///< floating point number
-    } as; ///< union of different types of values
+        bool boolean;           ///< true or false
+        double number;          ///< floating point number
+    } as;                       ///< union of different types of values
 };
 
 /** Ask if a Value is a Boolean */
