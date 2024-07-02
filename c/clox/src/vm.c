@@ -161,27 +161,32 @@ run (
             push (READ_CONSTANT ());
             break;
 
-#define BINARY_OP(op)                           \
+#define BINARY_OP(valueType, op)                                        \
             do {                                                        \
-                double a = pop();               \
-                tos = a op tos;                 \
+                if (!IS_NUMBER(peek(0)) || (!IS_NUMBER(peek(1)))) {     \
+                    runtimeError("Operands must be numbers.");          \
+                    return INTERPRET_RUNTIME_ERROR;                     \
+                }                                                       \
+                double b = AS_NUMBER(pop());                            \
+                double a = AS_NUMBER(pop());                            \
+                push(valueType(a op b));                                \
             } while (false)
 
         case OP_ADD:
-            BINARY_OP (+);
+            BINARY_OP (NUMBER_VAL, +);
             // TODO runtime error if result is not finite
             break;
         case OP_SUBTRACT:
-            BINARY_OP (-);
+            BINARY_OP (NUMBER_VAL, -);
             // TODO runtime error if result is not finite
             break;
         case OP_MULTIPLY:
-            BINARY_OP (*);
+            BINARY_OP (NUMBER_VAL, *);
             // TODO runtime error if result is not finite
             break;
         case OP_DIVIDE:
             // TODO runtime error if tos is zero
-            BINARY_OP (/);
+            BINARY_OP (NUMBER_VAL, /);
             // TODO runtime error if result is not finite
             break;
 
