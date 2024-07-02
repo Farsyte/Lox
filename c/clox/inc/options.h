@@ -23,8 +23,6 @@ struct options_s {
     // *INDENT-ON*
 };
 
-extern Options options;
-
 extern void parse_options (
     int argc,
     const char **argv);

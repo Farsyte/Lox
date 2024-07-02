@@ -25,8 +25,6 @@ enum interpret_result_e {
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
 };
 
-extern VM vm;
-
 extern void initVM (
     );
 

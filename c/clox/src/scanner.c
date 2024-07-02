@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
-Scanner scanner;                ///< Storage for scanner
+Scanner scanner;                ///< Storage for scanner state
 
 /** Initialize the scanne
  *

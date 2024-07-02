@@ -4,6 +4,8 @@
 #include "common.h"
 #include "scanner.h"
 
+extern Scanner scanner;         // peek at scanner state
+
 /** @file compiler_bist.c
  * @brief Built-In Self Test for the COMPILER module.
  */

@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string.h>
 
+extern Options options;         // share command line options state
+
 /** Read-Evaluate-Print loop.
  */
 static void

@@ -82,8 +82,6 @@ struct scanner_s {
     int line;                   ///< line number at current
 };
 
-extern Scanner scanner;
-
 extern void initScanner (
     const char *source);
 
