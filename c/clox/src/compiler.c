@@ -13,7 +13,7 @@
  */
 
 /** Parser state */
-struct parser_s {
+struct Parser {
     Token current;              ///< the current token to parse
     Token previous;             ///< the previous token parsed
     bool hadError;              ///< set if a parse error occurs
@@ -22,7 +22,7 @@ struct parser_s {
 
 /** Operator Precedence enumeration
  */
-enum precedence_e {
+enum Precedence {
     PREC_NONE,                  ///< "="
     PREC_ASSIGNMENT,            ///< "or"
     PREC_OR,                    ///< "and"
@@ -36,7 +36,7 @@ enum precedence_e {
     PREC_PRIMARY,               // identifiers etc.
 };
 
-struct parse_rule_s {
+struct ParseRule {
     ParseFn prefix;
     ParseFn infix;
     Precedence precedence;

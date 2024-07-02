@@ -4,7 +4,7 @@
 
 /** Command Line Options structure layout.
  */
-struct options_s {
+struct Options {
     int verbose;                ///< verbosity, 0=default, higher is more verbose.
     int dryrun;                 ///< dryrun level, 0=default, higher is skipping more stuff.
     int debug;                  ///< debug level, 0=default, higher is more debugging.

@@ -11,7 +11,7 @@
 
 /** Internal state of the VM
  */
-struct vm_s {
+struct VM {
     Chunk *chunk;               ///< current chunk being considered
     uint8_t *ip;                ///< bytecode instruction pointer
     Value stack[STACK_MAX];     ///< storage for the data stack
@@ -20,7 +20,7 @@ struct vm_s {
 
 /** Interpreter result
  */
-enum interpret_result_e {
+enum InterpretResult {
     INTERPRET_OK,               ///< everything went well
     INTERPRET_COMPILE_ERROR,    ///< error during compilation
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation

@@ -8,7 +8,7 @@
 
 /** Enumeration of Value Types
  */
-enum value_type_e {
+enum ValueType {
     VAL_BOOL,                   ///< either TRUE or FALSE
     VAL_NIL,                    ///< just NIL
     VAL_NUMBER,                 ///< a floating point number
@@ -20,7 +20,7 @@ enum value_type_e {
  * This is a discriminated union of the storage
  * for each valid type of data in Lox.
  */
-struct value_s {
+struct Value {
     ValueType type;             ///< selects the union member
     union {
         bool boolean;           ///< true or false
@@ -70,7 +70,7 @@ struct value_s {
 
 /** Expandable Array of Values
  */
-struct value_array_s {
+struct ValueArray {
     int capacity;               ///< storage capacity available
     int count;                  ///< storage capacity in use
     Value *values;              ///< storage area with capacity

@@ -9,7 +9,7 @@
 
 /** Enumerate defined operation codes.
  */
-enum opcode_e {
+enum OpCode {
     OP_CONSTANT,                ///< Push a constant onto the stack
     OP_NIL,                     ///< Push a nil onto the stack
     OP_TRUE,                    ///< Push a false onto the stack
@@ -33,7 +33,7 @@ enum opcode_e {
 
 /** Dynamic Array of Instructions
  */
-struct chunk_s {
+struct Chunk {
     int count;                  ///< number of bytecode bytes present
     int capacity;               ///< reallocate when we grow past this
     uint8_t *code;              ///< Storage for some bytecodes
