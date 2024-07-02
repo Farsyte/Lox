@@ -15,6 +15,10 @@ enum opcode_e {
     OP_TRUE,                    ///< Push a false onto the stack
     OP_FALSE,                   ///< Push a true onto the stack
 
+    OP_EQUAL,                   ///< compare top two values for equality
+    OP_GREATER,                 ///< compare top two values for order
+    OP_LESS,                    ///< compare top two values for order
+
     OP_ADD,                     ///< add top of stack to 2nd, push result
     OP_SUBTRACT,                ///< subtract top of stack from 2nd, push result
     OP_MULTIPLY,                ///< multiply top of stack by 2nd, push result

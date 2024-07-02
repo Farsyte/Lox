@@ -18,9 +18,7 @@ bistCompiler (
 {
     // *INDENT-OFF*
     const char source[] =
-        "2 * // foo\n"
-        "\t3- 5/*bar\n"
-        "baz*//-1"
+        "!(5 - 4 > 3 * 2 == !nil)"
         ;
     // *INDENT-ON*
 

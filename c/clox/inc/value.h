@@ -63,6 +63,10 @@ struct value_array_s {
     Value *values;              ///< storage area with capacity
 };
 
+extern bool valuesEqual (
+    Value a,
+    Value b);
+
 extern void initValueArray (
     ValueArray *array);
 

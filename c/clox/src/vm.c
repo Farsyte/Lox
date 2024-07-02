@@ -144,6 +144,9 @@ static InterpretResult
 run (
     )
 {
+    Value a;
+    Value b;
+
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
 #endif
@@ -192,30 +195,30 @@ run (
                     runtimeError("Operands must be numbers.");          \
                     return INTERPRET_RUNTIME_ERROR;                     \
                 }                                                       \
-                double b = AS_NUMBER(pop());                            \
-                double a = AS_NUMBER(pop());                            \
-                push(valueType(a op b));                                \
+                b = pop();                                              \
+                a = pop();                                              \
+                push(valueType(AS_NUMBER(a) op AS_NUMBER(b)));          \
             } while (false)
 
-        case OP_ADD:
-            BINARY_OP (NUMBER_VAL, +);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_SUBTRACT:
-            BINARY_OP (NUMBER_VAL, -);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_MULTIPLY:
-            BINARY_OP (NUMBER_VAL, *);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_DIVIDE:
-            // TODO runtime error if tos is zero
-            BINARY_OP (NUMBER_VAL, /);
-            // TODO runtime error if result is not finite
-            break;
+            // *INDENT-OFF*
+
+        case OP_ADD:      BINARY_OP (NUMBER_VAL, +); break;
+        case OP_SUBTRACT: BINARY_OP (NUMBER_VAL, -); break;
+        case OP_MULTIPLY: BINARY_OP (NUMBER_VAL, *); break;
+        case OP_DIVIDE:   BINARY_OP (NUMBER_VAL, /); break;
+
+        case OP_GREATER:  BINARY_OP (BOOL_VAL,   >); break;
+        case OP_LESS:     BINARY_OP (BOOL_VAL,   <); break;
+
+            // *INDENT-ON*
 
 #undef  BINARY_OP
+
+        case OP_EQUAL:
+            b = pop ();
+            a = pop ();
+            push (BOOL_VAL (valuesEqual (a, b)));
+            break;
 
         case OP_NOT:
             push (BOOL_VAL (isFalsey (pop ())));
