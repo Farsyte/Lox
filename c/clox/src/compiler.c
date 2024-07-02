@@ -284,7 +284,7 @@ number (
 {
     double value = strtod (parser.previous.start, NULL);
 
-    emitConstant (value);
+    emitConstant (NUMBER_VAL (value));
 }
 
 /** Compile a unary operation to the chunk.

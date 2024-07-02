@@ -86,9 +86,11 @@ void
 printValue (
     Value value)
 {
-    if (value == (int) value) {
-        printf ("%.0f", value);
+    double number = AS_NUMBER (value);
+
+    if (number == (int) number) {
+        printf ("%.0f", number);
     } else {
-        printf ("%g", value);
+        printf ("%g", number);
     }
 }
