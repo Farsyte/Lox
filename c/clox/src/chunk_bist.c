@@ -38,13 +38,15 @@ bistChunk (
             "writeChunk did not write the line");
     INVAR (1337 == chunk.lines[256], "writeChunk did not write the line");
 
-    INVAR (0 == addConstant (&chunk, 1.5),
+    INVAR (0 == addConstant (&chunk, NUMBER_VAL (1.5)),
         "first constant is at offset zero");
-    INVAR (1.5 == chunk.constants.values[0], "verify first constant stored");
+    INVAR (1.5 == AS_NUMBER (chunk.constants.values[0]),
+        "verify first constant stored");
 
-    INVAR (1 == addConstant (&chunk, 3.5),
+    INVAR (1 == addConstant (&chunk, NUMBER_VAL (3.5)),
         "second constant is at offset one");
-    INVAR (3.5 == chunk.constants.values[1], "verify second constant stored");
+    INVAR (3.5 == AS_NUMBER (chunk.constants.values[1]),
+        "verify second constant stored");
 
     freeChunk (&chunk);
     INVAR (0 == chunk.count, "freeChunk did not clear the count");
