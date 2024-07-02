@@ -86,11 +86,34 @@ void
 printValue (
     Value value)
 {
-    double number = AS_NUMBER (value);
-
-    if (number == (int) number) {
-        printf ("%.0f", number);
-    } else {
-        printf ("%g", number);
+    if (IS_NIL (value)) {
+        printf ("nil");
+        return;
     }
+
+    if (IS_BOOL (value)) {
+        if (AS_BOOL (value)) {
+            printf ("true");
+
+        } else {
+            printf ("false");
+
+        }
+        return;
+    }
+
+    if (IS_NUMBER (value)) {
+        double number = AS_NUMBER (value);
+
+        if (number == (int) number) {
+            printf ("%.0f", number);
+        } else {
+            printf ("%g", number);
+        }
+        return;
+    }
+
+    printf ("Value{ty=%d, bv=%d, nv=%g}",
+        value.type, value.as.boolean, value.as.number);
+
 }
