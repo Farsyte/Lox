@@ -19,12 +19,9 @@
  * @param newSize desired size in bytes of new storage block
  */
 void *
-reallocate (
-    void *pointer,
-    size_t oldSize,
-    size_t newSize)
+reallocate (void *pointer, size_t oldSize, size_t newSize)
 {
-    (void) oldSize;             // not needed by this implementation.
+    (void) oldSize;                     // not needed by this implementation.
 
     if (newSize == 0) {
         free (pointer);

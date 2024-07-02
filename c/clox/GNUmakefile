@@ -63,7 +63,7 @@ help::          $(BIND)title
 # commit before merging the branch back into the trunk.
 
 format::        $(PROG)
-	$C ${BIND}indent-c.sh $(SRCD)*.c
+	$C ${BIND}indent-c.sh $(SRCD)*.c $(BIND)*.c
 	$C ${BIND}indent-h.sh $(INCD)*.h
 
 # docs: update automatically generated documentation.

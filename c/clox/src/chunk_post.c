@@ -12,8 +12,7 @@
  * - Managed storage must be array of bytes.
  */
 void
-postChunk (
-    )
+postChunk ()
 {
     Chunk *c;
 

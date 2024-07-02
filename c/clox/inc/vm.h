@@ -26,28 +26,13 @@ enum interpret_result_e {
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
 };
 
-extern void initVM (
-    );
+extern void initVM ();
+extern void freeVM ();
+extern InterpretResult interpretChunk (Chunk *chunk);
+extern InterpretResult interpret (const char *source);
+extern void push (Value value);
+extern Value pop ();
+extern Value peek (int distance);
 
-extern void freeVM (
-    );
-
-extern InterpretResult interpretChunk (
-    Chunk *chunk);
-
-extern InterpretResult interpret (
-    const char *source);
-
-extern void push (
-    Value value);
-
-extern Value pop (
-    );
-
-extern Value peek (
-    int distance);
-
-extern void postVM (
-    );
-extern void bistVM (
-    );
+extern void postVM ();
+extern void bistVM ();

@@ -19,8 +19,7 @@
  * Run all of the POST methods in a hard-coded order.
  */
 void
-postAll (
-    )
+postAll ()
 {
     postMemory ();
     postChunk ();

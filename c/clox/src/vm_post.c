@@ -7,7 +7,6 @@
 /** Run all POST cases for Vm.
  */
 void
-postVM (
-    )
+postVM ()
 {
 }

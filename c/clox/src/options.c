@@ -52,8 +52,7 @@ static const char *help_text[] = {
  * and stop at the trailing NULL pointer.
  */
 static void
-help (
-    )
+help ()
 {
     const char **cursor = help_text;
     const char *line;
@@ -70,9 +69,7 @@ help (
  * options state, and calling back when appropriate.
  */
 void
-parse_options (
-    int argc,
-    const char **argv)
+parse_options (int argc, const char **argv)
 {
 
     bool autoRepl = true;
@@ -127,15 +124,13 @@ parse_options (
                 }
 
                 if (!strcmp ("bist", argp + 2)) {
-                    INVAR (options.bist,
-                        "options: no bist function pointer.");
+                    INVAR (options.bist, "options: no bist function pointer.");
                     options.bist ();
                     continue;
                 }
 
                 if (!strcmp ("demo", argp + 2)) {
-                    INVAR (options.demo,
-                        "options: no demo function pointer.");
+                    INVAR (options.demo, "options: no demo function pointer.");
                     options.demo ();
                     continue;
                 }
@@ -144,8 +139,7 @@ parse_options (
 
                 if (argp[1] == '\0') {
                     autoRepl = false;
-                    INVAR (options.repl,
-                        "options: no repl function pointer.");
+                    INVAR (options.repl, "options: no repl function pointer.");
                     options.repl ();
                 } else {
 

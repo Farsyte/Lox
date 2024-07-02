@@ -9,7 +9,6 @@
 /** Run all POST cases for Memory.
  */
 void
-postMemory (
-    )
+postMemory ()
 {
 }

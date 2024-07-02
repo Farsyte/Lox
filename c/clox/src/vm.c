@@ -13,8 +13,7 @@ VM vm;
 /** Reset the VM stack to empty.
  */
 static void
-resetStack (
-    )
+resetStack ()
 {
     vm.sp = vm.stack;
 }
@@ -24,9 +23,7 @@ resetStack (
  * @param format control the output, like printf.
  */
 static void
-runtimeError (
-    const char *format,
-    ...)
+runtimeError (const char *format, ...)
 {
     va_list args;
 
@@ -49,8 +46,7 @@ runtimeError (
  * empty stack.
  */
 void
-initVM (
-    )
+initVM ()
 {
     vm.chunk = NULL;
     vm.ip = NULL;
@@ -62,8 +58,7 @@ initVM (
  * All memory allocated by the VM is released.
  */
 void
-freeVM (
-    )
+freeVM ()
 {
 }
 
@@ -75,8 +70,7 @@ freeVM (
  * @param value data to be pushed.
  */
 void
-push (
-    Value value)
+push (Value value)
 {
     *vm.sp = value;
     vm.sp++;
@@ -90,8 +84,7 @@ push (
  * @return the value from the stack.
  */
 Value
-pop (
-    )
+pop ()
 {
     vm.sp--;
     return *vm.sp;
@@ -111,8 +104,7 @@ pop (
  * @return the value from the stack.
  */
 Value
-peek (
-    int distance)
+peek (int distance)
 {
     return vm.sp[-1 - distance];
 }
@@ -126,8 +118,7 @@ peek (
  * @return true if input is false or nil, else false
  */
 static bool
-isFalsey (
-    Value value)
+isFalsey (Value value)
 {
     return IS_NIL (value) || (IS_BOOL (value) && !AS_BOOL (value));
 }
@@ -141,8 +132,7 @@ isFalsey (
  * @return a code indicating success or (which) failure.
  */
 static InterpretResult
-run (
-    )
+run ()
 {
     Value a;
     Value b;
@@ -255,8 +245,7 @@ run (
  * @return a code indicating success or (which) failure.
  */
 InterpretResult
-interpretChunk (
-    Chunk *chunk)
+interpretChunk (Chunk *chunk)
 {
     vm.chunk = chunk;
     vm.ip = vm.chunk->code;
@@ -272,8 +261,7 @@ interpretChunk (
  * @return a code indicating success or (which) failure.
  */
 InterpretResult
-interpret (
-    const char *source)
+interpret (const char *source)
 {
     Chunk chunk;
 

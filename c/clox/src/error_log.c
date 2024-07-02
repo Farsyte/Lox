@@ -31,13 +31,7 @@
  * The message ends with a blank line.
  */
 void
-_error_log (
-    const char *file,
-    int line,
-    const char *func,
-    const char *pfx,
-    const char *cond,
-    const char *msg)
+_error_log (const char *file, int line, const char *func, const char *pfx, const char *cond, const char *msg)
 {
     printf ("\n");
     fflush (stdout);

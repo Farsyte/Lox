@@ -15,9 +15,7 @@
  * @return the name of the type as a string.
  */
 const char *
-tokenTypeString (
-    TokenType type              ///< enumerated token type value
-    )
+tokenTypeString (TokenType type)
 {
 
     // The compiler will inform us if a TokenType value is
@@ -26,100 +24,63 @@ tokenTypeString (
 
     switch (type) {
 
+        // *INDENT-OFF*
+
         // Single-character tokens.
-    case TOKEN_LEFT_PAREN:
-        return "TOKEN_LEFT_PAREN";
-    case TOKEN_RIGHT_PAREN:
-        return "TOKEN_RIGHT_PAREN";
-    case TOKEN_LEFT_BRACE:
-        return "TOKEN_LEFT_BRACE";
-    case TOKEN_RIGHT_BRACE:
-        return "TOKEN_RIGHT_BRACE";
-    case TOKEN_COMMA:
-        return "TOKEN_COMMA";
-    case TOKEN_DOT:
-        return "TOKEN_DOT";
-    case TOKEN_MINUS:
-        return "TOKEN_MINUS";
-    case TOKEN_PLUS:
-        return "TOKEN_PLUS";
-    case TOKEN_SEMICOLON:
-        return "TOKEN_SEMICOLON";
-    case TOKEN_SLASH:
-        return "TOKEN_SLASH";
-    case TOKEN_STAR:
-        return "TOKEN_STAR";
+    case TOKEN_LEFT_PAREN:              return "TOKEN_LEFT_PAREN";
+    case TOKEN_RIGHT_PAREN:             return "TOKEN_RIGHT_PAREN";
+    case TOKEN_LEFT_BRACE:              return "TOKEN_LEFT_BRACE";
+    case TOKEN_RIGHT_BRACE:             return "TOKEN_RIGHT_BRACE";
+    case TOKEN_COMMA:                   return "TOKEN_COMMA";
+    case TOKEN_DOT:                     return "TOKEN_DOT";
+    case TOKEN_MINUS:                   return "TOKEN_MINUS";
+    case TOKEN_PLUS:                    return "TOKEN_PLUS";
+    case TOKEN_SEMICOLON:               return "TOKEN_SEMICOLON";
+    case TOKEN_SLASH:                   return "TOKEN_SLASH";
+    case TOKEN_STAR:                    return "TOKEN_STAR";
 
         // One or two charcter tokens.
-    case TOKEN_BANG:
-        return "TOKEN_BANG";
-    case TOKEN_BANG_EQUAL:
-        return "TOKEN_BANG_EQUAL";
-    case TOKEN_EQUAL:
-        return "TOKEN_EQUAL";
-    case TOKEN_EQUAL_EQUAL:
-        return "TOKEN_EQUAL_EQUAL";
-    case TOKEN_GREATER:
-        return "TOKEN_GREATER";
-    case TOKEN_GREATER_EQUAL:
-        return "TOKEN_GREATER_EQUAL";
-    case TOKEN_LESS:
-        return "TOKEN_LESS";
-    case TOKEN_LESS_EQUAL:
-        return "TOKEN_LESS_EQUAL";
+    case TOKEN_BANG:                    return "TOKEN_BANG";
+    case TOKEN_BANG_EQUAL:              return "TOKEN_BANG_EQUAL";
+    case TOKEN_EQUAL:                   return "TOKEN_EQUAL";
+    case TOKEN_EQUAL_EQUAL:             return "TOKEN_EQUAL_EQUAL";
+    case TOKEN_GREATER:                 return "TOKEN_GREATER";
+    case TOKEN_GREATER_EQUAL:           return "TOKEN_GREATER_EQUAL";
+    case TOKEN_LESS:                    return "TOKEN_LESS";
+    case TOKEN_LESS_EQUAL:              return "TOKEN_LESS_EQUAL";
 
         // Literals.
-    case TOKEN_IDENTIFIER:
-        return "TOKEN_IDENTIFIER";
-    case TOKEN_STRING:
-        return "TOKEN_STRING";
-    case TOKEN_NUMBER:
-        return "TOKEN_NUMBER";
+    case TOKEN_IDENTIFIER:              return "TOKEN_IDENTIFIER";
+    case TOKEN_STRING:                  return "TOKEN_STRING";
+    case TOKEN_NUMBER:                  return "TOKEN_NUMBER";
 
         // Keywords
-    case TOKEN_AND:
-        return "TOKEN_AND";
-    case TOKEN_CLASS:
-        return "TOKEN_CLASS";
-    case TOKEN_ELSE:
-        return "TOKEN_ELSE";
-    case TOKEN_FALSE:
-        return "TOKEN_FALSE";
-    case TOKEN_FOR:
-        return "TOKEN_FOR";
-    case TOKEN_FUN:
-        return "TOKEN_FUN";
-    case TOKEN_IF:
-        return "TOKEN_IF";
-    case TOKEN_NIL:
-        return "TOKEN_NIL";
-    case TOKEN_OR:
-        return "TOKEN_OR";
-    case TOKEN_PRINT:
-        return "TOKEN_PRINT";
-    case TOKEN_RETURN:
-        return "TOKEN_RETURN";
-    case TOKEN_SUPER:
-        return "TOKEN_SUPER";
-    case TOKEN_THIS:
-        return "TOKEN_THIS";
-    case TOKEN_TRUE:
-        return "TOKEN_TRUE";
-    case TOKEN_VAR:
-        return "TOKEN_VAR";
-    case TOKEN_WHILE:
-        return "TOKEN_WHILE";
+    case TOKEN_AND:                     return "TOKEN_AND";
+    case TOKEN_CLASS:                   return "TOKEN_CLASS";
+    case TOKEN_ELSE:                    return "TOKEN_ELSE";
+    case TOKEN_FALSE:                   return "TOKEN_FALSE";
+    case TOKEN_FOR:                     return "TOKEN_FOR";
+    case TOKEN_FUN:                     return "TOKEN_FUN";
+    case TOKEN_IF:                      return "TOKEN_IF";
+    case TOKEN_NIL:                     return "TOKEN_NIL";
+    case TOKEN_OR:                      return "TOKEN_OR";
+    case TOKEN_PRINT:                   return "TOKEN_PRINT";
+    case TOKEN_RETURN:                  return "TOKEN_RETURN";
+    case TOKEN_SUPER:                   return "TOKEN_SUPER";
+    case TOKEN_THIS:                    return "TOKEN_THIS";
+    case TOKEN_TRUE:                    return "TOKEN_TRUE";
+    case TOKEN_VAR:                     return "TOKEN_VAR";
+    case TOKEN_WHILE:                   return "TOKEN_WHILE";
 
-    case TOKEN_ERROR:
-        return "TOKEN_ERROR";
-    case TOKEN_EOF:
-        return "TOKEN_EOF";
+    case TOKEN_ERROR:                   return "TOKEN_ERROR";
+    case TOKEN_EOF:                     return "TOKEN_EOF";
+
+        // *INDENT-ON*
     }
 
     static char ttStaticName[32];
 
-    snprintf (ttStaticName, sizeof ttStaticName,        // call me paranoid ;)
-        "<TokenType=%d>", (int) type);
+    snprintf (ttStaticName, sizeof ttStaticName, "<TokenType=%d>", (int) type);
     return ttStaticName;
 }
 
@@ -131,10 +92,7 @@ tokenTypeString (
  * @returns offset of the next instruction in the chunk
  */
 static int
-constantInstruction (
-    const char *name,
-    Chunk *chunk,
-    int offset)
+constantInstruction (const char *name, Chunk *chunk, int offset)
 {
     uint8_t constant = chunk->code[offset + 1];
 
@@ -151,9 +109,7 @@ constantInstruction (
  * @returns offset of the next instruction in the chunk
  */
 static int
-simpleInstruction (
-    const char *name,
-    int offset)
+simpleInstruction (const char *name, int offset)
 {
     printf ("%s\n", name);
     return offset + 1;
@@ -166,9 +122,7 @@ simpleInstruction (
  * @return offset of next bytecode in this chunk
  */
 int
-disassembleInstruction (
-    Chunk *chunk,
-    int offset)
+disassembleInstruction (Chunk *chunk, int offset)
 {
     printf ("%04d ", offset);
 
@@ -186,38 +140,28 @@ disassembleInstruction (
 
     switch ((OpCode) instruction) {
 
-    case OP_CONSTANT:
-        return constantInstruction ("OP_CONSTANT", chunk, offset);
+        // *INDENT-OFF*
 
-    case OP_NIL:
-        return simpleInstruction ("OP_NIL", offset);
-    case OP_TRUE:
-        return simpleInstruction ("OP_TRUE", offset);
-    case OP_FALSE:
-        return simpleInstruction ("OP_FALSE", offset);
+    case OP_CONSTANT:                   return constantInstruction ("OP_CONSTANT", chunk, offset);
 
-    case OP_ADD:
-        return simpleInstruction ("OP_ADD", offset);
-    case OP_SUBTRACT:
-        return simpleInstruction ("OP_SUBTRACT", offset);
-    case OP_MULTIPLY:
-        return simpleInstruction ("OP_MULTIPLY", offset);
-    case OP_DIVIDE:
-        return simpleInstruction ("OP_DIVIDE", offset);
+    case OP_NIL:                        return simpleInstruction ("OP_NIL", offset);
+    case OP_TRUE:                       return simpleInstruction ("OP_TRUE", offset);
+    case OP_FALSE:                      return simpleInstruction ("OP_FALSE", offset);
 
-    case OP_EQUAL:
-        return simpleInstruction ("OP_EQUAL", offset);
-    case OP_GREATER:
-        return simpleInstruction ("OP_GREATER", offset);
-    case OP_LESS:
-        return simpleInstruction ("OP_LESS", offset);
+    case OP_ADD:                        return simpleInstruction ("OP_ADD", offset);
+    case OP_SUBTRACT:                   return simpleInstruction ("OP_SUBTRACT", offset);
+    case OP_MULTIPLY:                   return simpleInstruction ("OP_MULTIPLY", offset);
+    case OP_DIVIDE:                     return simpleInstruction ("OP_DIVIDE", offset);
 
-    case OP_NOT:
-        return simpleInstruction ("OP_NOT", offset);
-    case OP_NEGATE:
-        return simpleInstruction ("OP_NEGATE", offset);
-    case OP_RETURN:
-        return simpleInstruction ("OP_RETURN", offset);
+    case OP_EQUAL:                      return simpleInstruction ("OP_EQUAL", offset);
+    case OP_GREATER:                    return simpleInstruction ("OP_GREATER", offset);
+    case OP_LESS:                       return simpleInstruction ("OP_LESS", offset);
+
+    case OP_NOT:                        return simpleInstruction ("OP_NOT", offset);
+    case OP_NEGATE:                     return simpleInstruction ("OP_NEGATE", offset);
+    case OP_RETURN:                     return simpleInstruction ("OP_RETURN", offset);
+
+        // *INDENT-ON*
     }
 
     printf ("Unknown opcode %d\n", instruction);
@@ -233,9 +177,7 @@ disassembleInstruction (
  * @param name what to call it
  */
 void
-disassembleChunk (
-    Chunk *chunk,
-    const char *name)
+disassembleChunk (Chunk *chunk, const char *name)
 {
     printf ("\nDisassembling %s ...\n", name);
 

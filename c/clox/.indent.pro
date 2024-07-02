@@ -1,18 +1,30 @@
 --blank-lines-after-declarations
 --blank-lines-after-procedures
---no-blank-lines-before-block-comments
 --braces-after-func-def-line
 --braces-on-if-line
 --braces-on-struct-decl-line
---break-function-decl-args
+--comment-indentation 41
 --cuddle-else
+--dont-break-function-decl-args
 --dont-line-up-parentheses
 --honour-newlines
 --indent-level 4
+--line-length 160
+--no-blank-lines-before-block-comments
 --no-tabs
 
--TChunk
 -TOpCode
+-TChunk
 -TValue
 -TValueArray
+-TVM
+-TInterpretResult
+-TOptions
+-TScanner
+-TTokenType
 -TToken
+-TParser
+-TPrecedence
+-TParseRule
+-TParseFn
+-TParseFp

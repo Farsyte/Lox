@@ -23,8 +23,7 @@
  * If all tests pass
  */
 void
-bistAll (
-    )
+bistAll ()
 {
     bistMemory ();
     bistChunk ();

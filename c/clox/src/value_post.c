@@ -9,7 +9,6 @@
 /** Run all POST cases for Value.
  */
 void
-postValue (
-    )
+postValue ()
 {
 }

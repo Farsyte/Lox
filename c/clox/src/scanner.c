@@ -13,8 +13,7 @@ Scanner scanner;                ///< Storage for scanner state
  * @param source start looking at this text
  */
 void
-initScanner (
-    const char *source)
+initScanner (const char *source)
 {
     scanner.start = source;
     scanner.current = source;
@@ -26,8 +25,7 @@ initScanner (
  * @return true if in 0..9, else false.
  */
 static bool
-isDigit (
-    char c)
+isDigit (char c)
 {
     return (c >= '0') && (c <= '9');
 }
@@ -37,8 +35,7 @@ isDigit (
  * @return true if in A-Z, a-z, or _; else false.
  */
 static bool
-isAlpha (
-    char c)
+isAlpha (char c)
 {
     // *INDENT-OFF*
     return
@@ -53,8 +50,7 @@ isAlpha (
  * @return true if in 0-9, A-Z, a-z, or _; else false.
  */
 static bool
-isAlNum (
-    char c)
+isAlNum (char c)
 {
     // *INDENT-OFF*
     return
@@ -73,8 +69,7 @@ isAlNum (
  * @return true if the scanner is looking at the end of the source.
  */
 static bool
-isAtEnd (
-    )
+isAtEnd ()
 {
     return *scanner.current == '\0';
 }
@@ -89,8 +84,7 @@ isAtEnd (
  * @return the next character in the source.
  */
 static char
-advance (
-    )
+advance ()
 {
     int ch = *scanner.current;
 
@@ -109,8 +103,7 @@ advance (
  * @return the next character under the scan head.
  */
 static char
-peek (
-    )
+peek ()
 {
     return *scanner.current;
 }
@@ -123,8 +116,7 @@ peek (
  * @return the 2nd next character under the scan head.
  */
 static char
-peekNext (
-    )
+peekNext ()
 {
     if (isAtEnd ())
         return '\0';
@@ -141,8 +133,7 @@ peekNext (
  * @return true if matched, else false.
  */
 static bool
-match (
-    char expected)
+match (char expected)
 {
     if (isAtEnd ())
         return false;
@@ -162,8 +153,7 @@ match (
  * @return a Token structure
  */
 static Token
-makeToken (
-    TokenType type)
+makeToken (TokenType type)
 {
     Token token;
 
@@ -183,8 +173,7 @@ makeToken (
  * @return a Token of type TOKEN_ERROR.
  */
 static Token
-errorToken (
-    const char *message)
+errorToken (const char *message)
 {
     Token token;
 
@@ -202,8 +191,7 @@ errorToken (
  * character (which does not itself introduce a comment).
  */
 static void
-skipWhitespace (
-    )
+skipWhitespace ()
 {
     for (;;) {
         char c = peek ();
@@ -219,8 +207,7 @@ skipWhitespace (
 
         case '/':
 
-            if (peekNext () == '/') {
-                // treat "//" as comment to end of line.
+            if (peekNext () == '/') {   // treat "//" as comment to end of line.
                 for (;;) {
                     c = advance ();
                     if (c == '\0')
@@ -231,10 +218,9 @@ skipWhitespace (
                 break;
             }
 
-            if (peekNext () == '*') {
-                // treat "/*" as comment to "*/"
-                advance ();     // the slash
-                advance ();     // the star
+            if (peekNext () == '*') {   // treat "/*" as comment to "*/"
+                advance ();             // the slash
+                advance ();             // the star
                 for (;;) {
                     c = advance ();
                     if (c == '\0')
@@ -268,14 +254,9 @@ skipWhitespace (
  * @return provided type on a match, or TOKEN_IDENTIFIER if not.
  */
 static TokenType
-checkKeyword (
-    int start,
-    int length,
-    const char *rest,
-    TokenType type)
+checkKeyword (int start, int length, const char *rest, TokenType type)
 {
-    if (scanner.current - scanner.start == start + length &&
-        memcmp (scanner.start + start, rest, length) == 0) {
+    if (scanner.current - scanner.start == start + length && memcmp (scanner.start + start, rest, length) == 0) {
         return type;
     }
     return TOKEN_IDENTIFIER;
@@ -290,8 +271,7 @@ checkKeyword (
  * @return TOKEN_IDENTIFIER or the token type for a keyword
  */
 static TokenType
-identifierType (
-    )
+identifierType ()
 {
 
     switch (scanner.start[0]) {
@@ -345,8 +325,7 @@ identifierType (
  * @return a new Token (not a pointer).
  */
 static Token
-identifier (
-    )
+identifier ()
 {
     while (isAlNum (peek ()))
         advance ();
@@ -361,8 +340,7 @@ identifier (
  * @return a new Token (not a pointer).
  */
 static Token
-number (
-    )
+number ()
 {
     // consume the rest of the integer part.
     while (isDigit (peek ()))
@@ -389,8 +367,7 @@ number (
  * @return a new Token (not a pointer).
  */
 static Token
-string (
-    )
+string ()
 {
     // consume through the closing quote.
     while ('"' != advance ()) {
@@ -411,8 +388,7 @@ string (
  * @return a new Token (not a pointer).
  */
 Token
-scanToken (
-    )
+scanToken ()
 {
     skipWhitespace ();
     scanner.start = scanner.current;

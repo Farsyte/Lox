@@ -82,13 +82,8 @@ struct scanner_s {
     int line;                   ///< line number at current
 };
 
-extern void initScanner (
-    const char *source);
+extern void initScanner (const char *source);
+extern Token scanToken ();
 
-extern Token scanToken (
-    );
-
-extern void postScanner (
-    );
-extern void bistScanner (
-    );
+extern void postScanner ();
+extern void bistScanner ();

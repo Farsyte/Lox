@@ -4,5 +4,4 @@
  * @brief API exposed by the POST module
  */
 
-extern void postAll (
-    );
+extern void postAll ();

@@ -9,8 +9,7 @@ extern VM vm;                   // peek at VM state
 /** Run all BIST cases for Vm.
  */
 void
-bistVM (
-    )
+bistVM ()
 {
     initVM ();
     INVAR (NULL == vm.chunk, "initVM did not null the chunk pointer.");
@@ -29,14 +28,10 @@ bistVM (
     INVAR (IS_BOOL (peek (3)), "4th pop will be a boolean");
     INVAR (IS_NIL (peek (4)), "5th pop will be a boolean");
 
-    INVAR (1337.5 == AS_NUMBER (pop ()),
-        "1st pop did not return last value.");
-    INVAR (1.0 == AS_NUMBER (pop ()),
-        "2nd pop did not return first number value.");
-    INVAR (true == AS_BOOL (pop ()),
-        "3rd pop did not return last boolean value.");
-    INVAR (false == AS_BOOL (pop ()),
-        "4th pop did not return first boolean value.");
+    INVAR (1337.5 == AS_NUMBER (pop ()), "1st pop did not return last value.");
+    INVAR (1.0 == AS_NUMBER (pop ()), "2nd pop did not return first number value.");
+    INVAR (true == AS_BOOL (pop ()), "3rd pop did not return last boolean value.");
+    INVAR (false == AS_BOOL (pop ()), "4th pop did not return first boolean value.");
     INVAR (IS_NIL (pop ()), "5th pop did not return nil value.");
 
     freeVM ();

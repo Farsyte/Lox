@@ -13,24 +13,15 @@
 #define GROW_MUL_FAC    2
 
 /** Compute new capacity from old capacity */
-#define GROW_CAPACITY(capacity)                                         \
-    ((capacity) < GROW_MIN_SIZE ? GROW_MIN_SIZE : (capacity) * GROW_MUL_FAC)
+#define GROW_CAPACITY(capacity)                         ((capacity) < GROW_MIN_SIZE ? GROW_MIN_SIZE : (capacity) * GROW_MUL_FAC)
 
 /** Allocate and fill new storage from old */
-#define GROW_ARRAY(type, pointer, oldCount, newCount)           \
-    (type *)reallocate(pointer, sizeof (type) * (oldCount),     \
-                       sizeof (type) * (newCount))
+#define GROW_ARRAY(type, pointer, oldCount, newCount)   ((type *)reallocate(pointer, sizeof (type) * (oldCount), sizeof (type) * (newCount)))
 
 /** Release the growable storage */
-#define FREE_ARRAY(type, pointer, oldCount)             \
-    reallocate(pointer, sizeof (type) * (oldCount), 0)
+#define FREE_ARRAY(type, pointer, oldCount)             (reallocate(pointer, sizeof (type) * (oldCount), 0))
 
-extern void *reallocate (
-    void *pointer,
-    size_t oldSize,
-    size_t newSize);
+extern void *reallocate (void *pointer, size_t oldSize, size_t newSize);
 
-extern void postMemory (
-    );
-extern void bistMemory (
-    );
+extern void postMemory ();
+extern void bistMemory ();

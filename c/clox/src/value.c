@@ -9,9 +9,7 @@
  */
 
 bool
-valuesEqual (
-    Value a,
-    Value b)
+valuesEqual (Value a, Value b)
 {
     if (a.type != b.type)
         return false;
@@ -40,8 +38,7 @@ valuesEqual (
  * @param array memory to be initialized
  */
 void
-initValueArray (
-    ValueArray *array)
+initValueArray (ValueArray *array)
 {
     INVAR (NULL != array, "NULL array passed to initValueArray");
 
@@ -56,18 +53,13 @@ initValueArray (
  * @param code value to add to it
  */
 void
-writeValueArray (
-    ValueArray *array,
-    Value value)
+writeValueArray (ValueArray *array, Value value)
 {
     if (array->capacity < array->count + 1) {
         int oldCapacity = array->capacity;
 
         array->capacity = GROW_CAPACITY (oldCapacity);
-        array->values = GROW_ARRAY (Value,
-            array->values,
-            oldCapacity,
-            array->capacity);
+        array->values = GROW_ARRAY (Value, array->values, oldCapacity, array->capacity);
     }
 
     array->values[array->count] = value;
@@ -85,40 +77,29 @@ writeValueArray (
  * @param array the array to manipulate
  */
 void
-freeValueArray (
-    ValueArray *array)
+freeValueArray (ValueArray *array)
 {
-    FREE_ARRAY (Value,
-        array->values,
-        array->capacity);
+    FREE_ARRAY (Value, array->values, array->capacity);
 
     initValueArray (array);
 }
 
 /** Print a value.
  *
- * This function presents the value, which Lox always stores in a
- * floating point variable; but if the value is an integer value,
- * print it without the decimal point and especially not in
- * exponential notation.
- *
  * @param value the data to be printed
  */
 void
-printValue (
-    Value value)
+printValue (Value value)
 {
     switch (value.type) {
-        // *INDENT-OFF*
-    case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
-    case VAL_NIL:       printf("nil");                                  break;
-    case VAL_NUMBER:    
-        // *INDENT-ON*
-        double number = AS_NUMBER (value);
 
-        printf ((number == (int) number)
-            ? "%.0f" : "%g", number);
-        return;
+        // *INDENT-OFF*
+
+    case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
+    case VAL_NIL:       printf("nil");                                  return;
+    case VAL_NUMBER:    printf("%.16g", AS_NUMBER(value));              return;
+
+        // *INDENT-ON*
 
     }
     ERROR_LOG (0, "Should be UNREACHABLE.", 0);

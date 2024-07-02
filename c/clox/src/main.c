@@ -17,8 +17,7 @@ extern Options options;         // share command line options state
 /** Read-Evaluate-Print loop.
  */
 static void
-repl (
-    )
+repl ()
 {
     char line[1024];
 
@@ -43,16 +42,20 @@ repl (
  * an appropriate error message.
  */
 static char *
-readFile (
-    const char *path)
+readFile (const char *path)
 {
     FILE *file = fopen (path, "rb");
 
     if (NULL == file) {
         int en = errno;
 
-        fprintf (stderr, "Could not open file \"%s\".\n"
-            "    fopen returned error %d: %s\n", path, en, strerror (en));
+        // *INDENT-OFF*
+        fprintf (stderr,
+                 "Could not open file \"%s\".\n"
+                 "    fopen returned error %d: %s\n",
+                 path, en, strerror (en));
+        // *INDENT-ON*
+
         exit (EX_NOINPUT);
     }
 
@@ -66,18 +69,26 @@ readFile (
     if (NULL == buffer) {
         int en = errno;
 
+        // *INDENT-OFF*
         fprintf (stderr,
-            "Not enough memory to read %lu bytes from \"%s\".\n"
-            "   malloc returned error number %d: %s\n",
-            fileSize, path, en, strerror (en));
+                 "Not enough memory to read %lu bytes from \"%s\".\n"
+                 "   malloc returned error number %d: %s\n",
+                 fileSize, path, en, strerror (en));
+        // *INDENT-ON*
+
         // try again later when more memory is available.
         exit (EX_TEMPFAIL);
     }
     size_t bytesRead = fread (buffer, sizeof (char), fileSize, file);
 
     if (bytesRead != fileSize) {
-        fprintf (stderr, "Could not read %lu bytes from file \"%s\"\n",
-            fileSize, path);
+
+        // *INDENT-OFF*
+        fprintf (stderr,
+                 "Could not read %lu bytes from file \"%s\"\n",
+                 fileSize, path);
+        // *INDENT-ON*
+
         exit (EX_IOERR);
     }
     buffer[bytesRead] = '\0';
@@ -93,8 +104,7 @@ readFile (
  * On error, terminates the program.
  */
 static void
-runFile (
-    const char *path)
+runFile (const char *path)
 {
     char *source = readFile (path);
     InterpretResult result = interpret (source);
@@ -115,8 +125,7 @@ runFile (
  * the command line arguments presented.
  */
 static void
-demo (
-    )
+demo ()
 {
     initVM ();
 
@@ -205,9 +214,7 @@ demo (
  * - 78: configuration error (EX_CONFIG)
  */
 int
-main (
-    int argc,
-    const char **argv)
+main (int argc, const char **argv)
 {
     postAll ();
 

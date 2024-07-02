@@ -9,8 +9,7 @@
 /** Run all BIST cases for Memory.
  */
 void
-bistMemory (
-    )
+bistMemory ()
 {
     INVAR (8 == GROW_CAPACITY (0), "0 grows to 8");
     INVAR (16 == GROW_CAPACITY (8), "8 grows to 16");

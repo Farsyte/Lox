@@ -41,22 +41,10 @@ struct chunk_s {
     ValueArray constants;       ///< Expandable pool of consetant values
 };
 
-extern void initChunk (
-    Chunk *chunk);
+extern void initChunk (Chunk *chunk);
+extern void freeChunk (Chunk *chunk);
+extern void writeChunk (Chunk *chunk, uint8_t byte, int line);
+extern int addConstant (Chunk *chunk, Value value);
 
-extern void freeChunk (
-    Chunk *chunk);
-
-extern void writeChunk (
-    Chunk *chunk,
-    uint8_t byte,
-    int line);
-
-extern int addConstant (
-    Chunk *chunk,
-    Value value);
-
-extern void postChunk (
-    );
-extern void bistChunk (
-    );
+extern void postChunk ();
+extern void bistChunk ();

@@ -2,11 +2,11 @@
 
 #include "vm.h"
 
-bool compile (
-    const char *source,
-    Chunk *chunk);
+/** @file compiler.h
+ * @brief API exposed by the COMPILER module
+ */
 
-void bistCompiler (
-    );
-void postCompiler (
-    );
+bool compile (const char *source, Chunk *chunk);
+
+void bistCompiler ();
+void postCompiler ();

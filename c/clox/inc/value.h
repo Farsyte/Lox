@@ -63,24 +63,12 @@ struct value_array_s {
     Value *values;              ///< storage area with capacity
 };
 
-extern bool valuesEqual (
-    Value a,
-    Value b);
+extern bool valuesEqual (Value a, Value b);
 
-extern void initValueArray (
-    ValueArray *array);
+extern void initValueArray (ValueArray *array);
+extern void writeValueArray (ValueArray *array, Value value);
+extern void freeValueArray (ValueArray *array);
+extern void printValue (Value value);
 
-extern void writeValueArray (
-    ValueArray *array,
-    Value value);
-
-extern void freeValueArray (
-    ValueArray *array);
-
-extern void printValue (
-    Value value);
-
-extern void bistValue (
-    );
-extern void postValue (
-    );
+extern void bistValue ();
+extern void postValue ();

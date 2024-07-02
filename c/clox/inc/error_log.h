@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdlib.h>             /* for abort() */
+#include <stdlib.h>                     /* for abort() */
 #include <sysexits.h>
 
 /** @file error_log.h
@@ -62,10 +62,4 @@
                    pfx, cond, msg);             \
     } while (0)
 
-extern void _error_log (
-    const char *file,
-    int line,
-    const char *func,
-    const char *pfx,
-    const char *condstr,
-    const char *msg);
+extern void _error_log (const char *file, int line, const char *func, const char *pfx, const char *condstr, const char *msg);

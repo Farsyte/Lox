@@ -47,17 +47,13 @@ Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 /* Forward Declarations */
 
-static void expression (
-    );
-static ParseRule *getRule (
-    TokenType type);
-static void parsePrecedence (
-    Precedence precedence);
+static void expression ();
+static ParseRule *getRule (TokenType type);
+static void parsePrecedence (Precedence precedence);
 
 /** Return a pointer to the current target chunk */
 static Chunk *
-currentChunk (
-    )
+currentChunk ()
 {
     return compilingChunk;
 }
@@ -72,9 +68,7 @@ currentChunk (
  * @param message something to print
  */
 static void
-errorAt (
-    Token *token,
-    const char *message)
+errorAt (Token *token, const char *message)
 {
     if (parser.panicMode)
         return;
@@ -101,8 +95,7 @@ errorAt (
  * @param message something to print
  */
 static void
-error (
-    const char *message)
+error (const char *message)
 {
     errorAt (&parser.previous, message);
 }
@@ -115,8 +108,7 @@ error (
  * @param message something to print
  */
 static void
-errorAtCurrent (
-    const char *message)
+errorAtCurrent (const char *message)
 {
     errorAt (&parser.current, message);
 }
@@ -129,8 +121,7 @@ errorAtCurrent (
  * stop when a non-ERROR token is found.
  */
 static void
-advance (
-    )
+advance ()
 {
     parser.previous = parser.current;
 
@@ -148,9 +139,7 @@ advance (
  * the next token in as current. Otherwise, report the error.
  */
 static void
-consume (
-    TokenType type,
-    const char *message)
+consume (TokenType type, const char *message)
 {
     if (parser.current.type == type) {
         advance ();
@@ -165,8 +154,7 @@ consume (
  * @param byte the opcode (or data) to emit.
  */
 static void
-emitByte (
-    uint8_t byte)
+emitByte (uint8_t byte)
 {
     writeChunk (currentChunk (), byte, parser.previous.line);
 }
@@ -177,9 +165,7 @@ emitByte (
  * @param byte2 the second byte of data to emit.
  */
 static void
-emitBytes (
-    uint8_t byte1,
-    uint8_t byte2)
+emitBytes (uint8_t byte1, uint8_t byte2)
 {
     emitByte (byte1);
     emitByte (byte2);
@@ -188,8 +174,7 @@ emitBytes (
 /** Emit a RETURN opcode to the chunk.
  */
 static void
-emitReturn (
-    )
+emitReturn ()
 {
     emitByte (OP_RETURN);
 }
@@ -202,8 +187,7 @@ emitReturn (
  * @param value the value of the constant
  */
 static uint8_t
-makeConstant (
-    Value value)
+makeConstant (Value value)
 {
     int constant = addConstant (currentChunk (), value);
 
@@ -223,8 +207,7 @@ makeConstant (
  * @param value
  */
 static void
-emitConstant (
-    Value value)
+emitConstant (Value value)
 {
     emitBytes (OP_CONSTANT, makeConstant (value));
 }
@@ -232,8 +215,7 @@ emitConstant (
 /** Shut down the compiler.
  */
 static void
-endCompiler (
-    )
+endCompiler ()
 {
     emitReturn ();
 #ifdef DEBUG_PRINT_CODE
@@ -246,8 +228,7 @@ endCompiler (
 /** Compile a binary operation to the chunk.
  */
 static void
-binary (
-    )
+binary ()
 {
     TokenType operatorType = parser.previous.type;
     ParseRule *rule = getRule (operatorType);
@@ -277,8 +258,7 @@ binary (
 /** Compile a Literal op to the chunk.
  */
 static void
-literal (
-    )
+literal ()
 {
     switch (parser.previous.type) {
         // *INDENT-OFF*
@@ -294,8 +274,7 @@ literal (
 /** Compile a Grouping to the chunk.
  */
 static void
-grouping (
-    )
+grouping ()
 {
     expression ();
     consume (TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
@@ -304,8 +283,7 @@ grouping (
 /** Compile a number to the chunk.
  */
 static void
-number (
-    )
+number ()
 {
     double value = strtod (parser.previous.start, NULL);
 
@@ -315,8 +293,7 @@ number (
 /** Compile a unary operation to the chunk.
  */
 static void
-unary (
-    )
+unary ()
 {
     TokenType operatorType = parser.previous.type;
 
@@ -397,8 +374,7 @@ ParseRule rules[] = {
 /** Compile an expression at the specified precedence.
  */
 static void
-parsePrecedence (
-    Precedence precedence)
+parsePrecedence (Precedence precedence)
 {
     advance ();
     ParseFn prefixRule = getRule (parser.previous.type)->prefix;
@@ -417,8 +393,7 @@ parsePrecedence (
 }
 
 static ParseRule *
-getRule (
-    TokenType type)
+getRule (TokenType type)
 {
     return &rules[type];
 }
@@ -426,8 +401,7 @@ getRule (
 /** Compile an expression to the chunk.
  */
 static void
-expression (
-    )
+expression ()
 {
     parsePrecedence (PREC_ASSIGNMENT);
 }
@@ -435,9 +409,7 @@ expression (
 /** Compile the source code into the chunk.
  */
 bool
-compile (
-    const char *source,
-    Chunk *chunk)
+compile (const char *source, Chunk *chunk)
 {
     initScanner (source);
     compilingChunk = chunk;

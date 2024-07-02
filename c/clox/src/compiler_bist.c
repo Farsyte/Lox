@@ -13,8 +13,7 @@ extern Scanner scanner;         // peek at scanner state
 /** Run all BIST cases for Compiler.
  */
 void
-bistCompiler (
-    )
+bistCompiler ()
 {
     // *INDENT-OFF*
     const char source[] =
@@ -37,12 +36,9 @@ bistCompiler (
 
     compile (source, &chunk);
 
-    INVAR (source_end == scanner.start,
-        "initScaner must set scanner.start to the given source.");
-    INVAR (source_end == scanner.current,
-        "initScaner must set scanner.current to the given source.");
-    INVAR (ending_line == scanner.line,
-        "initScaner must set scanner.line to 1.");
+    INVAR (source_end == scanner.start, "initScaner must set scanner.start to the given source.");
+    INVAR (source_end == scanner.current, "initScaner must set scanner.current to the given source.");
+    INVAR (ending_line == scanner.line, "initScaner must set scanner.line to 1.");
 
     freeChunk (&chunk);
 }
