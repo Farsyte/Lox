@@ -46,3 +46,6 @@ typedef struct token_s Token;
 
 /** Storage for the Parser (in compiler.c) */
 typedef struct parser_s Parser;
+
+/** Enumerated precedence order */
+typedef enum precedence_e Precedence;

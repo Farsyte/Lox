@@ -20,17 +20,33 @@ struct parser_s {
     bool panicMode;             ///< if set, move forward silently.
 };
 
+static void expression (
+    // TODO remove this forward declaration?
+    );
+static void parsePrecedence (
+    // TODO remove this forward declaration?
+    Precedence precedence);
+
+/** Operator Precedence enumeration
+ */
+enum precedence_e {
+    PREC_NONE,                  ///< "="
+    PREC_ASSIGNMENT,            ///< "or"
+    PREC_OR,                    ///< "and"
+    PREC_AND,                   ///< "=="
+    PREC_EQUALITY,              ///< "!="
+    PREC_COMPARISON,            ///< "<", ">", "<=", ">="
+    PREC_TERM,                  ///< "+", "0"
+    PREC_FACTOR,                ///< "*", "/"
+    PREC_UNARY,                 ///< "!", "-"
+    PREC_CALL,                  ///< ".", "()"
+    PREC_PRIMARY,               // identifiers etc.
+};
+
 Parser parser;                  ///< Storage for the parser state.
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
-static void
-expression (
-    )
-{
-    // TODO actually construct expression()
-    ERROR_LOG (0, "not yet implemented!", 0);
-}
-
+/** Return a pointer to the current target chunk */
 static Chunk *
 currentChunk (
     )
@@ -136,6 +152,10 @@ consume (
     errorAtCurrent (message);
 }
 
+/** Emit a byte into the current chunk.
+ *
+ * @param byte the opcode (or data) to emit.
+ */
 static void
 emitByte (
     uint8_t byte)
@@ -143,6 +163,11 @@ emitByte (
     writeChunk (currentChunk (), byte, parser.previous.line);
 }
 
+/** Emit two bytes into the current chunk.
+ *
+ * @param byte1 the first opcode (or data) to emit.
+ * @param byte2 the second byte of data to emit.
+ */
 static void
 emitBytes (
     uint8_t byte1,
@@ -152,6 +177,8 @@ emitBytes (
     emitByte (byte2);
 }
 
+/** Emit a RETURN opcode to the chunk.
+ */
 static void
 emitReturn (
     )
@@ -159,6 +186,13 @@ emitReturn (
     emitByte (OP_RETURN);
 }
 
+/** Add a CONSTANT to the bytecode stream
+ *
+ * This function inserts the constant into the pool then write the
+ * constant pool index into the chunk.
+ *
+ * @param value the value of the constant
+ */
 static uint8_t
 makeConstant (
     Value value)
@@ -173,6 +207,13 @@ makeConstant (
     return (uint8_t) constant;
 }
 
+/** Construct a CONSTANT operation in the chunk.
+ *
+ * Emits OP_CONSTANT, then an immediate byte picking
+ * the constant out of the constant pool.
+ *
+ * @param value
+ */
 static void
 emitConstant (
     Value value)
@@ -180,6 +221,8 @@ emitConstant (
     emitBytes (OP_CONSTANT, makeConstant (value));
 }
 
+/** Shut down the compiler.
+ */
 static void
 endCompiler (
     )
@@ -187,6 +230,8 @@ endCompiler (
     emitReturn ();
 }
 
+/** Compile a Grouping to the chunk.
+ */
 static void
 grouping (
     )
@@ -195,6 +240,8 @@ grouping (
     consume (TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
 }
 
+/** Compile a number to the chunk.
+ */
 static void
 number (
     )
@@ -202,6 +249,48 @@ number (
     double value = strtod (parser.previous.start, NULL);
 
     emitConstant (value);
+}
+
+/** Compile a unary operation to the chunk.
+ */
+static void
+unary (
+    )
+{
+    TokenType operatorType = parser.previous.type;
+
+    // Compile the operand.
+    parsePrecedence (PREC_UNARY);
+
+    // Emit the operator instruction.
+    switch (operatorType) {
+    case TOKEN_MINUS:
+        emitByte (OP_NEGATE);
+        break;
+    default:
+        ERROR_LOG (0, "Should be UNREACHABLE.", 0);
+        return;
+    }
+}
+
+/** Compile an expression at the specified precedence.
+ */
+static void
+parsePrecedence (
+    Precedence precedence)
+{
+    // What goes here?
+    (void) precedence;
+    STUB (0);
+}
+
+/** Compile an expression to the chunk.
+ */
+static void
+expression (
+    )
+{
+    parsePrecedence (PREC_ASSIGNMENT);
 }
 
 /** Compile the source code into the chunk.
@@ -230,8 +319,9 @@ call_unused_compiler_functions (
     )
 {
     error (0);                  // todo remove this line
-    emitBytes (0, 0);           // todo remove this line
     number ();                  // todo remove this line
     grouping ();                // todo remove this line
+    unary ();                   // todo remove this line
+    parsePrecedence (0);        // todo remove this line
     STUB (0);
 }
