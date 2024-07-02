@@ -50,10 +50,10 @@ struct value_s {
 #define BOOL_VAL(value) ((Value){VAL_BOOL, {.boolean = value}})
 
 /** Promote a native nil to a Value */
-#define NIL_VAL(value) ((Value){VAL_BOOL, {.number = 0}})
+#define NIL_VAL(value) ((Value){VAL_NIL, {.number = 0}})
 
 /** Promote a native number to a Value */
-#define NUMBER_VAL(value) ((Value){VAL_BOOL, {.number = value}})
+#define NUMBER_VAL(value) ((Value){VAL_NUMBER, {.number = value}})
 
 /** Expandable Array of Values
  */
