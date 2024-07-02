@@ -367,9 +367,20 @@ static void
 parsePrecedence (
     Precedence precedence)
 {
-    // What goes here?
-    (void) precedence;
-    STUB (0);
+    advance ();
+    ParseFn prefixRule = getRule (parser.previous.type)->prefix;
+
+    if (prefixRule == NULL) {
+        error ("Expect expression.");
+        return;
+    }
+    prefixRule ();
+    while (precedence <= getRule (parser.current.type)->precedence) {
+        advance ();
+        ParseFn infixRule = getRule (parser.previous.type)->infix;
+
+        infixRule ();
+    }
 }
 
 static ParseRule *
@@ -405,18 +416,4 @@ compile (
     consume (TOKEN_EOF, "Expect end of expression.");
     endCompiler ();
     return !parser.hadError;
-}
-
-void
-call_unused_compiler_functions (
-    // TODO remove this function
-    )
-{
-    error (0);                  // todo remove this line
-    number ();                  // todo remove this line
-    grouping ();                // todo remove this line
-    unary ();                   // todo remove this line
-    binary ();                  // todo remove this line
-    parsePrecedence (0);        // todo remove this line
-    STUB (0);
 }
