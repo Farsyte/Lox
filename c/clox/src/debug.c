@@ -116,10 +116,10 @@ tokenTypeString (
         return "TOKEN_EOF";
     }
 
-    static char ttStaticName[512];
+    static char ttStaticName[32];
 
-    snprintf (ttStaticName, sizeof ttStaticName, "<TokenType=%d>",
-        (int) type);
+    snprintf (ttStaticName, sizeof ttStaticName,        // call me paranoid ;)
+        "<TokenType=%d>", (int) type);
     return ttStaticName;
 }
 

@@ -1,5 +1,6 @@
 #include "compiler.h"
 
+#include "chunk.h"
 #include "common.h"
 #include "debug.h"
 #include "scanner.h"
@@ -20,6 +21,7 @@ struct parser_s {
 };
 
 Parser parser;                  ///< Storage for the parser state.
+Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 static void
 expression (
@@ -27,6 +29,13 @@ expression (
 {
     // TODO actually construct expression()
     ERROR_LOG (0, "not yet implemented!", 0);
+}
+
+static Chunk *
+currentChunk (
+    )
+{
+    return compilingChunk;
 }
 
 /** Report error at this token.
@@ -127,6 +136,36 @@ consume (
     errorAtCurrent (message);
 }
 
+static void
+emitByte (
+    uint8_t byte)
+{
+    writeChunk (currentChunk (), byte, parser.previous.line);
+}
+
+static void
+emitBytes (
+    uint8_t byte1,
+    uint8_t byte2)
+{
+    emitByte (byte1);
+    emitByte (byte2);
+}
+
+static void
+emitReturn (
+    )
+{
+    emitByte (OP_RETURN);
+}
+
+static void
+endCompiler (
+    )
+{
+    emitReturn ();
+}
+
 /** Compile the source code into the chunk.
  */
 bool
@@ -136,12 +175,14 @@ compile (
 {
     (void) chunk;               // not used (yet)
     initScanner (source);
+    compilingChunk = chunk;
     parser.hadError = false;
     parser.panicMode = false;
 
     advance ();
     expression ();
     consume (TOKEN_EOF, "Expect end of expression.");
+    endCompiler ();
     return !parser.hadError;
 }
 
@@ -150,6 +191,7 @@ call_unused_compiler_functions (
     // TODO remove this function
     )
 {
-    error (0);
+    error (0);                  // todo remove this line
+    emitBytes (0, 0);           // todo remove this line
     STUB (0);
 }
