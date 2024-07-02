@@ -49,8 +49,8 @@ struct value_s {
 /** Promote a native boolean to a Value */
 #define BOOL_VAL(value) ((Value){VAL_BOOL, {.boolean = value}})
 
-/** Promote a native nil to a Value */
-#define NIL_VAL(value) ((Value){VAL_NIL, {.number = 0}})
+/** Produce a Nil Value */
+#define NIL_VAL ((Value){VAL_NIL, {.number = 0}})
 
 /** Promote a native number to a Value */
 #define NUMBER_VAL(value) ((Value){VAL_NUMBER, {.number = value}})

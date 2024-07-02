@@ -266,6 +266,23 @@ binary (
     }
 }
 
+/** Compile a Literal op to the chunk.
+ */
+static void
+literal (
+    )
+{
+    switch (parser.previous.type) {
+        // *INDENT-OFF*
+    case TOKEN_FALSE:   emitByte(OP_FALSE);     break;
+    case TOKEN_NIL:     emitByte(OP_NIL);       break;
+    case TOKEN_TRUE:    emitByte(OP_TRUE);      break;
+
+    default: ERROR_LOG (0, "Should be UNREACHABLE.", 0);  return;
+        // *INDENT-ON*
+    }
+}
+
 /** Compile a Grouping to the chunk.
  */
 static void
@@ -345,17 +362,17 @@ ParseRule rules[] = {
     [TOKEN_AND]            =  {  NULL,       NULL,     PREC_NONE      },   //  "and"
     [TOKEN_CLASS]          =  {  NULL,       NULL,     PREC_NONE      },   //  "class"
     [TOKEN_ELSE]           =  {  NULL,       NULL,     PREC_NONE      },   //  "else"
-    [TOKEN_FALSE]          =  {  NULL,       NULL,     PREC_NONE      },   //  "false"
+    [TOKEN_FALSE]          =  {  literal,    NULL,     PREC_NONE      },   //  "false"
     [TOKEN_FOR]            =  {  NULL,       NULL,     PREC_NONE      },   //  "for"
     [TOKEN_FUN]            =  {  NULL,       NULL,     PREC_NONE      },   //  "fun"
     [TOKEN_IF]             =  {  NULL,       NULL,     PREC_NONE      },   //  "if"
-    [TOKEN_NIL]            =  {  NULL,       NULL,     PREC_NONE      },   //  "nil"
+    [TOKEN_NIL]            =  {  literal,    NULL,     PREC_NONE      },   //  "nil"
     [TOKEN_OR]             =  {  NULL,       NULL,     PREC_NONE      },   //  "or"
     [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE      },   //  "print"
     [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE      },   //  "return"
     [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE      },   //  "super"
     [TOKEN_THIS]           =  {  NULL,       NULL,     PREC_NONE      },   //  "this"
-    [TOKEN_TRUE]           =  {  NULL,       NULL,     PREC_NONE      },   //  "true"
+    [TOKEN_TRUE]           =  {  literal,    NULL,     PREC_NONE      },   //  "true"
     [TOKEN_VAR]            =  {  NULL,       NULL,     PREC_NONE      },   //  "var"
     [TOKEN_WHILE]          =  {  NULL,       NULL,     PREC_NONE      },   //  "while"
 

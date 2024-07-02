@@ -11,6 +11,9 @@
  */
 enum opcode_e {
     OP_CONSTANT,                ///< Push a constant onto the stack
+    OP_NIL,                     ///< Push a nil onto the stack
+    OP_TRUE,                    ///< Push a false onto the stack
+    OP_FALSE,                   ///< Push a true onto the stack
 
     OP_ADD,                     ///< add top of stack to 2nd, push result
     OP_SUBTRACT,                ///< subtract top of stack from 2nd, push result

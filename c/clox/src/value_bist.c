@@ -17,7 +17,7 @@ bistValue (
 {
     INVAR (IS_NUMBER (NUMBER_VAL (0)), "Value stores numbers");
     INVAR (IS_BOOL (BOOL_VAL (0)), "Value stores booleans");
-    INVAR (IS_NIL (NIL_VAL (0)), "Value stores nil");
+    INVAR (IS_NIL (NIL_VAL), "Value stores nil");
 
     INVAR (0 == AS_NUMBER (NUMBER_VAL (0)), "Value has zero");
     INVAR (1 == AS_NUMBER (NUMBER_VAL (1)), "Value has one");

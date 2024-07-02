@@ -86,34 +86,18 @@ void
 printValue (
     Value value)
 {
-    if (IS_NIL (value)) {
-        printf ("nil");
-        return;
-    }
-
-    if (IS_BOOL (value)) {
-        if (AS_BOOL (value)) {
-            printf ("true");
-
-        } else {
-            printf ("false");
-
-        }
-        return;
-    }
-
-    if (IS_NUMBER (value)) {
+    switch (value.type) {
+        // *INDENT-OFF*
+    case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
+    case VAL_NIL:       printf("nil");                                  break;
+    case VAL_NUMBER:    
+        // *INDENT-ON*
         double number = AS_NUMBER (value);
 
-        if (number == (int) number) {
-            printf ("%.0f", number);
-        } else {
-            printf ("%g", number);
-        }
+        printf ((number == (int) number)
+            ? "%.0f" : "%g", number);
         return;
+
     }
-
-    printf ("Value{ty=%d, bv=%d, nv=%g}",
-        value.type, value.as.boolean, value.as.number);
-
+    ERROR_LOG (0, "Should be UNREACHABLE.", 0);
 }

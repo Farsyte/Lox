@@ -17,7 +17,7 @@ bistVM (
     INVAR (NULL == vm.ip, "initVM did not null the instruction pointer.");
     INVAR (vm.stack == vm.sp, "initVM did not reset the stack pointer.");
 
-    push (NIL_VAL (0));
+    push (NIL_VAL);
     push (BOOL_VAL (false));
     push (BOOL_VAL (true));
     push (NUMBER_VAL (1.0));

@@ -161,6 +161,16 @@ run (
             push (READ_CONSTANT ());
             break;
 
+        case OP_NIL:
+            push (NIL_VAL);
+            break;
+        case OP_TRUE:
+            push (BOOL_VAL (true));
+            break;
+        case OP_FALSE:
+            push (BOOL_VAL (false));
+            break;
+
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \
                 if (!IS_NUMBER(peek(0)) || (!IS_NUMBER(peek(1)))) {     \

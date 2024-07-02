@@ -189,6 +189,13 @@ disassembleInstruction (
     case OP_CONSTANT:
         return constantInstruction ("OP_CONSTANT", chunk, offset);
 
+    case OP_NIL:
+        return simpleInstruction ("OP_NIL", offset);
+    case OP_TRUE:
+        return simpleInstruction ("OP_TRUE", offset);
+    case OP_FALSE:
+        return simpleInstruction ("OP_FALSE", offset);
+
     case OP_ADD:
         return simpleInstruction ("OP_ADD", offset);
     case OP_SUBTRACT:
