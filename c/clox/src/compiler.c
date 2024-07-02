@@ -23,6 +23,14 @@ struct parser_s {
 Parser parser;                  ///< Storage for the parser state.
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
+static void
+expression (
+    )
+{
+    // TODO actually construct expression()
+    ERROR_LOG (0, "not yet implemented!", 0);
+}
+
 static Chunk *
 currentChunk (
     )
@@ -180,20 +188,20 @@ endCompiler (
 }
 
 static void
+grouping (
+    )
+{
+    expression ();
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
+}
+
+static void
 number (
     )
 {
     double value = strtod (parser.previous.start, NULL);
 
     emitConstant (value);
-}
-
-static void
-expression (
-    )
-{
-    // TODO actually construct expression()
-    ERROR_LOG (0, "not yet implemented!", 0);
 }
 
 /** Compile the source code into the chunk.
@@ -224,5 +232,6 @@ call_unused_compiler_functions (
     error (0);                  // todo remove this line
     emitBytes (0, 0);           // todo remove this line
     number ();                  // todo remove this line
+    grouping ();                // todo remove this line
     STUB (0);
 }
