@@ -5,6 +5,7 @@
 #include "debug.h"
 
 #include <math.h>
+#include <stdarg.h>
 #include <stdio.h>
 
 VM vm;
@@ -16,6 +17,29 @@ resetStack (
     )
 {
     vm.sp = vm.stack;
+}
+
+/** Report a runtime error.
+ *
+ * @param format control the output, like printf.
+ */
+static void
+runtimeError (
+    const char *format,
+    ...)
+{
+    va_list args;
+
+    va_start (args, format);
+    vfprintf (stderr, format, args);
+    va_end (args);
+    fputs ("\n", stderr);
+
+    size_t instruction = vm.ip - vm.chunk->code - 1;
+    int line = vm.chunk->lines[instruction];
+
+    fprintf (stderr, "[line %d] in script\n", line);
+    resetStack ();
 }
 
 /** Initialize the VM completely.
@@ -73,6 +97,41 @@ pop (
     return *vm.sp;
 }
 
+/** Peek at a value from the VM stack.
+ *
+ * This returns a value from the VM stack,
+ * without adjusting the stack pointer.
+ * Calling with a distance of zero returns
+ * a copy of the top element of the stack.
+ * Calling with a distance of one returns
+ * a copy of the element below it.
+ * And so on.
+ *
+ * @param distance how far to dig down
+ * @return the value from the stack.
+ */
+Value
+peek (
+    int distance)
+{
+    return vm.sp[-1 - distance];
+}
+
+/** Return true if the value is falsey.
+ *
+ * Follows the RUBY convention that nil and false are falsey
+ * and everything else (including 0 and 0.0) is true.
+ *
+ * @param value what to check
+ * @return true if input is false or nil, else false
+ */
+static bool
+isFalsey (
+    Value value)
+{
+    return IS_NIL (value) || (IS_BOOL (value) && !AS_BOOL (value));
+}
+
 /** Run the bytecodes in the VM.
  *
  * This function steps through the bytecode, interpreting
@@ -85,7 +144,8 @@ static InterpretResult
 run (
     )
 {
-    Value tos = (vm.sp > vm.stack) ? pop () : NAN;
+    Value a;
+    Value b;
 
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
@@ -96,14 +156,11 @@ run (
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
         printf ("stack:");
-        if (isfinite (tos)) {
-            // NOTE: vm.stack[0] will have the original NAN value.
-            for (Value *slot = vm.stack + 1; slot < vm.sp; slot++) {
+        if (vm.sp > vm.stack) {
+            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
                 printf (" ");
                 printValue (*slot);
             }
-            printf (" ");
-            printValue (tos);
         } else {
             printf (" empty.");
         }
@@ -119,49 +176,64 @@ run (
         switch (instruction = (OpCode) READ_BYTE ()) {
 
         case OP_CONSTANT:
-            push (tos);
-            tos = READ_CONSTANT ();
-            // TODO runtime error if result is not finite
+            push (READ_CONSTANT ());
             break;
 
-#define BINARY_OP(op)                           \
-            do {                                \
-                double a = pop();               \
-                tos = a op tos;                 \
+        case OP_NIL:
+            push (NIL_VAL);
+            break;
+        case OP_TRUE:
+            push (BOOL_VAL (true));
+            break;
+        case OP_FALSE:
+            push (BOOL_VAL (false));
+            break;
+
+#define BINARY_OP(valueType, op)                                        \
+            do {                                                        \
+                if (!IS_NUMBER(peek(0)) || (!IS_NUMBER(peek(1)))) {     \
+                    runtimeError("Operands must be numbers.");          \
+                    return INTERPRET_RUNTIME_ERROR;                     \
+                }                                                       \
+                b = pop();                                              \
+                a = pop();                                              \
+                push(valueType(AS_NUMBER(a) op AS_NUMBER(b)));          \
             } while (false)
 
-        case OP_ADD:
-            BINARY_OP (+);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_SUBTRACT:
-            BINARY_OP (-);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_MULTIPLY:
-            BINARY_OP (*);
-            // TODO runtime error if result is not finite
-            break;
-        case OP_DIVIDE:
-            // TODO runtime error if tos is zero
-            BINARY_OP (/);
-            // TODO runtime error if result is not finite
-            break;
+            // *INDENT-OFF*
+
+        case OP_ADD:      BINARY_OP (NUMBER_VAL, +); break;
+        case OP_SUBTRACT: BINARY_OP (NUMBER_VAL, -); break;
+        case OP_MULTIPLY: BINARY_OP (NUMBER_VAL, *); break;
+        case OP_DIVIDE:   BINARY_OP (NUMBER_VAL, /); break;
+
+        case OP_GREATER:  BINARY_OP (BOOL_VAL,   >); break;
+        case OP_LESS:     BINARY_OP (BOOL_VAL,   <); break;
+
+            // *INDENT-ON*
 
 #undef  BINARY_OP
 
+        case OP_EQUAL:
+            b = pop ();
+            a = pop ();
+            push (BOOL_VAL (valuesEqual (a, b)));
+            break;
+
+        case OP_NOT:
+            push (BOOL_VAL (isFalsey (pop ())));
+            break;
+
         case OP_NEGATE:
-            tos = -tos;
+            if (!IS_NUMBER (peek (0))) {
+                runtimeError ("Operand must be a number.");
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            push (NUMBER_VAL (-AS_NUMBER (pop ())));
             break;
 
         case OP_RETURN:
-            if (vm.sp > vm.stack || isfinite (tos)) {
-                printValue (tos);
-                // leave the stack looking like tos was just popped.
-                *vm.sp = tos;
-            } else {
-                printf ("OP_RETURN but stack is empty.");
-            }
+            printValue (pop ());
             printf ("\n");
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");

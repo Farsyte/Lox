@@ -8,6 +8,28 @@
  * @brief Support functions for the value module
  */
 
+bool
+valuesEqual (
+    Value a,
+    Value b)
+{
+    if (a.type != b.type)
+        return false;
+    switch (a.type) {
+
+        // *INDENT-OFF*
+
+    case VAL_BOOL:      return AS_BOOL(a) == AS_BOOL(b);
+    case VAL_NIL:       return true;
+    case VAL_NUMBER:    return AS_NUMBER(a) == AS_NUMBER(b);
+
+    default: ERROR_LOG (0, "Should be UNREACHABLE.", 0); return false;
+
+        // *INDENT-ON*
+
+    }
+}
+
 /** Initialize Value Array.
  *
  * Place ValueArray into initial state
@@ -86,9 +108,18 @@ void
 printValue (
     Value value)
 {
-    if (value == (int) value) {
-        printf ("%.0f", value);
-    } else {
-        printf ("%g", value);
+    switch (value.type) {
+        // *INDENT-OFF*
+    case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
+    case VAL_NIL:       printf("nil");                                  break;
+    case VAL_NUMBER:    
+        // *INDENT-ON*
+        double number = AS_NUMBER (value);
+
+        printf ((number == (int) number)
+            ? "%.0f" : "%g", number);
+        return;
+
     }
+    ERROR_LOG (0, "Should be UNREACHABLE.", 0);
 }

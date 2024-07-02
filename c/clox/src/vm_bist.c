@@ -17,11 +17,27 @@ bistVM (
     INVAR (NULL == vm.ip, "initVM did not null the instruction pointer.");
     INVAR (vm.stack == vm.sp, "initVM did not reset the stack pointer.");
 
-    push (1.0);
-    push (1337.5);
+    push (NIL_VAL);
+    push (BOOL_VAL (false));
+    push (BOOL_VAL (true));
+    push (NUMBER_VAL (1.0));
+    push (NUMBER_VAL (1337.5));
 
-    INVAR (1337.5 == pop (), "first pop did not return last value.");
-    INVAR (1.0 == pop (), "last pop did not return first value.");
+    INVAR (IS_NUMBER (peek (0)), "1st pop will be a number");
+    INVAR (IS_NUMBER (peek (1)), "2nd pop will be a number");
+    INVAR (IS_BOOL (peek (2)), "3rd pop will be a boolean");
+    INVAR (IS_BOOL (peek (3)), "4th pop will be a boolean");
+    INVAR (IS_NIL (peek (4)), "5th pop will be a boolean");
+
+    INVAR (1337.5 == AS_NUMBER (pop ()),
+        "1st pop did not return last value.");
+    INVAR (1.0 == AS_NUMBER (pop ()),
+        "2nd pop did not return first number value.");
+    INVAR (true == AS_BOOL (pop ()),
+        "3rd pop did not return last boolean value.");
+    INVAR (false == AS_BOOL (pop ()),
+        "4th pop did not return first boolean value.");
+    INVAR (IS_NIL (pop ()), "5th pop did not return nil value.");
 
     freeVM ();
 }

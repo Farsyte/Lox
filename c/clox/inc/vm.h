@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "value.h"
 
 /** Maximum Stack Depth
  *
@@ -42,6 +43,9 @@ extern void push (
 
 extern Value pop (
     );
+
+extern Value peek (
+    int distance);
 
 extern void postVM (
     );

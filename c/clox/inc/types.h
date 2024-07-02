@@ -21,7 +21,7 @@ typedef enum opcode_e OpCode;
 typedef struct chunk_s Chunk;
 
 /** Value Representation */
-typedef double Value;
+typedef struct value_s Value;
 
 /** Expandable Array of Values */
 typedef struct value_array_s ValueArray;
@@ -57,3 +57,6 @@ typedef struct parse_rule_s ParseRule;
 /** Pointer to a Parse Function */
 typedef void (*ParseFn) ();
 // *INDENT-ON*
+
+/** Enumerated value types */
+typedef enum value_type_e ValueType;
