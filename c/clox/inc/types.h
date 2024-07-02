@@ -49,3 +49,11 @@ typedef struct parser_s Parser;
 
 /** Enumerated precedence order */
 typedef enum precedence_e Precedence;
+
+/** Parse Rule layout */
+typedef struct parse_rule_s ParseRule;
+
+// *INDENT-OFF*
+/** Pointer to a Parse Function */
+typedef void (*ParseFn) ();
+// *INDENT-ON*

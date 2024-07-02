@@ -36,6 +36,12 @@ enum precedence_e {
     PREC_PRIMARY,               // identifiers etc.
 };
 
+struct parse_rule_s {
+    ParseFn prefix;
+    ParseFn infix;
+    Precedence precedence;
+};
+
 Parser parser;                  ///< Storage for the parser state.
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
@@ -43,6 +49,8 @@ Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 static void expression (
     );
+static ParseRule *getRule (
+    TokenType type);
 static void parsePrecedence (
     Precedence precedence);
 
@@ -296,6 +304,63 @@ unary (
     }
 }
 
+ParseRule rules[] = {
+
+    // *INDENT-OFF*
+
+    // Single-character tokens.
+    [TOKEN_LEFT_PAREN]     =  {  grouping,   NULL,     PREC_NONE      },   //  "("
+    [TOKEN_RIGHT_PAREN]    =  {  NULL,       NULL,     PREC_NONE      },   //  ")"
+    [TOKEN_LEFT_BRACE]     =  {  NULL,       NULL,     PREC_NONE      },   //  "{"
+    [TOKEN_RIGHT_BRACE]    =  {  NULL,       NULL,     PREC_NONE      },   //  "}"
+    [TOKEN_COMMA]          =  {  NULL,       NULL,     PREC_NONE      },   //  ", "
+    [TOKEN_DOT]            =  {  NULL,       NULL,     PREC_NONE      },   //  "."
+    [TOKEN_MINUS]          =  {  unary,      binary,   PREC_TERM      },   //  "-"
+    [TOKEN_PLUS]           =  {  NULL,       binary,   PREC_TERM      },   //  "+"
+    [TOKEN_SEMICOLON]      =  {  NULL,       NULL,     PREC_NONE      },   //  ";"
+    [TOKEN_SLASH]          =  {  NULL,       binary,   PREC_FACTOR    },   //  "/"
+    [TOKEN_STAR]           =  {  NULL,       binary,   PREC_FACTOR    },   //  "*"
+
+    // One or two charcter tokens.
+    [TOKEN_BANG]           =  {  NULL,       NULL,     PREC_NONE      },   //  "!"
+    [TOKEN_BANG_EQUAL]     =  {  NULL,       NULL,     PREC_NONE      },   //  "!="
+    [TOKEN_EQUAL]          =  {  NULL,       NULL,     PREC_NONE      },   //  "="
+    [TOKEN_EQUAL_EQUAL]    =  {  NULL,       NULL,     PREC_NONE      },   //  "=="
+    [TOKEN_GREATER]        =  {  NULL,       NULL,     PREC_NONE      },   //  ">"
+    [TOKEN_GREATER_EQUAL]  =  {  NULL,       NULL,     PREC_NONE      },   //  ">="
+    [TOKEN_LESS]           =  {  NULL,       NULL,     PREC_NONE      },   //  "<"
+    [TOKEN_LESS_EQUAL]     =  {  NULL,       NULL,     PREC_NONE      },   //  "<="
+
+    // Literals.
+    [TOKEN_IDENTIFIER]     =  {  NULL,       NULL,     PREC_NONE      },   //  regex: [A-Za-z_][0-9A-Za-z_]*
+    [TOKEN_STRING]         =  {  NULL,       NULL,     PREC_NONE      },   //  regex: "[^"]*"
+    [TOKEN_NUMBER]         =  {  number,     NULL,     PREC_NONE      },   //  regex: [0-9]+ | [0-9]+\\.[0-9]+
+
+    // Keywords
+    [TOKEN_AND]            =  {  NULL,       NULL,     PREC_NONE      },   //  "and"
+    [TOKEN_CLASS]          =  {  NULL,       NULL,     PREC_NONE      },   //  "class"
+    [TOKEN_ELSE]           =  {  NULL,       NULL,     PREC_NONE      },   //  "else"
+    [TOKEN_FALSE]          =  {  NULL,       NULL,     PREC_NONE      },   //  "false"
+    [TOKEN_FOR]            =  {  NULL,       NULL,     PREC_NONE      },   //  "for"
+    [TOKEN_FUN]            =  {  NULL,       NULL,     PREC_NONE      },   //  "fun"
+    [TOKEN_IF]             =  {  NULL,       NULL,     PREC_NONE      },   //  "if"
+    [TOKEN_NIL]            =  {  NULL,       NULL,     PREC_NONE      },   //  "nil"
+    [TOKEN_OR]             =  {  NULL,       NULL,     PREC_NONE      },   //  "or"
+    [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE      },   //  "print"
+    [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE      },   //  "return"
+    [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE      },   //  "super"
+    [TOKEN_THIS]           =  {  NULL,       NULL,     PREC_NONE      },   //  "this"
+    [TOKEN_TRUE]           =  {  NULL,       NULL,     PREC_NONE      },   //  "true"
+    [TOKEN_VAR]            =  {  NULL,       NULL,     PREC_NONE      },   //  "var"
+    [TOKEN_WHILE]          =  {  NULL,       NULL,     PREC_NONE      },   //  "while"
+
+    [TOKEN_ERROR]          =  {  NULL,       NULL,     PREC_NONE      },   //  not a valid token
+    [TOKEN_EOF]            =  {  NULL,       NULL,     PREC_NONE      },   //  end of the file
+
+    // *INDENT-ON*
+
+};
+
 /** Compile an expression at the specified precedence.
  */
 static void
@@ -305,6 +370,13 @@ parsePrecedence (
     // What goes here?
     (void) precedence;
     STUB (0);
+}
+
+static ParseRule *
+getRule (
+    TokenType type)
+{
+    return &rules[type];
 }
 
 /** Compile an expression to the chunk.
