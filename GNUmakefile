@@ -73,7 +73,7 @@ P               := $C printf
 # parallel build jobs. It has the same effect as having $(MAKE) at the
 # start of the line.
 
-M               := + $C $(MAKE)
+M               := + $Q $(MAKE)
 
 # Locate the top of the current Git repo, if not already set.
 ifeq ($(TOP),)

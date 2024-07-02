@@ -60,3 +60,6 @@ typedef void (*ParseFn) ();
 
 /** Enumerated value types */
 typedef enum value_type_e ValueType;
+
+/** Base structure for Objects */
+typedef struct obj_s Obj;

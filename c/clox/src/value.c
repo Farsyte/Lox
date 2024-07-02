@@ -98,6 +98,7 @@ printValue (Value value)
     case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
     case VAL_NIL:       printf("nil");                                  return;
     case VAL_NUMBER:    printf("%.16g", AS_NUMBER(value));              return;
+    case VAL_OBJ:       STUB(0); // soon
 
         // *INDENT-ON*
 
