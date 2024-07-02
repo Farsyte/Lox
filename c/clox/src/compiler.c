@@ -23,14 +23,6 @@ struct parser_s {
 Parser parser;                  ///< Storage for the parser state.
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
-static void
-expression (
-    )
-{
-    // TODO actually construct expression()
-    ERROR_LOG (0, "not yet implemented!", 0);
-}
-
 static Chunk *
 currentChunk (
     )
@@ -159,11 +151,49 @@ emitReturn (
     emitByte (OP_RETURN);
 }
 
+static uint8_t
+makeConstant (
+    Value value)
+{
+    int constant = addConstant (currentChunk (), value);
+
+    if (constant > UINT8_MAX) {
+        error ("Too many constants in one chunk.");
+        return 0;
+    }
+
+    return (uint8_t) constant;
+}
+
+static void
+emitConstant (
+    Value value)
+{
+    emitBytes (OP_CONSTANT, makeConstant (value));
+}
+
 static void
 endCompiler (
     )
 {
     emitReturn ();
+}
+
+static void
+number (
+    )
+{
+    double value = strtod (parser.previous.start, NULL);
+
+    emitConstant (value);
+}
+
+static void
+expression (
+    )
+{
+    // TODO actually construct expression()
+    ERROR_LOG (0, "not yet implemented!", 0);
 }
 
 /** Compile the source code into the chunk.
@@ -193,5 +223,6 @@ call_unused_compiler_functions (
 {
     error (0);                  // todo remove this line
     emitBytes (0, 0);           // todo remove this line
+    number ();                  // todo remove this line
     STUB (0);
 }
