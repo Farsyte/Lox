@@ -5,6 +5,7 @@
 #include "debug.h"
 
 #include <math.h>
+#include <stdarg.h>
 #include <stdio.h>
 
 VM vm;
@@ -16,6 +17,29 @@ resetStack (
     )
 {
     vm.sp = vm.stack;
+}
+
+/** Report a runtime error.
+ *
+ * @param format control the output, like printf.
+ */
+static void
+runtimeError (
+    const char *format,
+    ...)
+{
+    va_list args;
+
+    va_start (args, format);
+    vfprintf (stderr, format, args);
+    va_end (args);
+    fputs ("\n", stderr);
+
+    size_t instruction = vm.ip - vm.chunk->code - 1;
+    int line = vm.chunk->lines[instruction];
+
+    fprintf (stderr, "[line %d] in script\n", line);
+    resetStack ();
 }
 
 /** Initialize the VM completely.
@@ -73,6 +97,26 @@ pop (
     return *vm.sp;
 }
 
+/** Peek at a value from the VM stack.
+ *
+ * This returns a value from the VM stack,
+ * without adjusting the stack pointer.
+ * Calling with a distance of zero returns
+ * a copy of the top element of the stack.
+ * Calling with a distance of one returns
+ * a copy of the element below it.
+ * And so on.
+ *
+ * @param distance how far to dig down
+ * @return the value from the stack.
+ */
+Value
+peek (
+    int distance)
+{
+    return vm.sp[-1 - distance];
+}
+
 /** Run the bytecodes in the VM.
  *
  * This function steps through the bytecode, interpreting
@@ -85,8 +129,6 @@ static InterpretResult
 run (
     )
 {
-    Value tos = (vm.sp > vm.stack) ? pop () : NAN;
-
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
 #endif
@@ -96,14 +138,11 @@ run (
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
         printf ("stack:");
-        if (isfinite (tos)) {
-            // NOTE: vm.stack[0] will have the original NAN value.
-            for (Value *slot = vm.stack + 1; slot < vm.sp; slot++) {
+        if (vm.sp > vm.stack) {
+            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
                 printf (" ");
                 printValue (*slot);
             }
-            printf (" ");
-            printValue (tos);
         } else {
             printf (" empty.");
         }
@@ -119,13 +158,11 @@ run (
         switch (instruction = (OpCode) READ_BYTE ()) {
 
         case OP_CONSTANT:
-            push (tos);
-            tos = READ_CONSTANT ();
-            // TODO runtime error if result is not finite
+            push (READ_CONSTANT ());
             break;
 
 #define BINARY_OP(op)                           \
-            do {                                \
+            do {                                                        \
                 double a = pop();               \
                 tos = a op tos;                 \
             } while (false)
@@ -151,17 +188,15 @@ run (
 #undef  BINARY_OP
 
         case OP_NEGATE:
-            tos = -tos;
+            if (!IS_NUMBER (peek (0))) {
+                runtimeError ("Operand must be a number.");
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            push (NUMBER_VAL (-AS_NUMBER (pop ())));
             break;
 
         case OP_RETURN:
-            if (vm.sp > vm.stack || isfinite (tos)) {
-                printValue (tos);
-                // leave the stack looking like tos was just popped.
-                *vm.sp = tos;
-            } else {
-                printf ("OP_RETURN but stack is empty.");
-            }
+            printValue (pop ());
             printf ("\n");
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
