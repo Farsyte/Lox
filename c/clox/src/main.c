@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string.h>
 
+/** Read-Evaluate-Print loop.
+ */
 static void
 repl (
     )
@@ -30,6 +32,14 @@ repl (
     }
 }
 
+/** Read the content of a file into a string.
+ *
+ * @param path where to find the file
+ * @return the content of the file, plus a '\0' terminator.
+ *
+ * Any failure will terminate the program abnormally with
+ * an appropriate error message.
+ */
 static char *
 readFile (
     const char *path)
@@ -74,6 +84,12 @@ readFile (
     return buffer;
 }
 
+/** Process the Lox source in the file named.
+ *
+ * @param path where to find the file
+ *
+ * On error, terminates the program.
+ */
 static void
 runFile (
     const char *path)
@@ -96,7 +112,6 @@ runFile (
  * programming langage, and contains the logic driving cLox based on
  * the command line arguments presented.
  */
-
 static void
 demo (
     )

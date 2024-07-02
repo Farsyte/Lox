@@ -73,6 +73,15 @@ freeValueArray (
     initValueArray (array);
 }
 
+/** Print a value.
+ *
+ * This function presents the value, which Lox always stores in a
+ * floating point variable; but if the value is an integer value,
+ * print it without the decimal point and especially not in
+ * exponential notation.
+ *
+ * @param value the data to be printed
+ */
 void
 printValue (
     Value value)
