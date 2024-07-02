@@ -20,6 +20,7 @@ enum opcode_e {
     OP_MULTIPLY,                ///< multiply top of stack by 2nd, push result
     OP_DIVIDE,                  ///< divide top of stack by 2nd, push result
 
+    OP_NOT,                     ///< logical inversion
     OP_NEGATE,                  ///< invert the sign of the top of the stack
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 

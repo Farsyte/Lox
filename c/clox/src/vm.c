@@ -117,6 +117,21 @@ peek (
     return vm.sp[-1 - distance];
 }
 
+/** Return true if the value is falsey.
+ *
+ * Follows the RUBY convention that nil and false are falsey
+ * and everything else (including 0 and 0.0) is true.
+ *
+ * @param value what to check
+ * @return true if input is false or nil, else false
+ */
+static bool
+isFalsey (
+    Value value)
+{
+    return IS_NIL (value) || (IS_BOOL (value) && !AS_BOOL (value));
+}
+
 /** Run the bytecodes in the VM.
  *
  * This function steps through the bytecode, interpreting
@@ -201,6 +216,10 @@ run (
             break;
 
 #undef  BINARY_OP
+
+        case OP_NOT:
+            push (BOOL_VAL (isFalsey (pop ())));
+            break;
 
         case OP_NEGATE:
             if (!IS_NUMBER (peek (0))) {
