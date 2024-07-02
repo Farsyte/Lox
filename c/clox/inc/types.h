@@ -63,3 +63,9 @@ typedef enum ValueType ValueType;
 
 /** Base structure for Objects */
 typedef struct Obj Obj;
+
+/** Enumerated Object Types */
+typedef enum ObjType ObjType;
+
+/** String objects */
+typedef struct ObjString ObjString;
