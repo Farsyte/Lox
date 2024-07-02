@@ -6,10 +6,12 @@
  * @brief Macros and API exported  by the value module
  */
 
+/** Expandable Array of Values
+ */
 struct value_array_s {
-    int capacity;
-    int count;
-    Value *values;
+    int capacity;               ///< storage capacity available
+    int count;                  ///< storage capacity in use
+    Value *values;              ///< storage area with capacity
 };
 
 extern void initValueArray (

@@ -14,6 +14,10 @@ CC              := c99
 # This subproject traffics in log files.
 LOGD            := log/
 
+# Log files are copied to $(REFD) to act as
+# expected refernce logs.
+REFD            := ref/
+
 
 # Inherit recurive build behaviors from parent
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
@@ -26,28 +30,30 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
 tests::         $(PROG)
 	make -k demo bist repl help
-	$P '\n'
 
-demo::
-	$P '\n'
-	$P '  %-14s %s\n' "DEMO" "$(MAIN)"
-	$(PROG) --demo
+demo::          $(BIND)title
+	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
+	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null
+	$Q diff -e $(REFD)$(MAIN)--demo.err $(LOGD)$(MAIN)--demo.err | $(BIND)title === CHANGES in demo stderr ===
+	$Q diff -u $(REFD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.out | $(BIND)title === CHANGES in demo stdout ===
 
-bist::
-	$P '\n'
-	$P '  %-14s %s\n' "BIST" "$(MAIN)"
-	$(PROG) --bist
-	$P '\n'
+bist::          $(BIND)title
+	$P '  %-6s %s\n' "BIST" "$(MAIN)"
+	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null
+	$Q diff -e $(REFD)$(MAIN)--bist.err $(LOGD)$(MAIN)--bist.err | $(BIND)title === CHANGES in bist stderr ===
+	$Q diff -u $(REFD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.out | $(BIND)title === CHANGES in bist stdout ===
 
-repl::
-	$P '\n'
-	$P '  %-14s %s\n' "REPL" "$(MAIN)"
-	$(PROG)
+repl::          $(BIND)title
+	$P '  %-6s %s\n' "REPL" "$(MAIN)"
+	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null
+	$Q diff -e $(REFD)$(MAIN)--repl.err $(LOGD)$(MAIN)--repl.err | $(BIND)title === CHANGES in repl stderr ===
+	$Q diff -u $(REFD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.out | $(BIND)title === CHANGES in repl stdout ===
 
-help::
-	$P '\n'
-	$P '  %-14s %s\n' "HELP" "$(MAIN)"
-	$(PROG) --help
+help::          $(BIND)title
+	$P '  %-6s %s\n' "HELP" "$(MAIN)"
+	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null
+	$Q diff -e $(REFD)$(MAIN)--help.err $(LOGD)$(MAIN)--help.err | $(BIND)title === CHANGES in help stderr ===
+	$Q diff -u $(REFD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.out | $(BIND)title === CHANGES in help stdout ===
 
 # format: reformat all source files.
 #
@@ -91,50 +97,50 @@ doc/latex/refman.pdf:   doc/html/index.html
 # where they all are to point out what needs to be implemented next.
 
 stubs::
-	$P '\n'
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
 	$C grep -ni '\<stub\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no STUBs found.'
-	$P '\n'
 
 # The presence of "TODO" comments is not a build error, but expose
 # where they all are to point out what needs to be implemented soon.
 
 todos::
-	$P '\n'
 	$P '  %-14s %s\n' "FIND TODOs" "$(INCD)*.h $(SRCD)*.c"
 	$C grep -ni '\<todo\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no TODOs found.'
-	$P '\n'
 
 # Maintain a "TAGS" file for emacs.
 
-etags::		TAGS			; $T
+etags::         TAGS                    ; $T
 
-TAGS::		$(INCS) $(SRCS) GNUmakefile
+TAGS::          $(INCS) $(SRCS) GNUmakefile
 	$P '  %-14s %s\n' "TAGS" "$(INCD)*.h $(SRCD)*.c"
 	$Q etags $(INCS) $(SRCS)
 
 # Maintain a "tags" file for vi.
 
-ctags::		tags			; $T
+ctags::         tags                    ; $T
 
-tags::		$(INCS) $(SRCS) GNUmakefile
+tags::          $(INCS) $(SRCS) GNUmakefile
 	$P '  %-14s %s\n' "tags" "$(INCD)*.h $(SRCD)*.c"
 	$Q ctags $(INCS) $(SRCS)
 
 # The sequence that I want to run when I have made a change
 # where everything SHOULD be good but something MIGHT not be good.
-
-clean::
-	$X $(LOGD)*.out $(LOGD)*.err $(LOGD)*.log
+#
+# NOTE: we are not making the documentation every cycle, as
+# that takes a while.
 
 cycle::
 	$M -k -j $(PROG)
-	$M format
-	$M tests
-	$M etags ctags
-	$M docs
-	$M stubs
-	$M todos
+	$M -k format
+	$M -k tests
+	$M -k stubs
+	$M -k todos
+
+longer::	cycle
+	$M -k etags ctags docs
 
 world::
-	$M cycle
+	$M longer
+
+$(BIND)title:           $(BIND)title.c
+clean::         ; $X $(BIND)title

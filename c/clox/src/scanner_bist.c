@@ -4,6 +4,8 @@
  * @brief Built-In Self Test for the SCANNER module.
  */
 
+extern Scanner scanner;         // peek at scanner state
+
 /** Run all BIST cases for Scanner.
  */
 void

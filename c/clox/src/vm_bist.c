@@ -4,6 +4,8 @@
  * @brief Built-In Self Test for the VM module.
  */
 
+extern VM vm;                   // peek at VM state
+
 /** Run all BIST cases for Vm.
  */
 void

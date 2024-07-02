@@ -33,7 +33,7 @@ typedef struct vm_s VM;
 typedef enum interpret_result_e InterpretResult;
 
 /** Storage relating to command line options */
-typedef struct options Options;
+typedef struct options_s Options;
 
 /** Storage associated with the Scanner */
 typedef struct scanner_s Scanner;
@@ -43,3 +43,17 @@ typedef enum token_type_e TokenType;
 
 /** Storage associated with each Token */
 typedef struct token_s Token;
+
+/** Storage for the Parser (in compiler.c) */
+typedef struct parser_s Parser;
+
+/** Enumerated precedence order */
+typedef enum precedence_e Precedence;
+
+/** Parse Rule layout */
+typedef struct parse_rule_s ParseRule;
+
+// *INDENT-OFF*
+/** Pointer to a Parse Function */
+typedef void (*ParseFn) ();
+// *INDENT-ON*

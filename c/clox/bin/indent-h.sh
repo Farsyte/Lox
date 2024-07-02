@@ -35,7 +35,7 @@ do
     then
         rm -f "$o"
     else
-        printf '  %-14s %s\n' "INDENT" "$h"
+        printf '  %-6s %s\n' "INDENT" "$h"
         mv "$h" "$h"~
         mv "$o" "$h"
     fi

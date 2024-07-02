@@ -9,6 +9,8 @@
 
 VM vm;
 
+/** Reset the VM stack to empty.
+ */
 static void
 resetStack (
     )
@@ -16,6 +18,12 @@ resetStack (
     vm.sp = vm.stack;
 }
 
+/** Initialize the VM completely.
+ *
+ * After this call, the VM does not have a reference
+ * to a source chunk, or a valid IP. It also has an
+ * empty stack.
+ */
 void
 initVM (
     )
@@ -25,12 +33,23 @@ initVM (
     resetStack ();
 }
 
+/** Release storage owned by the VM.
+ *
+ * All memory allocated by the VM is released.
+ */
 void
 freeVM (
     )
 {
 }
 
+/** Push a value onto the VM stack.
+ *
+ * This adjusts the stack pointer so that several
+ * values pushed do not overwrite each other.
+ *
+ * @param value data to be pushed.
+ */
 void
 push (
     Value value)
@@ -39,6 +58,13 @@ push (
     vm.sp++;
 }
 
+/** Consume a value from the VM stack.
+ *
+ * This adjusts the stack pointer so that
+ * the value returned is no longer on the stack.
+ *
+ * @return the value from the stack.
+ */
 Value
 pop (
     )
@@ -47,6 +73,14 @@ pop (
     return *vm.sp;
 }
 
+/** Run the bytecodes in the VM.
+ *
+ * This function steps through the bytecode, interpreting
+ * each per the bytecode definition, which may include
+ * consuming inline values, or jumping around.
+ *
+ * @return a code indicating success or (which) failure.
+ */
 static InterpretResult
 run (
     )
@@ -140,6 +174,14 @@ run (
 #undef  READ_BYTE
 }
 
+/** Interpret a chunk using the VM.
+ *
+ * Loads the chunk into the VM, setting the IP
+ * to the start of the bytecode list, and runs it.
+ *
+ * @param chunk contains the bytecode sequence
+ * @return a code indicating success or (which) failure.
+ */
 InterpretResult
 interpretChunk (
     Chunk *chunk)
@@ -149,10 +191,32 @@ interpretChunk (
     return run ();
 }
 
+/** Interpret source code using the VM.
+ *
+ * Compile the source code into a chunk of bytecode,
+ * then interpret the bytecode.
+ *
+ * @param source contains Lux source code
+ * @return a code indicating success or (which) failure.
+ */
 InterpretResult
 interpret (
     const char *source)
 {
-    compile (source);
-    return INTERPRET_OK;
+    Chunk chunk;
+
+    initChunk (&chunk);
+
+    if (!compile (source, &chunk)) {
+        freeChunk (&chunk);
+        return INTERPRET_COMPILE_ERROR;
+    }
+
+    vm.chunk = &chunk;
+    vm.ip = vm.chunk->code;
+
+    InterpretResult result = run ();
+
+    freeChunk (&chunk);
+    return result;
 }

@@ -48,7 +48,7 @@ do
     then
         rm -f "$o"
     else
-        printf '  %-14s %s\n' "INDENT" "$c"
+        printf '  %-6s %s\n' "INDENT" "$c"
         mv "$c" "$c"~
         mv "$o" "$c"
     fi

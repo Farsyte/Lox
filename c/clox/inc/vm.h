@@ -8,20 +8,22 @@
  */
 #define STACK_MAX 256
 
+/** Internal state of the VM
+ */
 struct vm_s {
-    Chunk *chunk;
-    uint8_t *ip;
-    Value stack[STACK_MAX];
-    Value *sp;
+    Chunk *chunk;               ///< current chunk being considered
+    uint8_t *ip;                ///< bytecode instruction pointer
+    Value stack[STACK_MAX];     ///< storage for the data stack
+    Value *sp;                  ///< data stack pointer
 };
 
+/** Interpreter result
+ */
 enum interpret_result_e {
-    INTERPRET_OK,
-    INTERPRET_COMPILE_ERROR,
-    INTERPRET_RUNTIME_ERROR
+    INTERPRET_OK,               ///< everything went well
+    INTERPRET_COMPILE_ERROR,    ///< error during compilation
+    INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
 };
-
-extern VM vm;
 
 extern void initVM (
     );

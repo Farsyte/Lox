@@ -6,11 +6,12 @@
 #include <stdio.h>
 #include <string.h>
 
-// Does any code outside scanner.c have any reason
-// to look inside the Scanner structure?
+Scanner scanner;                ///< Storage for scanner state
 
-Scanner scanner;
-
+/** Initialize the scanne
+ *
+ * @param source start looking at this text
+ */
 void
 initScanner (
     const char *source)
@@ -20,6 +21,10 @@ initScanner (
     scanner.line = 1;
 }
 
+/** Does Lox consider this characer to be a Digit?
+ * @param c the character asked about
+ * @return true if in 0..9, else false.
+ */
 static bool
 isDigit (
     char c)
@@ -27,6 +32,10 @@ isDigit (
     return (c >= '0') && (c <= '9');
 }
 
+/** Does Lox consider this characer to be Alpha?
+ * @param c the character asked about
+ * @return true if in A-Z, a-z, or _; else false.
+ */
 static bool
 isAlpha (
     char c)
@@ -39,6 +48,10 @@ isAlpha (
     // *INDENT-ON*
 }
 
+/** Does Lox consider this characer to be AlphaNumeric?
+ * @param c the character asked about
+ * @return true if in 0-9, A-Z, a-z, or _; else false.
+ */
 static bool
 isAlNum (
     char c)
@@ -52,6 +65,13 @@ isAlNum (
     // *INDENT-ON*
 }
 
+/** Are we at the end of the file?
+ *
+ * This function returns true, if and only if attempting to scan
+ * another token would start at the end of the source.
+ *
+ * @return true if the scanner is looking at the end of the source.
+ */
 static bool
 isAtEnd (
     )
@@ -59,6 +79,15 @@ isAtEnd (
     return *scanner.current == '\0';
 }
 
+/** Advance to the next source character.
+ *
+ * Any '\0' encountered is "sticky" -- it is returned, and
+ * the scanner is not advanced.
+ *
+ * If a '\n' is encountered, the lione number is incremented.
+ *
+ * @return the next character in the source.
+ */
 static char
 advance (
     )
@@ -73,6 +102,12 @@ advance (
     return ch;
 }
 
+/** Peek at the next source character.
+ *
+ * Does not advance the scanner.
+ *
+ * @return the next character under the scan head.
+ */
 static char
 peek (
     )
@@ -80,6 +115,13 @@ peek (
     return *scanner.current;
 }
 
+/** Peek at the 2nd next source character.
+ *
+ * Does not advance the scanner. Returns not the next
+ * character in the source but the one after that.
+ *
+ * @return the 2nd next character under the scan head.
+ */
 static char
 peekNext (
     )
@@ -89,6 +131,15 @@ peekNext (
     return scanner.current[1];
 }
 
+/** Match a character from the source.
+ *
+ * If the next character in the source matches the one
+ * expected, advance the scanner and return true; else
+ * return false (includes the "end of file" case).
+ *
+ * @param expected what the caller is expecting to see.
+ * @return true if matched, else false.
+ */
 static bool
 match (
     char expected)
@@ -101,6 +152,15 @@ match (
     return true;
 }
 
+/** Construct a token from the scanned sequence.
+ *
+ * The source text from start to current is a token. Wrap it
+ * up in a Token structure with the provided type, and log
+ * the current line number.
+ *
+ * @param type the type for the token
+ * @return a Token structure
+ */
 static Token
 makeToken (
     TokenType type)
@@ -114,6 +174,14 @@ makeToken (
     return token;
 }
 
+/** Construct an error token from the scanned sequence.
+ *
+ * Construct a Token of type TOKEN_ERROR, with the lexeme
+ * text set to the provided message.
+ *
+ * @param message a message to put in the token.
+ * @return a Token of type TOKEN_ERROR.
+ */
 static Token
 errorToken (
     const char *message)
@@ -127,6 +195,12 @@ errorToken (
     return token;
 }
 
+/** Scan forward across whitespace.
+ *
+ * Scan forward across spaces, tabs, returns, newlines,
+ * and comments. Do not consume the first non-whitespace
+ * character (which does not itself introduce a comment).
+ */
 static void
 skipWhitespace (
     )
@@ -179,6 +253,20 @@ skipWhitespace (
     }
 }
 
+/** Finish the keyword comparison for this lexeme.
+ *
+ * This function is called for the portion of the lexeme not
+ * already checked, to see if the whole token is the keyword
+ * implied by what has already been checked. If the lexeme
+ * matches, return the provided token type; if not, then
+ * return the TOKEN_IDENTIFIER type.
+ *
+ * @param start the offset into the lexeme for comparison
+ * @param length the length to compare
+ * @param rest the string to compare to the rest of the lexeme
+ * @param token type
+ * @return provided type on a match, or TOKEN_IDENTIFIER if not.
+ */
 static TokenType
 checkKeyword (
     int start,
@@ -193,6 +281,14 @@ checkKeyword (
     return TOKEN_IDENTIFIER;
 }
 
+/** Determine the token type for an identifier.
+ *
+ * Examines it swiftly to determine if it is a Lox keyword,
+ * and if so, return the correct token type. If not, return
+ * the TOKEN_IDENTIFIER token type.
+ *
+ * @return TOKEN_IDENTIFIER or the token type for a keyword
+ */
 static TokenType
 identifierType (
     )
@@ -240,6 +336,14 @@ identifierType (
     return TOKEN_IDENTIFIER;
 }
 
+/** Finish scanning an identifier.
+ *
+ * The scanner has decided it is looking at an identifier,
+ * finish consuming it, determine the correct token type,
+ * then construct an appropriate token.
+ *
+ * @return a new Token (not a pointer).
+ */
 static Token
 identifier (
     )
@@ -249,6 +353,13 @@ identifier (
     return makeToken (identifierType ());
 }
 
+/** Finish scanning a number.
+ *
+ * The scanner has decided it is looking at a number,
+ * finish consuming it, and create the Token.
+ *
+ * @return a new Token (not a pointer).
+ */
 static Token
 number (
     )
@@ -270,6 +381,13 @@ number (
     return makeToken (TOKEN_NUMBER);
 }
 
+/** Finish scanning a string.
+ *
+ * The scanner has decided it is looking at a string,
+ * finish consuming it, and create the Token.
+ *
+ * @return a new Token (not a pointer).
+ */
 static Token
 string (
     )
@@ -288,6 +406,10 @@ string (
     return makeToken (TOKEN_STRING);
 }
 
+/** Scan the next token.
+ *
+ * @return a new Token (not a pointer).
+ */
 Token
 scanToken (
     )

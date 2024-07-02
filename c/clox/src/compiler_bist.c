@@ -1,7 +1,10 @@
 #include "compiler.h"
 
+#include "chunk.h"
 #include "common.h"
 #include "scanner.h"
+
+extern Scanner scanner;         // peek at scanner state
 
 /** @file compiler_bist.c
  * @brief Built-In Self Test for the COMPILER module.
@@ -15,17 +18,9 @@ bistCompiler (
 {
     // *INDENT-OFF*
     const char source[] =
-        "() {}\t; ,.-+*/\t\t// comment to eol\n"
-        "= ! < >\t/* line-spanning\n"
-        "comment */\t!= <= >= ==\n"
-        "\t\"string\" \"line-spanning\n"
-        "string\"\n"
-        "123 123.5 123. .5\n"
-        "foo f00 _f_ _1_\n"
-        "and class else false\n"
-        "for fun if nil or\n"
-        "print return super this\n"
-        "true var while\n"
+        "2 * // foo\n"
+        "\t3- 5/*bar\n"
+        "baz*//-1"
         ;
     // *INDENT-ON*
 
@@ -38,7 +33,11 @@ bistCompiler (
         if ('\n' == *p)
             ending_line++;
 
-    compile (source);
+    Chunk chunk;
+
+    initChunk (&chunk);
+
+    compile (source, &chunk);
 
     INVAR (source_end == scanner.start,
         "initScaner must set scanner.start to the given source.");
@@ -46,4 +45,6 @@ bistCompiler (
         "initScaner must set scanner.current to the given source.");
     INVAR (ending_line == scanner.line,
         "initScaner must set scanner.line to 1.");
+
+    freeChunk (&chunk);
 }

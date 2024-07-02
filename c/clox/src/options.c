@@ -5,8 +5,14 @@
 
 #include <stdio.h>
 
-Options options;
+/** @file options.c
+ * @brief manage command line options
+ */
 
+Options options;                ///< Storage for command line options.
+
+/** the text to be printed by the --help option.
+ */
 static const char *help_text[] = {
     "",
     "Usage:",
@@ -39,6 +45,12 @@ static const char *help_text[] = {
     0
 };
 
+/** Respond to the --help command line option.
+ *
+ * Copy the contents of the help_text array to the standard
+ * error channel; add a newline to each element of the array,
+ * and stop at the trailing NULL pointer.
+ */
 static void
 help (
     )
@@ -52,6 +64,11 @@ help (
     exit (EX_OK);
 }
 
+/** Parse command line argument.
+ *
+ * Step through the command line options, updating the
+ * options state, and calling back when appropriate.
+ */
 void
 parse_options (
     int argc,

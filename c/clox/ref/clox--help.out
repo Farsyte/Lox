@@ -1,0 +1,28 @@
+
+Usage:
+    clox [options]
+
+Options:
+    Options are scanned strictly left to right, changing flags
+    or exercising bits of cLox. If no file names are specified
+    and the REPL was not explicitly run, it will be automatically
+    run after parsing is complete.
+
+Special Options:
+    -                   (with no short flags) run the REPL.
+    --                  The rest of the arguments are all filenames.
+
+Flags:
+    -?, -h, --help      produce this help message
+    -v, --verbose       turn up verbose operation flag
+    -n, --dryrun        turn up dryrun flag
+    -d, --debug         turn up debug level
+    -V, --no-verbose    turn down verbose operation flag
+    -N, --no-dryrun     turn down dryrun flag
+    -D, --no-debug      turn down debug level
+        --bist          run the built-in self test
+        --demo          run the quick demo code
+
+    Multiple short flags can be combined (so -dv will turn up both the
+    debug and verbose levels).
+
