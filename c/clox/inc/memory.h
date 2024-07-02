@@ -12,6 +12,9 @@
 /** How much to grow the capacity each time */
 #define GROW_MUL_FAC    2
 
+/** Allocate memory */
+#define ALLOCATE(type, count)                           ((type*)reallocate(NULL, 0, sizeof (type) * (count)))
+
 /** Compute new capacity from old capacity */
 #define GROW_CAPACITY(capacity)                         ((capacity) < GROW_MIN_SIZE ? GROW_MIN_SIZE : (capacity) * GROW_MUL_FAC)
 

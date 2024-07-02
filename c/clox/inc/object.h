@@ -29,6 +29,8 @@ struct ObjString {
     char *chars;                ///< pointer to start of string
 };
 
+extern ObjString *copyString (const char *chars, int length);
+
 static inline bool
 isObjType (Value value, ObjType type)
 {
