@@ -96,7 +96,7 @@ run:: $(JCLS)
 
 irun:: $(JCLS)
 	$P '  %-14s %s\n' "RUN JAVA" "$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)"
-	$Q $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
+	$I $Q $(JR) $(JRFLAGS) $(PTOP).$(PACKAGE).$(MAIN) $(ARGS) $(RED_IN) $(RED_OUT) $(RED_TEE)
 
 .PHONY: run
 
