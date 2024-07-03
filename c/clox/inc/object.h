@@ -30,6 +30,7 @@ struct ObjString {
 };
 
 extern ObjString *copyString (const char *chars, int length);
+extern void printObject (Value value);
 
 static inline bool
 isObjType (Value value, ObjType type)

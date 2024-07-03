@@ -2,6 +2,7 @@
 
 #include "memory.h"
 
+#include <stdio.h>
 #include <string.h>
 
 /** @file object.c
@@ -58,4 +59,18 @@ copyString (const char *chars, int length)
     memcpy (heapChars, chars, length);
     heapChars[length] = '\0';
     return allocateString (heapChars, length);
+}
+
+void
+printObject (Value value)
+{
+    switch (OBJ_TYPE (value)) {
+
+        // *INDENT-OFF*
+
+    case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
+
+        // *INDENT-ON*
+    }
+    STUB ("Report runtime error (Reached UNREACHABLE code).");
 }

@@ -1,8 +1,10 @@
 #include "value.h"
 
 #include "memory.h"
+#include "object.h"
 
 #include <stdio.h>
+#include <string.h>
 
 /** @file value.c
  * @brief Support functions for the value module
@@ -21,11 +23,18 @@ valuesEqual (Value a, Value b)
     case VAL_NIL:       return true;
     case VAL_NUMBER:    return AS_NUMBER(a) == AS_NUMBER(b);
 
-    default: ERROR_LOG (0, "Should be UNREACHABLE.", 0); return false;
+    case VAL_OBJ: {
+        ObjString *aString = AS_STRING(a);
+        ObjString *bString = AS_STRING(b);
+        return (aString->length == bString->length) &&
+            (0 == memcmp(aString->chars, bString->chars, aString->length));
+    }
 
         // *INDENT-ON*
 
     }
+
+    STUB ("Report runtime error (Reached UNREACHABLE code).");
 }
 
 /** Initialize Value Array.
@@ -98,10 +107,10 @@ printValue (Value value)
     case VAL_BOOL:      printf(AS_BOOL(value) ? "true" : "false");      return;
     case VAL_NIL:       printf("nil");                                  return;
     case VAL_NUMBER:    printf("%.16g", AS_NUMBER(value));              return;
-    case VAL_OBJ:       STUB(0); // soon
+    case VAL_OBJ:       printObject(value);                             return;
 
         // *INDENT-ON*
 
     }
-    ERROR_LOG (0, "Should be UNREACHABLE.", 0);
+    STUB ("Report runtime error (Reached UNREACHABLE code).");
 }
