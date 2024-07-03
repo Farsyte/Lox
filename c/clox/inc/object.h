@@ -29,6 +29,7 @@ struct ObjString {
     char *chars;                ///< pointer to start of string
 };
 
+extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);
 extern void printObject (Value value);
 
