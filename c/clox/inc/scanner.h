@@ -4,7 +4,7 @@
 
 /** Enumerated Token Types.
  */
-enum token_type_e {
+enum TokenType {
 
     // Single-character tokens.
     TOKEN_LEFT_PAREN,           ///< "("
@@ -64,7 +64,7 @@ enum token_type_e {
  * The lexeme at Token::start is commonly NOT terminated by a null
  * byte, as we are referring directly into the original source string.
  */
-struct token_s {
+struct Token {
     TokenType type;             ///< token type from the enumeration
     const char *start;          ///< pointer to the lexeme
     int length;                 ///< length of the lexeme
@@ -76,7 +76,7 @@ struct token_s {
  * This is internal to scanner.c and exposed here for use by
  * scanner_bist and scanner_post testing.
  */
-struct scanner_s {
+struct Scanner {
     const char *start;          ///< start of the current lexeme
     const char *current;        ///< next character to scan
     int line;                   ///< line number at current

@@ -13,7 +13,7 @@
  */
 
 /** Parser state */
-struct parser_s {
+struct Parser {
     Token current;              ///< the current token to parse
     Token previous;             ///< the previous token parsed
     bool hadError;              ///< set if a parse error occurs
@@ -22,7 +22,7 @@ struct parser_s {
 
 /** Operator Precedence enumeration
  */
-enum precedence_e {
+enum Precedence {
     PREC_NONE,                  ///< "="
     PREC_ASSIGNMENT,            ///< "or"
     PREC_OR,                    ///< "and"
@@ -36,7 +36,7 @@ enum precedence_e {
     PREC_PRIMARY,               // identifiers etc.
 };
 
-struct parse_rule_s {
+struct ParseRule {
     ParseFn prefix;
     ParseFn infix;
     Precedence precedence;
@@ -290,6 +290,14 @@ number ()
     emitConstant (NUMBER_VAL (value));
 }
 
+/** Compile a string to the chunk.
+ */
+static void
+string ()
+{
+    emitConstant (OBJ_VAL (copyString (parser.previous.start + 1, parser.previous.length - 2)));
+}
+
 /** Compile a unary operation to the chunk.
  */
 static void
@@ -343,7 +351,7 @@ ParseRule rules[] = {
 
     // Literals.
     [TOKEN_IDENTIFIER]     =  {  NULL,       NULL,     PREC_NONE        },   //  regex: [A-Za-z_][0-9A-Za-z_]*
-    [TOKEN_STRING]         =  {  NULL,       NULL,     PREC_NONE        },   //  regex: "[^"]*"
+    [TOKEN_STRING]         =  {  string,     NULL,     PREC_NONE        },   //  regex: "[^"]*"
     [TOKEN_NUMBER]         =  {  number,     NULL,     PREC_NONE        },   //  regex: [0-9]+ | [0-9]+\\.[0-9]+
 
     // Keywords

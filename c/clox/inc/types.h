@@ -15,43 +15,43 @@
  */
 
 /** Enumerated Bytecode Operations */
-typedef enum opcode_e OpCode;
+typedef enum OpCode OpCode;
 
 /** Chunk of Bytecodes */
-typedef struct chunk_s Chunk;
+typedef struct Chunk Chunk;
 
 /** Value Representation */
-typedef struct value_s Value;
+typedef struct Value Value;
 
 /** Expandable Array of Values */
-typedef struct value_array_s ValueArray;
+typedef struct ValueArray ValueArray;
 
 /** Instruction Execution Virtual Machine */
-typedef struct vm_s VM;
+typedef struct VM VM;
 
 /** Result code from Interpreter */
-typedef enum interpret_result_e InterpretResult;
+typedef enum InterpretResult InterpretResult;
 
 /** Storage relating to command line options */
-typedef struct options_s Options;
+typedef struct Options Options;
 
 /** Storage associated with the Scanner */
-typedef struct scanner_s Scanner;
+typedef struct Scanner Scanner;
 
 /** Datatype for enumerated TokenType constants */
-typedef enum token_type_e TokenType;
+typedef enum TokenType TokenType;
 
 /** Storage associated with each Token */
-typedef struct token_s Token;
+typedef struct Token Token;
 
 /** Storage for the Parser (in compiler.c) */
-typedef struct parser_s Parser;
+typedef struct Parser Parser;
 
 /** Enumerated precedence order */
-typedef enum precedence_e Precedence;
+typedef enum Precedence Precedence;
 
 /** Parse Rule layout */
-typedef struct parse_rule_s ParseRule;
+typedef struct ParseRule ParseRule;
 
 // *INDENT-OFF*
 /** Pointer to a Parse Function */
@@ -59,4 +59,13 @@ typedef void (*ParseFn) ();
 // *INDENT-ON*
 
 /** Enumerated value types */
-typedef enum value_type_e ValueType;
+typedef enum ValueType ValueType;
+
+/** Base structure for Objects */
+typedef struct Obj Obj;
+
+/** Enumerated Object Types */
+typedef enum ObjType ObjType;
+
+/** String objects */
+typedef struct ObjString ObjString;

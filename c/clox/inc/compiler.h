@@ -1,5 +1,6 @@
 #pragma once
 
+#include "object.h"
 #include "vm.h"
 
 /** @file compiler.h
