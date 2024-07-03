@@ -1,5 +1,8 @@
 #include "memory.h"
 
+#include "object.h"
+#include "vm.h"
+
 /** @file memory.c
  * @brief Memory Handling module
  */
@@ -33,4 +36,40 @@ reallocate (void *pointer, size_t oldSize, size_t newSize)
     INVAR (NULL != result, "reallocate failed.");
 
     return result;
+}
+
+/** Free the given object and the storage it owns.
+ *
+ * @param object which object to free.
+ */
+static void
+freeObject (Obj * object)
+{
+    switch (object->type) {
+
+    case OBJ_STRING:{
+            ObjString *string = (ObjString *) object;
+            FREE_ARRAY (char, string->chars, string->length + 1);
+
+            FREE (ObjString, object);
+            return;
+        }
+
+    }
+    STUB ("Report runtime error (Reached UNREACHABLE code).");
+}
+
+/** Free all Objects.
+ */
+void
+freeObjects ()
+{
+    Obj *object = vm.objects;
+
+    while (object != NULL) {
+        Obj *next = object->next;
+
+        freeObject (object);
+        object = next;
+    }
 }

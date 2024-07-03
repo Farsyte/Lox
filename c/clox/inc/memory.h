@@ -15,6 +15,9 @@
 /** Allocate memory */
 #define ALLOCATE(type, count)                           ((type*)reallocate(NULL, 0, sizeof (type) * (count)))
 
+/** Free memory */
+#define FREE(type, pointer)                             (reallocate(pointer, sizeof (type), 0))
+
 /** Compute new capacity from old capacity */
 #define GROW_CAPACITY(capacity)                         ((capacity) < GROW_MIN_SIZE ? GROW_MIN_SIZE : (capacity) * GROW_MUL_FAC)
 
@@ -25,6 +28,7 @@
 #define FREE_ARRAY(type, pointer, oldCount)             (reallocate(pointer, sizeof (type) * (oldCount), 0))
 
 extern void *reallocate (void *pointer, size_t oldSize, size_t newSize);
+extern void freeObjects ();
 
 extern void postMemory ();
 extern void bistMemory ();

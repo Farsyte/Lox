@@ -20,6 +20,7 @@ enum ObjType {
 /** Base structure for all Objects */
 struct Obj {
     ObjType type;               ///< Designate the type of the object
+    struct Obj *next;           ///< next eldest object
 };
 
 /** Object that is a string */

@@ -54,6 +54,7 @@ initVM ()
     vm.chunk = NULL;
     vm.ip = NULL;
     resetStack ();
+    vm.objects = NULL;
 }
 
 /** Release storage owned by the VM.
@@ -63,6 +64,7 @@ initVM ()
 void
 freeVM ()
 {
+    freeObjects ();
 }
 
 /** Push a value onto the VM stack.

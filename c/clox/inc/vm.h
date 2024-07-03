@@ -16,6 +16,7 @@ struct VM {
     uint8_t *ip;                ///< bytecode instruction pointer
     Value stack[STACK_MAX];     ///< storage for the data stack
     Value *sp;                  ///< data stack pointer
+    Obj *objects;               ///< linked list of all objects
 };
 
 /** Interpreter result
@@ -25,6 +26,8 @@ enum InterpretResult {
     INTERPRET_COMPILE_ERROR,    ///< error during compilation
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
 };
+
+extern VM vm;                   ///< export the singleton VM instance.
 
 extern void initVM ();
 extern void freeVM ();
