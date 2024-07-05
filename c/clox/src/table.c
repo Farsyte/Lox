@@ -75,6 +75,28 @@ findEntry (Entry *entries, int capacity, ObjString *key)
     }
 }
 
+/** Get the value associated with this key in this table
+ *
+ * @param table the hash table of interest
+ * @param key the string to use as the key
+ * @param value where to return the value for that key
+ * @return true if the key was in the table
+ */
+bool
+tableGet (Table *table, ObjString *key, Value *value)
+{
+    if (table->count == 0)
+        return false;
+
+    Entry *entry = findEntry (table->entries, table->capacity, key);
+
+    if (entry->key == NULL)
+        return false;
+
+    *value = entry->value;
+    return true;
+}
+
 /** Adjust the capacity of the table.
  *
  * The entry count is nearing the load factor times the
