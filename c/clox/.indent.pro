@@ -14,8 +14,10 @@
 --no-tabs
 
 -TChunk
+-TCompiler
 -TEntry
 -TInterpretResult
+-TLocal
 -TObjString
 -TOpCode
 -TOptions

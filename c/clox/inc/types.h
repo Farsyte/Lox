@@ -59,3 +59,10 @@ typedef struct Table Table;
 
 /** Hash Table Entry */
 typedef struct Entry Entry;
+
+/** Compiler State */
+typedef struct Compiler Compiler;
+
+/** Local Variables
+ */
+typedef struct Local Local;

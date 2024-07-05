@@ -36,13 +36,31 @@ typedef enum {
     PREC_PRIMARY,               // identifiers etc.
 } Precedence;
 
+/** Parse Rules
+ */
 struct ParseRule {
-    ParseFn prefix;
-    ParseFn infix;
-    Precedence precedence;
+    ParseFn prefix;             ///< call when token seen as unary operator
+    ParseFn infix;              ///< call when token seen as binary operator
+    Precedence precedence;      ///< operator precedence of binary operator
+};
+
+/** Local Variable
+ */
+struct Local {
+    Token name;                 ///< name of the local variable
+    int depth;                  ///< scope depth of block defining it
+};
+
+/** Compiler State
+ */
+struct Compiler {
+    Local locals[UINT8_COUNT];  ///< storage for local variables
+    int localCount;             ///< number of local variables in scope
+    int scopeDepth;             ///< number of blocks surrounding current code
 };
 
 Parser parser;                  ///< Storage for the parser state.
+Compiler *current = NULL;       ///< the current compiler state
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 /* Forward Declarations */
@@ -256,6 +274,16 @@ static void
 emitConstant (Value value)
 {
     emitBytes (OP_CONSTANT, makeConstant (value));
+}
+
+/** Initialize the state of the compiler
+ */
+static void
+initCompiler (Compiler *compiler)
+{
+    compiler->localCount = 0;
+    compiler->scopeDepth = 0;
+    current = compiler;
 }
 
 /** Shut down the compiler.
@@ -594,7 +622,6 @@ synchronize ()
 static void
 statement ()
 {
-    // TODO add more kinds of statements
     if (match (TOKEN_PRINT)) {
         printStatement ();
     } else {
@@ -608,6 +635,9 @@ bool
 compile (const char *source, Chunk *chunk)
 {
     initScanner (source);
+    Compiler compiler;
+
+    initCompiler (&compiler);
     compilingChunk = chunk;
     parser.hadError = false;
     parser.panicMode = false;
