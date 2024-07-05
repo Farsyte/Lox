@@ -6,31 +6,31 @@ Disassembling code ...
 0006    | OP_DEFINE_GLOBAL    2 'b'
 0008    5 OP_CONSTANT         5 'global c'
 0010    | OP_DEFINE_GLOBAL    4 'c'
-0012    7 OP_CONSTANT         7 'outer a'
-0014    | OP_DEFINE_GLOBAL    6 'a'
-0016    8 OP_CONSTANT         9 'outer b'
-0018    | OP_DEFINE_GLOBAL    8 'b'
-0020   10 OP_CONSTANT        11 'inner a'
-0022    | OP_DEFINE_GLOBAL   10 'a'
-0024   12 OP_GET_GLOBAL      12 'a'
+0012    7 OP_CONSTANT         6 'outer a'
+0014    8 OP_CONSTANT         7 'outer b'
+0016   10 OP_CONSTANT         8 'inner a'
+0018   12 OP_GET_GLOBAL       9 'a'
+0020    | OP_PRINT
+0021   13 OP_GET_GLOBAL      10 'b'
+0023    | OP_PRINT
+0024   14 OP_GET_GLOBAL      11 'c'
 0026    | OP_PRINT
-0027   13 OP_GET_GLOBAL      13 'b'
-0029    | OP_PRINT
-0030   14 OP_GET_GLOBAL      14 'c'
-0032    | OP_PRINT
-0033   16 OP_GET_GLOBAL      15 'a'
-0035    | OP_PRINT
-0036   17 OP_GET_GLOBAL      16 'b'
-0038    | OP_PRINT
-0039   18 OP_GET_GLOBAL      17 'c'
+0027   15 OP_POP
+0028   16 OP_GET_GLOBAL      12 'a'
+0030    | OP_PRINT
+0031   17 OP_GET_GLOBAL      13 'b'
+0033    | OP_PRINT
+0034   18 OP_GET_GLOBAL      14 'c'
+0036    | OP_PRINT
+0037   19 OP_POP
+0038    | OP_POP
+0039   20 OP_GET_GLOBAL      15 'a'
 0041    | OP_PRINT
-0042   20 OP_GET_GLOBAL      18 'a'
+0042   21 OP_GET_GLOBAL      16 'b'
 0044    | OP_PRINT
-0045   21 OP_GET_GLOBAL      19 'b'
+0045   22 OP_GET_GLOBAL      17 'c'
 0047    | OP_PRINT
-0048   22 OP_GET_GLOBAL      20 'c'
-0050    | OP_PRINT
-0051   23 OP_RETURN
+0048   23 OP_RETURN
 Disassembling code ... done.
 
 
@@ -48,63 +48,63 @@ stack: empty.
 stack: global c
 0010    | OP_DEFINE_GLOBAL    4 'c'
 stack: empty.
-0012    7 OP_CONSTANT         7 'outer a'
+0012    7 OP_CONSTANT         6 'outer a'
 stack: outer a
-0014    | OP_DEFINE_GLOBAL    6 'a'
-stack: empty.
-0016    8 OP_CONSTANT         9 'outer b'
-stack: outer b
-0018    | OP_DEFINE_GLOBAL    8 'b'
-stack: empty.
-0020   10 OP_CONSTANT        11 'inner a'
-stack: inner a
-0022    | OP_DEFINE_GLOBAL   10 'a'
-stack: empty.
-0024   12 OP_GET_GLOBAL      12 'a'
-stack: inner a
+0014    8 OP_CONSTANT         7 'outer b'
+stack: outer a outer b
+0016   10 OP_CONSTANT         8 'inner a'
+stack: outer a outer b inner a
+0018   12 OP_GET_GLOBAL       9 'a'
+stack: outer a outer b inner a global a
+0020    | OP_PRINT
+global a
+stack: outer a outer b inner a
+0021   13 OP_GET_GLOBAL      10 'b'
+stack: outer a outer b inner a global b
+0023    | OP_PRINT
+global b
+stack: outer a outer b inner a
+0024   14 OP_GET_GLOBAL      11 'c'
+stack: outer a outer b inner a global c
 0026    | OP_PRINT
-inner a
-stack: empty.
-0027   13 OP_GET_GLOBAL      13 'b'
-stack: outer b
-0029    | OP_PRINT
-outer b
-stack: empty.
-0030   14 OP_GET_GLOBAL      14 'c'
-stack: global c
-0032    | OP_PRINT
 global c
+stack: outer a outer b inner a
+0027   15 OP_POP
+stack: outer a outer b
+0028   16 OP_GET_GLOBAL      12 'a'
+stack: outer a outer b global a
+0030    | OP_PRINT
+global a
+stack: outer a outer b
+0031   17 OP_GET_GLOBAL      13 'b'
+stack: outer a outer b global b
+0033    | OP_PRINT
+global b
+stack: outer a outer b
+0034   18 OP_GET_GLOBAL      14 'c'
+stack: outer a outer b global c
+0036    | OP_PRINT
+global c
+stack: outer a outer b
+0037   19 OP_POP
+stack: outer a
+0038    | OP_POP
 stack: empty.
-0033   16 OP_GET_GLOBAL      15 'a'
-stack: inner a
-0035    | OP_PRINT
-inner a
-stack: empty.
-0036   17 OP_GET_GLOBAL      16 'b'
-stack: outer b
-0038    | OP_PRINT
-outer b
-stack: empty.
-0039   18 OP_GET_GLOBAL      17 'c'
-stack: global c
+0039   20 OP_GET_GLOBAL      15 'a'
+stack: global a
 0041    | OP_PRINT
-global c
+global a
 stack: empty.
-0042   20 OP_GET_GLOBAL      18 'a'
-stack: inner a
+0042   21 OP_GET_GLOBAL      16 'b'
+stack: global b
 0044    | OP_PRINT
-inner a
+global b
 stack: empty.
-0045   21 OP_GET_GLOBAL      19 'b'
-stack: outer b
-0047    | OP_PRINT
-outer b
-stack: empty.
-0048   22 OP_GET_GLOBAL      20 'c'
+0045   22 OP_GET_GLOBAL      17 'c'
 stack: global c
-0050    | OP_PRINT
+0047    | OP_PRINT
 global c
 stack: empty.
-0051   23 OP_RETURN
+0048   23 OP_RETURN
 Executing ... done.
 

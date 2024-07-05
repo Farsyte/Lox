@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /** @file compiler.c
  * @brief Compiler (Lox Parser)
@@ -263,6 +264,60 @@ identifierConstant (Token *name)
     return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
 }
 
+/** See if two identifiers are the same.
+ *
+ * @param a 1st identifier to compare
+ * @param b 2nd identifier to compare
+ * @returns true if they are textually equal
+ * @returns false if they are distinct
+ */
+static bool
+identifiersEqual (Token *a, Token *b)
+{
+    if (a->length != b->length)
+        return false;
+    return 0 == memcmp (a->start, b->start, a->length);
+}
+
+/** Add a local variable to the current scope.
+ */
+static void
+addLocal (Token name)
+{
+    if (current->localCount == UINT8_COUNT) {
+        error ("Too many local variables in function.");
+        return;
+    }
+    Local *local = &current->locals[current->localCount++];
+
+    local->name = name;
+    local->depth = current->scopeDepth;
+}
+
+/** Compile a local variable declaration.
+ */
+static void
+declareVariable ()
+{
+    if (current->scopeDepth == 0)
+        return;
+    Token *name = &parser.previous;
+
+    for (int i = current->localCount - 1; i >= 0; i--) {
+        Local *local = &current->locals[i];
+
+        if (local->depth != -1 && local->depth < current->scopeDepth) {
+            break;
+        }
+
+        if (identifiersEqual (name, &local->name)) {
+            error ("Already a variable with this name in this scope.");
+        }
+    }
+
+    addLocal (*name);
+}
+
 /** Construct a CONSTANT operation in the chunk.
  *
  * Emits OP_CONSTANT, then an immediate byte picking
@@ -309,6 +364,11 @@ static void
 endScope ()
 {
     current->scopeDepth--;
+    while (current->localCount > 0 && current->locals[current->localCount - 1].depth > current->scopeDepth) {
+        emitByte (OP_POP);
+        current->localCount--;
+    }
+
 }
 
 /** Compile a binary operation to the chunk.
@@ -528,12 +588,18 @@ static uint8_t
 parseVariable (const char *errorMessage)
 {
     consume (TOKEN_IDENTIFIER, errorMessage);
+    declareVariable ();
+    if (current->scopeDepth > 0)
+        return 0;
     return identifierConstant (&parser.previous);
 }
 
 static void
 defineVariable (uint8_t global)
 {
+    if (current->scopeDepth > 0) {
+        return;
+    }
     emitBytes (OP_DEFINE_GLOBAL, global);
 }
 
