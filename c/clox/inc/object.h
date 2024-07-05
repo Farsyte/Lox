@@ -28,6 +28,7 @@ struct ObjString {
     Obj obj;                    ///< Inherit from Obj
     int length;                 ///< length of string
     char *chars;                ///< pointer to start of string
+    uint32_t hash;              ///< hash code for the string
 };
 
 extern ObjString *takeString (char *chars, int length);

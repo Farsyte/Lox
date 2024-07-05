@@ -17,8 +17,9 @@ struct Table {
     Entry *entries;
 };
 
-void initTable (Table *table);
-void freeTable (Table *table);
+extern void initTable (Table *table);
+extern void freeTable (Table *table);
+extern bool tableSet (Table *table, ObjString *key, Value value);
 
 extern void postTable ();
 extern void bistTable ();

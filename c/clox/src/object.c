@@ -35,13 +35,35 @@ allocateObject (size_t size, ObjType type)
  * @return a String object with a copy of that content
  */
 static ObjString *
-allocateString (char *chars, int length)
+allocateString (char *chars, int length, uint32_t hash)
 {
     ObjString *string = ALLOCATE_OBJ (ObjString, OBJ_STRING);
 
     string->length = length;
     string->chars = chars;
+    string->hash = hash;
     return string;
+}
+
+/** Compute the hash value of the string.
+ *
+ * This uses the "FNV-1a" hash, which is both
+ * effective aind short.
+ *
+ * @param key start of the string to hash
+ * @param length number of bytes to include
+ * @return the 32-bit hash value of the string
+ */
+static uint32_t
+hashString (const char *key, int length)
+{
+    uint32_t hash = 216613626lu;
+
+    for (int i = 0; i < length; ++i) {
+        hash ^= (uint8_t) key[i];
+        hash *= 16777619;
+    }
+    return hash;
 }
 
 /** Create a String object referring to the given content
@@ -59,7 +81,9 @@ allocateString (char *chars, int length)
 ObjString *
 takeString (char *chars, int length)
 {
-    return allocateString (chars, length);
+    uint32_t hash = hashString (chars, length);
+
+    return allocateString (chars, length, hash);
 }
 
 /** Create a String object with a copy of the specified content
@@ -78,11 +102,12 @@ takeString (char *chars, int length)
 ObjString *
 copyString (const char *chars, int length)
 {
+    uint32_t hash = hashString (chars, length);
     char *heapChars = ALLOCATE (char, length + 1);
 
     memcpy (heapChars, chars, length);
     heapChars[length] = '\0';
-    return allocateString (heapChars, length);
+    return allocateString (heapChars, length, hash);
 }
 
 void

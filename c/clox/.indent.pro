@@ -16,6 +16,7 @@
 -TChunk
 -TEntry
 -TInterpretResult
+-TObjString
 -TOpCode
 -TOptions
 -TParseFn
