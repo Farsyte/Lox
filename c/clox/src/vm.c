@@ -178,6 +178,8 @@ run ()
 #define READ_BYTE()     (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
 #define READ_STRING()   (AS_STRING(READ_CONSTANT()))
+#define READ_SHORT()    (vm.ip += 2, (uint16_t)((vm.ip[-2] << 8) | vm.ip[-1]))
+
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
         printf ("stack:");
@@ -199,6 +201,7 @@ run ()
         OpCode instruction;
         ObjString *name;
         uint8_t slot;
+        uint16_t offset;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -318,6 +321,12 @@ run ()
             printf ("\n");
             break;
 
+        case OP_JUMP_IF_FALSE:
+            offset = READ_SHORT ();
+            if (isFalsey (peek (0)))
+                vm.ip += offset;
+            break;
+
         case OP_RETURN:
             // Exit interpreter.
 #ifdef  DEBUG_TRACE_EXECUTION
@@ -327,8 +336,9 @@ run ()
 
         }
     }
-#undef  READ_STRING
+#undef  READ_SHORT
 #undef  READ_CONSTANT
+#undef  READ_STRING
 #undef  READ_BYTE
 }
 

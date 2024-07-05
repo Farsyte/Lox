@@ -1,5 +1,4 @@
 [line 4] Error at 'fun': Expect expression.
-[line 5] Error at 'if': Expect expression.
 [line 5] Error at 'return': Expect expression.
 [line 6] Error at 'return': Expect expression.
 [line 7] Error at '}': Expect expression.

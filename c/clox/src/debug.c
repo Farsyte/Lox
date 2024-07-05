@@ -182,6 +182,7 @@ disassembleInstruction (Chunk *chunk, int offset)
     case OP_NOT:                        return simpleInstruction ("OP_NOT", offset);
     case OP_NEGATE:                     return simpleInstruction ("OP_NEGATE", offset);
     case OP_PRINT:                      return simpleInstruction ("OP_PRINT", offset);
+    case OP_JUMP_IF_FALSE:              STUB(0); // return ...Instruction ("OP_JUMP_IF_FALSE", offset);
     case OP_RETURN:                     return simpleInstruction ("OP_RETURN", offset);
 
         // *INDENT-ON*
