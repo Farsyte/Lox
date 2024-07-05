@@ -274,8 +274,10 @@ endCompiler ()
 /** Compile a binary operation to the chunk.
  */
 static void
-binary ()
+binary (bool canAssign)
 {
+    (void) canAssign;                   // not used
+
     TokenType operatorType = parser.previous.type;
     ParseRule *rule = getRule (operatorType);
 
@@ -304,8 +306,9 @@ binary ()
 /** Compile a Literal op to the chunk.
  */
 static void
-literal ()
+literal (bool canAssign)
 {
+    (void) canAssign;                   // not used
     switch (parser.previous.type) {
         // *INDENT-OFF*
     case TOKEN_FALSE:   emitByte(OP_FALSE);     break;
@@ -320,8 +323,9 @@ literal ()
 /** Compile a Grouping to the chunk.
  */
 static void
-grouping ()
+grouping (bool canAssign)
 {
+    (void) canAssign;                   // not used
     expression ();
     consume (TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
 }
@@ -329,8 +333,9 @@ grouping ()
 /** Compile a number to the chunk.
  */
 static void
-number ()
+number (bool canAssign)
 {
+    (void) canAssign;                   // not used
     double value = strtod (parser.previous.start, NULL);
 
     emitConstant (NUMBER_VAL (value));
@@ -339,8 +344,9 @@ number ()
 /** Compile a string to the chunk.
  */
 static void
-string ()
+string (bool canAssign)
 {
+    (void) canAssign;                   // not used
     emitConstant (OBJ_VAL (copyString (parser.previous.start + 1, parser.previous.length - 2)));
 }
 
@@ -349,26 +355,33 @@ string ()
  * @param name the token containing the variable namep
  */
 static void
-namedVariable (Token name)
+namedVariable (Token name, bool canAssign)
 {
     uint8_t arg = identifierConstant (&name);
 
-    emitBytes (OP_GET_GLOBAL, arg);
+    if (canAssign && match (TOKEN_EQUAL)) {
+        expression ();
+        emitBytes (OP_SET_GLOBAL, arg);
+    } else {
+        emitBytes (OP_GET_GLOBAL, arg);
+    }
 }
 
 /** Compile a variable to the chunk.
  */
 static void
-variable ()
+variable (bool canAssign)
 {
-    namedVariable (parser.previous);
+    namedVariable (parser.previous, canAssign);
 }
 
 /** Compile a unary operation to the chunk.
  */
 static void
-unary ()
+unary (bool canAssign)
 {
+    (void) canAssign;                   // not used
+
     TokenType operatorType = parser.previous.type;
 
     // Compile the operand.
@@ -457,12 +470,17 @@ parsePrecedence (Precedence precedence)
         error ("Expect expression.");
         return;
     }
-    prefixRule ();
+    bool canAssign = precedence <= PREC_ASSIGNMENT;
+
+    prefixRule (canAssign);
     while (precedence <= getRule (parser.current.type)->precedence) {
         advance ();
         ParseFn infixRule = getRule (parser.previous.type)->infix;
 
-        infixRule ();
+        infixRule (canAssign);
+    }
+    if (canAssign && match (TOKEN_EQUAL)) {
+        error ("Invalid assignment target.");
     }
 }
 

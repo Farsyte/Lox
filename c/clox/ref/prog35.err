@@ -1,5 +1,3 @@
 [line 4] Error at 'for': Expect expression.
-[line 4] Error at '=': Expect ';' after expression.
-[line 6] Error at '=': Expect ';' after expression.
-[line 7] Error at '=': Expect ';' after expression.
+[line 4] Error at ')': Expect ';' after expression.
 [line 8] Error at '}': Expect expression.

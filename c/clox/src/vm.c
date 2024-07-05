@@ -236,6 +236,15 @@ run ()
             pop ();
             break;
 
+        case OP_SET_GLOBAL:
+            name = READ_STRING ();
+            if (tableSet (&vm.globals, name, peek (0))) {
+                tableDelete (&vm.globals, name);
+                runtimeError ("Undefined variable '%s'.", name->chars);
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            break;
+
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \
                 if (!IS_NUMBER(peek(0)) || (!IS_NUMBER(peek(1)))) {     \

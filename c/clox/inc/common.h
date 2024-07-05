@@ -3,7 +3,6 @@
 #include "error_log.h"
 #include "types.h"
 
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 

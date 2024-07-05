@@ -1,5 +1,4 @@
 [line 2] Error at 'while': Expect expression.
-[line 4] Error at '=': Expect ';' after expression.
 [line 5] Error at '}': Expect expression.
 [line 7] Error at 'if': Expect expression.
 [line 9] Error at '}': Expect expression.
