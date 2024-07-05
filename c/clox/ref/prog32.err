@@ -1,9 +1,7 @@
-[line 6] Error at '{': Expect expression.
-[line 9] Error at '{': Expect expression.
 [line 12] Error at 'if': Expect expression.
-[line 14] Error at '}': Expect expression.
+[line 14] Error at 'else': Expect expression.
 [line 14] Error at 'if': Expect expression.
-[line 16] Error at '}': Expect expression.
+[line 16] Error at 'else': Expect expression.
 [line 18] Error at '}': Expect expression.
 [line 20] Error at 'if': Expect expression.
 [line 22] Error at '}': Expect expression.
