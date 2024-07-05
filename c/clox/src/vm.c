@@ -198,6 +198,7 @@ run ()
 
         OpCode instruction;
         ObjString *name;
+        uint8_t slot;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -219,7 +220,9 @@ run ()
             break;
 
         case OP_GET_LOCAL:
-            STUB (0);
+            slot = READ_BYTE ();
+            push (vm.stack[slot]);
+            break;
 
         case OP_GET_GLOBAL:
             name = READ_STRING ();
@@ -240,7 +243,9 @@ run ()
             break;
 
         case OP_SET_LOCAL:
-            STUB (0);
+            slot = READ_BYTE ();
+            vm.stack[slot] = peek (0);
+            break;
 
         case OP_SET_GLOBAL:
             name = READ_STRING ();
