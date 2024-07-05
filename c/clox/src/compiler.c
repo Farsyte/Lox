@@ -232,6 +232,19 @@ makeConstant (Value value)
     return (uint8_t) constant;
 }
 
+/** Make an identifier constant
+ *
+ * Not sure if the word "constant" is now inaccurate.
+ *
+ * @param name the token containing the name
+ * @returns the index into the table for the variable
+ */
+static uint8_t
+identifierConstant (Token *name)
+{
+    return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
+}
+
 /** Construct a CONSTANT operation in the chunk.
  *
  * Emits OP_CONSTANT, then an immediate byte picking
@@ -331,6 +344,26 @@ string ()
     emitConstant (OBJ_VAL (copyString (parser.previous.start + 1, parser.previous.length - 2)));
 }
 
+/** Do the work of putting a variable into the chunk.
+ *
+ * @param name the token containing the variable namep
+ */
+static void
+namedVariable (Token name)
+{
+    uint8_t arg = identifierConstant (&name);
+
+    emitBytes (OP_GET_GLOBAL, arg);
+}
+
+/** Compile a variable to the chunk.
+ */
+static void
+variable ()
+{
+    namedVariable (parser.previous);
+}
+
 /** Compile a unary operation to the chunk.
  */
 static void
@@ -383,7 +416,7 @@ ParseRule rules[] = {
     [TOKEN_LESS_EQUAL]     =  {  NULL,       binary,   PREC_COMPARISON  },   //  "<="
 
     // Literals.
-    [TOKEN_IDENTIFIER]     =  {  NULL,       NULL,     PREC_NONE        },   //  regex: [A-Za-z_][0-9A-Za-z_]*
+    [TOKEN_IDENTIFIER]     =  {  variable,   NULL,     PREC_NONE        },   //  regex: [A-Za-z_][0-9A-Za-z_]*
     [TOKEN_STRING]         =  {  string,     NULL,     PREC_NONE        },   //  regex: "[^"]*"
     [TOKEN_NUMBER]         =  {  number,     NULL,     PREC_NONE        },   //  regex: [0-9]+ | [0-9]+\\.[0-9]+
 
@@ -431,12 +464,6 @@ parsePrecedence (Precedence precedence)
 
         infixRule ();
     }
-}
-
-static uint8_t
-identifierConstant (Token *name)
-{
-    return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
 }
 
 static uint8_t

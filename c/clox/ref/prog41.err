@@ -4,7 +4,6 @@
 [line 6] Error at 'return': Expect expression.
 [line 7] Error at '}': Expect expression.
 [line 9] Error at 'for': Expect expression.
-[line 9] Error at 'i': Expect expression.
-[line 9] Error at 'i': Expect expression.
-[line 10] Error at 'fib': Expect expression.
+[line 9] Error at '=': Expect ';' after expression.
+[line 10] Error at '(': Expect ';' after value.
 [line 11] Error at '}': Expect expression.

@@ -1,3 +1,2 @@
 [line 1] Error at 'class': Expect expression.
-[line 2] Error at 'Bagel': Expect expression.
-[line 3] Error at 'bagel': Expect expression.
+[line 2] Error at '(': Expect ';' after variable declaration.
