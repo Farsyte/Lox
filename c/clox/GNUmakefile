@@ -33,8 +33,13 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 LSRC		:= $(wildcard $(LOXD)*.lox)
 LOUT		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
 
+DIFFX		:= -X $(LOGD)exclude-from-compare
+DIFFPX		:= -x '*~'
+DOPTS		:= -wu
+DFLAGS		:= $(DOPTS) $(DIFFX) $(DIFFPX) -r
+
 tests::         demo bist repl help $(LOUT)
-	$C diff -rwu $(REFD) $(LOGD)
+	$C diff $(DFLAGS) $(REFD) $(LOGD) | sed 's/^diff .* ref/\ndiff $(DOPTS) ref/'
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"

@@ -1,3 +1,1 @@
-src/compiler.c:472: STUB Encountered in statement
-add more kinds of statements
-
+[line 1] Error at 'fun': Expect expression.

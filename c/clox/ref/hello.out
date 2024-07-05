@@ -5,6 +5,8 @@ Disassembling code ...
 0003    3 OP_RETURN
 Disassembling code ... done.
 
+
+Executing ...
 stack: empty.
 0000    2 OP_CONSTANT         0 'Hello, world!'
 stack: Hello, world!
@@ -12,3 +14,5 @@ stack: Hello, world!
 Hello, world!
 stack: empty.
 0003    3 OP_RETURN
+Executing ... done.
+

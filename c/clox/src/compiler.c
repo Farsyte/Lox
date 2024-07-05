@@ -446,6 +446,16 @@ expression ()
     parsePrecedence (PREC_ASSIGNMENT);
 }
 
+/** Compile an expression statement to the chunk.
+ */
+static void
+expressionStatement ()
+{
+    expression ();
+    consume (TOKEN_SEMICOLON, "Expect ';' after expression.");
+    emitByte (OP_POP);
+}
+
 static void
 declaration ()
 {
@@ -465,11 +475,12 @@ printStatement ()
 static void
 statement ()
 {
+    // TODO add more kinds of statements
     if (match (TOKEN_PRINT)) {
         printStatement ();
-        return;
+    } else {
+        expressionStatement ();
     }
-    STUB ("add more kinds of statements");
 }
 
 /** Compile the source code into the chunk.

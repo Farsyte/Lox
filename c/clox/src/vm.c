@@ -210,6 +210,9 @@ run ()
         case OP_FALSE:
             push (BOOL_VAL (false));
             break;
+        case OP_POP:
+            (void) pop ();
+            break;
 
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \

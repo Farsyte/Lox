@@ -11,6 +11,8 @@ Disassembling code ...
 0011    4 OP_RETURN
 Disassembling code ... done.
 
+
+Executing ...
 stack: empty.
 0000    1 OP_CONSTANT         0 'one'
 stack: one
@@ -32,3 +34,5 @@ stack: 3
 3
 stack: empty.
 0011    4 OP_RETURN
+Executing ... done.
+

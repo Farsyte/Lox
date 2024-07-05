@@ -1,1 +1,36 @@
 
+Disassembling code ...
+0000    1 OP_CONSTANT         0 '10'
+0002    | OP_CONSTANT         1 '20'
+0004    | OP_ADD
+0005    | OP_PRINT
+0006    2 OP_CONSTANT         2 '10'
+0008    | OP_CONSTANT         3 '20'
+0010    | OP_ADD
+0011    | OP_POP
+0012    3 OP_RETURN
+Disassembling code ... done.
+
+
+Executing ...
+stack: empty.
+0000    1 OP_CONSTANT         0 '10'
+stack: 10
+0002    | OP_CONSTANT         1 '20'
+stack: 10 20
+0004    | OP_ADD
+stack: 30
+0005    | OP_PRINT
+30
+stack: empty.
+0006    2 OP_CONSTANT         2 '10'
+stack: 10
+0008    | OP_CONSTANT         3 '20'
+stack: 10 20
+0010    | OP_ADD
+stack: 30
+0011    | OP_POP
+stack: empty.
+0012    3 OP_RETURN
+Executing ... done.
+

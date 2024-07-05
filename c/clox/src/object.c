@@ -116,6 +116,7 @@ takeString (char *chars, int length)
  * (and the ObjString) in the string table.
  *
  * @param chars start of the input string
+ * @param length number of bytes in the input string
  * @returns existing String matching this content, if found in the string table
  * @returns otherwise a new String with a copy of this content, added to the string table
  */

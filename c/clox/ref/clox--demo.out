@@ -9,6 +9,8 @@ Disassembling test chunk ...
 0009  124 OP_RETURN
 Disassembling test chunk ... done.
 
+
+Executing ...
 stack: empty.
 0000  123 OP_CONSTANT         0 '1.2'
 stack: 1.2
@@ -23,3 +25,5 @@ stack: 0.8214285714285714
 0008    | OP_NEGATE
 stack: -0.8214285714285714
 0009  124 OP_RETURN
+Executing ... done.
+

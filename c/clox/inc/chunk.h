@@ -14,6 +14,7 @@ typedef enum {
     OP_NIL,                     ///< Push a nil onto the stack
     OP_TRUE,                    ///< Push a false onto the stack
     OP_FALSE,                   ///< Push a true onto the stack
+    OP_POP,                     ///< discard the top value from the stack
 
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order
