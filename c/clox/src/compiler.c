@@ -48,6 +48,8 @@ Chunk *compilingChunk;          ///< chunk currently being compiled.
 /* Forward Declarations */
 
 static void expression ();
+static void statement ();
+static void declaration ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
 
@@ -147,6 +149,22 @@ consume (TokenType type, const char *message)
     }
 
     errorAtCurrent (message);
+}
+
+/** Try to match the next token.
+ *
+ * If the next token matches, consume it and return true;
+ * otherwise, return false.
+ *
+ * @param type which token type is wanted
+ * @returns true if token is matched and consumed
+ * @returns false if the next token does not match
+ */
+static bool
+match (TokenType type)
+{
+    (void) type;                        // TODO implement token match
+    STUB ("implement token match");
 }
 
 /** Emit a byte into the current chunk.
@@ -414,6 +432,29 @@ expression ()
     parsePrecedence (PREC_ASSIGNMENT);
 }
 
+static void
+declaration ()
+{
+    STUB (0);
+}
+
+static void
+printStatement ()
+{
+    STUB (0);
+}
+
+/** Compile a statement to the chunk.
+ */
+static void
+statement ()
+{
+    if (match (TOKEN_PRINT)) {
+        printStatement ();
+    }
+    STUB ("add more kinds of statements");
+}
+
 /** Compile the source code into the chunk.
  */
 bool
@@ -425,8 +466,20 @@ compile (const char *source, Chunk *chunk)
     parser.panicMode = false;
 
     advance ();
-    expression ();
-    consume (TOKEN_EOF, "Expect end of expression.");
+    while (!match (TOKEN_EOF)) {
+        declaration ();
+    }
+
     endCompiler ();
     return !parser.hadError;
+}
+
+/* Call the unused functions.
+ * TODO remove this function.
+ */
+void
+call_unused_in_compiler ()
+{
+    statement ();
+    STUB ("someone called me ...?");
 }
