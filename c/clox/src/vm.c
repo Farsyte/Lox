@@ -218,6 +218,9 @@ run ()
             (void) pop ();
             break;
 
+        case OP_GET_LOCAL:
+            STUB (0);
+
         case OP_GET_GLOBAL:
             name = READ_STRING ();
             Value value;
@@ -235,6 +238,9 @@ run ()
             tableSet (&vm.globals, name, peek (0));
             pop ();
             break;
+
+        case OP_SET_LOCAL:
+            STUB (0);
 
         case OP_SET_GLOBAL:
             name = READ_STRING ();
