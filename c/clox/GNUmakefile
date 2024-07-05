@@ -33,7 +33,7 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 LSRC		:= $(wildcard $(LOXD)*.lox)
 LOUT		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
 
-DIFFX		:= -X $(LOGD)exclude-from-compare
+DIFFX		:= -X $(REFD)exclude-from-compare
 DIFFPX		:= -x '*~'
 DOPTS		:= -wu
 DFLAGS		:= $(DOPTS) $(DIFFX) $(DIFFPX) -r
