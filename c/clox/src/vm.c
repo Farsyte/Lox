@@ -55,6 +55,7 @@ initVM ()
     vm.ip = NULL;
     resetStack ();
     vm.objects = NULL;
+    initTable (&vm.strings);
 }
 
 /** Release storage owned by the VM.
@@ -64,6 +65,7 @@ initVM ()
 void
 freeVM ()
 {
+    freeTable (&vm.strings);
     freeObjects ();
 }
 

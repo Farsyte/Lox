@@ -23,5 +23,6 @@ extern bool tableGet (Table *table, ObjString *key, Value *value);
 extern bool tableSet (Table *table, ObjString *key, Value value);
 extern bool tableDelete (Table *table, ObjString *key);
 extern void tableAddAll (Table *from, Table *to);
+extern ObjString *tableFindString (Table *table, const char *chars, int length, uint32_t hash);
 extern void postTable ();
 extern void bistTable ();

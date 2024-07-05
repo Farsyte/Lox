@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "table.h"
 #include "value.h"
 
 /** Maximum Stack Depth
@@ -16,6 +17,7 @@ struct VM {
     uint8_t *ip;                ///< bytecode instruction pointer
     Value stack[STACK_MAX];     ///< storage for the data stack
     Value *sp;                  ///< data stack pointer
+    Table strings;
     Obj *objects;               ///< linked list of all objects
 };
 

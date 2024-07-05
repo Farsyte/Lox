@@ -213,3 +213,36 @@ tableAddAll (Table *from, Table *to)
         }
     }
 }
+
+/** Search the table for a key equal to this string.
+ *
+ * This function looks for the given string as a key in the table,
+ * using a string compare as part of the equality condition (this is
+ * used for interning strings).
+ *
+ * @param table the table of interest
+ * @param chars the string to add to the table
+ * @param length number of bytes in the string
+ * @param hash precomputed hash value
+ */
+ObjString *
+tableFindString (Table *table, const char *chars, int length, uint32_t hash)
+{
+    if (table->count == 0)
+        return NULL;
+    uint32_t index = hash % table->capacity;
+
+    for (;;) {
+        Entry *entry = &table->entries[index];
+
+        if (entry->key == NULL) {
+            // Stop if we find an empty non-tombstone entry.
+            if (IS_NIL (entry->value))
+                return NULL;
+        } else if (entry->key->length == length && entry->key->hash == hash && 0 == memcmp (entry->key->chars, chars, length)) {
+            // Found a key that matches.
+            return entry->key;
+        }
+        index = (index + 1) % table->capacity;
+    }
+}
