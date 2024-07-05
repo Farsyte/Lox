@@ -63,12 +63,23 @@ static Entry *
 findEntry (Entry *entries, int capacity, ObjString *key)
 {
     uint32_t index = key->hash % capacity;
+    Entry *tombstone = NULL;
 
     for (;;) {
         Entry *entry = &entries[index];
 
-        // Put a pin in the "entry->key == key" thing for later.
-        if (entry->key == key || entry->key == NULL) {
+        if (entry->key == NULL) {
+            if (IS_NIL (entry->value)) {
+                // Empty entry.
+                return tombstone != NULL ? tombstone : entry;
+            } else {
+                // We found a tombstone.
+                if (tombstone == NULL)
+                    tombstone = entry;
+            }
+        } else if (entry->key == key) {
+            // Put a pin in the "entry->key == key" thing for later.
+            // We found the key.
             return entry;
         }
         index = (index + 1) % capacity;
@@ -156,6 +167,32 @@ tableSet (Table *table, ObjString *key, Value value)
     entry->key = key;
     entry->value = value;
     return isNewKey;
+}
+
+/** Remove the entry for this key from this table.
+ *
+ * Replaces the entry with a tombstone.
+ *
+ * @param table the table of interest
+ * @param key the key to remove
+ * @return true if found, false if not.
+ */
+bool
+tableDelete (Table *table, ObjString *key)
+{
+    if (table->count == 0)
+        return false;
+
+    // find the entry.
+    Entry *entry = findEntry (table->entries, table->capacity, key);
+
+    if (entry->key == NULL)
+        return false;
+
+    // Place a tombstone.
+    entry->key = NULL;
+    entry->value = BOOL_VAL (true);
+    return true;
 }
 
 /** Add all entries from one table to another.
