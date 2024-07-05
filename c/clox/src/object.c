@@ -36,7 +36,7 @@ allocateObject (size_t size, ObjType type)
  * @param chars start of the input string
  * @param length number of bytes in the input string
  * @param hash precomputed hash value of the string data
- * @return a String object with a copy of that content
+ * @returns a String object with a copy of that content
  */
 static ObjString *
 allocateString (char *chars, int length, uint32_t hash)
@@ -57,7 +57,7 @@ allocateString (char *chars, int length, uint32_t hash)
  *
  * @param key start of the string to hash
  * @param length number of bytes to include
- * @return the 32-bit hash value of the string
+ * @returns the 32-bit hash value of the string
  */
 static uint32_t
 hashString (const char *key, int length)
@@ -85,7 +85,8 @@ hashString (const char *key, int length)
  *
  * @param chars start of the input string
  * @param length number of bytes in the input string
- * @return a String object with a copy of that content
+ * @returns existing String matching this content, if found in the string table
+ * @returns otherwise a new String linking to this content, added to the  string table
  */
 ObjString *
 takeString (char *chars, int length)
@@ -115,8 +116,8 @@ takeString (char *chars, int length)
  * (and the ObjString) in the string table.
  *
  * @param chars start of the input string
- * @param length number of bytes in the input string
- * @return a String object with a copy of that content
+ * @returns existing String matching this content, if found in the string table
+ * @returns otherwise a new String with a copy of this content, added to the string table
  */
 ObjString *
 copyString (const char *chars, int length)

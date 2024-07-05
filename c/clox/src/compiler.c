@@ -151,6 +151,18 @@ consume (TokenType type, const char *message)
     errorAtCurrent (message);
 }
 
+/** Check if the next token has this type.
+ *
+ * @param type desired token type
+ * @returns true if the types match
+ * @returns false if they do not match
+ */
+static bool
+check (TokenType type)
+{
+    return parser.current.type == type;
+}
+
 /** Try to match the next token.
  *
  * If the next token matches, consume it and return true;
@@ -163,8 +175,10 @@ consume (TokenType type, const char *message)
 static bool
 match (TokenType type)
 {
-    (void) type;                        // TODO implement token match
-    STUB ("implement token match");
+    if (!check (type))
+        return false;
+    advance ();
+    return true;
 }
 
 /** Emit a byte into the current chunk.
@@ -435,13 +449,15 @@ expression ()
 static void
 declaration ()
 {
-    STUB (0);
+    statement ();
 }
 
 static void
 printStatement ()
 {
-    STUB (0);
+    expression ();
+    consume (TOKEN_SEMICOLON, "Expect ';' after value.");
+    emitByte (OP_PRINT);
 }
 
 /** Compile a statement to the chunk.
@@ -451,6 +467,7 @@ statement ()
 {
     if (match (TOKEN_PRINT)) {
         printStatement ();
+        return;
     }
     STUB ("add more kinds of statements");
 }
@@ -472,14 +489,4 @@ compile (const char *source, Chunk *chunk)
 
     endCompiler ();
     return !parser.hadError;
-}
-
-/* Call the unused functions.
- * TODO remove this function.
- */
-void
-call_unused_in_compiler ()
-{
-    statement ();
-    STUB ("someone called me ...?");
 }

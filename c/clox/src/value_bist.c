@@ -14,6 +14,7 @@
 void
 bistValue ()
 {
+    printf ("BIST: %s ...\n", "bistValue");
     INVAR (IS_NUMBER (NUMBER_VAL (0)), "Value stores numbers");
     INVAR (IS_BOOL (BOOL_VAL (0)), "Value stores booleans");
     INVAR (IS_NIL (NIL_VAL), "Value stores nil");
@@ -51,4 +52,6 @@ bistValue ()
     INVAR (0 == array.count, "freeValueArray did not clear the count");
     INVAR (0 == array.capacity, "freeValueArray did not clear the capacity");
     INVAR (NULL == array.values, "freeValueArray did not null the code pointer");
+
+    printf ("BIST: %s ... done.\n", "bistValue");
 }

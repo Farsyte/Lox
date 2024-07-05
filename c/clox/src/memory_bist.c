@@ -11,6 +11,7 @@
 void
 bistMemory ()
 {
+    printf ("BIST: %s ...\n", "bistMemory");
     INVAR (8 == GROW_CAPACITY (0), "0 grows to 8");
     INVAR (16 == GROW_CAPACITY (8), "8 grows to 16");
     INVAR (32 == GROW_CAPACITY (16), "16 grows to 32");
@@ -85,4 +86,6 @@ bistMemory ()
         ptr = NULL;
         cap = 0;
     }
+
+    printf ("BIST: %s ... done.\n", "bistMemory");
 }

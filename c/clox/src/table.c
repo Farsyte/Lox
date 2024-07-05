@@ -54,10 +54,17 @@ freeTable (Table *table)
  * its bucket. If it is not, return a pointer to the
  * empty bucket to use.
  *
+ * This function requires the table to contain at least
+ * one Empty entry. Tombstones are recognized and do not
+ * terminate the loop, but if no match is found, returns
+ * the first tombstone.
+ *
  * @param entries the entry array
  * @param capacity the size of the array in entries
  * @param key the string to use for the key
- * @return the hash table bucket to use
+ * @returns the matching hash bucket if a match is found
+ * @returns otherwise, the first Tombstone encountered if any
+ * @returns otherwise, the actual Empty entry terminating the search
  */
 static Entry *
 findEntry (Entry *entries, int capacity, ObjString *key)
@@ -91,7 +98,8 @@ findEntry (Entry *entries, int capacity, ObjString *key)
  * @param table the hash table of interest
  * @param key the string to use as the key
  * @param value where to return the value for that key
- * @return true if the key was in the table
+ * @returns true if the key was in the table
+ * @returns false otherwise.
  */
 bool
 tableGet (Table *table, ObjString *key, Value *value)
@@ -151,7 +159,8 @@ adjustCapacity (Table *table, int capacity)
  * @param table the hash table of interest
  * @param key the string to use as the key
  * @param value the value to store for that key
- * @return true if this is a new key
+ * @returns true if this is a new key
+ * @returns false otherwise
  */
 bool
 tableSet (Table *table, ObjString *key, Value value)
@@ -177,7 +186,8 @@ tableSet (Table *table, ObjString *key, Value value)
  *
  * @param table the table of interest
  * @param key the key to remove
- * @return true if found, false if not.
+ * @returns true if found
+ * @returns false otherwise.
  */
 bool
 tableDelete (Table *table, ObjString *key)

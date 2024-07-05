@@ -12,7 +12,8 @@
  * call that needs it.
  *
  * @param type value from the TokenType enumeration
- * @return the name of the type as a string.
+ * @returns the name of the token type, if type is in the enumeration.
+ * @returns a static buffer with a synthesized type string, otherwise.
  */
 const char *
 tokenTypeString (TokenType type)
@@ -119,7 +120,7 @@ simpleInstruction (const char *name, int offset)
  *
  * @param chunk where to find the bytecode stream
  * @param offset where in the chunk to do work
- * @return offset of next bytecode in this chunk
+ * @returns offset of next bytecode in this chunk
  */
 int
 disassembleInstruction (Chunk *chunk, int offset)
@@ -159,6 +160,7 @@ disassembleInstruction (Chunk *chunk, int offset)
 
     case OP_NOT:                        return simpleInstruction ("OP_NOT", offset);
     case OP_NEGATE:                     return simpleInstruction ("OP_NEGATE", offset);
+    case OP_PRINT:                      return simpleInstruction ("OP_PRINT", offset);
     case OP_RETURN:                     return simpleInstruction ("OP_RETURN", offset);
 
         // *INDENT-ON*

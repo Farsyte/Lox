@@ -1,0 +1,4 @@
+[line 1] Error at 'or': Expect ';' after value.
+src/compiler.c:472: STUB Encountered in statement
+add more kinds of statements
+

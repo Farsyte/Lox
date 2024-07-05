@@ -74,6 +74,8 @@ freeVM ()
  * This adjusts the stack pointer so that several
  * values pushed do not overwrite each other.
  *
+ * @warning no protection from stack overflow.
+ *
  * @param value data to be pushed.
  */
 void
@@ -88,7 +90,9 @@ push (Value value)
  * This adjusts the stack pointer so that
  * the value returned is no longer on the stack.
  *
- * @return the value from the stack.
+ * @warning no protection from stack underflow.
+ *
+ * @returns the value from the stack.
  */
 Value
 pop ()
@@ -107,8 +111,10 @@ pop ()
  * a copy of the element below it.
  * And so on.
  *
+ * @warning no protection from stack underflow.
+ *
  * @param distance how far to dig down
- * @return the value from the stack.
+ * @returns the value from the stack.
  */
 Value
 peek (int distance)
@@ -122,7 +128,8 @@ peek (int distance)
  * and everything else (including 0 and 0.0) is true.
  *
  * @param value what to check
- * @return true if input is false or nil, else false
+ * @returns true if input is false or nil
+ * @returns false otherwise.
  */
 static bool
 isFalsey (Value value)
@@ -130,7 +137,7 @@ isFalsey (Value value)
     return IS_NIL (value) || (IS_BOOL (value) && !AS_BOOL (value));
 }
 
-/** Concatenate two strings
+/** Concatenate two strings on the stack
  */
 static void
 concatenate ()
@@ -156,7 +163,8 @@ concatenate ()
  * each per the bytecode definition, which may include
  * consuming inline values, or jumping around.
  *
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating which failure, if there was one
+ * @returns otherwise, a code indicating success
  */
 static InterpretResult
 run ()
@@ -260,9 +268,13 @@ run ()
             push (NUMBER_VAL (-AS_NUMBER (pop ())));
             break;
 
-        case OP_RETURN:
+        case OP_PRINT:
             printValue (pop ());
             printf ("\n");
+            break;
+
+        case OP_RETURN:
+            // Exit interpreter.
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
 #endif
@@ -280,7 +292,8 @@ run ()
  * to the start of the bytecode list, and runs it.
  *
  * @param chunk contains the bytecode sequence
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating a failure code if a failure occurs
+ * @returns a code indicating success if all went well
  */
 InterpretResult
 interpretChunk (Chunk *chunk)
@@ -296,7 +309,8 @@ interpretChunk (Chunk *chunk)
  * then interpret the bytecode.
  *
  * @param source contains Lux source code
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating a failure code if a failure occurs
+ * @returns a code indicating success if all went well
  */
 InterpretResult
 interpret (const char *source)

@@ -1,5 +1,7 @@
 #include "chunk.h"
 
+#include <stdio.h>
+
 /** @file chunk_bist.c
  * @brief Built-In Self Test for the CHUNK module.
  */
@@ -9,6 +11,7 @@
 void
 bistChunk ()
 {
+    printf ("BIST: %s ...\n", "bistChunk");
     Chunk chunk;
 
     initChunk (&chunk);
@@ -44,4 +47,6 @@ bistChunk ()
     INVAR (0 == chunk.count, "freeChunk did not clear the count");
     INVAR (0 == chunk.capacity, "freeChunk did not clear the capacity");
     INVAR (NULL == chunk.code, "freeChunk did not null the code pointer");
+
+    printf ("BIST: %s ... done.\n", "bistChunk");
 }
