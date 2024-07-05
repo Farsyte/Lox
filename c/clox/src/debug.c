@@ -119,6 +119,7 @@ simpleInstruction (const char *name, int offset)
 /** Print disassembly of a byte instruction OpCode.
  *
  * @param name string representing the instruction
+ * @param chunk wheret o find the bytecodes
  * @param offset of the instruction bytecode in the chunk
  * @returns offset of the next instruction in the chunk
  */
@@ -129,6 +130,25 @@ byteInstruction (const char *name, Chunk *chunk, int offset)
 
     printf ("%-16s %4d\n", name, slot);
     return offset + 2;
+}
+
+/** Print disassembly of a jump instruction OpCode.
+ *
+ * @param name string representing the instruction
+ * @param sign direction (forward or backward)
+ * @param chunk where to find the bytecodes
+ * @param offset of the instruction bytecode in the chunk
+ * @returns offset of the next instruction in the chunk
+ */
+static int
+jumpInstruction (const char *name, int sign, Chunk *chunk, int offset)
+{
+    uint16_t jump = (uint16_t) (chunk->code[offset + 1] << 8);
+
+    jump |= (uint16_t) (chunk->code[offset + 1] << 8);
+
+    printf ("%-16s %4d -> %d\n", name, offset, offset + 3 + sign * jump);
+    return offset + 3;
 }
 
 /** Disassemble one bytecode from a chunk.
@@ -182,7 +202,8 @@ disassembleInstruction (Chunk *chunk, int offset)
     case OP_NOT:                        return simpleInstruction ("OP_NOT", offset);
     case OP_NEGATE:                     return simpleInstruction ("OP_NEGATE", offset);
     case OP_PRINT:                      return simpleInstruction ("OP_PRINT", offset);
-    case OP_JUMP_IF_FALSE:              STUB(0); // return ...Instruction ("OP_JUMP_IF_FALSE", offset);
+    case OP_JUMP:                       return jumpInstruction ("OP_JUMP", 1, chunk, offset);
+    case OP_JUMP_IF_FALSE:              return jumpInstruction ("OP_JUMP_IF_FALSE", 1, chunk, offset);
     case OP_RETURN:                     return simpleInstruction ("OP_RETURN", offset);
 
         // *INDENT-ON*

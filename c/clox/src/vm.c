@@ -321,6 +321,11 @@ run ()
             printf ("\n");
             break;
 
+        case OP_JUMP:
+            offset = READ_SHORT ();
+            vm.ip += offset;
+            break;
+
         case OP_JUMP_IF_FALSE:
             offset = READ_SHORT ();
             if (isFalsey (peek (0)))

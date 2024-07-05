@@ -33,7 +33,8 @@ typedef enum {
     OP_NOT,                     ///< logical inversion
     OP_NEGATE,                  ///< invert the sign of the top of the stack
     OP_PRINT,                   ///< print the value on the top of the stack
-    OP_JUMP_IF_FALSE,           ///< relative branch if falsey is popped
+    OP_JUMP_IF_FALSE,           ///< conditional relative branch
+    OP_JUMP,                    ///< unconditional relative branch 
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing
