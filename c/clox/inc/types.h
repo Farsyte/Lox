@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdbool.h>
+
 /** @file types.h
  * @brief Collected Type Definitions
  *
@@ -43,7 +45,7 @@ typedef struct ParseRule ParseRule;
 
 // *INDENT-OFF*
 /** Pointer to a Parse Function */
-typedef void (*ParseFn) ();
+typedef void (*ParseFn) (bool canAssign);
 // *INDENT-ON*
 
 /** Base structure for Objects */

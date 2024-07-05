@@ -1,7 +1,8 @@
 * Cumulative Grammar Definitions
 
-As of §13.3.1 "Calling Superclass Methods -- Syntax"
-the current grammar definition is:
+In chapter 21 of the book, §21.1 "Statements", the book re-iterates
+the "statement" and "declaration" productions, in a slightly different
+order, and missing the "break" possibility added as a challenge.
 
 #+begin_src text
   program         → declaration* EOF ;

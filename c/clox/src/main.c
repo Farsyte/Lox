@@ -36,7 +36,7 @@ repl ()
 /** Read the content of a file into a string.
  *
  * @param path where to find the file
- * @return the content of the file, plus a '\0' terminator.
+ * @returns the content of the file, plus a '\0' terminator.
  *
  * Any failure will terminate the program abnormally with
  * an appropriate error message.
@@ -193,7 +193,7 @@ demo ()
  *
  * @param argc command line arg count
  * @param argv command line arg list
- * @return exit status values defined in "sysexits.h"
+ * @returns exit status values defined in "sysexits.h"
  *
  * Exit Status Values:
  * - 0: successful termination (EX_OK)

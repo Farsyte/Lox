@@ -1,0 +1,38 @@
+
+Disassembling code ...
+0000    1 OP_CONSTANT         0 'one'
+0002    | OP_PRINT
+0003    2 OP_TRUE
+0004    | OP_PRINT
+0005    3 OP_CONSTANT         1 '2'
+0007    | OP_CONSTANT         2 '1'
+0009    | OP_ADD
+0010    | OP_PRINT
+0011    4 OP_RETURN
+Disassembling code ... done.
+
+
+Executing ...
+stack: empty.
+0000    1 OP_CONSTANT         0 'one'
+stack: one
+0002    | OP_PRINT
+one
+stack: empty.
+0003    2 OP_TRUE
+stack: true
+0004    | OP_PRINT
+true
+stack: empty.
+0005    3 OP_CONSTANT         1 '2'
+stack: 2
+0007    | OP_CONSTANT         2 '1'
+stack: 2 1
+0009    | OP_ADD
+stack: 3
+0010    | OP_PRINT
+3
+stack: empty.
+0011    4 OP_RETURN
+Executing ... done.
+

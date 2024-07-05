@@ -1,5 +1,10 @@
 #include "vm.h"
 
+#include "chunk.h"
+#include "compiler.h"
+
+#include <stdio.h>
+
 /** @file vm_bist.c
  * @brief Built-In Self Test for the VM module.
  */
@@ -11,6 +16,8 @@ extern VM vm;                   // peek at VM state
 void
 bistVM ()
 {
+    printf ("BIST: %s ...\n", "bistVM");
+
     initVM ();
     INVAR (NULL == vm.chunk, "initVM did not null the chunk pointer.");
     INVAR (NULL == vm.ip, "initVM did not null the instruction pointer.");
@@ -34,5 +41,21 @@ bistVM ()
     INVAR (false == AS_BOOL (pop ()), "4th pop did not return first boolean value.");
     INVAR (IS_NIL (pop ()), "5th pop did not return nil value.");
 
+    {
+
+        // *INDENT-OFF*
+        const char source[] =
+            "print 1 + 2; // add and print\n"
+            "print 3 * 4; // mul and print\n"
+            ;
+        // *INDENT-ON*
+
+        InterpretResult result = interpret (source);
+
+        INVAR (INTERPRET_OK == result, "simple compilation failed");
+    }
+
     freeVM ();
+
+    printf ("BIST: %s ... done.\n", "bistVM");
 }

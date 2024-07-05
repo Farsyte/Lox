@@ -4,6 +4,8 @@
 #include "common.h"
 #include "scanner.h"
 
+#include <stdio.h>
+
 extern Scanner scanner;         // peek at scanner state
 
 /** @file compiler_bist.c
@@ -15,9 +17,11 @@ extern Scanner scanner;         // peek at scanner state
 void
 bistCompiler ()
 {
+    printf ("BIST: %s ...\n", "bistCompiler");
     // *INDENT-OFF*
     const char source[] =
-        "!(5 - 4 > 3 * 2 == !nil)"
+        "print 1 + 2; // add and print\n"
+        "print 3 * 4; // mul and print\n"
         ;
     // *INDENT-ON*
 
@@ -41,4 +45,6 @@ bistCompiler ()
     INVAR (ending_line == scanner.line, "initScaner must set scanner.line to 1.");
 
     freeChunk (&chunk);
+
+    printf ("BIST: %s ... done.\n", "bistCompiler");
 }

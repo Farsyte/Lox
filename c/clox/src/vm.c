@@ -55,6 +55,7 @@ initVM ()
     vm.ip = NULL;
     resetStack ();
     vm.objects = NULL;
+    initTable (&vm.globals);
     initTable (&vm.strings);
 }
 
@@ -66,6 +67,7 @@ void
 freeVM ()
 {
     freeTable (&vm.strings);
+    freeTable (&vm.globals);
     freeObjects ();
 }
 
@@ -73,6 +75,8 @@ freeVM ()
  *
  * This adjusts the stack pointer so that several
  * values pushed do not overwrite each other.
+ *
+ * @warning no protection from stack overflow.
  *
  * @param value data to be pushed.
  */
@@ -88,7 +92,9 @@ push (Value value)
  * This adjusts the stack pointer so that
  * the value returned is no longer on the stack.
  *
- * @return the value from the stack.
+ * @warning no protection from stack underflow.
+ *
+ * @returns the value from the stack.
  */
 Value
 pop ()
@@ -107,8 +113,10 @@ pop ()
  * a copy of the element below it.
  * And so on.
  *
+ * @warning no protection from stack underflow.
+ *
  * @param distance how far to dig down
- * @return the value from the stack.
+ * @returns the value from the stack.
  */
 Value
 peek (int distance)
@@ -122,7 +130,8 @@ peek (int distance)
  * and everything else (including 0 and 0.0) is true.
  *
  * @param value what to check
- * @return true if input is false or nil, else false
+ * @returns true if input is false or nil
+ * @returns false otherwise.
  */
 static bool
 isFalsey (Value value)
@@ -130,7 +139,7 @@ isFalsey (Value value)
     return IS_NIL (value) || (IS_BOOL (value) && !AS_BOOL (value));
 }
 
-/** Concatenate two strings
+/** Concatenate two strings on the stack
  */
 static void
 concatenate ()
@@ -156,7 +165,8 @@ concatenate ()
  * each per the bytecode definition, which may include
  * consuming inline values, or jumping around.
  *
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating which failure, if there was one
+ * @returns otherwise, a code indicating success
  */
 static InterpretResult
 run ()
@@ -167,6 +177,7 @@ run ()
 
 #define READ_BYTE()     (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define READ_STRING()   (AS_STRING(READ_CONSTANT()))
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
         printf ("stack:");
@@ -186,6 +197,7 @@ run ()
         // the switch.
 
         OpCode instruction;
+        ObjString *name;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -201,6 +213,36 @@ run ()
             break;
         case OP_FALSE:
             push (BOOL_VAL (false));
+            break;
+        case OP_POP:
+            (void) pop ();
+            break;
+
+        case OP_GET_GLOBAL:
+            name = READ_STRING ();
+            Value value;
+
+            if (!tableGet (&vm.globals, name, &value)) {
+                runtimeError ("Undefined variable '%s'.", name->chars);
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            push (value);
+            break;
+
+        case OP_DEFINE_GLOBAL:
+            name = READ_STRING ();
+
+            tableSet (&vm.globals, name, peek (0));
+            pop ();
+            break;
+
+        case OP_SET_GLOBAL:
+            name = READ_STRING ();
+            if (tableSet (&vm.globals, name, peek (0))) {
+                tableDelete (&vm.globals, name);
+                runtimeError ("Undefined variable '%s'.", name->chars);
+                return INTERPRET_RUNTIME_ERROR;
+            }
             break;
 
 #define BINARY_OP(valueType, op)                                        \
@@ -260,9 +302,13 @@ run ()
             push (NUMBER_VAL (-AS_NUMBER (pop ())));
             break;
 
-        case OP_RETURN:
+        case OP_PRINT:
             printValue (pop ());
             printf ("\n");
+            break;
+
+        case OP_RETURN:
+            // Exit interpreter.
 #ifdef  DEBUG_TRACE_EXECUTION
             printf ("Executing ... done.\n\n");
 #endif
@@ -270,6 +316,7 @@ run ()
 
         }
     }
+#undef  READ_STRING
 #undef  READ_CONSTANT
 #undef  READ_BYTE
 }
@@ -280,7 +327,8 @@ run ()
  * to the start of the bytecode list, and runs it.
  *
  * @param chunk contains the bytecode sequence
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating a failure code if a failure occurs
+ * @returns a code indicating success if all went well
  */
 InterpretResult
 interpretChunk (Chunk *chunk)
@@ -296,7 +344,8 @@ interpretChunk (Chunk *chunk)
  * then interpret the bytecode.
  *
  * @param source contains Lux source code
- * @return a code indicating success or (which) failure.
+ * @returns a code indicating a failure code if a failure occurs
+ * @returns a code indicating success if all went well
  */
 InterpretResult
 interpret (const char *source)

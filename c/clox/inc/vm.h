@@ -15,7 +15,8 @@ struct VM {
     uint8_t *ip;                ///< bytecode instruction pointer
     Value stack[STACK_MAX];     ///< storage for the data stack
     Value *sp;                  ///< data stack pointer
-    Table strings;
+    Table globals;              ///< hash table of global variables
+    Table strings;              ///< hash table for string deduplication
     Obj *objects;               ///< linked list of all objects
 };
 

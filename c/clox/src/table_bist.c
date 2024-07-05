@@ -2,6 +2,8 @@
 
 #include "object.h"
 
+#include <stdio.h>
+
 /** @file table_bist.c
  * @brief Built-In Self Test for the TABLE module.
  */
@@ -11,6 +13,7 @@
 void
 bistTable ()
 {
+    printf ("BIST: %s ...\n", "bistTable");
     Value val;
     Table table;
 
@@ -90,4 +93,6 @@ bistTable ()
     INVAR (0 == table2.count, "freeTable should set count to zero.");
     INVAR (0 == table2.capacity, "freeTable should set capacity to zero.");
     INVAR (NULL == table2.entries, "freeTable should set entries to NULL.");
+
+    printf ("BIST: %s ... done.\n", "bistTable");
 }

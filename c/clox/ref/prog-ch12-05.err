@@ -1,0 +1,8 @@
+[line 1] Error at 'class': Expect expression.
+[line 4] Error at 'this': Expect expression.
+[line 5] Error at '}': Expect expression.
+[line 8] Error at '(': Expect ';' after variable declaration.
+[line 9] Error at '.': Expect ';' after variable declaration.
+[line 10] Error at '.': Expect ';' after expression.
+[line 11] Error at '.': Expect ';' after expression.
+[line 13] Error at '(': Expect ';' after expression.
