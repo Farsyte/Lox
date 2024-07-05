@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /** @file compiler.c
  * @brief Compiler (Lox Parser)
@@ -36,13 +37,31 @@ typedef enum {
     PREC_PRIMARY,               // identifiers etc.
 } Precedence;
 
+/** Parse Rules
+ */
 struct ParseRule {
-    ParseFn prefix;
-    ParseFn infix;
-    Precedence precedence;
+    ParseFn prefix;             ///< call when token seen as unary operator
+    ParseFn infix;              ///< call when token seen as binary operator
+    Precedence precedence;      ///< operator precedence of binary operator
+};
+
+/** Local Variable
+ */
+struct Local {
+    Token name;                 ///< name of the local variable
+    int depth;                  ///< scope depth of block defining it
+};
+
+/** Compiler State
+ */
+struct Compiler {
+    Local locals[UINT8_COUNT];  ///< storage for local variables
+    int localCount;             ///< number of local variables in scope
+    int scopeDepth;             ///< number of blocks surrounding current code
 };
 
 Parser parser;                  ///< Storage for the parser state.
+Compiler *current = NULL;       ///< the current compiler state
 Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 /* Forward Declarations */
@@ -245,6 +264,83 @@ identifierConstant (Token *name)
     return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
 }
 
+/** See if two identifiers are the same.
+ *
+ * @param a 1st identifier to compare
+ * @param b 2nd identifier to compare
+ * @returns true if they are textually equal
+ * @returns false if they are distinct
+ */
+static bool
+identifiersEqual (Token *a, Token *b)
+{
+    if (a->length != b->length)
+        return false;
+    return 0 == memcmp (a->start, b->start, a->length);
+}
+
+/** Resolve a reference to a local variable.
+ *
+ * @param compiler the current compiler state
+ * @param name the identifier lexeme
+ * @returns -1 if the identifier was not found
+ * @returns the index of the match in the compiler locals
+ */
+static int
+resolveLocal (Compiler *compiler, Token *name)
+{
+    for (int i = compiler->localCount - 1; i >= 0; i--) {
+        Local *local = &compiler->locals[i];
+
+        if (identifiersEqual (name, &local->name)) {
+            if (local->depth == -1) {
+                error ("Can't read local variable in its own initializer.'");
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
+/** Add a local variable to the current scope.
+ */
+static void
+addLocal (Token name)
+{
+    if (current->localCount == UINT8_COUNT) {
+        error ("Too many local variables in function.");
+        return;
+    }
+    Local *local = &current->locals[current->localCount++];
+
+    local->name = name;
+    local->depth = -1;
+}
+
+/** Compile a local variable declaration.
+ */
+static void
+declareVariable ()
+{
+    if (current->scopeDepth == 0)
+        return;
+    Token *name = &parser.previous;
+
+    for (int i = current->localCount - 1; i >= 0; i--) {
+        Local *local = &current->locals[i];
+
+        if (local->depth != -1 && local->depth < current->scopeDepth) {
+            break;
+        }
+
+        if (identifiersEqual (name, &local->name)) {
+            error ("Already a variable with this name in this scope.");
+        }
+    }
+
+    addLocal (*name);
+}
+
 /** Construct a CONSTANT operation in the chunk.
  *
  * Emits OP_CONSTANT, then an immediate byte picking
@@ -258,6 +354,16 @@ emitConstant (Value value)
     emitBytes (OP_CONSTANT, makeConstant (value));
 }
 
+/** Initialize the state of the compiler
+ */
+static void
+initCompiler (Compiler *compiler)
+{
+    compiler->localCount = 0;
+    compiler->scopeDepth = 0;
+    current = compiler;
+}
+
 /** Shut down the compiler.
  */
 static void
@@ -269,6 +375,23 @@ endCompiler ()
         disassembleChunk (currentChunk (), "code");
     }
 #endif
+}
+
+static void
+beginScope ()
+{
+    current->scopeDepth++;
+}
+
+static void
+endScope ()
+{
+    current->scopeDepth--;
+    while (current->localCount > 0 && current->locals[current->localCount - 1].depth > current->scopeDepth) {
+        emitByte (OP_POP);
+        current->localCount--;
+    }
+
 }
 
 /** Compile a binary operation to the chunk.
@@ -357,13 +480,23 @@ string (bool canAssign)
 static void
 namedVariable (Token name, bool canAssign)
 {
-    uint8_t arg = identifierConstant (&name);
+    uint8_t getOp, setOp;
+    int arg = resolveLocal (current, &name);
+
+    if (arg != -1) {
+        getOp = OP_GET_LOCAL;
+        setOp = OP_SET_LOCAL;
+    } else {
+        arg = identifierConstant (&name);
+        getOp = OP_GET_GLOBAL;
+        setOp = OP_SET_GLOBAL;
+    }
 
     if (canAssign && match (TOKEN_EQUAL)) {
         expression ();
-        emitBytes (OP_SET_GLOBAL, arg);
+        emitBytes (setOp, (uint8_t) arg);
     } else {
-        emitBytes (OP_GET_GLOBAL, arg);
+        emitBytes (getOp, (uint8_t) arg);
     }
 }
 
@@ -484,16 +617,40 @@ parsePrecedence (Precedence precedence)
     }
 }
 
+/** Parse a variable
+ *
+ * @param error message to emit if this is not a variable
+ * @returns zero if we are inside a scope
+ * @returns otherwise, the index into the constant table
+ */
 static uint8_t
 parseVariable (const char *errorMessage)
 {
     consume (TOKEN_IDENTIFIER, errorMessage);
+    declareVariable ();
+    if (current->scopeDepth > 0)
+        return 0;
     return identifierConstant (&parser.previous);
+}
+
+/** Mark the local being defined as initialized.
+ *
+ * Note that "var x;" is really "var x = nil;" and thus
+ * leaves "x" in the initialized state here.
+ */
+static void
+markInitialized ()
+{
+    current->locals[current->localCount - 1].depth = current->scopeDepth;
 }
 
 static void
 defineVariable (uint8_t global)
 {
+    if (current->scopeDepth > 0) {
+        markInitialized ();
+        return;
+    }
     emitBytes (OP_DEFINE_GLOBAL, global);
 }
 
@@ -509,6 +666,15 @@ static void
 expression ()
 {
     parsePrecedence (PREC_ASSIGNMENT);
+}
+
+static void
+block ()
+{
+    while (!check (TOKEN_RIGHT_BRACE) && !check (TOKEN_EOF)) {
+        declaration ();
+    }
+    consume (TOKEN_RIGHT_BRACE, "Expect '}' after block.");
 }
 
 static void
@@ -594,9 +760,12 @@ synchronize ()
 static void
 statement ()
 {
-    // TODO add more kinds of statements
     if (match (TOKEN_PRINT)) {
         printStatement ();
+    } else if (match (TOKEN_LEFT_BRACE)) {
+        beginScope ();
+        block ();
+        endScope ();
     } else {
         expressionStatement ();
     }
@@ -608,6 +777,9 @@ bool
 compile (const char *source, Chunk *chunk)
 {
     initScanner (source);
+    Compiler compiler;
+
+    initCompiler (&compiler);
     compilingChunk = chunk;
     parser.hadError = false;
     parser.panicMode = false;

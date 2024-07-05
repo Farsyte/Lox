@@ -15,9 +15,11 @@ typedef enum {
     OP_TRUE,                    ///< Push a false onto the stack
     OP_FALSE,                   ///< Push a true onto the stack
     OP_POP,                     ///< discard the top value from the stack
-    OP_GET_GLOBAL,              ///< push value of variable onto the stack
+    OP_GET_LOCAL,               ///< push value of local variable onto the stack
+    OP_SET_LOCAL,               ///< pop top of stack into local variable
+    OP_GET_GLOBAL,              ///< push value of global variable onto the stack
     OP_DEFINE_GLOBAL,           ///< define a global variable
-    OP_SET_GLOBAL,              ///< pop top of stack into variable
+    OP_SET_GLOBAL,              ///< pop top of stack into global variable
 
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order

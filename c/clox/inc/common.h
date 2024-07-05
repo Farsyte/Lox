@@ -21,3 +21,6 @@
 
 /** Enable (or disable) execution tracing */
 #define DEBUG_TRACE_EXECUTION
+
+/** Number of distinct uint8_t values */
+#define UINT8_COUNT (UINT8_MAX + 1)

@@ -1,6 +1,0 @@
-.gitignore
-doxygen.err
-doxygen.log
-latex.err
-latex.log
-exclude-from-compare
