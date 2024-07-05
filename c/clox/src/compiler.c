@@ -22,7 +22,7 @@ struct Parser {
 
 /** Operator Precedence enumeration
  */
-enum Precedence {
+typedef enum {
     PREC_NONE,                  ///< "="
     PREC_ASSIGNMENT,            ///< "or"
     PREC_OR,                    ///< "and"
@@ -34,7 +34,7 @@ enum Precedence {
     PREC_UNARY,                 ///< "!", "-"
     PREC_CALL,                  ///< ".", "()"
     PREC_PRIMARY,               // identifiers etc.
-};
+} Precedence;
 
 struct ParseRule {
     ParseFn prefix;

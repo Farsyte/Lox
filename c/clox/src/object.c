@@ -1,6 +1,7 @@
 #include "object.h"
 
 #include "memory.h"
+#include "table.h"
 #include "vm.h"
 
 #include <stdio.h>
@@ -28,29 +29,59 @@ allocateObject (size_t size, ObjType type)
 /** Create a String object referring to the given content
  *
  * This function constructs a StringObj pointing to the
- * content provided.
+ * content provided. The string itself is also added to
+ * the master string table to allow deduplication (which
+ * is done before calling allocateString).
  *
  * @param chars start of the input string
  * @param length number of bytes in the input string
+ * @param hash precomputed hash value of the string data
  * @return a String object with a copy of that content
  */
 static ObjString *
-allocateString (char *chars, int length)
+allocateString (char *chars, int length, uint32_t hash)
 {
     ObjString *string = ALLOCATE_OBJ (ObjString, OBJ_STRING);
 
     string->length = length;
     string->chars = chars;
+    string->hash = hash;
+    tableSet (&vm.strings, string, NIL_VAL);
     return string;
+}
+
+/** Compute the hash value of the string.
+ *
+ * This uses the "FNV-1a" hash, which is both
+ * effective aind short.
+ *
+ * @param key start of the string to hash
+ * @param length number of bytes to include
+ * @return the 32-bit hash value of the string
+ */
+static uint32_t
+hashString (const char *key, int length)
+{
+    uint32_t hash = 216613626lu;
+
+    for (int i = 0; i < length; ++i) {
+        hash ^= (uint8_t) key[i];
+        hash *= 16777619;
+    }
+    return hash;
 }
 
 /** Create a String object referring to the given content
  *
- * This function constructs a StringObj pointing to the
- * content provided.
+ * This method TAKES OWNERSHIP of the memory containing the inbound
+ * string data.
  *
- * To be clear: this function DOES take ownership of the
- * memory chars points to.
+ * If there is a string in the VM's string table with the same length
+ * and sequence of bytes, free the inbound buffer and return the
+ * existing ObjString.
+ *
+ * Otherwise, use allocateString to create the ObjString and log the
+ * string (and the ObjString) in the string table.
  *
  * @param chars start of the input string
  * @param length number of bytes in the input string
@@ -59,17 +90,29 @@ allocateString (char *chars, int length)
 ObjString *
 takeString (char *chars, int length)
 {
-    return allocateString (chars, length);
+    uint32_t hash = hashString (chars, length);
+    ObjString *interned = tableFindString (&vm.strings, chars, length, hash);
+
+    if (interned != NULL) {
+        FREE_ARRAY (char, chars, length + 1);
+
+        return interned;
+    }
+
+    return allocateString (chars, length, hash);
 }
 
 /** Create a String object with a copy of the specified content
  *
- * This function copies the indicated string into freshly allocated
- * space on the heap, then uses allocateString to wrap a String Object
- * around it.
+ * This method DOES NOT TAKE OWNERSHIP of the memory containing the
+ * inbound string data.
  *
- * To be clear: this function DOES NOT take ownership of the
- * memory chars points to.
+ * If there is a string in the VM's string table with the same length
+ * and sequence of bytes, return the existing ObjString.
+ *
+ * Otherwise, copy the string data into freshly allocated heap memory,
+ * and use allocateString to create the ObjString and log the string
+ * (and the ObjString) in the string table.
  *
  * @param chars start of the input string
  * @param length number of bytes in the input string
@@ -78,16 +121,28 @@ takeString (char *chars, int length)
 ObjString *
 copyString (const char *chars, int length)
 {
+    uint32_t hash = hashString (chars, length);
+    ObjString *interned = tableFindString (&vm.strings, chars, length, hash);
+
+    if (interned != NULL)
+        return interned;
+
     char *heapChars = ALLOCATE (char, length + 1);
 
     memcpy (heapChars, chars, length);
     heapChars[length] = '\0';
-    return allocateString (heapChars, length);
+    return allocateString (heapChars, length, hash);
 }
 
+/** Print the value of a Value that is an Object.
+ *
+ * @param value copy of the Value to print.
+ */
 void
 printObject (Value value)
 {
+    INVAR (IS_OBJ (value), "inbound Value must be an Object.");
+
     switch (OBJ_TYPE (value)) {
 
         // *INDENT-OFF*
@@ -96,5 +151,5 @@ printObject (Value value)
 
         // *INDENT-ON*
     }
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted object type");
 }

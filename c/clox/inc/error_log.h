@@ -23,6 +23,19 @@
         exit(EX_OK);                            \
     } while (0)
 
+/** Indicate we reached "unreachable" code.
+ *
+ * This macro emits a message via ERROR_LOG indicating that we have
+ * reaced a point in the source code that should be unreachable,
+ * usually via an enum variable containing a value not in the
+ * enumeration, then terminates the program normally.
+ */
+#define UNREACHABLE(msg)                                \
+    do {                                                \
+        ERROR_LOG("Reached Unreachable Code!", 0, msg); \
+        abort();                                        \
+    } while (0)
+
 /** Abort if an invariant is violated.
  *
  * This macro checks that a condition is met. If not, ERROR_LOG

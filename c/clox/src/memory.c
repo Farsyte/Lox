@@ -50,13 +50,13 @@ freeObject (Obj * object)
     case OBJ_STRING:{
             ObjString *string = (ObjString *) object;
             FREE_ARRAY (char, string->chars, string->length + 1);
-
             FREE (ObjString, object);
+
             return;
         }
 
     }
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted object type");
 }
 
 /** Free all Objects.

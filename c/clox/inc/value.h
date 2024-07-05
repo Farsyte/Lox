@@ -8,12 +8,12 @@
 
 /** Enumeration of Value Types
  */
-enum ValueType {
+typedef enum {
     VAL_BOOL,                   ///< either TRUE or FALSE
     VAL_NIL,                    ///< just NIL
     VAL_NUMBER,                 ///< a floating point number
     VAL_OBJ,                    ///< an object on the heap
-};
+} ValueType;
 
 /** Representation of a Value.
  *

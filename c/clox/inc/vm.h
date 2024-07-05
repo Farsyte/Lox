@@ -1,11 +1,10 @@
 #pragma once
 
 #include "common.h"
+#include "table.h"
 #include "value.h"
 
 /** Maximum Stack Depth
- *
- * \todo consider using an expandable array.
  */
 #define STACK_MAX 256
 
@@ -16,16 +15,17 @@ struct VM {
     uint8_t *ip;                ///< bytecode instruction pointer
     Value stack[STACK_MAX];     ///< storage for the data stack
     Value *sp;                  ///< data stack pointer
+    Table strings;
     Obj *objects;               ///< linked list of all objects
 };
 
 /** Interpreter result
  */
-enum InterpretResult {
+typedef enum {
     INTERPRET_OK,               ///< everything went well
     INTERPRET_COMPILE_ERROR,    ///< error during compilation
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
-};
+} InterpretResult;
 
 extern VM vm;                   ///< export the singleton VM instance.
 

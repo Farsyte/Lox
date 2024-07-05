@@ -52,7 +52,8 @@ freeChunk (Chunk *chunk)
 /** Write an OpCode onto the end of the chunk.
  *
  * @param chunk what to write into
- * @param code value to add to it
+ * @param byte value to add to it
+ * @param line source line number for annotation
  */
 void
 writeChunk (Chunk *chunk, uint8_t byte, int line)

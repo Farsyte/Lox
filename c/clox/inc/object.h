@@ -13,9 +13,9 @@
 #define AS_CSTRING(value) (AS_STRING(value)->chars)
 
 /** Enumerate the possible object types. */
-enum ObjType {
+typedef enum {
     OBJ_STRING,                 ///< Object contains a string
-};
+} ObjType;
 
 /** Base structure for all Objects */
 struct Obj {
@@ -28,6 +28,7 @@ struct ObjString {
     Obj obj;                    ///< Inherit from Obj
     int length;                 ///< length of string
     char *chars;                ///< pointer to start of string
+    uint32_t hash;              ///< hash code for the string
 };
 
 extern ObjString *takeString (char *chars, int length);

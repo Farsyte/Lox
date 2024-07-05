@@ -22,19 +22,14 @@ valuesEqual (Value a, Value b)
     case VAL_BOOL:      return AS_BOOL(a) == AS_BOOL(b);
     case VAL_NIL:       return true;
     case VAL_NUMBER:    return AS_NUMBER(a) == AS_NUMBER(b);
-
-    case VAL_OBJ: {
-        ObjString *aString = AS_STRING(a);
-        ObjString *bString = AS_STRING(b);
-        return (aString->length == bString->length) &&
-            (0 == memcmp(aString->chars, bString->chars, aString->length));
-    }
+    case VAL_OBJ:       return AS_OBJ(a) == AS_OBJ(b);
 
         // *INDENT-ON*
 
     }
 
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted value type");
+    return false;
 }
 
 /** Initialize Value Array.
@@ -59,7 +54,7 @@ initValueArray (ValueArray *array)
 /** Write an OpCode onto the end of the array.
  *
  * @param array what to write into
- * @param code value to add to it
+ * @param value copy of the Value to add to it
  */
 void
 writeValueArray (ValueArray *array, Value value)
@@ -112,5 +107,5 @@ printValue (Value value)
         // *INDENT-ON*
 
     }
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted value type");
 }
