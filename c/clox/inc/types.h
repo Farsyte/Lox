@@ -69,3 +69,9 @@ typedef enum ObjType ObjType;
 
 /** String objects */
 typedef struct ObjString ObjString;
+
+/** Hash Table */
+typedef struct Table Table;
+
+/** Hash Table Entry */
+typedef struct Entry Entry;

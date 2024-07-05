@@ -4,6 +4,7 @@
 #include "compiler.h"
 #include "memory.h"
 #include "scanner.h"
+#include "table.h"
 #include "value.h"
 #include "vm.h"
 
@@ -28,6 +29,7 @@ bistAll ()
     bistMemory ();
     bistChunk ();
     bistValue ();
+    bistTable ();
     bistScanner ();
     bistCompiler ();
     bistVM ();
