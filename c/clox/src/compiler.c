@@ -293,6 +293,9 @@ resolveLocal (Compiler *compiler, Token *name)
         Local *local = &compiler->locals[i];
 
         if (identifiersEqual (name, &local->name)) {
+            if (local->depth == -1) {
+                error ("Can't read local variable in its own initializer.'");
+            }
             return i;
         }
     }
@@ -311,7 +314,7 @@ addLocal (Token name)
     Local *local = &current->locals[current->localCount++];
 
     local->name = name;
-    local->depth = current->scopeDepth;
+    local->depth = -1;
 }
 
 /** Compile a local variable declaration.
@@ -614,6 +617,12 @@ parsePrecedence (Precedence precedence)
     }
 }
 
+/** Parse a variable
+ *
+ * @param error message to emit if this is not a variable
+ * @returns zero if we are inside a scope
+ * @returns otherwise, the index into the constant table
+ */
 static uint8_t
 parseVariable (const char *errorMessage)
 {
@@ -624,10 +633,22 @@ parseVariable (const char *errorMessage)
     return identifierConstant (&parser.previous);
 }
 
+/** Mark the local being defined as initialized.
+ *
+ * Note that "var x;" is really "var x = nil;" and thus
+ * leaves "x" in the initialized state here.
+ */
+static void
+markInitialized ()
+{
+    current->locals[current->localCount - 1].depth = current->scopeDepth;
+}
+
 static void
 defineVariable (uint8_t global)
 {
     if (current->scopeDepth > 0) {
+        markInitialized ();
         return;
     }
     emitBytes (OP_DEFINE_GLOBAL, global);
