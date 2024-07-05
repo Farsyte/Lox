@@ -1,8 +1,6 @@
-[line 1] Error at 'var': Expect expression.
 [line 2] Error at '{': Expect expression.
 [line 3] Error at 'fun': Expect expression.
 [line 4] Error at 'a': Expect expression.
 [line 5] Error at '}': Expect expression.
-[line 8] Error at 'var': Expect expression.
 [line 9] Error at 'showA': Expect expression.
 [line 10] Error at '}': Expect expression.

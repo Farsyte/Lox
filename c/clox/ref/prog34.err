@@ -1,6 +1,4 @@
-[line 2] Error at 'var': Expect expression.
 [line 3] Error at 'for': Expect expression.
-[line 3] Error at 'var': Expect expression.
 [line 3] Error at 'j': Expect expression.
 [line 3] Error at 'j': Expect expression.
 [line 4] Error at 'if': Expect expression.
@@ -13,7 +11,6 @@
 [line 14] Error at '}': Expect expression.
 [line 15] Error at 'j': Expect expression.
 [line 16] Error at '}': Expect expression.
-[line 18] Error at 'var': Expect expression.
 [line 19] Error at 'for': Expect expression.
 [line 19] Error at 'i': Expect expression.
 [line 19] Error at 'i': Expect expression.

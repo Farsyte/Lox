@@ -1,9 +1,8 @@
 [line 1] Error at 'class': Expect expression.
-[line 3] Error at 'var': Expect expression.
 [line 4] Error at 'this': Expect expression.
 [line 5] Error at '}': Expect expression.
-[line 8] Error at 'var': Expect expression.
-[line 9] Error at 'var': Expect expression.
+[line 8] Error at 'Cake': Expect expression.
+[line 9] Error at 'cake': Expect expression.
 [line 10] Error at 'cake': Expect expression.
 [line 11] Error at 'cake': Expect expression.
 [line 13] Error at 't': Expect expression.

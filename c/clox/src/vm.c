@@ -55,6 +55,7 @@ initVM ()
     vm.ip = NULL;
     resetStack ();
     vm.objects = NULL;
+    initTable (&vm.globals);
     initTable (&vm.strings);
 }
 
@@ -66,6 +67,7 @@ void
 freeVM ()
 {
     freeTable (&vm.strings);
+    freeTable (&vm.globals);
     freeObjects ();
 }
 
@@ -175,6 +177,7 @@ run ()
 
 #define READ_BYTE()     (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define READ_STRING()   (AS_STRING(READ_CONSTANT()))
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
         printf ("stack:");
@@ -212,6 +215,12 @@ run ()
             break;
         case OP_POP:
             (void) pop ();
+            break;
+        case OP_DEFINE_GLOBAL:
+            ObjString *name = READ_STRING ();
+
+            tableSet (&vm.globals, name, peek (0));
+            pop ();
             break;
 
 #define BINARY_OP(valueType, op)                                        \
@@ -285,6 +294,7 @@ run ()
 
         }
     }
+#undef  READ_STRING
 #undef  READ_CONSTANT
 #undef  READ_BYTE
 }
