@@ -1,1 +1,3 @@
 [line 1] Error at 'fun': Expect expression.
+[line 1] Error at 'first': Expect expression.
+[line 1] Error at '}': Expect expression.

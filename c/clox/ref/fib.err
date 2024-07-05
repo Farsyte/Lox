@@ -1,1 +1,9 @@
 [line 13] Error at 'fun': Expect expression.
+[line 14] Error at 'if': Expect expression.
+[line 14] Error at 'return': Expect expression.
+[line 15] Error at 'return': Expect expression.
+[line 16] Error at '}': Expect expression.
+[line 18] Error at 'var': Expect expression.
+[line 19] Error at 'fib': Expect expression.
+[line 20] Error at 'var': Expect expression.
+[line 21] Error at 'after': Expect expression.

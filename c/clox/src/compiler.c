@@ -50,6 +50,7 @@ Chunk *compilingChunk;          ///< chunk currently being compiled.
 static void expression ();
 static void statement ();
 static void declaration ();
+static void synchronize ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
 
@@ -460,6 +461,8 @@ static void
 declaration ()
 {
     statement ();
+    if (parser.panicMode)
+        synchronize ();
 }
 
 static void
@@ -468,6 +471,39 @@ printStatement ()
     expression ();
     consume (TOKEN_SEMICOLON, "Expect ';' after value.");
     emitByte (OP_PRINT);
+}
+
+static void
+synchronize ()
+{
+    parser.panicMode = false;
+
+    while (parser.current.type != TOKEN_EOF) {
+        if (parser.previous.type == TOKEN_SEMICOLON)
+            return;
+
+        switch (parser.current.type) {
+
+            // *INDENT_OFF*
+
+        case TOKEN_CLASS:
+        case TOKEN_FUN:
+        case TOKEN_VAR:
+        case TOKEN_FOR:
+        case TOKEN_IF:
+        case TOKEN_WHILE:
+        case TOKEN_PRINT:
+        case TOKEN_RETURN:
+            return;
+
+        default:
+            break;
+
+            // *INDENT_ON*
+        }
+
+        advance ();
+    }
 }
 
 /** Compile a statement to the chunk.

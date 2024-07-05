@@ -57,9 +57,12 @@ help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
 	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null
 
+# many .lox test scripts are expected to error.
+# adjust later when nearly all are expected to succeed.
+
 $(LOGD)%.out:	$(LOXD)%.lox $(PROG)
 	$P '  %-6s %s\n' "$(MAIN)" "$*"
-	$C $(PROG) "$<" > "$(LOGD)$*.out" 2> "$(LOGD)$*.err"
+	$C $(PROG) "$<" > "$(LOGD)$*.out" 2> "$(LOGD)$*.err" || true
 
 # format: reformat all source files.
 #
