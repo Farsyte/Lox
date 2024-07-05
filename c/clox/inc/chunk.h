@@ -9,7 +9,7 @@
 
 /** Enumerate defined operation codes.
  */
-enum OpCode {
+typedef enum {
     OP_CONSTANT,                ///< Push a constant onto the stack
     OP_NIL,                     ///< Push a nil onto the stack
     OP_TRUE,                    ///< Push a false onto the stack
@@ -29,7 +29,7 @@ enum OpCode {
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing
-};
+} OpCode;
 
 /** Dynamic Array of Instructions
  */

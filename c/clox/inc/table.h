@@ -3,18 +3,19 @@
 #include "common.h"
 #include "value.h"
 
-/** Hash Table Entry */
+/** Hash Table Entry
+ */
 struct Entry {
-    ObjString *key;
-    Value value;
+    ObjString *key;             ///< key (must be interned)
+    Value value;                ///< value (any object)
 };
 
 /** Hash table
  */
 struct Table {
-    int count;
-    int capacity;
-    Entry *entries;
+    int count;                  ///< number of entries including tombstones
+    int capacity;               ///< total current capacity of entries
+    Entry *entries;             ///< array of entries
 };
 
 extern void initTable (Table *table);

@@ -5,8 +5,6 @@
 #include "value.h"
 
 /** Maximum Stack Depth
- *
- * \todo consider using an expandable array.
  */
 #define STACK_MAX 256
 
@@ -23,11 +21,11 @@ struct VM {
 
 /** Interpreter result
  */
-enum InterpretResult {
+typedef enum {
     INTERPRET_OK,               ///< everything went well
     INTERPRET_COMPILE_ERROR,    ///< error during compilation
     INTERPRET_RUNTIME_ERROR,    ///< error during interpretation
-};
+} InterpretResult;
 
 extern VM vm;                   ///< export the singleton VM instance.
 

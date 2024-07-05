@@ -4,7 +4,7 @@
 
 /** Enumerated Token Types.
  */
-enum TokenType {
+typedef enum {
 
     // Single-character tokens.
     TOKEN_LEFT_PAREN,           ///< "("
@@ -54,7 +54,7 @@ enum TokenType {
 
     TOKEN_ERROR,                ///< not a valid token
     TOKEN_EOF,                  ///< end of the file
-};
+} TokenType;
 
 /** Data associated with each token.
  *

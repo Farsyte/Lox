@@ -28,7 +28,7 @@ valuesEqual (Value a, Value b)
 
     }
 
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted value type");
     return false;
 }
 
@@ -54,7 +54,7 @@ initValueArray (ValueArray *array)
 /** Write an OpCode onto the end of the array.
  *
  * @param array what to write into
- * @param code value to add to it
+ * @param value copy of the Value to add to it
  */
 void
 writeValueArray (ValueArray *array, Value value)
@@ -107,5 +107,5 @@ printValue (Value value)
         // *INDENT-ON*
 
     }
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted value type");
 }

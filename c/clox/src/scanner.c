@@ -250,7 +250,7 @@ skipWhitespace ()
  * @param start the offset into the lexeme for comparison
  * @param length the length to compare
  * @param rest the string to compare to the rest of the lexeme
- * @param token type
+ * @param type provides the default token type
  * @return provided type on a match, or TOKEN_IDENTIFIER if not.
  */
 static TokenType

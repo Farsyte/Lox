@@ -118,7 +118,7 @@ simpleInstruction (const char *name, int offset)
 /** Disassemble one bytecode from a chunk.
  *
  * @param chunk where to find the bytecode stream
- * @param which bytecode to disassemble
+ * @param offset where in the chunk to do work
  * @return offset of next bytecode in this chunk
  */
 int

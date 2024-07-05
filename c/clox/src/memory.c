@@ -56,7 +56,7 @@ freeObject (Obj * object)
         }
 
     }
-    STUB ("Report runtime error (Reached UNREACHABLE code).");
+    UNREACHABLE ("corrupted object type");
 }
 
 /** Free all Objects.

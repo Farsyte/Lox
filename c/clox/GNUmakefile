@@ -18,18 +18,17 @@ LOGD            := log/
 # expected refernce logs.
 REFD            := ref/
 
-
 # Inherit recurive build behaviors from parent
 include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
 # tests: run power-on and built-in self tests.
+
 #
 # NOTE: a nonzero exit status from BIST is now treated
 # as a build failure.
 
-
 tests::         $(PROG)
-	make -k demo bist repl help
+	$M -k -j demo bist repl help
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
@@ -70,6 +69,10 @@ format::        $(PROG)
 # This subproject uses DOXYGEN to extract API documents
 # from the source code, and is configured to create
 # a tree of HTML files and a PDF.
+
+docs::          doc/html/index.html
+
+# latex: generate the (large) PDF of all docs.
 #
 # To generate the PDF, you will need to install
 # - texlive, to get pdflatex and friends
@@ -77,7 +80,7 @@ format::        $(PROG)
 # installation package names may vary, the above are the
 # package names for "Pop! OS" (an Ubuntu variant).
 
-docs::          doc/html/index.html doc/latex/refman.pdf
+latex::         doc/latex/refman.pdf
 
 clean::
 	$X doc/html/search/*
@@ -87,7 +90,7 @@ clean::
 doc/html/index.html:    doc/Doxyfile $(PROG)
 	$C [ -d log ] || mkdir -p log
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
-	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err
+	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err </dev/null
 
 doc/latex/refman.pdf:   doc/html/index.html
 	$P '  %-14s %s\n' "PDFLATEX" "doc/refman.pdf"
@@ -98,14 +101,14 @@ doc/latex/refman.pdf:   doc/html/index.html
 
 stubs::
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
-	$C grep -ni '\<stub\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no STUBs found.'
+	$C grep -ni '^ *\<STUB\> (' $(SRCD)*.c $(INCD)*.h /dev/null || true
 
 # The presence of "TODO" comments is not a build error, but expose
 # where they all are to point out what needs to be implemented soon.
 
 todos::
 	$P '  %-14s %s\n' "FIND TODOs" "$(INCD)*.h $(SRCD)*.c"
-	$C grep -ni '\<todo\>' $(SRCD)*.c $(INCD)*.h /dev/null || echo '... no TODOs found.'
+	$C grep -ni '\<todo\>' $(SRCD)*.c $(INCD)*.h /dev/null || true
 
 # Maintain a "TAGS" file for emacs.
 
@@ -130,14 +133,11 @@ tags::          $(INCS) $(SRCS) GNUmakefile
 # that takes a while.
 
 cycle::
-	$M -k -j $(PROG)
+	$M -k -j
 	$M -k format
-	$M -k tests
+	$M -k -j ctags etags tests docs
 	$M -k stubs
 	$M -k todos
-
-longer::	cycle
-	$M -k etags ctags docs
 
 world::
 	$M longer
