@@ -1,8 +1,7 @@
 [line 13] Error at 'fun': Expect expression.
-[line 14] Error at 'if': Expect expression.
 [line 14] Error at 'return': Expect expression.
 [line 15] Error at 'return': Expect expression.
 [line 16] Error at '}': Expect expression.
-[line 18] Error at '(': Expect ';' after variable declaration.
-[line 19] Error at '(': Expect ';' after value.
-[line 20] Error at '(': Expect ';' after variable declaration.
+[line 21] Error at '(': Expect ';' after variable declaration.
+[line 22] Error at '(': Expect ';' after value.
+[line 23] Error at '(': Expect ';' after variable declaration.

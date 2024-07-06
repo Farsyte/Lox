@@ -15,6 +15,9 @@ fun fib(n) {
     return fib(n - 1) + fib(n - 2);
 }
 
+// IMPORTANT: turn off all debug output
+// the moment any call is made to clock().
+
 var before = clock();
 print fib(40);
 var after = clock();

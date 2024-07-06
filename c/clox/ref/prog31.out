@@ -1,0 +1,371 @@
+
+Disassembling code ...
+0000    3 OP_CONSTANT         1 'global a'
+0002    | OP_DEFINE_GLOBAL    0 'a'
+0004    4 OP_CONSTANT         3 'global b'
+0006    | OP_DEFINE_GLOBAL    2 'b'
+0008    5 OP_CONSTANT         5 'global c'
+0010    | OP_DEFINE_GLOBAL    4 'c'
+0012    7 OP_CONSTANT         6 'outer a'
+0014    8 OP_CONSTANT         7 'outer b'
+0016   10 OP_CONSTANT         8 'inner a'
+0018   12 OP_GET_LOCAL        2
+0020    | OP_CONSTANT         9 'inner a'
+0022    | OP_EQUAL
+0023    | OP_JUMP_IF_FALSE   23 -> 36
+0026    | OP_POP
+0027    | OP_CONSTANT        10 'PASS: a = '
+0029    | OP_GET_LOCAL        2
+0031    | OP_ADD
+0032    | OP_PRINT
+0033    | OP_JUMP            33 -> 43
+0036    | OP_POP
+0037    | OP_CONSTANT        11 'FAIL: a = '
+0039    | OP_GET_LOCAL        2
+0041    | OP_ADD
+0042    | OP_PRINT
+0043   13 OP_GET_LOCAL        1
+0045    | OP_CONSTANT        12 'outer b'
+0047    | OP_EQUAL
+0048    | OP_JUMP_IF_FALSE   48 -> 61
+0051    | OP_POP
+0052    | OP_CONSTANT        13 'PASS: b = '
+0054    | OP_GET_LOCAL        1
+0056    | OP_ADD
+0057    | OP_PRINT
+0058    | OP_JUMP            58 -> 68
+0061    | OP_POP
+0062    | OP_CONSTANT        14 'FAIL: b = '
+0064    | OP_GET_LOCAL        1
+0066    | OP_ADD
+0067    | OP_PRINT
+0068   14 OP_GET_GLOBAL      15 'c'
+0070    | OP_CONSTANT        16 'global c'
+0072    | OP_EQUAL
+0073    | OP_JUMP_IF_FALSE   73 -> 86
+0076    | OP_POP
+0077    | OP_CONSTANT        17 'PASS: c = '
+0079    | OP_GET_GLOBAL      18 'c'
+0081    | OP_ADD
+0082    | OP_PRINT
+0083    | OP_JUMP            83 -> 93
+0086    | OP_POP
+0087    | OP_CONSTANT        19 'FAIL: c = '
+0089    | OP_GET_GLOBAL      20 'c'
+0091    | OP_ADD
+0092    | OP_PRINT
+0093   15 OP_POP
+0094   16 OP_GET_LOCAL        0
+0096    | OP_CONSTANT        21 'outer a'
+0098    | OP_EQUAL
+0099    | OP_JUMP_IF_FALSE   99 -> 112
+0102    | OP_POP
+0103    | OP_CONSTANT        22 'PASS: a = '
+0105    | OP_GET_LOCAL        0
+0107    | OP_ADD
+0108    | OP_PRINT
+0109    | OP_JUMP           109 -> 119
+0112    | OP_POP
+0113    | OP_CONSTANT        23 'FAIL: a = '
+0115    | OP_GET_LOCAL        0
+0117    | OP_ADD
+0118    | OP_PRINT
+0119   17 OP_GET_LOCAL        1
+0121    | OP_CONSTANT        24 'outer b'
+0123    | OP_EQUAL
+0124    | OP_JUMP_IF_FALSE  124 -> 137
+0127    | OP_POP
+0128    | OP_CONSTANT        25 'PASS: b = '
+0130    | OP_GET_LOCAL        1
+0132    | OP_ADD
+0133    | OP_PRINT
+0134    | OP_JUMP           134 -> 144
+0137    | OP_POP
+0138    | OP_CONSTANT        26 'FAIL: b = '
+0140    | OP_GET_LOCAL        1
+0142    | OP_ADD
+0143    | OP_PRINT
+0144   18 OP_GET_GLOBAL      27 'c'
+0146    | OP_CONSTANT        28 'global c'
+0148    | OP_EQUAL
+0149    | OP_JUMP_IF_FALSE  149 -> 162
+0152    | OP_POP
+0153    | OP_CONSTANT        29 'PASS: c = '
+0155    | OP_GET_GLOBAL      30 'c'
+0157    | OP_ADD
+0158    | OP_PRINT
+0159    | OP_JUMP           159 -> 169
+0162    | OP_POP
+0163    | OP_CONSTANT        31 'FAIL: c = '
+0165    | OP_GET_GLOBAL      32 'c'
+0167    | OP_ADD
+0168    | OP_PRINT
+0169   19 OP_POP
+0170    | OP_POP
+0171   20 OP_GET_GLOBAL      33 'a'
+0173    | OP_CONSTANT        34 'global a'
+0175    | OP_EQUAL
+0176    | OP_JUMP_IF_FALSE  176 -> 189
+0179    | OP_POP
+0180    | OP_CONSTANT        35 'PASS: a = '
+0182    | OP_GET_GLOBAL      36 'a'
+0184    | OP_ADD
+0185    | OP_PRINT
+0186    | OP_JUMP           186 -> 196
+0189    | OP_POP
+0190    | OP_CONSTANT        37 'FAIL: a = '
+0192    | OP_GET_GLOBAL      38 'a'
+0194    | OP_ADD
+0195    | OP_PRINT
+0196   21 OP_GET_GLOBAL      39 'b'
+0198    | OP_CONSTANT        40 'global b'
+0200    | OP_EQUAL
+0201    | OP_JUMP_IF_FALSE  201 -> 214
+0204    | OP_POP
+0205    | OP_CONSTANT        41 'PASS: b = '
+0207    | OP_GET_GLOBAL      42 'b'
+0209    | OP_ADD
+0210    | OP_PRINT
+0211    | OP_JUMP           211 -> 221
+0214    | OP_POP
+0215    | OP_CONSTANT        43 'FAIL: b = '
+0217    | OP_GET_GLOBAL      44 'b'
+0219    | OP_ADD
+0220    | OP_PRINT
+0221   22 OP_GET_GLOBAL      45 'c'
+0223    | OP_CONSTANT        46 'global c'
+0225    | OP_EQUAL
+0226    | OP_JUMP_IF_FALSE  226 -> 239
+0229    | OP_POP
+0230    | OP_CONSTANT        47 'PASS: c = '
+0232    | OP_GET_GLOBAL      48 'c'
+0234    | OP_ADD
+0235    | OP_PRINT
+0236    | OP_JUMP           236 -> 246
+0239    | OP_POP
+0240    | OP_CONSTANT        49 'FAIL: c = '
+0242    | OP_GET_GLOBAL      50 'c'
+0244    | OP_ADD
+0245    | OP_PRINT
+0246   23 OP_RETURN
+Disassembling code ... done.
+
+
+Executing ...
+stack: empty.
+0000    3 OP_CONSTANT         1 'global a'
+stack: global a
+0002    | OP_DEFINE_GLOBAL    0 'a'
+stack: empty.
+0004    4 OP_CONSTANT         3 'global b'
+stack: global b
+0006    | OP_DEFINE_GLOBAL    2 'b'
+stack: empty.
+0008    5 OP_CONSTANT         5 'global c'
+stack: global c
+0010    | OP_DEFINE_GLOBAL    4 'c'
+stack: empty.
+0012    7 OP_CONSTANT         6 'outer a'
+stack: outer a
+0014    8 OP_CONSTANT         7 'outer b'
+stack: outer a outer b
+0016   10 OP_CONSTANT         8 'inner a'
+stack: outer a outer b inner a
+0018   12 OP_GET_LOCAL        2
+stack: outer a outer b inner a inner a
+0020    | OP_CONSTANT         9 'inner a'
+stack: outer a outer b inner a inner a inner a
+0022    | OP_EQUAL
+stack: outer a outer b inner a true
+0023    | OP_JUMP_IF_FALSE   23 -> 36
+stack: outer a outer b inner a true
+0026    | OP_POP
+stack: outer a outer b inner a
+0027    | OP_CONSTANT        10 'PASS: a = '
+stack: outer a outer b inner a PASS: a = 
+0029    | OP_GET_LOCAL        2
+stack: outer a outer b inner a PASS: a =  inner a
+0031    | OP_ADD
+stack: outer a outer b inner a PASS: a = inner a
+0032    | OP_PRINT
+PASS: a = inner a
+stack: outer a outer b inner a
+0033    | OP_JUMP            33 -> 43
+stack: outer a outer b inner a
+0043   13 OP_GET_LOCAL        1
+stack: outer a outer b inner a outer b
+0045    | OP_CONSTANT        12 'outer b'
+stack: outer a outer b inner a outer b outer b
+0047    | OP_EQUAL
+stack: outer a outer b inner a true
+0048    | OP_JUMP_IF_FALSE   48 -> 61
+stack: outer a outer b inner a true
+0051    | OP_POP
+stack: outer a outer b inner a
+0052    | OP_CONSTANT        13 'PASS: b = '
+stack: outer a outer b inner a PASS: b = 
+0054    | OP_GET_LOCAL        1
+stack: outer a outer b inner a PASS: b =  outer b
+0056    | OP_ADD
+stack: outer a outer b inner a PASS: b = outer b
+0057    | OP_PRINT
+PASS: b = outer b
+stack: outer a outer b inner a
+0058    | OP_JUMP            58 -> 68
+stack: outer a outer b inner a
+0068   14 OP_GET_GLOBAL      15 'c'
+stack: outer a outer b inner a global c
+0070    | OP_CONSTANT        16 'global c'
+stack: outer a outer b inner a global c global c
+0072    | OP_EQUAL
+stack: outer a outer b inner a true
+0073    | OP_JUMP_IF_FALSE   73 -> 86
+stack: outer a outer b inner a true
+0076    | OP_POP
+stack: outer a outer b inner a
+0077    | OP_CONSTANT        17 'PASS: c = '
+stack: outer a outer b inner a PASS: c = 
+0079    | OP_GET_GLOBAL      18 'c'
+stack: outer a outer b inner a PASS: c =  global c
+0081    | OP_ADD
+stack: outer a outer b inner a PASS: c = global c
+0082    | OP_PRINT
+PASS: c = global c
+stack: outer a outer b inner a
+0083    | OP_JUMP            83 -> 93
+stack: outer a outer b inner a
+0093   15 OP_POP
+stack: outer a outer b
+0094   16 OP_GET_LOCAL        0
+stack: outer a outer b outer a
+0096    | OP_CONSTANT        21 'outer a'
+stack: outer a outer b outer a outer a
+0098    | OP_EQUAL
+stack: outer a outer b true
+0099    | OP_JUMP_IF_FALSE   99 -> 112
+stack: outer a outer b true
+0102    | OP_POP
+stack: outer a outer b
+0103    | OP_CONSTANT        22 'PASS: a = '
+stack: outer a outer b PASS: a = 
+0105    | OP_GET_LOCAL        0
+stack: outer a outer b PASS: a =  outer a
+0107    | OP_ADD
+stack: outer a outer b PASS: a = outer a
+0108    | OP_PRINT
+PASS: a = outer a
+stack: outer a outer b
+0109    | OP_JUMP           109 -> 119
+stack: outer a outer b
+0119   17 OP_GET_LOCAL        1
+stack: outer a outer b outer b
+0121    | OP_CONSTANT        24 'outer b'
+stack: outer a outer b outer b outer b
+0123    | OP_EQUAL
+stack: outer a outer b true
+0124    | OP_JUMP_IF_FALSE  124 -> 137
+stack: outer a outer b true
+0127    | OP_POP
+stack: outer a outer b
+0128    | OP_CONSTANT        25 'PASS: b = '
+stack: outer a outer b PASS: b = 
+0130    | OP_GET_LOCAL        1
+stack: outer a outer b PASS: b =  outer b
+0132    | OP_ADD
+stack: outer a outer b PASS: b = outer b
+0133    | OP_PRINT
+PASS: b = outer b
+stack: outer a outer b
+0134    | OP_JUMP           134 -> 144
+stack: outer a outer b
+0144   18 OP_GET_GLOBAL      27 'c'
+stack: outer a outer b global c
+0146    | OP_CONSTANT        28 'global c'
+stack: outer a outer b global c global c
+0148    | OP_EQUAL
+stack: outer a outer b true
+0149    | OP_JUMP_IF_FALSE  149 -> 162
+stack: outer a outer b true
+0152    | OP_POP
+stack: outer a outer b
+0153    | OP_CONSTANT        29 'PASS: c = '
+stack: outer a outer b PASS: c = 
+0155    | OP_GET_GLOBAL      30 'c'
+stack: outer a outer b PASS: c =  global c
+0157    | OP_ADD
+stack: outer a outer b PASS: c = global c
+0158    | OP_PRINT
+PASS: c = global c
+stack: outer a outer b
+0159    | OP_JUMP           159 -> 169
+stack: outer a outer b
+0169   19 OP_POP
+stack: outer a
+0170    | OP_POP
+stack: empty.
+0171   20 OP_GET_GLOBAL      33 'a'
+stack: global a
+0173    | OP_CONSTANT        34 'global a'
+stack: global a global a
+0175    | OP_EQUAL
+stack: true
+0176    | OP_JUMP_IF_FALSE  176 -> 189
+stack: true
+0179    | OP_POP
+stack: empty.
+0180    | OP_CONSTANT        35 'PASS: a = '
+stack: PASS: a = 
+0182    | OP_GET_GLOBAL      36 'a'
+stack: PASS: a =  global a
+0184    | OP_ADD
+stack: PASS: a = global a
+0185    | OP_PRINT
+PASS: a = global a
+stack: empty.
+0186    | OP_JUMP           186 -> 196
+stack: empty.
+0196   21 OP_GET_GLOBAL      39 'b'
+stack: global b
+0198    | OP_CONSTANT        40 'global b'
+stack: global b global b
+0200    | OP_EQUAL
+stack: true
+0201    | OP_JUMP_IF_FALSE  201 -> 214
+stack: true
+0204    | OP_POP
+stack: empty.
+0205    | OP_CONSTANT        41 'PASS: b = '
+stack: PASS: b = 
+0207    | OP_GET_GLOBAL      42 'b'
+stack: PASS: b =  global b
+0209    | OP_ADD
+stack: PASS: b = global b
+0210    | OP_PRINT
+PASS: b = global b
+stack: empty.
+0211    | OP_JUMP           211 -> 221
+stack: empty.
+0221   22 OP_GET_GLOBAL      45 'c'
+stack: global c
+0223    | OP_CONSTANT        46 'global c'
+stack: global c global c
+0225    | OP_EQUAL
+stack: true
+0226    | OP_JUMP_IF_FALSE  226 -> 239
+stack: true
+0229    | OP_POP
+stack: empty.
+0230    | OP_CONSTANT        47 'PASS: c = '
+stack: PASS: c = 
+0232    | OP_GET_GLOBAL      48 'c'
+stack: PASS: c =  global c
+0234    | OP_ADD
+stack: PASS: c = global c
+0235    | OP_PRINT
+PASS: c = global c
+stack: empty.
+0236    | OP_JUMP           236 -> 246
+stack: empty.
+0246   23 OP_RETURN
+Executing ... done.
+

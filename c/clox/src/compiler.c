@@ -72,6 +72,8 @@ static void declaration ();
 static void synchronize ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
+static void and_ (bool canAssign);
+static void or_ (bool canAssign);
 
 /** Return a pointer to the current target chunk */
 static Chunk *
@@ -223,6 +225,35 @@ emitBytes (uint8_t byte1, uint8_t byte2)
     emitByte (byte2);
 }
 
+/** Emit a LOOP instruction (branch back)
+ *
+ * @param loopStart offset of the start of the loop
+ */
+static void
+emitLoop (int loopStart)
+{
+    emitByte (OP_LOOP);
+
+    int offset = currentChunk ()->count - loopStart + 2;
+
+    if (offset > UINT16_MAX)
+        error ("Loop body twoo large.");
+
+    emitByte ((offset >> 8) & 0xff);
+    emitByte (offset & 0xff);
+}
+
+/** Emit a JUMP instruction into the chunk.
+ */
+static int
+emitJump (uint8_t instruction)
+{
+    emitByte (instruction);
+    emitByte (0xff);
+    emitByte (0xff);
+    return currentChunk ()->count - 2;
+}
+
 /** Emit a RETURN opcode to the chunk.
  */
 static void
@@ -352,6 +383,24 @@ static void
 emitConstant (Value value)
 {
     emitBytes (OP_CONSTANT, makeConstant (value));
+}
+
+/** Patch a jump offset.
+ *
+ * @param offset position of the jump immediate to patch
+ */
+static void
+patchJump (int offset)
+{
+    // -2 to adjust for the bytecode for the jump offset itself.
+    int jump = currentChunk ()->count - offset - 2;
+
+    if (jump > UINT16_MAX) {
+        error ("Too much code to jump over.");
+    }
+
+    currentChunk ()->code[offset] = (jump >> 8) & 0xFF;
+    currentChunk ()->code[offset + 1] = jump & 0xFF;
 }
 
 /** Initialize the state of the compiler
@@ -567,7 +616,7 @@ ParseRule rules[] = {
     [TOKEN_NUMBER]         =  {  number,     NULL,     PREC_NONE        },   //  regex: [0-9]+ | [0-9]+\\.[0-9]+
 
     // Keywords
-    [TOKEN_AND]            =  {  NULL,       NULL,     PREC_NONE        },   //  "and"
+    [TOKEN_AND]            =  {  NULL,       and_,     PREC_AND         },   //  "and"
     [TOKEN_CLASS]          =  {  NULL,       NULL,     PREC_NONE        },   //  "class"
     [TOKEN_ELSE]           =  {  NULL,       NULL,     PREC_NONE        },   //  "else"
     [TOKEN_FALSE]          =  {  literal,    NULL,     PREC_NONE        },   //  "false"
@@ -575,7 +624,7 @@ ParseRule rules[] = {
     [TOKEN_FUN]            =  {  NULL,       NULL,     PREC_NONE        },   //  "fun"
     [TOKEN_IF]             =  {  NULL,       NULL,     PREC_NONE        },   //  "if"
     [TOKEN_NIL]            =  {  literal,    NULL,     PREC_NONE        },   //  "nil"
-    [TOKEN_OR]             =  {  NULL,       NULL,     PREC_NONE        },   //  "or"
+    [TOKEN_OR]             =  {  NULL,       or_,      PREC_OR          },   //  "or"
     [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE        },   //  "print"
     [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE        },   //  "return"
     [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE        },   //  "super"
@@ -644,6 +693,10 @@ markInitialized ()
     current->locals[current->localCount - 1].depth = current->scopeDepth;
 }
 
+/** Compile a variable definition.
+ *
+ * @param global index of the global
+ */
 static void
 defineVariable (uint8_t global)
 {
@@ -654,6 +707,45 @@ defineVariable (uint8_t global)
     emitBytes (OP_DEFINE_GLOBAL, global);
 }
 
+/** Compile an "and" expression
+ *
+ * @param global index of the global
+ */
+static void
+and_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+    int endJump = emitJump (OP_JUMP_IF_FALSE);
+
+    emitByte (OP_POP);
+    parsePrecedence (PREC_AND);
+
+    patchJump (endJump);
+}
+
+/** Compile an "or" expression
+ *
+ * @param global index of the global
+ */
+static void
+or_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+
+    int elseJump = emitJump (OP_JUMP_IF_FALSE);
+    int endJump = emitJump (OP_JUMP);
+
+    patchJump (elseJump);
+    emitByte (OP_POP);
+
+    parsePrecedence (PREC_OR);
+    patchJump (endJump);
+}
+
+/** Fetch the correct rule structuer
+ *
+ * @param type the token type we are processing
+ */
 static ParseRule *
 getRule (TokenType type)
 {
@@ -701,6 +793,84 @@ expressionStatement ()
     emitByte (OP_POP);
 }
 
+/** Compile an "for" statement to the chunk.
+ */
+static void
+forStatement ()
+{
+    beginScope ();
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after 'if'.");
+
+    if (match (TOKEN_SEMICOLON)) {
+        // No initializer.
+    } else if (match (TOKEN_VAR)) {
+        varDeclaration ();
+    } else {
+        expressionStatement ();
+    }
+
+    int loopStart = currentChunk ()->count;
+
+    int exitJump = -1;
+
+    if (!match (TOKEN_SEMICOLON)) {
+        expression ();
+        consume (TOKEN_SEMICOLON, "Expect ';' after condition.");
+
+        // Jump out of the loop if the condition is false.
+        exitJump = emitJump (OP_JUMP_IF_FALSE);
+        emitByte (OP_POP);              // Condition
+    }
+
+    if (!match (TOKEN_RIGHT_PAREN)) {
+        int bodyJump = emitJump (OP_JUMP);
+        int incrementStart = currentChunk ()->count;
+
+        expression ();
+        emitByte (OP_POP);
+        consume (TOKEN_RIGHT_PAREN, "Expect ')' after for clauses.");
+
+        emitLoop (loopStart);
+        loopStart = incrementStart;
+        patchJump (bodyJump);
+    }
+
+    statement ();
+    emitLoop (loopStart);
+
+    if (exitJump != -1) {
+        patchJump (exitJump);
+        emitByte (OP_POP);              // Condition
+    }
+
+    endScope ();
+}
+
+/** Compile an "if" statement to the chunk.
+ */
+static void
+ifStatement ()
+{
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after 'if'.");
+    expression ();
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after condition.");
+
+    int thenJump = emitJump (OP_JUMP_IF_FALSE);
+
+    emitByte (OP_POP);
+    statement ();
+
+    int elseJump = emitJump (OP_JUMP);
+
+    patchJump (thenJump);
+    emitByte (OP_POP);
+    if (match (TOKEN_ELSE))
+        statement ();
+    patchJump (elseJump);
+}
+
+/** Compile a declaration to the chunk.
+ */
 static void
 declaration ()
 {
@@ -714,6 +884,8 @@ declaration ()
         synchronize ();
 }
 
+/** Compile a print statement to the chunk.
+ */
 static void
 printStatement ()
 {
@@ -722,6 +894,35 @@ printStatement ()
     emitByte (OP_PRINT);
 }
 
+/** Compile a while statement to the chunk.
+ */
+static void
+whileStatement ()
+{
+    int loopStart = currentChunk ()->count;
+
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after 'while'.");
+    expression ();
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after condition.");
+
+    int exitJump = emitJump (OP_JUMP_IF_FALSE);
+
+    emitByte (OP_POP);
+    statement ();
+
+    emitLoop (loopStart);
+
+    patchJump (exitJump);
+    emitByte (OP_POP);
+}
+
+/** Synchronize the parser after an error
+ *
+ * Skip forward until we are
+ * - at EOF
+ * - after a SEMICOLON
+ * - before CLASS, FUN, VAR, FOR, IF, WHILE, PRINT, or RETURN
+ */
 static void
 synchronize ()
 {
@@ -762,6 +963,12 @@ statement ()
 {
     if (match (TOKEN_PRINT)) {
         printStatement ();
+    } else if (match (TOKEN_FOR)) {
+        forStatement ();
+    } else if (match (TOKEN_IF)) {
+        ifStatement ();
+    } else if (match (TOKEN_WHILE)) {
+        whileStatement ();
     } else if (match (TOKEN_LEFT_BRACE)) {
         beginScope ();
         block ();

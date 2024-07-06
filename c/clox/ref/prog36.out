@@ -1,0 +1,719 @@
+
+Disassembling code ...
+0000    1 OP_CONSTANT         1 '0'
+0002    | OP_DEFINE_GLOBAL    0 'a'
+0004    2 OP_NIL
+0005    | OP_DEFINE_GLOBAL    2 'temp'
+0007    4 OP_CONSTANT         3 '1'
+0009    | OP_GET_GLOBAL       4 'a'
+0011    | OP_CONSTANT         5 '10000'
+0013    | OP_LESS
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+0017    | OP_POP
+0018    | OP_JUMP            18 -> 32
+0021    | OP_GET_GLOBAL       6 'temp'
+0023    | OP_GET_LOCAL        0
+0025    | OP_ADD
+0026    | OP_SET_LOCAL        0
+0028    | OP_POP
+0029    | OP_LOOP            29 -> 9
+0032    5 OP_GET_GLOBAL       7 'a'
+0034    | OP_PRINT
+0035    6 OP_GET_GLOBAL       8 'a'
+0037    | OP_CONSTANT         9 '100'
+0039    | OP_GREATER
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+0043    | OP_POP
+0044    | OP_GET_GLOBAL      10 'break'
+0046    | OP_POP
+0047    | OP_JUMP            47 -> 51
+0050    | OP_POP
+0051    7 OP_GET_GLOBAL      12 'a'
+0053    | OP_SET_GLOBAL      11 'temp'
+0055    | OP_POP
+0056    8 OP_GET_LOCAL        0
+0058    | OP_SET_GLOBAL      13 'a'
+0060    | OP_POP
+0061    9 OP_LOOP            61 -> 21
+0064    | OP_POP
+0065    | OP_POP
+0066   10 OP_RETURN
+Disassembling code ... done.
+
+
+Executing ...
+stack: empty.
+0000    1 OP_CONSTANT         1 '0'
+stack: 0
+0002    | OP_DEFINE_GLOBAL    0 'a'
+stack: empty.
+0004    2 OP_NIL
+stack: nil
+0005    | OP_DEFINE_GLOBAL    2 'temp'
+stack: empty.
+0007    4 OP_CONSTANT         3 '1'
+stack: 1
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 1 0
+0011    | OP_CONSTANT         5 '10000'
+stack: 1 0 10000
+0013    | OP_LESS
+stack: 1 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 1 true
+0017    | OP_POP
+stack: 1
+0018    | OP_JUMP            18 -> 32
+stack: 1
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 1 0
+0034    | OP_PRINT
+0
+stack: 1
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 1 0
+0037    | OP_CONSTANT         9 '100'
+stack: 1 0 100
+0039    | OP_GREATER
+stack: 1 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 1 false
+0050    | OP_POP
+stack: 1
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 1 0
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 1 0
+0055    | OP_POP
+stack: 1
+0056    8 OP_GET_LOCAL        0
+stack: 1 1
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 1 1
+0060    | OP_POP
+stack: 1
+0061    9 OP_LOOP            61 -> 21
+stack: 1
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 1 0
+0023    | OP_GET_LOCAL        0
+stack: 1 0 1
+0025    | OP_ADD
+stack: 1 1
+0026    | OP_SET_LOCAL        0
+stack: 1 1
+0028    | OP_POP
+stack: 1
+0029    | OP_LOOP            29 -> 9
+stack: 1
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 1 1
+0011    | OP_CONSTANT         5 '10000'
+stack: 1 1 10000
+0013    | OP_LESS
+stack: 1 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 1 true
+0017    | OP_POP
+stack: 1
+0018    | OP_JUMP            18 -> 32
+stack: 1
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 1 1
+0034    | OP_PRINT
+1
+stack: 1
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 1 1
+0037    | OP_CONSTANT         9 '100'
+stack: 1 1 100
+0039    | OP_GREATER
+stack: 1 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 1 false
+0050    | OP_POP
+stack: 1
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 1 1
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 1 1
+0055    | OP_POP
+stack: 1
+0056    8 OP_GET_LOCAL        0
+stack: 1 1
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 1 1
+0060    | OP_POP
+stack: 1
+0061    9 OP_LOOP            61 -> 21
+stack: 1
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 1 1
+0023    | OP_GET_LOCAL        0
+stack: 1 1 1
+0025    | OP_ADD
+stack: 1 2
+0026    | OP_SET_LOCAL        0
+stack: 2 2
+0028    | OP_POP
+stack: 2
+0029    | OP_LOOP            29 -> 9
+stack: 2
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 2 1
+0011    | OP_CONSTANT         5 '10000'
+stack: 2 1 10000
+0013    | OP_LESS
+stack: 2 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 2 true
+0017    | OP_POP
+stack: 2
+0018    | OP_JUMP            18 -> 32
+stack: 2
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 2 1
+0034    | OP_PRINT
+1
+stack: 2
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 2 1
+0037    | OP_CONSTANT         9 '100'
+stack: 2 1 100
+0039    | OP_GREATER
+stack: 2 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 2 false
+0050    | OP_POP
+stack: 2
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 2 1
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 2 1
+0055    | OP_POP
+stack: 2
+0056    8 OP_GET_LOCAL        0
+stack: 2 2
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 2 2
+0060    | OP_POP
+stack: 2
+0061    9 OP_LOOP            61 -> 21
+stack: 2
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 2 1
+0023    | OP_GET_LOCAL        0
+stack: 2 1 2
+0025    | OP_ADD
+stack: 2 3
+0026    | OP_SET_LOCAL        0
+stack: 3 3
+0028    | OP_POP
+stack: 3
+0029    | OP_LOOP            29 -> 9
+stack: 3
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 3 2
+0011    | OP_CONSTANT         5 '10000'
+stack: 3 2 10000
+0013    | OP_LESS
+stack: 3 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 3 true
+0017    | OP_POP
+stack: 3
+0018    | OP_JUMP            18 -> 32
+stack: 3
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 3 2
+0034    | OP_PRINT
+2
+stack: 3
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 3 2
+0037    | OP_CONSTANT         9 '100'
+stack: 3 2 100
+0039    | OP_GREATER
+stack: 3 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 3 false
+0050    | OP_POP
+stack: 3
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 3 2
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 3 2
+0055    | OP_POP
+stack: 3
+0056    8 OP_GET_LOCAL        0
+stack: 3 3
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 3 3
+0060    | OP_POP
+stack: 3
+0061    9 OP_LOOP            61 -> 21
+stack: 3
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 3 2
+0023    | OP_GET_LOCAL        0
+stack: 3 2 3
+0025    | OP_ADD
+stack: 3 5
+0026    | OP_SET_LOCAL        0
+stack: 5 5
+0028    | OP_POP
+stack: 5
+0029    | OP_LOOP            29 -> 9
+stack: 5
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 5 3
+0011    | OP_CONSTANT         5 '10000'
+stack: 5 3 10000
+0013    | OP_LESS
+stack: 5 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 5 true
+0017    | OP_POP
+stack: 5
+0018    | OP_JUMP            18 -> 32
+stack: 5
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 5 3
+0034    | OP_PRINT
+3
+stack: 5
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 5 3
+0037    | OP_CONSTANT         9 '100'
+stack: 5 3 100
+0039    | OP_GREATER
+stack: 5 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 5 false
+0050    | OP_POP
+stack: 5
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 5 3
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 5 3
+0055    | OP_POP
+stack: 5
+0056    8 OP_GET_LOCAL        0
+stack: 5 5
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 5 5
+0060    | OP_POP
+stack: 5
+0061    9 OP_LOOP            61 -> 21
+stack: 5
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 5 3
+0023    | OP_GET_LOCAL        0
+stack: 5 3 5
+0025    | OP_ADD
+stack: 5 8
+0026    | OP_SET_LOCAL        0
+stack: 8 8
+0028    | OP_POP
+stack: 8
+0029    | OP_LOOP            29 -> 9
+stack: 8
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 8 5
+0011    | OP_CONSTANT         5 '10000'
+stack: 8 5 10000
+0013    | OP_LESS
+stack: 8 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 8 true
+0017    | OP_POP
+stack: 8
+0018    | OP_JUMP            18 -> 32
+stack: 8
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 8 5
+0034    | OP_PRINT
+5
+stack: 8
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 8 5
+0037    | OP_CONSTANT         9 '100'
+stack: 8 5 100
+0039    | OP_GREATER
+stack: 8 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 8 false
+0050    | OP_POP
+stack: 8
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 8 5
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 8 5
+0055    | OP_POP
+stack: 8
+0056    8 OP_GET_LOCAL        0
+stack: 8 8
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 8 8
+0060    | OP_POP
+stack: 8
+0061    9 OP_LOOP            61 -> 21
+stack: 8
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 8 5
+0023    | OP_GET_LOCAL        0
+stack: 8 5 8
+0025    | OP_ADD
+stack: 8 13
+0026    | OP_SET_LOCAL        0
+stack: 13 13
+0028    | OP_POP
+stack: 13
+0029    | OP_LOOP            29 -> 9
+stack: 13
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 13 8
+0011    | OP_CONSTANT         5 '10000'
+stack: 13 8 10000
+0013    | OP_LESS
+stack: 13 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 13 true
+0017    | OP_POP
+stack: 13
+0018    | OP_JUMP            18 -> 32
+stack: 13
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 13 8
+0034    | OP_PRINT
+8
+stack: 13
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 13 8
+0037    | OP_CONSTANT         9 '100'
+stack: 13 8 100
+0039    | OP_GREATER
+stack: 13 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 13 false
+0050    | OP_POP
+stack: 13
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 13 8
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 13 8
+0055    | OP_POP
+stack: 13
+0056    8 OP_GET_LOCAL        0
+stack: 13 13
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 13 13
+0060    | OP_POP
+stack: 13
+0061    9 OP_LOOP            61 -> 21
+stack: 13
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 13 8
+0023    | OP_GET_LOCAL        0
+stack: 13 8 13
+0025    | OP_ADD
+stack: 13 21
+0026    | OP_SET_LOCAL        0
+stack: 21 21
+0028    | OP_POP
+stack: 21
+0029    | OP_LOOP            29 -> 9
+stack: 21
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 21 13
+0011    | OP_CONSTANT         5 '10000'
+stack: 21 13 10000
+0013    | OP_LESS
+stack: 21 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 21 true
+0017    | OP_POP
+stack: 21
+0018    | OP_JUMP            18 -> 32
+stack: 21
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 21 13
+0034    | OP_PRINT
+13
+stack: 21
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 21 13
+0037    | OP_CONSTANT         9 '100'
+stack: 21 13 100
+0039    | OP_GREATER
+stack: 21 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 21 false
+0050    | OP_POP
+stack: 21
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 21 13
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 21 13
+0055    | OP_POP
+stack: 21
+0056    8 OP_GET_LOCAL        0
+stack: 21 21
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 21 21
+0060    | OP_POP
+stack: 21
+0061    9 OP_LOOP            61 -> 21
+stack: 21
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 21 13
+0023    | OP_GET_LOCAL        0
+stack: 21 13 21
+0025    | OP_ADD
+stack: 21 34
+0026    | OP_SET_LOCAL        0
+stack: 34 34
+0028    | OP_POP
+stack: 34
+0029    | OP_LOOP            29 -> 9
+stack: 34
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 34 21
+0011    | OP_CONSTANT         5 '10000'
+stack: 34 21 10000
+0013    | OP_LESS
+stack: 34 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 34 true
+0017    | OP_POP
+stack: 34
+0018    | OP_JUMP            18 -> 32
+stack: 34
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 34 21
+0034    | OP_PRINT
+21
+stack: 34
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 34 21
+0037    | OP_CONSTANT         9 '100'
+stack: 34 21 100
+0039    | OP_GREATER
+stack: 34 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 34 false
+0050    | OP_POP
+stack: 34
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 34 21
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 34 21
+0055    | OP_POP
+stack: 34
+0056    8 OP_GET_LOCAL        0
+stack: 34 34
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 34 34
+0060    | OP_POP
+stack: 34
+0061    9 OP_LOOP            61 -> 21
+stack: 34
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 34 21
+0023    | OP_GET_LOCAL        0
+stack: 34 21 34
+0025    | OP_ADD
+stack: 34 55
+0026    | OP_SET_LOCAL        0
+stack: 55 55
+0028    | OP_POP
+stack: 55
+0029    | OP_LOOP            29 -> 9
+stack: 55
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 55 34
+0011    | OP_CONSTANT         5 '10000'
+stack: 55 34 10000
+0013    | OP_LESS
+stack: 55 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 55 true
+0017    | OP_POP
+stack: 55
+0018    | OP_JUMP            18 -> 32
+stack: 55
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 55 34
+0034    | OP_PRINT
+34
+stack: 55
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 55 34
+0037    | OP_CONSTANT         9 '100'
+stack: 55 34 100
+0039    | OP_GREATER
+stack: 55 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 55 false
+0050    | OP_POP
+stack: 55
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 55 34
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 55 34
+0055    | OP_POP
+stack: 55
+0056    8 OP_GET_LOCAL        0
+stack: 55 55
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 55 55
+0060    | OP_POP
+stack: 55
+0061    9 OP_LOOP            61 -> 21
+stack: 55
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 55 34
+0023    | OP_GET_LOCAL        0
+stack: 55 34 55
+0025    | OP_ADD
+stack: 55 89
+0026    | OP_SET_LOCAL        0
+stack: 89 89
+0028    | OP_POP
+stack: 89
+0029    | OP_LOOP            29 -> 9
+stack: 89
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 89 55
+0011    | OP_CONSTANT         5 '10000'
+stack: 89 55 10000
+0013    | OP_LESS
+stack: 89 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 89 true
+0017    | OP_POP
+stack: 89
+0018    | OP_JUMP            18 -> 32
+stack: 89
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 89 55
+0034    | OP_PRINT
+55
+stack: 89
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 89 55
+0037    | OP_CONSTANT         9 '100'
+stack: 89 55 100
+0039    | OP_GREATER
+stack: 89 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 89 false
+0050    | OP_POP
+stack: 89
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 89 55
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 89 55
+0055    | OP_POP
+stack: 89
+0056    8 OP_GET_LOCAL        0
+stack: 89 89
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 89 89
+0060    | OP_POP
+stack: 89
+0061    9 OP_LOOP            61 -> 21
+stack: 89
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 89 55
+0023    | OP_GET_LOCAL        0
+stack: 89 55 89
+0025    | OP_ADD
+stack: 89 144
+0026    | OP_SET_LOCAL        0
+stack: 144 144
+0028    | OP_POP
+stack: 144
+0029    | OP_LOOP            29 -> 9
+stack: 144
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 144 89
+0011    | OP_CONSTANT         5 '10000'
+stack: 144 89 10000
+0013    | OP_LESS
+stack: 144 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 144 true
+0017    | OP_POP
+stack: 144
+0018    | OP_JUMP            18 -> 32
+stack: 144
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 144 89
+0034    | OP_PRINT
+89
+stack: 144
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 144 89
+0037    | OP_CONSTANT         9 '100'
+stack: 144 89 100
+0039    | OP_GREATER
+stack: 144 false
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 144 false
+0050    | OP_POP
+stack: 144
+0051    7 OP_GET_GLOBAL      12 'a'
+stack: 144 89
+0053    | OP_SET_GLOBAL      11 'temp'
+stack: 144 89
+0055    | OP_POP
+stack: 144
+0056    8 OP_GET_LOCAL        0
+stack: 144 144
+0058    | OP_SET_GLOBAL      13 'a'
+stack: 144 144
+0060    | OP_POP
+stack: 144
+0061    9 OP_LOOP            61 -> 21
+stack: 144
+0021    | OP_GET_GLOBAL       6 'temp'
+stack: 144 89
+0023    | OP_GET_LOCAL        0
+stack: 144 89 144
+0025    | OP_ADD
+stack: 144 233
+0026    | OP_SET_LOCAL        0
+stack: 233 233
+0028    | OP_POP
+stack: 233
+0029    | OP_LOOP            29 -> 9
+stack: 233
+0009    | OP_GET_GLOBAL       4 'a'
+stack: 233 144
+0011    | OP_CONSTANT         5 '10000'
+stack: 233 144 10000
+0013    | OP_LESS
+stack: 233 true
+0014    | OP_JUMP_IF_FALSE   14 -> 64
+stack: 233 true
+0017    | OP_POP
+stack: 233
+0018    | OP_JUMP            18 -> 32
+stack: 233
+0032    5 OP_GET_GLOBAL       7 'a'
+stack: 233 144
+0034    | OP_PRINT
+144
+stack: 233
+0035    6 OP_GET_GLOBAL       8 'a'
+stack: 233 144
+0037    | OP_CONSTANT         9 '100'
+stack: 233 144 100
+0039    | OP_GREATER
+stack: 233 true
+0040    | OP_JUMP_IF_FALSE   40 -> 50
+stack: 233 true
+0043    | OP_POP
+stack: 233
+0044    | OP_GET_GLOBAL      10 'break'

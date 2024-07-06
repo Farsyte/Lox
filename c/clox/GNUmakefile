@@ -32,6 +32,9 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 
 LSRC		:= $(wildcard $(LOXD)*.lox)
 LOUT		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
+LERR		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.err)
+ROUT		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.out)
+RERR		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.err)
 
 DIFFX		:= -X $(REFD)exclude-from-compare
 DIFFPX		:= -x '*~'
@@ -40,6 +43,17 @@ DFLAGS		:= $(DOPTS) $(DIFFX) $(DIFFPX) -r
 
 tests::         demo bist repl help $(LOUT)
 	$C diff $(DFLAGS) $(REFD) $(LOGD) | sed 's/^diff .* ref/\ndiff $(DOPTS) ref/'
+
+accept:		$(ROUT) $(RERR)
+
+$(REFD)%.out:	$(LOGD)%.out
+	$C cp -f $< $@
+
+$(REFD)%.err:	$(LOGD)%.err
+	$C cp -f $< $@
+
+clean::
+	$X $(LOUT) $(LERR)
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
@@ -102,9 +116,15 @@ doc/html/index.html:    doc/Doxyfile $(PROG)
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
 	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err </dev/null
 
+clean::
+	$X $(LOGD)doxygen.log $(LOGD)doxygen.err
+
 doc/latex/refman.pdf:   doc/html/index.html
 	$P '  %-14s %s\n' "PDFLATEX" "doc/refman.pdf"
 	make -C doc/latex pdf > $(LOGD)latex.log 2>$(LOGD)latex.err
+
+clean::
+	$X $(LOGD)latex.log $(LOGD)latex.err
 
 # The presence of "STUB ();" calls is not a build error, but expose
 # where they all are to point out what needs to be implemented next.
@@ -128,6 +148,9 @@ TAGS::          $(INCS) $(SRCS) GNUmakefile
 	$P '  %-14s %s\n' "TAGS" "$(INCD)*.h $(SRCD)*.c"
 	$Q etags $(INCS) $(SRCS)
 
+clean::
+	$X TAGS
+
 # Maintain a "tags" file for vi.
 
 ctags::         tags                    ; $T
@@ -135,6 +158,9 @@ ctags::         tags                    ; $T
 tags::          $(INCS) $(SRCS) GNUmakefile
 	$P '  %-14s %s\n' "tags" "$(INCD)*.h $(SRCD)*.c"
 	$Q ctags $(INCS) $(SRCS)
+
+clean::
+	$X tags
 
 # The sequence that I want to run when I have made a change
 # where everything SHOULD be good but something MIGHT not be good.
