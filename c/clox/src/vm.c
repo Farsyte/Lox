@@ -13,6 +13,10 @@
 
 VM vm;
 
+#ifdef  DEBUG_TRACE_EXECUTION
+int _DEBUG_TRACE_EXECUTION = 500;
+#endif
+
 /** Reset the VM stack to empty.
  */
 static void
@@ -250,17 +254,23 @@ run ()
 
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
-        printf ("stack:");
-        if (vm.sp > vm.stack) {
-            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
-                printf (" ");
-                printValue (*slot);
+        if (_DEBUG_TRACE_EXECUTION > 0) {
+            printf ("stack:");
+            if (vm.sp > vm.stack) {
+                for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+                    printf (" ");
+                    printValue (*slot);
+                }
+            } else {
+                printf (" empty.");
             }
-        } else {
-            printf (" empty.");
+            printf ("\n");
+            disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
+            _DEBUG_TRACE_EXECUTION--;
+            if (!_DEBUG_TRACE_EXECUTION) {
+                printf ("(no more debug traces after this)\n");
+            }
         }
-        printf ("\n");
-        disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
 #endif
         // Convert the byte to an OpCode enum value, so the C compiler
         // can warn us if there are any OpCode num values missing from

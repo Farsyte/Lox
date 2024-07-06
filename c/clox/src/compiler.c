@@ -13,6 +13,10 @@
  * @brief Compiler (Lox Parser)
  */
 
+#ifdef DEBUG_PRINT_CODE
+int _DEBUG_PRINT_CODE = 1;
+#endif
+
 /** Parser state */
 struct Parser {
     Token current;              ///< the current token to parse
@@ -370,7 +374,7 @@ endCompiler ()
     ObjFunction *function = current->function;
 
 #ifdef DEBUG_PRINT_CODE
-    if (!parser.hadError) {
+    if (_DEBUG_PRINT_CODE && !parser.hadError) {
         disassembleChunk (currentChunk (), function->name != NULL ? function->name->chars : "<script>");
     }
 #endif
