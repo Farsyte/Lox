@@ -1,9 +1,0 @@
-[line 14] Error at 'or': Expect ')' after condition.
-[line 16] Error at 'else': Expect expression.
-[line 19] Error at '}': Expect expression.
-[line 22] Error at 'or': Expect ')' after condition.
-[line 24] Error at '}': Expect expression.
-[line 26] Error at '}': Expect expression.
-[line 30] Error at 'or': Expect ')' after condition.
-[line 32] Error at '}': Expect expression.
-[line 34] Error at '}': Expect expression.

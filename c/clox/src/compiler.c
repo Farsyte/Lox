@@ -73,6 +73,7 @@ static void synchronize ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
 static void and_ (bool canAssign);
+static void or_ (bool canAssign);
 
 /** Return a pointer to the current target chunk */
 static Chunk *
@@ -605,7 +606,7 @@ ParseRule rules[] = {
     [TOKEN_FUN]            =  {  NULL,       NULL,     PREC_NONE        },   //  "fun"
     [TOKEN_IF]             =  {  NULL,       NULL,     PREC_NONE        },   //  "if"
     [TOKEN_NIL]            =  {  literal,    NULL,     PREC_NONE        },   //  "nil"
-    [TOKEN_OR]             =  {  NULL,       NULL,     PREC_NONE        },   //  "or"
+    [TOKEN_OR]             =  {  NULL,       or_,      PREC_OR          },   //  "or"
     [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE        },   //  "print"
     [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE        },   //  "return"
     [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE        },   //  "super"
@@ -701,6 +702,25 @@ and_ (bool canAssign)
     emitByte (OP_POP);
     parsePrecedence (PREC_AND);
 
+    patchJump (endJump);
+}
+
+/** Compile an "or" expression
+ *
+ * @param global index of the global
+ */
+static void
+or_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+
+    int elseJump = emitJump (OP_JUMP_IF_FALSE);
+    int endJump = emitJump (OP_JUMP);
+
+    patchJump (elseJump);
+    emitByte (OP_POP);
+
+    parsePrecedence (PREC_OR);
     patchJump (endJump);
 }
 
