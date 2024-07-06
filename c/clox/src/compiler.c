@@ -78,11 +78,10 @@ Compiler *current = NULL;       ///< the current compiler state
 static void expression ();
 static void statement ();
 static void declaration ();
-static void synchronize ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
-static void and_ (bool canAssign);
-static void or_ (bool canAssign);
+
+/* Function Definitions */
 
 /** Return a pointer to the current target chunk
  *
@@ -301,98 +300,6 @@ makeConstant (Value value)
     return (uint8_t) constant;
 }
 
-/** Make an identifier constant
- *
- * Not sure if the word "constant" is now inaccurate.
- *
- * @param name the token containing the name
- * @returns the index into the table for the variable
- */
-static uint8_t
-identifierConstant (Token *name)
-{
-    return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
-}
-
-/** See if two identifiers are the same.
- *
- * @param a 1st identifier to compare
- * @param b 2nd identifier to compare
- * @returns true if they are textually equal
- * @returns false if they are distinct
- */
-static bool
-identifiersEqual (Token *a, Token *b)
-{
-    if (a->length != b->length)
-        return false;
-    return 0 == memcmp (a->start, b->start, a->length);
-}
-
-/** Resolve a reference to a local variable.
- *
- * @param compiler the current compiler state
- * @param name the identifier lexeme
- * @returns -1 if the identifier was not found
- * @returns the index of the match in the compiler locals
- */
-static int
-resolveLocal (Compiler *compiler, Token *name)
-{
-    for (int i = compiler->localCount - 1; i >= 0; i--) {
-        Local *local = &compiler->locals[i];
-
-        if (identifiersEqual (name, &local->name)) {
-            if (local->depth == -1) {
-                error ("Can't read local variable in its own initializer.'");
-            }
-            return i;
-        }
-    }
-    return -1;
-}
-
-/** Add a local variable to the current scope.
- *
- * @param name the lexeme containing the variable name
- */
-static void
-addLocal (Token name)
-{
-    if (current->localCount == UINT8_COUNT) {
-        error ("Too many local variables in function.");
-        return;
-    }
-    Local *local = &current->locals[current->localCount++];
-
-    local->name = name;
-    local->depth = -1;
-}
-
-/** Compile a local variable declaration.
- */
-static void
-declareVariable ()
-{
-    if (current->scopeDepth == 0)
-        return;
-    Token *name = &parser.previous;
-
-    for (int i = current->localCount - 1; i >= 0; i--) {
-        Local *local = &current->locals[i];
-
-        if (local->depth != -1 && local->depth < current->scopeDepth) {
-            break;
-        }
-
-        if (identifiersEqual (name, &local->name)) {
-            error ("Already a variable with this name in this scope.");
-        }
-    }
-
-    addLocal (*name);
-}
-
 /** Construct a CONSTANT operation in the chunk.
  *
  * Emits OP_CONSTANT, then an immediate byte picking
@@ -491,6 +398,179 @@ endScope ()
     }
 }
 
+/** Make an identifier constant
+ *
+ * Not sure if the word "constant" is now inaccurate.
+ *
+ * @param name the token containing the name
+ * @returns the index into the table for the variable
+ */
+static uint8_t
+identifierConstant (Token *name)
+{
+    return makeConstant (OBJ_VAL (copyString (name->start, name->length)));
+}
+
+/** See if two identifiers are the same.
+ *
+ * @param a 1st identifier to compare
+ * @param b 2nd identifier to compare
+ * @returns true if they are textually equal
+ * @returns false if they are distinct
+ */
+static bool
+identifiersEqual (Token *a, Token *b)
+{
+    if (a->length != b->length)
+        return false;
+    return 0 == memcmp (a->start, b->start, a->length);
+}
+
+/** Resolve a reference to a local variable.
+ *
+ * @param compiler the current compiler state
+ * @param name the identifier lexeme
+ * @returns -1 if the identifier was not found
+ * @returns the index of the match in the compiler locals
+ */
+static int
+resolveLocal (Compiler *compiler, Token *name)
+{
+    for (int i = compiler->localCount - 1; i >= 0; i--) {
+        Local *local = &compiler->locals[i];
+
+        if (identifiersEqual (name, &local->name)) {
+            if (local->depth == -1) {
+                error ("Can't read local variable in its own initializer.'");
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
+/** Add a local variable to the current scope.
+ *
+ * @param name the lexeme containing the variable name
+ */
+static void
+addLocal (Token name)
+{
+    if (current->localCount == UINT8_COUNT) {
+        error ("Too many local variables in function.");
+        return;
+    }
+    Local *local = &current->locals[current->localCount++];
+
+    local->name = name;
+    local->depth = -1;
+}
+
+/** Compile a local variable declaration.
+ */
+static void
+declareVariable ()
+{
+    if (current->scopeDepth == 0)
+        return;
+    Token *name = &parser.previous;
+
+    for (int i = current->localCount - 1; i >= 0; i--) {
+        Local *local = &current->locals[i];
+
+        if (local->depth != -1 && local->depth < current->scopeDepth) {
+            break;
+        }
+
+        if (identifiersEqual (name, &local->name)) {
+            error ("Already a variable with this name in this scope.");
+        }
+    }
+
+    addLocal (*name);
+}
+
+/** Parse a variable
+ *
+ * @param errorMessage message to emit if this is not a variable
+ * @returns zero if we are inside a scope
+ * @returns otherwise, the index into the constant table
+ */
+static uint8_t
+parseVariable (const char *errorMessage)
+{
+    consume (TOKEN_IDENTIFIER, errorMessage);
+    declareVariable ();
+    if (current->scopeDepth > 0)
+        return 0;
+    return identifierConstant (&parser.previous);
+}
+
+/** Mark the local being defined as initialized.
+ *
+ * Note that "var x;" is really "var x = nil;" and thus
+ * leaves "x" in the initialized state here.
+ */
+static void
+markInitialized ()
+{
+    if (current->scopeDepth == 0)
+        return;
+    current->locals[current->localCount - 1].depth = current->scopeDepth;
+}
+
+/** Compile a variable definition.
+ *
+ * @param global index of the global
+ */
+static void
+defineVariable (uint8_t global)
+{
+    if (current->scopeDepth > 0) {
+        markInitialized ();
+        return;
+    }
+    emitBytes (OP_DEFINE_GLOBAL, global);
+}
+
+/** Compile a function call argument list.
+ *
+ * @returns the number of arguments.
+ */
+static uint8_t
+argumentList ()
+{
+    uint8_t argCount = 0;
+
+    if (!check (TOKEN_RIGHT_PAREN)) {
+        do {
+            expression ();
+            if (argCount == 255) {
+                error ("Can't have more than 255 arguments.");
+            }
+            argCount++;
+        } while (match (TOKEN_COMMA));
+    }
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after arguments.");
+    return argCount;
+}
+
+/** Compile an "and" expression
+ *
+ * @param canAssign not used here.
+ */
+static void
+and_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+    int endJump = emitJump (OP_JUMP_IF_FALSE);
+
+    emitByte (OP_POP);
+    parsePrecedence (PREC_AND);
+
+    patchJump (endJump);
+}
+
 /** Compile a binary operation to the chunk.
  *
  * @param canAssign not used by this function
@@ -523,6 +603,19 @@ binary (bool canAssign)
     default: ERROR_LOG (0, "Should be UNREACHABLE.", 0);  return;
         // *INDENT-ON*
     }
+}
+
+/** Compile a function call operration to the chunk.
+ *
+ * @param canAssign not used by this function
+ */
+static void
+call (bool canAssign)
+{
+    (void) canAssign;                   // not used by this operation.
+    uint8_t argCount = argumentList ();
+
+    emitBytes (OP_CALL, argCount);
 }
 
 /** Compile a Literal op to the chunk.
@@ -567,6 +660,25 @@ number (bool canAssign)
     double value = strtod (parser.previous.start, NULL);
 
     emitConstant (NUMBER_VAL (value));
+}
+
+/** Compile an "or" expression
+ *
+ * @param canAssign not used here.
+ */
+static void
+or_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+
+    int elseJump = emitJump (OP_JUMP_IF_FALSE);
+    int endJump = emitJump (OP_JUMP);
+
+    patchJump (elseJump);
+    emitByte (OP_POP);
+
+    parsePrecedence (PREC_OR);
+    patchJump (endJump);
 }
 
 /** Compile a string to the chunk.
@@ -655,12 +767,13 @@ unary (bool canAssign)
  * The third column indicates the precedence of the token when used
  * as a binary operator.
  */
-ParseRule rules[] = {
+ParseRule
+  rules[] = {
 
     // *INDENT-OFF*
 
     // Single-character tokens.
-    [TOKEN_LEFT_PAREN]     =  {  grouping,   NULL,     PREC_NONE        },   //  "("
+    [TOKEN_LEFT_PAREN]     =  {  grouping,   call,     PREC_CALL        },   //  "("
     [TOKEN_RIGHT_PAREN]    =  {  NULL,       NULL,     PREC_NONE        },   //  ")"
     [TOKEN_LEFT_BRACE]     =  {  NULL,       NULL,     PREC_NONE        },   //  "{"
     [TOKEN_RIGHT_BRACE]    =  {  NULL,       NULL,     PREC_NONE        },   //  "}"
@@ -738,84 +851,6 @@ parsePrecedence (Precedence precedence)
     if (canAssign && match (TOKEN_EQUAL)) {
         error ("Invalid assignment target.");
     }
-}
-
-/** Parse a variable
- *
- * @param errorMessage message to emit if this is not a variable
- * @returns zero if we are inside a scope
- * @returns otherwise, the index into the constant table
- */
-static uint8_t
-parseVariable (const char *errorMessage)
-{
-    consume (TOKEN_IDENTIFIER, errorMessage);
-    declareVariable ();
-    if (current->scopeDepth > 0)
-        return 0;
-    return identifierConstant (&parser.previous);
-}
-
-/** Mark the local being defined as initialized.
- *
- * Note that "var x;" is really "var x = nil;" and thus
- * leaves "x" in the initialized state here.
- */
-static void
-markInitialized ()
-{
-    if (current->scopeDepth == 0)
-        return;
-    current->locals[current->localCount - 1].depth = current->scopeDepth;
-}
-
-/** Compile a variable definition.
- *
- * @param global index of the global
- */
-static void
-defineVariable (uint8_t global)
-{
-    if (current->scopeDepth > 0) {
-        markInitialized ();
-        return;
-    }
-    emitBytes (OP_DEFINE_GLOBAL, global);
-}
-
-/** Compile an "and" expression
- *
- * @param canAssign not used here.
- */
-static void
-and_ (bool canAssign)
-{
-    (void) canAssign;                   // not used by the "and" operator.
-    int endJump = emitJump (OP_JUMP_IF_FALSE);
-
-    emitByte (OP_POP);
-    parsePrecedence (PREC_AND);
-
-    patchJump (endJump);
-}
-
-/** Compile an "or" expression
- *
- * @param canAssign not used here.
- */
-static void
-or_ (bool canAssign)
-{
-    (void) canAssign;                   // not used by the "and" operator.
-
-    int elseJump = emitJump (OP_JUMP_IF_FALSE);
-    int endJump = emitJump (OP_JUMP);
-
-    patchJump (elseJump);
-    emitByte (OP_POP);
-
-    parsePrecedence (PREC_OR);
-    patchJump (endJump);
 }
 
 /** Fetch the correct rule structuer
@@ -997,23 +1032,6 @@ ifStatement ()
     patchJump (elseJump);
 }
 
-/** Compile a declaration to the chunk.
- */
-static void
-declaration ()
-{
-    if (match (TOKEN_FUN)) {
-        funDeclaration ();
-    } else if (match (TOKEN_VAR)) {
-        varDeclaration ();
-    } else {
-        statement ();
-    }
-
-    if (parser.panicMode)
-        synchronize ();
-}
-
 /** Compile a print statement to the chunk.
  */
 static void
@@ -1084,6 +1102,23 @@ synchronize ()
 
         advance ();
     }
+}
+
+/** Compile a declaration to the chunk.
+ */
+static void
+declaration ()
+{
+    if (match (TOKEN_FUN)) {
+        funDeclaration ();
+    } else if (match (TOKEN_VAR)) {
+        varDeclaration ();
+    } else {
+        statement ();
+    }
+
+    if (parser.panicMode)
+        synchronize ();
 }
 
 /** Compile a statement to the chunk.

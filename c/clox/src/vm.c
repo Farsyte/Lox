@@ -343,6 +343,9 @@ run ()
             frame->ip -= offset;
             break;
 
+        case OP_CALL:
+            STUB (0);
+
         case OP_RETURN:
             // Exit interpreter.
 #ifdef  DEBUG_TRACE_EXECUTION

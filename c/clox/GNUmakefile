@@ -150,7 +150,7 @@ clean::
 
 stubs::
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
-	$C grep -ni '^ *\<STUB\> (' $(SRCD)*.c $(INCD)*.h /dev/null || true
+	$C grep -ni '^ *STUB (' $(SRCD)*.c $(INCD)*.h /dev/null || true
 
 # The presence of "TODO" comments is not a build error, but expose
 # where they all are to point out what needs to be implemented soon.

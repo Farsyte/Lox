@@ -36,6 +36,7 @@ typedef enum {
     OP_JUMP,                    ///< unconditional forward branch 
     OP_JUMP_IF_FALSE,           ///< conditional forward branch
     OP_LOOP,                    ///< unconditional backward branch
+    OP_CALL,                    ///< function call
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing

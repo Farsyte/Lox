@@ -1,1 +1,2 @@
-[line 2] Error at '(': Expect ';' after expression.
+src/debug.c:209: STUB Encountered in disassembleInstruction
+
