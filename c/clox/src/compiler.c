@@ -756,6 +756,8 @@ parseVariable (const char *errorMessage)
 static void
 markInitialized ()
 {
+    if (current->scopeDepth == 0)
+        return;
     current->locals[current->localCount - 1].depth = current->scopeDepth;
 }
 
@@ -836,6 +838,40 @@ block ()
         declaration ();
     }
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after block.");
+}
+
+/** Compile a function.
+ *
+ * @param type either FUNCTION or SCRIPT
+ */
+static void
+function (FunctionType type)
+{
+    Compiler compiler;
+
+    initCompiler (&compiler, type);
+    beginScope ();
+
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after function name.");
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after parameters.");
+    consume (TOKEN_LEFT_BRACE, "Expect '{' before function body.");
+    block ();
+
+    ObjFunction *function = endCompiler ();
+
+    emitBytes (OP_CONSTANT, makeConstant (OBJ_VAL (function)));
+}
+
+/** Compile a fun declaration to its own captive chunk.
+ */
+static void
+funDeclaration ()
+{
+    uint8_t global = parseVariable ("Excpect function name.");
+
+    markInitialized ();
+    function (TYPE_FUNCTION);
+    defineVariable (global);
 }
 
 /** Compile a var declaration to the current chunk.
@@ -945,7 +981,9 @@ ifStatement ()
 static void
 declaration ()
 {
-    if (match (TOKEN_VAR)) {
+    if (match (TOKEN_FUN)) {
+        funDeclaration ();
+    } else if (match (TOKEN_VAR)) {
         varDeclaration ();
     } else {
         statement ();
