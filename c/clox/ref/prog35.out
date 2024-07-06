@@ -1,5 +1,5 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    1 OP_CONSTANT         1 '0'
 0002    | OP_DEFINE_GLOBAL    0 'a'
 0004    2 OP_NIL
@@ -12,9 +12,9 @@ Disassembling code ...
 0017    | OP_POP
 0018    | OP_JUMP            18 -> 32
 0021    | OP_GET_GLOBAL       6 'temp'
-0023    | OP_GET_LOCAL        0
+0023    | OP_GET_LOCAL        1
 0025    | OP_ADD
-0026    | OP_SET_LOCAL        0
+0026    | OP_SET_LOCAL        1
 0028    | OP_POP
 0029    | OP_LOOP            29 -> 9
 0032    5 OP_GET_GLOBAL       7 'a'
@@ -22,943 +22,946 @@ Disassembling code ...
 0035    6 OP_GET_GLOBAL       9 'a'
 0037    | OP_SET_GLOBAL       8 'temp'
 0039    | OP_POP
-0040    7 OP_GET_LOCAL        0
+0040    7 OP_GET_LOCAL        1
 0042    | OP_SET_GLOBAL      10 'a'
 0044    | OP_POP
 0045    8 OP_LOOP            45 -> 21
 0048    | OP_POP
 0049    | OP_POP
-0050    9 OP_RETURN
-Disassembling code ... done.
+0050    9 OP_NIL
+0051    | OP_RETURN
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    1 OP_CONSTANT         1 '0'
-stack: 0
+stack: <script> 0
 0002    | OP_DEFINE_GLOBAL    0 'a'
-stack: empty.
+stack: <script>
 0004    2 OP_NIL
-stack: nil
+stack: <script> nil
 0005    | OP_DEFINE_GLOBAL    2 'temp'
-stack: empty.
+stack: <script>
 0007    4 OP_CONSTANT         3 '1'
-stack: 1
+stack: <script> 1
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 1 0
+stack: <script> 1 0
 0011    | OP_CONSTANT         5 '10000'
-stack: 1 0 10000
+stack: <script> 1 0 10000
 0013    | OP_LESS
-stack: 1 true
+stack: <script> 1 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 1 true
+stack: <script> 1 true
 0017    | OP_POP
-stack: 1
+stack: <script> 1
 0018    | OP_JUMP            18 -> 32
-stack: 1
+stack: <script> 1
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 1 0
+stack: <script> 1 0
 0034    | OP_PRINT
 0
-stack: 1
+stack: <script> 1
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 1 0
+stack: <script> 1 0
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 1 0
+stack: <script> 1 0
 0039    | OP_POP
-stack: 1
-0040    7 OP_GET_LOCAL        0
-stack: 1 1
+stack: <script> 1
+0040    7 OP_GET_LOCAL        1
+stack: <script> 1 1
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 1 1
+stack: <script> 1 1
 0044    | OP_POP
-stack: 1
+stack: <script> 1
 0045    8 OP_LOOP            45 -> 21
-stack: 1
+stack: <script> 1
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 1 0
-0023    | OP_GET_LOCAL        0
-stack: 1 0 1
+stack: <script> 1 0
+0023    | OP_GET_LOCAL        1
+stack: <script> 1 0 1
 0025    | OP_ADD
-stack: 1 1
-0026    | OP_SET_LOCAL        0
-stack: 1 1
+stack: <script> 1 1
+0026    | OP_SET_LOCAL        1
+stack: <script> 1 1
 0028    | OP_POP
-stack: 1
+stack: <script> 1
 0029    | OP_LOOP            29 -> 9
-stack: 1
+stack: <script> 1
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 1 1
+stack: <script> 1 1
 0011    | OP_CONSTANT         5 '10000'
-stack: 1 1 10000
+stack: <script> 1 1 10000
 0013    | OP_LESS
-stack: 1 true
+stack: <script> 1 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 1 true
+stack: <script> 1 true
 0017    | OP_POP
-stack: 1
+stack: <script> 1
 0018    | OP_JUMP            18 -> 32
-stack: 1
+stack: <script> 1
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 1 1
+stack: <script> 1 1
 0034    | OP_PRINT
 1
-stack: 1
+stack: <script> 1
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 1 1
+stack: <script> 1 1
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 1 1
+stack: <script> 1 1
 0039    | OP_POP
-stack: 1
-0040    7 OP_GET_LOCAL        0
-stack: 1 1
+stack: <script> 1
+0040    7 OP_GET_LOCAL        1
+stack: <script> 1 1
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 1 1
+stack: <script> 1 1
 0044    | OP_POP
-stack: 1
+stack: <script> 1
 0045    8 OP_LOOP            45 -> 21
-stack: 1
+stack: <script> 1
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 1 1
-0023    | OP_GET_LOCAL        0
-stack: 1 1 1
+stack: <script> 1 1
+0023    | OP_GET_LOCAL        1
+stack: <script> 1 1 1
 0025    | OP_ADD
-stack: 1 2
-0026    | OP_SET_LOCAL        0
-stack: 2 2
+stack: <script> 1 2
+0026    | OP_SET_LOCAL        1
+stack: <script> 2 2
 0028    | OP_POP
-stack: 2
+stack: <script> 2
 0029    | OP_LOOP            29 -> 9
-stack: 2
+stack: <script> 2
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 2 1
+stack: <script> 2 1
 0011    | OP_CONSTANT         5 '10000'
-stack: 2 1 10000
+stack: <script> 2 1 10000
 0013    | OP_LESS
-stack: 2 true
+stack: <script> 2 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 2 true
+stack: <script> 2 true
 0017    | OP_POP
-stack: 2
+stack: <script> 2
 0018    | OP_JUMP            18 -> 32
-stack: 2
+stack: <script> 2
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 2 1
+stack: <script> 2 1
 0034    | OP_PRINT
 1
-stack: 2
+stack: <script> 2
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 2 1
+stack: <script> 2 1
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 2 1
+stack: <script> 2 1
 0039    | OP_POP
-stack: 2
-0040    7 OP_GET_LOCAL        0
-stack: 2 2
+stack: <script> 2
+0040    7 OP_GET_LOCAL        1
+stack: <script> 2 2
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 2 2
+stack: <script> 2 2
 0044    | OP_POP
-stack: 2
+stack: <script> 2
 0045    8 OP_LOOP            45 -> 21
-stack: 2
+stack: <script> 2
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 2 1
-0023    | OP_GET_LOCAL        0
-stack: 2 1 2
+stack: <script> 2 1
+0023    | OP_GET_LOCAL        1
+stack: <script> 2 1 2
 0025    | OP_ADD
-stack: 2 3
-0026    | OP_SET_LOCAL        0
-stack: 3 3
+stack: <script> 2 3
+0026    | OP_SET_LOCAL        1
+stack: <script> 3 3
 0028    | OP_POP
-stack: 3
+stack: <script> 3
 0029    | OP_LOOP            29 -> 9
-stack: 3
+stack: <script> 3
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 3 2
+stack: <script> 3 2
 0011    | OP_CONSTANT         5 '10000'
-stack: 3 2 10000
+stack: <script> 3 2 10000
 0013    | OP_LESS
-stack: 3 true
+stack: <script> 3 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 3 true
+stack: <script> 3 true
 0017    | OP_POP
-stack: 3
+stack: <script> 3
 0018    | OP_JUMP            18 -> 32
-stack: 3
+stack: <script> 3
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 3 2
+stack: <script> 3 2
 0034    | OP_PRINT
 2
-stack: 3
+stack: <script> 3
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 3 2
+stack: <script> 3 2
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 3 2
+stack: <script> 3 2
 0039    | OP_POP
-stack: 3
-0040    7 OP_GET_LOCAL        0
-stack: 3 3
+stack: <script> 3
+0040    7 OP_GET_LOCAL        1
+stack: <script> 3 3
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 3 3
+stack: <script> 3 3
 0044    | OP_POP
-stack: 3
+stack: <script> 3
 0045    8 OP_LOOP            45 -> 21
-stack: 3
+stack: <script> 3
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 3 2
-0023    | OP_GET_LOCAL        0
-stack: 3 2 3
+stack: <script> 3 2
+0023    | OP_GET_LOCAL        1
+stack: <script> 3 2 3
 0025    | OP_ADD
-stack: 3 5
-0026    | OP_SET_LOCAL        0
-stack: 5 5
+stack: <script> 3 5
+0026    | OP_SET_LOCAL        1
+stack: <script> 5 5
 0028    | OP_POP
-stack: 5
+stack: <script> 5
 0029    | OP_LOOP            29 -> 9
-stack: 5
+stack: <script> 5
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 5 3
+stack: <script> 5 3
 0011    | OP_CONSTANT         5 '10000'
-stack: 5 3 10000
+stack: <script> 5 3 10000
 0013    | OP_LESS
-stack: 5 true
+stack: <script> 5 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 5 true
+stack: <script> 5 true
 0017    | OP_POP
-stack: 5
+stack: <script> 5
 0018    | OP_JUMP            18 -> 32
-stack: 5
+stack: <script> 5
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 5 3
+stack: <script> 5 3
 0034    | OP_PRINT
 3
-stack: 5
+stack: <script> 5
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 5 3
+stack: <script> 5 3
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 5 3
+stack: <script> 5 3
 0039    | OP_POP
-stack: 5
-0040    7 OP_GET_LOCAL        0
-stack: 5 5
+stack: <script> 5
+0040    7 OP_GET_LOCAL        1
+stack: <script> 5 5
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 5 5
+stack: <script> 5 5
 0044    | OP_POP
-stack: 5
+stack: <script> 5
 0045    8 OP_LOOP            45 -> 21
-stack: 5
+stack: <script> 5
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 5 3
-0023    | OP_GET_LOCAL        0
-stack: 5 3 5
+stack: <script> 5 3
+0023    | OP_GET_LOCAL        1
+stack: <script> 5 3 5
 0025    | OP_ADD
-stack: 5 8
-0026    | OP_SET_LOCAL        0
-stack: 8 8
+stack: <script> 5 8
+0026    | OP_SET_LOCAL        1
+stack: <script> 8 8
 0028    | OP_POP
-stack: 8
+stack: <script> 8
 0029    | OP_LOOP            29 -> 9
-stack: 8
+stack: <script> 8
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 8 5
+stack: <script> 8 5
 0011    | OP_CONSTANT         5 '10000'
-stack: 8 5 10000
+stack: <script> 8 5 10000
 0013    | OP_LESS
-stack: 8 true
+stack: <script> 8 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 8 true
+stack: <script> 8 true
 0017    | OP_POP
-stack: 8
+stack: <script> 8
 0018    | OP_JUMP            18 -> 32
-stack: 8
+stack: <script> 8
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 8 5
+stack: <script> 8 5
 0034    | OP_PRINT
 5
-stack: 8
+stack: <script> 8
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 8 5
+stack: <script> 8 5
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 8 5
+stack: <script> 8 5
 0039    | OP_POP
-stack: 8
-0040    7 OP_GET_LOCAL        0
-stack: 8 8
+stack: <script> 8
+0040    7 OP_GET_LOCAL        1
+stack: <script> 8 8
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 8 8
+stack: <script> 8 8
 0044    | OP_POP
-stack: 8
+stack: <script> 8
 0045    8 OP_LOOP            45 -> 21
-stack: 8
+stack: <script> 8
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 8 5
-0023    | OP_GET_LOCAL        0
-stack: 8 5 8
+stack: <script> 8 5
+0023    | OP_GET_LOCAL        1
+stack: <script> 8 5 8
 0025    | OP_ADD
-stack: 8 13
-0026    | OP_SET_LOCAL        0
-stack: 13 13
+stack: <script> 8 13
+0026    | OP_SET_LOCAL        1
+stack: <script> 13 13
 0028    | OP_POP
-stack: 13
+stack: <script> 13
 0029    | OP_LOOP            29 -> 9
-stack: 13
+stack: <script> 13
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 13 8
+stack: <script> 13 8
 0011    | OP_CONSTANT         5 '10000'
-stack: 13 8 10000
+stack: <script> 13 8 10000
 0013    | OP_LESS
-stack: 13 true
+stack: <script> 13 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 13 true
+stack: <script> 13 true
 0017    | OP_POP
-stack: 13
+stack: <script> 13
 0018    | OP_JUMP            18 -> 32
-stack: 13
+stack: <script> 13
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 13 8
+stack: <script> 13 8
 0034    | OP_PRINT
 8
-stack: 13
+stack: <script> 13
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 13 8
+stack: <script> 13 8
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 13 8
+stack: <script> 13 8
 0039    | OP_POP
-stack: 13
-0040    7 OP_GET_LOCAL        0
-stack: 13 13
+stack: <script> 13
+0040    7 OP_GET_LOCAL        1
+stack: <script> 13 13
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 13 13
+stack: <script> 13 13
 0044    | OP_POP
-stack: 13
+stack: <script> 13
 0045    8 OP_LOOP            45 -> 21
-stack: 13
+stack: <script> 13
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 13 8
-0023    | OP_GET_LOCAL        0
-stack: 13 8 13
+stack: <script> 13 8
+0023    | OP_GET_LOCAL        1
+stack: <script> 13 8 13
 0025    | OP_ADD
-stack: 13 21
-0026    | OP_SET_LOCAL        0
-stack: 21 21
+stack: <script> 13 21
+0026    | OP_SET_LOCAL        1
+stack: <script> 21 21
 0028    | OP_POP
-stack: 21
+stack: <script> 21
 0029    | OP_LOOP            29 -> 9
-stack: 21
+stack: <script> 21
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 21 13
+stack: <script> 21 13
 0011    | OP_CONSTANT         5 '10000'
-stack: 21 13 10000
+stack: <script> 21 13 10000
 0013    | OP_LESS
-stack: 21 true
+stack: <script> 21 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 21 true
+stack: <script> 21 true
 0017    | OP_POP
-stack: 21
+stack: <script> 21
 0018    | OP_JUMP            18 -> 32
-stack: 21
+stack: <script> 21
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 21 13
+stack: <script> 21 13
 0034    | OP_PRINT
 13
-stack: 21
+stack: <script> 21
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 21 13
+stack: <script> 21 13
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 21 13
+stack: <script> 21 13
 0039    | OP_POP
-stack: 21
-0040    7 OP_GET_LOCAL        0
-stack: 21 21
+stack: <script> 21
+0040    7 OP_GET_LOCAL        1
+stack: <script> 21 21
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 21 21
+stack: <script> 21 21
 0044    | OP_POP
-stack: 21
+stack: <script> 21
 0045    8 OP_LOOP            45 -> 21
-stack: 21
+stack: <script> 21
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 21 13
-0023    | OP_GET_LOCAL        0
-stack: 21 13 21
+stack: <script> 21 13
+0023    | OP_GET_LOCAL        1
+stack: <script> 21 13 21
 0025    | OP_ADD
-stack: 21 34
-0026    | OP_SET_LOCAL        0
-stack: 34 34
+stack: <script> 21 34
+0026    | OP_SET_LOCAL        1
+stack: <script> 34 34
 0028    | OP_POP
-stack: 34
+stack: <script> 34
 0029    | OP_LOOP            29 -> 9
-stack: 34
+stack: <script> 34
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 34 21
+stack: <script> 34 21
 0011    | OP_CONSTANT         5 '10000'
-stack: 34 21 10000
+stack: <script> 34 21 10000
 0013    | OP_LESS
-stack: 34 true
+stack: <script> 34 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 34 true
+stack: <script> 34 true
 0017    | OP_POP
-stack: 34
+stack: <script> 34
 0018    | OP_JUMP            18 -> 32
-stack: 34
+stack: <script> 34
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 34 21
+stack: <script> 34 21
 0034    | OP_PRINT
 21
-stack: 34
+stack: <script> 34
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 34 21
+stack: <script> 34 21
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 34 21
+stack: <script> 34 21
 0039    | OP_POP
-stack: 34
-0040    7 OP_GET_LOCAL        0
-stack: 34 34
+stack: <script> 34
+0040    7 OP_GET_LOCAL        1
+stack: <script> 34 34
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 34 34
+stack: <script> 34 34
 0044    | OP_POP
-stack: 34
+stack: <script> 34
 0045    8 OP_LOOP            45 -> 21
-stack: 34
+stack: <script> 34
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 34 21
-0023    | OP_GET_LOCAL        0
-stack: 34 21 34
+stack: <script> 34 21
+0023    | OP_GET_LOCAL        1
+stack: <script> 34 21 34
 0025    | OP_ADD
-stack: 34 55
-0026    | OP_SET_LOCAL        0
-stack: 55 55
+stack: <script> 34 55
+0026    | OP_SET_LOCAL        1
+stack: <script> 55 55
 0028    | OP_POP
-stack: 55
+stack: <script> 55
 0029    | OP_LOOP            29 -> 9
-stack: 55
+stack: <script> 55
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 55 34
+stack: <script> 55 34
 0011    | OP_CONSTANT         5 '10000'
-stack: 55 34 10000
+stack: <script> 55 34 10000
 0013    | OP_LESS
-stack: 55 true
+stack: <script> 55 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 55 true
+stack: <script> 55 true
 0017    | OP_POP
-stack: 55
+stack: <script> 55
 0018    | OP_JUMP            18 -> 32
-stack: 55
+stack: <script> 55
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 55 34
+stack: <script> 55 34
 0034    | OP_PRINT
 34
-stack: 55
+stack: <script> 55
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 55 34
+stack: <script> 55 34
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 55 34
+stack: <script> 55 34
 0039    | OP_POP
-stack: 55
-0040    7 OP_GET_LOCAL        0
-stack: 55 55
+stack: <script> 55
+0040    7 OP_GET_LOCAL        1
+stack: <script> 55 55
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 55 55
+stack: <script> 55 55
 0044    | OP_POP
-stack: 55
+stack: <script> 55
 0045    8 OP_LOOP            45 -> 21
-stack: 55
+stack: <script> 55
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 55 34
-0023    | OP_GET_LOCAL        0
-stack: 55 34 55
+stack: <script> 55 34
+0023    | OP_GET_LOCAL        1
+stack: <script> 55 34 55
 0025    | OP_ADD
-stack: 55 89
-0026    | OP_SET_LOCAL        0
-stack: 89 89
+stack: <script> 55 89
+0026    | OP_SET_LOCAL        1
+stack: <script> 89 89
 0028    | OP_POP
-stack: 89
+stack: <script> 89
 0029    | OP_LOOP            29 -> 9
-stack: 89
+stack: <script> 89
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 89 55
+stack: <script> 89 55
 0011    | OP_CONSTANT         5 '10000'
-stack: 89 55 10000
+stack: <script> 89 55 10000
 0013    | OP_LESS
-stack: 89 true
+stack: <script> 89 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 89 true
+stack: <script> 89 true
 0017    | OP_POP
-stack: 89
+stack: <script> 89
 0018    | OP_JUMP            18 -> 32
-stack: 89
+stack: <script> 89
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 89 55
+stack: <script> 89 55
 0034    | OP_PRINT
 55
-stack: 89
+stack: <script> 89
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 89 55
+stack: <script> 89 55
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 89 55
+stack: <script> 89 55
 0039    | OP_POP
-stack: 89
-0040    7 OP_GET_LOCAL        0
-stack: 89 89
+stack: <script> 89
+0040    7 OP_GET_LOCAL        1
+stack: <script> 89 89
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 89 89
+stack: <script> 89 89
 0044    | OP_POP
-stack: 89
+stack: <script> 89
 0045    8 OP_LOOP            45 -> 21
-stack: 89
+stack: <script> 89
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 89 55
-0023    | OP_GET_LOCAL        0
-stack: 89 55 89
+stack: <script> 89 55
+0023    | OP_GET_LOCAL        1
+stack: <script> 89 55 89
 0025    | OP_ADD
-stack: 89 144
-0026    | OP_SET_LOCAL        0
-stack: 144 144
+stack: <script> 89 144
+0026    | OP_SET_LOCAL        1
+stack: <script> 144 144
 0028    | OP_POP
-stack: 144
+stack: <script> 144
 0029    | OP_LOOP            29 -> 9
-stack: 144
+stack: <script> 144
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 144 89
+stack: <script> 144 89
 0011    | OP_CONSTANT         5 '10000'
-stack: 144 89 10000
+stack: <script> 144 89 10000
 0013    | OP_LESS
-stack: 144 true
+stack: <script> 144 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 144 true
+stack: <script> 144 true
 0017    | OP_POP
-stack: 144
+stack: <script> 144
 0018    | OP_JUMP            18 -> 32
-stack: 144
+stack: <script> 144
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 144 89
+stack: <script> 144 89
 0034    | OP_PRINT
 89
-stack: 144
+stack: <script> 144
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 144 89
+stack: <script> 144 89
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 144 89
+stack: <script> 144 89
 0039    | OP_POP
-stack: 144
-0040    7 OP_GET_LOCAL        0
-stack: 144 144
+stack: <script> 144
+0040    7 OP_GET_LOCAL        1
+stack: <script> 144 144
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 144 144
+stack: <script> 144 144
 0044    | OP_POP
-stack: 144
+stack: <script> 144
 0045    8 OP_LOOP            45 -> 21
-stack: 144
+stack: <script> 144
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 144 89
-0023    | OP_GET_LOCAL        0
-stack: 144 89 144
+stack: <script> 144 89
+0023    | OP_GET_LOCAL        1
+stack: <script> 144 89 144
 0025    | OP_ADD
-stack: 144 233
-0026    | OP_SET_LOCAL        0
-stack: 233 233
+stack: <script> 144 233
+0026    | OP_SET_LOCAL        1
+stack: <script> 233 233
 0028    | OP_POP
-stack: 233
+stack: <script> 233
 0029    | OP_LOOP            29 -> 9
-stack: 233
+stack: <script> 233
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 233 144
+stack: <script> 233 144
 0011    | OP_CONSTANT         5 '10000'
-stack: 233 144 10000
+stack: <script> 233 144 10000
 0013    | OP_LESS
-stack: 233 true
+stack: <script> 233 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 233 true
+stack: <script> 233 true
 0017    | OP_POP
-stack: 233
+stack: <script> 233
 0018    | OP_JUMP            18 -> 32
-stack: 233
+stack: <script> 233
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 233 144
+stack: <script> 233 144
 0034    | OP_PRINT
 144
-stack: 233
+stack: <script> 233
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 233 144
+stack: <script> 233 144
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 233 144
+stack: <script> 233 144
 0039    | OP_POP
-stack: 233
-0040    7 OP_GET_LOCAL        0
-stack: 233 233
+stack: <script> 233
+0040    7 OP_GET_LOCAL        1
+stack: <script> 233 233
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 233 233
+stack: <script> 233 233
 0044    | OP_POP
-stack: 233
+stack: <script> 233
 0045    8 OP_LOOP            45 -> 21
-stack: 233
+stack: <script> 233
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 233 144
-0023    | OP_GET_LOCAL        0
-stack: 233 144 233
+stack: <script> 233 144
+0023    | OP_GET_LOCAL        1
+stack: <script> 233 144 233
 0025    | OP_ADD
-stack: 233 377
-0026    | OP_SET_LOCAL        0
-stack: 377 377
+stack: <script> 233 377
+0026    | OP_SET_LOCAL        1
+stack: <script> 377 377
 0028    | OP_POP
-stack: 377
+stack: <script> 377
 0029    | OP_LOOP            29 -> 9
-stack: 377
+stack: <script> 377
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 377 233
+stack: <script> 377 233
 0011    | OP_CONSTANT         5 '10000'
-stack: 377 233 10000
+stack: <script> 377 233 10000
 0013    | OP_LESS
-stack: 377 true
+stack: <script> 377 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 377 true
+stack: <script> 377 true
 0017    | OP_POP
-stack: 377
+stack: <script> 377
 0018    | OP_JUMP            18 -> 32
-stack: 377
+stack: <script> 377
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 377 233
+stack: <script> 377 233
 0034    | OP_PRINT
 233
-stack: 377
+stack: <script> 377
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 377 233
+stack: <script> 377 233
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 377 233
+stack: <script> 377 233
 0039    | OP_POP
-stack: 377
-0040    7 OP_GET_LOCAL        0
-stack: 377 377
+stack: <script> 377
+0040    7 OP_GET_LOCAL        1
+stack: <script> 377 377
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 377 377
+stack: <script> 377 377
 0044    | OP_POP
-stack: 377
+stack: <script> 377
 0045    8 OP_LOOP            45 -> 21
-stack: 377
+stack: <script> 377
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 377 233
-0023    | OP_GET_LOCAL        0
-stack: 377 233 377
+stack: <script> 377 233
+0023    | OP_GET_LOCAL        1
+stack: <script> 377 233 377
 0025    | OP_ADD
-stack: 377 610
-0026    | OP_SET_LOCAL        0
-stack: 610 610
+stack: <script> 377 610
+0026    | OP_SET_LOCAL        1
+stack: <script> 610 610
 0028    | OP_POP
-stack: 610
+stack: <script> 610
 0029    | OP_LOOP            29 -> 9
-stack: 610
+stack: <script> 610
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 610 377
+stack: <script> 610 377
 0011    | OP_CONSTANT         5 '10000'
-stack: 610 377 10000
+stack: <script> 610 377 10000
 0013    | OP_LESS
-stack: 610 true
+stack: <script> 610 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 610 true
+stack: <script> 610 true
 0017    | OP_POP
-stack: 610
+stack: <script> 610
 0018    | OP_JUMP            18 -> 32
-stack: 610
+stack: <script> 610
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 610 377
+stack: <script> 610 377
 0034    | OP_PRINT
 377
-stack: 610
+stack: <script> 610
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 610 377
+stack: <script> 610 377
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 610 377
+stack: <script> 610 377
 0039    | OP_POP
-stack: 610
-0040    7 OP_GET_LOCAL        0
-stack: 610 610
+stack: <script> 610
+0040    7 OP_GET_LOCAL        1
+stack: <script> 610 610
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 610 610
+stack: <script> 610 610
 0044    | OP_POP
-stack: 610
+stack: <script> 610
 0045    8 OP_LOOP            45 -> 21
-stack: 610
+stack: <script> 610
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 610 377
-0023    | OP_GET_LOCAL        0
-stack: 610 377 610
+stack: <script> 610 377
+0023    | OP_GET_LOCAL        1
+stack: <script> 610 377 610
 0025    | OP_ADD
-stack: 610 987
-0026    | OP_SET_LOCAL        0
-stack: 987 987
+stack: <script> 610 987
+0026    | OP_SET_LOCAL        1
+stack: <script> 987 987
 0028    | OP_POP
-stack: 987
+stack: <script> 987
 0029    | OP_LOOP            29 -> 9
-stack: 987
+stack: <script> 987
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 987 610
+stack: <script> 987 610
 0011    | OP_CONSTANT         5 '10000'
-stack: 987 610 10000
+stack: <script> 987 610 10000
 0013    | OP_LESS
-stack: 987 true
+stack: <script> 987 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 987 true
+stack: <script> 987 true
 0017    | OP_POP
-stack: 987
+stack: <script> 987
 0018    | OP_JUMP            18 -> 32
-stack: 987
+stack: <script> 987
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 987 610
+stack: <script> 987 610
 0034    | OP_PRINT
 610
-stack: 987
+stack: <script> 987
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 987 610
+stack: <script> 987 610
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 987 610
+stack: <script> 987 610
 0039    | OP_POP
-stack: 987
-0040    7 OP_GET_LOCAL        0
-stack: 987 987
+stack: <script> 987
+0040    7 OP_GET_LOCAL        1
+stack: <script> 987 987
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 987 987
+stack: <script> 987 987
 0044    | OP_POP
-stack: 987
+stack: <script> 987
 0045    8 OP_LOOP            45 -> 21
-stack: 987
+stack: <script> 987
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 987 610
-0023    | OP_GET_LOCAL        0
-stack: 987 610 987
+stack: <script> 987 610
+0023    | OP_GET_LOCAL        1
+stack: <script> 987 610 987
 0025    | OP_ADD
-stack: 987 1597
-0026    | OP_SET_LOCAL        0
-stack: 1597 1597
+stack: <script> 987 1597
+0026    | OP_SET_LOCAL        1
+stack: <script> 1597 1597
 0028    | OP_POP
-stack: 1597
+stack: <script> 1597
 0029    | OP_LOOP            29 -> 9
-stack: 1597
+stack: <script> 1597
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 1597 987
+stack: <script> 1597 987
 0011    | OP_CONSTANT         5 '10000'
-stack: 1597 987 10000
+stack: <script> 1597 987 10000
 0013    | OP_LESS
-stack: 1597 true
+stack: <script> 1597 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 1597 true
+stack: <script> 1597 true
 0017    | OP_POP
-stack: 1597
+stack: <script> 1597
 0018    | OP_JUMP            18 -> 32
-stack: 1597
+stack: <script> 1597
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 1597 987
+stack: <script> 1597 987
 0034    | OP_PRINT
 987
-stack: 1597
+stack: <script> 1597
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 1597 987
+stack: <script> 1597 987
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 1597 987
+stack: <script> 1597 987
 0039    | OP_POP
-stack: 1597
-0040    7 OP_GET_LOCAL        0
-stack: 1597 1597
+stack: <script> 1597
+0040    7 OP_GET_LOCAL        1
+stack: <script> 1597 1597
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 1597 1597
+stack: <script> 1597 1597
 0044    | OP_POP
-stack: 1597
+stack: <script> 1597
 0045    8 OP_LOOP            45 -> 21
-stack: 1597
+stack: <script> 1597
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 1597 987
-0023    | OP_GET_LOCAL        0
-stack: 1597 987 1597
+stack: <script> 1597 987
+0023    | OP_GET_LOCAL        1
+stack: <script> 1597 987 1597
 0025    | OP_ADD
-stack: 1597 2584
-0026    | OP_SET_LOCAL        0
-stack: 2584 2584
+stack: <script> 1597 2584
+0026    | OP_SET_LOCAL        1
+stack: <script> 2584 2584
 0028    | OP_POP
-stack: 2584
+stack: <script> 2584
 0029    | OP_LOOP            29 -> 9
-stack: 2584
+stack: <script> 2584
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 2584 1597
+stack: <script> 2584 1597
 0011    | OP_CONSTANT         5 '10000'
-stack: 2584 1597 10000
+stack: <script> 2584 1597 10000
 0013    | OP_LESS
-stack: 2584 true
+stack: <script> 2584 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 2584 true
+stack: <script> 2584 true
 0017    | OP_POP
-stack: 2584
+stack: <script> 2584
 0018    | OP_JUMP            18 -> 32
-stack: 2584
+stack: <script> 2584
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 2584 1597
+stack: <script> 2584 1597
 0034    | OP_PRINT
 1597
-stack: 2584
+stack: <script> 2584
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 2584 1597
+stack: <script> 2584 1597
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 2584 1597
+stack: <script> 2584 1597
 0039    | OP_POP
-stack: 2584
-0040    7 OP_GET_LOCAL        0
-stack: 2584 2584
+stack: <script> 2584
+0040    7 OP_GET_LOCAL        1
+stack: <script> 2584 2584
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 2584 2584
+stack: <script> 2584 2584
 0044    | OP_POP
-stack: 2584
+stack: <script> 2584
 0045    8 OP_LOOP            45 -> 21
-stack: 2584
+stack: <script> 2584
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 2584 1597
-0023    | OP_GET_LOCAL        0
-stack: 2584 1597 2584
+stack: <script> 2584 1597
+0023    | OP_GET_LOCAL        1
+stack: <script> 2584 1597 2584
 0025    | OP_ADD
-stack: 2584 4181
-0026    | OP_SET_LOCAL        0
-stack: 4181 4181
+stack: <script> 2584 4181
+0026    | OP_SET_LOCAL        1
+stack: <script> 4181 4181
 0028    | OP_POP
-stack: 4181
+stack: <script> 4181
 0029    | OP_LOOP            29 -> 9
-stack: 4181
+stack: <script> 4181
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 4181 2584
+stack: <script> 4181 2584
 0011    | OP_CONSTANT         5 '10000'
-stack: 4181 2584 10000
+stack: <script> 4181 2584 10000
 0013    | OP_LESS
-stack: 4181 true
+stack: <script> 4181 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 4181 true
+stack: <script> 4181 true
 0017    | OP_POP
-stack: 4181
+stack: <script> 4181
 0018    | OP_JUMP            18 -> 32
-stack: 4181
+stack: <script> 4181
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 4181 2584
+stack: <script> 4181 2584
 0034    | OP_PRINT
 2584
-stack: 4181
+stack: <script> 4181
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 4181 2584
+stack: <script> 4181 2584
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 4181 2584
+stack: <script> 4181 2584
 0039    | OP_POP
-stack: 4181
-0040    7 OP_GET_LOCAL        0
-stack: 4181 4181
+stack: <script> 4181
+0040    7 OP_GET_LOCAL        1
+stack: <script> 4181 4181
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 4181 4181
+stack: <script> 4181 4181
 0044    | OP_POP
-stack: 4181
+stack: <script> 4181
 0045    8 OP_LOOP            45 -> 21
-stack: 4181
+stack: <script> 4181
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 4181 2584
-0023    | OP_GET_LOCAL        0
-stack: 4181 2584 4181
+stack: <script> 4181 2584
+0023    | OP_GET_LOCAL        1
+stack: <script> 4181 2584 4181
 0025    | OP_ADD
-stack: 4181 6765
-0026    | OP_SET_LOCAL        0
-stack: 6765 6765
+stack: <script> 4181 6765
+0026    | OP_SET_LOCAL        1
+stack: <script> 6765 6765
 0028    | OP_POP
-stack: 6765
+stack: <script> 6765
 0029    | OP_LOOP            29 -> 9
-stack: 6765
+stack: <script> 6765
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 6765 4181
+stack: <script> 6765 4181
 0011    | OP_CONSTANT         5 '10000'
-stack: 6765 4181 10000
+stack: <script> 6765 4181 10000
 0013    | OP_LESS
-stack: 6765 true
+stack: <script> 6765 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 6765 true
+stack: <script> 6765 true
 0017    | OP_POP
-stack: 6765
+stack: <script> 6765
 0018    | OP_JUMP            18 -> 32
-stack: 6765
+stack: <script> 6765
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 6765 4181
+stack: <script> 6765 4181
 0034    | OP_PRINT
 4181
-stack: 6765
+stack: <script> 6765
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 6765 4181
+stack: <script> 6765 4181
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 6765 4181
+stack: <script> 6765 4181
 0039    | OP_POP
-stack: 6765
-0040    7 OP_GET_LOCAL        0
-stack: 6765 6765
+stack: <script> 6765
+0040    7 OP_GET_LOCAL        1
+stack: <script> 6765 6765
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 6765 6765
+stack: <script> 6765 6765
 0044    | OP_POP
-stack: 6765
+stack: <script> 6765
 0045    8 OP_LOOP            45 -> 21
-stack: 6765
+stack: <script> 6765
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 6765 4181
-0023    | OP_GET_LOCAL        0
-stack: 6765 4181 6765
+stack: <script> 6765 4181
+0023    | OP_GET_LOCAL        1
+stack: <script> 6765 4181 6765
 0025    | OP_ADD
-stack: 6765 10946
-0026    | OP_SET_LOCAL        0
-stack: 10946 10946
+stack: <script> 6765 10946
+0026    | OP_SET_LOCAL        1
+stack: <script> 10946 10946
 0028    | OP_POP
-stack: 10946
+stack: <script> 10946
 0029    | OP_LOOP            29 -> 9
-stack: 10946
+stack: <script> 10946
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 10946 6765
+stack: <script> 10946 6765
 0011    | OP_CONSTANT         5 '10000'
-stack: 10946 6765 10000
+stack: <script> 10946 6765 10000
 0013    | OP_LESS
-stack: 10946 true
+stack: <script> 10946 true
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 10946 true
+stack: <script> 10946 true
 0017    | OP_POP
-stack: 10946
+stack: <script> 10946
 0018    | OP_JUMP            18 -> 32
-stack: 10946
+stack: <script> 10946
 0032    5 OP_GET_GLOBAL       7 'a'
-stack: 10946 6765
+stack: <script> 10946 6765
 0034    | OP_PRINT
 6765
-stack: 10946
+stack: <script> 10946
 0035    6 OP_GET_GLOBAL       9 'a'
-stack: 10946 6765
+stack: <script> 10946 6765
 0037    | OP_SET_GLOBAL       8 'temp'
-stack: 10946 6765
+stack: <script> 10946 6765
 0039    | OP_POP
-stack: 10946
-0040    7 OP_GET_LOCAL        0
-stack: 10946 10946
+stack: <script> 10946
+0040    7 OP_GET_LOCAL        1
+stack: <script> 10946 10946
 0042    | OP_SET_GLOBAL      10 'a'
-stack: 10946 10946
+stack: <script> 10946 10946
 0044    | OP_POP
-stack: 10946
+stack: <script> 10946
 0045    8 OP_LOOP            45 -> 21
-stack: 10946
+stack: <script> 10946
 0021    | OP_GET_GLOBAL       6 'temp'
-stack: 10946 6765
-0023    | OP_GET_LOCAL        0
-stack: 10946 6765 10946
+stack: <script> 10946 6765
+0023    | OP_GET_LOCAL        1
+stack: <script> 10946 6765 10946
 0025    | OP_ADD
-stack: 10946 17711
-0026    | OP_SET_LOCAL        0
-stack: 17711 17711
+stack: <script> 10946 17711
+0026    | OP_SET_LOCAL        1
+stack: <script> 17711 17711
 0028    | OP_POP
-stack: 17711
+stack: <script> 17711
 0029    | OP_LOOP            29 -> 9
-stack: 17711
+stack: <script> 17711
 0009    | OP_GET_GLOBAL       4 'a'
-stack: 17711 10946
+stack: <script> 17711 10946
 0011    | OP_CONSTANT         5 '10000'
-stack: 17711 10946 10000
+stack: <script> 17711 10946 10000
 0013    | OP_LESS
-stack: 17711 false
+stack: <script> 17711 false
 0014    | OP_JUMP_IF_FALSE   14 -> 48
-stack: 17711 false
+stack: <script> 17711 false
 0048    | OP_POP
-stack: 17711
+stack: <script> 17711
 0049    | OP_POP
-stack: empty.
-0050    9 OP_RETURN
+stack: <script>
+0050    9 OP_NIL
+stack: <script> nil
+0051    | OP_RETURN
 Executing ... done.
 

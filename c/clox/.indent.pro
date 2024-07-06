@@ -13,16 +13,20 @@
 --no-blank-lines-before-block-comments
 --no-tabs
 
+-TCallFrame
 -TChunk
 -TCompiler
 -TEntry
+-TFunctionType
 -TInterpretResult
 -TLocal
+-TObj
+-TObjFunction
 -TObjString
+-TObjType
 -TOpCode
 -TOptions
 -TParseFn
--TParseFp
 -TParseRule
 -TParser
 -TPrecedence
@@ -33,3 +37,4 @@
 -TVM
 -TValue
 -TValueArray
+-TValueType

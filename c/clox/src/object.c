@@ -15,6 +15,12 @@
  */
 #define ALLOCATE_OBJ(type, objectType)          ((type*)allocateObject(sizeof (type), objectType))
 
+/** Allocate a new object.
+ *
+ * @param size byte needed for the object
+ * @param type enumerated object type value to write
+ * @returns a pointer to the new object structure
+ */
 static Obj *
 allocateObject (size_t size, ObjType type)
 {
@@ -24,6 +30,35 @@ allocateObject (size_t size, ObjType type)
     object->next = vm.objects;
     vm.objects = object;
     return object;
+}
+
+/** Create a new Function object.
+ *
+ * @returns a pointer to a new Function object.
+ */
+ObjFunction *
+newFunction ()
+{
+    ObjFunction *function = ALLOCATE_OBJ (ObjFunction, OBJ_FUNCTION);
+
+    function->arity = 0;
+    function->name = NULL;
+    initChunk (&function->chunk);
+    return function;
+}
+
+/** Create a new Native Function object.
+ *
+ * @param function the glue code
+ * @returns a pointer to a new Native Function object.
+ */
+ObjNative *
+newNative (NativeFn function)
+{
+    ObjNative *native = ALLOCATE_OBJ (ObjNative, OBJ_NATIVE);
+
+    native->function = function;
+    return native;
 }
 
 /** Create a String object referring to the given content
@@ -136,6 +171,20 @@ copyString (const char *chars, int length)
     return allocateString (heapChars, length, hash);
 }
 
+/** Print a Function object
+ *
+ * @param function the object to print
+ */
+static void
+printFunction (ObjFunction *function)
+{
+    if (function->name == NULL) {
+        printf ("<script>");
+        return;
+    }
+    printf ("<fn %s>", function->name->chars);
+}
+
 /** Print the value of a Value that is an Object.
  *
  * @param value copy of the Value to print.
@@ -149,6 +198,8 @@ printObject (Value value)
 
         // *INDENT-OFF*
 
+    case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
+    case OBJ_NATIVE:    printf("<native fn>");                  return;
     case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
 
         // *INDENT-ON*

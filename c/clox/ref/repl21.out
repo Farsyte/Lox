@@ -1,5 +1,5 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    1 OP_CONSTANT         0 'one'
 0002    | OP_PRINT
 0003    2 OP_TRUE
@@ -8,31 +8,34 @@ Disassembling code ...
 0007    | OP_CONSTANT         2 '1'
 0009    | OP_ADD
 0010    | OP_PRINT
-0011    4 OP_RETURN
-Disassembling code ... done.
+0011    4 OP_NIL
+0012    | OP_RETURN
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    1 OP_CONSTANT         0 'one'
-stack: one
+stack: <script> one
 0002    | OP_PRINT
 one
-stack: empty.
+stack: <script>
 0003    2 OP_TRUE
-stack: true
+stack: <script> true
 0004    | OP_PRINT
 true
-stack: empty.
+stack: <script>
 0005    3 OP_CONSTANT         1 '2'
-stack: 2
+stack: <script> 2
 0007    | OP_CONSTANT         2 '1'
-stack: 2 1
+stack: <script> 2 1
 0009    | OP_ADD
-stack: 3
+stack: <script> 3
 0010    | OP_PRINT
 3
-stack: empty.
-0011    4 OP_RETURN
+stack: <script>
+0011    4 OP_NIL
+stack: <script> nil
+0012    | OP_RETURN
 Executing ... done.
 

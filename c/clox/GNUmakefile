@@ -8,6 +8,9 @@ MAIN            := clox
 
 CC              := c99
 
+# C_DBG_OPT	:= -g -O0
+C_DBG_OPT	:= -O3
+
 # NOTE: this is GCC-specific.
 # COPTS           := -fshort-enums
 
@@ -31,45 +34,61 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 # as a build failure.
 
 LSRC		:= $(wildcard $(LOXD)*.lox)
+MTST		:= demo bist repl help
+
 LOUT		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
+# $(MTST:%=$(LOGD)$(MAIN)--%.out)
 LERR		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.err)
-ROUT		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.out)
-RERR		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.err)
+# $(MTST:%=$(LOGD)$(MAIN)--%.err)
+
+ROUT		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.out) $(MTST:%=$(REFD)$(MAIN)--%.out)
+RERR		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.err) $(MTST:%=$(REFD)$(MAIN)--%.err)
 
 DIFFX		:= -X $(REFD)exclude-from-compare
 DIFFPX		:= -x '*~'
 DOPTS		:= -wu
 DFLAGS		:= $(DOPTS) $(DIFFX) $(DIFFPX) -r
 
-tests::         demo bist repl help $(LOUT)
+tests::         $(MTST) $(LOUT)
 	$C diff $(DFLAGS) $(REFD) $(LOGD) | sed 's/^diff .* ref/\ndiff $(DOPTS) ref/'
 
 accept:		$(ROUT) $(RERR)
 
 $(REFD)%.out:	$(LOGD)%.out
+	$P '  %-14s %s\n' 'UPDATE' '$*.out'
 	$C cp -f $< $@
 
 $(REFD)%.err:	$(LOGD)%.err
+	$P '  %-14s %s\n' 'UPDATE' '$*.err'
 	$C cp -f $< $@
+
 
 clean::
 	$X $(LOUT) $(LERR)
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
-	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null
+	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null || (echo 'BUILD OF "DEMO" FAILED'; cat $(LOGD)$(MAIN)--demo.err ; false)
+
+clean::		; $X $(LOGD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.err
 
 bist::          $(BIND)title
 	$P '  %-6s %s\n' "BIST" "$(MAIN)"
-	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null
+	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null || (echo 'BUILD OF "BIST" FAILED'; cat $(LOGD)$(MAIN)--bist.err ; false)
+
+clean::		; $X $(LOGD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.err
 
 repl::          $(BIND)title
 	$P '  %-6s %s\n' "REPL" "$(MAIN)"
-	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null
+	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null || (echo 'BUILD OF "REPL" FAILED'; cat $(LOGD)$(MAIN)--repl.err ; false)
+
+clean::		; $X $(LOGD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.err
 
 help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
-	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null
+	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null || (echo 'BUILD OF "HELP" FAILED'; cat $(LOGD)$(MAIN)--help.err ; false)
+
+clean::		; $X $(LOGD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.err
 
 # many .lox test scripts are expected to error.
 # adjust later when nearly all are expected to succeed.
@@ -115,6 +134,7 @@ doc/html/index.html:    doc/Doxyfile $(PROG)
 	$C [ -d log ] || mkdir -p log
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
 	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err </dev/null
+	$C cat $(LOGD)doxygen.err
 
 clean::
 	$X $(LOGD)doxygen.log $(LOGD)doxygen.err
@@ -131,7 +151,7 @@ clean::
 
 stubs::
 	$P '  %-14s %s\n' "FIND STUBs" "$(INCD)*.h $(SRCD)*.c"
-	$C grep -ni '^ *\<STUB\> (' $(SRCD)*.c $(INCD)*.h /dev/null || true
+	$C grep -ni '^ *STUB (' $(SRCD)*.c $(INCD)*.h /dev/null || true
 
 # The presence of "TODO" comments is not a build error, but expose
 # where they all are to point out what needs to be implemented soon.
@@ -174,9 +194,6 @@ cycle::
 	$M -k -j ctags etags tests docs
 	$M -k stubs
 	$M -k todos
-
-world::
-	$M longer
 
 $(BIND)title:           $(BIND)title.c
 clean::         ; $X $(BIND)title

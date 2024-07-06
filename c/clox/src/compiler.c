@@ -13,6 +13,10 @@
  * @brief Compiler (Lox Parser)
  */
 
+#ifdef DEBUG_PRINT_CODE
+int _DEBUG_PRINT_CODE = 1;
+#endif
+
 /** Parser state */
 struct Parser {
     Token current;              ///< the current token to parse
@@ -34,7 +38,7 @@ typedef enum {
     PREC_FACTOR,                ///< "*", "/"
     PREC_UNARY,                 ///< "!", "-"
     PREC_CALL,                  ///< ".", "()"
-    PREC_PRIMARY,               // identifiers etc.
+    PREC_PRIMARY,               ///< identifiers etc.
 } Precedence;
 
 /** Parse Rules
@@ -52,9 +56,19 @@ struct Local {
     int depth;                  ///< scope depth of block defining it
 };
 
+/** Enumerated Function Types
+ */
+typedef enum {
+    TYPE_FUNCTION,
+    TYPE_SCRIPT
+} FunctionType;
+
 /** Compiler State
  */
 struct Compiler {
+    Compiler *enclosing;        ///< compiler for enclosing scope
+    ObjFunction *function;      ///< current function being compiled
+    FunctionType type;          ///< type of function being compiled
     Local locals[UINT8_COUNT];  ///< storage for local variables
     int localCount;             ///< number of local variables in scope
     int scopeDepth;             ///< number of blocks surrounding current code
@@ -62,24 +76,25 @@ struct Compiler {
 
 Parser parser;                  ///< Storage for the parser state.
 Compiler *current = NULL;       ///< the current compiler state
-Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 /* Forward Declarations */
 
 static void expression ();
 static void statement ();
 static void declaration ();
-static void synchronize ();
 static ParseRule *getRule (TokenType type);
 static void parsePrecedence (Precedence precedence);
-static void and_ (bool canAssign);
-static void or_ (bool canAssign);
 
-/** Return a pointer to the current target chunk */
+/* Function Definitions */
+
+/** Return a pointer to the current target chunk
+ *
+ * @returns the current chunk pointer
+ */
 static Chunk *
 currentChunk ()
 {
-    return compilingChunk;
+    return &current->function->chunk;
 }
 
 /** Report error at this token.
@@ -161,6 +176,9 @@ advance ()
  *
  * If the current token is the right type, consume it, bringing
  * the next token in as current. Otherwise, report the error.
+ *
+ * @param type the enumerated type of the token to consume
+ * @param message the error message to use if that token is not found
  */
 static void
 consume (TokenType type, const char *message)
@@ -244,6 +262,9 @@ emitLoop (int loopStart)
 }
 
 /** Emit a JUMP instruction into the chunk.
+ *
+ * @param instruction which OpCode to emit
+ * @returns the chunk offset of the two-octet immediate
  */
 static int
 emitJump (uint8_t instruction)
@@ -259,6 +280,7 @@ emitJump (uint8_t instruction)
 static void
 emitReturn ()
 {
+    emitByte (OP_NIL);
     emitByte (OP_RETURN);
 }
 
@@ -268,6 +290,7 @@ emitReturn ()
  * constant pool index into the chunk.
  *
  * @param value the value of the constant
+ * @returns the resulting offset into the constant pool
  */
 static uint8_t
 makeConstant (Value value)
@@ -280,6 +303,104 @@ makeConstant (Value value)
     }
 
     return (uint8_t) constant;
+}
+
+/** Construct a CONSTANT operation in the chunk.
+ *
+ * Emits OP_CONSTANT, then an immediate byte picking
+ * the constant out of the constant pool.
+ *
+ * @param value
+ */
+static void
+emitConstant (Value value)
+{
+    emitBytes (OP_CONSTANT, makeConstant (value));
+}
+
+/** Patch a jump offset.
+ *
+ * @param offset position of the jump immediate to patch
+ */
+static void
+patchJump (int offset)
+{
+    // -2 to adjust for the bytecode for the jump offset itself.
+    int jump = currentChunk ()->count - offset - 2;
+
+    if (jump > UINT16_MAX) {
+        error ("Too much code to jump over.");
+    }
+
+    currentChunk ()->code[offset] = (jump >> 8) & 0xFF;
+    currentChunk ()->code[offset + 1] = jump & 0xFF;
+}
+
+/** Initialize the state of the compiler
+ *
+ * @param compiler the pointer to the compiler state structure to initialize
+ * @param type whether this is a Function or a Script compilation
+ */
+static void
+initCompiler (Compiler *compiler, FunctionType type)
+{
+    compiler->enclosing = current;
+    compiler->function = NULL;
+    compiler->type = type;
+    compiler->localCount = 0;
+    compiler->scopeDepth = 0;
+    compiler->function = newFunction ();
+    current = compiler;
+
+    if (type != TYPE_SCRIPT) {
+        current->function->name = copyString (parser.previous.start, parser.previous.length);
+    }
+
+    Local *local = &current->locals[current->localCount++];
+
+    local->depth = 0;
+    local->name.start = "";
+    local->name.length = 0;
+}
+
+/** Shut down the compiler.
+ *
+ * @returns the Function object created by compilation.
+ */
+static ObjFunction *
+endCompiler ()
+{
+    emitReturn ();
+    ObjFunction *function = current->function;
+
+#ifdef DEBUG_PRINT_CODE
+    if (_DEBUG_PRINT_CODE && !parser.hadError) {
+        disassembleChunk (currentChunk (), function->name != NULL ? function->name->chars : "<script>");
+    }
+#endif
+
+    current = current->enclosing;
+    return function;
+}
+
+/** Enter a new local scope
+ */
+static void
+beginScope ()
+{
+    current->scopeDepth++;
+}
+
+/** Leave the current local scope
+ */
+static void
+endScope ()
+{
+    current->scopeDepth--;
+    while (current->localCount > 0 && current->locals[current->localCount - 1].depth > current->scopeDepth) {
+        emitByte (OP_POP);
+        current->localCount--;
+    }
 }
 
 /** Make an identifier constant
@@ -334,6 +455,8 @@ resolveLocal (Compiler *compiler, Token *name)
 }
 
 /** Add a local variable to the current scope.
+ *
+ * @param name the lexeme containing the variable name
  */
 static void
 addLocal (Token name)
@@ -372,78 +495,90 @@ declareVariable ()
     addLocal (*name);
 }
 
-/** Construct a CONSTANT operation in the chunk.
+/** Parse a variable
  *
- * Emits OP_CONSTANT, then an immediate byte picking
- * the constant out of the constant pool.
+ * @param errorMessage message to emit if this is not a variable
+ * @returns zero if we are inside a scope
+ * @returns otherwise, the index into the constant table
+ */
+static uint8_t
+parseVariable (const char *errorMessage)
+{
+    consume (TOKEN_IDENTIFIER, errorMessage);
+    declareVariable ();
+    if (current->scopeDepth > 0)
+        return 0;
+    return identifierConstant (&parser.previous);
+}
+
+/** Mark the local being defined as initialized.
  *
- * @param value
+ * Note that "var x;" is really "var x = nil;" and thus
+ * leaves "x" in the initialized state here.
  */
 static void
-emitConstant (Value value)
+markInitialized ()
 {
-    emitBytes (OP_CONSTANT, makeConstant (value));
+    if (current->scopeDepth == 0)
+        return;
+    current->locals[current->localCount - 1].depth = current->scopeDepth;
 }
 
-/** Patch a jump offset.
+/** Compile a variable definition.
  *
- * @param offset position of the jump immediate to patch
+ * @param global index of the global
  */
 static void
-patchJump (int offset)
+defineVariable (uint8_t global)
 {
-    // -2 to adjust for the bytecode for the jump offset itself.
-    int jump = currentChunk ()->count - offset - 2;
-
-    if (jump > UINT16_MAX) {
-        error ("Too much code to jump over.");
+    if (current->scopeDepth > 0) {
+        markInitialized ();
+        return;
     }
-
-    currentChunk ()->code[offset] = (jump >> 8) & 0xFF;
-    currentChunk ()->code[offset + 1] = jump & 0xFF;
+    emitBytes (OP_DEFINE_GLOBAL, global);
 }
 
-/** Initialize the state of the compiler
+/** Compile a function call argument list.
+ *
+ * @returns the number of arguments.
+ */
+static uint8_t
+argumentList ()
+{
+    uint8_t argCount = 0;
+
+    if (!check (TOKEN_RIGHT_PAREN)) {
+        do {
+            expression ();
+            if (argCount == 255) {
+                error ("Can't have more than 255 arguments.");
+            }
+            argCount++;
+        } while (match (TOKEN_COMMA));
+    }
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after arguments.");
+    return argCount;
+}
+
+/** Compile an "and" expression
+ *
+ * @param canAssign not used here.
  */
 static void
-initCompiler (Compiler *compiler)
+and_ (bool canAssign)
 {
-    compiler->localCount = 0;
-    compiler->scopeDepth = 0;
-    current = compiler;
-}
+    (void) canAssign;                   // not used by the "and" operator.
+    int endJump = emitJump (OP_JUMP_IF_FALSE);
 
-/** Shut down the compiler.
- */
-static void
-endCompiler ()
-{
-    emitReturn ();
-#ifdef DEBUG_PRINT_CODE
-    if (!parser.hadError) {
-        disassembleChunk (currentChunk (), "code");
-    }
-#endif
-}
+    emitByte (OP_POP);
+    parsePrecedence (PREC_AND);
 
-static void
-beginScope ()
-{
-    current->scopeDepth++;
-}
-
-static void
-endScope ()
-{
-    current->scopeDepth--;
-    while (current->localCount > 0 && current->locals[current->localCount - 1].depth > current->scopeDepth) {
-        emitByte (OP_POP);
-        current->localCount--;
-    }
-
+    patchJump (endJump);
 }
 
 /** Compile a binary operation to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 binary (bool canAssign)
@@ -475,7 +610,22 @@ binary (bool canAssign)
     }
 }
 
+/** Compile a function call operration to the chunk.
+ *
+ * @param canAssign not used by this function
+ */
+static void
+call (bool canAssign)
+{
+    (void) canAssign;                   // not used by this operation.
+    uint8_t argCount = argumentList ();
+
+    emitBytes (OP_CALL, argCount);
+}
+
 /** Compile a Literal op to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 literal (bool canAssign)
@@ -493,6 +643,8 @@ literal (bool canAssign)
 }
 
 /** Compile a Grouping to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 grouping (bool canAssign)
@@ -503,6 +655,8 @@ grouping (bool canAssign)
 }
 
 /** Compile a number to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 number (bool canAssign)
@@ -513,7 +667,28 @@ number (bool canAssign)
     emitConstant (NUMBER_VAL (value));
 }
 
+/** Compile an "or" expression
+ *
+ * @param canAssign not used here.
+ */
+static void
+or_ (bool canAssign)
+{
+    (void) canAssign;                   // not used by the "and" operator.
+
+    int elseJump = emitJump (OP_JUMP_IF_FALSE);
+    int endJump = emitJump (OP_JUMP);
+
+    patchJump (elseJump);
+    emitByte (OP_POP);
+
+    parsePrecedence (PREC_OR);
+    patchJump (endJump);
+}
+
 /** Compile a string to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 string (bool canAssign)
@@ -524,7 +699,8 @@ string (bool canAssign)
 
 /** Do the work of putting a variable into the chunk.
  *
- * @param name the token containing the variable namep
+ * @param name the lexeme with the variable name
+ * @param canAssign not used here.
  */
 static void
 namedVariable (Token name, bool canAssign)
@@ -550,6 +726,8 @@ namedVariable (Token name, bool canAssign)
 }
 
 /** Compile a variable to the chunk.
+ *
+ * @param canAssign true to allow an assignment expression
  */
 static void
 variable (bool canAssign)
@@ -558,6 +736,8 @@ variable (bool canAssign)
 }
 
 /** Compile a unary operation to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 unary (bool canAssign)
@@ -583,12 +763,22 @@ unary (bool canAssign)
     }
 }
 
-ParseRule rules[] = {
+/** Parse Rules
+ *
+ * This table encodes the behavior of the parser based on the next
+ * token available. The first value points to the function to call
+ * when the token appears as a unary operator. The second column is
+ * the function to call when the token appears as a binary operator.
+ * The third column indicates the precedence of the token when used
+ * as a binary operator.
+ */
+ParseRule
+  rules[] = {
 
     // *INDENT-OFF*
 
     // Single-character tokens.
-    [TOKEN_LEFT_PAREN]     =  {  grouping,   NULL,     PREC_NONE        },   //  "("
+    [TOKEN_LEFT_PAREN]     =  {  grouping,   call,     PREC_CALL        },   //  "("
     [TOKEN_RIGHT_PAREN]    =  {  NULL,       NULL,     PREC_NONE        },   //  ")"
     [TOKEN_LEFT_BRACE]     =  {  NULL,       NULL,     PREC_NONE        },   //  "{"
     [TOKEN_RIGHT_BRACE]    =  {  NULL,       NULL,     PREC_NONE        },   //  "}"
@@ -641,6 +831,8 @@ ParseRule rules[] = {
 };
 
 /** Compile an expression at the specified precedence.
+ *
+ * @param precedence threshold for binary operation precedence
  */
 static void
 parsePrecedence (Precedence precedence)
@@ -666,85 +858,10 @@ parsePrecedence (Precedence precedence)
     }
 }
 
-/** Parse a variable
- *
- * @param error message to emit if this is not a variable
- * @returns zero if we are inside a scope
- * @returns otherwise, the index into the constant table
- */
-static uint8_t
-parseVariable (const char *errorMessage)
-{
-    consume (TOKEN_IDENTIFIER, errorMessage);
-    declareVariable ();
-    if (current->scopeDepth > 0)
-        return 0;
-    return identifierConstant (&parser.previous);
-}
-
-/** Mark the local being defined as initialized.
- *
- * Note that "var x;" is really "var x = nil;" and thus
- * leaves "x" in the initialized state here.
- */
-static void
-markInitialized ()
-{
-    current->locals[current->localCount - 1].depth = current->scopeDepth;
-}
-
-/** Compile a variable definition.
- *
- * @param global index of the global
- */
-static void
-defineVariable (uint8_t global)
-{
-    if (current->scopeDepth > 0) {
-        markInitialized ();
-        return;
-    }
-    emitBytes (OP_DEFINE_GLOBAL, global);
-}
-
-/** Compile an "and" expression
- *
- * @param global index of the global
- */
-static void
-and_ (bool canAssign)
-{
-    (void) canAssign;                   // not used by the "and" operator.
-    int endJump = emitJump (OP_JUMP_IF_FALSE);
-
-    emitByte (OP_POP);
-    parsePrecedence (PREC_AND);
-
-    patchJump (endJump);
-}
-
-/** Compile an "or" expression
- *
- * @param global index of the global
- */
-static void
-or_ (bool canAssign)
-{
-    (void) canAssign;                   // not used by the "and" operator.
-
-    int elseJump = emitJump (OP_JUMP_IF_FALSE);
-    int endJump = emitJump (OP_JUMP);
-
-    patchJump (elseJump);
-    emitByte (OP_POP);
-
-    parsePrecedence (PREC_OR);
-    patchJump (endJump);
-}
-
 /** Fetch the correct rule structuer
  *
  * @param type the token type we are processing
+ * @returns a pointer to the appropriate rule structure
  */
 static ParseRule *
 getRule (TokenType type)
@@ -760,6 +877,8 @@ expression ()
     parsePrecedence (PREC_ASSIGNMENT);
 }
 
+/** Compile a statement block to the current chunk.
+ */
 static void
 block ()
 {
@@ -769,6 +888,55 @@ block ()
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after block.");
 }
 
+/** Compile a function.
+ *
+ * @param type either FUNCTION or SCRIPT
+ */
+static void
+function (FunctionType type)
+{
+    Compiler compiler;
+
+    initCompiler (&compiler, type);
+    beginScope ();
+
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after function name.");
+
+    if (!check (TOKEN_RIGHT_PAREN)) {
+        do {
+            current->function->arity++;
+            if (current->function->arity > 255) {
+                errorAtCurrent ("Can't have more than 255 parameters.'");
+            }
+            uint8_t constant = parseVariable ("Expect parameter name.");
+
+            defineVariable (constant);
+        } while (match (TOKEN_COMMA));
+    }
+
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after parameters.");
+    consume (TOKEN_LEFT_BRACE, "Expect '{' before function body.");
+    block ();
+
+    ObjFunction *function = endCompiler ();
+
+    emitBytes (OP_CONSTANT, makeConstant (OBJ_VAL (function)));
+}
+
+/** Compile a fun declaration to its own captive chunk.
+ */
+static void
+funDeclaration ()
+{
+    uint8_t global = parseVariable ("Excpect function name.");
+
+    markInitialized ();
+    function (TYPE_FUNCTION);
+    defineVariable (global);
+}
+
+/** Compile a var declaration to the current chunk.
+ */
 static void
 varDeclaration ()
 {
@@ -869,21 +1037,6 @@ ifStatement ()
     patchJump (elseJump);
 }
 
-/** Compile a declaration to the chunk.
- */
-static void
-declaration ()
-{
-    if (match (TOKEN_VAR)) {
-        varDeclaration ();
-    } else {
-        statement ();
-    }
-
-    if (parser.panicMode)
-        synchronize ();
-}
-
 /** Compile a print statement to the chunk.
  */
 static void
@@ -892,6 +1045,24 @@ printStatement ()
     expression ();
     consume (TOKEN_SEMICOLON, "Expect ';' after value.");
     emitByte (OP_PRINT);
+}
+
+/** Compile a return statement to the chunk.
+ */
+static void
+returnStatement ()
+{
+    if (current->type == TYPE_SCRIPT) {
+        error ("Can't return from top-level code.");
+    }
+
+    if (match (TOKEN_SEMICOLON)) {
+        emitReturn ();
+    } else {
+        expression ();
+        consume (TOKEN_SEMICOLON, "Expect ';' after return value.");
+        emitByte (OP_RETURN);
+    }
 }
 
 /** Compile a while statement to the chunk.
@@ -956,6 +1127,23 @@ synchronize ()
     }
 }
 
+/** Compile a declaration to the chunk.
+ */
+static void
+declaration ()
+{
+    if (match (TOKEN_FUN)) {
+        funDeclaration ();
+    } else if (match (TOKEN_VAR)) {
+        varDeclaration ();
+    } else {
+        statement ();
+    }
+
+    if (parser.panicMode)
+        synchronize ();
+}
+
 /** Compile a statement to the chunk.
  */
 static void
@@ -967,6 +1155,8 @@ statement ()
         forStatement ();
     } else if (match (TOKEN_IF)) {
         ifStatement ();
+    } else if (match (TOKEN_RETURN)) {
+        returnStatement ();
     } else if (match (TOKEN_WHILE)) {
         whileStatement ();
     } else if (match (TOKEN_LEFT_BRACE)) {
@@ -979,15 +1169,18 @@ statement ()
 }
 
 /** Compile the source code into the chunk.
+ *
+ * @param source pointer to a C string containing the source to compile
+ * @returns true if all went well
+ * @returns false if there was a parser error
  */
-bool
-compile (const char *source, Chunk *chunk)
+ObjFunction *
+compile (const char *source)
 {
     initScanner (source);
     Compiler compiler;
 
-    initCompiler (&compiler);
-    compilingChunk = chunk;
+    initCompiler (&compiler, TYPE_SCRIPT);
     parser.hadError = false;
     parser.panicMode = false;
 
@@ -996,6 +1189,7 @@ compile (const char *source, Chunk *chunk)
         declaration ();
     }
 
-    endCompiler ();
-    return !parser.hadError;
+    ObjFunction *function = endCompiler ();
+
+    return parser.hadError ? NULL : function;
 }

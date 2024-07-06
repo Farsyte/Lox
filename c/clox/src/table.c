@@ -234,6 +234,7 @@ tableAddAll (Table *from, Table *to)
  * @param chars the string to add to the table
  * @param length number of bytes in the string
  * @param hash precomputed hash value
+ * @returns a pointer to the String object matching the input characters
  */
 ObjString *
 tableFindString (Table *table, const char *chars, int length, uint32_t hash)

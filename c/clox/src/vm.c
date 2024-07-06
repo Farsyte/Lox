@@ -10,8 +10,26 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 VM vm;
+
+#ifdef  DEBUG_TRACE_EXECUTION
+int _DEBUG_TRACE_EXECUTION = 500;
+#endif
+
+/** Native Function: clock()
+ */
+static Value
+clockNative (int argCount, Value *args)
+{
+    (void) argCount;                    // not used by this function
+    (void) args;                        // not used by this function
+#ifdef  DEBUG_TRACE_EXECUTION
+    _DEBUG_TRACE_EXECUTION = 0;
+#endif
+    return NUMBER_VAL ((double) clock () / CLOCKS_PER_SEC);
+}
 
 /** Reset the VM stack to empty.
  */
@@ -19,6 +37,7 @@ static void
 resetStack ()
 {
     vm.sp = vm.stack;
+    vm.frameCount = 0;
 }
 
 /** Report a runtime error.
@@ -36,14 +55,36 @@ runtimeError (const char *format, ...)
     va_end (args);
     fputs ("\n", stderr);
 
-    size_t instruction = vm.ip - vm.chunk->code - 1;
-    int line = vm.chunk->lines[instruction];
+    for (int i = vm.frameCount - 1; i >= 0; i--) {
+        CallFrame *frame = &vm.frames[i];
+        ObjFunction *function = frame->function;
+        size_t instruction = frame->ip - function->chunk.code - 1;
 
-    fprintf (stderr, "[line %d] in script\n", line);
+        fprintf (stderr, "[line %d] in ", function->chunk.lines[instruction]);
+        if (function->name == NULL) {
+            fprintf (stderr, "script\n");
+        } else {
+            fprintf (stderr, "%s()\n", function->name->chars);
+        }
+
+    }
+
     resetStack ();
 
     // ADDED MUCH LATER: Did I forget to set a "stop running" thing?
 
+}
+
+/** Define a Native Function
+ */
+static void
+defineNative (const char *name, NativeFn function)
+{
+    push (OBJ_VAL (copyString (name, (int) strlen (name))));
+    push (OBJ_VAL (newNative (function)));
+    tableSet (&vm.globals, AS_STRING (vm.stack[0]), vm.stack[1]);
+    pop ();
+    pop ();
 }
 
 /** Initialize the VM completely.
@@ -55,12 +96,11 @@ runtimeError (const char *format, ...)
 void
 initVM ()
 {
-    vm.chunk = NULL;
-    vm.ip = NULL;
     resetStack ();
     vm.objects = NULL;
     initTable (&vm.globals);
     initTable (&vm.strings);
+    defineNative ("clock", clockNative);
 }
 
 /** Release storage owned by the VM.
@@ -128,6 +168,69 @@ peek (int distance)
     return vm.sp[-1 - distance];
 }
 
+/** Call a function.
+ *
+ * @param function what to call
+ * @param argCount how many args are being sent
+ * @returns false if the argument count is wrong
+ * @returns false if the frame stack is full.
+ * @returns true if the call was started
+ */
+static bool
+call (ObjFunction *function, int argCount)
+{
+    if (argCount != function->arity) {
+        runtimeError ("Expected %d arguments but got %d.", function->arity, argCount);
+        return false;
+    }
+
+    if (vm.frameCount == FRAMES_MAX) {
+        runtimeError ("Stack overflow.");
+        return false;
+    }
+
+    CallFrame *frame = &vm.frames[vm.frameCount++];
+
+    frame->function = function;
+    frame->ip = function->chunk.code;
+    frame->slots = vm.sp - argCount - 1;
+    return true;
+}
+
+/** Execute the CALL operation.
+ *
+ * @param callee the functino to call
+ * @param argCount the number of arguments being passed
+ * @returns true if the call can be made, otherwise
+ * @returns false if the callee is not a function or a class
+ */
+static bool
+callValue (Value callee, int argCount)
+{
+    if (IS_OBJ (callee)) {
+        switch (OBJ_TYPE (callee)) {
+        case OBJ_FUNCTION:
+            return call (AS_FUNCTION (callee), argCount);
+
+        case OBJ_NATIVE:{
+                NativeFn native = AS_NATIVE (callee)->function;
+                Value result = native (argCount, vm.sp - argCount);
+
+                vm.sp -= argCount + 1;
+                push (result);
+                return true;
+            }
+
+        case OBJ_STRING:
+            break;
+            // yes, force me to look at this switch
+            // any time a new Object Type is added.
+        }
+    }
+    runtimeError ("Can only call functions and classes.");
+    return false;
+}
+
 /** Return true if the value is falsey.
  *
  * Follows the RUBY convention that nil and false are falsey
@@ -179,24 +282,32 @@ run ()
     printf ("\nExecuting ...\n");
 #endif
 
-#define READ_BYTE()     (*vm.ip++)
-#define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+    CallFrame *frame = &vm.frames[vm.frameCount - 1];
+
+#define READ_BYTE()     (*frame->ip++)
+#define READ_SHORT()    (frame->ip += 2, (uint16_t)((frame->ip[-2] << 8) | frame->ip[-1]))
+#define READ_CONSTANT() (frame->function->chunk.constants.values[READ_BYTE()])
 #define READ_STRING()   (AS_STRING(READ_CONSTANT()))
-#define READ_SHORT()    (vm.ip += 2, (uint16_t)((vm.ip[-2] << 8) | vm.ip[-1]))
 
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
-        printf ("stack:");
-        if (vm.sp > vm.stack) {
-            for (Value *slot = vm.stack; slot < vm.sp; slot++) {
-                printf (" ");
-                printValue (*slot);
+        if (_DEBUG_TRACE_EXECUTION > 0) {
+            printf ("stack:");
+            if (vm.sp > vm.stack) {
+                for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+                    printf (" ");
+                    printValue (*slot);
+                }
+            } else {
+                printf (" empty.");
             }
-        } else {
-            printf (" empty.");
+            printf ("\n");
+            disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
+            _DEBUG_TRACE_EXECUTION--;
+            if (!_DEBUG_TRACE_EXECUTION) {
+                printf ("(no more debug traces after this)\n");
+            }
         }
-        printf ("\n");
-        disassembleInstruction (vm.chunk, (int) (vm.ip - vm.chunk->code));
 #endif
         // Convert the byte to an OpCode enum value, so the C compiler
         // can warn us if there are any OpCode num values missing from
@@ -206,6 +317,7 @@ run ()
         ObjString *name;
         uint8_t slot;
         uint16_t offset;
+        int argCount;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -228,7 +340,7 @@ run ()
 
         case OP_GET_LOCAL:
             slot = READ_BYTE ();
-            push (vm.stack[slot]);
+            push (frame->slots[slot]);
             break;
 
         case OP_GET_GLOBAL:
@@ -251,7 +363,7 @@ run ()
 
         case OP_SET_LOCAL:
             slot = READ_BYTE ();
-            vm.stack[slot] = peek (0);
+            frame->slots[slot] = peek (0);
             break;
 
         case OP_SET_GLOBAL:
@@ -327,50 +439,51 @@ run ()
 
         case OP_JUMP:
             offset = READ_SHORT ();
-            vm.ip += offset;
+            frame->ip += offset;
             break;
 
         case OP_JUMP_IF_FALSE:
             offset = READ_SHORT ();
             if (isFalsey (peek (0)))
-                vm.ip += offset;
+                frame->ip += offset;
             break;
 
         case OP_LOOP:
             offset = READ_SHORT ();
-            vm.ip -= offset;
+            frame->ip -= offset;
+            break;
+
+        case OP_CALL:
+            argCount = READ_BYTE ();
+            if (!callValue (peek (argCount), argCount)) {
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            frame = &vm.frames[vm.frameCount - 1];
             break;
 
         case OP_RETURN:
-            // Exit interpreter.
-#ifdef  DEBUG_TRACE_EXECUTION
-            printf ("Executing ... done.\n\n");
-#endif
-            return INTERPRET_OK;
+            Value result = pop ();
 
+            vm.frameCount--;
+            if (vm.frameCount == 0) {
+                // Exit interpreter.
+                pop ();
+#ifdef  DEBUG_TRACE_EXECUTION
+                printf ("Executing ... done.\n\n");
+#endif
+                return INTERPRET_OK;
+            }
+
+            vm.sp = frame->slots;
+            push (result);
+            frame = &vm.frames[vm.frameCount - 1];
+            break;
         }
     }
 #undef  READ_SHORT
 #undef  READ_CONSTANT
 #undef  READ_STRING
 #undef  READ_BYTE
-}
-
-/** Interpret a chunk using the VM.
- *
- * Loads the chunk into the VM, setting the IP
- * to the start of the bytecode list, and runs it.
- *
- * @param chunk contains the bytecode sequence
- * @returns a code indicating a failure code if a failure occurs
- * @returns a code indicating success if all went well
- */
-InterpretResult
-interpretChunk (Chunk *chunk)
-{
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
-    return run ();
 }
 
 /** Interpret source code using the VM.
@@ -385,20 +498,12 @@ interpretChunk (Chunk *chunk)
 InterpretResult
 interpret (const char *source)
 {
-    Chunk chunk;
+    ObjFunction *function = compile (source);
 
-    initChunk (&chunk);
-
-    if (!compile (source, &chunk)) {
-        freeChunk (&chunk);
+    if (function == NULL)
         return INTERPRET_COMPILE_ERROR;
-    }
 
-    vm.chunk = &chunk;
-    vm.ip = vm.chunk->code;
-
-    InterpretResult result = run ();
-
-    freeChunk (&chunk);
-    return result;
+    push (OBJ_VAL (function));
+    call (function, 0);
+    return run ();
 }

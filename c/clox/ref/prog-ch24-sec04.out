@@ -1,0 +1,37 @@
+
+Disassembling areWeHavingItYet ...
+0000    2 OP_GET_LOCAL        1
+0002    | OP_PRINT
+0003    3 OP_CONSTANT         0 'Yes we are!'
+0005    | OP_PRINT
+0006    4 OP_NIL
+0007    | OP_RETURN
+Disassembling areWeHavingItYet ... done.
+
+
+Disassembling <script> ...
+0000    4 OP_CONSTANT         1 '<fn areWeHavingItYet>'
+0002    | OP_DEFINE_GLOBAL    0 'areWeHavingItYet'
+0004    8 OP_GET_GLOBAL       2 'areWeHavingItYet'
+0006    | OP_PRINT
+0007    9 OP_NIL
+0008    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    4 OP_CONSTANT         1 '<fn areWeHavingItYet>'
+stack: <script> <fn areWeHavingItYet>
+0002    | OP_DEFINE_GLOBAL    0 'areWeHavingItYet'
+stack: <script>
+0004    8 OP_GET_GLOBAL       2 'areWeHavingItYet'
+stack: <script> <fn areWeHavingItYet>
+0006    | OP_PRINT
+<fn areWeHavingItYet>
+stack: <script>
+0007    9 OP_NIL
+stack: <script> nil
+0008    | OP_RETURN
+Executing ... done.
+

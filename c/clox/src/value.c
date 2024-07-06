@@ -10,6 +10,19 @@
  * @brief Support functions for the value module
  */
 
+/** Decide if two Value objects are equal.
+ *
+ * Equality is defined as:
+ * - the two objects have the same type code.
+ * - the values are equal per the rules for that type
+ *
+ * Note that for OBJECTS (Functions and Strings), equality
+ * is defined as referencing the same Obj structure.
+ *
+ * @param a the first value to compare
+ * @param b the second value to compare
+ * @returns true if the values are equal; otherwise, false.
+ */
 bool
 valuesEqual (Value a, Value b)
 {

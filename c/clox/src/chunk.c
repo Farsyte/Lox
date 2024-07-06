@@ -76,6 +76,10 @@ writeChunk (Chunk *chunk, uint8_t byte, int line)
  *
  * Append the value to the constant pool, and return
  * the index where it was stored.
+ *
+ * @param chunk where to find the constant pool
+ * @param value initial value of the constant
+ * @returns the index into the constant pool for this constant
  */
 int
 addConstant (Chunk *chunk, Value value)

@@ -1,0 +1,8 @@
+fun areWeHavingItYet(a) {
+    print a;
+    print "Yes we are!";
+}
+
+// This prints the function itself,
+// it does not call it ;)
+print areWeHavingItYet;

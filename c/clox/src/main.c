@@ -12,6 +12,14 @@
 #include <stdio.h>
 #include <string.h>
 
+/** @file main.c
+ * @brief Implementation of Main Function
+ *
+ * This file provides the main entry point as defined by the C
+ * programming langage, and contains the logic driving cLox based on
+ * the command line arguments presented.
+ */
+
 extern Options options;         // share command line options state
 
 /** Read-Evaluate-Print loop.
@@ -117,49 +125,15 @@ runFile (const char *path)
         exit (EX_SOFTWARE);
 }
 
-/** @file main.c
- * @brief Implementation of Main Function
+/** Demonstration Function
  *
- * This file provides the main entry point as defined by the C
- * programming langage, and contains the logic driving cLox based on
- * the command line arguments presented.
+ * This function contains whatever demonstration code was most
+ * recently used by the book to show some code working, and is
+ * cleared when that code is no longer interesting to demo.
  */
 static void
 demo ()
 {
-    initVM ();
-
-    Chunk chunk;
-    int constant;
-
-    initChunk (&chunk);
-
-    constant = addConstant (&chunk, NUMBER_VAL (1.2));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    constant = addConstant (&chunk, NUMBER_VAL (3.4));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    writeChunk (&chunk, OP_ADD, 123);
-
-    constant = addConstant (&chunk, NUMBER_VAL (5.6));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    writeChunk (&chunk, OP_DIVIDE, 123);
-
-    writeChunk (&chunk, OP_NEGATE, 123);
-
-    writeChunk (&chunk, OP_RETURN, 124);
-    disassembleChunk (&chunk, "test chunk");
-
-    interpretChunk (&chunk);
-
-    freeChunk (&chunk);
-
-    freeVM ();
 }
 
 /** Main Entry Point.

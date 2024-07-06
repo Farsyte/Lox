@@ -1,18 +1,33 @@
 #pragma once
 
 #include "common.h"
+#include "object.h"
 #include "table.h"
 #include "value.h"
 
+/** Number of stack frames
+ */
+#define FRAMES_MAX 64
+
 /** Maximum Stack Depth
  */
-#define STACK_MAX 256
+#define STACK_MAX (FRAMES_MAX * UINT8_COUNT)
+
+/** Stack Frame for each Function Call
+ *
+ * The IP in the stack frame is unconventional.
+ */
+struct CallFrame {
+    ObjFunction *function;      ///< which function owns the frame
+    uint8_t *ip;                ///< this frame's instruction pointer
+    Value *slots;               ///< local variable storage
+};
 
 /** Internal state of the VM
  */
 struct VM {
-    Chunk *chunk;               ///< current chunk being considered
-    uint8_t *ip;                ///< bytecode instruction pointer
+    CallFrame frames[FRAMES_MAX];       ///< storage for stack frames
+    int frameCount;             ///< number of currently active stack frames
     Value stack[STACK_MAX];     ///< storage for the data stack
     Value *sp;                  ///< data stack pointer
     Table globals;              ///< hash table of global variables
