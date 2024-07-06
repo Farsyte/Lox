@@ -162,8 +162,12 @@ copyString (const char *chars, int length)
  * @param function the object to print
  */
 static void
-printFunction (ObjFunction * function)
+printFunction (ObjFunction *function)
 {
+    if (function->name == NULL) {
+        printf ("<script>");
+        return;
+    }
     printf ("<fn %s>", function->name->chars);
 }
 

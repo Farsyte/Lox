@@ -356,23 +356,6 @@ run ()
 #undef  READ_BYTE
 }
 
-/** Interpret a chunk using the VM.
- *
- * Loads the chunk into the VM, setting the IP
- * to the start of the bytecode list, and runs it.
- *
- * @param chunk contains the bytecode sequence
- * @returns a code indicating a failure code if a failure occurs
- * @returns a code indicating success if all went well
- */
-InterpretResult
-interpretChunk (Chunk *chunk)
-{
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
-    return run ();
-}
-
 /** Interpret source code using the VM.
  *
  * Compile the source code into a chunk of bytecode,
@@ -389,7 +372,9 @@ interpret (const char *source)
 
     initChunk (&chunk);
 
-    if (!compile (source, &chunk)) {
+    ObjFunction *function = compile (source);
+
+    if (function == NULL) {
         freeChunk (&chunk);
         return INTERPRET_COMPILE_ERROR;
     }

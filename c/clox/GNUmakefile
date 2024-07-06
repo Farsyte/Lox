@@ -57,19 +57,19 @@ clean::
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
-	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null
+	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null || (echo 'BUILD OF "DEMO" FAILED'; cat $(LOGD)$(MAIN)--demo.err ; false)
 
 bist::          $(BIND)title
 	$P '  %-6s %s\n' "BIST" "$(MAIN)"
-	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null
+	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null || (echo 'BUILD OF "BIST" FAILED'; cat $(LOGD)$(MAIN)--bist.err ; false)
 
 repl::          $(BIND)title
 	$P '  %-6s %s\n' "REPL" "$(MAIN)"
-	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null
+	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null || (echo 'BUILD OF "REPL" FAILED'; cat $(LOGD)$(MAIN)--repl.err ; false)
 
 help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
-	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null
+	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null || (echo 'BUILD OF "HELP" FAILED'; cat $(LOGD)$(MAIN)--help.err ; false)
 
 # many .lox test scripts are expected to error.
 # adjust later when nearly all are expected to succeed.

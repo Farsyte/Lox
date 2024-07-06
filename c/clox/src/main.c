@@ -128,44 +128,12 @@ runFile (const char *path)
 /** Demonstration Function
  *
  * This function contains whatever demonstration code was most
- * recently used by the book to show some code working.
+ * recently used by the book to show some code working, and is
+ * cleared when that code is no longer interesting to demo.
  */
 static void
 demo ()
 {
-    initVM ();
-
-    Chunk chunk;
-    int constant;
-
-    initChunk (&chunk);
-
-    constant = addConstant (&chunk, NUMBER_VAL (1.2));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    constant = addConstant (&chunk, NUMBER_VAL (3.4));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    writeChunk (&chunk, OP_ADD, 123);
-
-    constant = addConstant (&chunk, NUMBER_VAL (5.6));
-    writeChunk (&chunk, OP_CONSTANT, 123);
-    writeChunk (&chunk, constant, 123);
-
-    writeChunk (&chunk, OP_DIVIDE, 123);
-
-    writeChunk (&chunk, OP_NEGATE, 123);
-
-    writeChunk (&chunk, OP_RETURN, 124);
-    disassembleChunk (&chunk, "test chunk");
-
-    interpretChunk (&chunk);
-
-    freeChunk (&chunk);
-
-    freeVM ();
 }
 
 /** Main Entry Point.

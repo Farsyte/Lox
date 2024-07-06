@@ -71,7 +71,6 @@ struct Compiler {
 
 Parser parser;                  ///< Storage for the parser state.
 Compiler *current = NULL;       ///< the current compiler state
-Chunk *compilingChunk;          ///< chunk currently being compiled.
 
 /* Forward Declarations */
 
@@ -427,26 +426,41 @@ patchJump (int offset)
 /** Initialize the state of the compiler
  *
  * @param compiler the pointer to the compiler state structure to initialize
+ * @param type whether this is a Function or a Script compilation
  */
 static void
-initCompiler (Compiler *compiler)
+initCompiler (Compiler *compiler, FunctionType type)
 {
+    compiler->function = NULL;
+    compiler->type = type;
     compiler->localCount = 0;
     compiler->scopeDepth = 0;
+    compiler->function = newFunction ();
     current = compiler;
+
+    Local *local = &current->locals[current->localCount++];
+
+    local->depth = 0;
+    local->name.start = "";
+    local->name.length = 0;
 }
 
 /** Shut down the compiler.
+ *
+ * @returns the Function object created by compilation.
  */
-static void
+static ObjFunction *
 endCompiler ()
 {
     emitReturn ();
+    ObjFunction *function = current->function;
+
 #ifdef DEBUG_PRINT_CODE
     if (!parser.hadError) {
-        disassembleChunk (currentChunk (), "code");
+        disassembleChunk (currentChunk (), function->name != NULL ? function->name->chars : "<script>");
     }
 #endif
+    return function;
 }
 
 /** Enter a new local scope
@@ -1038,18 +1052,16 @@ statement ()
 /** Compile the source code into the chunk.
  *
  * @param source pointer to a C string containing the source to compile
- * @param chunk where to store the bytecodes
  * @returns true if all went well
  * @returns false if there was a parser error
  */
-bool
-compile (const char *source, Chunk *chunk)
+ObjFunction *
+compile (const char *source)
 {
     initScanner (source);
     Compiler compiler;
 
-    initCompiler (&compiler);
-    compilingChunk = chunk;
+    initCompiler (&compiler, TYPE_SCRIPT);
     parser.hadError = false;
     parser.panicMode = false;
 
@@ -1058,6 +1070,7 @@ compile (const char *source, Chunk *chunk)
         declaration ();
     }
 
-    endCompiler ();
-    return !parser.hadError;
+    ObjFunction *function = endCompiler ();
+
+    return parser.hadError ? NULL : function;
 }

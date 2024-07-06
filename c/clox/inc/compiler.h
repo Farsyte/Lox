@@ -7,7 +7,7 @@
  * @brief API exposed by the COMPILER module
  */
 
-bool compile (const char *source, Chunk *chunk);
+ObjFunction *compile (const char *source);
 
 void bistCompiler ();
 void postCompiler ();

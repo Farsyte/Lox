@@ -34,17 +34,12 @@ bistCompiler ()
         if ('\n' == *p)
             ending_line++;
 
-    Chunk chunk;
+    ObjFunction *function = compile (source);
 
-    initChunk (&chunk);
-
-    compile (source, &chunk);
-
-    INVAR (source_end == scanner.start, "initScaner must set scanner.start to the given source.");
-    INVAR (source_end == scanner.current, "initScaner must set scanner.current to the given source.");
-    INVAR (ending_line == scanner.line, "initScaner must set scanner.line to 1.");
-
-    freeChunk (&chunk);
+    INVAR (NULL != function, "compile must return a non-null function");
+    INVAR (source_end == scanner.start, "compile must set scanner.start to the given source.");
+    INVAR (source_end == scanner.current, "compile must set scanner.current to the given source.");
+    INVAR (ending_line == scanner.line, "compile must set scanner.line to 1.");
 
     printf ("BIST: %s ... done.\n", "bistCompiler");
 }

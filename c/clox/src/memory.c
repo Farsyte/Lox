@@ -45,7 +45,7 @@ reallocate (void *pointer, size_t oldSize, size_t newSize)
  * @param object which object to free.
  */
 static void
-freeObject (Obj * object)
+freeObject (Obj *object)
 {
     switch (object->type) {
 
@@ -54,6 +54,7 @@ freeObject (Obj * object)
 
             freeChunk (&function->chunk);
             FREE (ObjFunction, object);
+
             return;
         }
 
