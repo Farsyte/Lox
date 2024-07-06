@@ -793,6 +793,22 @@ expressionStatement ()
     emitByte (OP_POP);
 }
 
+/** Compile an "for" statement to the chunk.
+ */
+static void
+forStatement ()
+{
+    consume (TOKEN_LEFT_PAREN, "Expect '(' after 'if'.");
+    consume (TOKEN_SEMICOLON, "Expect ';' after initializer.");
+    int loopStart = currentChunk ()->count;
+
+    consume (TOKEN_SEMICOLON, "Expect ';' after condition.");
+    consume (TOKEN_RIGHT_PAREN, "Expect ')' after for clauses.");
+
+    statement ();
+    emitLoop (loopStart);
+}
+
 /** Compile an "if" statement to the chunk.
  */
 static void
@@ -910,6 +926,8 @@ statement ()
 {
     if (match (TOKEN_PRINT)) {
         printStatement ();
+    } else if (match (TOKEN_FOR)) {
+        forStatement ();
     } else if (match (TOKEN_IF)) {
         ifStatement ();
     } else if (match (TOKEN_WHILE)) {
