@@ -2,7 +2,8 @@
 Disassembling showA ...
 0000    4 OP_GET_GLOBAL       0 'a'
 0002    | OP_PRINT
-0003    5 OP_RETURN
+0003    5 OP_NIL
+0004    | OP_RETURN
 Disassembling showA ... done.
 
 
@@ -19,7 +20,8 @@ Disassembling <script> ...
 0017    | OP_POP
 0018   10 OP_POP
 0019    | OP_POP
-0020   11 OP_RETURN
+0020   11 OP_NIL
+0021    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -40,6 +42,35 @@ stack: <script> <fn showA> <fn showA> global
 0002    | OP_PRINT
 global
 stack: <script> <fn showA> <fn showA>
-0003    5 OP_RETURN
+0003    5 OP_NIL
+stack: <script> <fn showA> <fn showA> nil
+0004    | OP_RETURN
+stack: <script> <fn showA> nil
+0010    | OP_POP
+stack: <script> <fn showA>
+0011    8 OP_CONSTANT         3 'block'
+stack: <script> <fn showA> block
+0013    9 OP_GET_LOCAL        1
+stack: <script> <fn showA> block <fn showA>
+0015    | OP_CALL             0
+stack: <script> <fn showA> block <fn showA>
+0000    4 OP_GET_GLOBAL       0 'a'
+stack: <script> <fn showA> block <fn showA> global
+0002    | OP_PRINT
+global
+stack: <script> <fn showA> block <fn showA>
+0003    5 OP_NIL
+stack: <script> <fn showA> block <fn showA> nil
+0004    | OP_RETURN
+stack: <script> <fn showA> block nil
+0017    | OP_POP
+stack: <script> <fn showA> block
+0018   10 OP_POP
+stack: <script> <fn showA>
+0019    | OP_POP
+stack: <script>
+0020   11 OP_NIL
+stack: <script> nil
+0021    | OP_RETURN
 Executing ... done.
 

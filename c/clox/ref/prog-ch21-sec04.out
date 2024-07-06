@@ -13,7 +13,8 @@ Disassembling <script> ...
 0018    | OP_POP
 0019    4 OP_GET_GLOBAL       8 'breakfast'
 0021    | OP_PRINT
-0022    5 OP_RETURN
+0022    5 OP_NIL
+0023    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -46,6 +47,8 @@ stack: <script> beignets with café au lait
 0021    | OP_PRINT
 beignets with café au lait
 stack: <script>
-0022    5 OP_RETURN
+0022    5 OP_NIL
+stack: <script> nil
+0023    | OP_RETURN
 Executing ... done.
 

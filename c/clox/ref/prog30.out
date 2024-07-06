@@ -30,7 +30,8 @@ Disassembling <script> ...
 0044    | OP_PRINT
 0045   22 OP_GET_GLOBAL      13 'c'
 0047    | OP_PRINT
-0048   23 OP_RETURN
+0048   23 OP_NIL
+0049    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -105,6 +106,8 @@ stack: <script> global c
 0047    | OP_PRINT
 global c
 stack: <script>
-0048   23 OP_RETURN
+0048   23 OP_NIL
+stack: <script> nil
+0049    | OP_RETURN
 Executing ... done.
 

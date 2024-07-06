@@ -415,12 +415,22 @@ run ()
             break;
 
         case OP_RETURN:
-            // Exit interpreter.
-#ifdef  DEBUG_TRACE_EXECUTION
-            printf ("Executing ... done.\n\n");
-#endif
-            return INTERPRET_OK;
+            Value result = pop ();
 
+            vm.frameCount--;
+            if (vm.frameCount == 0) {
+                // Exit interpreter.
+                pop ();
+#ifdef  DEBUG_TRACE_EXECUTION
+                printf ("Executing ... done.\n\n");
+#endif
+                return INTERPRET_OK;
+            }
+
+            vm.sp = frame->slots;
+            push (result);
+            frame = &vm.frames[vm.frameCount - 1];
+            break;
         }
     }
 #undef  READ_SHORT

@@ -1,3 +1,4 @@
 
 RUNTIME ERROR: Operands must be two numbers or two strings.
 [line 8] in script
+Segmentation fault (core dumped)

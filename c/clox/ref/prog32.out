@@ -237,7 +237,8 @@ Disassembling <script> ...
 0392    | OP_GET_GLOBAL      78 'c'
 0394    | OP_ADD
 0395    | OP_PRINT
-0396   35 OP_RETURN
+0396   35 OP_NIL
+0397    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -438,6 +439,8 @@ PASS: a = global a, b = global b, c = global c
 stack: <script>
 0316   30 OP_JUMP           316 -> 396
 stack: <script>
-0396   35 OP_RETURN
+0396   35 OP_NIL
+stack: <script> nil
+0397    | OP_RETURN
 Executing ... done.
 

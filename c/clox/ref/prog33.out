@@ -31,7 +31,8 @@ Disassembling <script> ...
 0049    | OP_GET_GLOBAL      13 'i'
 0051    | OP_ADD
 0052    | OP_PRINT
-0053   12 OP_RETURN
+0053   12 OP_NIL
+0054    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -342,6 +343,6 @@ false
 stack: empty.
 0043    9 OP_JUMP            43 -> 53
 stack: empty.
-0053   12 OP_RETURN
-Executing ... done.
-
+0053   12 OP_NIL
+stack: empty.
+0054    

@@ -8,7 +8,8 @@ Disassembling <script> ...
 0007    | OP_CONSTANT         2 '1'
 0009    | OP_ADD
 0010    | OP_PRINT
-0011    4 OP_RETURN
+0011    4 OP_NIL
+0012    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -33,6 +34,8 @@ stack: <script> 3
 0010    | OP_PRINT
 3
 stack: <script>
-0011    4 OP_RETURN
+0011    4 OP_NIL
+stack: <script> nil
+0012    | OP_RETURN
 Executing ... done.
 

@@ -109,7 +109,8 @@ Disassembling <script> ...
 0183    | OP_GET_GLOBAL      34 'i'
 0185    | OP_ADD
 0186    | OP_PRINT
-0187   32 OP_RETURN
+0187   32 OP_NIL
+0188    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -146,5 +147,4 @@ stack: <script> 10 true
 0037    | OP_POP
 stack: <script> 10
 0038    | OP_GET_LOCAL        1
-stack: <script> 10 10
-0040  
+stack: <scr

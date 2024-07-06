@@ -10,7 +10,8 @@ Disassembling sayHi ...
 0011    | OP_CONSTANT         2 '!'
 0013    | OP_ADD
 0014    | OP_PRINT
-0015    3 OP_RETURN
+0015    3 OP_NIL
+0016    | OP_RETURN
 Disassembling sayHi ... done.
 
 
@@ -22,7 +23,8 @@ Disassembling <script> ...
 0008    | OP_CONSTANT         4 'Reader'
 0010    | OP_CALL             2
 0012    | OP_POP
-0013    6 OP_RETURN
+0013    6 OP_NIL
+0014    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -61,6 +63,14 @@ stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader!
 0014    | OP_PRINT
 Hi, Dear Reader!
 stack: <script> <fn sayHi> Dear Reader
-0015    3 OP_RETURN
+0015    3 OP_NIL
+stack: <script> <fn sayHi> Dear Reader nil
+0016    | OP_RETURN
+stack: <script> nil
+0012    | OP_POP
+stack: <script>
+0013    6 OP_NIL
+stack: <script> nil
+0014    | OP_RETURN
 Executing ... done.
 

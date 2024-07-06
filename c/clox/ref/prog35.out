@@ -28,7 +28,8 @@ Disassembling <script> ...
 0045    8 OP_LOOP            45 -> 21
 0048    | OP_POP
 0049    | OP_POP
-0050    9 OP_RETURN
+0050    9 OP_NIL
+0051    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -959,6 +960,8 @@ stack: <script> 17711 false
 stack: <script> 17711
 0049    | OP_POP
 stack: <script>
-0050    9 OP_RETURN
+0050    9 OP_NIL
+stack: <script> nil
+0051    | OP_RETURN
 Executing ... done.
 

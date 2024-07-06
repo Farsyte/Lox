@@ -37,7 +37,8 @@ Disassembling <script> ...
 0061    9 OP_LOOP            61 -> 21
 0064    | OP_POP
 0065    | OP_POP
-0066   10 OP_RETURN
+0066   10 OP_NIL
+0067    | OP_RETURN
 Disassembling <script> ... done.
 
 

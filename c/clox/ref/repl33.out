@@ -22,7 +22,8 @@ Disassembling <script> ...
 0036    | OP_POP
 0037    | OP_CONSTANT         5 'yes'
 0039    | OP_PRINT
-0040    5 OP_RETURN
+0040    5 OP_NIL
+0041    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -66,6 +67,8 @@ stack: <script> nil
 0039    | OP_PRINT
 nil
 stack: <script>
-0040    5 OP_RETURN
+0040    5 OP_NIL
+stack: <script> nil
+0041    | OP_RETURN
 Executing ... done.
 

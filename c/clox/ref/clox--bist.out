@@ -19,7 +19,8 @@ Disassembling <script> ...
 0008    | OP_CONSTANT         3 '4'
 0010    | OP_MULTIPLY
 0011    | OP_PRINT
-0012    3 OP_RETURN
+0012    3 OP_NIL
+0013    | OP_RETURN
 Disassembling <script> ... done.
 
 BIST: bistCompiler ... done.
@@ -34,7 +35,8 @@ Disassembling <script> ...
 0008    | OP_CONSTANT         3 '4'
 0010    | OP_MULTIPLY
 0011    | OP_PRINT
-0012    3 OP_RETURN
+0012    3 OP_NIL
+0013    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -58,7 +60,9 @@ stack: <script> 12
 0011    | OP_PRINT
 12
 stack: <script>
-0012    3 OP_RETURN
+0012    3 OP_NIL
+stack: <script> nil
+0013    | OP_RETURN
 Executing ... done.
 
 BIST: bistVM ... done.
