@@ -1,2 +1,3 @@
-[line 4] Error at 'b': Expect ')' after for clauses.
-[line 9] Error at '}': Expect expression.
+
+RUNTIME ERROR: Undefined variable 'break'.
+[line 6] in script

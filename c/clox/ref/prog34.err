@@ -1,4 +1,7 @@
-[line 3] Error at 'j': Expect ')' after for clauses.
-[line 10] Error at '}': Expect expression.
-[line 19] Error at 'i': Expect ')' after for clauses.
-[line 25] Error at '}': Expect expression.
+
+RUNTIME ERROR: Operands must be two numbers or two strings.
+[line 5] in script
+src/value.c:110: Reached Unreachable Code! in printValue
+corrupted value type
+
+Aborted (core dumped)
