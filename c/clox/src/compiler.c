@@ -62,6 +62,7 @@ typedef enum {
 /** Compiler State
  */
 struct Compiler {
+    Compiler *enclosing;        ///< compiler for enclosing scope
     ObjFunction *function;      ///< current function being compiled
     FunctionType type;          ///< type of function being compiled
     Local locals[UINT8_COUNT];  ///< storage for local variables
@@ -431,6 +432,7 @@ patchJump (int offset)
 static void
 initCompiler (Compiler *compiler, FunctionType type)
 {
+    compiler->enclosing = current;
     compiler->function = NULL;
     compiler->type = type;
     compiler->localCount = 0;
@@ -460,6 +462,8 @@ endCompiler ()
         disassembleChunk (currentChunk (), function->name != NULL ? function->name->chars : "<script>");
     }
 #endif
+
+    current = current->enclosing;
     return function;
 }
 
