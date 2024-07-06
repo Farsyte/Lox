@@ -205,8 +205,7 @@ disassembleInstruction (Chunk *chunk, int offset)
     case OP_JUMP:                       return jumpInstruction ("OP_JUMP", 1, chunk, offset);
     case OP_JUMP_IF_FALSE:              return jumpInstruction ("OP_JUMP_IF_FALSE", 1, chunk, offset);
     case OP_LOOP:                       return jumpInstruction ("OP_LOOP", -1, chunk, offset);
-    case OP_CALL:
-        STUB (0);
+    case OP_CALL:                       return byteInstruction("OP_CALL", chunk, offset);
     case OP_RETURN:                     return simpleInstruction ("OP_RETURN", offset);
 
         // *INDENT-ON*

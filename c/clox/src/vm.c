@@ -128,6 +128,43 @@ peek (int distance)
     return vm.sp[-1 - distance];
 }
 
+/** Call a function.
+ */
+static bool
+call (ObjFunction *function, int argCount)
+{
+    CallFrame *frame = &vm.frames[vm.frameCount++];
+
+    frame->function = function;
+    frame->ip = function->chunk.code;
+    frame->slots = vm.sp - argCount - 1;
+    return true;
+}
+
+/** Execute the CALL operation.
+ *
+ * @param callee the functino to call
+ * @param argCount the number of arguments being passed
+ * @returns true if the call can be made, otherwise
+ * @returns false if the callee is not a function or a class
+ */
+static bool
+callValue (Value callee, int argCount)
+{
+    if (IS_OBJ (callee)) {
+        switch (OBJ_TYPE (callee)) {
+        case OBJ_FUNCTION:
+            return call (AS_FUNCTION (callee), argCount);
+        case OBJ_STRING:
+            break;
+            // yes, force me to look at this switch
+            // any time a new Object Type is added.
+        }
+    }
+    runtimeError ("Can only call functions and classes.");
+    return false;
+}
+
 /** Return true if the value is falsey.
  *
  * Follows the RUBY convention that nil and false are falsey
@@ -208,6 +245,7 @@ run ()
         ObjString *name;
         uint8_t slot;
         uint16_t offset;
+        int argCount;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -344,7 +382,12 @@ run ()
             break;
 
         case OP_CALL:
-            STUB (0);
+            argCount = READ_BYTE ();
+            if (!callValue (peek (argCount), argCount)) {
+                return INTERPRET_RUNTIME_ERROR;
+            }
+            frame = &vm.frames[vm.frameCount - 1];
+            break;
 
         case OP_RETURN:
             // Exit interpreter.
@@ -379,11 +422,6 @@ interpret (const char *source)
         return INTERPRET_COMPILE_ERROR;
 
     push (OBJ_VAL (function));
-    CallFrame *frame = &vm.frames[vm.frameCount++];
-
-    frame->function = function;
-    frame->ip = function->chunk.code;
-    frame->slots = vm.stack;
-
+    call (function, 0);
     return run ();
 }
