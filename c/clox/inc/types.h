@@ -66,3 +66,7 @@ typedef struct Compiler Compiler;
 /** Local Variables
  */
 typedef struct Local Local;
+
+/** Function Objects
+ */
+typedef struct ObjFunction ObjFunction;

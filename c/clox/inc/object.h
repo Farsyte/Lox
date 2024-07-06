@@ -1,5 +1,6 @@
 #pragma once
 
+#include "chunk.h"
 #include "common.h"
 #include "value.h"
 
@@ -8,12 +9,15 @@
  */
 
 #define OBJ_TYPE(value) (AS_OBJ(value)->type)
+#define IS_FUNCTION(value) isObjType(value, OBJ_FUNCTION)
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
+#define AS_FUNCTION(value) ((ObjFunction*)AS_OBJ(value))
 #define AS_STRING(value) ((ObjString*)AS_OBJ(value))
 #define AS_CSTRING(value) (AS_STRING(value)->chars)
 
 /** Enumerate the possible object types. */
 typedef enum {
+    OBJ_FUNCTION,               ///< Object is a Function
     OBJ_STRING,                 ///< Object contains a string
 } ObjType;
 
@@ -21,6 +25,14 @@ typedef enum {
 struct Obj {
     ObjType type;               ///< Designate the type of the object
     struct Obj *next;           ///< next eldest object
+};
+
+/** Object that is a Function */
+struct ObjFunction {
+    Obj obj;                    ///< Inherit from Obj
+    int arity;                  ///< number of parameters
+    Chunk chunk;                ///< compiled bytecode for the function
+    ObjString *name;            ///< function name in an ObjString
 };
 
 /** Object that is a string */
@@ -31,6 +43,7 @@ struct ObjString {
     uint32_t hash;              ///< hash code for the string
 };
 
+extern ObjFunction *newFunction ();
 extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);
 extern void printObject (Value value);
