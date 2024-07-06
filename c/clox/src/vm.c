@@ -19,6 +19,7 @@ static void
 resetStack ()
 {
     vm.sp = vm.stack;
+    vm.frameCount = 0;
 }
 
 /** Report a runtime error.
@@ -36,8 +37,9 @@ runtimeError (const char *format, ...)
     va_end (args);
     fputs ("\n", stderr);
 
-    size_t instruction = vm.ip - vm.chunk->code - 1;
-    int line = vm.chunk->lines[instruction];
+    CallFrame *frame = &vm.frames[vm.frameCount - 1];
+    size_t instruction = frame->ip - frame->function->chunk.code - 1;
+    int line = frame->function->chunk.lines[instruction];
 
     fprintf (stderr, "[line %d] in script\n", line);
     resetStack ();
@@ -55,8 +57,6 @@ runtimeError (const char *format, ...)
 void
 initVM ()
 {
-    vm.chunk = NULL;
-    vm.ip = NULL;
     resetStack ();
     vm.objects = NULL;
     initTable (&vm.globals);
@@ -179,10 +179,12 @@ run ()
     printf ("\nExecuting ...\n");
 #endif
 
-#define READ_BYTE()     (*vm.ip++)
-#define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+    CallFrame *frame = &vm.frames[vm.frameCount - 1];
+
+#define READ_BYTE()     (*frame->ip++)
+#define READ_SHORT()    (frame->ip += 2, (uint16_t)((frame->ip[-2] << 8) | frame->ip[-1]))
+#define READ_CONSTANT() (frame->function->chunk.constants.values[READ_BYTE()])
 #define READ_STRING()   (AS_STRING(READ_CONSTANT()))
-#define READ_SHORT()    (vm.ip += 2, (uint16_t)((vm.ip[-2] << 8) | vm.ip[-1]))
 
     for (;;) {
 #ifdef  DEBUG_TRACE_EXECUTION
@@ -196,7 +198,7 @@ run ()
             printf (" empty.");
         }
         printf ("\n");
-        disassembleInstruction (vm.chunk, (int) (vm.ip - vm.chunk->code));
+        disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
 #endif
         // Convert the byte to an OpCode enum value, so the C compiler
         // can warn us if there are any OpCode num values missing from
@@ -228,7 +230,7 @@ run ()
 
         case OP_GET_LOCAL:
             slot = READ_BYTE ();
-            push (vm.stack[slot]);
+            push (frame->slots[slot]);
             break;
 
         case OP_GET_GLOBAL:
@@ -251,7 +253,7 @@ run ()
 
         case OP_SET_LOCAL:
             slot = READ_BYTE ();
-            vm.stack[slot] = peek (0);
+            frame->slots[slot] = peek (0);
             break;
 
         case OP_SET_GLOBAL:
@@ -327,18 +329,18 @@ run ()
 
         case OP_JUMP:
             offset = READ_SHORT ();
-            vm.ip += offset;
+            frame->ip += offset;
             break;
 
         case OP_JUMP_IF_FALSE:
             offset = READ_SHORT ();
             if (isFalsey (peek (0)))
-                vm.ip += offset;
+                frame->ip += offset;
             break;
 
         case OP_LOOP:
             offset = READ_SHORT ();
-            vm.ip -= offset;
+            frame->ip -= offset;
             break;
 
         case OP_RETURN:
@@ -368,22 +370,17 @@ run ()
 InterpretResult
 interpret (const char *source)
 {
-    Chunk chunk;
-
-    initChunk (&chunk);
-
     ObjFunction *function = compile (source);
 
-    if (function == NULL) {
-        freeChunk (&chunk);
+    if (function == NULL)
         return INTERPRET_COMPILE_ERROR;
-    }
 
-    vm.chunk = &chunk;
-    vm.ip = vm.chunk->code;
+    push (OBJ_VAL (function));
+    CallFrame *frame = &vm.frames[vm.frameCount++];
 
-    InterpretResult result = run ();
+    frame->function = function;
+    frame->ip = function->chunk.code;
+    frame->slots = vm.stack;
 
-    freeChunk (&chunk);
-    return result;
+    return run ();
 }

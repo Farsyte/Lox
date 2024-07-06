@@ -1,5 +1,5 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    3 OP_CONSTANT         1 'global a'
 0002    | OP_DEFINE_GLOBAL    0 'a'
 0004    4 OP_CONSTANT         3 'global b'
@@ -9,16 +9,16 @@ Disassembling code ...
 0012    7 OP_CONSTANT         6 'outer a'
 0014    8 OP_CONSTANT         7 'outer b'
 0016   10 OP_CONSTANT         8 'inner a'
-0018   12 OP_GET_LOCAL        2
+0018   12 OP_GET_LOCAL        3
 0020    | OP_PRINT
-0021   13 OP_GET_LOCAL        1
+0021   13 OP_GET_LOCAL        2
 0023    | OP_PRINT
 0024   14 OP_GET_GLOBAL       9 'c'
 0026    | OP_PRINT
 0027   15 OP_POP
-0028   16 OP_GET_LOCAL        0
+0028   16 OP_GET_LOCAL        1
 0030    | OP_PRINT
-0031   17 OP_GET_LOCAL        1
+0031   17 OP_GET_LOCAL        2
 0033    | OP_PRINT
 0034   18 OP_GET_GLOBAL      10 'c'
 0036    | OP_PRINT
@@ -31,80 +31,80 @@ Disassembling code ...
 0045   22 OP_GET_GLOBAL      13 'c'
 0047    | OP_PRINT
 0048   23 OP_RETURN
-Disassembling code ... done.
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    3 OP_CONSTANT         1 'global a'
-stack: global a
+stack: <script> global a
 0002    | OP_DEFINE_GLOBAL    0 'a'
-stack: empty.
+stack: <script>
 0004    4 OP_CONSTANT         3 'global b'
-stack: global b
+stack: <script> global b
 0006    | OP_DEFINE_GLOBAL    2 'b'
-stack: empty.
+stack: <script>
 0008    5 OP_CONSTANT         5 'global c'
-stack: global c
+stack: <script> global c
 0010    | OP_DEFINE_GLOBAL    4 'c'
-stack: empty.
+stack: <script>
 0012    7 OP_CONSTANT         6 'outer a'
-stack: outer a
+stack: <script> outer a
 0014    8 OP_CONSTANT         7 'outer b'
-stack: outer a outer b
+stack: <script> outer a outer b
 0016   10 OP_CONSTANT         8 'inner a'
-stack: outer a outer b inner a
-0018   12 OP_GET_LOCAL        2
-stack: outer a outer b inner a inner a
+stack: <script> outer a outer b inner a
+0018   12 OP_GET_LOCAL        3
+stack: <script> outer a outer b inner a inner a
 0020    | OP_PRINT
 inner a
-stack: outer a outer b inner a
-0021   13 OP_GET_LOCAL        1
-stack: outer a outer b inner a outer b
+stack: <script> outer a outer b inner a
+0021   13 OP_GET_LOCAL        2
+stack: <script> outer a outer b inner a outer b
 0023    | OP_PRINT
 outer b
-stack: outer a outer b inner a
+stack: <script> outer a outer b inner a
 0024   14 OP_GET_GLOBAL       9 'c'
-stack: outer a outer b inner a global c
+stack: <script> outer a outer b inner a global c
 0026    | OP_PRINT
 global c
-stack: outer a outer b inner a
+stack: <script> outer a outer b inner a
 0027   15 OP_POP
-stack: outer a outer b
-0028   16 OP_GET_LOCAL        0
-stack: outer a outer b outer a
+stack: <script> outer a outer b
+0028   16 OP_GET_LOCAL        1
+stack: <script> outer a outer b outer a
 0030    | OP_PRINT
 outer a
-stack: outer a outer b
-0031   17 OP_GET_LOCAL        1
-stack: outer a outer b outer b
+stack: <script> outer a outer b
+0031   17 OP_GET_LOCAL        2
+stack: <script> outer a outer b outer b
 0033    | OP_PRINT
 outer b
-stack: outer a outer b
+stack: <script> outer a outer b
 0034   18 OP_GET_GLOBAL      10 'c'
-stack: outer a outer b global c
+stack: <script> outer a outer b global c
 0036    | OP_PRINT
 global c
-stack: outer a outer b
+stack: <script> outer a outer b
 0037   19 OP_POP
-stack: outer a
+stack: <script> outer a
 0038    | OP_POP
-stack: empty.
+stack: <script>
 0039   20 OP_GET_GLOBAL      11 'a'
-stack: global a
+stack: <script> global a
 0041    | OP_PRINT
 global a
-stack: empty.
+stack: <script>
 0042   21 OP_GET_GLOBAL      12 'b'
-stack: global b
+stack: <script> global b
 0044    | OP_PRINT
 global b
-stack: empty.
+stack: <script>
 0045   22 OP_GET_GLOBAL      13 'c'
-stack: global c
+stack: <script> global c
 0047    | OP_PRINT
 global c
-stack: empty.
+stack: <script>
 0048   23 OP_RETURN
 Executing ... done.
 

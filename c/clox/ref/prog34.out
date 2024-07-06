@@ -1,39 +1,39 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    2 OP_NIL
 0001    | OP_DEFINE_GLOBAL    0 'j'
 0003    3 OP_CONSTANT         1 '10'
-0005    | OP_GET_LOCAL        0
+0005    | OP_GET_LOCAL        1
 0007    | OP_CONSTANT         2 '0'
 0009    | OP_GREATER
 0010    | OP_JUMP_IF_FALSE   10 -> 66
 0013    | OP_POP
 0014    | OP_JUMP            14 -> 28
-0017    | OP_GET_LOCAL        0
+0017    | OP_GET_LOCAL        1
 0019    | OP_CONSTANT         3 '1'
 0021    | OP_SUBTRACT
-0022    | OP_SET_LOCAL        0
+0022    | OP_SET_LOCAL        1
 0024    | OP_POP
 0025    | OP_LOOP            25 -> 5
-0028    4 OP_GET_LOCAL        0
+0028    4 OP_GET_LOCAL        1
 0030    | OP_CONSTANT         4 '10'
 0032    | OP_GREATER
 0033    | OP_NOT
 0034    | OP_JUMP_IF_FALSE   34 -> 43
 0037    | OP_POP
-0038    | OP_GET_LOCAL        0
+0038    | OP_GET_LOCAL        1
 0040    | OP_CONSTANT         5 '0'
 0042    | OP_GREATER
 0043    | OP_JUMP_IF_FALSE   43 -> 56
 0046    | OP_POP
 0047    5 OP_CONSTANT         6 'PASS: j = '
-0049    | OP_GET_LOCAL        0
+0049    | OP_GET_LOCAL        1
 0051    | OP_ADD
 0052    | OP_PRINT
 0053    6 OP_JUMP            53 -> 63
 0056    | OP_POP
 0057    7 OP_CONSTANT         7 'FAIL: j = '
-0059    | OP_GET_LOCAL        0
+0059    | OP_GET_LOCAL        1
 0061    | OP_ADD
 0062    | OP_PRINT
 0063   10 OP_LOOP            63 -> 17
@@ -110,56 +110,41 @@ Disassembling code ...
 0185    | OP_ADD
 0186    | OP_PRINT
 0187   32 OP_RETURN
-Disassembling code ... done.
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    2 OP_NIL
-stack: nil
+stack: <script> nil
 0001    | OP_DEFINE_GLOBAL    0 'j'
-stack: empty.
+stack: <script>
 0003    3 OP_CONSTANT         1 '10'
-stack: 10
-0005    | OP_GET_LOCAL        0
-stack: 10 10
+stack: <script> 10
+0005    | OP_GET_LOCAL        1
+stack: <script> 10 10
 0007    | OP_CONSTANT         2 '0'
-stack: 10 10 0
+stack: <script> 10 10 0
 0009    | OP_GREATER
-stack: 10 true
+stack: <script> 10 true
 0010    | OP_JUMP_IF_FALSE   10 -> 66
-stack: 10 true
+stack: <script> 10 true
 0013    | OP_POP
-stack: 10
+stack: <script> 10
 0014    | OP_JUMP            14 -> 28
-stack: 10
-0028    4 OP_GET_LOCAL        0
-stack: 10 10
+stack: <script> 10
+0028    4 OP_GET_LOCAL        1
+stack: <script> 10 10
 0030    | OP_CONSTANT         4 '10'
-stack: 10 10 10
+stack: <script> 10 10 10
 0032    | OP_GREATER
-stack: 10 false
+stack: <script> 10 false
 0033    | OP_NOT
-stack: 10 true
+stack: <script> 10 true
 0034    | OP_JUMP_IF_FALSE   34 -> 43
-stack: 10 true
+stack: <script> 10 true
 0037    | OP_POP
-stack: 10
-0038    | OP_GET_LOCAL        0
-stack: 10 10
-0040    | OP_CONSTANT         5 '0'
-stack: 10 10 0
-0042    | OP_GREATER
-stack: 10 true
-0043    | OP_JUMP_IF_FALSE   43 -> 56
-stack: 10 true
-0046    | OP_POP
-stack: 10
-0047    5 OP_CONSTANT         6 'PASS: j = '
-stack: 10 PASS: j = 
-0049    | OP_GET_LOCAL        0
-stack: 10 PASS: j =  10
-0051    | OP_ADD
-stack: empty.
-0052    | OP_PRINT
-
+stack: <script> 10
+0038    | OP_GET_LOCAL        1
+stack: <script> 10 10
+0040  

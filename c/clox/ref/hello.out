@@ -1,18 +1,18 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    2 OP_CONSTANT         0 'Hello, world!'
 0002    | OP_PRINT
 0003    3 OP_RETURN
-Disassembling code ... done.
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    2 OP_CONSTANT         0 'Hello, world!'
-stack: Hello, world!
+stack: <script> Hello, world!
 0002    | OP_PRINT
 Hello, world!
-stack: empty.
+stack: <script>
 0003    3 OP_RETURN
 Executing ... done.
 

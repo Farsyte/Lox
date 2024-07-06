@@ -13,6 +13,7 @@
 --no-blank-lines-before-block-comments
 --no-tabs
 
+-TCallFrame
 -TChunk
 -TCompiler
 -TEntry

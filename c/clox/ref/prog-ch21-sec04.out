@@ -1,5 +1,5 @@
 
-Disassembling code ...
+Disassembling <script> ...
 0000    1 OP_CONSTANT         1 'beignets'
 0002    | OP_DEFINE_GLOBAL    0 'breakfast'
 0004    2 OP_CONSTANT         3 'café au lait'
@@ -14,38 +14,38 @@ Disassembling code ...
 0019    4 OP_GET_GLOBAL       8 'breakfast'
 0021    | OP_PRINT
 0022    5 OP_RETURN
-Disassembling code ... done.
+Disassembling <script> ... done.
 
 
 Executing ...
-stack: empty.
+stack: <script>
 0000    1 OP_CONSTANT         1 'beignets'
-stack: beignets
+stack: <script> beignets
 0002    | OP_DEFINE_GLOBAL    0 'breakfast'
-stack: empty.
+stack: <script>
 0004    2 OP_CONSTANT         3 'café au lait'
-stack: café au lait
+stack: <script> café au lait
 0006    | OP_DEFINE_GLOBAL    2 'beverage'
-stack: empty.
+stack: <script>
 0008    3 OP_GET_GLOBAL       5 'breakfast'
-stack: beignets
+stack: <script> beignets
 0010    | OP_CONSTANT         6 ' with '
-stack: beignets  with 
+stack: <script> beignets  with 
 0012    | OP_ADD
-stack: beignets with 
+stack: <script> beignets with 
 0013    | OP_GET_GLOBAL       7 'beverage'
-stack: beignets with  café au lait
+stack: <script> beignets with  café au lait
 0015    | OP_ADD
-stack: beignets with café au lait
+stack: <script> beignets with café au lait
 0016    | OP_SET_GLOBAL       4 'breakfast'
-stack: beignets with café au lait
+stack: <script> beignets with café au lait
 0018    | OP_POP
-stack: empty.
+stack: <script>
 0019    4 OP_GET_GLOBAL       8 'breakfast'
-stack: beignets with café au lait
+stack: <script> beignets with café au lait
 0021    | OP_PRINT
 beignets with café au lait
-stack: empty.
+stack: <script>
 0022    5 OP_RETURN
 Executing ... done.
 

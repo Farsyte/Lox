@@ -70,3 +70,7 @@ typedef struct Local Local;
 /** Function Objects
  */
 typedef struct ObjFunction ObjFunction;
+
+/** Stack Frame
+ */
+typedef struct CallFrame CallFrame;

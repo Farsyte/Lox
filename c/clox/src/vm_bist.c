@@ -19,8 +19,8 @@ bistVM ()
     printf ("BIST: %s ...\n", "bistVM");
 
     initVM ();
-    INVAR (NULL == vm.chunk, "initVM did not null the chunk pointer.");
-    INVAR (NULL == vm.ip, "initVM did not null the instruction pointer.");
+
+    INVAR (NULL == vm.objects, "initVM did not null the objects pointer.");
     INVAR (vm.stack == vm.sp, "initVM did not reset the stack pointer.");
 
     push (NIL_VAL);
