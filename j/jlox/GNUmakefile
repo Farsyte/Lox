@@ -18,7 +18,7 @@ all::           build
 # in the main package, AFTER checking that $(AstImplSrcs)
 # containing the AST code (Expr.java) is ready.
 
-build::		generate
+build::         generate
 	$M PACKAGE=lox -f ../java.mak $@
 
 # make clean: use ../java.mak to clean each package.
@@ -38,8 +38,11 @@ clean::
 # This starts an interactive Lox interpreter, or whatever
 # parts of the interpreter have been implemented so far.
 
-run::		build
+run::           build
 	$M PACKAGE=lox MAIN=Lox -f ../java.mak $@
+
+jbench::        build
+	$M PACKAGE=lox MAIN=Lox ARGS=$(TOP)bin/fib.lox -f ../java.mak run | awk -f $(TOP)bin/bench.awk
 
 
 # Before running tests, flush prior results.
@@ -47,7 +50,7 @@ run::		build
 # - use "git status" to detect missing or added output files
 # - use "git diff" to detect changes in test outputs
 
-tests::		build
+tests::         build
 	$X $(TOD)*.out
 	$C [ ! -d $(TOD) ] || $Y $(TOD)
 	$C [ -d $(TOD) ] || mkdir $(TOD)

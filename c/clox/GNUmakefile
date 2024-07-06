@@ -8,8 +8,8 @@ MAIN            := clox
 
 CC              := c99
 
-# C_DBG_OPT	:= -g -O0
-C_DBG_OPT	:= -O3
+# C_DBG_OPT     := -g -O0
+C_DBG_OPT       := -O3
 
 # NOTE: this is GCC-specific.
 # COPTS           := -fshort-enums
@@ -33,32 +33,32 @@ include ../$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 # NOTE: a nonzero exit status from BIST is now treated
 # as a build failure.
 
-LSRC		:= $(wildcard $(LOXD)*.lox)
-MTST		:= demo bist repl help
+LSRC            := $(wildcard $(LOXD)*.lox)
+MTST            := demo bist repl help
 
-LOUT		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
+LOUT            := $(LSRC:$(LOXD)%.lox=$(LOGD)%.out)
 # $(MTST:%=$(LOGD)$(MAIN)--%.out)
-LERR		:= $(LSRC:$(LOXD)%.lox=$(LOGD)%.err)
+LERR            := $(LSRC:$(LOXD)%.lox=$(LOGD)%.err)
 # $(MTST:%=$(LOGD)$(MAIN)--%.err)
 
-ROUT		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.out) $(MTST:%=$(REFD)$(MAIN)--%.out)
-RERR		:= $(LSRC:$(LOXD)%.lox=$(REFD)%.err) $(MTST:%=$(REFD)$(MAIN)--%.err)
+ROUT            := $(LSRC:$(LOXD)%.lox=$(REFD)%.out) $(MTST:%=$(REFD)$(MAIN)--%.out)
+RERR            := $(LSRC:$(LOXD)%.lox=$(REFD)%.err) $(MTST:%=$(REFD)$(MAIN)--%.err)
 
-DIFFX		:= -X $(REFD)exclude-from-compare
-DIFFPX		:= -x '*~'
-DOPTS		:= -wu
-DFLAGS		:= $(DOPTS) $(DIFFX) $(DIFFPX) -r
+DIFFX           := -X $(REFD)exclude-from-compare
+DIFFPX          := -x '*~'
+DOPTS           := -wu
+DFLAGS          := $(DOPTS) $(DIFFX) $(DIFFPX) -r
 
 tests::         $(MTST) $(LOUT)
 	$C diff $(DFLAGS) $(REFD) $(LOGD) | sed 's/^diff .* ref/\ndiff $(DOPTS) ref/'
 
-accept:		$(ROUT) $(RERR)
+accept:         $(ROUT) $(RERR)
 
-$(REFD)%.out:	$(LOGD)%.out
+$(REFD)%.out:   $(LOGD)%.out
 	$P '  %-14s %s\n' 'UPDATE' '$*.out'
 	$C cp -f $< $@
 
-$(REFD)%.err:	$(LOGD)%.err
+$(REFD)%.err:   $(LOGD)%.err
 	$P '  %-14s %s\n' 'UPDATE' '$*.err'
 	$C cp -f $< $@
 
@@ -70,30 +70,38 @@ demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
 	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null || (echo 'BUILD OF "DEMO" FAILED'; cat $(LOGD)$(MAIN)--demo.err ; false)
 
-clean::		; $X $(LOGD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.err
+clean::         ; $X $(LOGD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.err
 
 bist::          $(BIND)title
 	$P '  %-6s %s\n' "BIST" "$(MAIN)"
 	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null || (echo 'BUILD OF "BIST" FAILED'; cat $(LOGD)$(MAIN)--bist.err ; false)
 
-clean::		; $X $(LOGD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.err
+clean::         ; $X $(LOGD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.err
 
 repl::          $(BIND)title
 	$P '  %-6s %s\n' "REPL" "$(MAIN)"
 	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null || (echo 'BUILD OF "REPL" FAILED'; cat $(LOGD)$(MAIN)--repl.err ; false)
 
-clean::		; $X $(LOGD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.err
+clean::         ; $X $(LOGD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.err
 
 help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
 	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null || (echo 'BUILD OF "HELP" FAILED'; cat $(LOGD)$(MAIN)--help.err ; false)
 
-clean::		; $X $(LOGD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.err
+clean::         ; $X $(LOGD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.err
+
+# With the introduction of Native Functions
+# at the end of Chapter 24, we can now run
+# the "fib.lox" benchmark properly.
+
+cbench::        $(PROG)
+	$P '  %-6s %s\n' "$(MAIN)" "fib.lox"
+	$C $(PROG) $(TOP)bin/fib.lox 2>/dev/null | awk -f $(TOP)bin/bench.awk
 
 # many .lox test scripts are expected to error.
 # adjust later when nearly all are expected to succeed.
 
-$(LOGD)%.out:	$(LOXD)%.lox $(PROG)
+$(LOGD)%.out:   $(LOXD)%.lox $(PROG)
 	$P '  %-6s %s\n' "$(MAIN)" "$*"
 	$C $(PROG) "$<" > "$(LOGD)$*.out" 2> "$(LOGD)$*.err" || true
 

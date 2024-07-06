@@ -19,6 +19,10 @@ int _DEBUG_TRACE_EXECUTION = 500;
 #endif
 
 /** Native Function: clock()
+ *
+ * @param argCount number of parameters in the function call
+ * @param args list of Values passed to the function
+ * @returns Value containing seconds since an epoch
  */
 static Value
 clockNative (int argCount, Value *args)
@@ -26,7 +30,12 @@ clockNative (int argCount, Value *args)
     (void) argCount;                    // not used by this function
     (void) args;                        // not used by this function
 #ifdef  DEBUG_TRACE_EXECUTION
-    _DEBUG_TRACE_EXECUTION = 0;
+    if (_DEBUG_TRACE_EXECUTION) {
+        printf ("\n");
+        fflush (stdout);
+        fprintf (stderr, "clock() disabling DEBUG_TRACE_EXECUTION\n");
+        _DEBUG_TRACE_EXECUTION = 0;
+    }
 #endif
     return NUMBER_VAL ((double) clock () / CLOCKS_PER_SEC);
 }

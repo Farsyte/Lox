@@ -115,3 +115,8 @@ sync::
 	$M -C c/clox cycle
 
 
+bench::
+	python $(TOP)bin/fib.py | awk -f $(TOP)bin/bench.awk
+	$M -C $(TOP)j/jlox jbench
+	$M -C $(TOP)c/clox cbench
+
