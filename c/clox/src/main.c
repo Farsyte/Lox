@@ -12,6 +12,14 @@
 #include <stdio.h>
 #include <string.h>
 
+/** @file main.c
+ * @brief Implementation of Main Function
+ *
+ * This file provides the main entry point as defined by the C
+ * programming langage, and contains the logic driving cLox based on
+ * the command line arguments presented.
+ */
+
 extern Options options;         // share command line options state
 
 /** Read-Evaluate-Print loop.
@@ -117,12 +125,10 @@ runFile (const char *path)
         exit (EX_SOFTWARE);
 }
 
-/** @file main.c
- * @brief Implementation of Main Function
+/** Demonstration Function
  *
- * This file provides the main entry point as defined by the C
- * programming langage, and contains the logic driving cLox based on
- * the command line arguments presented.
+ * This function contains whatever demonstration code was most
+ * recently used by the book to show some code working.
  */
 static void
 demo ()

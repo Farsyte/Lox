@@ -1,7 +1,7 @@
 
 RUNTIME ERROR: Operands must be two numbers or two strings.
 [line 8] in script
-src/value.c:110: Reached Unreachable Code! in printValue
+src/value.c:123: Reached Unreachable Code! in printValue
 corrupted value type
 
 Aborted (core dumped)

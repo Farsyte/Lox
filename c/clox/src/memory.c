@@ -20,6 +20,8 @@
  * @param pointer address of existing storage block
  * @param oldSize size in bytes of existing storage block
  * @param newSize desired size in bytes of new storage block
+ * @returns NULL if the new size was zero, otherwise
+ * @returns a pointer to allocated storage of the new size
  */
 void *
 reallocate (void *pointer, size_t oldSize, size_t newSize)

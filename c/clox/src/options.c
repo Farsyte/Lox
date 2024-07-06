@@ -67,6 +67,14 @@ help ()
  *
  * Step through the command line options, updating the
  * options state, and calling back when appropriate.
+ *
+ * @param argc number of strings in argv
+ * @param argv array of argument strings
+ *
+ * By convention, argv[0] is the name of the program that is running,
+ * and arguments parsed from the command line are placed in subsequent
+ * entries. argv[argc] is set to NULL. Accessing elements beyond that
+ * results in undefined behavior.
  */
 void
 parse_options (int argc, const char **argv)

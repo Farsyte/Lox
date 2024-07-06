@@ -34,7 +34,7 @@ typedef enum {
     PREC_FACTOR,                ///< "*", "/"
     PREC_UNARY,                 ///< "!", "-"
     PREC_CALL,                  ///< ".", "()"
-    PREC_PRIMARY,               // identifiers etc.
+    PREC_PRIMARY,               ///< identifiers etc.
 } Precedence;
 
 /** Parse Rules
@@ -52,9 +52,18 @@ struct Local {
     int depth;                  ///< scope depth of block defining it
 };
 
+/** Enumerated Function Types
+ */
+typedef enum {
+    TYPE_FUNCTION,
+    TYPE_SCRIPT
+} FunctionType;
+
 /** Compiler State
  */
 struct Compiler {
+    ObjFunction *function;      ///< current function being compiled
+    FunctionType type;          ///< type of function being compiled
     Local locals[UINT8_COUNT];  ///< storage for local variables
     int localCount;             ///< number of local variables in scope
     int scopeDepth;             ///< number of blocks surrounding current code
@@ -75,11 +84,14 @@ static void parsePrecedence (Precedence precedence);
 static void and_ (bool canAssign);
 static void or_ (bool canAssign);
 
-/** Return a pointer to the current target chunk */
+/** Return a pointer to the current target chunk
+ *
+ * @returns the current chunk pointer
+ */
 static Chunk *
 currentChunk ()
 {
-    return compilingChunk;
+    return &current->function->chunk;
 }
 
 /** Report error at this token.
@@ -161,6 +173,9 @@ advance ()
  *
  * If the current token is the right type, consume it, bringing
  * the next token in as current. Otherwise, report the error.
+ *
+ * @param type the enumerated type of the token to consume
+ * @param message the error message to use if that token is not found
  */
 static void
 consume (TokenType type, const char *message)
@@ -244,6 +259,9 @@ emitLoop (int loopStart)
 }
 
 /** Emit a JUMP instruction into the chunk.
+ *
+ * @param instruction which OpCode to emit
+ * @returns the chunk offset of the two-octet immediate
  */
 static int
 emitJump (uint8_t instruction)
@@ -268,6 +286,7 @@ emitReturn ()
  * constant pool index into the chunk.
  *
  * @param value the value of the constant
+ * @returns the resulting offset into the constant pool
  */
 static uint8_t
 makeConstant (Value value)
@@ -334,6 +353,8 @@ resolveLocal (Compiler *compiler, Token *name)
 }
 
 /** Add a local variable to the current scope.
+ *
+ * @param name the lexeme containing the variable name
  */
 static void
 addLocal (Token name)
@@ -404,6 +425,8 @@ patchJump (int offset)
 }
 
 /** Initialize the state of the compiler
+ *
+ * @param compiler the pointer to the compiler state structure to initialize
  */
 static void
 initCompiler (Compiler *compiler)
@@ -426,12 +449,16 @@ endCompiler ()
 #endif
 }
 
+/** Enter a new local scope
+ */
 static void
 beginScope ()
 {
     current->scopeDepth++;
 }
 
+/** Leave the current local scope
+ */
 static void
 endScope ()
 {
@@ -440,10 +467,11 @@ endScope ()
         emitByte (OP_POP);
         current->localCount--;
     }
-
 }
 
 /** Compile a binary operation to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 binary (bool canAssign)
@@ -476,6 +504,8 @@ binary (bool canAssign)
 }
 
 /** Compile a Literal op to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 literal (bool canAssign)
@@ -493,6 +523,8 @@ literal (bool canAssign)
 }
 
 /** Compile a Grouping to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 grouping (bool canAssign)
@@ -503,6 +535,8 @@ grouping (bool canAssign)
 }
 
 /** Compile a number to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 number (bool canAssign)
@@ -514,6 +548,8 @@ number (bool canAssign)
 }
 
 /** Compile a string to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 string (bool canAssign)
@@ -551,6 +587,8 @@ namedVariable (Token name, bool canAssign)
 }
 
 /** Compile a variable to the chunk.
+ *
+ * @param canAssign true to allow an assignment expression
  */
 static void
 variable (bool canAssign)
@@ -559,6 +597,8 @@ variable (bool canAssign)
 }
 
 /** Compile a unary operation to the chunk.
+ *
+ * @param canAssign not used by this function
  */
 static void
 unary (bool canAssign)
@@ -584,6 +624,15 @@ unary (bool canAssign)
     }
 }
 
+/** Parse Rules
+ *
+ * This table encodes the behavior of the parser based on the next
+ * token available. The first value points to the function to call
+ * when the token appears as a unary operator. The second column is
+ * the function to call when the token appears as a binary operator.
+ * The third column indicates the precedence of the token when used
+ * as a binary operator.
+ */
 ParseRule rules[] = {
 
     // *INDENT-OFF*
@@ -642,6 +691,8 @@ ParseRule rules[] = {
 };
 
 /** Compile an expression at the specified precedence.
+ *
+ * @param precedence threshold for binary operation precedence
  */
 static void
 parsePrecedence (Precedence precedence)
@@ -746,6 +797,7 @@ or_ (bool canAssign)
 /** Fetch the correct rule structuer
  *
  * @param type the token type we are processing
+ * @returns a pointer to the appropriate rule structure
  */
 static ParseRule *
 getRule (TokenType type)
@@ -761,6 +813,8 @@ expression ()
     parsePrecedence (PREC_ASSIGNMENT);
 }
 
+/** Compile a statement block to the current chunk.
+ */
 static void
 block ()
 {
@@ -770,6 +824,8 @@ block ()
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after block.");
 }
 
+/** Compile a var declaration to the current chunk.
+ */
 static void
 varDeclaration ()
 {
@@ -980,6 +1036,11 @@ statement ()
 }
 
 /** Compile the source code into the chunk.
+ *
+ * @param source pointer to a C string containing the source to compile
+ * @param chunk where to store the bytecodes
+ * @returns true if all went well
+ * @returns false if there was a parser error
  */
 bool
 compile (const char *source, Chunk *chunk)

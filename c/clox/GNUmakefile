@@ -176,8 +176,5 @@ cycle::
 	$M -k stubs
 	$M -k todos
 
-world::
-	$M longer
-
 $(BIND)title:           $(BIND)title.c
 clean::         ; $X $(BIND)title
