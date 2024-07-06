@@ -12,17 +12,17 @@ Disassembling code ...
 0018   12 OP_GET_LOCAL        2
 0020    | OP_CONSTANT         9 'inner a'
 0022    | OP_EQUAL
-0023    | OP_JUMP_IF_FALSE   23 -> 26
+0023    | OP_JUMP_IF_FALSE   23 -> 41
 0026    | OP_POP
 0027    | OP_GET_LOCAL        1
 0029    | OP_CONSTANT        10 'outer b'
 0031    | OP_EQUAL
-0032    | OP_JUMP_IF_FALSE   32 -> 35
+0032    | OP_JUMP_IF_FALSE   32 -> 41
 0035    | OP_POP
 0036    | OP_GET_GLOBAL      11 'c'
 0038    | OP_CONSTANT        12 'global c'
 0040    | OP_EQUAL
-0041    | OP_JUMP_IF_FALSE   41 -> 44
+0041    | OP_JUMP_IF_FALSE   41 -> 66
 0044    | OP_POP
 0045   13 OP_CONSTANT        13 'PASS: a = '
 0047    | OP_GET_LOCAL        2
@@ -36,27 +36,27 @@ Disassembling code ...
 0059    | OP_GET_GLOBAL      16 'c'
 0061    | OP_ADD
 0062    | OP_PRINT
-0063   14 OP_JUMP            63 -> 66
+0063   14 OP_JUMP            63 -> 143
 0066    | OP_POP
 0067    | OP_GET_LOCAL        2
 0069    | OP_CONSTANT        17 'inner a'
 0071    | OP_EQUAL
 0072    | OP_NOT
-0073    | OP_JUMP_IF_FALSE   73 -> 76
-0076    | OP_JUMP            76 -> 79
+0073    | OP_JUMP_IF_FALSE   73 -> 79
+0076    | OP_JUMP            76 -> 99
 0079    | OP_POP
 0080    | OP_GET_LOCAL        1
 0082    | OP_CONSTANT        18 'outer b'
 0084    | OP_EQUAL
 0085    | OP_NOT
-0086    | OP_JUMP_IF_FALSE   86 -> 89
-0089    | OP_JUMP            89 -> 92
+0086    | OP_JUMP_IF_FALSE   86 -> 92
+0089    | OP_JUMP            89 -> 99
 0092    | OP_POP
 0093    | OP_GET_GLOBAL      19 'c'
 0095    | OP_CONSTANT        20 'global c'
 0097    | OP_EQUAL
 0098    | OP_NOT
-0099    | OP_JUMP_IF_FALSE   99 -> 102
+0099    | OP_JUMP_IF_FALSE   99 -> 124
 0102    | OP_POP
 0103   15 OP_CONSTANT        21 'FAIL: a = '
 0105    | OP_GET_LOCAL        2
@@ -70,7 +70,7 @@ Disassembling code ...
 0117    | OP_GET_GLOBAL      24 'c'
 0119    | OP_ADD
 0120    | OP_PRINT
-0121   16 OP_JUMP           121 -> 124
+0121   16 OP_JUMP           121 -> 143
 0124    | OP_POP
 0125   17 OP_CONSTANT        25 '????: a = '
 0127    | OP_GET_LOCAL        2
@@ -88,17 +88,17 @@ Disassembling code ...
 0144   20 OP_GET_LOCAL        0
 0146    | OP_CONSTANT        29 'outer a'
 0148    | OP_EQUAL
-0149    | OP_JUMP_IF_FALSE  149 -> 152
+0149    | OP_JUMP_IF_FALSE  149 -> 167
 0152    | OP_POP
 0153    | OP_GET_LOCAL        1
 0155    | OP_CONSTANT        30 'outer b'
 0157    | OP_EQUAL
-0158    | OP_JUMP_IF_FALSE  158 -> 161
+0158    | OP_JUMP_IF_FALSE  158 -> 167
 0161    | OP_POP
 0162    | OP_GET_GLOBAL      31 'c'
 0164    | OP_CONSTANT        32 'global c'
 0166    | OP_EQUAL
-0167    | OP_JUMP_IF_FALSE  167 -> 170
+0167    | OP_JUMP_IF_FALSE  167 -> 192
 0170    | OP_POP
 0171   21 OP_CONSTANT        33 'PASS: a = '
 0173    | OP_GET_LOCAL        0
@@ -112,27 +112,27 @@ Disassembling code ...
 0185    | OP_GET_GLOBAL      36 'c'
 0187    | OP_ADD
 0188    | OP_PRINT
-0189   22 OP_JUMP           189 -> 192
+0189   22 OP_JUMP           189 -> 269
 0192    | OP_POP
 0193    | OP_GET_LOCAL        0
 0195    | OP_CONSTANT        37 'inner a'
 0197    | OP_EQUAL
 0198    | OP_NOT
-0199    | OP_JUMP_IF_FALSE  199 -> 202
-0202    | OP_JUMP           202 -> 205
+0199    | OP_JUMP_IF_FALSE  199 -> 205
+0202    | OP_JUMP           202 -> 225
 0205    | OP_POP
 0206    | OP_GET_LOCAL        1
 0208    | OP_CONSTANT        38 'outer b'
 0210    | OP_EQUAL
 0211    | OP_NOT
-0212    | OP_JUMP_IF_FALSE  212 -> 215
-0215    | OP_JUMP           215 -> 218
+0212    | OP_JUMP_IF_FALSE  212 -> 218
+0215    | OP_JUMP           215 -> 225
 0218    | OP_POP
 0219    | OP_GET_GLOBAL      39 'c'
 0221    | OP_CONSTANT        40 'global c'
 0223    | OP_EQUAL
 0224    | OP_NOT
-0225    | OP_JUMP_IF_FALSE  225 -> 228
+0225    | OP_JUMP_IF_FALSE  225 -> 250
 0228    | OP_POP
 0229   23 OP_CONSTANT        41 'FAIL: a = '
 0231    | OP_GET_LOCAL        0
@@ -146,7 +146,7 @@ Disassembling code ...
 0243    | OP_GET_GLOBAL      44 'c'
 0245    | OP_ADD
 0246    | OP_PRINT
-0247   24 OP_JUMP           247 -> 250
+0247   24 OP_JUMP           247 -> 269
 0250    | OP_POP
 0251   25 OP_CONSTANT        45 '????: a = '
 0253    | OP_GET_LOCAL        0
@@ -165,17 +165,17 @@ Disassembling code ...
 0271   28 OP_GET_GLOBAL      49 'a'
 0273    | OP_CONSTANT        50 'global a'
 0275    | OP_EQUAL
-0276    | OP_JUMP_IF_FALSE  276 -> 279
+0276    | OP_JUMP_IF_FALSE  276 -> 294
 0279    | OP_POP
 0280    | OP_GET_GLOBAL      51 'b'
 0282    | OP_CONSTANT        52 'global b'
 0284    | OP_EQUAL
-0285    | OP_JUMP_IF_FALSE  285 -> 288
+0285    | OP_JUMP_IF_FALSE  285 -> 294
 0288    | OP_POP
 0289    | OP_GET_GLOBAL      53 'c'
 0291    | OP_CONSTANT        54 'global c'
 0293    | OP_EQUAL
-0294    | OP_JUMP_IF_FALSE  294 -> 297
+0294    | OP_JUMP_IF_FALSE  294 -> 319
 0297    | OP_POP
 0298   29 OP_CONSTANT        55 'PASS: a = '
 0300    | OP_GET_GLOBAL      56 'a'
@@ -189,27 +189,27 @@ Disassembling code ...
 0312    | OP_GET_GLOBAL      60 'c'
 0314    | OP_ADD
 0315    | OP_PRINT
-0316   30 OP_JUMP           316 -> 319
+0316   30 OP_JUMP           316 -> 396
 0319    | OP_POP
 0320    | OP_GET_GLOBAL      61 'a'
 0322    | OP_CONSTANT        62 'inner a'
 0324    | OP_EQUAL
 0325    | OP_NOT
-0326    | OP_JUMP_IF_FALSE  326 -> 329
-0329    | OP_JUMP           329 -> 332
+0326    | OP_JUMP_IF_FALSE  326 -> 332
+0329    | OP_JUMP           329 -> 352
 0332    | OP_POP
 0333    | OP_GET_GLOBAL      63 'b'
 0335    | OP_CONSTANT        64 'global b'
 0337    | OP_EQUAL
 0338    | OP_NOT
-0339    | OP_JUMP_IF_FALSE  339 -> 342
-0342    | OP_JUMP           342 -> 345
+0339    | OP_JUMP_IF_FALSE  339 -> 345
+0342    | OP_JUMP           342 -> 352
 0345    | OP_POP
 0346    | OP_GET_GLOBAL      65 'c'
 0348    | OP_CONSTANT        66 'global c'
 0350    | OP_EQUAL
 0351    | OP_NOT
-0352    | OP_JUMP_IF_FALSE  352 -> 355
+0352    | OP_JUMP_IF_FALSE  352 -> 377
 0355    | OP_POP
 0356   31 OP_CONSTANT        67 'FAIL: a = '
 0358    | OP_GET_GLOBAL      68 'a'
@@ -223,7 +223,7 @@ Disassembling code ...
 0370    | OP_GET_GLOBAL      72 'c'
 0372    | OP_ADD
 0373    | OP_PRINT
-0374   32 OP_JUMP           374 -> 377
+0374   32 OP_JUMP           374 -> 396
 0377    | OP_POP
 0378   33 OP_CONSTANT        73 '????: a = '
 0380    | OP_GET_GLOBAL      74 'a'
@@ -267,7 +267,7 @@ stack: outer a outer b inner a inner a
 stack: outer a outer b inner a inner a inner a
 0022    | OP_EQUAL
 stack: outer a outer b inner a true
-0023    | OP_JUMP_IF_FALSE   23 -> 26
+0023    | OP_JUMP_IF_FALSE   23 -> 41
 stack: outer a outer b inner a true
 0026    | OP_POP
 stack: outer a outer b inner a
@@ -277,7 +277,7 @@ stack: outer a outer b inner a outer b
 stack: outer a outer b inner a outer b outer b
 0031    | OP_EQUAL
 stack: outer a outer b inner a true
-0032    | OP_JUMP_IF_FALSE   32 -> 35
+0032    | OP_JUMP_IF_FALSE   32 -> 41
 stack: outer a outer b inner a true
 0035    | OP_POP
 stack: outer a outer b inner a
@@ -287,7 +287,7 @@ stack: outer a outer b inner a global c
 stack: outer a outer b inner a global c global c
 0040    | OP_EQUAL
 stack: outer a outer b inner a true
-0041    | OP_JUMP_IF_FALSE   41 -> 44
+0041    | OP_JUMP_IF_FALSE   41 -> 66
 stack: outer a outer b inner a true
 0044    | OP_POP
 stack: outer a outer b inner a
@@ -316,7 +316,7 @@ stack: outer a outer b inner a PASS: a = inner a, b = outer b, c = global c
 0062    | OP_PRINT
 PASS: a = inner a, b = outer b, c = global c
 stack: outer a outer b inner a
-0063   14 OP_JUMP            63 -> 66
+0063   14 OP_JUMP            63 -> 143
 stack: outer a outer b inner a
 0143   19 OP_POP
 stack: outer a outer b
@@ -326,7 +326,7 @@ stack: outer a outer b outer a
 stack: outer a outer b outer a outer a
 0148    | OP_EQUAL
 stack: outer a outer b true
-0149    | OP_JUMP_IF_FALSE  149 -> 152
+0149    | OP_JUMP_IF_FALSE  149 -> 167
 stack: outer a outer b true
 0152    | OP_POP
 stack: outer a outer b
@@ -336,7 +336,7 @@ stack: outer a outer b outer b
 stack: outer a outer b outer b outer b
 0157    | OP_EQUAL
 stack: outer a outer b true
-0158    | OP_JUMP_IF_FALSE  158 -> 161
+0158    | OP_JUMP_IF_FALSE  158 -> 167
 stack: outer a outer b true
 0161    | OP_POP
 stack: outer a outer b
@@ -346,7 +346,7 @@ stack: outer a outer b global c
 stack: outer a outer b global c global c
 0166    | OP_EQUAL
 stack: outer a outer b true
-0167    | OP_JUMP_IF_FALSE  167 -> 170
+0167    | OP_JUMP_IF_FALSE  167 -> 192
 stack: outer a outer b true
 0170    | OP_POP
 stack: outer a outer b
@@ -375,7 +375,7 @@ stack: outer a outer b PASS: a = outer a, b = outer b, c = global c
 0188    | OP_PRINT
 PASS: a = outer a, b = outer b, c = global c
 stack: outer a outer b
-0189   22 OP_JUMP           189 -> 192
+0189   22 OP_JUMP           189 -> 269
 stack: outer a outer b
 0269   27 OP_POP
 stack: outer a
@@ -387,7 +387,7 @@ stack: global a
 stack: global a global a
 0275    | OP_EQUAL
 stack: true
-0276    | OP_JUMP_IF_FALSE  276 -> 279
+0276    | OP_JUMP_IF_FALSE  276 -> 294
 stack: true
 0279    | OP_POP
 stack: empty.
@@ -397,7 +397,7 @@ stack: global b
 stack: global b global b
 0284    | OP_EQUAL
 stack: true
-0285    | OP_JUMP_IF_FALSE  285 -> 288
+0285    | OP_JUMP_IF_FALSE  285 -> 294
 stack: true
 0288    | OP_POP
 stack: empty.
@@ -407,7 +407,7 @@ stack: global c
 stack: global c global c
 0293    | OP_EQUAL
 stack: true
-0294    | OP_JUMP_IF_FALSE  294 -> 297
+0294    | OP_JUMP_IF_FALSE  294 -> 319
 stack: true
 0297    | OP_POP
 stack: empty.
@@ -436,7 +436,7 @@ stack: PASS: a = global a, b = global b, c = global c
 0315    | OP_PRINT
 PASS: a = global a, b = global b, c = global c
 stack: empty.
-0316   30 OP_JUMP           316 -> 319
+0316   30 OP_JUMP           316 -> 396
 stack: empty.
 0396   35 OP_RETURN
 Executing ... done.

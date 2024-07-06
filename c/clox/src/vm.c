@@ -30,6 +30,7 @@ runtimeError (const char *format, ...)
 {
     va_list args;
 
+    fprintf (stderr, "\nRUNTIME ERROR: ");
     va_start (args, format);
     vfprintf (stderr, format, args);
     va_end (args);
@@ -40,6 +41,9 @@ runtimeError (const char *format, ...)
 
     fprintf (stderr, "[line %d] in script\n", line);
     resetStack ();
+
+    // ADDED MUCH LATER: Did I forget to set a "stop running" thing?
+
 }
 
 /** Initialize the VM completely.
@@ -330,6 +334,11 @@ run ()
             offset = READ_SHORT ();
             if (isFalsey (peek (0)))
                 vm.ip += offset;
+            break;
+
+        case OP_LOOP:
+            offset = READ_SHORT ();
+            vm.ip -= offset;
             break;
 
         case OP_RETURN:
