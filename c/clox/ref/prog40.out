@@ -1,0 +1,15 @@
+
+Disassembling sayHi ...
+0000    2 OP_CONSTANT         0 'Hi, '
+0002    | OP_GET_LOCAL        1
+0004    | OP_ADD
+0005    | OP_CONSTANT         1 ' '
+0007    | OP_ADD
+0008    | OP_GET_LOCAL        2
+0010    | OP_ADD
+0011    | OP_CONSTANT         2 '!'
+0013    | OP_ADD
+0014    | OP_PRINT
+0015    3 OP_RETURN
+Disassembling sayHi ... done.
+
