@@ -1,10 +1,6 @@
 [line 3] Error at 'for': Expect expression.
 [line 3] Error at ')': Expect ';' after expression.
-[line 4] Error at 'and': Expect ')' after condition.
-[line 6] Error at '}': Expect expression.
-[line 8] Error at '}': Expect expression.
+[line 10] Error at '}': Expect expression.
 [line 19] Error at 'for': Expect expression.
 [line 19] Error at ')': Expect ';' after expression.
-[line 20] Error at 'and': Expect ')' after condition.
-[line 22] Error at '}': Expect expression.
-[line 24] Error at '}': Expect expression.
+[line 25] Error at '}': Expect expression.
