@@ -129,10 +129,26 @@ peek (int distance)
 }
 
 /** Call a function.
+ *
+ * @param function what to call
+ * @param argCount how many args are being sent
+ * @returns false if the argument count is wrong
+ * @returns false if the frame stack is full.
+ * @returns true if the call was started
  */
 static bool
 call (ObjFunction *function, int argCount)
 {
+    if (argCount != function->arity) {
+        runtimeError ("Expected %d arguments but got %d.", function->arity, argCount);
+        return false;
+    }
+
+    if (vm.frameCount == FRAMES_MAX) {
+        runtimeError ("Stack overflow.");
+        return false;
+    }
+
     CallFrame *frame = &vm.frames[vm.frameCount++];
 
     frame->function = function;
