@@ -798,8 +798,17 @@ expressionStatement ()
 static void
 forStatement ()
 {
+    beginScope ();
     consume (TOKEN_LEFT_PAREN, "Expect '(' after 'if'.");
-    consume (TOKEN_SEMICOLON, "Expect ';' after initializer.");
+
+    if (match (TOKEN_SEMICOLON)) {
+        // No initializer.
+    } else if (match (TOKEN_VAR)) {
+        varDeclaration ();
+    } else {
+        expressionStatement ();
+    }
+
     int loopStart = currentChunk ()->count;
 
     consume (TOKEN_SEMICOLON, "Expect ';' after condition.");
@@ -807,6 +816,7 @@ forStatement ()
 
     statement ();
     emitLoop (loopStart);
+    endScope ();
 }
 
 /** Compile an "if" statement to the chunk.

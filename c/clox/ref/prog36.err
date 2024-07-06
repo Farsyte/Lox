@@ -1,3 +1,3 @@
-[line 4] Error at 'var': Expect ';' after initializer.
+[line 4] Error at 'a': Expect ';' after condition.
 [line 4] Error at ')': Expect ';' after expression.
 [line 9] Error at '}': Expect expression.
