@@ -524,7 +524,8 @@ string (bool canAssign)
 
 /** Do the work of putting a variable into the chunk.
  *
- * @param name the token containing the variable namep
+ * @param name the lexeme with the variable name
+ * @param canAssign not used here.
  */
 static void
 namedVariable (Token name, bool canAssign)
@@ -668,7 +669,7 @@ parsePrecedence (Precedence precedence)
 
 /** Parse a variable
  *
- * @param error message to emit if this is not a variable
+ * @param errorMessage message to emit if this is not a variable
  * @returns zero if we are inside a scope
  * @returns otherwise, the index into the constant table
  */
@@ -709,7 +710,7 @@ defineVariable (uint8_t global)
 
 /** Compile an "and" expression
  *
- * @param global index of the global
+ * @param canAssign not used here.
  */
 static void
 and_ (bool canAssign)
@@ -725,7 +726,7 @@ and_ (bool canAssign)
 
 /** Compile an "or" expression
  *
- * @param global index of the global
+ * @param canAssign not used here.
  */
 static void
 or_ (bool canAssign)

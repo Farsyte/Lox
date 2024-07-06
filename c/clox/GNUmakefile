@@ -115,6 +115,7 @@ doc/html/index.html:    doc/Doxyfile $(PROG)
 	$C [ -d log ] || mkdir -p log
 	$P '  %-14s %s\n' "DOXYGEN" "doc/html"
 	doxygen doc/Doxyfile > $(LOGD)doxygen.log 2>$(LOGD)doxygen.err </dev/null
+	$C cat $(LOGD)doxygen.err
 
 clean::
 	$X $(LOGD)doxygen.log $(LOGD)doxygen.err
