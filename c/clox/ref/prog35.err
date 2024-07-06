@@ -1,3 +1,2 @@
-[line 4] Error at 'a': Expect ';' after condition.
-[line 4] Error at ')': Expect ';' after expression.
+[line 4] Error at 'b': Expect ')' after for clauses.
 [line 8] Error at '}': Expect expression.
