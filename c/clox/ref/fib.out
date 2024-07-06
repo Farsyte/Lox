@@ -1,6 +1,6 @@
 
 Disassembling fib ...
-0000   14 OP_GET_LOCAL        1
+0000   19 OP_GET_LOCAL        1
 0002    | OP_CONSTANT         0 '2'
 0004    | OP_LESS
 0005    | OP_JUMP_IF_FALSE    5 -> 15
@@ -9,7 +9,7 @@ Disassembling fib ...
 0011    | OP_RETURN
 0012    | OP_JUMP            12 -> 16
 0015    | OP_POP
-0016   15 OP_GET_GLOBAL       1 'fib'
+0016   20 OP_GET_GLOBAL       1 'fib'
 0018    | OP_GET_LOCAL        1
 0020    | OP_CONSTANT         2 '1'
 0022    | OP_SUBTRACT
@@ -21,37 +21,43 @@ Disassembling fib ...
 0032    | OP_CALL             1
 0034    | OP_ADD
 0035    | OP_RETURN
-0036   16 OP_NIL
+0036   21 OP_NIL
 0037    | OP_RETURN
 Disassembling fib ... done.
 
 
 Disassembling <script> ...
-0000   16 OP_CONSTANT         1 '<fn fib>'
+0000   21 OP_CONSTANT         1 '<fn fib>'
 0002    | OP_DEFINE_GLOBAL    0 'fib'
-0004   21 OP_GET_GLOBAL       3 'clock'
+0004   26 OP_GET_GLOBAL       3 'clock'
 0006    | OP_CALL             0
 0008    | OP_DEFINE_GLOBAL    2 'before'
-0010   22 OP_GET_GLOBAL       4 'fib'
-0012    | OP_CONSTANT         5 '40'
+0010   27 OP_GET_GLOBAL       4 'fib'
+0012    | OP_CONSTANT         5 '35'
 0014    | OP_CALL             1
 0016    | OP_PRINT
-0017   23 OP_GET_GLOBAL       7 'clock'
+0017   28 OP_GET_GLOBAL       7 'clock'
 0019    | OP_CALL             0
 0021    | OP_DEFINE_GLOBAL    6 'after'
-0023   24 OP_GET_GLOBAL       8 'after'
+0023   29 OP_GET_GLOBAL       8 'after'
 0025    | OP_GET_GLOBAL       9 'before'
 0027    | OP_SUBTRACT
 0028    | OP_PRINT
-0029   25 OP_NIL
+0029   30 OP_NIL
 0030    | OP_RETURN
 Disassembling <script> ... done.
 
 
 Executing ...
 stack: <script>
-0000   16 OP_CONSTANT         1 '<fn fib>'
+0000   21 OP_CONSTANT         1 '<fn fib>'
 stack: <script> <fn fib>
 0002    | OP_DEFINE_GLOBAL    0 'fib'
 stack: <script>
-0004   21 OP_GET_GLOBAL       3 'clock'
+0004   26 OP_GET_GLOBAL       3 'clock'
+stack: <script> <native fn>
+0006    | OP_CALL             0
+9227465
+0.956956
+Executing ... done.
+

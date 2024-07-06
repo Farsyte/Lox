@@ -74,3 +74,11 @@ typedef struct ObjFunction ObjFunction;
 /** Stack Frame
  */
 typedef struct CallFrame CallFrame;
+
+/** Native Function
+ */
+typedef Value (*NativeFn) (int argCount, Value *args);
+
+/** Native Function Object
+ */
+typedef struct ObjNative ObjNative;

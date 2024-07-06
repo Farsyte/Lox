@@ -10,12 +10,26 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 VM vm;
 
 #ifdef  DEBUG_TRACE_EXECUTION
 int _DEBUG_TRACE_EXECUTION = 500;
 #endif
+
+/** Native Function: clock()
+ */
+static Value
+clockNative (int argCount, Value *args)
+{
+    (void) argCount;                    // not used by this function
+    (void) args;                        // not used by this function
+#ifdef  DEBUG_TRACE_EXECUTION
+    _DEBUG_TRACE_EXECUTION = 0;
+#endif
+    return NUMBER_VAL ((double) clock () / CLOCKS_PER_SEC);
+}
 
 /** Reset the VM stack to empty.
  */
@@ -61,6 +75,18 @@ runtimeError (const char *format, ...)
 
 }
 
+/** Define a Native Function
+ */
+static void
+defineNative (const char *name, NativeFn function)
+{
+    push (OBJ_VAL (copyString (name, (int) strlen (name))));
+    push (OBJ_VAL (newNative (function)));
+    tableSet (&vm.globals, AS_STRING (vm.stack[0]), vm.stack[1]);
+    pop ();
+    pop ();
+}
+
 /** Initialize the VM completely.
  *
  * After this call, the VM does not have a reference
@@ -74,6 +100,7 @@ initVM ()
     vm.objects = NULL;
     initTable (&vm.globals);
     initTable (&vm.strings);
+    defineNative ("clock", clockNative);
 }
 
 /** Release storage owned by the VM.
@@ -184,6 +211,16 @@ callValue (Value callee, int argCount)
         switch (OBJ_TYPE (callee)) {
         case OBJ_FUNCTION:
             return call (AS_FUNCTION (callee), argCount);
+
+        case OBJ_NATIVE:{
+                NativeFn native = AS_NATIVE (callee)->function;
+                Value result = native (argCount, vm.sp - argCount);
+
+                vm.sp -= argCount + 1;
+                push (result);
+                return true;
+            }
+
         case OBJ_STRING:
             break;
             // yes, force me to look at this switch

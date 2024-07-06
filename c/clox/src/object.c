@@ -47,6 +47,20 @@ newFunction ()
     return function;
 }
 
+/** Create a new Native Function object.
+ *
+ * @param function the glue code
+ * @returns a pointer to a new Native Function object.
+ */
+ObjNative *
+newNative (NativeFn function)
+{
+    ObjNative *native = ALLOCATE_OBJ (ObjNative, OBJ_NATIVE);
+
+    native->function = function;
+    return native;
+}
+
 /** Create a String object referring to the given content
  *
  * This function constructs a StringObj pointing to the
@@ -185,6 +199,7 @@ printObject (Value value)
         // *INDENT-OFF*
 
     case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
+    case OBJ_NATIVE:    printf("<native fn>");                  return;
     case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
 
         // *INDENT-ON*

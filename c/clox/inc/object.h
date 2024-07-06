@@ -14,11 +14,17 @@
 /** Return true iff the value is a Function. */
 #define IS_FUNCTION(value) isObjType(value, OBJ_FUNCTION)
 
+/** Return true iff the value is a Native Function. */
+#define IS_NATIVE(value) isObjType(value, OBJ_NATIVE)
+
 /** Return true iff the value is a String. */
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
 
 /** Return the Function object in this Value. */
 #define AS_FUNCTION(value) ((ObjFunction*)AS_OBJ(value))
+
+/** Return the Native Function object in this Value. */
+#define AS_NATIVE(value) ((ObjNative*)AS_OBJ(value))
 
 /** Return the String object in this Value. */
 #define AS_STRING(value) ((ObjString*)AS_OBJ(value))
@@ -29,6 +35,7 @@
 /** Enumerate the possible object types. */
 typedef enum {
     OBJ_FUNCTION,               ///< Object is a Function
+    OBJ_NATIVE,                 ///< Object is a Native Function
     OBJ_STRING,                 ///< Object contains a string
 } ObjType;
 
@@ -46,6 +53,12 @@ struct ObjFunction {
     ObjString *name;            ///< function name in an ObjString
 };
 
+/** Object that is a Native Function */
+struct ObjNative {
+    Obj obj;                    ///< Inherit from obj
+    NativeFn function;          ///< the glue function
+};
+
 /** Object that is a string */
 struct ObjString {
     Obj obj;                    ///< Inherit from Obj
@@ -55,6 +68,7 @@ struct ObjString {
 };
 
 extern ObjFunction *newFunction ();
+extern ObjNative *newNative (NativeFn function);
 extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);
 extern void printObject (Value value);

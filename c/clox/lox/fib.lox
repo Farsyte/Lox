@@ -8,7 +8,12 @@
 // no overclocking configured
 // Estimating core speed at 4.3 GHz
 //
-// Generally the output from j/jlox is 28 ish.
+// Generally the output from j/jlox for fib(40) is 28 ish.
+// Generally the output from c/clox for fib(40) is 10 ish.
+//
+// Run this back to fib(35) for develpment testing:
+// Generally the output from c/clox for fib(35) is 0.08 ish.
+// Generally the output from c/clox for fib(30) is 0.92 ish.
 
 fun fib(n) {
     if (n < 2) return n;
@@ -19,6 +24,6 @@ fun fib(n) {
 // the moment any call is made to clock().
 
 var before = clock();
-print fib(40);
+print fib(35);
 var after = clock();
 print after - before;

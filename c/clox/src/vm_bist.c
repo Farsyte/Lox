@@ -20,7 +20,8 @@ bistVM ()
 
     initVM ();
 
-    INVAR (NULL == vm.objects, "initVM did not null the objects pointer.");
+    // This is no longer true, as initVM uses the stack now.
+    // INVAR (NULL == vm.objects, "initVM did not null the objects pointer.");
     INVAR (vm.stack == vm.sp, "initVM did not reset the stack pointer.");
 
     push (NIL_VAL);
