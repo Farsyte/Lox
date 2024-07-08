@@ -1,0 +1,28 @@
+var i = 10;
+while (i > 0) {
+    print i;
+    i = i - 1;
+}
+
+if (i == 0) {
+    print "PASS: i = " + i;
+} else {
+    print "FAIL: i = " + i;
+}
+========
+
+RUNTIME ERROR: Operands must be two numbers or two strings.
+[line 8] in script
+Segmentation fault (core dumped)
+========
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+false

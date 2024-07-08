@@ -1,0 +1,20 @@
+// closure example
+
+fun makeCounter() {
+    var i = 0;
+    fun count() {
+	i = i + 1;
+	print i;
+    }
+    return count;
+}
+
+var counter = makeCounter();
+counter(); // "1"
+counter(); // "2"
+========
+
+RUNTIME ERROR: Undefined variable 'i'.
+[line 6] in count()
+[line 13] in script
+========

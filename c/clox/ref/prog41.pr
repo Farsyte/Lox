@@ -1,0 +1,20 @@
+// Fibonacci example from the book
+// Complexity is O(1.618^n)
+
+fun fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 2) + fib(n - 1);
+}
+
+// need to turn off debug prints before
+// looping up very far.
+for (var i = 0; i < 7; i = i + 1) {
+    print fib(i);
+}
+========
+========
+0
+1
+1
+2
+3

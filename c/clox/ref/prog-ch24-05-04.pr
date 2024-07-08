@@ -1,0 +1,10 @@
+fun noReturn() {
+    print "Do stuff";
+    // no return here.
+}
+
+print noReturn(); // ???
+========
+========
+Do stuff
+nil

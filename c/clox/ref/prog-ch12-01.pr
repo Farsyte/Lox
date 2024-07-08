@@ -1,0 +1,12 @@
+class DevonshireCream {
+    serveOn() {
+	return "Scones";
+    }
+}
+
+print DevonshireCream; // Prints "DevonshireCream"
+========
+[line 1] Error at 'class': Expect expression.
+[line 3] Error at 'return': Can't return from top-level code.
+[line 4] Error at '}': Expect expression.
+========
