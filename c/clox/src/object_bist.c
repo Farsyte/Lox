@@ -102,6 +102,22 @@ bistObject ()
     printValue (valFunction);
     printf ("'\n");
 
+    ObjClosure *objClosure = newClosure (objFunction);
+
+    INVAR (NULL != objClosure, "newClosure must return non-NULL");
+    INVAR ((Obj *) objClosure == vm.objects, "new ObjClosure must be first on the VM objects list.");
+
+    Value valClosure = OBJ_VAL (objClosure);
+
+    push (valClosure);                  // so GC does not reap it
+
+    INVAR (IS_OBJ (valClosure), "Aftrer init, val must satisfy IS_OBJ");
+    INVAR (IS_CLOSURE (valClosure), "Aftrer init, val must satisfy IS_CLOSURE");
+
+    printf ("valClosure prints as '");
+    printValue (valClosure);
+    printf ("'\n");
+
     while (vm.sp > sp) {
         Value vPop = pop ();
 

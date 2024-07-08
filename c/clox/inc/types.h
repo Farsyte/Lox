@@ -82,3 +82,7 @@ typedef Value (*NativeFn) (int argCount, Value *args);
 /** Native Function Object
  */
 typedef struct ObjNative ObjNative;
+
+/** Closure Object
+ */
+typedef struct ObjClosure ObjClosure;

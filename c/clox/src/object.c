@@ -32,6 +32,20 @@ allocateObject (size_t size, ObjType type)
     return object;
 }
 
+/** Allocate a new Closure object.
+ *
+ * @param function the compiled code for the closure
+ * @returns an ObjClosure object on the heap
+ */
+ObjClosure *
+newClosure (ObjFunction *function)
+{
+    ObjClosure *closure = ALLOCATE_OBJ (ObjClosure, OBJ_CLOSURE);
+
+    closure->function = function;
+    return closure;
+}
+
 /** Create a new Function object.
  *
  * @returns a pointer to a new Function object.
@@ -198,6 +212,8 @@ printObject (Value value)
 
         // *INDENT-OFF*
 
+    case OBJ_CLOSURE:   printFunction(
+                            AS_CLOSURE(value)->function);       return;
     case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
     case OBJ_NATIVE:    printf("<native fn>");                  return;
     case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;

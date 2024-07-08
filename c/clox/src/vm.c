@@ -230,6 +230,10 @@ callValue (Value callee, int argCount)
 
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
+
+        case OBJ_CLOSURE:
+            STUB (0);
+
         case OBJ_FUNCTION:
             return call (AS_FUNCTION (callee), argCount);
 
