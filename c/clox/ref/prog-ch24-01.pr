@@ -12,4 +12,6 @@ fun second() {
 
 first();
 ========
+src/vm.c:497: STUB Encountered in run
+
 ========

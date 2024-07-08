@@ -11,8 +11,6 @@ closure();
 // Before chapter 25, we get a runtime error.
 // After chapter 25, we want it to print "local"
 ========
+src/vm.c:497: STUB Encountered in run
 
-RUNTIME ERROR: Undefined variable 'local'.
-[line 4] in closure()
-[line 9] in script
 ========

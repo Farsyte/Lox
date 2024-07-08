@@ -12,7 +12,7 @@ Disassembling sum ... done.
 
 
 Disassembling <script> ...
-0000    3 OP_CONSTANT         1 '<fn sum>'
+0000    3 OP_CLOSURE          1 <fn sum>
 0002    | OP_DEFINE_GLOBAL    0 'sum'
 0004    5 OP_CONSTANT         2 '4'
 0006    | OP_GET_GLOBAL       3 'sum'
@@ -29,41 +29,5 @@ Disassembling <script> ... done.
 
 Executing ...
 stack: <script>
-0000    3 OP_CONSTANT         1 '<fn sum>'
-stack: <script> <fn sum>
-0002    | OP_DEFINE_GLOBAL    0 'sum'
-stack: <script>
-0004    5 OP_CONSTANT         2 '4'
-stack: <script> 4
-0006    | OP_GET_GLOBAL       3 'sum'
-stack: <script> 4 <fn sum>
-0008    | OP_CONSTANT         4 '5'
-stack: <script> 4 <fn sum> 5
-0010    | OP_CONSTANT         5 '6'
-stack: <script> 4 <fn sum> 5 6
-0012    | OP_CONSTANT         6 '7'
-stack: <script> 4 <fn sum> 5 6 7
-0014    | OP_CALL             3
-stack: <script> 4 <fn sum> 5 6 7
-0000    2 OP_GET_LOCAL        1
-stack: <script> 4 <fn sum> 5 6 7 5
-0002    | OP_GET_LOCAL        2
-stack: <script> 4 <fn sum> 5 6 7 5 6
-0004    | OP_ADD
-stack: <script> 4 <fn sum> 5 6 7 11
-0005    | OP_GET_LOCAL        3
-stack: <script> 4 <fn sum> 5 6 7 11 7
-0007    | OP_ADD
-stack: <script> 4 <fn sum> 5 6 7 18
-0008    | OP_RETURN
-stack: <script> 4 18
-0016    | OP_ADD
-stack: <script> 22
-0017    | OP_PRINT
-22
-stack: <script>
-0018    6 OP_NIL
-stack: <script> nil
-0019    | OP_RETURN
-Executing ... done.
+0000    3 OP_CLOSURE          1 <fn sum>
 

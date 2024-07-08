@@ -13,7 +13,11 @@ if (i == 0) {
 
 RUNTIME ERROR: Operands must be two numbers or two strings.
 [line 8] in script
-Segmentation fault (core dumped)
+src/vm.c:163: Condition Violated in pop
+    vm.sp > vm.stack
+STACK UNDERFLOW
+
+Aborted (core dumped)
 ========
 10
 9
@@ -25,4 +29,4 @@ Segmentation fault (core dumped)
 3
 2
 1
-false
+

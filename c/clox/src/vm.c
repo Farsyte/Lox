@@ -142,6 +142,7 @@ void
 push (Value value)
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp < vm.stack + STACK_MAX, "STACK OVERFLOW");
     *vm.sp = value;
     vm.sp++;
 }
@@ -159,6 +160,7 @@ Value
 pop ()
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp > vm.stack, "STACK UNDERFLOW");
     vm.sp--;
     return *vm.sp;
 }
@@ -182,6 +184,7 @@ Value
 peek (int distance)
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp > vm.stack, "STACK UNDERFLOW");
     return vm.sp[-1 - distance];
 }
 
@@ -489,6 +492,9 @@ run ()
             }
             frame = &vm.frames[vm.frameCount - 1];
             break;
+
+        case OP_CLOSURE:
+            STUB (0);
 
         case OP_RETURN:
             Value result = pop ();
