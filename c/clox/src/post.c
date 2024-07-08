@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "compiler.h"
 #include "memory.h"
+#include "object.h"
 #include "scanner.h"
 #include "table.h"
 #include "value.h"
@@ -26,6 +27,7 @@ postAll ()
     postChunk ();
     postValue ();
     postTable ();
+    postObject ();
     postScanner ();
     postCompiler ();
     postVM ();

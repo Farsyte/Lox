@@ -38,3 +38,4 @@
 -TValue
 -TValueArray
 -TValueType
+-Tuint8_t

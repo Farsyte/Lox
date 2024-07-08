@@ -14,6 +14,8 @@
 
 VM vm;
 
+static bool vmInitialized = 0;
+
 #ifdef  DEBUG_TRACE_EXECUTION
 int _DEBUG_TRACE_EXECUTION = 500;
 #endif
@@ -109,6 +111,7 @@ initVM ()
     vm.objects = NULL;
     initTable (&vm.globals);
     initTable (&vm.strings);
+    vmInitialized = true;
     defineNative ("clock", clockNative);
 }
 
@@ -119,6 +122,8 @@ initVM ()
 void
 freeVM ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+    vmInitialized = false;
     freeTable (&vm.strings);
     freeTable (&vm.globals);
     freeObjects ();
@@ -136,6 +141,7 @@ freeVM ()
 void
 push (Value value)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
     *vm.sp = value;
     vm.sp++;
 }
@@ -152,6 +158,7 @@ push (Value value)
 Value
 pop ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
     vm.sp--;
     return *vm.sp;
 }
@@ -174,6 +181,7 @@ pop ()
 Value
 peek (int distance)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
     return vm.sp[-1 - distance];
 }
 
@@ -188,6 +196,8 @@ peek (int distance)
 static bool
 call (ObjFunction *function, int argCount)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     if (argCount != function->arity) {
         runtimeError ("Expected %d arguments but got %d.", function->arity, argCount);
         return false;
@@ -216,6 +226,8 @@ call (ObjFunction *function, int argCount)
 static bool
 callValue (Value callee, int argCount)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
         case OBJ_FUNCTION:
@@ -260,6 +272,8 @@ isFalsey (Value value)
 static void
 concatenate ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     ObjString *b = AS_STRING (pop ());
     ObjString *a = AS_STRING (pop ());
     int length = a->length + b->length;
@@ -287,6 +301,8 @@ concatenate ()
 static InterpretResult
 run ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
 #endif
@@ -507,6 +523,8 @@ run ()
 InterpretResult
 interpret (const char *source)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     ObjFunction *function = compile (source);
 
     if (function == NULL)

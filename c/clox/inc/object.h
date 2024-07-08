@@ -73,6 +73,9 @@ extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);
 extern void printObject (Value value);
 
+extern void postObject ();
+extern void bistObject ();
+
 /** INLINE function to check object types
  *
  * @param value the value object to exmaine

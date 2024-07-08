@@ -8,8 +8,8 @@ MAIN            := clox
 
 CC              := c99
 
-# C_DBG_OPT     := -g -O0
-C_DBG_OPT       := -O3
+C_DBG_OPT       := -g -O0
+# C_DBG_OPT       := -O3
 
 # NOTE: this is GCC-specific.
 # COPTS           := -fshort-enums
