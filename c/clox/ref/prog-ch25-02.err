@@ -1,0 +1,4 @@
+
+RUNTIME ERROR: Undefined variable 'local'.
+[line 4] in closure()
+[line 9] in script
