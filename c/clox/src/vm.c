@@ -68,7 +68,7 @@ runtimeError (const char *format, ...)
 
     for (int i = vm.frameCount - 1; i >= 0; i--) {
         CallFrame *frame = &vm.frames[i];
-        ObjFunction *function = frame->function;
+        ObjFunction *function = frame->closure->function;
         size_t instruction = frame->ip - function->chunk.code - 1;
 
         fprintf (stderr, "[line %d] in ", function->chunk.lines[instruction]);
@@ -197,12 +197,12 @@ peek (int distance)
  * @returns true if the call was started
  */
 static bool
-call (ObjFunction *function, int argCount)
+call (ObjClosure * closure, int argCount)
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
 
-    if (argCount != function->arity) {
-        runtimeError ("Expected %d arguments but got %d.", function->arity, argCount);
+    if (argCount != closure->function->arity) {
+        runtimeError ("Expected %d arguments but got %d.", closure->function->arity, argCount);
         return false;
     }
 
@@ -213,8 +213,8 @@ call (ObjFunction *function, int argCount)
 
     CallFrame *frame = &vm.frames[vm.frameCount++];
 
-    frame->function = function;
-    frame->ip = function->chunk.code;
+    frame->closure = closure;
+    frame->ip = closure->function->chunk.code;
     frame->slots = vm.sp - argCount - 1;
     return true;
 }
@@ -235,10 +235,11 @@ callValue (Value callee, int argCount)
         switch (OBJ_TYPE (callee)) {
 
         case OBJ_CLOSURE:
-            STUB (0);
+            return call (AS_CLOSURE (callee), argCount);
 
         case OBJ_FUNCTION:
-            return call (AS_FUNCTION (callee), argCount);
+            // return call (AS_FUNCTION (callee), argCount);
+            UNREACHABLE ("obsoleted in 25.1.2");
 
         case OBJ_NATIVE:{
                 NativeFn native = AS_NATIVE (callee)->function;
@@ -318,7 +319,7 @@ run ()
 
 #define READ_BYTE()     (*frame->ip++)
 #define READ_SHORT()    (frame->ip += 2, (uint16_t)((frame->ip[-2] << 8) | frame->ip[-1]))
-#define READ_CONSTANT() (frame->function->chunk.constants.values[READ_BYTE()])
+#define READ_CONSTANT() (frame->closure->function->chunk.constants.values[READ_BYTE()])
 #define READ_STRING()   (AS_STRING(READ_CONSTANT()))
 
     for (;;) {
@@ -334,7 +335,7 @@ run ()
                 printf (" empty.");
             }
             printf ("\n");
-            disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
+            disassembleInstruction (&frame->closure->function->chunk, (int) (frame->ip - frame->closure->function->chunk.code));
             _DEBUG_TRACE_EXECUTION--;
             if (!_DEBUG_TRACE_EXECUTION) {
                 printf ("(no more debug traces after this)\n");
@@ -350,6 +351,8 @@ run ()
         uint8_t slot;
         uint16_t offset;
         int argCount;
+        ObjFunction *function;
+        ObjClosure *closure;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -494,7 +497,10 @@ run ()
             break;
 
         case OP_CLOSURE:
-            STUB (0);
+            function = AS_FUNCTION (READ_CONSTANT ());
+            closure = newClosure (function);
+            push (OBJ_VAL (closure));
+            break;
 
         case OP_RETURN:
             Value result = pop ();
@@ -541,6 +547,11 @@ interpret (const char *source)
         return INTERPRET_COMPILE_ERROR;
 
     push (OBJ_VAL (function));
-    call (function, 0);
+
+    ObjClosure *closure = newClosure (function);
+
+    pop ();
+    push (OBJ_VAL (closure));
+    call (closure, 0);
     return run ();
 }

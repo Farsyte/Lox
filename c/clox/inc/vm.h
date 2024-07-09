@@ -18,7 +18,7 @@
  * The IP in the stack frame is unconventional.
  */
 struct CallFrame {
-    ObjFunction *function;      ///< which function owns the frame
+    ObjClosure *closure;        ///< which closure owns the frame
     uint8_t *ip;                ///< this frame's instruction pointer
     Value *slots;               ///< local variable storage
 };

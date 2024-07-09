@@ -4,6 +4,5 @@ fun sayHi(first, last) {
 sayHi("Dear", "Reader");
 
 ========
-src/vm.c:497: STUB Encountered in run
-
 ========
+Hi, Dear Reader!

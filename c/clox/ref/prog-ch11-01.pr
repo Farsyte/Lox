@@ -9,6 +9,6 @@ var a = "global";
     showA();
 }
 ========
-src/vm.c:497: STUB Encountered in run
-
 ========
+global
+global

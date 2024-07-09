@@ -58,4 +58,1011 @@ Disassembling <script> ... done.
 Executing ...
 stack: <script>
 0000    7 OP_CLOSURE          1 <fn fib>
+stack: <script> <fn fib>
+0002    | OP_DEFINE_GLOBAL    0 'fib'
+stack: <script>
+0004   11 OP_CONSTANT         2 '0'
+stack: <script> 0
+0006    | OP_GET_LOCAL        1
+stack: <script> 0 0
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 0 0 7
+0010    | OP_LESS
+stack: <script> 0 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 0 true
+0014    | OP_POP
+stack: <script> 0
+0015    | OP_JUMP            15 -> 29
+stack: <script> 0
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 0 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 0 <fn fib> 0
+0033    | OP_CALL             1
+stack: <script> 0 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 0 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 0 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 0 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 0 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 0 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 0 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 0 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 0 0
+0035    | OP_PRINT
+0
+stack: <script> 0
+0036   13 OP_LOOP            36 -> 18
+stack: <script> 0
+0018    | OP_GET_LOCAL        1
+stack: <script> 0 0
+0020    | OP_CONSTANT         4 '1'
+stack: <script> 0 0 1
+0022    | OP_ADD
+stack: <script> 0 1
+0023    | OP_SET_LOCAL        1
+stack: <script> 1 1
+0025    | OP_POP
+stack: <script> 1
+0026    | OP_LOOP            26 -> 6
+stack: <script> 1
+0006    | OP_GET_LOCAL        1
+stack: <script> 1 1
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 1 1 7
+0010    | OP_LESS
+stack: <script> 1 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 1 true
+0014    | OP_POP
+stack: <script> 1
+0015    | OP_JUMP            15 -> 29
+stack: <script> 1
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 1 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 1 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 1 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 1 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 1 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 1 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 1 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 1 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 1 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 1 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 1 1
+0035    | OP_PRINT
+1
+stack: <script> 1
+0036   13 OP_LOOP            36 -> 18
+stack: <script> 1
+0018    | OP_GET_LOCAL        1
+stack: <script> 1 1
+0020    | OP_CONSTANT         4 '1'
+stack: <script> 1 1 1
+0022    | OP_ADD
+stack: <script> 1 2
+0023    | OP_SET_LOCAL        1
+stack: <script> 2 2
+0025    | OP_POP
+stack: <script> 2
+0026    | OP_LOOP            26 -> 6
+stack: <script> 2
+0006    | OP_GET_LOCAL        1
+stack: <script> 2 2
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 2 2 7
+0010    | OP_LESS
+stack: <script> 2 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 2 true
+0014    | OP_POP
+stack: <script> 2
+0015    | OP_JUMP            15 -> 29
+stack: <script> 2
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 2 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2
+0033    | OP_CALL             1
+stack: <script> 2 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 2 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 2 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 2 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 2 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 2 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 2 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 2 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 2 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 2 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 2 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 2 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 2 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 2 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 2 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 2 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 2 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 2 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 2 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 2 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 2 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 2 1
+0035    | OP_PRINT
+1
+stack: <script> 2
+0036   13 OP_LOOP            36 -> 18
+stack: <script> 2
+0018    | OP_GET_LOCAL        1
+stack: <script> 2 2
+0020    | OP_CONSTANT         4 '1'
+stack: <script> 2 2 1
+0022    | OP_ADD
+stack: <script> 2 3
+0023    | OP_SET_LOCAL        1
+stack: <script> 3 3
+0025    | OP_POP
+stack: <script> 3
+0026    | OP_LOOP            26 -> 6
+stack: <script> 3
+0006    | OP_GET_LOCAL        1
+stack: <script> 3 3
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 3 3 7
+0010    | OP_LESS
+stack: <script> 3 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 3 true
+0014    | OP_POP
+stack: <script> 3
+0015    | OP_JUMP            15 -> 29
+stack: <script> 3
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 3 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3
+0033    | OP_CALL             1
+stack: <script> 3 <fn fib> 3
+0000    5 OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 3
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 3 <fn fib> 3 3 1
+0004    | OP_GREATER
+stack: <script> 3 <fn fib> 3 true
+0005    | OP_NOT
+stack: <script> 3 <fn fib> 3 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 3 <fn fib> 3 false
+0016    | OP_POP
+stack: <script> 3 <fn fib> 3
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 3 <fn fib> 3 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 <fn fib> 3
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 3 <fn fib> 3 <fn fib> 3 2
+0023    | OP_SUBTRACT
+stack: <script> 3 <fn fib> 3 <fn fib> 1
+0024    | OP_CALL             1
+stack: <script> 3 <fn fib> 3 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 3 <fn fib> 3 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 3 <fn fib> 3 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 3 <fn fib> 3 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 3 <fn fib> 3 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 3 <fn fib> 3 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 3 <fn fib> 3 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 3 <fn fib> 3 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 3
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 3 1
+0032    | OP_SUBTRACT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2
+0033    | OP_CALL             1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 3 <fn fib> 3 1 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 3 <fn fib> 3 1 1
+0035    | OP_ADD
+stack: <script> 3 <fn fib> 3 2
+0036    | OP_RETURN
+stack: <script> 3 2
+0035    | OP_PRINT
+2
+stack: <script> 3
+0036   13 OP_LOOP            36 -> 18
+stack: <script> 3
+0018    | OP_GET_LOCAL        1
+stack: <script> 3 3
+0020    | OP_CONSTANT         4 '1'
+stack: <script> 3 3 1
+0022    | OP_ADD
+stack: <script> 3 4
+0023    | OP_SET_LOCAL        1
+stack: <script> 4 4
+0025    | OP_POP
+stack: <script> 4
+0026    | OP_LOOP            26 -> 6
+stack: <script> 4
+0006    | OP_GET_LOCAL        1
+stack: <script> 4 4
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 4 4 7
+0010    | OP_LESS
+stack: <script> 4 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 4 true
+0014    | OP_POP
+stack: <script> 4
+0015    | OP_JUMP            15 -> 29
+stack: <script> 4
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 4 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4
+0033    | OP_CALL             1
+stack: <script> 4 <fn fib> 4
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 4
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 4 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 true
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 false
+0016    | OP_POP
+stack: <script> 4 <fn fib> 4
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 4 <fn fib> 4 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 4
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 4 <fn fib> 4 <fn fib> 4 2
+0023    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 <fn fib> 2
+0024    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 4 <fn fib> 4 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 4 <fn fib> 4 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 4 <fn fib> 4 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 4 <fn fib> 4 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 4
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 4 1
+0032    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3
+0033    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 3
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 3 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 true
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 false
+0016    | OP_POP
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 3
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 3 2
+0023    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0024    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 3
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 3 1
+0032    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0033    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 1 1
+0035    | OP_ADD
+stack: <script> 4 <fn fib> 4 1 <fn fib> 3 2
+0036    | OP_RETURN
+stack: <script> 4 <fn fib> 4 1 2
+0035    | OP_ADD
+stack: <script> 4 <fn fib> 4 3
+0036    | OP_RETURN
+stack: <script> 4 3
+0035    | OP_PRINT
+3
+stack: <script> 4
+0036   13 OP_LOOP            36 -> 18
+stack: <script> 4
+0018    | OP_GET_LOCAL        1
+stack: <script> 4 4
+0020    | OP_CONSTANT         4 '1'
+stack: <script> 4 4 1
+0022    | OP_ADD
+stack: <script> 4 5
+0023    | OP_SET_LOCAL        1
+stack: <script> 5 5
+0025    | OP_POP
+stack: <script> 5
+0026    | OP_LOOP            26 -> 6
+stack: <script> 5
+0006    | OP_GET_LOCAL        1
+stack: <script> 5 5
+0008    | OP_CONSTANT         3 '7'
+stack: <script> 5 5 7
+0010    | OP_LESS
+stack: <script> 5 true
+0011    | OP_JUMP_IF_FALSE   11 -> 39
+stack: <script> 5 true
+0014    | OP_POP
+stack: <script> 5
+0015    | OP_JUMP            15 -> 29
+stack: <script> 5
+0029   12 OP_GET_GLOBAL       5 'fib'
+stack: <script> 5 <fn fib>
+0031    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 5
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 5 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 5
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 <fn fib> 5 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 <fn fib> 3
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 <fn fib> 3
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 3
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 3 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 <fn fib> 3 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 <fn fib> 3 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 <fn fib> 3
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 3
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 3 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 3
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 3 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 5 <fn fib> 5 <fn fib> 3 1 1
+0035    | OP_ADD
+stack: <script> 5 <fn fib> 5 <fn fib> 3 2
+0036    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 5
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 5 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 4
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 4 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 4
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 4 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 0 1
+0035    | OP_ADD
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 <fn fib> 2 1
+0036    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 4
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 4 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 3
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 3 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 3
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 3 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 <fn fib> 1 1
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 3
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 3 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 2
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 2 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 true
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 false
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 false
+0016    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2
+0017    6 OP_GET_GLOBAL       1 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib>
+0019    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 2
+0021    | OP_CONSTANT         2 '2'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 2 2
+0023    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0024    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0
+0010    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 <fn fib> 0 0
+0012    | OP_RETURN
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0
+0026    | OP_GET_GLOBAL       3 'fib'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib>
+0028    | OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2
+0030    | OP_CONSTANT         4 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 2 1
+0032    | OP_SUBTRACT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0033    | OP_CALL             1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0000    5 OP_GET_LOCAL        1
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1
+0002    | OP_CONSTANT         0 '1'
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 1 1
+0004    | OP_GREATER
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 false
+0005    | OP_NOT
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0006    | OP_JUMP_IF_FALSE    6 -> 16
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1 true
+0009    | OP_POP
+stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
+0010    | OP_GET_LOCAL        1
+(no more debug traces after this)
+5
+8
+Executing ... done.
 

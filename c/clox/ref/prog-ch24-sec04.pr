@@ -7,6 +7,5 @@ fun areWeHavingItYet(a) {
 // it does not call it ;)
 print areWeHavingItYet;
 ========
-src/vm.c:497: STUB Encountered in run
-
 ========
+<fn areWeHavingItYet>

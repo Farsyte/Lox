@@ -1,2 +1,4 @@
-src/vm.c:497: STUB Encountered in run
 
+RUNTIME ERROR: Undefined variable 'local'.
+[line 4] in closure()
+[line 9] in script

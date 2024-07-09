@@ -13,6 +13,8 @@ bagel();
 // Before chapter 25, we get a runtime error.
 // After chapter 25, we want it to print "doughnut" and "bagel"
 ========
-src/vm.c:497: STUB Encountered in run
 
+RUNTIME ERROR: Undefined variable 'value'.
+[line 3] in closure()
+[line 10] in script
 ========

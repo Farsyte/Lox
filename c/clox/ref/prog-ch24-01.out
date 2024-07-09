@@ -37,4 +37,57 @@ Disassembling <script> ... done.
 Executing ...
 stack: <script>
 0000    6 OP_CLOSURE          1 <fn first>
+stack: <script> <fn first>
+0002    | OP_DEFINE_GLOBAL    0 'first'
+stack: <script>
+0004   11 OP_CLOSURE          3 <fn second>
+stack: <script> <fn second>
+0006    | OP_DEFINE_GLOBAL    2 'second'
+stack: <script>
+0008   13 OP_GET_GLOBAL       4 'first'
+stack: <script> <fn first>
+0010    | OP_CALL             0
+stack: <script> <fn first>
+0000    2 OP_CONSTANT         0 '1'
+stack: <script> <fn first> 1
+0002    3 OP_GET_GLOBAL       1 'second'
+stack: <script> <fn first> 1 <fn second>
+0004    | OP_CALL             0
+stack: <script> <fn first> 1 <fn second>
+0000    9 OP_CONSTANT         0 '3'
+stack: <script> <fn first> 1 <fn second> 3
+0002   10 OP_CONSTANT         1 '4'
+stack: <script> <fn first> 1 <fn second> 3 4
+0004   11 OP_NIL
+stack: <script> <fn first> 1 <fn second> 3 4 nil
+0005    | OP_RETURN
+stack: <script> <fn first> 1 nil
+0006    | OP_POP
+stack: <script> <fn first> 1
+0007    4 OP_CONSTANT         2 '2'
+stack: <script> <fn first> 1 2
+0009    5 OP_GET_GLOBAL       3 'second'
+stack: <script> <fn first> 1 2 <fn second>
+0011    | OP_CALL             0
+stack: <script> <fn first> 1 2 <fn second>
+0000    9 OP_CONSTANT         0 '3'
+stack: <script> <fn first> 1 2 <fn second> 3
+0002   10 OP_CONSTANT         1 '4'
+stack: <script> <fn first> 1 2 <fn second> 3 4
+0004   11 OP_NIL
+stack: <script> <fn first> 1 2 <fn second> 3 4 nil
+0005    | OP_RETURN
+stack: <script> <fn first> 1 2 nil
+0013    | OP_POP
+stack: <script> <fn first> 1 2
+0014    6 OP_NIL
+stack: <script> <fn first> 1 2 nil
+0015    | OP_RETURN
+stack: <script> nil
+0012    | OP_POP
+stack: <script>
+0013   14 OP_NIL
+stack: <script> nil
+0014    | OP_RETURN
+Executing ... done.
 
