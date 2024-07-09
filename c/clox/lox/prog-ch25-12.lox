@@ -1,0 +1,15 @@
+fun outer() {
+    var x = "outside";
+    fun inner() {
+	print x;
+    }
+
+    return inner;
+}
+
+var closure = outer();
+closure();
+
+// Before 25.4, the above actually accesses a slot
+// that no longer contains the closed-over variable.
+
