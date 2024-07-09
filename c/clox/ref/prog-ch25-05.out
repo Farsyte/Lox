@@ -1,0 +1,36 @@
+
+Disassembling f ...
+0000    4 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    5 OP_NIL
+0004    | OP_RETURN
+Disassembling f ... done.
+
+
+Disassembling <script> ...
+0000    2 OP_CONSTANT         0 '3'
+0002    5 OP_CLOSURE          1 <fn f>
+0004      | local 1
+0006    6 OP_POP
+0007    | OP_CLOSE_UPVALUE
+0008    7 OP_NIL
+0009    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    2 OP_CONSTANT         0 '3'
+stack: <script> 3
+0002    5 OP_CLOSURE          1 <fn f>
+0004      | local 1
+stack: <script> 3 <fn f>
+0006    6 OP_POP
+stack: <script> 3
+0007    | OP_CLOSE_UPVALUE
+stack: <script>
+0008    7 OP_NIL
+stack: <script> nil
+0009    | OP_RETURN
+Executing ... done.
+

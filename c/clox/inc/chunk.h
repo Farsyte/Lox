@@ -20,6 +20,8 @@ typedef enum {
     OP_GET_GLOBAL,              ///< push value of global variable onto the stack
     OP_DEFINE_GLOBAL,           ///< define a global variable
     OP_SET_GLOBAL,              ///< pop top of stack into global variable
+    OP_GET_UPVALUE,             ///< push value of upvalue variable onto the stack
+    OP_SET_UPVALUE,             ///< pop top of stack into upvalue variable
 
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order
@@ -37,6 +39,8 @@ typedef enum {
     OP_JUMP_IF_FALSE,           ///< conditional forward branch
     OP_LOOP,                    ///< unconditional backward branch
     OP_CALL,                    ///< function call
+    OP_CLOSURE,                 ///< make a closure
+    OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing

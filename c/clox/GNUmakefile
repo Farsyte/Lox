@@ -8,8 +8,8 @@ MAIN            := clox
 
 CC              := c99
 
-# C_DBG_OPT     := -g -O0
-C_DBG_OPT       := -O3
+C_DBG_OPT       := -g -O0
+# C_DBG_OPT       := -O3
 
 # NOTE: this is GCC-specific.
 # COPTS           := -fshort-enums
@@ -43,6 +43,7 @@ LERR            := $(LSRC:$(LOXD)%.lox=$(LOGD)%.err)
 
 ROUT            := $(LSRC:$(LOXD)%.lox=$(REFD)%.out) $(MTST:%=$(REFD)$(MAIN)--%.out)
 RERR            := $(LSRC:$(LOXD)%.lox=$(REFD)%.err) $(MTST:%=$(REFD)$(MAIN)--%.err)
+RPRT            := $(LSRC:$(LOXD)%.lox=$(REFD)%.pr)
 
 DIFFX           := -X $(REFD)exclude-from-compare
 DIFFPX          := -x '*~'
@@ -52,16 +53,19 @@ DFLAGS          := $(DOPTS) $(DIFFX) $(DIFFPX) -r
 tests::         $(MTST) $(LOUT)
 	$C diff $(DFLAGS) $(REFD) $(LOGD) | sed 's/^diff .* ref/\ndiff $(DOPTS) ref/'
 
-accept:         $(ROUT) $(RERR)
+accept::        $(ROUT) $(RERR) $(RPRT)
 
 $(REFD)%.out:   $(LOGD)%.out
-	$P '  %-14s %s\n' 'UPDATE' '$*.out'
+	$P '  %-14s %s\n' 'UPDATE' '$*'
 	$C cp -f $< $@
 
 $(REFD)%.err:   $(LOGD)%.err
-	$P '  %-14s %s\n' 'UPDATE' '$*.err'
+	$P '  %-14s %s\n' 'UPDATE' '$*'
 	$C cp -f $< $@
 
+$(REFD)%.pr:    $(LOGD)%.pr
+	$P '  %-14s %s\n' 'UPDATE' '$*'
+	$C cp -f $< $@
 
 clean::
 	$X $(LOUT) $(LERR)
@@ -104,6 +108,11 @@ cbench::        $(PROG)
 $(LOGD)%.out:   $(LOXD)%.lox $(PROG)
 	$P '  %-6s %s\n' "$(MAIN)" "$*"
 	$C $(PROG) "$<" > "$(LOGD)$*.out" 2> "$(LOGD)$*.err" || true
+	$C cp $(LOXD)$*.lox $(LOGD)$*.pr
+	$C echo ======== >> $(LOGD)$*.pr
+	$C cat $(LOGD)$*.err >>  $(LOGD)$*.pr
+	$C echo ======== >> $(LOGD)$*.pr
+	$C awk -f $(TOP)/bin/prints.awk < $(LOGD)$*.out >> $(LOGD)$*.pr
 
 # format: reformat all source files.
 #

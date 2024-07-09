@@ -28,7 +28,7 @@ Disassembling fib ... done.
 
 
 Disassembling <script> ...
-0000    7 OP_CONSTANT         1 '<fn fib>'
+0000    7 OP_CLOSURE          1 <fn fib>
 0002    | OP_DEFINE_GLOBAL    0 'fib'
 0004   11 OP_CONSTANT         2 '0'
 0006    | OP_GET_LOCAL        1
@@ -57,7 +57,7 @@ Disassembling <script> ... done.
 
 Executing ...
 stack: <script>
-0000    7 OP_CONSTANT         1 '<fn fib>'
+0000    7 OP_CLOSURE          1 <fn fib>
 stack: <script> <fn fib>
 0002    | OP_DEFINE_GLOBAL    0 'fib'
 stack: <script>

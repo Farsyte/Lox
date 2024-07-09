@@ -1,0 +1,112 @@
+
+Disassembling closure ...
+0000    3 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    4 OP_NIL
+0004    | OP_RETURN
+Disassembling closure ... done.
+
+
+Disassembling makeClosure ...
+0000    4 OP_CLOSURE          0 <fn closure>
+0002      | local 1
+0004    5 OP_GET_LOCAL        2
+0006    | OP_RETURN
+0007    6 OP_NIL
+0008    | OP_RETURN
+Disassembling makeClosure ... done.
+
+
+Disassembling <script> ...
+0000    6 OP_CLOSURE          1 <fn makeClosure>
+0002    | OP_DEFINE_GLOBAL    0 'makeClosure'
+0004    8 OP_GET_GLOBAL       3 'makeClosure'
+0006    | OP_CONSTANT         4 'doughnut'
+0008    | OP_CALL             1
+0010    | OP_DEFINE_GLOBAL    2 'doughnut'
+0012    9 OP_GET_GLOBAL       6 'makeClosure'
+0014    | OP_CONSTANT         7 'bagel'
+0016    | OP_CALL             1
+0018    | OP_DEFINE_GLOBAL    5 'bagel'
+0020   10 OP_GET_GLOBAL       8 'doughnut'
+0022    | OP_CALL             0
+0024    | OP_POP
+0025   11 OP_GET_GLOBAL       9 'bagel'
+0027    | OP_CALL             0
+0029    | OP_POP
+0030   15 OP_NIL
+0031    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    6 OP_CLOSURE          1 <fn makeClosure>
+stack: <script> <fn makeClosure>
+0002    | OP_DEFINE_GLOBAL    0 'makeClosure'
+stack: <script>
+0004    8 OP_GET_GLOBAL       3 'makeClosure'
+stack: <script> <fn makeClosure>
+0006    | OP_CONSTANT         4 'doughnut'
+stack: <script> <fn makeClosure> doughnut
+0008    | OP_CALL             1
+stack: <script> <fn makeClosure> doughnut
+0000    4 OP_CLOSURE          0 <fn closure>
+0002      | local 1
+stack: <script> <fn makeClosure> doughnut <fn closure>
+0004    5 OP_GET_LOCAL        2
+stack: <script> <fn makeClosure> doughnut <fn closure> <fn closure>
+0006    | OP_RETURN
+stack: <script> <fn closure>
+0010    | OP_DEFINE_GLOBAL    2 'doughnut'
+stack: <script>
+0012    9 OP_GET_GLOBAL       6 'makeClosure'
+stack: <script> <fn makeClosure>
+0014    | OP_CONSTANT         7 'bagel'
+stack: <script> <fn makeClosure> bagel
+0016    | OP_CALL             1
+stack: <script> <fn makeClosure> bagel
+0000    4 OP_CLOSURE          0 <fn closure>
+0002      | local 1
+stack: <script> <fn makeClosure> bagel <fn closure>
+0004    5 OP_GET_LOCAL        2
+stack: <script> <fn makeClosure> bagel <fn closure> <fn closure>
+0006    | OP_RETURN
+stack: <script> <fn closure>
+0018    | OP_DEFINE_GLOBAL    5 'bagel'
+stack: <script>
+0020   10 OP_GET_GLOBAL       8 'doughnut'
+stack: <script> <fn closure>
+0022    | OP_CALL             0
+stack: <script> <fn closure>
+0000    3 OP_GET_UPVALUE      0
+stack: <script> <fn closure> doughnut
+0002    | OP_PRINT
+doughnut
+stack: <script> <fn closure>
+0003    4 OP_NIL
+stack: <script> <fn closure> nil
+0004    | OP_RETURN
+stack: <script> nil
+0024    | OP_POP
+stack: <script>
+0025   11 OP_GET_GLOBAL       9 'bagel'
+stack: <script> <fn closure>
+0027    | OP_CALL             0
+stack: <script> <fn closure>
+0000    3 OP_GET_UPVALUE      0
+stack: <script> <fn closure> bagel
+0002    | OP_PRINT
+bagel
+stack: <script> <fn closure>
+0003    4 OP_NIL
+stack: <script> <fn closure> nil
+0004    | OP_RETURN
+stack: <script> nil
+0029    | OP_POP
+stack: <script>
+0030   15 OP_NIL
+stack: <script> nil
+0031    | OP_RETURN
+Executing ... done.
+

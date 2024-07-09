@@ -12,7 +12,7 @@ Disassembling sum ... done.
 
 
 Disassembling <script> ...
-0000    3 OP_CONSTANT         1 '<fn sum>'
+0000    3 OP_CLOSURE          1 <fn sum>
 0002    | OP_DEFINE_GLOBAL    0 'sum'
 0004    5 OP_CONSTANT         2 '4'
 0006    | OP_GET_GLOBAL       3 'sum'
@@ -29,7 +29,7 @@ Disassembling <script> ... done.
 
 Executing ...
 stack: <script>
-0000    3 OP_CONSTANT         1 '<fn sum>'
+0000    3 OP_CLOSURE          1 <fn sum>
 stack: <script> <fn sum>
 0002    | OP_DEFINE_GLOBAL    0 'sum'
 stack: <script>

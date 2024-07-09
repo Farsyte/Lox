@@ -1,0 +1,43 @@
+
+Disassembling inner ...
+0000    5 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    6 OP_NIL
+0004    | OP_RETURN
+Disassembling inner ... done.
+
+
+Disassembling outer ...
+0000    2 OP_CONSTANT         0 '1'
+0002    3 OP_CONSTANT         1 '2'
+0004    | OP_SET_LOCAL        1
+0006    | OP_POP
+0007    6 OP_CLOSURE          2 <fn inner>
+0009      | local 1
+0011    7 OP_GET_LOCAL        2
+0013    | OP_CALL             0
+0015    | OP_POP
+0016    8 OP_NIL
+0017    | OP_RETURN
+Disassembling outer ... done.
+
+
+Disassembling <script> ...
+0000    8 OP_CLOSURE          1 <fn outer>
+0002    | OP_DEFINE_GLOBAL    0 'outer'
+0004    9 OP_NIL
+0005    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    8 OP_CLOSURE          1 <fn outer>
+stack: <script> <fn outer>
+0002    | OP_DEFINE_GLOBAL    0 'outer'
+stack: <script>
+0004    9 OP_NIL
+stack: <script> nil
+0005    | OP_RETURN
+Executing ... done.
+

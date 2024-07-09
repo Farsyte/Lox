@@ -4,6 +4,7 @@
 #include "chunk.h"
 #include "common.h"
 #include "debug.h"
+#include "memory.h"
 #include "options.h"
 #include "post.h"
 #include "vm.h"
@@ -72,7 +73,7 @@ readFile (const char *path)
 
     rewind (file);
 
-    char *buffer = (char *) malloc (fileSize + 1);
+    char *buffer = ALLOCATE (char, fileSize + 1);       // was (char *) malloc (fileSize + 1);
 
     if (NULL == buffer) {
         int en = errno;
@@ -117,7 +118,7 @@ runFile (const char *path)
     char *source = readFile (path);
     InterpretResult result = interpret (source);
 
-    free (source);
+    FREE_ARRAY (char, (char *) source, 1 + strlen (source));    // was free (source);
 
     if (result == INTERPRET_COMPILE_ERROR)
         exit (EX_DATAERR);

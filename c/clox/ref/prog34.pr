@@ -1,0 +1,42 @@
+
+var j;
+for (var j = 10; j > 0; j = j - 1) {
+    if (j <= 10 and j > 0) {
+        print "PASS: j = " + j;
+    } else {
+        print "FAIL: j = " + j;
+    }
+    // Scope for inner "j" ends at the next close-brace.
+}
+
+if (j == nil) {
+    print "PASS: final j = " + j;
+} else {
+    print "FAIL: final j = " + j;
+}
+
+var i;	// so we can look at its final value.
+for (i = 10; i > 0; i = i - 1) {
+    if (i <= 10 and i > 0) {
+        print "PASS: i = " + i;
+    } else {
+        print "FAIL: i = " + i;
+    }
+}
+
+if (i == 0) {
+    print "PASS: final i = " + i;
+} else {
+    print "FAIL: final i = " + i;
+}
+========
+
+RUNTIME ERROR: Operands must be two numbers or two strings.
+[line 5] in script
+src/vm.c:164: Condition Violated in pop
+    vm.sp > vm.stack
+STACK UNDERFLOW
+
+Aborted (core dumped)
+========
+

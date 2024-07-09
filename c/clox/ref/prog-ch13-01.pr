@@ -1,0 +1,14 @@
+class Doughnut {
+    cook() {
+	print "Fry until golden brown.";
+    }
+}
+
+class BostonCream < Doughnut {}
+
+BostonCream().cook();
+========
+[line 1] Error at 'class': Expect expression.
+[line 4] Error at '}': Expect expression.
+[line 7] Error at 'class': Expect expression.
+========

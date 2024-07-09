@@ -1,0 +1,17 @@
+var x = "global";
+fun outer() {
+    var x = "outer";
+    fun inner() {
+	// Should print "outer"
+	print x;
+    }
+    inner();
+}
+
+outer();
+
+// Before chapter 25, this prints "global"
+// with Closures working, should print "outer"
+========
+========
+outer

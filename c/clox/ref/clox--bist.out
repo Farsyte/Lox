@@ -6,6 +6,25 @@ BIST: bistValue ...
 BIST: bistValue ... done.
 BIST: bistTable ...
 BIST: bistTable ... done.
+object exists at top of test: '<native fn>'
+object exists at top of test: 'clock'
+valString prints as 'testObject'
+valNative prints as '<native fn>'
+valFunction prints as '<script>'
+valClosure prints as '<script>'
+valUpvalue prints as '<upvalue>'
+popped '<upvalue>'
+popped '<script>'
+popped '<script>'
+popped '<native fn>'
+popped 'testObject'
+object exists at end of test: '<upvalue>'
+object exists at end of test: '<script>'
+object exists at end of test: '<script>'
+object exists at end of test: '<native fn>'
+object exists at end of test: 'testObject'
+object exists at end of test: '<native fn>'
+object exists at end of test: 'clock'
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...

@@ -14,6 +14,8 @@
 
 VM vm;
 
+static bool vmInitialized = 0;
+
 #ifdef  DEBUG_TRACE_EXECUTION
 int _DEBUG_TRACE_EXECUTION = 500;
 #endif
@@ -47,6 +49,7 @@ resetStack ()
 {
     vm.sp = vm.stack;
     vm.frameCount = 0;
+    vm.openUpvalues = NULL;
 }
 
 /** Report a runtime error.
@@ -66,7 +69,7 @@ runtimeError (const char *format, ...)
 
     for (int i = vm.frameCount - 1; i >= 0; i--) {
         CallFrame *frame = &vm.frames[i];
-        ObjFunction *function = frame->function;
+        ObjFunction *function = frame->closure->function;
         size_t instruction = frame->ip - function->chunk.code - 1;
 
         fprintf (stderr, "[line %d] in ", function->chunk.lines[instruction]);
@@ -109,6 +112,7 @@ initVM ()
     vm.objects = NULL;
     initTable (&vm.globals);
     initTable (&vm.strings);
+    vmInitialized = true;
     defineNative ("clock", clockNative);
 }
 
@@ -119,6 +123,8 @@ initVM ()
 void
 freeVM ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+    vmInitialized = false;
     freeTable (&vm.strings);
     freeTable (&vm.globals);
     freeObjects ();
@@ -136,6 +142,8 @@ freeVM ()
 void
 push (Value value)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp < vm.stack + STACK_MAX, "STACK OVERFLOW");
     *vm.sp = value;
     vm.sp++;
 }
@@ -152,6 +160,8 @@ push (Value value)
 Value
 pop ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp > vm.stack, "STACK UNDERFLOW");
     vm.sp--;
     return *vm.sp;
 }
@@ -174,6 +184,8 @@ pop ()
 Value
 peek (int distance)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+    INVAR (vm.sp > vm.stack, "STACK UNDERFLOW");
     return vm.sp[-1 - distance];
 }
 
@@ -186,10 +198,12 @@ peek (int distance)
  * @returns true if the call was started
  */
 static bool
-call (ObjFunction *function, int argCount)
+call (ObjClosure *closure, int argCount)
 {
-    if (argCount != function->arity) {
-        runtimeError ("Expected %d arguments but got %d.", function->arity, argCount);
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
+    if (argCount != closure->function->arity) {
+        runtimeError ("Expected %d arguments but got %d.", closure->function->arity, argCount);
         return false;
     }
 
@@ -200,8 +214,8 @@ call (ObjFunction *function, int argCount)
 
     CallFrame *frame = &vm.frames[vm.frameCount++];
 
-    frame->function = function;
-    frame->ip = function->chunk.code;
+    frame->closure = closure;
+    frame->ip = closure->function->chunk.code;
     frame->slots = vm.sp - argCount - 1;
     return true;
 }
@@ -216,10 +230,17 @@ call (ObjFunction *function, int argCount)
 static bool
 callValue (Value callee, int argCount)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
+
+        case OBJ_CLOSURE:
+            return call (AS_CLOSURE (callee), argCount);
+
         case OBJ_FUNCTION:
-            return call (AS_FUNCTION (callee), argCount);
+            // return call (AS_FUNCTION (callee), argCount);
+            UNREACHABLE ("obsoleted in 25.1.2");
 
         case OBJ_NATIVE:{
                 NativeFn native = AS_NATIVE (callee)->function;
@@ -232,12 +253,64 @@ callValue (Value callee, int argCount)
 
         case OBJ_STRING:
             break;
+
+        case OBJ_UPVALUE:
+            break;
+
             // yes, force me to look at this switch
             // any time a new Object Type is added.
+
         }
     }
     runtimeError ("Can only call functions and classes.");
     return false;
+}
+
+/** Capture an Upvalue
+ *
+ * @param local where the Upvalue value is stored
+ * @returns an Upvalue object on the heap
+ */
+static ObjUpvalue *
+captureUpvalue (Value *local)
+{
+    ObjUpvalue *prevUpvalue = NULL;
+    ObjUpvalue *upvalue = vm.openUpvalues;
+
+    while (upvalue != NULL && upvalue->location > local) {
+        prevUpvalue = upvalue;
+        upvalue = upvalue->next;
+    }
+
+    if (upvalue != NULL && upvalue->location == local) {
+        return upvalue;
+    }
+
+    ObjUpvalue *createdUpvalue = newUpvalue (local);
+
+    if (prevUpvalue == NULL) {
+        vm.openUpvalues = createdUpvalue;
+    } else {
+        prevUpvalue->next = createdUpvalue;
+    }
+
+    return createdUpvalue;
+}
+
+/** Close every open upvalue that can be closed.
+ *
+ * @param last where to stop the stack scan
+ */
+static void
+closeUpvalues (Value *last)
+{
+    while (vm.openUpvalues != NULL && vm.openUpvalues->location >= last) {
+        ObjUpvalue *upvalue = vm.openUpvalues;
+
+        upvalue->closed = *upvalue->location;
+        upvalue->location = &upvalue->closed;
+        vm.openUpvalues = upvalue->next;
+    }
 }
 
 /** Return true if the value is falsey.
@@ -260,6 +333,8 @@ isFalsey (Value value)
 static void
 concatenate ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     ObjString *b = AS_STRING (pop ());
     ObjString *a = AS_STRING (pop ());
     int length = a->length + b->length;
@@ -287,6 +362,8 @@ concatenate ()
 static InterpretResult
 run ()
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
 #ifdef  DEBUG_TRACE_EXECUTION
     printf ("\nExecuting ...\n");
 #endif
@@ -295,7 +372,7 @@ run ()
 
 #define READ_BYTE()     (*frame->ip++)
 #define READ_SHORT()    (frame->ip += 2, (uint16_t)((frame->ip[-2] << 8) | frame->ip[-1]))
-#define READ_CONSTANT() (frame->function->chunk.constants.values[READ_BYTE()])
+#define READ_CONSTANT() (frame->closure->function->chunk.constants.values[READ_BYTE()])
 #define READ_STRING()   (AS_STRING(READ_CONSTANT()))
 
     for (;;) {
@@ -311,7 +388,7 @@ run ()
                 printf (" empty.");
             }
             printf ("\n");
-            disassembleInstruction (&frame->function->chunk, (int) (frame->ip - frame->function->chunk.code));
+            disassembleInstruction (&frame->closure->function->chunk, (int) (frame->ip - frame->closure->function->chunk.code));
             _DEBUG_TRACE_EXECUTION--;
             if (!_DEBUG_TRACE_EXECUTION) {
                 printf ("(no more debug traces after this)\n");
@@ -327,6 +404,8 @@ run ()
         uint8_t slot;
         uint16_t offset;
         int argCount;
+        ObjFunction *function;
+        ObjClosure *closure;
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -382,6 +461,16 @@ run ()
                 runtimeError ("Undefined variable '%s'.", name->chars);
                 return INTERPRET_RUNTIME_ERROR;
             }
+            break;
+
+        case OP_GET_UPVALUE:
+            slot = READ_BYTE ();
+            push (*frame->closure->upvalues[slot]->location);
+            break;
+
+        case OP_SET_UPVALUE:
+            slot = READ_BYTE ();
+            *frame->closure->upvalues[slot]->location = pop ();
             break;
 
 #define BINARY_OP(valueType, op)                                        \
@@ -470,8 +559,33 @@ run ()
             frame = &vm.frames[vm.frameCount - 1];
             break;
 
+        case OP_CLOSURE:
+            function = AS_FUNCTION (READ_CONSTANT ());
+            closure = newClosure (function);
+            push (OBJ_VAL (closure));
+
+            for (int i = 0; i < closure->upvalueCount; i++) {
+                uint8_t isLocal = READ_BYTE ();
+                uint8_t index = READ_BYTE ();
+
+                if (isLocal) {
+                    closure->upvalues[i] = captureUpvalue (frame->slots + index);
+                } else {
+                    closure->upvalues[i] = frame->closure->upvalues[index];
+                }
+            }
+
+            break;
+
+        case OP_CLOSE_UPVALUE:
+            closeUpvalues (vm.sp - 1);
+            pop ();
+            break;
+
         case OP_RETURN:
             Value result = pop ();
+
+            closeUpvalues (frame->slots);
 
             vm.frameCount--;
             if (vm.frameCount == 0) {
@@ -507,12 +621,19 @@ run ()
 InterpretResult
 interpret (const char *source)
 {
+    INVAR (vmInitialized, "refused, VM is not initialized.");
+
     ObjFunction *function = compile (source);
 
     if (function == NULL)
         return INTERPRET_COMPILE_ERROR;
 
     push (OBJ_VAL (function));
-    call (function, 0);
+
+    ObjClosure *closure = newClosure (function);
+
+    pop ();
+    push (OBJ_VAL (closure));
+    call (closure, 0);
     return run ();
 }

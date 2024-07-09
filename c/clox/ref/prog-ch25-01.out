@@ -1,0 +1,79 @@
+
+Disassembling inner ...
+0000    6 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    7 OP_NIL
+0004    | OP_RETURN
+Disassembling inner ... done.
+
+
+Disassembling outer ...
+0000    3 OP_CONSTANT         0 'outer'
+0002    7 OP_CLOSURE          1 <fn inner>
+0004      | local 1
+0006    8 OP_GET_LOCAL        2
+0008    | OP_CALL             0
+0010    | OP_POP
+0011    9 OP_NIL
+0012    | OP_RETURN
+Disassembling outer ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CONSTANT         1 'global'
+0002    | OP_DEFINE_GLOBAL    0 'x'
+0004    9 OP_CLOSURE          3 <fn outer>
+0006    | OP_DEFINE_GLOBAL    2 'outer'
+0008   11 OP_GET_GLOBAL       4 'outer'
+0010    | OP_CALL             0
+0012    | OP_POP
+0013   15 OP_NIL
+0014    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CONSTANT         1 'global'
+stack: <script> global
+0002    | OP_DEFINE_GLOBAL    0 'x'
+stack: <script>
+0004    9 OP_CLOSURE          3 <fn outer>
+stack: <script> <fn outer>
+0006    | OP_DEFINE_GLOBAL    2 'outer'
+stack: <script>
+0008   11 OP_GET_GLOBAL       4 'outer'
+stack: <script> <fn outer>
+0010    | OP_CALL             0
+stack: <script> <fn outer>
+0000    3 OP_CONSTANT         0 'outer'
+stack: <script> <fn outer> outer
+0002    7 OP_CLOSURE          1 <fn inner>
+0004      | local 1
+stack: <script> <fn outer> outer <fn inner>
+0006    8 OP_GET_LOCAL        2
+stack: <script> <fn outer> outer <fn inner> <fn inner>
+0008    | OP_CALL             0
+stack: <script> <fn outer> outer <fn inner> <fn inner>
+0000    6 OP_GET_UPVALUE      0
+stack: <script> <fn outer> outer <fn inner> <fn inner> outer
+0002    | OP_PRINT
+outer
+stack: <script> <fn outer> outer <fn inner> <fn inner>
+0003    7 OP_NIL
+stack: <script> <fn outer> outer <fn inner> <fn inner> nil
+0004    | OP_RETURN
+stack: <script> <fn outer> outer <fn inner> nil
+0010    | OP_POP
+stack: <script> <fn outer> outer <fn inner>
+0011    9 OP_NIL
+stack: <script> <fn outer> outer <fn inner> nil
+0012    | OP_RETURN
+stack: <script> nil
+0012    | OP_POP
+stack: <script>
+0013   15 OP_NIL
+stack: <script> nil
+0014    | OP_RETURN
+Executing ... done.
+

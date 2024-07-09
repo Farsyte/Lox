@@ -32,6 +32,28 @@ allocateObject (size_t size, ObjType type)
     return object;
 }
 
+/** Allocate a new Closure object.
+ *
+ * @param function the compiled code for the closure
+ * @returns an ObjClosure object on the heap
+ */
+ObjClosure *
+newClosure (ObjFunction *function)
+{
+    ObjUpvalue **upvalues = ALLOCATE (ObjUpvalue *, function->upvalueCount);
+
+    for (int i = 0; i < function->upvalueCount; i++) {
+        upvalues[i] = NULL;
+    }
+
+    ObjClosure *closure = ALLOCATE_OBJ (ObjClosure, OBJ_CLOSURE);
+
+    closure->function = function;
+    closure->upvalues = upvalues;
+    closure->upvalueCount = function->upvalueCount;
+    return closure;
+}
+
 /** Create a new Function object.
  *
  * @returns a pointer to a new Function object.
@@ -42,6 +64,7 @@ newFunction ()
     ObjFunction *function = ALLOCATE_OBJ (ObjFunction, OBJ_FUNCTION);
 
     function->arity = 0;
+    function->upvalueCount = 0;
     function->name = NULL;
     initChunk (&function->chunk);
     return function;
@@ -171,6 +194,22 @@ copyString (const char *chars, int length)
     return allocateString (heapChars, length, hash);
 }
 
+/** Create a new Upvalue Object referencing the indicated slot.
+ *
+ * @param slot pointer to storage for a Value.
+ * @returns pointer to an Upvalue Object on the heap
+ */
+ObjUpvalue *
+newUpvalue (Value *slot)
+{
+    ObjUpvalue *upvalue = ALLOCATE_OBJ (ObjUpvalue, OBJ_UPVALUE);
+
+    upvalue->location = slot;
+    upvalue->closed = NIL_VAL;
+    upvalue->next = NULL;
+    return upvalue;
+}
+
 /** Print a Function object
  *
  * @param function the object to print
@@ -198,9 +237,12 @@ printObject (Value value)
 
         // *INDENT-OFF*
 
+    case OBJ_CLOSURE:   printFunction(
+                            AS_CLOSURE(value)->function);       return;
     case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
     case OBJ_NATIVE:    printf("<native fn>");                  return;
     case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
+    case OBJ_UPVALUE:   printf("<upvalue>");                    return;
 
         // *INDENT-ON*
     }

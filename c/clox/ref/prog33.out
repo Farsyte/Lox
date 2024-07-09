@@ -339,10 +339,4 @@ stack: <script> PASS: i =  0
 0041    | OP_ADD
 stack: empty.
 0042    | OP_PRINT
-false
-stack: empty.
-0043    9 OP_JUMP            43 -> 53
-stack: empty.
-0053   12 OP_NIL
-stack: empty.
-0054    
+

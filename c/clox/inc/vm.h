@@ -18,7 +18,7 @@
  * The IP in the stack frame is unconventional.
  */
 struct CallFrame {
-    ObjFunction *function;      ///< which function owns the frame
+    ObjClosure *closure;        ///< which closure owns the frame
     uint8_t *ip;                ///< this frame's instruction pointer
     Value *slots;               ///< local variable storage
 };
@@ -32,6 +32,7 @@ struct VM {
     Value *sp;                  ///< data stack pointer
     Table globals;              ///< hash table of global variables
     Table strings;              ///< hash table for string deduplication
+    ObjUpvalue *openUpvalues;   ///< linked list of ALL open upvalues on the stack
     Obj *objects;               ///< linked list of all objects
 };
 

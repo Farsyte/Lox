@@ -1,0 +1,5 @@
+print 10+20;    // print statement
+10+20;          // expression statement
+========
+========
+30

@@ -10,7 +10,7 @@ Disassembling showA ... done.
 Disassembling <script> ...
 0000    1 OP_CONSTANT         1 'global'
 0002    | OP_DEFINE_GLOBAL    0 'a'
-0004    5 OP_CONSTANT         2 '<fn showA>'
+0004    5 OP_CLOSURE          2 <fn showA>
 0006    7 OP_GET_LOCAL        1
 0008    | OP_CALL             0
 0010    | OP_POP
@@ -31,7 +31,7 @@ stack: <script>
 stack: <script> global
 0002    | OP_DEFINE_GLOBAL    0 'a'
 stack: <script>
-0004    5 OP_CONSTANT         2 '<fn showA>'
+0004    5 OP_CLOSURE          2 <fn showA>
 stack: <script> <fn showA>
 0006    7 OP_GET_LOCAL        1
 stack: <script> <fn showA> <fn showA>
