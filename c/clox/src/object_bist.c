@@ -118,6 +118,25 @@ bistObject ()
     printValue (valClosure);
     printf ("'\n");
 
+    Value valueStorage = NIL_VAL;
+    ObjUpvalue *objUpvalue = newUpvalue (&valueStorage);
+
+    INVAR (NULL != objUpvalue, "newUpvalue must return non-NULL");
+    INVAR ((Obj *) objUpvalue == vm.objects, "new ObjUpvalue must be first on the VM objects list.");
+
+    Value valUpvalue = OBJ_VAL (objUpvalue);
+
+    push (valUpvalue);                  // so GC does not reap it
+
+    INVAR (IS_OBJ (valUpvalue), "Aftrer init, val must satisfy IS_OBJ");
+    INVAR (IS_UPVALUE (valUpvalue), "Aftrer init, val must satisfy IS_UPVALUE");
+
+    printf ("valUpvalue prints as '");
+    printValue (valUpvalue);
+    printf ("'\n");
+
+    /* end of test: dump the stack and object list. */
+
     while (vm.sp > sp) {
         Value vPop = pop ();
 

@@ -1,0 +1,15 @@
+fun outer() {
+    var x = "before";
+    fun inner() {
+	x = "assigned";
+    }
+    inner();
+    print x;
+}
+outer();
+
+// This should print "assigned"
+========
+src/vm.c:420: STUB Encountered in run
+
+========

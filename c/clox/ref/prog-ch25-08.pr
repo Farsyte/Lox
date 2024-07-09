@@ -20,7 +20,7 @@ in();
 //     create inner closure
 //     value
 ========
-src/vm.c:414: STUB Encountered in run
+src/vm.c:418: STUB Encountered in run
 
 ========
 return from outer

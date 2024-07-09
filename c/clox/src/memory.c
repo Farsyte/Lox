@@ -173,6 +173,11 @@ freeObject (Obj *object)
             return;
         }
 
+    case OBJ_UPVALUE:{
+            FREE (ObjUpvalue, object);
+            return;
+        }
+
     }
     UNREACHABLE ("corrupted object type");
 }

@@ -8,6 +8,12 @@
  * @brief Macros and API exposed by the OBJECT module
  */
 
+/** Return true iff the value is a Upvalue. */
+#define IS_UPVALUE(value) isObjType(value, OBJ_UPVALUE)
+
+/** Return the Upvalue object in this Value. */
+#define AS_UPVALUE(value) ((ObjUpvalue*)AS_OBJ(value))
+
 /** Extract the enumerated value type from a value. */
 #define OBJ_TYPE(value) (AS_OBJ(value)->type)
 
@@ -44,6 +50,7 @@ typedef enum {
     OBJ_FUNCTION,               ///< Object is a Function
     OBJ_NATIVE,                 ///< Object is a Native Function
     OBJ_STRING,                 ///< Object contains a string
+    OBJ_UPVALUE,                ///< Object is an Upvalue
 } ObjType;
 
 /** Base structure for all Objects */
@@ -75,6 +82,12 @@ struct ObjString {
     uint32_t hash;              ///< hash code for the string
 };
 
+/** Object that is an Upvalue */
+struct ObjUpvalue {
+    Obj obj;                    ///< Inherit from obj
+    Value *location;            ///< where to find the storage
+};
+
 /** Object that is a closure */
 struct ObjClosure {
     Obj obj;                    ///< Inherit from Obj
@@ -86,6 +99,7 @@ extern ObjFunction *newFunction ();
 extern ObjNative *newNative (NativeFn function);
 extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);
+extern ObjUpvalue *newUpvalue (Value *slot);
 extern void printObject (Value value);
 
 extern void postObject ();

@@ -254,6 +254,10 @@ callValue (Value callee, int argCount)
             break;
             // yes, force me to look at this switch
             // any time a new Object Type is added.
+
+        case OBJ_UPVALUE:
+            STUB (0);
+
         }
     }
     runtimeError ("Can only call functions and classes.");

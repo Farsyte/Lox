@@ -90,3 +90,7 @@ typedef struct ObjClosure ObjClosure;
 /** Upvalue state
  */
 typedef struct Upvalue Upvalue;
+
+/** Upvalue Object
+ */
+typedef struct ObjUpvalue ObjUpvalue;

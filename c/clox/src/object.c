@@ -186,6 +186,20 @@ copyString (const char *chars, int length)
     return allocateString (heapChars, length, hash);
 }
 
+/** Create a new Upvalue Object referencing the indicated slot.
+ *
+ * @param slot pointer to storage for a Value.
+ * @returns pointer to an Upvalue Object on the heap
+ */
+ObjUpvalue *
+newUpvalue (Value *slot)
+{
+    ObjUpvalue *upvalue = ALLOCATE_OBJ (ObjUpvalue, OBJ_UPVALUE);
+
+    upvalue->location = slot;
+    return upvalue;
+}
+
 /** Print a Function object
  *
  * @param function the object to print
@@ -218,6 +232,7 @@ printObject (Value value)
     case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
     case OBJ_NATIVE:    printf("<native fn>");                  return;
     case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
+    case OBJ_UPVALUE:   printf("<upvalue>");                    return;
 
         // *INDENT-ON*
     }

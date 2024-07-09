@@ -13,6 +13,6 @@ var counter = makeCounter();
 counter(); // "1"
 counter(); // "2"
 ========
-src/vm.c:414: STUB Encountered in run
+src/vm.c:418: STUB Encountered in run
 
 ========

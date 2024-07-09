@@ -13,6 +13,6 @@ outer();
 // Before chapter 25, this prints "global"
 // with Closures working, should print "outer"
 ========
-src/vm.c:414: STUB Encountered in run
+src/vm.c:418: STUB Encountered in run
 
 ========
