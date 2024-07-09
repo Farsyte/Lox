@@ -1,7 +1,7 @@
 
 RUNTIME ERROR: Operands must be two numbers or two strings.
 [line 5] in script
-src/vm.c:163: Condition Violated in pop
+src/vm.c:164: Condition Violated in pop
     vm.sp > vm.stack
 STACK UNDERFLOW
 

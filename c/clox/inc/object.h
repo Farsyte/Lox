@@ -86,6 +86,7 @@ struct ObjString {
 struct ObjUpvalue {
     Obj obj;                    ///< Inherit from obj
     Value *location;            ///< where to find the storage
+    ObjUpvalue *next;           ///< make a linked list for searching
 };
 
 /** Object that is a closure */

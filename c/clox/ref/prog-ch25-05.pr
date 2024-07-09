@@ -5,6 +5,6 @@
     }
 }
 ========
-src/vm.c:545: STUB Encountered in run
+src/vm.c:564: STUB Encountered in run
 
 ========
