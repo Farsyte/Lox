@@ -12,7 +12,7 @@ Disassembling <script> ...
 0002    5 OP_CLOSURE          1 <fn f>
 0004      | local 1
 0006    6 OP_POP
-0007    | OP_POP
+0007    | OP_CLOSE_UPVALUE
 0008    7 OP_NIL
 0009    | OP_RETURN
 Disassembling <script> ... done.
@@ -27,10 +27,5 @@ stack: <script> 3
 stack: <script> 3 <fn f>
 0006    6 OP_POP
 stack: <script> 3
-0007    | OP_POP
-stack: <script>
-0008    7 OP_NIL
-stack: <script> nil
-0009    | OP_RETURN
-Executing ... done.
+0007    | OP_CLOSE_UPVALUE
 

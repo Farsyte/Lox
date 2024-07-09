@@ -40,6 +40,7 @@ typedef enum {
     OP_LOOP,                    ///< unconditional backward branch
     OP_CALL,                    ///< function call
     OP_CLOSURE,                 ///< make a closure
+    OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing

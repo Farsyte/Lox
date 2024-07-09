@@ -541,6 +541,9 @@ run ()
 
             break;
 
+        case OP_CLOSE_UPVALUE:
+            STUB (0);
+
         case OP_RETURN:
             Value result = pop ();
 
