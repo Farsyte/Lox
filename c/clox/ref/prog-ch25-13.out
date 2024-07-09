@@ -1,0 +1,136 @@
+
+Disassembling set ...
+0000    7 OP_CONSTANT         0 'updated'
+0002    | OP_SET_UPVALUE      0
+0004    | OP_POP
+0005    | OP_NIL
+0006    | OP_RETURN
+Disassembling set ... done.
+
+
+Disassembling get ...
+0000    8 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    | OP_NIL
+0004    | OP_RETURN
+Disassembling get ... done.
+
+
+Disassembling main ...
+0000    5 OP_CONSTANT         0 'initial'
+0002    7 OP_CLOSURE          1 <fn set>
+0004      | local 1
+0006    8 OP_CLOSURE          2 <fn get>
+0008      | local 1
+0010   10 OP_GET_LOCAL        2
+0012    | OP_SET_GLOBAL       3 'globalSet'
+0014    | OP_POP
+0015   11 OP_GET_LOCAL        3
+0017    | OP_SET_GLOBAL       4 'globalGet'
+0019    | OP_POP
+0020   12 OP_NIL
+0021    | OP_RETURN
+Disassembling main ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_NIL
+0001    | OP_DEFINE_GLOBAL    0 'globalSet'
+0003    2 OP_NIL
+0004    | OP_DEFINE_GLOBAL    1 'globalGet'
+0006   12 OP_CLOSURE          3 <fn main>
+0008    | OP_DEFINE_GLOBAL    2 'main'
+0010   14 OP_GET_GLOBAL       4 'main'
+0012    | OP_CALL             0
+0014    | OP_POP
+0015   15 OP_GET_GLOBAL       5 'globalSet'
+0017    | OP_CALL             0
+0019    | OP_POP
+0020   16 OP_GET_GLOBAL       6 'globalGet'
+0022    | OP_CALL             0
+0024    | OP_POP
+0025   17 OP_NIL
+0026    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_NIL
+stack: <script> nil
+0001    | OP_DEFINE_GLOBAL    0 'globalSet'
+stack: <script>
+0003    2 OP_NIL
+stack: <script> nil
+0004    | OP_DEFINE_GLOBAL    1 'globalGet'
+stack: <script>
+0006   12 OP_CLOSURE          3 <fn main>
+stack: <script> <fn main>
+0008    | OP_DEFINE_GLOBAL    2 'main'
+stack: <script>
+0010   14 OP_GET_GLOBAL       4 'main'
+stack: <script> <fn main>
+0012    | OP_CALL             0
+stack: <script> <fn main>
+0000    5 OP_CONSTANT         0 'initial'
+stack: <script> <fn main> initial
+0002    7 OP_CLOSURE          1 <fn set>
+0004      | local 1
+stack: <script> <fn main> initial <fn set>
+0006    8 OP_CLOSURE          2 <fn get>
+0008      | local 1
+stack: <script> <fn main> initial <fn set> <fn get>
+0010   10 OP_GET_LOCAL        2
+stack: <script> <fn main> initial <fn set> <fn get> <fn set>
+0012    | OP_SET_GLOBAL       3 'globalSet'
+stack: <script> <fn main> initial <fn set> <fn get> <fn set>
+0014    | OP_POP
+stack: <script> <fn main> initial <fn set> <fn get>
+0015   11 OP_GET_LOCAL        3
+stack: <script> <fn main> initial <fn set> <fn get> <fn get>
+0017    | OP_SET_GLOBAL       4 'globalGet'
+stack: <script> <fn main> initial <fn set> <fn get> <fn get>
+0019    | OP_POP
+stack: <script> <fn main> initial <fn set> <fn get>
+0020   12 OP_NIL
+stack: <script> <fn main> initial <fn set> <fn get> nil
+0021    | OP_RETURN
+stack: <script> nil
+0014    | OP_POP
+stack: <script>
+0015   15 OP_GET_GLOBAL       5 'globalSet'
+stack: <script> <fn set>
+0017    | OP_CALL             0
+stack: <script> <fn set>
+0000    7 OP_CONSTANT         0 'updated'
+stack: <script> <fn set> updated
+0002    | OP_SET_UPVALUE      0
+stack: <script> <fn set>
+0004    | OP_POP
+stack: <script>
+0005    | OP_NIL
+stack: <script> nil
+0006    | OP_RETURN
+stack: <script> nil
+0019    | OP_POP
+stack: <script>
+0020   16 OP_GET_GLOBAL       6 'globalGet'
+stack: <script> <fn get>
+0022    | OP_CALL             0
+stack: <script> <fn get>
+0000    8 OP_GET_UPVALUE      0
+stack: <script> <fn get> updated
+0002    | OP_PRINT
+updated
+stack: <script> <fn get>
+0003    | OP_NIL
+stack: <script> <fn get> nil
+0004    | OP_RETURN
+stack: <script> nil
+0024    | OP_POP
+stack: <script>
+0025   17 OP_NIL
+stack: <script> nil
+0026    | OP_RETURN
+Executing ... done.
+
