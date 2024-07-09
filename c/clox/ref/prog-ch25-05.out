@@ -28,4 +28,9 @@ stack: <script> 3 <fn f>
 0006    6 OP_POP
 stack: <script> 3
 0007    | OP_CLOSE_UPVALUE
+stack: <script>
+0008    7 OP_NIL
+stack: <script> nil
+0009    | OP_RETURN
+Executing ... done.
 

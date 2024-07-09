@@ -86,6 +86,7 @@ struct ObjString {
 struct ObjUpvalue {
     Obj obj;                    ///< Inherit from obj
     Value *location;            ///< where to find the storage
+    Value closed;               ///< storage for upvalue when closed
     ObjUpvalue *next;           ///< make a linked list for searching
 };
 

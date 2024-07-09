@@ -64,4 +64,17 @@ stack: <script> 1 <fn f> 2 <fn g> 3 <fn h>
 0018   14 OP_POP
 stack: <script> 1 <fn f> 2 <fn g> 3
 0019    | OP_CLOSE_UPVALUE
+stack: <script> 1 <fn f> 2 <fn g>
+0020    | OP_POP
+stack: <script> 1 <fn f> 2
+0021    | OP_CLOSE_UPVALUE
+stack: <script> 1 <fn f>
+0022    | OP_POP
+stack: <script> 1
+0023    | OP_CLOSE_UPVALUE
+stack: <script>
+0024   15 OP_NIL
+stack: <script> nil
+0025    | OP_RETURN
+Executing ... done.
 

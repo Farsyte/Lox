@@ -14,5 +14,5 @@ bagel();
 // After chapter 25, we want it to print "doughnut" and "bagel"
 ========
 ========
+doughnut
 bagel
-nil

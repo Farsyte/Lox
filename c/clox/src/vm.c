@@ -253,11 +253,12 @@ callValue (Value callee, int argCount)
 
         case OBJ_STRING:
             break;
-            // yes, force me to look at this switch
-            // any time a new Object Type is added.
 
         case OBJ_UPVALUE:
-            STUB (0);
+            break;
+
+            // yes, force me to look at this switch
+            // any time a new Object Type is added.
 
         }
     }
@@ -294,6 +295,22 @@ captureUpvalue (Value *local)
     }
 
     return createdUpvalue;
+}
+
+/** Close every open upvalue that can be closed.
+ *
+ * @param last where to stop the stack scan
+ */
+static void
+closeUpvalues (Value *last)
+{
+    while (vm.openUpvalues != NULL && vm.openUpvalues->location >= last) {
+        ObjUpvalue *upvalue = vm.openUpvalues;
+
+        upvalue->closed = *upvalue->location;
+        upvalue->location = &upvalue->closed;
+        vm.openUpvalues = upvalue->next;
+    }
 }
 
 /** Return true if the value is falsey.
@@ -561,10 +578,14 @@ run ()
             break;
 
         case OP_CLOSE_UPVALUE:
-            STUB (0);
+            closeUpvalues (vm.sp - 1);
+            pop ();
+            break;
 
         case OP_RETURN:
             Value result = pop ();
+
+            closeUpvalues (frame->slots);
 
             vm.frameCount--;
             if (vm.frameCount == 0) {

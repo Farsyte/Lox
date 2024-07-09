@@ -98,9 +98,9 @@ stack: <script> <fn inner>
 0018    | OP_CALL             0
 stack: <script> <fn inner>
 0000    5 OP_GET_UPVALUE      0
-stack: <script> <fn inner> <fn inner>
+stack: <script> <fn inner> value
 0002    | OP_PRINT
-<fn inner>
+value
 stack: <script> <fn inner>
 0003    6 OP_NIL
 stack: <script> <fn inner> nil
