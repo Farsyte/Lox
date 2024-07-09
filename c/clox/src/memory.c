@@ -147,6 +147,7 @@ freeObject (Obj *object)
 
     case OBJ_CLOSURE:{
             FREE (ObjClosure, object);
+
             return;
         }
 

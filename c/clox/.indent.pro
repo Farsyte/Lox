@@ -21,6 +21,7 @@
 -TInterpretResult
 -TLocal
 -TObj
+-TObjClosure
 -TObjFunction
 -TObjString
 -TObjType
@@ -34,6 +35,7 @@
 -TTable
 -TToken
 -TTokenType
+-TUpvalue
 -TVM
 -TValue
 -TValueArray

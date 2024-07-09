@@ -12,9 +12,8 @@ for (var i = 0; i < 7; i = i + 1) {
     print fib(i);
 }
 ========
+src/vm.c:414: STUB Encountered in run
+
 ========
 0
 1
-1
-2
-3

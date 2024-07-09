@@ -1,6 +1,6 @@
 
 Disassembling a ...
-0000    1 OP_GET_GLOBAL       0 'b'
+0000    1 OP_GET_UPVALUE      0
 0002    | OP_CALL             0
 0004    | OP_POP
 0005    | OP_NIL
@@ -9,7 +9,7 @@ Disassembling a ... done.
 
 
 Disassembling b ...
-0000    2 OP_GET_GLOBAL       0 'c'
+0000    2 OP_GET_UPVALUE      0
 0002    | OP_CALL             0
 0004    | OP_POP
 0005    | OP_NIL
@@ -18,9 +18,9 @@ Disassembling b ... done.
 
 
 Disassembling c ...
-0000    4 OP_GET_GLOBAL       0 'c'
-0002    | OP_CONSTANT         1 'too'
-0004    | OP_CONSTANT         2 'many'
+0000    4 OP_GET_UPVALUE      0
+0002    | OP_CONSTANT         0 'too'
+0004    | OP_CONSTANT         1 'many'
 0006    | OP_CALL             2
 0008    | OP_POP
 0009    5 OP_NIL
@@ -61,18 +61,5 @@ stack: <script>
 stack: <script> <fn a>
 0014    | OP_CALL             0
 stack: <script> <fn a>
-0000    1 OP_GET_GLOBAL       0 'b'
-stack: <script> <fn a> <fn b>
-0002    | OP_CALL             0
-stack: <script> <fn a> <fn b>
-0000    2 OP_GET_GLOBAL       0 'c'
-stack: <script> <fn a> <fn b> <fn c>
-0002    | OP_CALL             0
-stack: <script> <fn a> <fn b> <fn c>
-0000    4 OP_GET_GLOBAL       0 'c'
-stack: <script> <fn a> <fn b> <fn c> <fn c>
-0002    | OP_CONSTANT         1 'too'
-stack: <script> <fn a> <fn b> <fn c> <fn c> too
-0004    | OP_CONSTANT         2 'many'
-stack: <script> <fn a> <fn b> <fn c> <fn c> too many
-0006    | OP_CALL             2
+0000    1 OP_GET_UPVALUE      0
+

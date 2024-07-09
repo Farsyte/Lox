@@ -56,6 +56,7 @@ struct Obj {
 struct ObjFunction {
     Obj obj;                    ///< Inherit from Obj
     int arity;                  ///< number of parameters
+    int upvalueCount;           ///< number of upvalues
     Chunk chunk;                ///< compiled bytecode for the function
     ObjString *name;            ///< function name in an ObjString
 };

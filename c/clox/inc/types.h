@@ -86,3 +86,7 @@ typedef struct ObjNative ObjNative;
 /** Closure Object
  */
 typedef struct ObjClosure ObjClosure;
+
+/** Upvalue state
+ */
+typedef struct Upvalue Upvalue;

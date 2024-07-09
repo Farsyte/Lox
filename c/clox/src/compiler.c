@@ -56,6 +56,13 @@ struct Local {
     int depth;                  ///< scope depth of block defining it
 };
 
+/** Upvalues
+ */
+struct Upvalue {
+    uint8_t index;              ///< index into locals
+    bool isLocal;               ///< still resident in locals?
+};
+
 /** Enumerated Function Types
  */
 typedef enum {
@@ -71,6 +78,7 @@ struct Compiler {
     FunctionType type;          ///< type of function being compiled
     Local locals[UINT8_COUNT];  ///< storage for local variables
     int localCount;             ///< number of local variables in scope
+    Upvalue upvalues[UINT8_COUNT];      ///< array of upvalues
     int scopeDepth;             ///< number of blocks surrounding current code
 };
 
@@ -454,6 +462,57 @@ resolveLocal (Compiler *compiler, Token *name)
     return -1;
 }
 
+/** Add an Upvaluie to the compiler state.
+ *
+ * @param compiler the current compiler state
+ * @param index index into the locals
+ * @param isLocal true if the upvalue is still in the locals
+ * @returns the index into the upvalue array
+ */
+static int
+addUpvalue (Compiler *compiler, uint8_t index, bool isLocal)
+{
+    int upvalueCount = compiler->function->upvalueCount;
+
+    for (int i = 0; i < upvalueCount; i++) {
+        Upvalue *upvalue = &compiler->upvalues[i];
+
+        if (upvalue->index == index && upvalue->isLocal == isLocal) {
+            return i;
+        }
+    }
+
+    if (upvalueCount == UINT8_COUNT) {
+        error ("Too many closure variables in function.");
+        return 0;
+    }
+
+    compiler->upvalues[upvalueCount].isLocal = isLocal;
+    compiler->upvalues[upvalueCount].index = index;
+    return compiler->function->upvalueCount++;
+}
+
+/** Resolve a reference to a upvalue.
+ *
+ * @param compiler the current compiler state
+ * @param name the identifier lexeme
+ * @returns -1 if the identifier was not found
+ * @returns the index of the match in the compiler upvalues
+ */
+static int
+resolveUpvalue (Compiler *compiler, Token *name)
+{
+    if (compiler->enclosing == NULL)
+        return -1;
+
+    int local = resolveLocal (compiler->enclosing, name);
+
+    if (local == -1) {
+        return addUpvalue (compiler, (uint8_t) local, true);
+    }
+    return -1;
+}
+
 /** Add a local variable to the current scope.
  *
  * @param name the lexeme containing the variable name
@@ -711,6 +770,9 @@ namedVariable (Token name, bool canAssign)
     if (arg != -1) {
         getOp = OP_GET_LOCAL;
         setOp = OP_SET_LOCAL;
+    } else if ((arg = resolveUpvalue (current, &name)) != -1) {
+        getOp = OP_GET_UPVALUE;
+        setOp = OP_SET_UPVALUE;
     } else {
         arg = identifierConstant (&name);
         getOp = OP_GET_GLOBAL;

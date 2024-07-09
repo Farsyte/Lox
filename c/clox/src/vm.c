@@ -197,7 +197,7 @@ peek (int distance)
  * @returns true if the call was started
  */
 static bool
-call (ObjClosure * closure, int argCount)
+call (ObjClosure *closure, int argCount)
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
 
@@ -409,6 +409,11 @@ run ()
                 return INTERPRET_RUNTIME_ERROR;
             }
             break;
+
+        case OP_GET_UPVALUE:
+            STUB (0);
+        case OP_SET_UPVALUE:
+            STUB (0);
 
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \
