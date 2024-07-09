@@ -264,6 +264,19 @@ callValue (Value callee, int argCount)
     return false;
 }
 
+/** Capture an Upvalue
+ *
+ * @param local where the Upvalue value is stored
+ * @returns an Upvalue object on the heap
+ */
+static ObjUpvalue *
+captureUpvalue (Value *local)
+{
+    ObjUpvalue *createdUpvalue = newUpvalue (local);
+
+    return createdUpvalue;
+}
+
 /** Return true if the value is falsey.
  *
  * Follows the RUBY convention that nil and false are falsey
@@ -415,9 +428,14 @@ run ()
             break;
 
         case OP_GET_UPVALUE:
-            STUB (0);
+            slot = READ_BYTE ();
+            push (*frame->closure->upvalues[slot]->location);
+            break;
+
         case OP_SET_UPVALUE:
-            STUB (0);
+            slot = READ_BYTE ();
+            *frame->closure->upvalues[slot]->location = pop ();
+            break;
 
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \
@@ -509,6 +527,18 @@ run ()
             function = AS_FUNCTION (READ_CONSTANT ());
             closure = newClosure (function);
             push (OBJ_VAL (closure));
+
+            for (int i = 0; i < closure->upvalueCount; i++) {
+                uint8_t isLocal = READ_BYTE ();
+                uint8_t index = READ_BYTE ();
+
+                if (isLocal) {
+                    closure->upvalues[i] = captureUpvalue (frame->slots + index);
+                } else {
+                    closure->upvalues[i] = frame->closure->upvalues[index];
+                }
+            }
+
             break;
 
         case OP_RETURN:

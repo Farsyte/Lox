@@ -66,16 +66,8 @@ stack: <script> <fn outer> 1 2
 0006      | local 1
 0008      | local 2
 stack: <script> <fn outer> 1 2 <fn middle>
-0006    | OP_NIL
-stack: <script> <fn outer> 1 2 <fn middle> nil
-0007    | OP_NIL
-stack: <script> <fn outer> 1 2 <fn middle> nil nil
-0008    | OP_NIL
-stack: <script> <fn outer> 1 2 <fn middle> nil nil nil
-0009    | OP_TRUE
-stack: <script> <fn outer> 1 2 <fn middle> nil nil nil true
 0010   11 OP_NIL
-stack: <script> <fn outer> 1 2 <fn middle> nil nil nil true nil
+stack: <script> <fn outer> 1 2 <fn middle> nil
 0011    | OP_RETURN
 stack: <script> nil
 0008    | OP_POP

@@ -92,6 +92,8 @@ struct ObjUpvalue {
 struct ObjClosure {
     Obj obj;                    ///< Inherit from Obj
     ObjFunction *function;      ///< compiled function
+    ObjUpvalue **upvalues;      ///< list of upvalues
+    int upvalueCount;           ///< number of upvalues
 };
 
 extern ObjClosure *newClosure (ObjFunction *function);

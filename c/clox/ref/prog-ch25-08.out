@@ -64,17 +64,13 @@ stack: <script> <fn outer> value
 0002    9 OP_CLOSURE          1 <fn middle>
 0004      | local 1
 stack: <script> <fn outer> value <fn middle>
-0004    | OP_NIL
-stack: <script> <fn outer> value <fn middle> nil
-0005    | OP_NIL
-stack: <script> <fn outer> value <fn middle> nil nil
 0006   10 OP_CONSTANT         2 'return from outer'
-stack: <script> <fn outer> value <fn middle> nil nil return from outer
+stack: <script> <fn outer> value <fn middle> return from outer
 0008    | OP_PRINT
 return from outer
-stack: <script> <fn outer> value <fn middle> nil nil
+stack: <script> <fn outer> value <fn middle>
 0009   11 OP_GET_LOCAL        2
-stack: <script> <fn outer> value <fn middle> nil nil <fn middle>
+stack: <script> <fn outer> value <fn middle> <fn middle>
 0011    | OP_RETURN
 stack: <script> <fn middle>
 0008    | OP_DEFINE_GLOBAL    2 'mid'
@@ -86,15 +82,13 @@ stack: <script> <fn middle>
 0000    6 OP_CLOSURE          0 <fn inner>
 0002      | upvalue 0
 stack: <script> <fn middle> <fn inner>
-0002    | OP_CONSTANT         0 '<fn inner>'
-stack: <script> <fn middle> <fn inner> <fn inner>
 0004    7 OP_CONSTANT         1 'create inner closure'
-stack: <script> <fn middle> <fn inner> <fn inner> create inner closure
+stack: <script> <fn middle> <fn inner> create inner closure
 0006    | OP_PRINT
 create inner closure
-stack: <script> <fn middle> <fn inner> <fn inner>
+stack: <script> <fn middle> <fn inner>
 0007    8 OP_GET_LOCAL        1
-stack: <script> <fn middle> <fn inner> <fn inner> <fn inner>
+stack: <script> <fn middle> <fn inner> <fn inner>
 0009    | OP_RETURN
 stack: <script> <fn inner>
 0014    | OP_DEFINE_GLOBAL    4 'in'
@@ -104,4 +98,18 @@ stack: <script> <fn inner>
 0018    | OP_CALL             0
 stack: <script> <fn inner>
 0000    5 OP_GET_UPVALUE      0
+stack: <script> <fn inner> <fn inner>
+0002    | OP_PRINT
+<fn inner>
+stack: <script> <fn inner>
+0003    6 OP_NIL
+stack: <script> <fn inner> nil
+0004    | OP_RETURN
+stack: <script> nil
+0020    | OP_POP
+stack: <script>
+0021   22 OP_NIL
+stack: <script> nil
+0022    | OP_RETURN
+Executing ... done.
 

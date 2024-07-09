@@ -25,16 +25,12 @@ stack: <script> 3
 0002    5 OP_CLOSURE          1 <fn f>
 0004      | local 1
 stack: <script> 3 <fn f>
-0004    | OP_NIL
-stack: <script> 3 <fn f> nil
-0005    | OP_NIL
-stack: <script> 3 <fn f> nil nil
 0006    6 OP_POP
-stack: <script> 3 <fn f> nil
+stack: <script> 3
 0007    | OP_POP
-stack: <script> 3 <fn f>
+stack: <script>
 0008    7 OP_NIL
-stack: <script> 3 <fn f> nil
+stack: <script> nil
 0009    | OP_RETURN
 Executing ... done.
 

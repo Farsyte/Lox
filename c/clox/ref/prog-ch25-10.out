@@ -48,15 +48,35 @@ stack: <script> <fn outer> before
 0002    5 OP_CLOSURE          1 <fn inner>
 0004      | local 1
 stack: <script> <fn outer> before <fn inner>
-0004    | OP_NIL
-stack: <script> <fn outer> before <fn inner> nil
-0005    | OP_NIL
-stack: <script> <fn outer> before <fn inner> nil nil
 0006    6 OP_GET_LOCAL        2
-stack: <script> <fn outer> before <fn inner> nil nil <fn inner>
+stack: <script> <fn outer> before <fn inner> <fn inner>
 0008    | OP_CALL             0
-stack: <script> <fn outer> before <fn inner> nil nil <fn inner>
+stack: <script> <fn outer> before <fn inner> <fn inner>
 0000    4 OP_CONSTANT         0 'assigned'
-stack: <script> <fn outer> before <fn inner> nil nil <fn inner> assigned
+stack: <script> <fn outer> before <fn inner> <fn inner> assigned
 0002    | OP_SET_UPVALUE      0
+stack: <script> <fn outer> assigned <fn inner> <fn inner>
+0004    | OP_POP
+stack: <script> <fn outer> assigned <fn inner>
+0005    5 OP_NIL
+stack: <script> <fn outer> assigned <fn inner> nil
+0006    | OP_RETURN
+stack: <script> <fn outer> assigned <fn inner> nil
+0010    | OP_POP
+stack: <script> <fn outer> assigned <fn inner>
+0011    7 OP_GET_LOCAL        1
+stack: <script> <fn outer> assigned <fn inner> assigned
+0013    | OP_PRINT
+assigned
+stack: <script> <fn outer> assigned <fn inner>
+0014    8 OP_NIL
+stack: <script> <fn outer> assigned <fn inner> nil
+0015    | OP_RETURN
+stack: <script> nil
+0008    | OP_POP
+stack: <script>
+0009   12 OP_NIL
+stack: <script> nil
+0010    | OP_RETURN
+Executing ... done.
 

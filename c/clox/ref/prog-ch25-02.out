@@ -47,12 +47,8 @@ stack: <script> <fn makeClosure> local
 0002    5 OP_CLOSURE          1 <fn closure>
 0004      | local 1
 stack: <script> <fn makeClosure> local <fn closure>
-0004    | OP_NIL
-stack: <script> <fn makeClosure> local <fn closure> nil
-0005    | OP_NIL
-stack: <script> <fn makeClosure> local <fn closure> nil nil
 0006    6 OP_GET_LOCAL        2
-stack: <script> <fn makeClosure> local <fn closure> nil nil <fn closure>
+stack: <script> <fn makeClosure> local <fn closure> <fn closure>
 0008    | OP_RETURN
 stack: <script> <fn closure>
 0008    | OP_DEFINE_GLOBAL    2 'closure'
@@ -62,4 +58,18 @@ stack: <script> <fn closure>
 0012    | OP_CALL             0
 stack: <script> <fn closure>
 0000    4 OP_GET_UPVALUE      0
+stack: <script> <fn closure> local
+0002    | OP_PRINT
+local
+stack: <script> <fn closure>
+0003    5 OP_NIL
+stack: <script> <fn closure> nil
+0004    | OP_RETURN
+stack: <script> nil
+0014    | OP_POP
+stack: <script>
+0015   13 OP_NIL
+stack: <script> nil
+0016    | OP_RETURN
+Executing ... done.
 

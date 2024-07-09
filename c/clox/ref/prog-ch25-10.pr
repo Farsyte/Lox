@@ -10,6 +10,5 @@ outer();
 
 // This should print "assigned"
 ========
-src/vm.c:420: STUB Encountered in run
-
 ========
+assigned
