@@ -1,6 +1,6 @@
 
 Disassembling inner ...
-0000    4 OP_GET_GLOBAL       0 'x'
+0000    4 OP_GET_UPVALUE      0
 0002    | OP_PRINT
 0003    5 OP_NIL
 0004    | OP_RETURN
@@ -10,11 +10,12 @@ Disassembling inner ... done.
 Disassembling outer ...
 0000    2 OP_CONSTANT         0 '1'
 0002    5 OP_CLOSURE          1 <fn inner>
-0004    6 OP_GET_LOCAL        2
-0006    | OP_CALL             0
-0008    | OP_POP
-0009    7 OP_NIL
-0010    | OP_RETURN
+0004      | local 1
+0006    6 OP_GET_LOCAL        2
+0008    | OP_CALL             0
+0010    | OP_POP
+0011    7 OP_NIL
+0012    | OP_RETURN
 Disassembling outer ... done.
 
 

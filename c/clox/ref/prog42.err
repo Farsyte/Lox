@@ -1,4 +1,2 @@
+src/vm.c:414: STUB Encountered in run
 
-RUNTIME ERROR: Undefined variable 'i'.
-[line 6] in count()
-[line 13] in script

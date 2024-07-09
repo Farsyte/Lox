@@ -1,4 +1,2 @@
+src/vm.c:414: STUB Encountered in run
 
-RUNTIME ERROR: Undefined variable 'value'.
-[line 3] in closure()
-[line 10] in script

@@ -7,18 +7,20 @@ Disassembling inner ...
 Disassembling inner ... done.
 
 
+Disassembling middle ...
+0000    6 OP_CLOSURE          0 <fn inner>
+0002      | upvalue 0
+0004    7 OP_NIL
+0005    | OP_RETURN
+Disassembling middle ... done.
+
+
 Disassembling outer ...
 0000    2 OP_CONSTANT         0 '1'
-0002    3 OP_CONSTANT         1 '2'
-0004    | OP_SET_LOCAL        1
-0006    | OP_POP
-0007    6 OP_CLOSURE          2 <fn inner>
-0009      | local 1
-0011    7 OP_GET_LOCAL        2
-0013    | OP_CALL             0
-0015    | OP_POP
-0016    8 OP_NIL
-0017    | OP_RETURN
+0002    7 OP_CLOSURE          1 <fn middle>
+0004      | local 1
+0006    8 OP_NIL
+0007    | OP_RETURN
 Disassembling outer ... done.
 
 

@@ -59,7 +59,7 @@ struct Local {
 /** Upvalues
  */
 struct Upvalue {
-    uint8_t index;              ///< index into locals
+    uint8_t index;              ///< index into locals or upvalues
     bool isLocal;               ///< still resident in locals?
 };
 
@@ -507,9 +507,16 @@ resolveUpvalue (Compiler *compiler, Token *name)
 
     int local = resolveLocal (compiler->enclosing, name);
 
-    if (local == -1) {
+    if (local != -1) {
         return addUpvalue (compiler, (uint8_t) local, true);
     }
+
+    int upvalue = resolveUpvalue (compiler->enclosing, name);
+
+    if (upvalue != -1) {
+        return addUpvalue (compiler, (uint8_t) upvalue, false);
+    }
+
     return -1;
 }
 
@@ -983,6 +990,10 @@ function (FunctionType type)
     ObjFunction *function = endCompiler ();
 
     emitBytes (OP_CLOSURE, makeConstant (OBJ_VAL (function)));
+    for (int i = 0; i < function->upvalueCount; i++) {
+        emitByte (compiler.upvalues[i].isLocal ? 1 : 0);
+        emitByte (compiler.upvalues[i].index);
+    }
 }
 
 /** Compile a fun declaration to its own captive chunk.

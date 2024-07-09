@@ -1,11 +1,11 @@
 
 Disassembling first ...
 0000    2 OP_CONSTANT         0 '1'
-0002    3 OP_GET_UPVALUE      0
+0002    3 OP_GET_GLOBAL       1 'second'
 0004    | OP_CALL             0
 0006    | OP_POP
-0007    4 OP_CONSTANT         1 '2'
-0009    5 OP_GET_UPVALUE      0
+0007    4 OP_CONSTANT         2 '2'
+0009    5 OP_GET_GLOBAL       3 'second'
 0011    | OP_CALL             0
 0013    | OP_POP
 0014    6 OP_NIL
@@ -50,5 +50,44 @@ stack: <script> <fn first>
 stack: <script> <fn first>
 0000    2 OP_CONSTANT         0 '1'
 stack: <script> <fn first> 1
-0002    3 OP_GET_UPVALUE      0
+0002    3 OP_GET_GLOBAL       1 'second'
+stack: <script> <fn first> 1 <fn second>
+0004    | OP_CALL             0
+stack: <script> <fn first> 1 <fn second>
+0000    9 OP_CONSTANT         0 '3'
+stack: <script> <fn first> 1 <fn second> 3
+0002   10 OP_CONSTANT         1 '4'
+stack: <script> <fn first> 1 <fn second> 3 4
+0004   11 OP_NIL
+stack: <script> <fn first> 1 <fn second> 3 4 nil
+0005    | OP_RETURN
+stack: <script> <fn first> 1 nil
+0006    | OP_POP
+stack: <script> <fn first> 1
+0007    4 OP_CONSTANT         2 '2'
+stack: <script> <fn first> 1 2
+0009    5 OP_GET_GLOBAL       3 'second'
+stack: <script> <fn first> 1 2 <fn second>
+0011    | OP_CALL             0
+stack: <script> <fn first> 1 2 <fn second>
+0000    9 OP_CONSTANT         0 '3'
+stack: <script> <fn first> 1 2 <fn second> 3
+0002   10 OP_CONSTANT         1 '4'
+stack: <script> <fn first> 1 2 <fn second> 3 4
+0004   11 OP_NIL
+stack: <script> <fn first> 1 2 <fn second> 3 4 nil
+0005    | OP_RETURN
+stack: <script> <fn first> 1 2 nil
+0013    | OP_POP
+stack: <script> <fn first> 1 2
+0014    6 OP_NIL
+stack: <script> <fn first> 1 2 nil
+0015    | OP_RETURN
+stack: <script> nil
+0012    | OP_POP
+stack: <script>
+0013   14 OP_NIL
+stack: <script> nil
+0014    | OP_RETURN
+Executing ... done.
 

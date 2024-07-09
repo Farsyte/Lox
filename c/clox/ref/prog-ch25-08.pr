@@ -1,0 +1,27 @@
+fun outer() {
+    var x = "value";
+    fun middle() {
+	fun inner() {
+	    print x;
+	}
+	print "create inner closure";
+	return inner;
+    }
+    print "return from outer";
+    return middle;
+}
+
+var mid = outer();
+var in = mid();
+in();
+
+// We want this to print:
+//     return from outer
+//     create inner closure
+//     value
+========
+src/vm.c:414: STUB Encountered in run
+
+========
+return from outer
+create inner closure
