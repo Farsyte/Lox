@@ -72,25 +72,25 @@ clean::
 
 demo::          $(BIND)title
 	$P '  %-6s %s\n' "DEMO" "$(MAIN)"
-	$Q $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null || (echo 'BUILD OF "DEMO" FAILED'; cat $(LOGD)$(MAIN)--demo.err ; false)
+	$C $(PROG) --demo > $(LOGD)$(MAIN)--demo.out 2> $(LOGD)$(MAIN)--demo.err </dev/null || (echo 'BUILD OF "DEMO" FAILED'; cat $(LOGD)$(MAIN)--demo.err ; false)
 
 clean::         ; $X $(LOGD)$(MAIN)--demo.out $(LOGD)$(MAIN)--demo.err
 
 bist::          $(BIND)title
 	$P '  %-6s %s\n' "BIST" "$(MAIN)"
-	$Q $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null || (echo 'BUILD OF "BIST" FAILED'; cat $(LOGD)$(MAIN)--bist.err ; false)
+	$C $(PROG) --bist > $(LOGD)$(MAIN)--bist.out 2> $(LOGD)$(MAIN)--bist.err </dev/null || (echo 'BUILD OF "BIST" FAILED'; cat $(LOGD)$(MAIN)--bist.err ; false)
 
 clean::         ; $X $(LOGD)$(MAIN)--bist.out $(LOGD)$(MAIN)--bist.err
 
 repl::          $(BIND)title
 	$P '  %-6s %s\n' "REPL" "$(MAIN)"
-	$Q $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null || (echo 'BUILD OF "REPL" FAILED'; cat $(LOGD)$(MAIN)--repl.err ; false)
+	$C $(PROG) > $(LOGD)$(MAIN)--repl.out 2> $(LOGD)$(MAIN)--repl.err </dev/null || (echo 'BUILD OF "REPL" FAILED'; cat $(LOGD)$(MAIN)--repl.err ; false)
 
 clean::         ; $X $(LOGD)$(MAIN)--repl.out $(LOGD)$(MAIN)--repl.err
 
 help::          $(BIND)title
 	$P '  %-6s %s\n' "HELP" "$(MAIN)"
-	$Q $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null || (echo 'BUILD OF "HELP" FAILED'; cat $(LOGD)$(MAIN)--help.err ; false)
+	$C $(PROG) --help > $(LOGD)$(MAIN)--help.out 2> $(LOGD)$(MAIN)--help.err </dev/null || (echo 'BUILD OF "HELP" FAILED'; cat $(LOGD)$(MAIN)--help.err ; false)
 
 clean::         ; $X $(LOGD)$(MAIN)--help.out $(LOGD)$(MAIN)--help.err
 
