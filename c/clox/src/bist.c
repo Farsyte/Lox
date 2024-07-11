@@ -36,5 +36,6 @@ bistAll ()
     bistCompiler ();
     bistVM ();
 
+    freeVM ();
     exit (EX_OK);
 }

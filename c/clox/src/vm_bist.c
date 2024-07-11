@@ -18,6 +18,7 @@ bistVM ()
 {
     printf ("BIST: %s ...\n", "bistVM");
 
+    freeVM ();
     initVM ();
 
     // This is no longer true, as initVM uses the stack now.
@@ -57,6 +58,7 @@ bistVM ()
     }
 
     freeVM ();
+    initVM ();
 
     printf ("BIST: %s ... done.\n", "bistVM");
 }

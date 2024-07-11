@@ -108,11 +108,13 @@ defineNative (const char *name, NativeFn function)
 void
 initVM ()
 {
+    INVAR (!vmInitialized, "refused, VM is already initialized.");
+    vmInitialized = true;
+
     resetStack ();
     vm.objects = NULL;
     initTable (&vm.globals);
     initTable (&vm.strings);
-    vmInitialized = true;
     defineNative ("clock", clockNative);
 }
 
@@ -125,6 +127,7 @@ freeVM ()
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
     vmInitialized = false;
+
     freeTable (&vm.strings);
     freeTable (&vm.globals);
     freeObjects ();
