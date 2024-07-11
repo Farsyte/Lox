@@ -1,6 +1,7 @@
 #include "table.h"
 
 #include "object.h"
+#include "vm.h"
 
 #include <stdio.h>
 
@@ -23,16 +24,22 @@ bistTable ()
     INVAR (NULL == table.entries, "initTable should set entries to NULL.");
 
     ObjString *k1 = copyString ("k1", 3);
+
+    push (OBJ_VAL (k1));                // protect k1 from GC sweep
     bool k1b = tableSet (&table, k1, NUMBER_VAL (1.0));
 
     INVAR (k1b, "expecing true when adding k1");
 
     ObjString *k2 = copyString ("k2", 3);
+
+    push (OBJ_VAL (k2));                // protect k2 from GC sweep
     bool k2b = tableSet (&table, k2, NIL_VAL);
 
     INVAR (k2b, "expecing true when adding k2");
 
     ObjString *k3 = copyString ("k3", 3);
+
+    push (OBJ_VAL (k3));                // protect k3 from GC sweep
     bool k3b = tableSet (&table, k3, BOOL_VAL (true));
 
     INVAR (k3b, "expecing true when adding k3");
@@ -56,6 +63,8 @@ bistTable ()
     initTable (&table2);
 
     ObjString *k4 = copyString ("k4", 4);
+
+    push (OBJ_VAL (k4));                // protect k4 from GC sweep
     bool k4b = tableSet (&table2, k4, BOOL_VAL (true));
 
     INVAR (k4b, "expecing true when adding k4");
@@ -93,6 +102,11 @@ bistTable ()
     INVAR (0 == table2.count, "freeTable should set count to zero.");
     INVAR (0 == table2.capacity, "freeTable should set capacity to zero.");
     INVAR (NULL == table2.entries, "freeTable should set entries to NULL.");
+
+    pop ();
+    pop ();
+    pop ();
+    pop ();
 
     printf ("BIST: %s ... done.\n", "bistTable");
 }
