@@ -139,12 +139,14 @@ stack: <script> 3
 0004      | local 1
 -- gc begin
 heap_020 mark <script>
+heap_020 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_020 mark <script>
 heap_020 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -155,6 +157,7 @@ heap_022 allocate 40 for 0
 -- gc begin
 heap_020 mark <script>
 heap_022 mark <fn f>
+heap_020 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

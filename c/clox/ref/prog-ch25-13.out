@@ -350,6 +350,7 @@ stack: <script>
 0006   12 OP_CLOSURE          3 <fn main>
 -- gc begin
 heap_046 mark <script>
+heap_046 mark <script>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -373,6 +374,8 @@ stack: <script> <fn main> initial
 heap_046 mark <script>
 heap_047 mark <fn main>
 heap_022 mark initial
+heap_046 mark <script>
+heap_047 mark <fn main>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -386,6 +389,8 @@ heap_017 mark globalGet
 heap_046 mark <script>
 heap_047 mark <fn main>
 heap_022 mark initial
+heap_046 mark <script>
+heap_047 mark <fn main>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -401,6 +406,8 @@ heap_046 mark <script>
 heap_047 mark <fn main>
 heap_022 mark initial
 heap_049 mark <fn set>
+heap_046 mark <script>
+heap_047 mark <fn main>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -419,6 +426,8 @@ heap_046 mark <script>
 heap_047 mark <fn main>
 heap_022 mark initial
 heap_049 mark <fn set>
+heap_046 mark <script>
+heap_047 mark <fn main>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -433,6 +442,8 @@ heap_046 mark <script>
 heap_047 mark <fn main>
 heap_022 mark initial
 heap_049 mark <fn set>
+heap_046 mark <script>
+heap_047 mark <fn main>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>

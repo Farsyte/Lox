@@ -251,6 +251,7 @@ stack: <script>
 0000    6 OP_CLOSURE          1 <fn makeClosure>
 -- gc begin
 heap_033 mark <script>
+heap_033 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -272,6 +273,8 @@ stack: <script> <fn makeClosure> doughnut
 heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -283,6 +286,8 @@ heap_034 mark <fn makeClosure>
 heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -296,6 +301,8 @@ heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_036 mark <fn closure>
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -323,6 +330,8 @@ stack: <script> <fn makeClosure> bagel
 heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_029 mark bagel
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -336,6 +345,8 @@ heap_036 mark <fn closure>
 heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_029 mark bagel
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -351,6 +362,8 @@ heap_033 mark <script>
 heap_034 mark <fn makeClosure>
 heap_029 mark bagel
 heap_039 mark <fn closure>
+heap_033 mark <script>
+heap_034 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

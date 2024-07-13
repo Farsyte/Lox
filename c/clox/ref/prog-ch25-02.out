@@ -225,6 +225,7 @@ stack: <script>
 0000    7 OP_CLOSURE          1 <fn makeClosure>
 -- gc begin
 heap_031 mark <script>
+heap_031 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -246,6 +247,8 @@ stack: <script> <fn makeClosure> local
 heap_031 mark <script>
 heap_032 mark <fn makeClosure>
 heap_016 mark local
+heap_031 mark <script>
+heap_032 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -257,6 +260,8 @@ heap_032 mark <fn makeClosure>
 heap_031 mark <script>
 heap_032 mark <fn makeClosure>
 heap_016 mark local
+heap_031 mark <script>
+heap_032 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -270,6 +275,8 @@ heap_031 mark <script>
 heap_032 mark <fn makeClosure>
 heap_016 mark local
 heap_034 mark <fn closure>
+heap_031 mark <script>
+heap_032 mark <fn makeClosure>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

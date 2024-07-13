@@ -546,6 +546,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -562,6 +563,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -600,6 +602,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -616,6 +619,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -654,6 +658,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -670,6 +675,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -709,6 +715,7 @@ stack: <script> outer a outer b PASS: a =  outer a
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -724,6 +731,7 @@ heap_008 mark <native fn>
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -761,6 +769,7 @@ stack: <script> outer a outer b PASS: b =  outer b
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -797,6 +806,7 @@ stack: <script> outer a outer b PASS: c =  global c
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -835,6 +845,7 @@ stack: <script> PASS: a =  global a
 0184    | OP_ADD
 -- gc begin
 heap_058 mark <script>
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -847,6 +858,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_058 mark <script>
 heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -883,6 +895,7 @@ stack: <script> PASS: b =  global b
 0209    | OP_ADD
 -- gc begin
 heap_058 mark <script>
+heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -895,6 +908,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_058 mark <script>
 heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -930,6 +944,7 @@ stack: <script> PASS: c =
 stack: <script> PASS: c =  global c
 0234    | OP_ADD
 -- gc begin
+heap_058 mark <script>
 heap_058 mark <script>
 heap_019 mark b
 heap_021 mark global b

@@ -205,6 +205,7 @@ stack: <script> beignets  with
 0012    | OP_ADD
 -- gc begin
 heap_029 mark <script>
+heap_029 mark <script>
 heap_012 mark breakfast
 heap_015 mark beignets
 heap_002 mark clock
@@ -215,6 +216,7 @@ heap_019 mark beverage
 heap_021 mark café au lait
 -- gc end
 -- gc begin
+heap_029 mark <script>
 heap_029 mark <script>
 heap_012 mark breakfast
 heap_015 mark beignets
@@ -232,6 +234,7 @@ stack: <script> beignets with  café au lait
 0015    | OP_ADD
 -- gc begin
 heap_029 mark <script>
+heap_029 mark <script>
 heap_012 mark breakfast
 heap_015 mark beignets
 heap_002 mark clock
@@ -242,6 +245,7 @@ heap_019 mark beverage
 heap_021 mark café au lait
 -- gc end
 -- gc begin
+heap_029 mark <script>
 heap_029 mark <script>
 heap_012 mark breakfast
 heap_015 mark beignets

@@ -251,6 +251,7 @@ stack: <script>
 0000   10 OP_CLOSURE          1 <fn makeCounter>
 -- gc begin
 heap_033 mark <script>
+heap_033 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -271,6 +272,8 @@ stack: <script> <fn makeCounter> 0
 -- gc begin
 heap_033 mark <script>
 heap_034 mark <fn makeCounter>
+heap_033 mark <script>
+heap_034 mark <fn makeCounter>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -279,6 +282,8 @@ heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
 -- gc end
 -- gc begin
+heap_033 mark <script>
+heap_034 mark <fn makeCounter>
 heap_033 mark <script>
 heap_034 mark <fn makeCounter>
 heap_002 mark clock
@@ -293,6 +298,8 @@ heap_036 allocate 40 for 0
 heap_033 mark <script>
 heap_034 mark <fn makeCounter>
 heap_036 mark <fn count>
+heap_033 mark <script>
+heap_034 mark <fn makeCounter>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

@@ -238,6 +238,7 @@ stack: <script>
 0000    8 OP_CLOSURE          1 <fn outer>
 -- gc begin
 heap_033 mark <script>
+heap_033 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -259,6 +260,8 @@ stack: <script> <fn outer> outside
 heap_033 mark <script>
 heap_034 mark <fn outer>
 heap_016 mark outside
+heap_033 mark <script>
+heap_034 mark <fn outer>
 heap_012 mark outer
 heap_034 mark <fn outer>
 heap_002 mark clock
@@ -270,6 +273,8 @@ heap_008 mark <native fn>
 heap_033 mark <script>
 heap_034 mark <fn outer>
 heap_016 mark outside
+heap_033 mark <script>
+heap_034 mark <fn outer>
 heap_012 mark outer
 heap_034 mark <fn outer>
 heap_002 mark clock
@@ -283,6 +288,8 @@ heap_033 mark <script>
 heap_034 mark <fn outer>
 heap_016 mark outside
 heap_036 mark <fn inner>
+heap_033 mark <script>
+heap_034 mark <fn outer>
 heap_012 mark outer
 heap_034 mark <fn outer>
 heap_002 mark clock

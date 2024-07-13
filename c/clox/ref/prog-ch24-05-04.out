@@ -155,6 +155,7 @@ stack: <script>
 0000    4 OP_CLOSURE          1 <fn noReturn>
 -- gc begin
 heap_022 mark <script>
+heap_022 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

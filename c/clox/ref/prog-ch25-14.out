@@ -241,12 +241,14 @@ stack: <script> 1
 0004      | local 1
 -- gc begin
 heap_032 mark <script>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_032 mark <script>
 heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -257,6 +259,7 @@ heap_034 allocate 40 for 0
 -- gc begin
 heap_032 mark <script>
 heap_034 mark <fn f>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -271,6 +274,7 @@ stack: <script> 1 <fn f> 2
 -- gc begin
 heap_032 mark <script>
 heap_034 mark <fn f>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -279,6 +283,7 @@ heap_008 mark <native fn>
 -- gc begin
 heap_032 mark <script>
 heap_034 mark <fn f>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -289,6 +294,7 @@ heap_037 allocate 40 for 0
 heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -304,6 +310,7 @@ stack: <script> 1 <fn f> 2 <fn g> 3
 heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -313,6 +320,7 @@ heap_008 mark <native fn>
 heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -324,6 +332,7 @@ heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
 heap_040 mark <fn h>
+heap_032 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

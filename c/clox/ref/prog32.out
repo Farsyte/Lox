@@ -661,6 +661,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -677,6 +678,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -698,6 +700,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -714,6 +717,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -735,6 +739,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -751,6 +756,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -772,6 +778,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -788,6 +795,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -809,6 +817,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -825,6 +834,7 @@ heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -884,6 +894,7 @@ stack: <script> outer a outer b PASS: a =  outer a
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -899,6 +910,7 @@ heap_008 mark <native fn>
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -919,6 +931,7 @@ stack: <script> outer a outer b PASS: a = outer a , b =
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -934,6 +947,7 @@ heap_008 mark <native fn>
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -954,6 +968,7 @@ stack: <script> outer a outer b PASS: a = outer a, b =  outer b
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -969,6 +984,7 @@ heap_008 mark <native fn>
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -989,6 +1005,7 @@ stack: <script> outer a outer b PASS: a = outer a, b = outer b , c =
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1004,6 +1021,7 @@ heap_008 mark <native fn>
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1020,6 +1038,7 @@ heap_077 allocate 40 for 3
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1039,6 +1058,7 @@ stack: <script> outer a outer b PASS: a = outer a, b = outer b, c =  global c
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1054,6 +1074,7 @@ heap_008 mark <native fn>
 heap_059 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1113,6 +1134,7 @@ stack: <script> PASS: a =  global a
 0302    | OP_ADD
 -- gc begin
 heap_059 mark <script>
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1125,6 +1147,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -1144,6 +1167,7 @@ stack: <script> PASS: a = global a , b =
 0305    | OP_ADD
 -- gc begin
 heap_059 mark <script>
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1156,6 +1180,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -1175,6 +1200,7 @@ stack: <script> PASS: a = global a, b =  global b
 0308    | OP_ADD
 -- gc begin
 heap_059 mark <script>
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1187,6 +1213,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -1206,6 +1233,7 @@ stack: <script> PASS: a = global a, b = global b , c =
 0311    | OP_ADD
 -- gc begin
 heap_059 mark <script>
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1218,6 +1246,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
@@ -1237,6 +1266,7 @@ stack: <script> PASS: a = global a, b = global b, c =  global c
 0314    | OP_ADD
 -- gc begin
 heap_059 mark <script>
+heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1249,6 +1279,7 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 heap_059 mark <script>
 heap_019 mark b
 heap_021 mark global b

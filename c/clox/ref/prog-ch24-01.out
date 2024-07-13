@@ -208,6 +208,7 @@ stack: <script>
 0000    6 OP_CLOSURE          1 <fn first>
 -- gc begin
 heap_028 mark <script>
+heap_028 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -219,6 +220,7 @@ stack: <script> <fn first>
 stack: <script>
 0004   11 OP_CLOSURE          3 <fn second>
 -- gc begin
+heap_028 mark <script>
 heap_028 mark <script>
 heap_012 mark first
 heap_029 mark <fn first>

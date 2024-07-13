@@ -204,6 +204,7 @@ stack: <script>
 0004    5 OP_CLOSURE          2 <fn showA>
 -- gc begin
 heap_029 mark <script>
+heap_029 mark <script>
 heap_012 mark a
 heap_015 mark global
 heap_002 mark clock

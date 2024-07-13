@@ -232,6 +232,9 @@ markRoots ()
     for (Value *slot = vm.stack; slot < vm.sp; slot++) {
         markValue (*slot);
     }
+    for (int i = 0; i < vm.frameCount; i++) {
+        markObject ((Obj *) vm.frames[i].closure);
+    }
     markTable (&vm.globals);
 }
 

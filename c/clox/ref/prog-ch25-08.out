@@ -350,6 +350,7 @@ stack: <script>
 0000   12 OP_CLOSURE          1 <fn outer>
 -- gc begin
 heap_047 mark <script>
+heap_047 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -371,6 +372,8 @@ stack: <script> <fn outer> value
 heap_047 mark <script>
 heap_048 mark <fn outer>
 heap_016 mark value
+heap_047 mark <script>
+heap_048 mark <fn outer>
 heap_012 mark outer
 heap_048 mark <fn outer>
 heap_002 mark clock
@@ -382,6 +385,8 @@ heap_008 mark <native fn>
 heap_047 mark <script>
 heap_048 mark <fn outer>
 heap_016 mark value
+heap_047 mark <script>
+heap_048 mark <fn outer>
 heap_012 mark outer
 heap_048 mark <fn outer>
 heap_002 mark clock
@@ -395,6 +400,8 @@ heap_047 mark <script>
 heap_048 mark <fn outer>
 heap_016 mark value
 heap_050 mark <fn middle>
+heap_047 mark <script>
+heap_048 mark <fn outer>
 heap_012 mark outer
 heap_048 mark <fn outer>
 heap_002 mark clock
@@ -424,6 +431,8 @@ stack: <script> <fn middle>
 -- gc begin
 heap_047 mark <script>
 heap_050 mark <fn middle>
+heap_047 mark <script>
+heap_050 mark <fn middle>
 heap_041 mark mid
 heap_050 mark <fn middle>
 heap_012 mark outer
@@ -434,6 +443,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_047 mark <script>
+heap_050 mark <fn middle>
 heap_047 mark <script>
 heap_050 mark <fn middle>
 heap_041 mark mid
