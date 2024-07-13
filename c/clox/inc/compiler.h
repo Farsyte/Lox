@@ -7,7 +7,8 @@
  * @brief API exposed by the COMPILER module
  */
 
-ObjFunction *compile (const char *source);
+extern ObjFunction *compile (const char *source);
+extern void markCompilerRoots ();
 
 void bistCompiler ();
 void postCompiler ();

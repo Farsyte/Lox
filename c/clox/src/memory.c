@@ -1,5 +1,6 @@
 #include "memory.h"
 
+#include "compiler.h"
 #include "debug.h"
 #include "object.h"
 #include "vm.h"
@@ -239,6 +240,7 @@ markRoots ()
         markObject ((Obj *) upvalue);
     }
     markTable (&vm.globals);
+    markCompilerRoots ();
 }
 
 /** Run the Mark-Sweep Garbage Collector
