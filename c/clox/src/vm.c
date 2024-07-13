@@ -141,6 +141,11 @@ initVM ()
     vm.grayCapacity = 0;
     vm.grayStack = NULL;
 
+#ifdef DEBUG_FREELESS_GC
+    vm.unfree = NULL;
+    vm.unfree_link = &vm.unfree;
+#endif
+
     initTable (&vm.globals);
     initTable (&vm.strings);
     defineNative ("clock", clockNative);
@@ -160,6 +165,10 @@ freeVM ()
     freeTable (&vm.strings);
     freeTable (&vm.globals);
     freeObjects ();
+
+#ifdef DEBUG_FREELESS_GC
+    freeUnfree ();
+#endif
 }
 
 /** Push a value onto the VM stack.

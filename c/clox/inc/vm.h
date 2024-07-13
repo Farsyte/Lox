@@ -39,6 +39,10 @@ struct VM {
     int grayCapacity;           ///< capacity of the gray item list
     Obj **grayStack;            ///< extensable array of gray items
 
+#ifdef DEBUG_FREELESS_GC
+    Obj *unfree;                ///< linked list (FIFO) of sweept objects
+    Obj **unfree_link;          ///< tail pointer for FIFO operations
+#endif
 };
 
 /** Interpreter result

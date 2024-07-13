@@ -300,6 +300,26 @@ freeObject (Obj *object)
     UNREACHABLE ("corrupted object type");
 }
 
+/** Free the objects that sweep did not free.
+ */
+void
+freeUnfree ()
+{
+#ifdef DEBUG_FREELESS_GC
+    *vm.unfree_link = NULL;
+    Obj *obj = vm.unfree;
+
+    while (obj != NULL) {
+        Obj *next = obj->next;
+
+        freeObject (obj);
+        obj = next;
+    }
+    vm.unfree = NULL;
+    vm.unfree_link = &vm.unfree;
+#endif
+}
+
 /** Assure all "roots" are marked as reachable.
  */
 static void
@@ -330,6 +350,34 @@ traceReferences ()
     }
 }
 
+/** Sweep up all of the unreachable objects.
+ */
+static void
+sweep ()
+{
+    Obj **link = &vm.objects;
+
+    for (;;) {
+        Obj *object = *link;
+
+        if (NULL == object)
+            break;
+
+        if (object->isMarked) {
+            link = &object->next;
+            continue;
+        }
+#ifndef DEBUG_FREELESS_GC
+        freeObject (unreached);
+#else
+        *link = object->next;
+        object->next = NULL;
+        *vm.unfree_link = object;
+        vm.unfree_link = &object->next;
+#endif
+    }
+}
+
 /** Run the Mark-Sweep Garbage Collector
  */
 void
@@ -341,6 +389,7 @@ collectGarbage ()
 
     markRoots ();
     traceReferences ();
+    sweep ();
 
 #ifdef DEBUG_LOG_GC
     printf ("-- gc end\n");

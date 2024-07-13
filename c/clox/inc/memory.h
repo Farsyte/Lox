@@ -32,6 +32,7 @@ extern const char *printableHeapAddr (void *ptr);
 extern void *reallocate (void *pointer, size_t oldSize, size_t newSize);
 extern void markObject (Obj *object);
 extern void markValue (Value value);
+extern void freeUnfree ();
 extern void collectGarbage ();
 extern void freeObjects ();
 

@@ -670,20 +670,6 @@ stack: <script> nil
 Executing ... done.
 
 heap_090 free type 3
-heap_088 free type 3
-heap_086 free type 3
-heap_084 free type 3
-heap_082 free type 3
-heap_080 free type 3
-heap_077 free type 3
-heap_075 free type 3
-heap_073 free type 3
-heap_071 free type 3
-heap_069 free type 3
-heap_067 free type 3
-heap_065 free type 3
-heap_063 free type 3
-heap_061 free type 3
 heap_059 free type 0
 heap_052 free type 3
 heap_050 free type 3
@@ -704,3 +690,17 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
+heap_061 free type 3
+heap_063 free type 3
+heap_065 free type 3
+heap_067 free type 3
+heap_069 free type 3
+heap_071 free type 3
+heap_073 free type 3
+heap_075 free type 3
+heap_077 free type 3
+heap_080 free type 3
+heap_082 free type 3
+heap_084 free type 3
+heap_086 free type 3
+heap_088 free type 3

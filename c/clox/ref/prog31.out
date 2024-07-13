@@ -557,14 +557,7 @@ stack: <script> nil
 0247    | OP_RETURN
 Executing ... done.
 
-heap_072 free type 3
-heap_070 free type 3
-heap_066 free type 3
-heap_064 free type 3
-heap_062 free type 3
-heap_060 free type 3
 heap_058 free type 0
-heap_054 free type 3
 heap_052 free type 3
 heap_047 free type 3
 heap_045 free type 3
@@ -584,3 +577,10 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
+heap_054 free type 3
+heap_060 free type 3
+heap_062 free type 3
+heap_064 free type 3
+heap_066 free type 3
+heap_070 free type 3
+heap_072 free type 3
