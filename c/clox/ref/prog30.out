@@ -1,3 +1,81 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    3 OP_CONSTANT         1 'global a'
@@ -34,6 +112,8 @@ Disassembling <script> ...
 0049    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>

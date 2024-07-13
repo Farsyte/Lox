@@ -1,3 +1,71 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling set ...
 0000    7 OP_CONSTANT         0 'updated'
@@ -7,6 +75,16 @@ Disassembling set ...
 0006    | OP_RETURN
 Disassembling set ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling get ...
 0000    8 OP_GET_UPVALUE      0
@@ -15,6 +93,14 @@ Disassembling get ...
 0004    | OP_RETURN
 Disassembling get ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling main ...
 0000    5 OP_CONSTANT         0 'initial'
@@ -32,6 +118,14 @@ Disassembling main ...
 0021    | OP_RETURN
 Disassembling main ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_NIL
@@ -53,6 +147,8 @@ Disassembling <script> ...
 0026    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -65,6 +161,8 @@ stack: <script> nil
 0004    | OP_DEFINE_GLOBAL    1 'globalGet'
 stack: <script>
 0006   12 OP_CLOSURE          3 <fn main>
+-- gc begin
+-- gc end
 stack: <script> <fn main>
 0008    | OP_DEFINE_GLOBAL    2 'main'
 stack: <script>
@@ -76,9 +174,19 @@ stack: <script> <fn main>
 stack: <script> <fn main> initial
 0002    7 OP_CLOSURE          1 <fn set>
 0004      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn main> initial <fn set>
 0006    8 OP_CLOSURE          2 <fn get>
 0008      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn main> initial <fn set> <fn get>
 0010   10 OP_GET_LOCAL        2
 stack: <script> <fn main> initial <fn set> <fn get> <fn set>

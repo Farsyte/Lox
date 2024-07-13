@@ -1,3 +1,41 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling closure ...
 0000    3 OP_GET_UPVALUE      0
@@ -6,6 +44,16 @@ Disassembling closure ...
 0004    | OP_RETURN
 Disassembling closure ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling makeClosure ...
 0000    4 OP_CLOSURE          0 <fn closure>
@@ -16,6 +64,28 @@ Disassembling makeClosure ...
 0008    | OP_RETURN
 Disassembling makeClosure ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    6 OP_CLOSURE          1 <fn makeClosure>
@@ -38,10 +108,14 @@ Disassembling <script> ...
 0031    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    6 OP_CLOSURE          1 <fn makeClosure>
+-- gc begin
+-- gc end
 stack: <script> <fn makeClosure>
 0002    | OP_DEFINE_GLOBAL    0 'makeClosure'
 stack: <script>
@@ -53,6 +127,12 @@ stack: <script> <fn makeClosure> doughnut
 stack: <script> <fn makeClosure> doughnut
 0000    4 OP_CLOSURE          0 <fn closure>
 0002      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn makeClosure> doughnut <fn closure>
 0004    5 OP_GET_LOCAL        2
 stack: <script> <fn makeClosure> doughnut <fn closure> <fn closure>
@@ -68,6 +148,12 @@ stack: <script> <fn makeClosure> bagel
 stack: <script> <fn makeClosure> bagel
 0000    4 OP_CLOSURE          0 <fn closure>
 0002      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn makeClosure> bagel <fn closure>
 0004    5 OP_GET_LOCAL        2
 stack: <script> <fn makeClosure> bagel <fn closure> <fn closure>

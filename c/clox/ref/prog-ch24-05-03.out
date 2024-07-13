@@ -1,3 +1,41 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling a ...
 0000    1 OP_GET_GLOBAL       0 'b'
@@ -7,6 +45,22 @@ Disassembling a ...
 0006    | OP_RETURN
 Disassembling a ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling b ...
 0000    2 OP_GET_GLOBAL       0 'c'
@@ -16,6 +70,28 @@ Disassembling b ...
 0006    | OP_RETURN
 Disassembling b ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling c ...
 0000    4 OP_GET_GLOBAL       0 'c'
@@ -27,6 +103,14 @@ Disassembling c ...
 0010    | OP_RETURN
 Disassembling c ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CLOSURE          1 <fn a>
@@ -42,18 +126,26 @@ Disassembling <script> ...
 0018    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    1 OP_CLOSURE          1 <fn a>
+-- gc begin
+-- gc end
 stack: <script> <fn a>
 0002    | OP_DEFINE_GLOBAL    0 'a'
 stack: <script>
 0004    2 OP_CLOSURE          3 <fn b>
+-- gc begin
+-- gc end
 stack: <script> <fn b>
 0006    | OP_DEFINE_GLOBAL    2 'b'
 stack: <script>
 0008    5 OP_CLOSURE          5 <fn c>
+-- gc begin
+-- gc end
 stack: <script> <fn c>
 0010    | OP_DEFINE_GLOBAL    4 'c'
 stack: <script>

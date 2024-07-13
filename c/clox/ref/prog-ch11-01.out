@@ -1,3 +1,49 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling showA ...
 0000    4 OP_GET_GLOBAL       0 'a'
@@ -6,6 +52,18 @@ Disassembling showA ...
 0004    | OP_RETURN
 Disassembling showA ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CONSTANT         1 'global'
@@ -24,6 +82,8 @@ Disassembling <script> ...
 0021    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -32,6 +92,8 @@ stack: <script> global
 0002    | OP_DEFINE_GLOBAL    0 'a'
 stack: <script>
 0004    5 OP_CLOSURE          2 <fn showA>
+-- gc begin
+-- gc end
 stack: <script> <fn showA>
 0006    7 OP_GET_LOCAL        1
 stack: <script> <fn showA> <fn showA>

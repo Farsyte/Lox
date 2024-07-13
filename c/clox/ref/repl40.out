@@ -1,3 +1,57 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling sayHi ...
 0000    1 OP_CONSTANT         0 'Hi, '
@@ -14,6 +68,24 @@ Disassembling sayHi ...
 0016    | OP_RETURN
 Disassembling sayHi ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CLOSURE          1 <fn sayHi>
@@ -27,10 +99,14 @@ Disassembling <script> ...
 0014    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    1 OP_CLOSURE          1 <fn sayHi>
+-- gc begin
+-- gc end
 stack: <script> <fn sayHi>
 0002    | OP_DEFINE_GLOBAL    0 'sayHi'
 stack: <script>
@@ -47,18 +123,34 @@ stack: <script> <fn sayHi> Dear Reader Hi,
 0002    | OP_GET_LOCAL        1
 stack: <script> <fn sayHi> Dear Reader Hi,  Dear
 0004    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn sayHi> Dear Reader Hi, Dear
 0005    | OP_CONSTANT         1 ' '
 stack: <script> <fn sayHi> Dear Reader Hi, Dear  
 0007    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn sayHi> Dear Reader Hi, Dear 
 0008    | OP_GET_LOCAL        2
 stack: <script> <fn sayHi> Dear Reader Hi, Dear  Reader
 0010    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader
 0011    | OP_CONSTANT         2 '!'
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader !
 0013    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader!
 0014    | OP_PRINT
 Hi, Dear Reader!

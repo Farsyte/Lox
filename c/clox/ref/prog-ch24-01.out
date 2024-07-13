@@ -1,3 +1,45 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling first ...
 0000    2 OP_CONSTANT         0 '1'
@@ -12,6 +54,18 @@ Disassembling first ...
 0015    | OP_RETURN
 Disassembling first ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling second ...
 0000    9 OP_CONSTANT         0 '3'
@@ -20,6 +74,10 @@ Disassembling second ...
 0005    | OP_RETURN
 Disassembling second ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    6 OP_CLOSURE          1 <fn first>
@@ -33,14 +91,20 @@ Disassembling <script> ...
 0014    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    6 OP_CLOSURE          1 <fn first>
+-- gc begin
+-- gc end
 stack: <script> <fn first>
 0002    | OP_DEFINE_GLOBAL    0 'first'
 stack: <script>
 0004   11 OP_CLOSURE          3 <fn second>
+-- gc begin
+-- gc end
 stack: <script> <fn second>
 0006    | OP_DEFINE_GLOBAL    2 'second'
 stack: <script>

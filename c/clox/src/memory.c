@@ -1,5 +1,6 @@
 #include "memory.h"
 
+#include "debug.h"
 #include "object.h"
 #include "vm.h"
 
@@ -105,7 +106,13 @@ freeObject (Obj *object)
 void
 collectGarbage ()
 {
+#ifdef DEBUG_LOG_GC
+    printf ("-- gc begin\n");
+#endif
     // will have code soon
+#ifdef DEBUG_LOG_GC
+    printf ("-- gc end\n");
+#endif
 }
 
 /** Free all Objects.

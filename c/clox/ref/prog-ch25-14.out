@@ -1,3 +1,39 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling f ...
 0000    4 OP_GET_UPVALUE      0
@@ -6,6 +42,16 @@ Disassembling f ...
 0004    | OP_RETURN
 Disassembling f ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling g ...
 0000    8 OP_GET_UPVALUE      0
@@ -14,6 +60,20 @@ Disassembling g ...
 0004    | OP_RETURN
 Disassembling g ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling h ...
 0000   12 OP_GET_UPVALUE      0
@@ -22,6 +82,10 @@ Disassembling h ...
 0004    | OP_RETURN
 Disassembling h ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    2 OP_CONSTANT         0 '1'
@@ -43,6 +107,8 @@ Disassembling <script> ...
 0025    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -50,16 +116,34 @@ stack: <script>
 stack: <script> 1
 0002    5 OP_CLOSURE          1 <fn f>
 0004      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> 1 <fn f>
 0006    6 OP_CONSTANT         2 '2'
 stack: <script> 1 <fn f> 2
 0008    9 OP_CLOSURE          3 <fn g>
 0010      | local 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> 1 <fn f> 2 <fn g>
 0012   10 OP_CONSTANT         4 '3'
 stack: <script> 1 <fn f> 2 <fn g> 3
 0014   13 OP_CLOSURE          5 <fn h>
 0016      | local 5
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> 1 <fn f> 2 <fn g> 3 <fn h>
 0018   14 OP_POP
 stack: <script> 1 <fn f> 2 <fn g> 3

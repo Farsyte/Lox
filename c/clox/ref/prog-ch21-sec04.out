@@ -1,3 +1,61 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CONSTANT         1 'beignets'
@@ -17,6 +75,8 @@ Disassembling <script> ...
 0023    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -33,10 +93,18 @@ stack: <script> beignets
 0010    | OP_CONSTANT         6 ' with '
 stack: <script> beignets  with 
 0012    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> beignets with 
 0013    | OP_GET_GLOBAL       7 'beverage'
 stack: <script> beignets with  café au lait
 0015    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> beignets with café au lait
 0016    | OP_SET_GLOBAL       4 'breakfast'
 stack: <script> beignets with café au lait

@@ -1,19 +1,133 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistMemory ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistMemory ... done.
 BIST: bistChunk ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistChunk ... done.
 BIST: bistValue ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistValue ... done.
 BIST: bistTable ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistTable ... done.
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 object exists at top of test: '<native fn>'
 object exists at top of test: 'gc'
 object exists at top of test: '<native fn>'
 object exists at top of test: 'clock'
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 valString prints as 'testObject'
+-- gc begin
+-- gc end
 valNative prints as '<native fn>'
+-- gc begin
+-- gc end
 valFunction prints as '<script>'
+-- gc begin
+-- gc end
 valClosure prints as '<script>'
+-- gc begin
+-- gc end
 valUpvalue prints as '<upvalue>'
 popped '<upvalue>'
 popped '<script>'
@@ -29,9 +143,37 @@ object exists at end of test: '<native fn>'
 object exists at end of test: 'gc'
 object exists at end of test: '<native fn>'
 object exists at end of test: 'clock'
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CONSTANT         0 '1'
@@ -48,6 +190,34 @@ Disassembling <script> ... done.
 
 BIST: bistCompiler ... done.
 BIST: bistVM ...
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    1 OP_CONSTANT         0 '1'
@@ -62,6 +232,8 @@ Disassembling <script> ...
 0013    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -88,4 +260,20 @@ stack: <script> nil
 0013    | OP_RETURN
 Executing ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 BIST: bistVM ... done.

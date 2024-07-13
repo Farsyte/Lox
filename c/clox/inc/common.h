@@ -25,5 +25,8 @@
 /** Enable (or disable) stressing the GC */
 #define DEBUG_STRESS_GC
 
+/** Enable (or disable) debug logging in the GC */
+#define DEBUG_LOG_GC
+
 /** Number of distinct uint8_t values */
 #define UINT8_COUNT (UINT8_MAX + 1)

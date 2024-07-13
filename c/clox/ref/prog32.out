@@ -1,3 +1,121 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    3 OP_CONSTANT         1 'global a'
@@ -241,6 +359,8 @@ Disassembling <script> ...
 0397    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -297,22 +417,42 @@ stack: <script> outer a outer b inner a PASS: a =
 0047    | OP_GET_LOCAL        3
 stack: <script> outer a outer b inner a PASS: a =  inner a
 0049    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b inner a PASS: a = inner a
 0050    | OP_CONSTANT        14 ', b = '
 stack: <script> outer a outer b inner a PASS: a = inner a , b = 
 0052    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b inner a PASS: a = inner a, b = 
 0053    | OP_GET_LOCAL        2
 stack: <script> outer a outer b inner a PASS: a = inner a, b =  outer b
 0055    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b
 0056    | OP_CONSTANT        15 ', c = '
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b , c = 
 0058    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = 
 0059    | OP_GET_GLOBAL      16 'c'
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c =  global c
 0061    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = global c
 0062    | OP_PRINT
 PASS: a = inner a, b = outer b, c = global c
@@ -356,22 +496,44 @@ stack: <script> outer a outer b PASS: a =
 0173    | OP_GET_LOCAL        1
 stack: <script> outer a outer b PASS: a =  outer a
 0175    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b PASS: a = outer a
 0176    | OP_CONSTANT        34 ', b = '
 stack: <script> outer a outer b PASS: a = outer a , b = 
 0178    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = 
 0179    | OP_GET_LOCAL        2
 stack: <script> outer a outer b PASS: a = outer a, b =  outer b
 0181    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = outer b
 0182    | OP_CONSTANT        35 ', c = '
 stack: <script> outer a outer b PASS: a = outer a, b = outer b , c = 
 0184    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = 
 0185    | OP_GET_GLOBAL      36 'c'
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c =  global c
 0187    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = global c
 0188    | OP_PRINT
 PASS: a = outer a, b = outer b, c = global c
@@ -417,22 +579,42 @@ stack: <script> PASS: a =
 0300    | OP_GET_GLOBAL      56 'a'
 stack: <script> PASS: a =  global a
 0302    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> PASS: a = global a
 0303    | OP_CONSTANT        57 ', b = '
 stack: <script> PASS: a = global a , b = 
 0305    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> PASS: a = global a, b = 
 0306    | OP_GET_GLOBAL      58 'b'
 stack: <script> PASS: a = global a, b =  global b
 0308    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> PASS: a = global a, b = global b
 0309    | OP_CONSTANT        59 ', c = '
 stack: <script> PASS: a = global a, b = global b , c = 
 0311    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> PASS: a = global a, b = global b, c = 
 0312    | OP_GET_GLOBAL      60 'c'
 stack: <script> PASS: a = global a, b = global b, c =  global c
 0314    | OP_ADD
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> PASS: a = global a, b = global b, c = global c
 0315    | OP_PRINT
 PASS: a = global a, b = global b, c = global c

@@ -1,3 +1,41 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling areWeHavingItYet ...
 0000    2 OP_GET_LOCAL        1
@@ -8,6 +46,14 @@ Disassembling areWeHavingItYet ...
 0007    | OP_RETURN
 Disassembling areWeHavingItYet ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    4 OP_CLOSURE          1 <fn areWeHavingItYet>
@@ -18,10 +64,14 @@ Disassembling <script> ...
 0008    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    4 OP_CLOSURE          1 <fn areWeHavingItYet>
+-- gc begin
+-- gc end
 stack: <script> <fn areWeHavingItYet>
 0002    | OP_DEFINE_GLOBAL    0 'areWeHavingItYet'
 stack: <script>

@@ -1,3 +1,39 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling sum ...
 0000    2 OP_GET_LOCAL        1
@@ -10,6 +46,18 @@ Disassembling sum ...
 0010    | OP_RETURN
 Disassembling sum ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    3 OP_CLOSURE          1 <fn sum>
@@ -26,10 +74,14 @@ Disassembling <script> ...
 0019    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    3 OP_CLOSURE          1 <fn sum>
+-- gc begin
+-- gc end
 stack: <script> <fn sum>
 0002    | OP_DEFINE_GLOBAL    0 'sum'
 stack: <script>

@@ -1,3 +1,51 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling inner ...
 0000    4 OP_GET_UPVALUE      0
@@ -6,6 +54,10 @@ Disassembling inner ...
 0004    | OP_RETURN
 Disassembling inner ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling outer ...
 0000    2 OP_CONSTANT         0 'outside'
@@ -17,6 +69,22 @@ Disassembling outer ...
 0010    | OP_RETURN
 Disassembling outer ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    8 OP_CLOSURE          1 <fn outer>
@@ -31,10 +99,14 @@ Disassembling <script> ...
 0016    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
 0000    8 OP_CLOSURE          1 <fn outer>
+-- gc begin
+-- gc end
 stack: <script> <fn outer>
 0002    | OP_DEFINE_GLOBAL    0 'outer'
 stack: <script>
@@ -46,6 +118,12 @@ stack: <script> <fn outer>
 stack: <script> <fn outer> outside
 0002    5 OP_CLOSURE          1 <fn inner>
 0004      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> <fn outer> outside <fn inner>
 0006    7 OP_GET_LOCAL        2
 stack: <script> <fn outer> outside <fn inner> <fn inner>

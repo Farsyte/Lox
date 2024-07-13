@@ -1,3 +1,39 @@
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling f ...
 0000    4 OP_GET_UPVALUE      0
@@ -6,6 +42,10 @@ Disassembling f ...
 0004    | OP_RETURN
 Disassembling f ... done.
 
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 
 Disassembling <script> ...
 0000    2 OP_CONSTANT         0 '3'
@@ -17,6 +57,8 @@ Disassembling <script> ...
 0009    | OP_RETURN
 Disassembling <script> ... done.
 
+-- gc begin
+-- gc end
 
 Executing ...
 stack: <script>
@@ -24,6 +66,12 @@ stack: <script>
 stack: <script> 3
 0002    5 OP_CLOSURE          1 <fn f>
 0004      | local 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
 stack: <script> 3 <fn f>
 0006    6 OP_POP
 stack: <script> 3
