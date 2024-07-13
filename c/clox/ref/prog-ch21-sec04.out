@@ -6,9 +6,12 @@ heap_002 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_002 mark clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -16,6 +19,7 @@ heap_004 allocate 24 for 2
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
+heap_007 mark gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -86,6 +90,7 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_010 mark <script>
 -- gc end
 heap_029 allocate 40 for 0
 
@@ -105,8 +110,10 @@ stack: <script> beignets
 stack: <script> beignets  with 
 0012    | OP_ADD
 -- gc begin
+heap_029 mark <script>
 -- gc end
 -- gc begin
+heap_029 mark <script>
 -- gc end
 heap_031 allocate 40 for 3
 stack: <script> beignets with 
@@ -114,8 +121,10 @@ stack: <script> beignets with
 stack: <script> beignets with  café au lait
 0015    | OP_ADD
 -- gc begin
+heap_029 mark <script>
 -- gc end
 -- gc begin
+heap_029 mark <script>
 -- gc end
 heap_033 allocate 40 for 3
 stack: <script> beignets with café au lait

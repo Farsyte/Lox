@@ -6,9 +6,12 @@ heap_002 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_002 mark clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -16,6 +19,7 @@ heap_004 allocate 24 for 2
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
+heap_007 mark gc
 -- gc end
 heap_008 allocate 24 for 2
 BIST: bistMemory ...
@@ -81,23 +85,40 @@ BIST: bistTable ...
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
+heap_026 mark k1
 -- gc end
 -- gc begin
+heap_026 mark k1
 -- gc end
 -- gc begin
+heap_026 mark k1
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
+heap_026 mark k1
+heap_029 mark k2
 -- gc end
 -- gc begin
+heap_026 mark k1
+heap_029 mark k2
 -- gc end
 heap_031 allocate 40 for 3
 -- gc begin
+heap_026 mark k1
+heap_029 mark k2
+heap_031 mark k3
 -- gc end
 -- gc begin
+heap_026 mark k1
+heap_029 mark k2
+heap_031 mark k3
 -- gc end
 heap_033 allocate 40 for 3
 -- gc begin
+heap_026 mark k1
+heap_029 mark k2
+heap_031 mark k3
+heap_033 mark k4
 -- gc end
 BIST: bistTable ... done.
 heap_033 free type 3
@@ -116,9 +137,12 @@ heap_036 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_036 mark clock
 -- gc end
 heap_038 allocate 24 for 2
 -- gc begin
+heap_036 mark clock
+heap_038 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -126,6 +150,7 @@ heap_038 allocate 24 for 2
 -- gc end
 heap_041 allocate 40 for 3
 -- gc begin
+heap_041 mark gc
 -- gc end
 heap_042 allocate 24 for 2
 object exists at top of test: '<native fn>'
@@ -139,18 +164,28 @@ object exists at top of test: 'clock'
 heap_044 allocate 40 for 3
 valString prints as 'testObject'
 -- gc begin
+heap_044 mark testObject
 -- gc end
 heap_045 allocate 24 for 2
 valNative prints as '<native fn>'
 -- gc begin
+heap_044 mark testObject
+heap_045 mark <native fn>
 -- gc end
 heap_046 allocate 72 for 1
 valFunction prints as '<script>'
 -- gc begin
+heap_044 mark testObject
+heap_045 mark <native fn>
+heap_046 mark <script>
 -- gc end
 heap_047 allocate 40 for 0
 valClosure prints as '<script>'
 -- gc begin
+heap_044 mark testObject
+heap_045 mark <native fn>
+heap_046 mark <script>
+heap_047 mark <script>
 -- gc end
 heap_048 allocate 48 for 4
 valUpvalue prints as '<upvalue>'
@@ -185,9 +220,12 @@ heap_050 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_050 mark clock
 -- gc end
 heap_052 allocate 24 for 2
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -195,6 +233,7 @@ heap_052 allocate 24 for 2
 -- gc end
 heap_055 allocate 40 for 3
 -- gc begin
+heap_055 mark gc
 -- gc end
 heap_056 allocate 24 for 2
 BIST: bistScanner ...
@@ -242,9 +281,12 @@ heap_063 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_063 mark clock
 -- gc end
 heap_065 allocate 24 for 2
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -252,6 +294,7 @@ heap_065 allocate 24 for 2
 -- gc end
 heap_068 allocate 40 for 3
 -- gc begin
+heap_068 mark gc
 -- gc end
 heap_069 allocate 24 for 2
 -- gc begin
@@ -282,6 +325,7 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_070 mark <script>
 -- gc end
 heap_075 allocate 40 for 0
 
@@ -324,9 +368,12 @@ heap_077 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_077 mark clock
 -- gc end
 heap_079 allocate 24 for 2
 -- gc begin
+heap_077 mark clock
+heap_079 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -334,6 +381,7 @@ heap_079 allocate 24 for 2
 -- gc end
 heap_082 allocate 40 for 3
 -- gc begin
+heap_082 mark gc
 -- gc end
 heap_083 allocate 24 for 2
 BIST: bistVM ... done.

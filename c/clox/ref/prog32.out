@@ -6,9 +6,12 @@ heap_002 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_002 mark clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -16,6 +19,7 @@ heap_004 allocate 24 for 2
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
+heap_007 mark gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -379,6 +383,7 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_010 mark <script>
 -- gc end
 heap_059 allocate 40 for 0
 
@@ -438,8 +443,16 @@ stack: <script> outer a outer b inner a PASS: a =
 stack: <script> outer a outer b inner a PASS: a =  inner a
 0049    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 heap_061 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a
@@ -447,8 +460,16 @@ stack: <script> outer a outer b inner a PASS: a = inner a
 stack: <script> outer a outer b inner a PASS: a = inner a , b = 
 0052    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 heap_063 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = 
@@ -456,8 +477,16 @@ stack: <script> outer a outer b inner a PASS: a = inner a, b =
 stack: <script> outer a outer b inner a PASS: a = inner a, b =  outer b
 0055    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 heap_065 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b
@@ -465,8 +494,16 @@ stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b , c = 
 0058    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 heap_067 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = 
@@ -474,8 +511,16 @@ stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c =
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c =  global c
 0061    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
 -- gc end
 heap_069 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = global c
@@ -522,8 +567,14 @@ stack: <script> outer a outer b PASS: a =
 stack: <script> outer a outer b PASS: a =  outer a
 0175    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 heap_071 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a
@@ -531,8 +582,14 @@ stack: <script> outer a outer b PASS: a = outer a
 stack: <script> outer a outer b PASS: a = outer a , b = 
 0178    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 heap_073 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = 
@@ -540,8 +597,14 @@ stack: <script> outer a outer b PASS: a = outer a, b =
 stack: <script> outer a outer b PASS: a = outer a, b =  outer b
 0181    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 heap_075 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = outer b
@@ -549,19 +612,34 @@ stack: <script> outer a outer b PASS: a = outer a, b = outer b
 stack: <script> outer a outer b PASS: a = outer a, b = outer b , c = 
 0184    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 heap_077 allocate 40 for 3
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = 
 0185    | OP_GET_GLOBAL      36 'c'
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c =  global c
 0187    | OP_ADD
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 -- gc begin
+heap_059 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
 -- gc end
 heap_080 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = global c
@@ -610,8 +688,10 @@ stack: <script> PASS: a =
 stack: <script> PASS: a =  global a
 0302    | OP_ADD
 -- gc begin
+heap_059 mark <script>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 -- gc end
 heap_082 allocate 40 for 3
 stack: <script> PASS: a = global a
@@ -619,8 +699,10 @@ stack: <script> PASS: a = global a
 stack: <script> PASS: a = global a , b = 
 0305    | OP_ADD
 -- gc begin
+heap_059 mark <script>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 -- gc end
 heap_084 allocate 40 for 3
 stack: <script> PASS: a = global a, b = 
@@ -628,8 +710,10 @@ stack: <script> PASS: a = global a, b =
 stack: <script> PASS: a = global a, b =  global b
 0308    | OP_ADD
 -- gc begin
+heap_059 mark <script>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 -- gc end
 heap_086 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b
@@ -637,8 +721,10 @@ stack: <script> PASS: a = global a, b = global b
 stack: <script> PASS: a = global a, b = global b , c = 
 0311    | OP_ADD
 -- gc begin
+heap_059 mark <script>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 -- gc end
 heap_088 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b, c = 
@@ -646,8 +732,10 @@ stack: <script> PASS: a = global a, b = global b, c =
 stack: <script> PASS: a = global a, b = global b, c =  global c
 0314    | OP_ADD
 -- gc begin
+heap_059 mark <script>
 -- gc end
 -- gc begin
+heap_059 mark <script>
 -- gc end
 heap_090 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b, c = global c

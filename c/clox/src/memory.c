@@ -6,18 +6,36 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 /** @file memory.c
  * @brief Memory Handling module
  */
 
+/** Return a pointer to data allocated from the brk
+ *
+ * And especially, sbrk(0) returns the current brk,
+ * and as we allocate memory, it goes just above brk.
+ *
+ * @param increment bytes to allocate
+ * @returns a pointer to those bytes in the brk
+ */
 extern void *sbrk (intptr_t increment);
+
+/** best estimate of the start of the heap memory */
 static void *heap_base = 0;
 
+/** static limit on the number of allocations */
 #define MAX_HEAP_COUNT 10000
+
+/** Number of allocations that have been recorded. */
 static size_t heap_count = 0;
+
+/** allocation history */
 static void *heap_ptrs[MAX_HEAP_COUNT];
 
+/** Initialize the memory subsystem.
+ */
 void
 initMemory ()
 {
@@ -25,6 +43,11 @@ initMemory ()
     heap_count = 0;
 }
 
+/** Recover the heap allocation sequence number for this pointer.
+ *
+ * @param ptr a value from a previous call to reallocate
+ * @returns a sequence number 1..N, or 0 if no seq was assigned.
+ */
 static size_t
 getSeq (void *ptr)
 {
@@ -38,6 +61,12 @@ getSeq (void *ptr)
     return 0;
 }
 
+/** Assign a heap allocation sequence number to this pointer.
+ *
+ * Sequence numbers start at 1 and go up,.
+ *
+ * @param ptr A value that will be returned by reallocate
+ */
 static void
 addSeq (void *ptr)
 {
@@ -45,6 +74,11 @@ addSeq (void *ptr)
     heap_ptrs[heap_count++] = ptr;
 }
 
+/** Construct a repeatable string representing this heap allocation
+ *
+ * @param ptr A value that will be returned by reallocate
+ * @returns a string that can be compared from run to run
+ */
 const char *
 printableHeapAddr (void *ptr)
 {
@@ -107,6 +141,36 @@ reallocate (void *pointer, size_t oldSize, size_t newSize)
     return result;
 }
 
+/** Annotate this object as reachable.
+ *
+ * @param object some Obj that was reached
+ */
+void
+markObject (Obj *object)
+{
+    if (object == NULL)
+        return;
+
+#ifdef DEBUG_LOG_GC
+    printf ("%s mark ", printableHeapAddr (object));
+    printValue (OBJ_VAL (object));
+    printf ("\n");
+#endif
+
+    object->isMarked = true;
+}
+
+/** Annotate this value as reachable.
+ *
+ * @param value some Value that was reached
+ */
+void
+markValue (Value value)
+{
+    if (IS_OBJ (value))
+        markObject (AS_OBJ (value));
+}
+
 /** Free the given object and the storage it owns.
  *
  * @param object which object to free.
@@ -160,6 +224,16 @@ freeObject (Obj *object)
     UNREACHABLE ("corrupted object type");
 }
 
+/** Assure all "roots" are marked as reachable.
+ */
+static void
+markRoots ()
+{
+    for (Value *slot = vm.stack; slot < vm.sp; slot++) {
+        markValue (*slot);
+    }
+}
+
 /** Run the Mark-Sweep Garbage Collector
  */
 void
@@ -168,7 +242,9 @@ collectGarbage ()
 #ifdef DEBUG_LOG_GC
     printf ("-- gc begin\n");
 #endif
-    // will have code soon
+
+    markRoots ();
+
 #ifdef DEBUG_LOG_GC
     printf ("-- gc end\n");
 #endif

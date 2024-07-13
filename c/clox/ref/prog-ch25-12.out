@@ -6,9 +6,12 @@ heap_002 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
+heap_002 mark clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
 -- gc end
@@ -16,6 +19,7 @@ heap_004 allocate 24 for 2
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
+heap_007 mark gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -111,6 +115,7 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_010 mark <script>
 -- gc end
 heap_033 allocate 40 for 0
 
@@ -118,6 +123,7 @@ Executing ...
 stack: <script>
 0000    8 OP_CLOSURE          1 <fn outer>
 -- gc begin
+heap_033 mark <script>
 -- gc end
 heap_034 allocate 40 for 0
 stack: <script> <fn outer>
@@ -132,11 +138,21 @@ stack: <script> <fn outer> outside
 0002    5 OP_CLOSURE          1 <fn inner>
 0004      | local 1
 -- gc begin
+heap_033 mark <script>
+heap_034 mark <fn outer>
+heap_016 mark outside
 -- gc end
 -- gc begin
+heap_033 mark <script>
+heap_034 mark <fn outer>
+heap_016 mark outside
 -- gc end
 heap_036 allocate 40 for 0
 -- gc begin
+heap_033 mark <script>
+heap_034 mark <fn outer>
+heap_016 mark outside
+heap_036 mark <fn inner>
 -- gc end
 heap_037 allocate 48 for 4
 stack: <script> <fn outer> outside <fn inner>
