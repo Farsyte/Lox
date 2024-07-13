@@ -296,6 +296,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_026 mark block
+heap_020 mark showA
+heap_012 mark a
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_026 mark block
+heap_020 mark showA
+heap_012 mark a
 -- gc end
 heap_030 allocate 40 for 0
 stack: <script> <fn showA>

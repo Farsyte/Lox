@@ -398,6 +398,26 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
 -- gc end
 heap_034 allocate 40 for 0
 stack: <script> <fn makeCounter>
@@ -422,6 +442,38 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
 -- gc end
 -- gc begin
 heap_033 mark <script>
@@ -434,6 +486,38 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
 -- gc end
 heap_036 allocate 40 for 0
 -- gc begin
@@ -448,6 +532,40 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_018 mark <fn count>
+heap_020 mark count
+heap_014 mark <fn makeCounter>
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
+heap_010 mark <script>
+heap_012 mark makeCounter
+heap_014 mark <fn makeCounter>
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_029 mark counter
+heap_029 mark counter
+heap_012 mark makeCounter
+heap_018 mark <fn count>
+heap_020 mark count
 -- gc end
 heap_037 allocate 48 for 4
 stack: <script> <fn makeCounter> 0 <fn count>

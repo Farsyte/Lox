@@ -312,6 +312,26 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
 heap_021 mark café au lait
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
 -- gc end
 -- gc begin
 heap_029 mark <script>
@@ -324,6 +344,26 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
 heap_021 mark café au lait
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
 -- gc end
 heap_031 allocate 40 for 3
 stack: <script> beignets with 
@@ -341,6 +381,26 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
 heap_021 mark café au lait
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
 -- gc end
 -- gc begin
 heap_029 mark <script>
@@ -353,6 +413,26 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
 heap_021 mark café au lait
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
+heap_010 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_012 mark breakfast
+heap_012 mark breakfast
+heap_024 mark  with 
+heap_019 mark beverage
+heap_012 mark breakfast
 -- gc end
 heap_033 allocate 40 for 3
 stack: <script> beignets with café au lait

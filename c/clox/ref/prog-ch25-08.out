@@ -697,6 +697,38 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 heap_048 allocate 40 for 0
 stack: <script> <fn outer>
@@ -722,6 +754,65 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 -- gc begin
 heap_047 mark <script>
@@ -735,6 +826,65 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 heap_050 allocate 40 for 0
 -- gc begin
@@ -750,6 +900,70 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 heap_051 allocate 48 for 4
 stack: <script> <fn outer> value <fn middle>
@@ -783,6 +997,68 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 -- gc begin
 heap_047 mark <script>
@@ -797,6 +1073,68 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_020 mark <fn middle>
+heap_051 mark <upvalue>
+heap_016 mark value
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_041 mark mid
+heap_012 mark outer
+heap_044 mark in
+heap_041 mark mid
+heap_044 mark in
+heap_012 mark outer
+heap_016 mark value
+heap_020 mark <fn middle>
+heap_036 mark return from outer
+heap_022 mark middle
+heap_023 mark <fn inner>
+heap_032 mark create inner closure
+heap_025 mark inner
 -- gc end
 heap_053 allocate 40 for 0
 stack: <script> <fn middle> <fn inner>

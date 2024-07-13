@@ -323,6 +323,26 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark first
+heap_014 mark <fn first>
+heap_019 mark second
+heap_023 mark <fn second>
+heap_012 mark first
+heap_019 mark second
+heap_012 mark first
+heap_019 mark second
+heap_019 mark second
+heap_010 mark <script>
+heap_012 mark first
+heap_014 mark <fn first>
+heap_019 mark second
+heap_023 mark <fn second>
+heap_012 mark first
+heap_019 mark second
+heap_012 mark first
+heap_019 mark second
+heap_019 mark second
 -- gc end
 heap_029 allocate 40 for 0
 stack: <script> <fn first>
@@ -338,6 +358,30 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn first>
+heap_012 mark first
+heap_019 mark second
+heap_019 mark second
+heap_010 mark <script>
+heap_012 mark first
+heap_014 mark <fn first>
+heap_019 mark second
+heap_023 mark <fn second>
+heap_012 mark first
+heap_019 mark second
+heap_012 mark first
+heap_019 mark second
+heap_019 mark second
+heap_010 mark <script>
+heap_012 mark first
+heap_014 mark <fn first>
+heap_019 mark second
+heap_023 mark <fn second>
+heap_012 mark first
+heap_019 mark second
+heap_012 mark first
+heap_019 mark second
+heap_019 mark second
 -- gc end
 heap_030 allocate 40 for 0
 stack: <script> <fn second>

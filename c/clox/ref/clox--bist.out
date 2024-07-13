@@ -362,6 +362,7 @@ heap_036 mark clock
 heap_038 mark <native fn>
 heap_041 mark gc
 heap_042 mark <native fn>
+heap_046 mark <script>
 -- gc end
 heap_048 allocate 48 for 4
 valUpvalue prints as '<upvalue>'

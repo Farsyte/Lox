@@ -412,6 +412,26 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 heap_036 allocate 40 for 0
 stack: <script> <fn sayHi>
@@ -443,6 +463,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 -- gc begin
 heap_035 mark <script>
@@ -457,6 +512,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 heap_038 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear
@@ -476,6 +566,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 -- gc begin
 heap_035 mark <script>
@@ -490,6 +615,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 heap_040 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear 
@@ -509,6 +669,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 -- gc begin
 heap_035 mark <script>
@@ -523,6 +718,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 heap_042 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader
@@ -542,6 +772,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 -- gc begin
 heap_035 mark <script>
@@ -556,6 +821,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_010 mark <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_012 mark sayHi
+heap_030 mark Dear
+heap_033 mark Reader
+heap_012 mark sayHi
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
 -- gc end
 heap_044 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader!

@@ -612,6 +612,38 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
 -- gc end
 heap_042 allocate 40 for 0
 stack: <script> <fn a>
@@ -627,6 +659,41 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn a>
+heap_012 mark a
+heap_016 mark b
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
 -- gc end
 heap_043 allocate 40 for 0
 stack: <script> <fn b>
@@ -644,6 +711,44 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn a>
+heap_012 mark a
+heap_016 mark b
+heap_022 mark <fn b>
+heap_016 mark b
+heap_024 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
+heap_010 mark <script>
+heap_012 mark a
+heap_014 mark <fn a>
+heap_016 mark b
+heap_022 mark <fn b>
+heap_024 mark c
+heap_028 mark <fn c>
+heap_012 mark a
+heap_024 mark c
+heap_024 mark c
+heap_033 mark too
+heap_035 mark many
+heap_016 mark b
+heap_024 mark c
+heap_012 mark a
+heap_016 mark b
 -- gc end
 heap_044 allocate 40 for 0
 stack: <script> <fn c>

@@ -260,6 +260,18 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_018 mark <fn inner>
+heap_020 mark inner
+heap_010 mark <script>
+heap_012 mark outer
+heap_014 mark <fn outer>
+heap_012 mark outer
+heap_018 mark <fn inner>
+heap_020 mark inner
 -- gc end
 heap_027 allocate 40 for 0
 stack: <script> <fn outer>

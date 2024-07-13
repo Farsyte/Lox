@@ -363,6 +363,26 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
 -- gc end
 heap_032 allocate 40 for 0
 stack: <script> <fn makeClosure>
@@ -388,6 +408,41 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_032 mark <fn makeClosure>
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
 -- gc end
 -- gc begin
 heap_031 mark <script>
@@ -401,6 +456,41 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_032 mark <fn makeClosure>
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
 -- gc end
 heap_034 allocate 40 for 0
 -- gc begin
@@ -416,6 +506,43 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_032 mark <fn makeClosure>
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
+heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_022 mark closure
+heap_012 mark makeClosure
+heap_016 mark local
+heap_020 mark <fn closure>
+heap_022 mark closure
 -- gc end
 heap_035 allocate 48 for 4
 stack: <script> <fn makeClosure> local <fn closure>

@@ -1422,6 +1422,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1439,6 +1599,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_061 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a
@@ -1461,6 +1781,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1478,6 +1958,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_063 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = 
@@ -1500,6 +2140,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1517,6 +2317,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_065 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b
@@ -1539,6 +2499,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1556,6 +2676,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_067 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = 
@@ -1578,6 +2858,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1595,6 +3035,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_069 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a, b = outer b, c = global c
@@ -1655,6 +3255,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1671,6 +3431,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_071 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a
@@ -1692,6 +3612,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1708,6 +3788,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_073 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = 
@@ -1729,6 +3969,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1745,6 +4145,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_075 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = outer b
@@ -1766,6 +4326,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1782,6 +4502,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_077 allocate 40 for 3
 -- gc begin
@@ -1799,6 +4679,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = 
 0185    | OP_GET_GLOBAL      36 'c'
@@ -1819,6 +4859,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1835,6 +5035,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_080 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a, b = outer b, c = global c
@@ -1895,6 +5255,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1909,6 +5429,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_082 allocate 40 for 3
 stack: <script> PASS: a = global a
@@ -1928,6 +5608,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1942,6 +5782,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_084 allocate 40 for 3
 stack: <script> PASS: a = global a, b = 
@@ -1961,6 +5961,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -1975,6 +6135,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_086 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b
@@ -1994,6 +6314,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -2008,6 +6488,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_088 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b, c = 
@@ -2027,6 +6667,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 -- gc begin
 heap_059 mark <script>
@@ -2041,6 +6841,166 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_010 mark <script>
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_029 mark outer a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_033 mark inner a
+heap_031 mark outer b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_042 mark , b = 
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_015 mark global a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_040 mark PASS: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_012 mark a
+heap_033 mark inner a
+heap_019 mark b
+heap_021 mark global b
+heap_023 mark c
+heap_026 mark global c
+heap_050 mark FAIL: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
+heap_052 mark ????: a = 
+heap_012 mark a
+heap_042 mark , b = 
+heap_019 mark b
+heap_045 mark , c = 
+heap_023 mark c
 -- gc end
 heap_090 allocate 40 for 3
 stack: <script> PASS: a = global a, b = global b, c = global c
