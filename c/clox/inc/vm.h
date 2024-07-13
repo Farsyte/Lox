@@ -34,6 +34,11 @@ struct VM {
     Table strings;              ///< hash table for string deduplication
     ObjUpvalue *openUpvalues;   ///< linked list of ALL open upvalues on the stack
     Obj *objects;               ///< linked list of all objects
+
+    int grayCount;              ///< number of grey items identified
+    int grayCapacity;           ///< capacity of the gray item list
+    Obj **grayStack;            ///< extensable array of gray items
+
 };
 
 /** Interpreter result

@@ -1276,6 +1276,8 @@ compile (const char *source)
     return parser.hadError ? NULL : function;
 }
 
+/** Mark all compiler roots as reachable.
+ */
 void
 markCompilerRoots ()
 {

@@ -159,6 +159,14 @@ markObject (Obj *object)
 #endif
 
     object->isMarked = true;
+
+    if (vm.grayCapacity < vm.grayCount + 1) {
+        vm.grayCapacity = GROW_CAPACITY (vm.grayCapacity);
+        vm.grayStack = (Obj **) realloc (vm.grayStack, sizeof (Obj *) * vm.grayCapacity);
+        INVAR (NULL != vm.grayStack, "unable to allocate memory for gray stack");
+    }
+
+    vm.grayStack[vm.grayCount++] = object;
 }
 
 /** Annotate this value as reachable.
@@ -272,4 +280,6 @@ freeObjects ()
         freeObject (object);
         object = next;
     }
+
+    free (vm.grayStack);
 }
