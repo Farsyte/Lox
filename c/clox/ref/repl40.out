@@ -653,6 +653,7 @@ stack: <script> <fn sayHi> Dear Reader Hi,  Dear
 heap_035 mark <script>
 heap_030 mark Dear
 heap_033 mark Reader
+heap_016 mark Hi, 
 heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -663,6 +664,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_012 blacken sayHi
+heap_016 blacken Hi, 
 heap_033 blacken Reader
 heap_030 blacken Dear
 heap_035 blacken <script>
@@ -670,12 +672,10 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_014 mark <fn sayHi>
 heap_014 blacken <fn sayHi>
-heap_016 mark Hi, 
 heap_021 mark  
 heap_024 mark !
 heap_024 blacken !
 heap_021 blacken  
-heap_016 blacken Hi, 
 -- gc end: collected 0 bytes (from 1804 to 1804), next at 3608
 -- gc begin
 heap_035 mark <script>
@@ -713,6 +713,7 @@ heap_035 blacken <script>
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_038 mark Hi, Dear
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -721,6 +722,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_038 blacken Hi, Dear
 heap_036 blacken <fn sayHi>
 heap_035 blacken <script>
 -- gc end: collected 0 bytes (from 1894 to 1894), next at 3788
@@ -746,6 +748,7 @@ heap_035 blacken <script>
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_040 mark Hi, Dear 
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -754,6 +757,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_040 blacken Hi, Dear 
 heap_036 blacken <fn sayHi>
 heap_035 blacken <script>
 -- gc end: collected 0 bytes (from 1950 to 1950), next at 3900
@@ -779,6 +783,7 @@ heap_035 blacken <script>
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_042 mark Hi, Dear Reader
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -787,6 +792,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_042 blacken Hi, Dear Reader
 heap_036 blacken <fn sayHi>
 heap_035 blacken <script>
 -- gc end: collected 0 bytes (from 2007 to 2007), next at 4014
@@ -807,6 +813,7 @@ stack: <script> nil
 Executing ... done.
 
 heap_044 free type 3
+heap_042 free type 3
 heap_036 free type 0
 heap_035 free type 0
 heap_008 free type 2
@@ -823,4 +830,3 @@ heap_012 free type 3
 heap_010 free type 1
 heap_038 free type 3
 heap_040 free type 3
-heap_042 free type 3

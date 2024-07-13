@@ -447,8 +447,9 @@ stack: <script> beignets
 stack: <script> beignets  with 
 0012    | OP_ADD
 -- gc begin
-heap_012 mark breakfast
 heap_015 mark beignets
+heap_024 mark  with 
+heap_012 mark breakfast
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -461,13 +462,15 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_015 blacken beignets
 heap_012 blacken breakfast
+heap_024 blacken  with 
+heap_015 blacken beignets
 -- gc end: collected 0 bytes (from 1628 to 1628), next at 3256
 -- gc begin
 heap_029 mark <script>
-heap_012 mark breakfast
 heap_015 mark beignets
+heap_024 mark  with 
+heap_012 mark breakfast
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -480,13 +483,12 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_015 blacken beignets
 heap_012 blacken breakfast
+heap_024 blacken  with 
+heap_015 blacken beignets
 heap_029 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
-heap_024 mark  with 
-heap_024 blacken  with 
 -- gc end: collected 0 bytes (from 1668 to 1668), next at 3336
 heap_031 allocate 40 for 3
 stack: <script> beignets with 
@@ -495,6 +497,7 @@ stack: <script> beignets with  café au lait
 0015    | OP_ADD
 -- gc begin
 heap_029 mark <script>
+heap_021 mark café au lait
 heap_012 mark breakfast
 heap_015 mark beignets
 heap_002 mark clock
@@ -502,8 +505,6 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
-heap_021 mark café au lait
-heap_021 blacken café au lait
 heap_019 blacken beverage
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -511,10 +512,13 @@ heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_015 blacken beignets
 heap_012 blacken breakfast
+heap_021 blacken café au lait
 heap_029 blacken <script>
 -- gc end: collected 0 bytes (from 1696 to 1696), next at 3392
 -- gc begin
 heap_029 mark <script>
+heap_031 mark beignets with 
+heap_021 mark café au lait
 heap_012 mark breakfast
 heap_015 mark beignets
 heap_002 mark clock
@@ -522,8 +526,6 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_019 mark beverage
-heap_021 mark café au lait
-heap_021 blacken café au lait
 heap_019 blacken beverage
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -531,6 +533,8 @@ heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_015 blacken beignets
 heap_012 blacken breakfast
+heap_021 blacken café au lait
+heap_031 blacken beignets with 
 heap_029 blacken <script>
 -- gc end: collected 0 bytes (from 1736 to 1736), next at 3472
 heap_033 allocate 40 for 3
@@ -550,6 +554,7 @@ stack: <script> nil
 Executing ... done.
 
 heap_033 free type 3
+heap_031 free type 3
 heap_029 free type 0
 heap_021 free type 3
 heap_019 free type 3
@@ -559,6 +564,5 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_024 free type 3
 heap_010 free type 1
-heap_031 free type 3
+heap_024 free type 3

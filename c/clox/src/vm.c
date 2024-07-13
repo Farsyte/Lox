@@ -379,8 +379,8 @@ concatenate ()
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
 
-    ObjString *b = AS_STRING (pop ());
-    ObjString *a = AS_STRING (pop ());
+    ObjString *b = AS_STRING (peek (0));
+    ObjString *a = AS_STRING (peek (1));
     int length = a->length + b->length;
     char *chars = ALLOCATE (char, length + 1);
 
@@ -390,6 +390,8 @@ concatenate ()
 
     ObjString *result = takeString (chars, length);
 
+    pop ();
+    pop ();
     push (OBJ_VAL (result));
 
 }

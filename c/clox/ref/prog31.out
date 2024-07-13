@@ -1604,6 +1604,7 @@ stack: <script> outer a outer b inner a PASS: a =  inner a
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_038 mark PASS: a = 
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1624,6 +1625,7 @@ heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_038 blacken PASS: a = 
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
@@ -1633,6 +1635,7 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_038 mark PASS: a = 
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1653,13 +1656,13 @@ heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_038 blacken PASS: a = 
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
 heap_058 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
-heap_038 mark PASS: a = 
 heap_042 mark FAIL: a = 
 heap_045 mark PASS: b = 
 heap_047 mark FAIL: b = 
@@ -1670,7 +1673,6 @@ heap_052 blacken PASS: c =
 heap_047 blacken FAIL: b = 
 heap_045 blacken PASS: b = 
 heap_042 blacken FAIL: a = 
-heap_038 blacken PASS: a = 
 -- gc end: collected 0 bytes (from 5176 to 5176), next at 10352
 heap_060 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a
@@ -1781,12 +1783,12 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_026 mark global c
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
-heap_026 mark global c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -1795,12 +1797,12 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_026 blacken global c
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
@@ -1811,12 +1813,12 @@ heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_026 mark global c
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
-heap_026 mark global c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -1825,12 +1827,12 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_026 blacken global c
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
@@ -1864,6 +1866,7 @@ stack: <script> outer a outer b PASS: a =  outer a
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_038 mark PASS: a = 
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
@@ -1884,6 +1887,7 @@ heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_038 blacken PASS: a = 
 heap_031 blacken outer b
 heap_029 blacken outer a
 heap_058 blacken <script>
@@ -1991,12 +1995,12 @@ stack: <script> outer a outer b PASS: c =  global c
 heap_058 mark <script>
 heap_029 mark outer a
 heap_031 mark outer b
+heap_026 mark global c
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
-heap_026 mark global c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -2005,12 +2009,12 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_026 blacken global c
 heap_031 blacken outer b
 heap_029 blacken outer a
 heap_058 blacken <script>
@@ -2042,10 +2046,10 @@ stack: <script> PASS: a =  global a
 0184    | OP_ADD
 -- gc begin
 heap_058 mark <script>
+heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
-heap_015 mark global a
 heap_023 mark c
 heap_026 mark global c
 heap_002 mark clock
@@ -2058,18 +2062,18 @@ heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_026 blacken global c
 heap_023 blacken c
-heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_015 blacken global a
 heap_058 blacken <script>
 -- gc end: collected 0 bytes (from 5370 to 5370), next at 10740
 -- gc begin
 heap_058 mark <script>
+heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
-heap_015 mark global a
 heap_023 mark c
 heap_026 mark global c
 heap_002 mark clock
@@ -2082,10 +2086,10 @@ heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_026 blacken global c
 heap_023 blacken c
-heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_015 blacken global a
 heap_058 blacken <script>
 -- gc end: collected 0 bytes (from 5410 to 5410), next at 10820
 heap_070 allocate 40 for 3
@@ -2112,8 +2116,8 @@ stack: <script> PASS: b =  global b
 0209    | OP_ADD
 -- gc begin
 heap_058 mark <script>
-heap_019 mark b
 heap_021 mark global b
+heap_019 mark b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
@@ -2130,14 +2134,14 @@ heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
-heap_021 blacken global b
 heap_019 blacken b
+heap_021 blacken global b
 heap_058 blacken <script>
 -- gc end: collected 0 bytes (from 5429 to 5429), next at 10858
 -- gc begin
 heap_058 mark <script>
-heap_019 mark b
 heap_021 mark global b
+heap_019 mark b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
@@ -2154,8 +2158,8 @@ heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
-heap_021 blacken global b
 heap_019 blacken b
+heap_021 blacken global b
 heap_058 blacken <script>
 -- gc end: collected 0 bytes (from 5469 to 5469), next at 10938
 heap_072 allocate 40 for 3
@@ -2182,12 +2186,12 @@ stack: <script> PASS: c =  global c
 0234    | OP_ADD
 -- gc begin
 heap_058 mark <script>
+heap_026 mark global c
 heap_019 mark b
 heap_021 mark global b
 heap_012 mark a
 heap_015 mark global a
 heap_023 mark c
-heap_026 mark global c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -2196,12 +2200,12 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
-heap_026 blacken global c
 heap_023 blacken c
 heap_015 blacken global a
 heap_012 blacken a
 heap_021 blacken global b
 heap_019 blacken b
+heap_026 blacken global c
 heap_058 blacken <script>
 -- gc end: collected 0 bytes (from 5488 to 5488), next at 10976
 stack: <script> PASS: c = global c
@@ -2231,9 +2235,9 @@ heap_052 free type 3
 heap_047 free type 3
 heap_045 free type 3
 heap_042 free type 3
-heap_038 free type 3
 heap_010 free type 1
 heap_060 free type 3
+heap_038 free type 3
 heap_062 free type 3
 heap_064 free type 3
 heap_033 free type 3
