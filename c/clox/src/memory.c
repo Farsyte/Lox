@@ -29,6 +29,12 @@
 void *
 reallocate (void *pointer, size_t oldSize, size_t newSize)
 {
+    if (newSize > oldSize) {
+#ifdef DEBUG_STRESS_GC
+        collectGarbage ();
+#endif
+    }
+
     (void) oldSize;                     // not needed by this implementation.
 
     if (newSize == 0) {
@@ -92,6 +98,14 @@ freeObject (Obj *object)
 
     }
     UNREACHABLE ("corrupted object type");
+}
+
+/** Run the Mark-Sweep Garbage Collector
+ */
+void
+collectGarbage ()
+{
+    // will have code soon
 }
 
 /** Free all Objects.
