@@ -1,34 +1,34 @@
 -- gc begin
--- gc end
+-- gc end: collected 0 bytes (from 6 to 6), next at 12
 -- gc begin
--- gc end
+-- gc end: collected 0 bytes (from 46 to 46), next at 92
 heap_002 allocate 40 for 3
 -- gc begin
--- gc end
+-- gc end: collected 0 bytes (from 238 to 238), next at 476
 -- gc begin
 heap_002 mark clock
 heap_002 blacken clock
--- gc end
+-- gc end: collected 0 bytes (from 262 to 262), next at 524
 heap_004 allocate 24 for 2
 -- gc begin
 heap_004 mark <native fn>
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 454 to 454), next at 908
 -- gc begin
 heap_004 mark <native fn>
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 457 to 457), next at 914
 -- gc begin
 heap_004 mark <native fn>
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 497 to 497), next at 994
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_004 mark <native fn>
 heap_004 blacken <native fn>
 heap_007 blacken gc
--- gc end
+-- gc end: collected 0 bytes (from 521 to 521), next at 1042
 heap_008 allocate 24 for 2
 -- gc begin
 heap_004 mark <native fn>
@@ -37,7 +37,7 @@ heap_008 mark <native fn>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 644 to 644), next at 1288
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -45,7 +45,7 @@ heap_008 mark <native fn>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 716 to 716), next at 1432
 heap_010 allocate 72 for 1
 -- gc begin
 heap_004 mark <native fn>
@@ -54,7 +54,7 @@ heap_008 mark <native fn>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 722 to 722), next at 1444
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -64,7 +64,7 @@ heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 762 to 762), next at 1524
 heap_012 allocate 40 for 3
 -- gc begin
 heap_004 mark <native fn>
@@ -75,7 +75,7 @@ heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 890 to 890), next at 1780
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -87,7 +87,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 962 to 962), next at 1924
 heap_014 allocate 72 for 1
 -- gc begin
 heap_004 mark <native fn>
@@ -100,7 +100,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 970 to 970), next at 1940
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -114,7 +114,7 @@ heap_014 blacken <fn outer>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1010 to 1010), next at 2020
 heap_016 allocate 40 for 3
 -- gc begin
 heap_004 mark <native fn>
@@ -129,7 +129,7 @@ heap_014 blacken <fn outer>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1138 to 1138), next at 2276
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -145,7 +145,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1146 to 1146), next at 2292
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -161,7 +161,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1178 to 1178), next at 2356
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -177,7 +177,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1250 to 1250), next at 2500
 heap_020 allocate 72 for 1
 -- gc begin
 heap_004 mark <native fn>
@@ -194,7 +194,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1256 to 1256), next at 2512
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -212,7 +212,7 @@ heap_020 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1296 to 1296), next at 2592
 heap_022 allocate 40 for 3
 -- gc begin
 heap_004 mark <native fn>
@@ -231,7 +231,7 @@ heap_020 blacken <fn inner>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1304 to 1304), next at 2608
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -251,7 +251,7 @@ heap_022 blacken inner
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1336 to 1336), next at 2672
 
 Disassembling inner ...
 0000    4 OP_GET_UPVALUE      0
@@ -279,7 +279,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1344 to 1344), next at 2688
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -299,7 +299,7 @@ heap_016 blacken outside
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1376 to 1376), next at 2752
 
 Disassembling outer ...
 0000    2 OP_CONSTANT         0 'outside'
@@ -331,7 +331,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1384 to 1384), next at 2768
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -351,7 +351,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1416 to 1416), next at 2832
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -371,7 +371,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1424 to 1424), next at 2848
 -- gc begin
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -391,7 +391,7 @@ heap_012 blacken outer
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1456 to 1456), next at 2912
 
 Disassembling <script> ...
 0000    7 OP_CLOSURE          1 <fn outer>
@@ -422,7 +422,7 @@ heap_022 mark inner
 heap_022 blacken inner
 heap_016 blacken outside
 heap_012 blacken outer
--- gc end
+-- gc end: collected 0 bytes (from 1496 to 1496), next at 2992
 heap_029 allocate 40 for 0
 
 Executing ...
@@ -435,7 +435,7 @@ heap_008 mark <native fn>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
--- gc end
+-- gc end: collected 0 bytes (from 1536 to 1536), next at 3072
 heap_030 allocate 40 for 0
 stack: <script> <fn outer>
 0002    | OP_DEFINE_GLOBAL    0 'outer'
@@ -469,7 +469,7 @@ heap_020 mark <fn inner>
 heap_020 blacken <fn inner>
 heap_022 mark inner
 heap_022 blacken inner
--- gc end
+-- gc end: collected 0 bytes (from 1544 to 1544), next at 3088
 -- gc begin
 heap_029 mark <script>
 heap_030 mark <fn outer>
@@ -481,7 +481,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_030 blacken <fn outer>
 heap_029 blacken <script>
--- gc end
+-- gc end: collected 0 bytes (from 1584 to 1584), next at 3168
 heap_032 allocate 40 for 0
 -- gc begin
 heap_029 mark <script>
@@ -494,7 +494,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_030 blacken <fn outer>
 heap_029 blacken <script>
--- gc end
+-- gc end: collected 0 bytes (from 1632 to 1632), next at 3264
 heap_033 allocate 48 for 4
 stack: <script> <fn outer> outside <fn inner>
 0006    6 OP_GET_LOCAL        2

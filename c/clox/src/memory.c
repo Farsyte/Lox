@@ -9,6 +9,9 @@
 #include <string.h>
 #include <unistd.h>
 
+/** Factor used for determining GC threshold */
+#define GC_HEAP_GROW_FACTOR 2
+
 /** @file memory.c
  * @brief Memory Handling module
  */
@@ -117,10 +120,15 @@ printableHeapAddr (void *ptr)
 void *
 reallocate (void *pointer, size_t oldSize, size_t newSize)
 {
+    vm.bytesAllocated += newSize - oldSize;
+
     if (newSize > oldSize) {
 #ifdef DEBUG_STRESS_GC
         collectGarbage ();
 #endif
+        if (vm.bytesAllocated > vm.nextGC) {
+            collectGarbage ();
+        }
     }
 
     (void) oldSize;                     // not needed by this implementation.
@@ -386,6 +394,7 @@ collectGarbage ()
 {
 #ifdef DEBUG_LOG_GC
     printf ("-- gc begin\n");
+    size_t before = vm.bytesAllocated;
 #endif
 
     markRoots ();
@@ -393,8 +402,10 @@ collectGarbage ()
     tableRemoveWhite (&vm.strings);
     sweep ();
 
+    vm.nextGC = vm.bytesAllocated * GC_HEAP_GROW_FACTOR;
+
 #ifdef DEBUG_LOG_GC
-    printf ("-- gc end\n");
+    printf ("-- gc end: collected %zu bytes (from %zu to %zu), next at %zu\n", before - vm.bytesAllocated, before, vm.bytesAllocated, vm.nextGC);
 #endif
 }
 

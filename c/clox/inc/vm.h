@@ -43,6 +43,9 @@ struct VM {
     Obj *unfree;                ///< linked list (FIFO) of sweept objects
     Obj **unfree_link;          ///< tail pointer for FIFO operations
 #endif
+
+    size_t bytesAllocated;      ///< net bytes allocated
+    size_t nextGC;              ///< allocation threshold for next GC run
 };
 
 /** Interpreter result
