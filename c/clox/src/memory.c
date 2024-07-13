@@ -180,6 +180,34 @@ markValue (Value value)
         markObject (AS_OBJ (value));
 }
 
+static void
+blackenObject (Obj *object)
+{
+    switch (object->type) {
+
+    case OBJ_CLOSURE:{
+            return;
+        }
+
+    case OBJ_FUNCTION:{
+            return;
+        }
+
+    case OBJ_UPVALUE:{
+            return;
+        }
+
+    case OBJ_NATIVE:{
+            return;
+        }
+
+    case OBJ_STRING:{
+            return;
+        }
+    }
+    UNREACHABLE ("object type corrupted");
+}
+
 /** Free the given object and the storage it owns.
  *
  * @param object which object to free.
@@ -251,6 +279,18 @@ markRoots ()
     markCompilerRoots ();
 }
 
+/** Blacken the grey objects
+ */
+static void
+traceReferences ()
+{
+    while (vm.grayCount > 0) {
+        Obj *object = vm.grayStack[--vm.grayCount];
+
+        blackenObject (object);
+    }
+}
+
 /** Run the Mark-Sweep Garbage Collector
  */
 void
@@ -261,6 +301,7 @@ collectGarbage ()
 #endif
 
     markRoots ();
+    traceReferences ();
 
 #ifdef DEBUG_LOG_GC
     printf ("-- gc end\n");
