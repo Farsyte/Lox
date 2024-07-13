@@ -1141,3 +1141,12 @@ stack: <script> 5 <fn fib> 5 2 <fn fib> 4 1 <fn fib> 3 1 <fn fib> 2 0 <fn fib> 1
 8
 Executing ... done.
 
+heap_031 free type 0
+heap_030 free type 0
+heap_014 free type 1
+heap_012 free type 3
+heap_010 free type 1
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3

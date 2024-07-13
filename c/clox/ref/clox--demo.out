@@ -18,3 +18,7 @@ heap_007 allocate 40 for 3
 -- gc begin
 -- gc end
 heap_008 allocate 24 for 2
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3

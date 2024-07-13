@@ -114,6 +114,10 @@ reallocate (void *pointer, size_t oldSize, size_t newSize)
 static void
 freeObject (Obj *object)
 {
+#ifdef DEBUG_LOG_GC
+    printf ("%s free type %d\n", printableHeapAddr (object), object->type);
+#endif
+
     switch (object->type) {
 
     case OBJ_CLOSURE:{

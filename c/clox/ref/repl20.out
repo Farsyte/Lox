@@ -75,3 +75,9 @@ stack: <script> nil
 0013    | OP_RETURN
 Executing ... done.
 
+heap_014 free type 0
+heap_010 free type 1
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3
