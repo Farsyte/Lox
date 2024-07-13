@@ -50,7 +50,7 @@
         abort();                                        \
     } while (0)
 
-/** Log an error with source file name and line.
+/** Log to stderr with source file name and line.
  *
  * This macro formats and emits a message to the standard error
  * stream identifying the source location and including the
@@ -62,17 +62,69 @@
  *
  * @param pfx a "prefix" string to print on the first line
  * @param cond the "condition" that failed
- * @param msg an extended message to follow
+ * Parameters after "cond" are a printf-like definition of
+ * the <<msg> to print.
  *
  * Any or all of the parameters can be NULL or "" in which
  * case that message and some surrounding connective space
  * will be skipped.
  */
-#define ERROR_LOG(pfx, cond, msg)               \
+#define ERROR_LOG(pfx, cond, ...)               \
     do {                                        \
         _error_log(__FILE__, __LINE__,          \
                    __func__,                    \
-                   pfx, cond, msg);             \
+                   pfx, cond, __VA_ARGS__);     \
     } while (0)
 
-extern void _error_log (const char *file, int line, const char *func, const char *pfx, const char *condstr, const char *msg);
+/** Log to stdout with source file name and (maybe) line.
+ *
+ * This macro formats and emits a message to the standard error
+ * stream identifying the source location and including the
+ * provided Prefix, Condition, and Message strings:
+ *
+ *      <<path/to/filename.ext>>:<<line>>: <<pfx> in <<func>>
+ *          <<cond>>
+ *      <<msg>>
+ *
+ * @param pfx a "prefix" string to print on the first line
+ * @param cond the "condition" that failed
+ * Parameters after "cond" are a printf-like definition of
+ * the <<msg> to print.
+ *
+ * Any or all of the parameters can be NULL or "" in which
+ * case that message and some surrounding connective space
+ * will be skipped.
+ */
+#define DEBUG_LOG(pfx, cond, ...)               \
+    do {                                        \
+        _debug_log(__FILE__, __LINE__,          \
+                   __func__,                    \
+                   pfx, cond, __VA_ARGS);       \
+    } while (0)
+
+/** Log to stdout (compact)with source file name and (maybe) line.
+ *
+ * This macro formats and emits a message to the standard error
+ * stream identifying the source location and including the
+ * provided Prefix, Condition, and Message strings:
+ *
+ *      <<path/to/filename.ext>>:<<line>>: <<pfx> in <<func>>: <<msg>>
+ *
+ * @param pfx a "prefix" string to print on the first line
+ * Parameters after "pfx" are a printf-like definition of
+ * the <<msg> to print.
+ *
+ * Any or all of the parameters can be NULL or "" in which
+ * case that message and some surrounding connective space
+ * will be skipped.
+ */
+#define DEBUG_LINE(pfx, ...)                    \
+    do {                                        \
+        _debug_line(__FILE__, __LINE__,         \
+                    __func__,                   \
+                    pfx, __VA_ARGS__);          \
+    } while (0)
+
+extern void _error_log (const char *file, int line, const char *func, const char *pfx, const char *condstr, const char *msg, ...);
+extern void _debug_log (const char *file, int line, const char *func, const char *pfx, const char *condstr, const char *msg, ...);
+extern void _debug_line (const char *file, int line, const char *func, const char *pfx, const char *msg, ...);

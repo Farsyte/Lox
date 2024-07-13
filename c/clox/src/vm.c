@@ -42,6 +42,15 @@ clockNative (int argCount, Value *args)
     return NUMBER_VAL ((double) clock () / CLOCKS_PER_SEC);
 }
 
+static Value
+gcNative (int argCount, Value *args)
+{
+    (void) argCount;                    // not used by this function
+    (void) args;                        // not used by this function
+    DEBUG_LINE (0, "TODO: trigger GC, please!");
+    return NIL_VAL;
+}
+
 /** Reset the VM stack to empty.
  */
 static void
@@ -54,7 +63,8 @@ resetStack ()
 
 /** Report a runtime error.
  *
- * @param format control the output, like printf.
+ * @param format control the output,
+ like printf.
  */
 static void
 runtimeError (const char *format, ...)
@@ -116,6 +126,7 @@ initVM ()
     initTable (&vm.globals);
     initTable (&vm.strings);
     defineNative ("clock", clockNative);
+    defineNative ("gc", gcNative);
 }
 
 /** Release storage owned by the VM.

@@ -7,6 +7,8 @@ BIST: bistValue ... done.
 BIST: bistTable ...
 BIST: bistTable ... done.
 object exists at top of test: '<native fn>'
+object exists at top of test: 'gc'
+object exists at top of test: '<native fn>'
 object exists at top of test: 'clock'
 valString prints as 'testObject'
 valNative prints as '<native fn>'
@@ -23,6 +25,8 @@ object exists at end of test: '<script>'
 object exists at end of test: '<script>'
 object exists at end of test: '<native fn>'
 object exists at end of test: 'testObject'
+object exists at end of test: '<native fn>'
+object exists at end of test: 'gc'
 object exists at end of test: '<native fn>'
 object exists at end of test: 'clock'
 BIST: bistScanner ...
