@@ -24,7 +24,7 @@
  * @param func the containing function name (or similar).
  * @param pfx a "prefix" string to print on the first line
  * @param cond the "condition" that failed
- * @param msg an extended message to follow
+ * @param format an extended message to follow
  *
  * Any or all parameters can be NULL, "", or zero; in each case,
  * such parameters will be skipped along with connective text.
@@ -32,7 +32,7 @@
  * The message ends with a blank line.
  */
 void
-_error_log (const char *file, int line, const char *func, const char *pfx, const char *cond, const char *msg, ...)
+_error_log (const char *file, int line, const char *func, const char *pfx, const char *cond, const char *format, ...)
 {
     printf ("\n");
     fflush (stdout);
@@ -54,11 +54,11 @@ _error_log (const char *file, int line, const char *func, const char *pfx, const
     if (cond && cond[0])
         fprintf (stderr, "    %s\n", cond);
 
-    if (msg && msg[0]) {
+    if (format && format[0]) {
         va_list ap;
 
-        va_start (ap, msg);
-        vfprintf (stderr, msg, ap);
+        va_start (ap, format);
+        vfprintf (stderr, format, ap);
         va_end (ap);
     }
 
@@ -82,7 +82,7 @@ _error_log (const char *file, int line, const char *func, const char *pfx, const
  * @param func the containing function name (or similar).
  * @param pfx a "prefix" string to print on the first line
  * @param cond the "condition" that failed
- * @param msg an extended message to follow
+ * @param format an extended message to follow
  *
  * Any or all parameters can be NULL, "", or zero; in each case,
  * such parameters will be skipped along with connective text.
@@ -90,10 +90,9 @@ _error_log (const char *file, int line, const char *func, const char *pfx, const
  * The message ends with a blank line.
  */
 void
-_debug_log (const char *file, int line, const char *func, const char *pfx, const char *cond, const char *msg, ...)
+_debug_log (const char *file, int line, const char *func, const char *pfx, const char *cond, const char *format, ...)
 {
     printf ("\n");
-    fflush (stdout);
 
     if (file && file[0])
         if (line)
@@ -113,11 +112,11 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
     if (cond && cond[0])
         printf ("    %s\n", cond);
 
-    if (msg && msg[0]) {
+    if (format && format[0]) {
         va_list ap;
 
-        va_start (ap, msg);
-        vprintf (msg, ap);
+        va_start (ap, format);
+        vprintf (format, ap);
         va_end (ap);
     }
 
@@ -140,7 +139,7 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
  * @param line the line number in the source file (or similar).
  * @param func the containing function name (or similar).
  * @param pfx a "prefix" string to print on the first line
- * @param msg an extended message to follow
+ * @param format an extended message to follow
  *
  * Any or all parameters can be NULL, "", or zero; in each case,
  * such parameters will be skipped along with connective text.
@@ -148,34 +147,15 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
  * The message ends with a blank line.
  */
 void
-_debug_line (const char *file, int line, const char *func, const char *pfx, const char *msg, ...)
+_debug_line (const char *func, const char *format, ...)
 {
+    va_list ap;
+
+    va_start (ap, format);
+
+    printf ("%s: ", func);
+    vprintf (format, ap);
     printf ("\n");
-    fflush (stdout);
 
-    if (file && file[0])
-        if (line)
-            printf ("%s:%d", file, line);
-        else
-            printf ("%s", file);
-    else if (line)
-        printf ("Line %d", line);
-
-    printf (":");
-    if (pfx && pfx[0])
-        printf (" %s", pfx);
-
-    if (func && func[0])
-        printf (" in %s", func);
-
-    if (msg && msg[0]) {
-        va_list ap;
-
-        printf (" ");
-        va_start (ap, msg);
-        vprintf (msg, ap);
-        va_end (ap);
-    }
-
-    printf ("\n");
+    va_end (ap);
 }
