@@ -17,6 +17,9 @@
 /** Extract the enumerated value type from a value. */
 #define OBJ_TYPE(value) (AS_OBJ(value)->type)
 
+/** Return true iff the value is a Class. */
+#define IS_CLASS(value) isObjType(value, OBJ_CLASS)
+
 /** Return true iff the value is a Closure. */
 #define IS_CLOSURE(value) isObjType(value, OBJ_CLOSURE)
 
@@ -28,6 +31,9 @@
 
 /** Return true iff the value is a String. */
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
+
+/** Return the Class object in this Value. */
+#define AS_CLASS(value) ((ObjClass*)AS_OBJ(value))
 
 /** Return the Closure object in this Value. */
 #define AS_CLOSURE(value) ((ObjClosure*)AS_OBJ(value))
@@ -46,6 +52,7 @@
 
 /** Enumerate the possible object types. */
 typedef enum {
+    OBJ_CLASS,                  ///< Object is a Class
     OBJ_CLOSURE,                ///< Object is a Closure
     OBJ_FUNCTION,               ///< Object is a Function
     OBJ_NATIVE,                 ///< Object is a Native Function
@@ -99,6 +106,13 @@ struct ObjClosure {
     int upvalueCount;           ///< number of upvalues
 };
 
+/** Object that is a class */
+struct ObjClass {
+    Obj obj;                    ///< Inherit from Obj
+    ObjString *name;            ///< class name
+};
+
+extern ObjClass *newClass (ObjString *name);
 extern ObjClosure *newClosure (ObjFunction *function);
 extern ObjFunction *newFunction ();
 extern ObjNative *newNative (NativeFn function);

@@ -219,6 +219,13 @@ blackenObject (Obj *object)
 
     switch (object->type) {
 
+    case OBJ_CLASS:{
+            ObjClass *klass = (ObjClass *) object;
+
+            markObject ((Obj *) klass->name);
+            return;
+        }
+
     case OBJ_CLOSURE:{
             ObjClosure *closure = (ObjClosure *) object;
 
@@ -267,6 +274,11 @@ freeObject (Obj *object)
 #endif
 
     switch (object->type) {
+
+    case OBJ_CLASS:{
+            FREE (ObjClass, object);
+            return;
+        }
 
     case OBJ_CLOSURE:{
             ObjClosure *closure = (ObjClosure *) object;

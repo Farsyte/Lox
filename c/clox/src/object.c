@@ -39,6 +39,20 @@ allocateObject (size_t size, ObjType type)
     return object;
 }
 
+/** Create a new Class object
+ *
+ * @param name the name of the class
+ * @returns a new Class object
+ */
+ObjClass *
+newClass (ObjString *name)
+{
+    ObjClass *klass = ALLOCATE_OBJ (ObjClass, OBJ_CLASS);
+
+    klass->name = name;
+    return klass;
+}
+
 /** Allocate a new Closure object.
  *
  * @param function the compiled code for the closure
@@ -247,12 +261,12 @@ printObject (Value value)
 
         // *INDENT-OFF*
 
-    case OBJ_CLOSURE:   printFunction(
-                            AS_CLOSURE(value)->function);       return;
-    case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
-    case OBJ_NATIVE:    printf("<native fn>");                  return;
-    case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
-    case OBJ_UPVALUE:   printf("<upvalue>");                    return;
+    case OBJ_CLASS:     printf("%s", AS_CLASS(value)->name->chars);     return;
+    case OBJ_CLOSURE:   printFunction(AS_CLOSURE(value)->function);     return;
+    case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));              return;
+    case OBJ_NATIVE:    printf("<native fn>");                          return;
+    case OBJ_STRING:    printf("%s", AS_CSTRING(value));                return;
+    case OBJ_UPVALUE:   printf("<upvalue>");                            return;
 
         // *INDENT-ON*
     }

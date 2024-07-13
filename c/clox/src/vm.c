@@ -281,6 +281,9 @@ callValue (Value callee, int argCount)
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
 
+        case OBJ_CLASS:
+            STUB ("OBJ_CLASS case");
+
         case OBJ_CLOSURE:
             return call (AS_CLOSURE (callee), argCount);
 
