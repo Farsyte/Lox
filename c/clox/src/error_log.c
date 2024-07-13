@@ -135,11 +135,8 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
  * that our error message starts at the left margin, after
  * assuring all prior output is made visible.
  *
- * @param file a path to a source file (or similar).
- * @param line the line number in the source file (or similar).
  * @param func the containing function name (or similar).
- * @param pfx a "prefix" string to print on the first line
- * @param format an extended message to follow
+ * @param format printf-like messag definition
  *
  * Any or all parameters can be NULL, "", or zero; in each case,
  * such parameters will be skipped along with connective text.

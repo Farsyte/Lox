@@ -34,6 +34,18 @@ struct VM {
     Table strings;              ///< hash table for string deduplication
     ObjUpvalue *openUpvalues;   ///< linked list of ALL open upvalues on the stack
     Obj *objects;               ///< linked list of all objects
+
+    int grayCount;              ///< number of grey items identified
+    int grayCapacity;           ///< capacity of the gray item list
+    Obj **grayStack;            ///< extensable array of gray items
+
+#ifdef DEBUG_FREELESS_GC
+    Obj *unfree;                ///< linked list (FIFO) of sweept objects
+    Obj **unfree_link;          ///< tail pointer for FIFO operations
+#endif
+
+    size_t bytesAllocated;      ///< net bytes allocated
+    size_t nextGC;              ///< allocation threshold for next GC run
 };
 
 /** Interpreter result

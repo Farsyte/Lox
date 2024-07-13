@@ -2,6 +2,7 @@
 
 #include "memory.h"
 #include "value.h"
+#include "vm.h"
 
 /** @file chunk.c
  * @brief Manage Chunks of Bytecode
@@ -84,6 +85,11 @@ writeChunk (Chunk *chunk, uint8_t byte, int line)
 int
 addConstant (Chunk *chunk, Value value)
 {
+    // value may not be otherwise reachable,
+    // but we do not want GC to sweep it
+    // if GC is triggered by writeValueArray.
+    push (value);
     writeValueArray (&chunk->constants, value);
+    pop ();
     return chunk->constants.count - 1;
 }

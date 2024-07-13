@@ -3,6 +3,7 @@
 #include "chunk.h"
 #include "common.h"
 #include "debug.h"
+#include "memory.h"
 #include "scanner.h"
 
 #include <stdio.h>
@@ -1273,4 +1274,17 @@ compile (const char *source)
     ObjFunction *function = endCompiler ();
 
     return parser.hadError ? NULL : function;
+}
+
+/** Mark all compiler roots as reachable.
+ */
+void
+markCompilerRoots ()
+{
+    Compiler *compiler = current;
+
+    while (compiler != NULL) {
+        markObject ((Obj *) compiler->function);
+        compiler = compiler->enclosing;
+    }
 }

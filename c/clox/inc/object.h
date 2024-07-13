@@ -56,6 +56,7 @@ typedef enum {
 /** Base structure for all Objects */
 struct Obj {
     ObjType type;               ///< Designate the type of the object
+    bool isMarked;              ///< set by GC for reachable objects
     struct Obj *next;           ///< next eldest object
 };
 

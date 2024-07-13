@@ -60,7 +60,9 @@ gcNative (int argCount, Value *args)
 {
     (void) argCount;                    // not used by this function
     (void) args;                        // not used by this function
-    DEBUG_LINE (0, "TODO: trigger GC, please!");
+
+    collectGarbage ();
+
     return NIL_VAL;
 }
 
@@ -136,6 +138,19 @@ initVM ()
 
     resetStack ();
     vm.objects = NULL;
+
+    vm.bytesAllocated = 0;
+    vm.nextGC = 1024 * 1024;
+
+    vm.grayCount = 0;
+    vm.grayCapacity = 0;
+    vm.grayStack = NULL;
+
+#ifdef DEBUG_FREELESS_GC
+    vm.unfree = NULL;
+    vm.unfree_link = &vm.unfree;
+#endif
+
     initTable (&vm.globals);
     initTable (&vm.strings);
     defineNative ("clock", clockNative);
@@ -155,6 +170,10 @@ freeVM ()
     freeTable (&vm.strings);
     freeTable (&vm.globals);
     freeObjects ();
+
+#ifdef DEBUG_FREELESS_GC
+    freeUnfree ();
+#endif
 }
 
 /** Push a value onto the VM stack.
@@ -362,8 +381,8 @@ concatenate ()
 {
     INVAR (vmInitialized, "refused, VM is not initialized.");
 
-    ObjString *b = AS_STRING (pop ());
-    ObjString *a = AS_STRING (pop ());
+    ObjString *b = AS_STRING (peek (0));
+    ObjString *a = AS_STRING (peek (1));
     int length = a->length + b->length;
     char *chars = ALLOCATE (char, length + 1);
 
@@ -373,6 +392,8 @@ concatenate ()
 
     ObjString *result = takeString (chars, length);
 
+    pop ();
+    pop ();
     push (OBJ_VAL (result));
 
 }

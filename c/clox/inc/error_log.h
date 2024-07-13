@@ -108,11 +108,10 @@
  * stream identifying the source location and including the
  * provided Prefix, Condition, and Message strings:
  *
- *      <<func>>: <<msg>>
+ *      function: message...
  *
- * @param pfx a "prefix" string to print on the first line
- * Parameters after "pfx" are a printf-like definition of
- * the <<msg> to print.
+ * The entire list of parameters for this macro are
+ * a printf-like message definition.
  *
  * Any or all of the parameters can be NULL or "" in which
  * case that message and some surrounding connective space

@@ -4,6 +4,7 @@
 #include "object.h"
 #include "value.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -255,5 +256,41 @@ tableFindString (Table *table, const char *chars, int length, uint32_t hash)
             return entry->key;
         }
         index = (index + 1) % table->capacity;
+    }
+}
+
+/** Remove stale weak references from the table.
+ *
+ * @param table the list of weak-reference entries
+ */
+void
+tableRemoveWhite (Table *table)
+{
+    for (int i = 0; i < table->capacity; i++) {
+        Entry *entry = &table->entries[i];
+
+        if (entry->key != NULL && !entry->key->obj.isMarked) {
+#ifdef DEBUG_LOG_GC
+            printf ("tableRemoveWhite: dropping weak key %s ", printableHeapAddr (entry->key));
+            printValue (OBJ_VAL (entry->key));
+            printf ("\n");
+#endif
+            tableDelete (table, entry->key);
+        }
+    }
+}
+
+/** Mark objects listed in a table.
+ *
+ * @param table the collection of objects to mark
+ */
+void
+markTable (Table *table)
+{
+    for (int i = 0; i < table->capacity; i++) {
+        Entry *entry = &table->entries[i];
+
+        markObject ((Obj *) entry->key);
+        markValue (entry->value);
     }
 }
