@@ -275,6 +275,7 @@ stack: <script> 1 <fn f> 2
 heap_032 mark <script>
 heap_034 mark <fn f>
 heap_032 mark <script>
+heap_035 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -284,6 +285,7 @@ heap_008 mark <native fn>
 heap_032 mark <script>
 heap_034 mark <fn f>
 heap_032 mark <script>
+heap_035 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -295,6 +297,7 @@ heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
 heap_032 mark <script>
+heap_035 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -311,6 +314,7 @@ heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
 heap_032 mark <script>
+heap_038 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -321,6 +325,7 @@ heap_032 mark <script>
 heap_034 mark <fn f>
 heap_037 mark <fn g>
 heap_032 mark <script>
+heap_038 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -333,6 +338,7 @@ heap_034 mark <fn f>
 heap_037 mark <fn g>
 heap_040 mark <fn h>
 heap_032 mark <script>
+heap_038 mark <upvalue>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc

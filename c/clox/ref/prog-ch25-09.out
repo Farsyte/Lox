@@ -344,6 +344,7 @@ heap_035 mark <fn outer>
 heap_037 mark <fn middle>
 heap_034 mark <script>
 heap_035 mark <fn outer>
+heap_038 mark <upvalue>
 heap_012 mark outer
 heap_035 mark <fn outer>
 heap_002 mark clock

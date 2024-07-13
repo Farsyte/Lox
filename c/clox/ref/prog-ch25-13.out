@@ -428,6 +428,7 @@ heap_022 mark initial
 heap_049 mark <fn set>
 heap_046 mark <script>
 heap_047 mark <fn main>
+heap_050 mark <upvalue>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -444,6 +445,7 @@ heap_022 mark initial
 heap_049 mark <fn set>
 heap_046 mark <script>
 heap_047 mark <fn main>
+heap_050 mark <upvalue>
 heap_012 mark globalSet
 heap_002 mark clock
 heap_004 mark <native fn>
