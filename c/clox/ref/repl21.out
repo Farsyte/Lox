@@ -11,146 +11,40 @@ heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
-heap_002 mark clock
 heap_004 mark <native fn>
 heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_004 blacken <native fn>
-heap_002 blacken clock
 heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
 heap_008 mark <native fn>
 heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_012 mark one
-heap_012 blacken one
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_012 mark one
-heap_012 blacken one
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_012 mark one
-heap_012 blacken one
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 -- gc begin
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_010 mark <script>
-heap_010 blacken <script>
-heap_012 mark one
-heap_012 blacken one
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
 -- gc end
 
 Disassembling <script> ...
@@ -167,18 +61,6 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
-heap_010 mark <script>
-heap_002 mark clock
-heap_004 mark <native fn>
-heap_007 mark gc
-heap_008 mark <native fn>
-heap_008 blacken <native fn>
-heap_007 blacken gc
-heap_004 blacken <native fn>
-heap_002 blacken clock
-heap_010 blacken <script>
-heap_012 mark one
-heap_012 blacken one
 -- gc end
 heap_016 allocate 40 for 0
 
