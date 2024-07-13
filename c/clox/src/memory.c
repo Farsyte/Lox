@@ -180,6 +180,12 @@ markValue (Value value)
         markObject (AS_OBJ (value));
 }
 
+/** Blacken this object.
+ *
+ * Mark all of the other objects reachable from this object.
+ *
+ * @param object the object to blacken
+ */
 static void
 blackenObject (Obj *object)
 {
@@ -194,6 +200,9 @@ blackenObject (Obj *object)
         }
 
     case OBJ_UPVALUE:{
+            ObjUpvalue *upvalue = (ObjUpvalue *) object;
+
+            markValue (upvalue->closed);
             return;
         }
 
