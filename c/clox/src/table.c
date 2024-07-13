@@ -257,3 +257,18 @@ tableFindString (Table *table, const char *chars, int length, uint32_t hash)
         index = (index + 1) % table->capacity;
     }
 }
+
+/** Mark objects listed in a table.
+ *
+ * @param table the collection of objects to mark
+ */
+void
+markTable (Table *table)
+{
+    for (int i = 0; i < table->capacity; i++) {
+        Entry *entry = &table->entries[i];
+
+        markObject ((Obj *) entry->key);
+        markValue (entry->value);
+    }
+}

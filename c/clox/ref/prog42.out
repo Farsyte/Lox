@@ -14,52 +14,126 @@ heap_002 mark clock
 heap_004 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_018 allocate 72 for 1
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_020 allocate 40 for 3
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 
 Disassembling count ...
@@ -75,8 +149,16 @@ Disassembling count ...
 Disassembling count ... done.
 
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 
 Disassembling makeCounter ...
@@ -90,21 +172,53 @@ Disassembling makeCounter ...
 Disassembling makeCounter ... done.
 
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 
 Disassembling <script> ...
@@ -125,6 +239,10 @@ Disassembling <script> ... done.
 
 -- gc begin
 heap_010 mark <script>
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_033 allocate 40 for 0
 
@@ -133,6 +251,10 @@ stack: <script>
 0000   10 OP_CLOSURE          1 <fn makeCounter>
 -- gc begin
 heap_033 mark <script>
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_034 allocate 40 for 0
 stack: <script> <fn makeCounter>
@@ -149,9 +271,21 @@ stack: <script> <fn makeCounter> 0
 -- gc begin
 heap_033 mark <script>
 heap_034 mark <fn makeCounter>
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_012 mark makeCounter
+heap_034 mark <fn makeCounter>
 -- gc end
 -- gc begin
 heap_033 mark <script>
+heap_034 mark <fn makeCounter>
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
 -- gc end
 heap_036 allocate 40 for 0
@@ -159,6 +293,12 @@ heap_036 allocate 40 for 0
 heap_033 mark <script>
 heap_034 mark <fn makeCounter>
 heap_036 mark <fn count>
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_012 mark makeCounter
+heap_034 mark <fn makeCounter>
 -- gc end
 heap_037 allocate 48 for 4
 stack: <script> <fn makeCounter> 0 <fn count>

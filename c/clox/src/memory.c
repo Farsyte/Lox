@@ -232,6 +232,7 @@ markRoots ()
     for (Value *slot = vm.stack; slot < vm.sp; slot++) {
         markValue (*slot);
     }
+    markTable (&vm.globals);
 }
 
 /** Run the Mark-Sweep Garbage Collector

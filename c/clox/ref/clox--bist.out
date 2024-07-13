@@ -14,104 +14,246 @@ heap_002 mark clock
 heap_004 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
+heap_002 mark clock
+heap_004 mark <native fn>
 -- gc end
 heap_008 allocate 24 for 2
 BIST: bistMemory ...
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 BIST: bistMemory ... done.
 BIST: bistChunk ...
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 BIST: bistChunk ... done.
 BIST: bistValue ...
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 BIST: bistValue ... done.
 BIST: bistTable ...
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
 heap_026 mark k1
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
 heap_026 mark k1
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
 heap_026 mark k1
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
 heap_026 mark k1
 heap_029 mark k2
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
 heap_026 mark k1
 heap_029 mark k2
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_031 allocate 40 for 3
 -- gc begin
 heap_026 mark k1
 heap_029 mark k2
 heap_031 mark k3
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 -- gc begin
 heap_026 mark k1
 heap_029 mark k2
 heap_031 mark k3
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 heap_033 allocate 40 for 3
 -- gc begin
@@ -119,6 +261,10 @@ heap_026 mark k1
 heap_029 mark k2
 heap_031 mark k3
 heap_033 mark k4
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
 -- gc end
 BIST: bistTable ... done.
 heap_033 free type 3
@@ -145,12 +291,18 @@ heap_036 mark clock
 heap_038 mark <native fn>
 -- gc end
 -- gc begin
+heap_036 mark clock
+heap_038 mark <native fn>
 -- gc end
 -- gc begin
+heap_036 mark clock
+heap_038 mark <native fn>
 -- gc end
 heap_041 allocate 40 for 3
 -- gc begin
 heap_041 mark gc
+heap_036 mark clock
+heap_038 mark <native fn>
 -- gc end
 heap_042 allocate 24 for 2
 object exists at top of test: '<native fn>'
@@ -158,19 +310,35 @@ object exists at top of test: 'gc'
 object exists at top of test: '<native fn>'
 object exists at top of test: 'clock'
 -- gc begin
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 -- gc begin
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 heap_044 allocate 40 for 3
 valString prints as 'testObject'
 -- gc begin
 heap_044 mark testObject
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 heap_045 allocate 24 for 2
 valNative prints as '<native fn>'
 -- gc begin
 heap_044 mark testObject
 heap_045 mark <native fn>
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 heap_046 allocate 72 for 1
 valFunction prints as '<script>'
@@ -178,6 +346,10 @@ valFunction prints as '<script>'
 heap_044 mark testObject
 heap_045 mark <native fn>
 heap_046 mark <script>
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 heap_047 allocate 40 for 0
 valClosure prints as '<script>'
@@ -186,6 +358,10 @@ heap_044 mark testObject
 heap_045 mark <native fn>
 heap_046 mark <script>
 heap_047 mark <script>
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
 -- gc end
 heap_048 allocate 48 for 4
 valUpvalue prints as '<upvalue>'
@@ -228,29 +404,59 @@ heap_050 mark clock
 heap_052 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
 -- gc end
 heap_055 allocate 40 for 3
 -- gc begin
 heap_055 mark gc
+heap_050 mark clock
+heap_052 mark <native fn>
 -- gc end
 heap_056 allocate 24 for 2
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 heap_057 allocate 72 for 1
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 -- gc begin
+heap_050 mark clock
+heap_052 mark <native fn>
+heap_055 mark gc
+heap_056 mark <native fn>
 -- gc end
 
 Disassembling <script> ...
@@ -289,26 +495,56 @@ heap_063 mark clock
 heap_065 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
 -- gc end
 heap_068 allocate 40 for 3
 -- gc begin
 heap_068 mark gc
+heap_063 mark clock
+heap_065 mark <native fn>
 -- gc end
 heap_069 allocate 24 for 2
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 heap_070 allocate 72 for 1
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 -- gc begin
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 
 Disassembling <script> ...
@@ -326,6 +562,10 @@ Disassembling <script> ... done.
 
 -- gc begin
 heap_070 mark <script>
+heap_063 mark clock
+heap_065 mark <native fn>
+heap_068 mark gc
+heap_069 mark <native fn>
 -- gc end
 heap_075 allocate 40 for 0
 
@@ -376,12 +616,18 @@ heap_077 mark clock
 heap_079 mark <native fn>
 -- gc end
 -- gc begin
+heap_077 mark clock
+heap_079 mark <native fn>
 -- gc end
 -- gc begin
+heap_077 mark clock
+heap_079 mark <native fn>
 -- gc end
 heap_082 allocate 40 for 3
 -- gc begin
 heap_082 mark gc
+heap_077 mark clock
+heap_079 mark <native fn>
 -- gc end
 heap_083 allocate 24 for 2
 BIST: bistVM ... done.
