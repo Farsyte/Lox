@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
@@ -78,6 +79,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -86,6 +89,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -94,6 +99,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -102,6 +109,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
 -- gc end
 heap_018 allocate 40 for 3
 -- gc begin
@@ -111,6 +120,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
 -- gc end
 
 Disassembling areWeHavingItYet ...
@@ -128,6 +139,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_012 mark areWeHavingItYet
+heap_018 mark Yes we are!
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -135,6 +150,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_012 mark areWeHavingItYet
+heap_018 mark Yes we are!
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -142,6 +161,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
+heap_018 mark Yes we are!
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -149,6 +173,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
+heap_018 mark Yes we are!
 -- gc end
 
 Disassembling <script> ...
@@ -166,6 +195,11 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_012 mark areWeHavingItYet
+heap_012 mark areWeHavingItYet
+heap_018 mark Yes we are!
 -- gc end
 heap_022 allocate 40 for 0
 

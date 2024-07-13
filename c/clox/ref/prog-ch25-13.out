@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -76,6 +77,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -83,6 +85,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -90,6 +93,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -98,6 +102,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -105,6 +111,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
@@ -113,6 +121,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
 -- gc end
 heap_020 allocate 72 for 1
 -- gc begin
@@ -122,6 +133,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -130,6 +145,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
 -- gc end
 heap_022 allocate 40 for 3
 -- gc begin
@@ -139,6 +158,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -147,6 +170,11 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -155,6 +183,11 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -163,6 +196,11 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 heap_026 allocate 72 for 1
 -- gc begin
@@ -173,6 +211,11 @@ heap_008 mark <native fn>
 heap_026 mark <script>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -182,6 +225,11 @@ heap_008 mark <native fn>
 heap_026 mark <script>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 heap_028 allocate 40 for 3
 -- gc begin
@@ -192,6 +240,11 @@ heap_008 mark <native fn>
 heap_026 mark <script>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -201,6 +254,12 @@ heap_008 mark <native fn>
 heap_026 mark <fn set>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_028 mark set
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -210,6 +269,12 @@ heap_008 mark <native fn>
 heap_026 mark <fn set>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_028 mark set
 -- gc end
 heap_031 allocate 40 for 3
 -- gc begin
@@ -220,6 +285,12 @@ heap_008 mark <native fn>
 heap_026 mark <fn set>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_028 mark set
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -229,6 +300,13 @@ heap_008 mark <native fn>
 heap_026 mark <fn set>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -238,6 +316,13 @@ heap_008 mark <native fn>
 heap_026 mark <fn set>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 
 Disassembling set ...
@@ -255,6 +340,14 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 heap_035 allocate 72 for 1
 -- gc begin
@@ -265,6 +358,14 @@ heap_008 mark <native fn>
 heap_035 mark <script>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -274,6 +375,14 @@ heap_008 mark <native fn>
 heap_035 mark <script>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 heap_037 allocate 40 for 3
 -- gc begin
@@ -284,6 +393,15 @@ heap_008 mark <native fn>
 heap_035 mark <fn get>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_028 mark set
+heap_031 mark updated
+heap_037 mark get
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -293,6 +411,15 @@ heap_008 mark <native fn>
 heap_035 mark <fn get>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_028 mark set
+heap_031 mark updated
+heap_037 mark get
 -- gc end
 
 Disassembling get ...
@@ -309,6 +436,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -317,6 +454,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -325,6 +472,18 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -333,6 +492,18 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_020 mark <fn main>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 
 Disassembling main ...
@@ -357,6 +528,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_020 mark <fn main>
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -364,6 +548,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_020 mark <fn main>
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -371,6 +568,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_020 mark <fn main>
+heap_019 mark main
+heap_012 mark globalSet
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -378,6 +590,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_020 mark <fn main>
+heap_019 mark main
+heap_012 mark globalSet
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 
 Disassembling <script> ...
@@ -406,6 +633,22 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_020 mark <fn main>
+heap_019 mark main
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_019 mark main
+heap_022 mark initial
+heap_026 mark <fn set>
+heap_035 mark <fn get>
+heap_012 mark globalSet
+heap_017 mark globalGet
+heap_037 mark get
+heap_028 mark set
+heap_031 mark updated
 -- gc end
 heap_046 allocate 40 for 0
 

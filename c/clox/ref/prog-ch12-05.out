@@ -83,6 +83,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -90,6 +91,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -98,6 +100,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -105,6 +109,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
@@ -113,6 +119,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -120,6 +129,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -127,6 +139,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -134,6 +149,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
 -- gc end
 heap_022 allocate 40 for 3
 -- gc begin
@@ -142,6 +160,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -149,6 +171,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
 -- gc end
 heap_024 allocate 40 for 3
 -- gc begin
@@ -157,6 +183,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -164,6 +194,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -171,6 +206,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
 -- gc end
 heap_027 allocate 40 for 3
 -- gc begin
@@ -179,6 +219,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
+heap_027 mark t
+heap_022 mark cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -186,6 +233,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
+heap_027 mark t
+heap_022 mark cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -193,6 +247,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
+heap_027 mark t
+heap_022 mark cake
+heap_022 mark cake
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -200,6 +262,16 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
+heap_027 mark t
+heap_022 mark cake
+heap_022 mark cake
+heap_022 mark cake
+heap_027 mark t
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -207,4 +279,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark adjective
+heap_017 mark delicious
+heap_019 mark The 
+heap_022 mark cake
+heap_024 mark Cake
+heap_027 mark t
+heap_022 mark cake
+heap_022 mark cake
+heap_022 mark cake
+heap_027 mark t
 -- gc end

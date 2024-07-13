@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -76,6 +77,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
 -- gc end
 heap_015 allocate 40 for 3
 -- gc begin
@@ -84,6 +86,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -91,6 +95,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -98,6 +104,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
+heap_012 mark a
+heap_012 mark a
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -105,6 +115,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
+heap_012 mark a
+heap_012 mark a
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
@@ -113,6 +127,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
+heap_012 mark a
+heap_012 mark a
+heap_019 mark after
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -120,6 +139,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark a
+heap_015 mark before
+heap_012 mark a
+heap_012 mark a
+heap_019 mark after
 -- gc end
 
 Disassembling <script> ...
@@ -141,6 +165,12 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark a
+heap_015 mark before
+heap_012 mark a
+heap_012 mark a
+heap_019 mark after
+heap_012 mark a
 -- gc end
 heap_021 allocate 40 for 0
 

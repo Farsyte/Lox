@@ -180,6 +180,18 @@ markValue (Value value)
         markObject (AS_OBJ (value));
 }
 
+/** Mark contents of an array as reachable.
+ *
+ * @param array the list of values to mark
+ */
+static void
+markArray (ValueArray *array)
+{
+    for (int i = 0; i < array->count; i++) {
+        markValue (array->values[i]);
+    }
+}
+
 /** Blacken this object.
  *
  * Mark all of the other objects reachable from this object.
@@ -196,6 +208,10 @@ blackenObject (Obj *object)
         }
 
     case OBJ_FUNCTION:{
+            ObjFunction *function = (ObjFunction *) object;
+
+            markObject ((Obj *) function->name);
+            markArray (&function->chunk.constants);
             return;
         }
 

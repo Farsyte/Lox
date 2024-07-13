@@ -83,6 +83,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark bagel
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -90,6 +91,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark bagel
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -98,6 +100,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark bagel
+heap_017 mark Bagel
+heap_014 mark bagel
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -105,4 +110,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_014 mark bagel
+heap_017 mark Bagel
+heap_014 mark bagel
 -- gc end

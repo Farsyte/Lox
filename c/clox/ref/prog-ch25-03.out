@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
@@ -78,6 +79,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
 -- gc end
 heap_015 allocate 72 for 1
 -- gc begin
@@ -88,6 +91,8 @@ heap_008 mark <native fn>
 heap_015 mark <script>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -97,6 +102,8 @@ heap_008 mark <native fn>
 heap_015 mark <script>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -107,6 +114,9 @@ heap_008 mark <native fn>
 heap_015 mark <fn closure>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -116,6 +126,9 @@ heap_008 mark <native fn>
 heap_015 mark <fn closure>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_017 mark closure
 -- gc end
 
 Disassembling closure ...
@@ -132,6 +145,8 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -140,6 +155,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -148,6 +167,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -156,6 +179,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -164,6 +191,10 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 
 Disassembling makeClosure ...
@@ -181,6 +212,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -188,6 +224,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -195,6 +236,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -202,6 +248,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
@@ -210,6 +261,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -217,6 +276,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -224,6 +291,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -231,6 +306,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
@@ -239,6 +322,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -246,6 +340,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -253,6 +358,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 
 Disassembling <script> ...
@@ -282,6 +398,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark makeClosure
+heap_014 mark <fn makeClosure>
+heap_026 mark doughnut
+heap_012 mark makeClosure
+heap_026 mark doughnut
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_029 mark bagel
+heap_026 mark doughnut
+heap_029 mark bagel
+heap_012 mark makeClosure
+heap_015 mark <fn closure>
+heap_017 mark closure
 -- gc end
 heap_033 allocate 40 for 0
 

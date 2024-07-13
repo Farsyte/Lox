@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark Hello, world!
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -76,6 +77,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark Hello, world!
 -- gc end
 
 Disassembling <script> ...
@@ -91,6 +93,7 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark Hello, world!
 -- gc end
 heap_016 allocate 40 for 0
 

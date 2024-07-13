@@ -69,6 +69,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -76,6 +77,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -83,6 +85,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -90,6 +93,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -97,6 +101,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -104,6 +109,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -111,6 +117,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -118,6 +125,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -125,6 +133,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -132,6 +141,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
 -- gc end
 heap_021 allocate 40 for 3
 -- gc begin
@@ -140,6 +150,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -147,6 +159,8 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
 -- gc end
 heap_023 allocate 40 for 3
 -- gc begin
@@ -155,6 +169,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -162,6 +179,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -169,6 +189,9 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -176,6 +199,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -183,6 +210,10 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
 -- gc end
 heap_028 allocate 40 for 3
 -- gc begin
@@ -191,6 +222,12 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -198,6 +235,12 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
 -- gc end
 heap_030 allocate 40 for 3
 -- gc begin
@@ -206,6 +249,12 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -213,6 +262,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -220,6 +277,14 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
 -- gc end
 heap_033 allocate 40 for 3
 -- gc begin
@@ -228,6 +293,16 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -235,6 +310,20 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -242,6 +331,20 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -249,6 +352,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -256,6 +374,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
 -- gc end
 heap_038 allocate 40 for 3
 -- gc begin
@@ -264,6 +397,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -271,6 +421,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
 -- gc end
 heap_040 allocate 40 for 3
 -- gc begin
@@ -279,6 +446,26 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -286,6 +473,26 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
 -- gc end
 heap_042 allocate 40 for 3
 -- gc begin
@@ -294,6 +501,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
+heap_042 mark PASS: final i = 
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -301,6 +529,28 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
+heap_042 mark PASS: final i = 
+heap_033 mark i
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -308,6 +558,28 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
+heap_042 mark PASS: final i = 
+heap_033 mark i
 -- gc end
 heap_045 allocate 40 for 3
 
@@ -431,6 +703,30 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_012 mark j
+heap_021 mark PASS: j = 
+heap_023 mark FAIL: j = 
+heap_012 mark j
+heap_028 mark PASS: final j = 
+heap_012 mark j
+heap_030 mark FAIL: final j = 
+heap_012 mark j
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_033 mark i
+heap_038 mark PASS: i = 
+heap_033 mark i
+heap_040 mark FAIL: i = 
+heap_033 mark i
+heap_033 mark i
+heap_042 mark PASS: final i = 
+heap_033 mark i
+heap_045 mark FAIL: final i = 
+heap_033 mark i
 -- gc end
 heap_046 allocate 40 for 0
 
