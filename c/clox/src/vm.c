@@ -42,6 +42,19 @@ clockNative (int argCount, Value *args)
     return NUMBER_VAL ((double) clock () / CLOCKS_PER_SEC);
 }
 
+/** Native Function: gc()
+ *
+ * This function triggers the garbage collector. It swallows all
+ * parameters presented. In the future, the values passed to this
+ * function may manipulate the GC.
+ *
+ * For now, gc() returns nil. In the future it may return
+ * information relating to the GC.
+ *
+ * @param argCount number of parameters in the function call
+ * @param args list of Values passed to the function
+ * @returns Value containing seconds since an epoch
+ */
 static Value
 gcNative (int argCount, Value *args)
 {
