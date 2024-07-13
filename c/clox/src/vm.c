@@ -60,7 +60,9 @@ gcNative (int argCount, Value *args)
 {
     (void) argCount;                    // not used by this function
     (void) args;                        // not used by this function
-    DEBUG_LINE (0, "TODO: trigger GC, please!");
+
+    collectGarbage ();
+
     return NIL_VAL;
 }
 

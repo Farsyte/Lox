@@ -848,7 +848,9 @@ heap_016 blacken Hi,
 heap_035 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
--- gc end: collected 0 bytes (from 1915 to 1915), next at 3830
+tableRemoveWhite: dropping weak key heap_038 Hi, Dear
+heap_038 free type 3
+-- gc end: collected 49 bytes (from 1915 to 1866), next at 3732
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
@@ -880,7 +882,7 @@ heap_016 blacken Hi,
 heap_035 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
--- gc end: collected 0 bytes (from 1955 to 1955), next at 3910
+-- gc end: collected 0 bytes (from 1906 to 1906), next at 3812
 heap_042 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader
 0011    | OP_CONSTANT         2 '!'
@@ -917,7 +919,9 @@ heap_016 blacken Hi,
 heap_035 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
--- gc end: collected 0 bytes (from 1972 to 1972), next at 3944
+tableRemoveWhite: dropping weak key heap_040 Hi, Dear 
+heap_040 free type 3
+-- gc end: collected 50 bytes (from 1923 to 1873), next at 3746
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
@@ -949,7 +953,7 @@ heap_016 blacken Hi,
 heap_035 blacken <script>
 heap_010 mark <script>
 heap_010 blacken <script>
--- gc end: collected 0 bytes (from 2012 to 2012), next at 4024
+-- gc end: collected 0 bytes (from 1913 to 1913), next at 3826
 heap_044 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader!
 0014    | OP_PRINT
@@ -982,5 +986,3 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_038 free type 3
-heap_040 free type 3

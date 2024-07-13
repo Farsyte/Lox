@@ -29,7 +29,7 @@
 #define DEBUG_LOG_GC
 
 /** Enable (or disable) sweep-to-list in GC */
-#define DEBUG_FREELESS_GC
+#undef DEBUG_FREELESS_GC
 
 /** Number of distinct uint8_t values */
 #define UINT8_COUNT (UINT8_MAX + 1)

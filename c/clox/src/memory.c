@@ -376,10 +376,12 @@ sweep ()
             link = &object->next;
             continue;
         }
-#ifndef DEBUG_FREELESS_GC
-        freeObject (unreached);
-#else
+
         *link = object->next;
+
+#ifndef DEBUG_FREELESS_GC
+        freeObject (object);
+#else
         object->next = NULL;
         *vm.unfree_link = object;
         vm.unfree_link = &object->next;

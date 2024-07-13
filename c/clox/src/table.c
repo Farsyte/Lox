@@ -4,6 +4,7 @@
 #include "object.h"
 #include "value.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -269,8 +270,12 @@ tableRemoveWhite (Table *table)
         Entry *entry = &table->entries[i];
 
         if (entry->key != NULL && !entry->key->obj.isMarked) {
-            // TDOO uncomment next line when known GC bugs are killed.
-            // tableDelete (table, entry->key);
+#ifdef DEBUG_LOG_GC
+            printf ("tableRemoveWhite: dropping weak key %s ", printableHeapAddr (entry->key));
+            printValue (OBJ_VAL (entry->key));
+            printf ("\n");
+#endif
+            tableDelete (table, entry->key);
         }
     }
 }

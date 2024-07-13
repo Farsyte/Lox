@@ -1785,7 +1785,9 @@ heap_052 blacken PASS: c =
 heap_047 blacken FAIL: b = 
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
--- gc end: collected 0 bytes (from 5194 to 5194), next at 10388
+tableRemoveWhite: dropping weak key heap_060 PASS: a = inner a
+heap_060 free type 3
+-- gc end: collected 58 bytes (from 5194 to 5136), next at 10272
 -- gc begin
 heap_058 mark <script>
 heap_029 mark outer a
@@ -1829,7 +1831,7 @@ heap_052 blacken PASS: c =
 heap_047 blacken FAIL: b = 
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
--- gc end: collected 0 bytes (from 5234 to 5234), next at 10468
+-- gc end: collected 0 bytes (from 5176 to 5176), next at 10352
 heap_062 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: b = outer b
 0057    | OP_PRINT
@@ -1895,7 +1897,9 @@ heap_047 blacken FAIL: b =
 heap_045 blacken PASS: b = 
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
--- gc end: collected 0 bytes (from 5253 to 5253), next at 10506
+tableRemoveWhite: dropping weak key heap_062 PASS: b = outer b
+heap_062 free type 3
+-- gc end: collected 58 bytes (from 5195 to 5137), next at 10274
 -- gc begin
 heap_058 mark <script>
 heap_029 mark outer a
@@ -1939,7 +1943,7 @@ heap_047 blacken FAIL: b =
 heap_045 blacken PASS: b = 
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
--- gc end: collected 0 bytes (from 5293 to 5293), next at 10586
+-- gc end: collected 0 bytes (from 5177 to 5177), next at 10354
 heap_064 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: c = global c
 0082    | OP_PRINT
@@ -2007,7 +2011,9 @@ heap_047 blacken FAIL: b =
 heap_045 blacken PASS: b = 
 heap_042 blacken FAIL: a = 
 heap_033 blacken inner a
--- gc end: collected 0 bytes (from 5311 to 5311), next at 10622
+tableRemoveWhite: dropping weak key heap_064 PASS: c = global c
+heap_064 free type 3
+-- gc end: collected 59 bytes (from 5195 to 5136), next at 10272
 -- gc begin
 heap_058 mark <script>
 heap_029 mark outer a
@@ -2051,7 +2057,7 @@ heap_047 blacken FAIL: b =
 heap_045 blacken PASS: b = 
 heap_042 blacken FAIL: a = 
 heap_033 blacken inner a
--- gc end: collected 0 bytes (from 5351 to 5351), next at 10702
+-- gc end: collected 0 bytes (from 5176 to 5176), next at 10352
 heap_066 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a
 0108    | OP_PRINT
@@ -2117,7 +2123,54 @@ heap_047 blacken FAIL: b =
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
 heap_033 blacken inner a
--- gc end: collected 0 bytes (from 5369 to 5369), next at 10738
+tableRemoveWhite: dropping weak key heap_066 PASS: a = outer a
+heap_066 free type 3
+-- gc end: collected 58 bytes (from 5194 to 5136), next at 10272
+-- gc begin
+heap_058 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_045 mark PASS: b = 
+heap_019 mark b
+heap_021 mark global b
+heap_012 mark a
+heap_015 mark global a
+heap_023 mark c
+heap_026 mark global c
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_033 mark inner a
+heap_038 mark PASS: a = 
+heap_042 mark FAIL: a = 
+heap_047 mark FAIL: b = 
+heap_052 mark PASS: c = 
+heap_054 mark FAIL: c = 
+heap_054 blacken FAIL: c = 
+heap_052 blacken PASS: c = 
+heap_047 blacken FAIL: b = 
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+-- gc end: collected 0 bytes (from 5176 to 5176), next at 10352
+heap_068 allocate 40 for 3
 stack: <script> outer a outer b PASS: b = outer b
 0133    | OP_PRINT
 PASS: b = outer b
@@ -2182,7 +2235,54 @@ heap_045 blacken PASS: b =
 heap_042 blacken FAIL: a = 
 heap_038 blacken PASS: a = 
 heap_033 blacken inner a
--- gc end: collected 0 bytes (from 5370 to 5370), next at 10740
+tableRemoveWhite: dropping weak key heap_068 PASS: b = outer b
+heap_068 free type 3
+-- gc end: collected 58 bytes (from 5195 to 5137), next at 10274
+-- gc begin
+heap_058 mark <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_052 mark PASS: c = 
+heap_026 mark global c
+heap_019 mark b
+heap_021 mark global b
+heap_012 mark a
+heap_015 mark global a
+heap_023 mark c
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_026 blacken global c
+heap_052 blacken PASS: c = 
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_033 mark inner a
+heap_038 mark PASS: a = 
+heap_042 mark FAIL: a = 
+heap_045 mark PASS: b = 
+heap_047 mark FAIL: b = 
+heap_054 mark FAIL: c = 
+heap_054 blacken FAIL: c = 
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+-- gc end: collected 0 bytes (from 5177 to 5177), next at 10354
+heap_070 allocate 40 for 3
 stack: <script> outer a outer b PASS: c = global c
 0158    | OP_PRINT
 PASS: c = global c
@@ -2251,7 +2351,9 @@ heap_042 blacken FAIL: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
--- gc end: collected 0 bytes (from 5370 to 5370), next at 10740
+tableRemoveWhite: dropping weak key heap_070 PASS: c = global c
+heap_070 free type 3
+-- gc end: collected 59 bytes (from 5196 to 5137), next at 10274
 -- gc begin
 heap_058 mark <script>
 heap_038 mark PASS: a = 
@@ -2295,8 +2397,8 @@ heap_042 blacken FAIL: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
--- gc end: collected 0 bytes (from 5410 to 5410), next at 10820
-heap_070 allocate 40 for 3
+-- gc end: collected 0 bytes (from 5177 to 5177), next at 10354
+heap_072 allocate 40 for 3
 stack: <script> PASS: a = global a
 0185    | OP_PRINT
 PASS: a = global a
@@ -2361,7 +2463,9 @@ heap_038 blacken PASS: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
--- gc end: collected 0 bytes (from 5429 to 5429), next at 10858
+tableRemoveWhite: dropping weak key heap_072 PASS: a = global a
+heap_072 free type 3
+-- gc end: collected 59 bytes (from 5196 to 5137), next at 10274
 -- gc begin
 heap_058 mark <script>
 heap_045 mark PASS: b = 
@@ -2405,8 +2509,8 @@ heap_038 blacken PASS: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
--- gc end: collected 0 bytes (from 5469 to 5469), next at 10938
-heap_072 allocate 40 for 3
+-- gc end: collected 0 bytes (from 5177 to 5177), next at 10354
+heap_074 allocate 40 for 3
 stack: <script> PASS: b = global b
 0210    | OP_PRINT
 PASS: b = global b
@@ -2471,7 +2575,54 @@ heap_038 blacken PASS: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
--- gc end: collected 0 bytes (from 5488 to 5488), next at 10976
+tableRemoveWhite: dropping weak key heap_074 PASS: b = global b
+heap_074 free type 3
+-- gc end: collected 59 bytes (from 5196 to 5137), next at 10274
+-- gc begin
+heap_058 mark <script>
+heap_052 mark PASS: c = 
+heap_026 mark global c
+heap_019 mark b
+heap_021 mark global b
+heap_012 mark a
+heap_015 mark global a
+heap_023 mark c
+heap_002 mark clock
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_026 blacken global c
+heap_052 blacken PASS: c = 
+heap_058 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_029 mark outer a
+heap_031 mark outer b
+heap_033 mark inner a
+heap_038 mark PASS: a = 
+heap_042 mark FAIL: a = 
+heap_045 mark PASS: b = 
+heap_047 mark FAIL: b = 
+heap_054 mark FAIL: c = 
+heap_054 blacken FAIL: c = 
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+-- gc end: collected 0 bytes (from 5177 to 5177), next at 10354
+heap_076 allocate 40 for 3
 stack: <script> PASS: c = global c
 0235    | OP_PRINT
 PASS: c = global c
@@ -2483,6 +2634,7 @@ stack: <script> nil
 0247    | OP_RETURN
 Executing ... done.
 
+heap_076 free type 3
 heap_058 free type 0
 heap_054 free type 3
 heap_052 free type 3
@@ -2504,9 +2656,3 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_060 free type 3
-heap_062 free type 3
-heap_064 free type 3
-heap_066 free type 3
-heap_070 free type 3
-heap_072 free type 3
