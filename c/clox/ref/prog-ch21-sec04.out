@@ -15,64 +15,326 @@ heap_004 mark <native fn>
 heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
 heap_008 mark <native fn>
 heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_015 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_021 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_024 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_024 mark  with 
+heap_024 blacken  with 
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_024 mark  with 
+heap_024 blacken  with 
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_024 mark  with 
+heap_024 blacken  with 
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 
 Disassembling <script> ...
@@ -94,6 +356,24 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_010 mark <script>
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_010 blacken <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_024 mark  with 
+heap_024 blacken  with 
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_015 blacken beignets
+heap_012 blacken breakfast
 -- gc end
 heap_029 allocate 40 for 0
 
@@ -113,8 +393,42 @@ stack: <script> beignets
 stack: <script> beignets  with 
 0012    | OP_ADD
 -- gc begin
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_015 blacken beignets
+heap_012 blacken breakfast
 -- gc end
 -- gc begin
+heap_029 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_029 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_024 mark  with 
+heap_024 blacken  with 
 -- gc end
 heap_031 allocate 40 for 3
 stack: <script> beignets with 
@@ -122,8 +436,40 @@ stack: <script> beignets with
 stack: <script> beignets with  café au lait
 0015    | OP_ADD
 -- gc begin
+heap_029 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_029 blacken <script>
 -- gc end
 -- gc begin
+heap_029 mark <script>
+heap_012 mark breakfast
+heap_015 mark beignets
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_019 mark beverage
+heap_021 mark café au lait
+heap_021 blacken café au lait
+heap_019 blacken beverage
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_015 blacken beignets
+heap_012 blacken breakfast
+heap_029 blacken <script>
 -- gc end
 heap_033 allocate 40 for 3
 stack: <script> beignets with café au lait
@@ -142,15 +488,15 @@ stack: <script> nil
 Executing ... done.
 
 heap_033 free type 3
-heap_031 free type 3
 heap_029 free type 0
-heap_024 free type 3
 heap_021 free type 3
 heap_019 free type 3
 heap_015 free type 3
 heap_012 free type 3
-heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
+heap_024 free type 3
+heap_010 free type 1
+heap_031 free type 3

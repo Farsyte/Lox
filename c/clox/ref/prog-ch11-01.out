@@ -15,51 +15,215 @@ heap_004 mark <native fn>
 heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
+heap_004 mark <native fn>
+heap_004 blacken <native fn>
 heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
 heap_008 mark <native fn>
 heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_015 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_018 allocate 72 for 1
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_018 mark <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_018 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_020 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_018 mark <fn showA>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_018 blacken <fn showA>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_018 mark <fn showA>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_018 mark <fn showA>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
+heap_012 blacken a
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 
 Disassembling showA ...
@@ -70,17 +234,115 @@ Disassembling showA ...
 Disassembling showA ... done.
 
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 -- gc begin
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_026 mark block
+heap_026 blacken block
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
 -- gc end
 
 Disassembling <script> ...
@@ -101,6 +363,24 @@ Disassembling <script> ...
 Disassembling <script> ... done.
 
 -- gc begin
+heap_010 mark <script>
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_010 blacken <script>
+heap_012 mark a
+heap_015 mark global
+heap_018 mark <fn showA>
+heap_026 mark block
+heap_026 blacken block
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
+heap_015 blacken global
+heap_012 blacken a
 -- gc end
 heap_029 allocate 40 for 0
 
@@ -112,6 +392,16 @@ stack: <script> global
 stack: <script>
 0004    5 OP_CLOSURE          2 <fn showA>
 -- gc begin
+heap_012 mark a
+heap_015 mark global
+heap_004 mark <native fn>
+heap_007 mark gc
+heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_015 blacken global
+heap_012 blacken a
 -- gc end
 heap_030 allocate 40 for 0
 stack: <script> <fn showA>
@@ -158,13 +448,13 @@ Executing ... done.
 
 heap_030 free type 0
 heap_029 free type 0
-heap_026 free type 3
-heap_020 free type 3
-heap_018 free type 1
 heap_015 free type 3
 heap_012 free type 3
-heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
+heap_026 free type 3
+heap_020 free type 3
+heap_018 free type 1
+heap_010 free type 1

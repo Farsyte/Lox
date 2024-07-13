@@ -364,6 +364,7 @@ sweep ()
             break;
 
         if (object->isMarked) {
+            object->isMarked = false;
             link = &object->next;
             continue;
         }
