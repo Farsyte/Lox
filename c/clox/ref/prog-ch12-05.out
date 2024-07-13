@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -33,12 +43,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
@@ -47,6 +65,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -54,6 +77,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -61,6 +89,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -68,6 +101,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_014 allocate 40 for 3
 -- gc begin
@@ -76,6 +114,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -83,7 +126,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -91,7 +140,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -100,8 +155,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -109,8 +171,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
@@ -119,9 +188,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -129,9 +206,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -139,9 +224,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -149,9 +242,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_022 allocate 40 for 3
 -- gc begin
@@ -160,10 +261,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -171,10 +281,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_024 allocate 40 for 3
 -- gc begin
@@ -183,10 +302,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -194,11 +322,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
 heap_024 mark Cake
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -206,11 +344,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
 heap_024 mark Cake
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_027 allocate 40 for 3
 -- gc begin
@@ -219,6 +367,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
@@ -226,6 +375,17 @@ heap_022 mark cake
 heap_024 mark Cake
 heap_027 mark t
 heap_022 mark cake
+heap_022 blacken cake
+heap_027 blacken t
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -233,6 +393,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
@@ -240,6 +401,17 @@ heap_022 mark cake
 heap_024 mark Cake
 heap_027 mark t
 heap_022 mark cake
+heap_022 blacken cake
+heap_027 blacken t
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -247,6 +419,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
@@ -255,6 +428,18 @@ heap_024 mark Cake
 heap_027 mark t
 heap_022 mark cake
 heap_022 mark cake
+heap_022 blacken cake
+heap_022 blacken cake
+heap_027 blacken t
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -262,6 +447,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
@@ -272,6 +458,20 @@ heap_022 mark cake
 heap_022 mark cake
 heap_022 mark cake
 heap_027 mark t
+heap_027 blacken t
+heap_022 blacken cake
+heap_022 blacken cake
+heap_022 blacken cake
+heap_027 blacken t
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -279,6 +479,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
@@ -289,4 +490,18 @@ heap_022 mark cake
 heap_022 mark cake
 heap_022 mark cake
 heap_027 mark t
+heap_027 blacken t
+heap_022 blacken cake
+heap_022 blacken cake
+heap_022 blacken cake
+heap_027 blacken t
+heap_024 blacken Cake
+heap_022 blacken cake
+heap_019 blacken The 
+heap_017 blacken delicious
+heap_014 blacken adjective
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end

@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 heap_008 free type 2

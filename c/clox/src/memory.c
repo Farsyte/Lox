@@ -201,6 +201,12 @@ markArray (ValueArray *array)
 static void
 blackenObject (Obj *object)
 {
+#ifdef DEBUG_LOG_GC
+    printf ("%s blacken ", printableHeapAddr (object));
+    printValue (OBJ_VAL (object));
+    printf ("\n");
+#endif
+
     switch (object->type) {
 
     case OBJ_CLOSURE:{

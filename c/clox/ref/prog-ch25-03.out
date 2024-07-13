@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -33,12 +43,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
@@ -47,6 +65,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -54,6 +77,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
@@ -62,6 +90,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -69,7 +102,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
@@ -79,8 +118,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_015 allocate 72 for 1
 -- gc begin
@@ -91,8 +138,17 @@ heap_008 mark <native fn>
 heap_015 mark <script>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_015 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -102,8 +158,17 @@ heap_008 mark <native fn>
 heap_015 mark <script>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_015 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_017 allocate 40 for 3
 -- gc begin
@@ -114,9 +179,19 @@ heap_008 mark <native fn>
 heap_015 mark <fn closure>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -126,9 +201,19 @@ heap_008 mark <native fn>
 heap_015 mark <fn closure>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling closure ...
@@ -145,8 +230,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -155,10 +248,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -167,10 +270,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -179,10 +292,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -191,10 +314,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeClosure>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
+heap_012 blacken makeClosure
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling makeClosure ...
@@ -212,11 +345,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -224,11 +367,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -236,11 +389,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -248,11 +411,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
@@ -261,14 +434,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_012 mark makeClosure
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -276,14 +462,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_012 mark makeClosure
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -291,14 +490,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_012 mark makeClosure
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -306,14 +518,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_012 mark makeClosure
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
@@ -322,6 +547,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -330,9 +556,24 @@ heap_026 mark doughnut
 heap_029 mark bagel
 heap_012 mark makeClosure
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -340,6 +581,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -348,9 +590,24 @@ heap_026 mark doughnut
 heap_029 mark bagel
 heap_012 mark makeClosure
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -358,6 +615,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -366,9 +624,24 @@ heap_026 mark doughnut
 heap_029 mark bagel
 heap_012 mark makeClosure
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling <script> ...
@@ -398,6 +671,11 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -408,9 +686,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_033 allocate 40 for 0
 
@@ -424,7 +715,13 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -435,10 +732,25 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -449,9 +761,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_034 allocate 40 for 0
 stack: <script> <fn makeClosure>
@@ -477,15 +802,32 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -496,14 +838,35 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -514,9 +877,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 -- gc begin
 heap_033 mark <script>
@@ -530,15 +906,32 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -549,14 +942,35 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -567,9 +981,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_036 allocate 40 for 0
 -- gc begin
@@ -585,15 +1012,32 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -604,16 +1048,40 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_036 blacken <fn closure>
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -624,9 +1092,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_037 allocate 48 for 4
 stack: <script> <fn makeClosure> doughnut <fn closure>
@@ -658,19 +1139,42 @@ heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_036 mark <fn closure>
+heap_036 blacken <fn closure>
 heap_015 mark <fn closure>
 heap_037 mark <upvalue>
+heap_037 blacken <upvalue>
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -681,14 +1185,35 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -699,9 +1224,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 -- gc begin
 heap_033 mark <script>
@@ -717,19 +1255,42 @@ heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_036 mark <fn closure>
+heap_036 blacken <fn closure>
 heap_015 mark <fn closure>
 heap_037 mark <upvalue>
+heap_037 blacken <upvalue>
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -740,14 +1301,35 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -758,9 +1340,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_039 allocate 40 for 0
 -- gc begin
@@ -778,19 +1373,42 @@ heap_012 mark makeClosure
 heap_034 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_036 mark <fn closure>
+heap_036 blacken <fn closure>
 heap_015 mark <fn closure>
 heap_037 mark <upvalue>
+heap_037 blacken <upvalue>
 heap_026 mark doughnut
+heap_026 blacken doughnut
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_026 blacken doughnut
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -801,16 +1419,40 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
+heap_039 blacken <fn closure>
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_029 blacken bagel
+heap_034 blacken <fn makeClosure>
 heap_014 mark <fn makeClosure>
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
@@ -821,9 +1463,22 @@ heap_012 mark makeClosure
 heap_029 mark bagel
 heap_026 mark doughnut
 heap_029 mark bagel
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_029 blacken bagel
+heap_012 blacken makeClosure
+heap_029 blacken bagel
+heap_026 blacken doughnut
+heap_012 blacken makeClosure
+heap_026 blacken doughnut
+heap_014 blacken <fn makeClosure>
 heap_012 mark makeClosure
 heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
 heap_017 mark closure
+heap_017 blacken closure
+heap_012 blacken makeClosure
+heap_012 blacken makeClosure
 -- gc end
 heap_040 allocate 48 for 4
 stack: <script> <fn makeClosure> bagel <fn closure>

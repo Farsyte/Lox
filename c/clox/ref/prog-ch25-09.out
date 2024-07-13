@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -33,12 +43,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
@@ -47,6 +65,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -54,6 +77,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
@@ -62,6 +90,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -69,7 +102,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
@@ -79,8 +118,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -89,8 +136,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -99,8 +154,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -109,8 +172,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_018 allocate 72 for 1
 -- gc begin
@@ -121,8 +192,17 @@ heap_008 mark <native fn>
 heap_018 mark <script>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -132,8 +212,17 @@ heap_008 mark <native fn>
 heap_018 mark <script>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_020 allocate 40 for 3
 -- gc begin
@@ -144,9 +233,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -156,9 +255,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -168,9 +277,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -180,9 +299,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_024 allocate 72 for 1
 -- gc begin
@@ -194,9 +323,20 @@ heap_024 mark <script>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -207,9 +347,20 @@ heap_024 mark <script>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
@@ -221,10 +372,22 @@ heap_024 mark <fn inner>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -235,10 +398,22 @@ heap_024 mark <fn inner>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -249,10 +424,22 @@ heap_024 mark <fn inner>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -263,10 +450,22 @@ heap_024 mark <fn inner>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_020 blacken middle
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling inner ...
@@ -290,11 +489,23 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -304,11 +515,23 @@ heap_008 mark <native fn>
 heap_018 mark <fn middle>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling middle ...
@@ -330,12 +553,24 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -344,12 +579,24 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn outer>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling outer ...
@@ -368,13 +615,25 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -382,13 +641,25 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -396,14 +667,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -411,14 +695,27 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling <script> ...
@@ -437,14 +734,27 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 heap_034 allocate 40 for 0
 
@@ -458,24 +768,48 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 heap_035 allocate 40 for 0
 stack: <script> <fn outer>
@@ -503,42 +837,88 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 -- gc begin
 heap_034 mark <script>
@@ -551,42 +931,88 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 heap_037 allocate 40 for 0
 -- gc begin
@@ -601,46 +1027,97 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_037 blacken <fn middle>
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 heap_038 allocate 48 for 4
 -- gc begin
@@ -656,47 +1133,100 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_038 blacken <upvalue>
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
+heap_037 blacken <fn middle>
 heap_018 mark <fn middle>
 heap_038 mark <upvalue>
+heap_038 blacken <upvalue>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_035 blacken <fn outer>
 heap_014 mark <fn outer>
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_034 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark outer
 heap_014 mark <fn outer>
 heap_012 mark outer
+heap_012 blacken outer
+heap_014 blacken <fn outer>
 heap_012 mark outer
 heap_018 mark <fn middle>
+heap_018 blacken <fn middle>
 heap_020 mark middle
 heap_024 mark <fn inner>
+heap_024 blacken <fn inner>
 heap_026 mark inner
+heap_026 blacken inner
+heap_020 blacken middle
+heap_012 blacken outer
+heap_012 blacken outer
 -- gc end
 heap_039 allocate 48 for 4
 stack: <script> <fn outer> 1 2 <fn middle>

@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -33,12 +43,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
@@ -47,6 +65,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -54,6 +77,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
@@ -62,6 +90,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -69,7 +102,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -77,7 +116,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_015 allocate 40 for 3
 -- gc begin
@@ -86,8 +131,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -95,8 +147,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -104,8 +163,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -113,8 +179,15 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_019 allocate 40 for 3
 -- gc begin
@@ -123,9 +196,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -133,9 +214,17 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_021 allocate 40 for 3
 -- gc begin
@@ -144,10 +233,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -155,10 +253,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_023 allocate 40 for 3
 -- gc begin
@@ -167,10 +274,19 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -178,11 +294,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -190,11 +316,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_026 allocate 40 for 3
 -- gc begin
@@ -203,12 +339,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -216,12 +363,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -229,12 +387,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -242,12 +411,23 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
@@ -256,6 +436,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -263,6 +444,17 @@ heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -270,6 +462,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -277,6 +470,17 @@ heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_031 allocate 40 for 3
 -- gc begin
@@ -285,6 +489,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -293,6 +498,18 @@ heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -300,6 +517,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -308,6 +526,18 @@ heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_033 allocate 40 for 3
 -- gc begin
@@ -316,6 +546,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -324,6 +555,18 @@ heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -331,6 +574,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -340,6 +584,19 @@ heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -347,6 +604,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -356,6 +614,19 @@ heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -363,6 +634,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -373,6 +645,20 @@ heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -380,6 +666,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -390,6 +677,20 @@ heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_038 allocate 40 for 3
 -- gc begin
@@ -398,6 +699,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -409,6 +711,21 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
 heap_038 mark PASS: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -416,6 +733,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -427,6 +745,21 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
 heap_038 mark PASS: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -434,6 +767,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -445,6 +779,21 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
 heap_038 mark PASS: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -452,6 +801,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -463,6 +813,21 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
 heap_038 mark PASS: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_042 allocate 40 for 3
 -- gc begin
@@ -471,6 +836,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -482,6 +848,21 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_033 mark inner a
 heap_038 mark PASS: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -489,6 +870,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -502,6 +884,23 @@ heap_033 mark inner a
 heap_038 mark PASS: a = 
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -509,6 +908,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -522,6 +922,23 @@ heap_033 mark inner a
 heap_038 mark PASS: a = 
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_045 allocate 40 for 3
 -- gc begin
@@ -530,6 +947,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -544,6 +962,24 @@ heap_038 mark PASS: a =
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
 heap_045 mark PASS: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -551,6 +987,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -565,6 +1002,24 @@ heap_038 mark PASS: a =
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
 heap_045 mark PASS: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_047 allocate 40 for 3
 -- gc begin
@@ -573,6 +1028,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -588,6 +1044,25 @@ heap_042 mark FAIL: a =
 heap_031 mark outer b
 heap_045 mark PASS: b = 
 heap_047 mark FAIL: b = 
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -595,6 +1070,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -610,6 +1086,25 @@ heap_042 mark FAIL: a =
 heap_031 mark outer b
 heap_045 mark PASS: b = 
 heap_047 mark FAIL: b = 
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -617,6 +1112,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -633,6 +1129,26 @@ heap_031 mark outer b
 heap_045 mark PASS: b = 
 heap_047 mark FAIL: b = 
 heap_023 mark c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -640,6 +1156,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -657,6 +1174,27 @@ heap_045 mark PASS: b =
 heap_047 mark FAIL: b = 
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -664,6 +1202,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -681,6 +1220,27 @@ heap_045 mark PASS: b =
 heap_047 mark FAIL: b = 
 heap_023 mark c
 heap_026 mark global c
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_052 allocate 40 for 3
 -- gc begin
@@ -689,6 +1249,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -708,6 +1269,29 @@ heap_023 mark c
 heap_026 mark global c
 heap_052 mark PASS: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -715,6 +1299,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -734,6 +1319,29 @@ heap_023 mark c
 heap_026 mark global c
 heap_052 mark PASS: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_054 allocate 40 for 3
 -- gc begin
@@ -742,6 +1350,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -768,6 +1377,36 @@ heap_038 mark PASS: a =
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
 heap_045 mark PASS: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -775,6 +1414,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -801,6 +1441,36 @@ heap_038 mark PASS: a =
 heap_042 mark FAIL: a = 
 heap_031 mark outer b
 heap_045 mark PASS: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -808,6 +1478,7 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -840,6 +1511,42 @@ heap_026 mark global c
 heap_052 mark PASS: c = 
 heap_023 mark c
 heap_054 mark FAIL: c = 
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling <script> ...
@@ -1000,6 +1707,11 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1051,6 +1763,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_058 allocate 40 for 0
 
@@ -1105,7 +1868,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1157,7 +1932,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1209,6 +2040,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -1226,7 +2108,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1278,7 +2172,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1330,6 +2280,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_060 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a
@@ -1369,7 +2370,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1421,7 +2434,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1473,6 +2542,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -1490,7 +2610,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1542,7 +2674,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1594,6 +2782,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_062 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: b = outer b
@@ -1633,7 +2872,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1685,7 +2936,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1737,6 +3044,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -1754,7 +3112,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1806,7 +3176,63 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1858,6 +3284,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_064 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: c = global c
@@ -1898,7 +3375,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -1950,7 +3439,62 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2002,6 +3546,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -2018,7 +3613,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2070,7 +3677,62 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2122,6 +3784,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_066 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a
@@ -2160,7 +3873,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2212,7 +3937,62 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2264,6 +4044,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 stack: <script> outer a outer b PASS: b = outer b
 0133    | OP_PRINT
@@ -2301,7 +4132,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2353,7 +4196,62 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2405,6 +4303,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 stack: <script> outer a outer b PASS: c = global c
 0158    | OP_PRINT
@@ -2444,7 +4393,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2496,7 +4457,60 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2548,6 +4562,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -2562,7 +4627,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2614,7 +4691,60 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2666,6 +4796,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_070 allocate 40 for 3
 stack: <script> PASS: a = global a
@@ -2702,7 +4883,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2754,7 +4947,60 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2806,6 +5052,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 -- gc begin
 heap_058 mark <script>
@@ -2820,7 +5117,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2872,7 +5181,60 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -2924,6 +5286,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 heap_072 allocate 40 for 3
 stack: <script> PASS: b = global b
@@ -2960,7 +5373,19 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_026 blacken global c
+heap_023 blacken c
+heap_015 blacken global a
+heap_012 blacken a
+heap_021 blacken global b
+heap_019 blacken b
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -3012,7 +5437,60 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
+heap_058 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
@@ -3064,6 +5542,57 @@ heap_052 mark PASS: c =
 heap_023 mark c
 heap_054 mark FAIL: c = 
 heap_023 mark c
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_019 blacken b
+heap_047 blacken FAIL: b = 
+heap_019 blacken b
+heap_045 blacken PASS: b = 
+heap_021 blacken global b
+heap_019 blacken b
+heap_012 blacken a
+heap_042 blacken FAIL: a = 
+heap_012 blacken a
+heap_038 blacken PASS: a = 
+heap_015 blacken global a
+heap_012 blacken a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_029 blacken outer a
+heap_023 blacken c
+heap_054 blacken FAIL: c = 
+heap_023 blacken c
+heap_052 blacken PASS: c = 
+heap_026 blacken global c
+heap_023 blacken c
+heap_047 blacken FAIL: b = 
+heap_045 blacken PASS: b = 
+heap_031 blacken outer b
+heap_042 blacken FAIL: a = 
+heap_038 blacken PASS: a = 
+heap_033 blacken inner a
+heap_033 blacken inner a
+heap_031 blacken outer b
+heap_029 blacken outer a
+heap_026 blacken global c
+heap_023 blacken c
+heap_021 blacken global b
+heap_019 blacken b
+heap_015 blacken global a
+heap_012 blacken a
 -- gc end
 stack: <script> PASS: c = global c
 0235    | OP_PRINT

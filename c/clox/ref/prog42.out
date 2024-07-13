@@ -7,25 +7,35 @@ heap_002 allocate 40 for 3
 -- gc end
 -- gc begin
 heap_002 mark clock
+heap_002 blacken clock
 -- gc end
 heap_004 allocate 24 for 2
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_007 allocate 40 for 3
 -- gc begin
 heap_007 mark gc
 heap_002 mark clock
 heap_004 mark <native fn>
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_007 blacken gc
 -- gc end
 heap_008 allocate 24 for 2
 -- gc begin
@@ -33,12 +43,20 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_010 allocate 72 for 1
 -- gc begin
@@ -47,6 +65,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -54,6 +77,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_012 allocate 40 for 3
 -- gc begin
@@ -62,6 +90,11 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -69,7 +102,13 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_014 allocate 72 for 1
 -- gc begin
@@ -79,8 +118,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -89,8 +136,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -99,8 +154,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -109,8 +172,16 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_018 allocate 72 for 1
 -- gc begin
@@ -121,8 +192,17 @@ heap_008 mark <native fn>
 heap_018 mark <script>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -132,8 +212,17 @@ heap_008 mark <native fn>
 heap_018 mark <script>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <script>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_020 allocate 40 for 3
 -- gc begin
@@ -144,9 +233,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn count>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -156,9 +255,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn count>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -168,9 +277,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn count>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -180,9 +299,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn count>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -192,9 +321,19 @@ heap_008 mark <native fn>
 heap_018 mark <fn count>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling count ...
@@ -216,10 +355,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -228,10 +377,20 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_014 mark <fn makeCounter>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling makeCounter ...
@@ -250,11 +409,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -262,11 +431,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -274,11 +453,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -286,11 +475,21 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 heap_029 allocate 40 for 3
 -- gc begin
@@ -299,13 +498,25 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -313,13 +524,25 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -327,15 +550,29 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 -- gc begin
 heap_002 mark clock
@@ -343,15 +580,29 @@ heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
 -- gc end
 
 Disassembling <script> ...
@@ -376,15 +627,29 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
 -- gc end
 heap_033 allocate 40 for 0
 
@@ -398,26 +663,52 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
 -- gc end
 heap_034 allocate 40 for 0
 stack: <script> <fn makeCounter>
@@ -442,38 +733,80 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
 -- gc end
 -- gc begin
 heap_033 mark <script>
@@ -486,38 +819,80 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
 -- gc end
 heap_036 allocate 40 for 0
 -- gc begin
@@ -532,40 +907,85 @@ heap_007 mark gc
 heap_008 mark <native fn>
 heap_012 mark makeCounter
 heap_034 mark <fn makeCounter>
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_008 blacken <native fn>
+heap_007 blacken gc
+heap_004 blacken <native fn>
+heap_002 blacken clock
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
+heap_036 blacken <fn count>
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_034 blacken <fn makeCounter>
 heap_014 mark <fn makeCounter>
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_033 blacken <script>
 heap_010 mark <script>
+heap_010 blacken <script>
 heap_012 mark makeCounter
 heap_014 mark <fn makeCounter>
 heap_029 mark counter
 heap_012 mark makeCounter
 heap_029 mark counter
 heap_029 mark counter
+heap_029 blacken counter
+heap_029 blacken counter
+heap_012 blacken makeCounter
+heap_029 blacken counter
+heap_014 blacken <fn makeCounter>
 heap_012 mark makeCounter
 heap_018 mark <fn count>
+heap_018 blacken <fn count>
 heap_020 mark count
+heap_020 blacken count
+heap_012 blacken makeCounter
+heap_012 blacken makeCounter
 -- gc end
 heap_037 allocate 48 for 4
 stack: <script> <fn makeCounter> 0 <fn count>
