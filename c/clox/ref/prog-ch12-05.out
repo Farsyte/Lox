@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -109,6 +111,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1001 to 1001), next at 2002
 heap_014 allocate 40 for 3
 -- gc begin
+heap_014 mark adjective
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -119,6 +122,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_014 blacken adjective
 -- gc end: collected 0 bytes (from 1129 to 1129), next at 2258
 -- gc begin
 heap_002 mark clock
@@ -157,6 +161,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_014 mark adjective
+heap_017 mark delicious
+heap_017 blacken delicious
 heap_014 blacken adjective
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -189,6 +195,8 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
+heap_019 mark The 
+heap_019 blacken The 
 heap_017 blacken delicious
 heap_014 blacken adjective
 heap_008 blacken <native fn>
@@ -261,6 +269,8 @@ heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
+heap_022 mark cake
+heap_022 blacken cake
 heap_019 blacken The 
 heap_017 blacken delicious
 heap_014 blacken adjective
@@ -291,6 +301,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1354 to 1354), next at 2708
 heap_024 allocate 40 for 3
 -- gc begin
+heap_024 mark Cake
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -309,6 +320,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_024 blacken Cake
 -- gc end: collected 0 bytes (from 1738 to 1738), next at 3476
 -- gc begin
 heap_002 mark clock
@@ -367,6 +379,8 @@ heap_017 mark delicious
 heap_019 mark The 
 heap_022 mark cake
 heap_024 mark Cake
+heap_027 mark t
+heap_027 blacken t
 heap_024 blacken Cake
 heap_022 blacken cake
 heap_019 blacken The 

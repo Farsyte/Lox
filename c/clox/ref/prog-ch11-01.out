@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 740 to 740), next at 1480
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark a
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken a
 -- gc end: collected 0 bytes (from 868 to 868), next at 1736
 -- gc begin
 heap_002 mark clock
@@ -133,6 +137,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
+heap_015 mark global
+heap_015 blacken global
 heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -177,12 +183,14 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_018 mark <script>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global
 heap_015 blacken global
 heap_012 blacken a
+heap_018 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -219,6 +227,8 @@ heap_010 blacken <script>
 heap_015 mark global
 heap_015 blacken global
 heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -364,6 +374,8 @@ heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global
 heap_018 mark <fn showA>
+heap_026 mark block
+heap_026 blacken block
 heap_018 blacken <fn showA>
 heap_020 mark showA
 heap_020 blacken showA
@@ -446,6 +458,7 @@ stack: <script> global
 stack: <script>
 0004    5 OP_CLOSURE          2 <fn showA>
 -- gc begin
+heap_029 mark <script>
 heap_012 mark a
 heap_015 mark global
 heap_002 mark clock
@@ -458,6 +471,15 @@ heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_015 blacken global
 heap_012 blacken a
+heap_029 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_018 mark <fn showA>
+heap_026 mark block
+heap_026 blacken block
+heap_018 blacken <fn showA>
+heap_020 mark showA
+heap_020 blacken showA
 -- gc end: collected 0 bytes (from 1487 to 1487), next at 2974
 heap_030 allocate 40 for 0
 stack: <script> <fn showA>
@@ -504,13 +526,13 @@ Executing ... done.
 
 heap_030 free type 0
 heap_029 free type 0
+heap_026 free type 3
+heap_020 free type 3
+heap_018 free type 1
 heap_015 free type 3
 heap_012 free type 3
+heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_026 free type 3
-heap_020 free type 3
-heap_018 free type 1
-heap_010 free type 1

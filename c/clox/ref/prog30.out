@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 936 to 936), next at 1872
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark a
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken a
 -- gc end: collected 0 bytes (from 1064 to 1064), next at 2128
 -- gc begin
 heap_002 mark clock
@@ -133,6 +137,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
+heap_015 mark global a
+heap_015 blacken global a
 heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -197,6 +203,8 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_019 mark b
+heap_019 blacken b
 heap_015 blacken global a
 heap_012 blacken a
 heap_008 blacken <native fn>
@@ -233,6 +241,8 @@ heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
+heap_021 mark global b
+heap_021 blacken global b
 heap_019 blacken b
 heap_015 blacken global a
 heap_012 blacken a
@@ -263,6 +273,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1286 to 1286), next at 2572
 heap_023 allocate 40 for 3
 -- gc begin
+heap_023 mark c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -281,6 +292,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_023 blacken c
 -- gc end: collected 0 bytes (from 1670 to 1670), next at 3340
 -- gc begin
 heap_002 mark clock
@@ -339,6 +351,8 @@ heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
+heap_026 mark global c
+heap_026 blacken global c
 heap_023 blacken c
 heap_021 blacken global b
 heap_019 blacken b
@@ -435,6 +449,8 @@ heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_029 mark outer a
+heap_029 blacken outer a
 heap_026 blacken global c
 heap_023 blacken c
 heap_021 blacken global b
@@ -487,6 +503,8 @@ heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
+heap_031 mark outer b
+heap_031 blacken outer b
 heap_029 blacken outer a
 heap_026 blacken global c
 heap_023 blacken c
@@ -529,6 +547,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1711 to 1711), next at 3422
 heap_033 allocate 40 for 3
 -- gc begin
+heap_033 mark inner a
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -555,6 +574,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_033 blacken inner a
 -- gc end: collected 0 bytes (from 1839 to 1839), next at 3678
 -- gc begin
 heap_002 mark clock

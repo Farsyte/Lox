@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 776 to 776), next at 1552
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark i
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken i
 -- gc end: collected 0 bytes (from 904 to 904), next at 1808
 -- gc begin
 heap_002 mark clock
@@ -259,6 +263,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark i
+heap_022 mark PASS: i = 
+heap_022 blacken PASS: i = 
 heap_012 blacken i
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -332,6 +338,8 @@ heap_002 blacken clock
 heap_010 blacken <script>
 heap_012 mark i
 heap_022 mark PASS: i = 
+heap_024 mark FAIL: i = 
+heap_024 blacken FAIL: i = 
 heap_022 blacken PASS: i = 
 heap_012 blacken i
 -- gc end: collected 0 bytes (from 1494 to 1494), next at 2988

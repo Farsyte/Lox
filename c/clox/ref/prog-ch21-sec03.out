@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 737 to 737), next at 1474
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark beverage
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken beverage
 -- gc end: collected 0 bytes (from 865 to 865), next at 1730
 -- gc begin
 heap_002 mark clock
@@ -133,6 +137,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark beverage
+heap_015 mark café au lait
+heap_015 blacken café au lait
 heap_012 blacken beverage
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -197,6 +203,8 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark beverage
 heap_015 mark café au lait
+heap_019 mark breakfast
+heap_019 blacken breakfast
 heap_015 blacken café au lait
 heap_012 blacken beverage
 heap_008 blacken <native fn>
@@ -233,6 +241,8 @@ heap_010 blacken <script>
 heap_012 mark beverage
 heap_015 mark café au lait
 heap_019 mark breakfast
+heap_021 mark beignets with 
+heap_021 blacken beignets with 
 heap_019 blacken breakfast
 heap_015 blacken café au lait
 heap_012 blacken beverage
@@ -309,6 +319,7 @@ stack: <script> beignets with
 stack: <script> beignets with  café au lait
 0008    | OP_ADD
 -- gc begin
+heap_023 mark <script>
 heap_021 mark beignets with 
 heap_015 mark café au lait
 heap_012 mark beverage
@@ -323,6 +334,11 @@ heap_002 blacken clock
 heap_012 blacken beverage
 heap_015 blacken café au lait
 heap_021 blacken beignets with 
+heap_023 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_019 mark breakfast
+heap_019 blacken breakfast
 -- gc end: collected 0 bytes (from 1172 to 1172), next at 2344
 -- gc begin
 heap_023 mark <script>
@@ -351,6 +367,7 @@ heap_025 allocate 40 for 3
 heap_023 mark <script>
 heap_021 mark beignets with 
 heap_015 mark café au lait
+heap_025 mark beignets with café au lait
 heap_012 mark beverage
 heap_002 mark clock
 heap_004 mark <native fn>
@@ -361,9 +378,14 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
 heap_012 blacken beverage
+heap_025 blacken beignets with café au lait
 heap_015 blacken café au lait
 heap_021 blacken beignets with 
 heap_023 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_019 mark breakfast
+heap_019 blacken breakfast
 -- gc end: collected 0 bytes (from 1596 to 1596), next at 3192
 stack: <script> beignets with café au lait
 0009    | OP_DEFINE_GLOBAL    2 'breakfast'
@@ -381,11 +403,11 @@ Executing ... done.
 heap_025 free type 3
 heap_023 free type 0
 heap_021 free type 3
+heap_019 free type 3
 heap_015 free type 3
 heap_012 free type 3
+heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_019 free type 3
-heap_010 free type 1

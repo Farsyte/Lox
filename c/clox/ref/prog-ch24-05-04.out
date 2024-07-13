@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 733 to 733), next at 1466
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark noReturn
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken noReturn
 -- gc end: collected 0 bytes (from 861 to 861), next at 1722
 -- gc begin
 heap_002 mark clock
@@ -116,10 +120,12 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn noReturn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark noReturn
 heap_012 blacken noReturn
+heap_014 blacken <fn noReturn>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -143,6 +149,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 982 to 982), next at 1964
 heap_016 allocate 40 for 3
 -- gc begin
+heap_016 mark Do stuff
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -157,6 +164,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_016 blacken Do stuff
 -- gc end: collected 0 bytes (from 1110 to 1110), next at 2220
 -- gc begin
 heap_002 mark clock
@@ -309,6 +317,7 @@ Executing ...
 stack: <script>
 0000    4 OP_CLOSURE          1 <fn noReturn>
 -- gc begin
+heap_022 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -317,6 +326,15 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_022 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark noReturn
+heap_014 mark <fn noReturn>
+heap_014 blacken <fn noReturn>
+heap_016 mark Do stuff
+heap_016 blacken Do stuff
+heap_012 blacken noReturn
 -- gc end: collected 0 bytes (from 1310 to 1310), next at 2620
 heap_023 allocate 40 for 0
 stack: <script> <fn noReturn>
@@ -345,11 +363,11 @@ Executing ... done.
 
 heap_023 free type 0
 heap_022 free type 0
-heap_008 free type 2
-heap_007 free type 3
-heap_004 free type 2
-heap_002 free type 3
 heap_016 free type 3
 heap_014 free type 1
 heap_012 free type 3
 heap_010 free type 1
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3

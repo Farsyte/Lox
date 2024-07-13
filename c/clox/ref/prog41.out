@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 900 to 900), next at 1800
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark fib
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken fib
 -- gc end: collected 0 bytes (from 1028 to 1028), next at 2056
 -- gc begin
 heap_002 mark clock
@@ -116,10 +120,12 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn fib>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark fib
 heap_012 blacken fib
+heap_014 blacken <fn fib>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -459,6 +465,7 @@ Executing ...
 stack: <script>
 0000    7 OP_CLOSURE          1 <fn fib>
 -- gc begin
+heap_030 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -467,6 +474,13 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_030 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark fib
+heap_014 mark <fn fib>
+heap_014 blacken <fn fib>
+heap_012 blacken fib
 -- gc end: collected 0 bytes (from 1948 to 1948), next at 3896
 heap_031 allocate 40 for 0
 stack: <script> <fn fib>
@@ -1479,10 +1493,10 @@ Executing ... done.
 
 heap_031 free type 0
 heap_030 free type 0
+heap_014 free type 1
+heap_012 free type 3
+heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_014 free type 1
-heap_012 free type 3
-heap_010 free type 1

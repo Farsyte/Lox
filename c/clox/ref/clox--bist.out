@@ -319,6 +319,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 565 to 565), next at 1130
 heap_026 allocate 40 for 3
 -- gc begin
+heap_026 mark k1
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -327,6 +328,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_026 blacken k1
 -- gc end: collected 0 bytes (from 757 to 757), next at 1514
 -- gc begin
 heap_026 mark k1
@@ -448,6 +450,8 @@ heap_002 free type 3
 -- gc end: collected 0 bytes (from 46 to 46), next at 92
 heap_036 allocate 40 for 3
 -- gc begin
+heap_036 mark clock
+heap_036 blacken clock
 -- gc end: collected 0 bytes (from 238 to 238), next at 476
 -- gc begin
 heap_036 mark clock
@@ -456,6 +460,8 @@ heap_036 blacken clock
 heap_038 allocate 24 for 2
 -- gc begin
 heap_036 mark clock
+heap_038 mark <native fn>
+heap_038 blacken <native fn>
 heap_036 blacken clock
 -- gc end: collected 0 bytes (from 454 to 454), next at 908
 -- gc begin
@@ -472,10 +478,12 @@ heap_036 blacken clock
 -- gc end: collected 0 bytes (from 497 to 497), next at 994
 heap_041 allocate 40 for 3
 -- gc begin
+heap_041 mark gc
 heap_036 mark clock
 heap_038 mark <native fn>
 heap_038 blacken <native fn>
 heap_036 blacken clock
+heap_041 blacken gc
 -- gc end: collected 0 bytes (from 521 to 521), next at 1042
 heap_042 allocate 24 for 2
 object exists at top of test: '<native fn>'
@@ -486,6 +494,8 @@ object exists at top of test: 'clock'
 heap_036 mark clock
 heap_038 mark <native fn>
 heap_041 mark gc
+heap_042 mark <native fn>
+heap_042 blacken <native fn>
 heap_041 blacken gc
 heap_038 blacken <native fn>
 heap_036 blacken clock
@@ -503,18 +513,6 @@ heap_036 blacken clock
 heap_044 allocate 40 for 3
 valString prints as 'testObject'
 -- gc begin
-heap_036 mark clock
-heap_038 mark <native fn>
-heap_041 mark gc
-heap_042 mark <native fn>
-heap_042 blacken <native fn>
-heap_041 blacken gc
-heap_038 blacken <native fn>
-heap_036 blacken clock
--- gc end: collected 0 bytes (from 596 to 596), next at 1192
-heap_045 allocate 24 for 2
-valNative prints as '<native fn>'
--- gc begin
 heap_044 mark testObject
 heap_036 mark clock
 heap_038 mark <native fn>
@@ -525,9 +523,9 @@ heap_041 blacken gc
 heap_038 blacken <native fn>
 heap_036 blacken clock
 heap_044 blacken testObject
--- gc end: collected 0 bytes (from 668 to 668), next at 1336
-heap_046 allocate 72 for 1
-valFunction prints as '<script>'
+-- gc end: collected 0 bytes (from 596 to 596), next at 1192
+heap_045 allocate 24 for 2
+valNative prints as '<native fn>'
 -- gc begin
 heap_044 mark testObject
 heap_045 mark <native fn>
@@ -541,9 +539,9 @@ heap_038 blacken <native fn>
 heap_036 blacken clock
 heap_045 blacken <native fn>
 heap_044 blacken testObject
--- gc end: collected 0 bytes (from 708 to 708), next at 1416
-heap_047 allocate 40 for 0
-valClosure prints as '<script>'
+-- gc end: collected 0 bytes (from 668 to 668), next at 1336
+heap_046 allocate 72 for 1
+valFunction prints as '<script>'
 -- gc begin
 heap_044 mark testObject
 heap_045 mark <native fn>
@@ -556,6 +554,26 @@ heap_042 blacken <native fn>
 heap_041 blacken gc
 heap_038 blacken <native fn>
 heap_036 blacken clock
+heap_046 blacken <script>
+heap_045 blacken <native fn>
+heap_044 blacken testObject
+-- gc end: collected 0 bytes (from 708 to 708), next at 1416
+heap_047 allocate 40 for 0
+valClosure prints as '<script>'
+-- gc begin
+heap_044 mark testObject
+heap_045 mark <native fn>
+heap_046 mark <script>
+heap_047 mark <script>
+heap_036 mark clock
+heap_038 mark <native fn>
+heap_041 mark gc
+heap_042 mark <native fn>
+heap_042 blacken <native fn>
+heap_041 blacken gc
+heap_038 blacken <native fn>
+heap_036 blacken clock
+heap_047 blacken <script>
 heap_046 blacken <script>
 heap_045 blacken <native fn>
 heap_044 blacken testObject
@@ -591,6 +609,8 @@ heap_036 free type 3
 -- gc end: collected 0 bytes (from 46 to 46), next at 92
 heap_050 allocate 40 for 3
 -- gc begin
+heap_050 mark clock
+heap_050 blacken clock
 -- gc end: collected 0 bytes (from 238 to 238), next at 476
 -- gc begin
 heap_050 mark clock
@@ -599,6 +619,8 @@ heap_050 blacken clock
 heap_052 allocate 24 for 2
 -- gc begin
 heap_050 mark clock
+heap_052 mark <native fn>
+heap_052 blacken <native fn>
 heap_050 blacken clock
 -- gc end: collected 0 bytes (from 454 to 454), next at 908
 -- gc begin
@@ -615,10 +637,12 @@ heap_050 blacken clock
 -- gc end: collected 0 bytes (from 497 to 497), next at 994
 heap_055 allocate 40 for 3
 -- gc begin
+heap_055 mark gc
 heap_050 mark clock
 heap_052 mark <native fn>
 heap_052 blacken <native fn>
 heap_050 blacken clock
+heap_055 blacken gc
 -- gc end: collected 0 bytes (from 521 to 521), next at 1042
 heap_056 allocate 24 for 2
 BIST: bistScanner ...
@@ -628,6 +652,8 @@ BIST: bistCompiler ...
 heap_050 mark clock
 heap_052 mark <native fn>
 heap_055 mark gc
+heap_056 mark <native fn>
+heap_056 blacken <native fn>
 heap_055 blacken gc
 heap_052 blacken <native fn>
 heap_050 blacken clock
@@ -638,6 +664,8 @@ heap_050 mark clock
 heap_052 mark <native fn>
 heap_055 mark gc
 heap_056 mark <native fn>
+heap_057 mark <script>
+heap_057 blacken <script>
 heap_056 blacken <native fn>
 heap_055 blacken gc
 heap_052 blacken <native fn>
@@ -718,6 +746,8 @@ heap_050 free type 3
 -- gc end: collected 0 bytes (from 46 to 46), next at 92
 heap_063 allocate 40 for 3
 -- gc begin
+heap_063 mark clock
+heap_063 blacken clock
 -- gc end: collected 0 bytes (from 238 to 238), next at 476
 -- gc begin
 heap_063 mark clock
@@ -726,6 +756,8 @@ heap_063 blacken clock
 heap_065 allocate 24 for 2
 -- gc begin
 heap_063 mark clock
+heap_065 mark <native fn>
+heap_065 blacken <native fn>
 heap_063 blacken clock
 -- gc end: collected 0 bytes (from 454 to 454), next at 908
 -- gc begin
@@ -742,16 +774,20 @@ heap_063 blacken clock
 -- gc end: collected 0 bytes (from 497 to 497), next at 994
 heap_068 allocate 40 for 3
 -- gc begin
+heap_068 mark gc
 heap_063 mark clock
 heap_065 mark <native fn>
 heap_065 blacken <native fn>
 heap_063 blacken clock
+heap_068 blacken gc
 -- gc end: collected 0 bytes (from 521 to 521), next at 1042
 heap_069 allocate 24 for 2
 -- gc begin
 heap_063 mark clock
 heap_065 mark <native fn>
 heap_068 mark gc
+heap_069 mark <native fn>
+heap_069 blacken <native fn>
 heap_068 blacken gc
 heap_065 blacken <native fn>
 heap_063 blacken clock
@@ -762,6 +798,8 @@ heap_063 mark clock
 heap_065 mark <native fn>
 heap_068 mark gc
 heap_069 mark <native fn>
+heap_070 mark <script>
+heap_070 blacken <script>
 heap_069 blacken <native fn>
 heap_068 blacken gc
 heap_065 blacken <native fn>
@@ -880,6 +918,8 @@ heap_063 free type 3
 -- gc end: collected 0 bytes (from 46 to 46), next at 92
 heap_077 allocate 40 for 3
 -- gc begin
+heap_077 mark clock
+heap_077 blacken clock
 -- gc end: collected 0 bytes (from 238 to 238), next at 476
 -- gc begin
 heap_077 mark clock
@@ -888,6 +928,8 @@ heap_077 blacken clock
 heap_079 allocate 24 for 2
 -- gc begin
 heap_077 mark clock
+heap_079 mark <native fn>
+heap_079 blacken <native fn>
 heap_077 blacken clock
 -- gc end: collected 0 bytes (from 454 to 454), next at 908
 -- gc begin
@@ -904,10 +946,12 @@ heap_077 blacken clock
 -- gc end: collected 0 bytes (from 497 to 497), next at 994
 heap_082 allocate 40 for 3
 -- gc begin
+heap_082 mark gc
 heap_077 mark clock
 heap_079 mark <native fn>
 heap_079 blacken <native fn>
 heap_077 blacken clock
+heap_082 blacken gc
 -- gc end: collected 0 bytes (from 521 to 521), next at 1042
 heap_083 allocate 24 for 2
 BIST: bistVM ... done.

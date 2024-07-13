@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1878 to 1878), next at 3756
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark a
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken a
 -- gc end: collected 0 bytes (from 2006 to 2006), next at 4012
 -- gc begin
 heap_002 mark clock
@@ -133,6 +137,8 @@ heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
+heap_015 mark global a
+heap_015 blacken global a
 heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -197,6 +203,8 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
+heap_019 mark b
+heap_019 blacken b
 heap_015 blacken global a
 heap_012 blacken a
 heap_008 blacken <native fn>
@@ -233,6 +241,8 @@ heap_010 blacken <script>
 heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
+heap_021 mark global b
+heap_021 blacken global b
 heap_019 blacken b
 heap_015 blacken global a
 heap_012 blacken a
@@ -263,6 +273,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 2228 to 2228), next at 4456
 heap_023 allocate 40 for 3
 -- gc begin
+heap_023 mark c
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -281,6 +292,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_023 blacken c
 -- gc end: collected 0 bytes (from 2612 to 2612), next at 5224
 -- gc begin
 heap_002 mark clock
@@ -339,6 +351,8 @@ heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
+heap_026 mark global c
+heap_026 blacken global c
 heap_023 blacken c
 heap_021 blacken global b
 heap_019 blacken b
@@ -435,6 +449,8 @@ heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
+heap_029 mark outer a
+heap_029 blacken outer a
 heap_026 blacken global c
 heap_023 blacken c
 heap_021 blacken global b
@@ -487,6 +503,8 @@ heap_021 mark global b
 heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
+heap_031 mark outer b
+heap_031 blacken outer b
 heap_029 blacken outer a
 heap_026 blacken global c
 heap_023 blacken c
@@ -529,6 +547,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 2653 to 2653), next at 5306
 heap_033 allocate 40 for 3
 -- gc begin
+heap_033 mark inner a
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -555,6 +574,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_033 blacken inner a
 -- gc end: collected 0 bytes (from 2781 to 2781), next at 5562
 -- gc begin
 heap_002 mark clock
@@ -753,6 +773,8 @@ heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
+heap_040 mark PASS: a = 
+heap_040 blacken PASS: a = 
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
@@ -801,6 +823,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 3119 to 3119), next at 6238
 heap_042 allocate 40 for 3
 -- gc begin
+heap_042 mark , b = 
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -831,6 +854,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_042 blacken , b = 
 -- gc end: collected 0 bytes (from 3887 to 3887), next at 7774
 -- gc begin
 heap_002 mark clock
@@ -919,6 +943,8 @@ heap_031 mark outer b
 heap_033 mark inner a
 heap_040 mark PASS: a = 
 heap_042 mark , b = 
+heap_045 mark , c = 
+heap_045 blacken , c = 
 heap_042 blacken , b = 
 heap_040 blacken PASS: a = 
 heap_033 blacken inner a
@@ -1099,6 +1125,8 @@ heap_033 mark inner a
 heap_040 mark PASS: a = 
 heap_042 mark , b = 
 heap_045 mark , c = 
+heap_050 mark FAIL: a = 
+heap_050 blacken FAIL: a = 
 heap_045 blacken , c = 
 heap_042 blacken , b = 
 heap_040 blacken PASS: a = 

@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -113,8 +115,10 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <script>
 heap_010 mark <script>
 heap_010 blacken <script>
+heap_014 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -144,6 +148,8 @@ heap_014 mark <fn f>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_014 blacken <fn f>
+heap_016 mark f
+heap_016 blacken f
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -241,6 +247,7 @@ stack: <script> 3
 0002    5 OP_CLOSURE          1 <fn f>
 0004      | local 1
 -- gc begin
+heap_020 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -249,6 +256,13 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_020 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_014 mark <fn f>
+heap_014 blacken <fn f>
+heap_016 mark f
+heap_016 blacken f
 -- gc end: collected 0 bytes (from 1053 to 1053), next at 2106
 -- gc begin
 heap_020 mark <script>
@@ -271,6 +285,7 @@ heap_016 blacken f
 heap_022 allocate 40 for 0
 -- gc begin
 heap_020 mark <script>
+heap_022 mark <fn f>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -279,7 +294,14 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_022 blacken <fn f>
+heap_014 mark <fn f>
+heap_014 blacken <fn f>
+heap_016 mark f
+heap_016 blacken f
 heap_020 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1141 to 1141), next at 2282
 heap_023 allocate 48 for 4
 stack: <script> 3 <fn f>
@@ -295,10 +317,10 @@ Executing ... done.
 heap_023 free type 4
 heap_022 free type 0
 heap_020 free type 0
+heap_016 free type 3
+heap_014 free type 1
+heap_010 free type 1
 heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_016 free type 3
-heap_014 free type 1
-heap_010 free type 1

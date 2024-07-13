@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 804 to 804), next at 1608
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark areWeHavingItYet
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken areWeHavingItYet
 -- gc end: collected 0 bytes (from 932 to 932), next at 1864
 -- gc begin
 heap_002 mark clock
@@ -116,10 +120,12 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn areWeHavingItYet>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark areWeHavingItYet
 heap_012 blacken areWeHavingItYet
+heap_014 blacken <fn areWeHavingItYet>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -175,6 +181,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1096 to 1096), next at 2192
 heap_018 allocate 40 for 3
 -- gc begin
+heap_018 mark Yes we are!
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -189,6 +196,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_018 blacken Yes we are!
 -- gc end: collected 0 bytes (from 1224 to 1224), next at 2448
 
 Disassembling areWeHavingItYet ...
@@ -306,6 +314,7 @@ Executing ...
 stack: <script>
 0000    4 OP_CLOSURE          1 <fn areWeHavingItYet>
 -- gc begin
+heap_022 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -314,6 +323,15 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_022 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark areWeHavingItYet
+heap_014 mark <fn areWeHavingItYet>
+heap_014 blacken <fn areWeHavingItYet>
+heap_018 mark Yes we are!
+heap_018 blacken Yes we are!
+heap_012 blacken areWeHavingItYet
 -- gc end: collected 0 bytes (from 1384 to 1384), next at 2768
 heap_023 allocate 40 for 0
 stack: <script> <fn areWeHavingItYet>
@@ -331,11 +349,11 @@ Executing ... done.
 
 heap_023 free type 0
 heap_022 free type 0
-heap_008 free type 2
-heap_007 free type 3
-heap_004 free type 2
-heap_002 free type 3
 heap_018 free type 3
 heap_014 free type 1
 heap_012 free type 3
 heap_010 free type 1
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3

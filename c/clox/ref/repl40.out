@@ -66,6 +66,8 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_010 mark <script>
+heap_010 blacken <script>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -85,6 +87,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 734 to 734), next at 1468
 heap_012 allocate 40 for 3
 -- gc begin
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -95,6 +98,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
 -- gc end: collected 0 bytes (from 862 to 862), next at 1724
 -- gc begin
 heap_002 mark clock
@@ -116,10 +120,12 @@ heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
+heap_014 mark <fn sayHi>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark sayHi
 heap_012 blacken sayHi
+heap_014 blacken <fn sayHi>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -143,6 +149,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 979 to 979), next at 1958
 heap_016 allocate 40 for 3
 -- gc begin
+heap_016 mark Hi, 
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -157,6 +164,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_016 blacken Hi, 
 -- gc end: collected 0 bytes (from 1107 to 1107), next at 2214
 -- gc begin
 heap_002 mark clock
@@ -243,6 +251,8 @@ heap_012 mark sayHi
 heap_012 blacken sayHi
 heap_014 blacken <fn sayHi>
 heap_016 mark Hi, 
+heap_021 mark  
+heap_021 blacken  
 heap_016 blacken Hi, 
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -323,6 +333,8 @@ heap_012 blacken sayHi
 heap_014 blacken <fn sayHi>
 heap_016 mark Hi, 
 heap_021 mark  
+heap_024 mark !
+heap_024 blacken !
 heap_021 blacken  
 heap_016 blacken Hi, 
 heap_008 blacken <native fn>
@@ -458,6 +470,7 @@ heap_002 blacken clock
 -- gc end: collected 0 bytes (from 1436 to 1436), next at 2872
 heap_030 allocate 40 for 3
 -- gc begin
+heap_030 mark Dear
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -478,6 +491,7 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_030 blacken Dear
 -- gc end: collected 0 bytes (from 1820 to 1820), next at 3640
 -- gc begin
 heap_002 mark clock
@@ -538,6 +552,8 @@ heap_010 blacken <script>
 heap_012 mark sayHi
 heap_014 mark <fn sayHi>
 heap_030 mark Dear
+heap_033 mark Reader
+heap_033 blacken Reader
 heap_030 blacken Dear
 heap_014 blacken <fn sayHi>
 heap_016 mark Hi, 
@@ -623,6 +639,7 @@ Executing ...
 stack: <script>
 0000    1 OP_CLOSURE          1 <fn sayHi>
 -- gc begin
+heap_035 mark <script>
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -631,6 +648,23 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
+heap_012 mark sayHi
+heap_014 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
+heap_033 blacken Reader
+heap_030 blacken Dear
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_024 blacken !
+heap_021 blacken  
+heap_016 blacken Hi, 
+heap_012 blacken sayHi
 -- gc end: collected 0 bytes (from 1795 to 1795), next at 3590
 heap_036 allocate 40 for 0
 stack: <script> <fn sayHi>
@@ -651,6 +685,7 @@ stack: <script> <fn sayHi> Dear Reader Hi,  Dear
 0004    | OP_ADD
 -- gc begin
 heap_035 mark <script>
+heap_036 mark <fn sayHi>
 heap_030 mark Dear
 heap_033 mark Reader
 heap_016 mark Hi, 
@@ -667,19 +702,24 @@ heap_012 blacken sayHi
 heap_016 blacken Hi, 
 heap_033 blacken Reader
 heap_030 blacken Dear
-heap_035 blacken <script>
-heap_010 mark <script>
-heap_010 blacken <script>
+heap_036 blacken <fn sayHi>
 heap_014 mark <fn sayHi>
 heap_014 blacken <fn sayHi>
 heap_021 mark  
 heap_024 mark !
 heap_024 blacken !
 heap_021 blacken  
+heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1804 to 1804), next at 3608
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
+heap_016 mark Hi, 
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -688,8 +728,20 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_016 blacken Hi, 
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_021 mark  
+heap_024 mark !
+heap_024 blacken !
+heap_021 blacken  
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1844 to 1844), next at 3688
 heap_038 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear
@@ -699,6 +751,11 @@ stack: <script> <fn sayHi> Dear Reader Hi, Dear
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
+heap_038 mark Hi, Dear
+heap_021 mark  
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -707,13 +764,30 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_021 blacken  
+heap_038 blacken Hi, Dear
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_024 mark !
+heap_024 blacken !
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1854 to 1854), next at 3708
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
 heap_038 mark Hi, Dear
+heap_021 mark  
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -722,9 +796,21 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_021 blacken  
 heap_038 blacken Hi, Dear
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_024 mark !
+heap_024 blacken !
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1894 to 1894), next at 3788
 heap_040 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear 
@@ -734,6 +820,10 @@ stack: <script> <fn sayHi> Dear Reader Hi, Dear  Reader
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
+heap_040 mark Hi, Dear 
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -742,13 +832,30 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_040 blacken Hi, Dear 
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_024 blacken !
+heap_021 blacken  
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1910 to 1910), next at 3820
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
 heap_040 mark Hi, Dear 
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -757,9 +864,22 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
 heap_040 blacken Hi, Dear 
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_021 mark  
+heap_024 mark !
+heap_024 blacken !
+heap_021 blacken  
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1950 to 1950), next at 3900
 heap_042 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader
@@ -769,6 +889,11 @@ stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader !
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
+heap_042 mark Hi, Dear Reader
+heap_024 mark !
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -777,13 +902,30 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_024 blacken !
+heap_042 blacken Hi, Dear Reader
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_021 mark  
+heap_021 blacken  
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 1967 to 1967), next at 3934
 -- gc begin
 heap_035 mark <script>
 heap_036 mark <fn sayHi>
+heap_030 mark Dear
+heap_033 mark Reader
 heap_042 mark Hi, Dear Reader
+heap_024 mark !
+heap_012 mark sayHi
 heap_002 mark clock
 heap_004 mark <native fn>
 heap_007 mark gc
@@ -792,9 +934,21 @@ heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 heap_002 blacken clock
+heap_012 blacken sayHi
+heap_024 blacken !
 heap_042 blacken Hi, Dear Reader
+heap_033 blacken Reader
+heap_030 blacken Dear
 heap_036 blacken <fn sayHi>
+heap_014 mark <fn sayHi>
+heap_014 blacken <fn sayHi>
+heap_016 mark Hi, 
+heap_021 mark  
+heap_021 blacken  
+heap_016 blacken Hi, 
 heap_035 blacken <script>
+heap_010 mark <script>
+heap_010 blacken <script>
 -- gc end: collected 0 bytes (from 2007 to 2007), next at 4014
 heap_044 allocate 40 for 3
 stack: <script> <fn sayHi> Dear Reader Hi, Dear Reader!
@@ -816,10 +970,6 @@ heap_044 free type 3
 heap_042 free type 3
 heap_036 free type 0
 heap_035 free type 0
-heap_008 free type 2
-heap_007 free type 3
-heap_004 free type 2
-heap_002 free type 3
 heap_033 free type 3
 heap_030 free type 3
 heap_024 free type 3
@@ -828,5 +978,9 @@ heap_016 free type 3
 heap_014 free type 1
 heap_012 free type 3
 heap_010 free type 1
+heap_008 free type 2
+heap_007 free type 3
+heap_004 free type 2
+heap_002 free type 3
 heap_038 free type 3
 heap_040 free type 3
