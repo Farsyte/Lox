@@ -957,6 +957,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 3568 to 3568), next at 7136
 -- gc begin
+heap_026 mark global c
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -967,7 +968,6 @@ heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
 heap_023 mark c
-heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
 heap_033 mark inner a
@@ -982,7 +982,6 @@ heap_038 blacken PASS: a =
 heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
-heap_026 blacken global c
 heap_023 blacken c
 heap_021 blacken global b
 heap_019 blacken b
@@ -991,6 +990,7 @@ heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_026 blacken global c
 -- gc end: collected 0 bytes (from 3824 to 3824), next at 7648
 -- gc begin
 heap_004 mark <native fn>
@@ -1223,6 +1223,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 4566 to 4566), next at 9132
 -- gc begin
+heap_023 mark c
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -1232,7 +1233,6 @@ heap_012 mark a
 heap_015 mark global a
 heap_019 mark b
 heap_021 mark global b
-heap_023 mark c
 heap_026 mark global c
 heap_029 mark outer a
 heap_031 mark outer b
@@ -1253,7 +1253,6 @@ heap_033 blacken inner a
 heap_031 blacken outer b
 heap_029 blacken outer a
 heap_026 blacken global c
-heap_023 blacken c
 heap_021 blacken global b
 heap_019 blacken b
 heap_015 blacken global a
@@ -1261,6 +1260,7 @@ heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_023 blacken c
 -- gc end: collected 0 bytes (from 5078 to 5078), next at 10156
 
 Disassembling <script> ...

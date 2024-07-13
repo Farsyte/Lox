@@ -176,6 +176,7 @@ Disassembling closure ...
 Disassembling closure ... done.
 
 -- gc begin
+heap_015 mark <fn closure>
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -188,6 +189,9 @@ heap_014 blacken <fn makeClosure>
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 -- gc end: collected 0 bytes (from 1428 to 1428), next at 2856
 -- gc begin
 heap_004 mark <native fn>
@@ -217,6 +221,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_012 blacken makeClosure
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -231,6 +239,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_012 blacken makeClosure
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -245,6 +257,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_012 blacken makeClosure
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
@@ -268,6 +284,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -282,6 +302,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -296,6 +320,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -310,6 +338,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -325,6 +357,10 @@ heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -341,6 +377,10 @@ heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -357,6 +397,10 @@ heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -373,6 +417,10 @@ heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -390,6 +438,10 @@ heap_014 mark <fn makeClosure>
 heap_026 mark doughnut
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -408,12 +460,17 @@ heap_029 mark bagel
 heap_029 blacken bagel
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1763 to 1763), next at 3526
 -- gc begin
+heap_026 mark doughnut
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -421,15 +478,18 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark makeClosure
 heap_014 mark <fn makeClosure>
-heap_026 mark doughnut
 heap_029 mark bagel
 heap_029 blacken bagel
-heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_026 blacken doughnut
 -- gc end: collected 0 bytes (from 1891 to 1891), next at 3782
 
 Disassembling <script> ...
@@ -469,6 +529,10 @@ heap_029 mark bagel
 heap_029 blacken bagel
 heap_026 blacken doughnut
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 heap_012 blacken makeClosure
 -- gc end: collected 0 bytes (from 1931 to 1931), next at 3862
 heap_033 allocate 40 for 0
@@ -515,6 +579,10 @@ heap_014 mark <fn makeClosure>
 heap_029 mark bagel
 heap_029 blacken bagel
 heap_014 blacken <fn makeClosure>
+heap_015 mark <fn closure>
+heap_015 blacken <fn closure>
+heap_017 mark closure
+heap_017 blacken closure
 -- gc end: collected 0 bytes (from 1979 to 1979), next at 3958
 -- gc begin
 heap_033 mark <script>
@@ -657,10 +725,10 @@ heap_008 free type 2
 heap_007 free type 3
 heap_004 free type 2
 heap_002 free type 3
-heap_017 free type 3
-heap_015 free type 1
 heap_029 free type 3
 heap_026 free type 3
+heap_017 free type 3
+heap_015 free type 1
 heap_014 free type 1
 heap_012 free type 3
 heap_010 free type 1

@@ -317,12 +317,12 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1445 to 1445), next at 2890
 -- gc begin
+heap_012 mark breakfast
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
-heap_012 mark breakfast
 heap_015 mark beignets
 heap_019 mark beverage
 heap_021 mark café au lait
@@ -331,10 +331,10 @@ heap_024 blacken  with
 heap_021 blacken café au lait
 heap_019 blacken beverage
 heap_015 blacken beignets
-heap_012 blacken breakfast
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_012 blacken breakfast
 -- gc end: collected 0 bytes (from 1573 to 1573), next at 3146
 
 Disassembling <script> ...

@@ -348,6 +348,7 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1668 to 1668), next at 3336
 -- gc begin
+heap_022 mark cake
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -356,18 +357,17 @@ heap_010 blacken <script>
 heap_014 mark adjective
 heap_017 mark delicious
 heap_019 mark The 
-heap_022 mark cake
 heap_024 mark Cake
 heap_027 mark t
 heap_027 blacken t
 heap_024 blacken Cake
-heap_022 blacken cake
 heap_019 blacken The 
 heap_017 blacken delicious
 heap_014 blacken adjective
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_022 blacken cake
 -- gc end: collected 0 bytes (from 1796 to 1796), next at 3592
 -- gc begin
 heap_004 mark <native fn>

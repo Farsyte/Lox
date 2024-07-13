@@ -172,6 +172,7 @@ heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1197 to 1197), next at 2394
 heap_020 allocate 72 for 1
 -- gc begin
+heap_019 mark outer
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -179,13 +180,12 @@ heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark x
 heap_015 mark global
-heap_019 mark outer
-heap_019 blacken outer
 heap_015 blacken global
 heap_012 blacken x
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_019 blacken outer
 -- gc end: collected 0 bytes (from 1325 to 1325), next at 2650
 -- gc begin
 heap_004 mark <native fn>

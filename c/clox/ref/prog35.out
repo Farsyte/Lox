@@ -208,18 +208,18 @@ heap_007 blacken gc
 heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1234 to 1234), next at 2468
 -- gc begin
+heap_017 mark temp
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
 heap_010 mark <script>
 heap_010 blacken <script>
 heap_012 mark a
-heap_017 mark temp
-heap_017 blacken temp
 heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_017 blacken temp
 -- gc end: collected 0 bytes (from 1362 to 1362), next at 2724
 
 Disassembling <script> ...

@@ -344,6 +344,7 @@ heap_004 blacken <native fn>
 -- gc end: collected 0 bytes (from 1514 to 1514), next at 3028
 heap_028 allocate 72 for 1
 -- gc begin
+heap_024 mark c
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -353,8 +354,6 @@ heap_012 mark a
 heap_014 mark <fn a>
 heap_016 mark b
 heap_022 mark <fn b>
-heap_024 mark c
-heap_024 blacken c
 heap_022 blacken <fn b>
 heap_016 blacken b
 heap_014 blacken <fn a>
@@ -362,6 +361,7 @@ heap_012 blacken a
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_024 blacken c
 -- gc end: collected 0 bytes (from 1642 to 1642), next at 3284
 -- gc begin
 heap_004 mark <native fn>

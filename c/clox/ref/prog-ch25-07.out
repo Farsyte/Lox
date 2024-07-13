@@ -282,6 +282,7 @@ Disassembling inner ...
 Disassembling inner ... done.
 
 -- gc begin
+heap_021 mark <fn inner>
 heap_004 mark <native fn>
 heap_007 mark gc
 heap_008 mark <native fn>
@@ -298,6 +299,9 @@ heap_020 blacken middle
 heap_008 blacken <native fn>
 heap_007 blacken gc
 heap_004 blacken <native fn>
+heap_021 blacken <fn inner>
+heap_023 mark inner
+heap_023 blacken inner
 -- gc end: collected 0 bytes (from 1501 to 1501), next at 3002
 -- gc begin
 heap_004 mark <native fn>
@@ -334,6 +338,10 @@ heap_012 blacken outer
 heap_014 blacken <fn outer>
 heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_021 mark <fn inner>
+heap_021 blacken <fn inner>
+heap_023 mark inner
+heap_023 blacken inner
 heap_020 blacken middle
 heap_008 blacken <native fn>
 heap_007 blacken gc
@@ -368,6 +376,10 @@ heap_014 blacken <fn outer>
 heap_018 mark <fn middle>
 heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_021 mark <fn inner>
+heap_021 blacken <fn inner>
+heap_023 mark inner
+heap_023 blacken inner
 heap_020 blacken middle
 heap_012 blacken outer
 heap_008 blacken <native fn>
@@ -386,6 +398,10 @@ heap_014 blacken <fn outer>
 heap_018 mark <fn middle>
 heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_021 mark <fn inner>
+heap_021 blacken <fn inner>
+heap_023 mark inner
+heap_023 blacken inner
 heap_020 blacken middle
 heap_012 blacken outer
 heap_008 blacken <native fn>
@@ -415,6 +431,10 @@ heap_014 blacken <fn outer>
 heap_018 mark <fn middle>
 heap_018 blacken <fn middle>
 heap_020 mark middle
+heap_021 mark <fn inner>
+heap_021 blacken <fn inner>
+heap_023 mark inner
+heap_023 blacken inner
 heap_020 blacken middle
 heap_012 blacken outer
 -- gc end: collected 0 bytes (from 1621 to 1621), next at 3242
