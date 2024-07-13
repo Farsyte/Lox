@@ -23,10 +23,10 @@
 #define DEBUG_TRACE_EXECUTION
 
 /** Enable (or disable) stressing the GC */
-#define DEBUG_STRESS_GC
+#undef DEBUG_STRESS_GC
 
 /** Enable (or disable) debug logging in the GC */
-#define DEBUG_LOG_GC
+#undef DEBUG_LOG_GC
 
 /** Enable (or disable) sweep-to-list in GC */
 #undef DEBUG_FREELESS_GC
