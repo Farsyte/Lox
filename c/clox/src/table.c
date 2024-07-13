@@ -258,6 +258,23 @@ tableFindString (Table *table, const char *chars, int length, uint32_t hash)
     }
 }
 
+/** Remove stale weak references from the table.
+ *
+ * @param table the list of weak-reference entries
+ */
+void
+tableRemoveWhite (Table *table)
+{
+    for (int i = 0; i < table->capacity; i++) {
+        Entry *entry = &table->entries[i];
+
+        if (entry->key != NULL && !entry->key->obj.isMarked) {
+            // TDOO uncomment next line when known GC bugs are killed.
+            // tableDelete (table, entry->key);
+        }
+    }
+}
+
 /** Mark objects listed in a table.
  *
  * @param table the collection of objects to mark
