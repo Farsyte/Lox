@@ -2,6 +2,84 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_012 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_015 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_019 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_021 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_023 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_026 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_029 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_031 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_033 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -12,6 +90,28 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_038 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_042 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_045 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_047 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -22,92 +122,12 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_052 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_054 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -269,6 +289,7 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_058 allocate 40 for 0
 
 Executing ...
 stack: <script>
@@ -309,6 +330,7 @@ stack: <script> outer a outer b inner a PASS: a =  inner a
 -- gc end
 -- gc begin
 -- gc end
+heap_060 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: a = inner a
 0032    | OP_PRINT
 PASS: a = inner a
@@ -334,6 +356,7 @@ stack: <script> outer a outer b inner a PASS: b =  outer b
 -- gc end
 -- gc begin
 -- gc end
+heap_062 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: b = outer b
 0057    | OP_PRINT
 PASS: b = outer b
@@ -359,6 +382,7 @@ stack: <script> outer a outer b inner a PASS: c =  global c
 -- gc end
 -- gc begin
 -- gc end
+heap_064 allocate 40 for 3
 stack: <script> outer a outer b inner a PASS: c = global c
 0082    | OP_PRINT
 PASS: c = global c
@@ -386,6 +410,7 @@ stack: <script> outer a outer b PASS: a =  outer a
 -- gc end
 -- gc begin
 -- gc end
+heap_066 allocate 40 for 3
 stack: <script> outer a outer b PASS: a = outer a
 0108    | OP_PRINT
 PASS: a = outer a
@@ -461,6 +486,7 @@ stack: <script> PASS: a =  global a
 -- gc end
 -- gc begin
 -- gc end
+heap_070 allocate 40 for 3
 stack: <script> PASS: a = global a
 0185    | OP_PRINT
 PASS: a = global a
@@ -486,6 +512,7 @@ stack: <script> PASS: b =  global b
 -- gc end
 -- gc begin
 -- gc end
+heap_072 allocate 40 for 3
 stack: <script> PASS: b = global b
 0210    | OP_PRINT
 PASS: b = global b

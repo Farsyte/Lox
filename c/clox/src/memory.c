@@ -11,6 +11,58 @@
  * @brief Memory Handling module
  */
 
+extern void *sbrk (intptr_t increment);
+static void *heap_base = 0;
+
+#define MAX_HEAP_COUNT 10000
+static size_t heap_count = 0;
+static void *heap_ptrs[MAX_HEAP_COUNT];
+
+void
+initMemory ()
+{
+    heap_base = sbrk (0);
+    heap_count = 0;
+}
+
+static size_t
+getSeq (void *ptr)
+{
+    size_t result = heap_count;
+
+    while (result-- > 0) {
+        if (ptr == heap_ptrs[result]) {
+            return result + 1;
+        }
+    }
+    return 0;
+}
+
+static void
+addSeq (void *ptr)
+{
+    INVAR (heap_count < MAX_HEAP_COUNT, "MAX_HEAP_COUNT is not big enough.");
+    heap_ptrs[heap_count++] = ptr;
+}
+
+const char *
+printableHeapAddr (void *ptr)
+{
+    INVAR (NULL != heap_base, "initMemory was not called");
+    if (NULL == ptr)
+        return "NULL";
+    size_t seq = getSeq (ptr);
+
+    static char buf[64];
+
+    if (seq == 0) {
+        snprintf (buf, sizeof buf - 1, "heap+%06lX", ptr - heap_base);
+    } else {
+        snprintf (buf, sizeof buf - 1, "heap_%03lu", seq);
+    }
+    return buf;
+}
+
 /** Reallocate storage
  *
  * Given a pointer to oldSize bytes of allocated storage, return a
@@ -48,6 +100,9 @@ reallocate (void *pointer, size_t oldSize, size_t newSize)
     void *result = realloc (pointer, newSize);
 
     INVAR (NULL != result, "realloc  failed.");
+
+    if (result != pointer)
+        addSeq (result);
 
     return result;
 }

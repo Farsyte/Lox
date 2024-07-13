@@ -27,6 +27,8 @@
 /** Release the growable storage */
 #define FREE_ARRAY(type, pointer, oldCount)             (reallocate(pointer, sizeof (type) * (oldCount), 0))
 
+extern void initMemory ();
+extern const char *printableHeapAddr (void *ptr);
 extern void *reallocate (void *pointer, size_t oldSize, size_t newSize);
 extern void collectGarbage ();
 extern void freeObjects ();

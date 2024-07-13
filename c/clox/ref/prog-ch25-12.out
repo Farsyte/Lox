@@ -2,6 +2,42 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_012 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_014 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_016 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -10,38 +46,12 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_020 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_022 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -77,6 +87,7 @@ Disassembling outer ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_029 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -101,12 +112,14 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_033 allocate 40 for 0
 
 Executing ...
 stack: <script>
 0000    8 OP_CLOSURE          1 <fn outer>
 -- gc begin
 -- gc end
+heap_034 allocate 40 for 0
 stack: <script> <fn outer>
 0002    | OP_DEFINE_GLOBAL    0 'outer'
 stack: <script>
@@ -122,8 +135,10 @@ stack: <script> <fn outer> outside
 -- gc end
 -- gc begin
 -- gc end
+heap_036 allocate 40 for 0
 -- gc begin
 -- gc end
+heap_037 allocate 48 for 4
 stack: <script> <fn outer> outside <fn inner>
 0006    7 OP_GET_LOCAL        2
 stack: <script> <fn outer> outside <fn inner> <fn inner>

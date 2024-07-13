@@ -2,36 +2,45 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_010 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_012 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_014 allocate 72 for 1
+-- gc begin
+-- gc end
+heap_015 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_017 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -72,6 +81,7 @@ Disassembling makeClosure ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_026 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -80,6 +90,7 @@ Disassembling makeClosure ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_029 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -110,12 +121,14 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_033 allocate 40 for 0
 
 Executing ...
 stack: <script>
 0000    6 OP_CLOSURE          1 <fn makeClosure>
 -- gc begin
 -- gc end
+heap_034 allocate 40 for 0
 stack: <script> <fn makeClosure>
 0002    | OP_DEFINE_GLOBAL    0 'makeClosure'
 stack: <script>
@@ -131,8 +144,10 @@ stack: <script> <fn makeClosure> doughnut
 -- gc end
 -- gc begin
 -- gc end
+heap_036 allocate 40 for 0
 -- gc begin
 -- gc end
+heap_037 allocate 48 for 4
 stack: <script> <fn makeClosure> doughnut <fn closure>
 0004    5 OP_GET_LOCAL        2
 stack: <script> <fn makeClosure> doughnut <fn closure> <fn closure>
@@ -152,8 +167,10 @@ stack: <script> <fn makeClosure> bagel
 -- gc end
 -- gc begin
 -- gc end
+heap_039 allocate 40 for 0
 -- gc begin
 -- gc end
+heap_040 allocate 48 for 4
 stack: <script> <fn makeClosure> bagel <fn closure>
 0004    5 OP_GET_LOCAL        2
 stack: <script> <fn makeClosure> bagel <fn closure> <fn closure>

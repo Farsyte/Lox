@@ -2,18 +2,22 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_007 allocate 40 for 3
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_008 allocate 24 for 2
 BIST: bistMemory ...
 -- gc begin
 -- gc end
@@ -75,20 +79,24 @@ BIST: bistTable ...
 -- gc end
 -- gc begin
 -- gc end
+heap_026 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_029 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_031 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_033 allocate 40 for 3
 -- gc begin
 -- gc end
 BIST: bistTable ... done.
@@ -96,18 +104,22 @@ BIST: bistTable ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_036 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_038 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_041 allocate 40 for 3
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_042 allocate 24 for 2
 object exists at top of test: '<native fn>'
 object exists at top of test: 'gc'
 object exists at top of test: '<native fn>'
@@ -116,18 +128,23 @@ object exists at top of test: 'clock'
 -- gc end
 -- gc begin
 -- gc end
+heap_044 allocate 40 for 3
 valString prints as 'testObject'
 -- gc begin
 -- gc end
+heap_045 allocate 24 for 2
 valNative prints as '<native fn>'
 -- gc begin
 -- gc end
+heap_046 allocate 72 for 1
 valFunction prints as '<script>'
 -- gc begin
 -- gc end
+heap_047 allocate 40 for 0
 valClosure prints as '<script>'
 -- gc begin
 -- gc end
+heap_048 allocate 48 for 4
 valUpvalue prints as '<upvalue>'
 popped '<upvalue>'
 popped '<script>'
@@ -147,23 +164,28 @@ object exists at end of test: 'clock'
 -- gc end
 -- gc begin
 -- gc end
+heap_050 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_052 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_055 allocate 40 for 3
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_056 allocate 24 for 2
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...
 -- gc begin
 -- gc end
+heap_057 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
@@ -194,20 +216,25 @@ BIST: bistVM ...
 -- gc end
 -- gc begin
 -- gc end
+heap_063 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_065 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_068 allocate 40 for 3
 -- gc begin
 -- gc end
+heap_069 allocate 24 for 2
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_070 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
@@ -234,6 +261,7 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_075 allocate 40 for 0
 
 Executing ...
 stack: <script>
@@ -264,16 +292,20 @@ Executing ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_077 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_079 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_082 allocate 40 for 3
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_083 allocate 24 for 2
 BIST: bistVM ... done.

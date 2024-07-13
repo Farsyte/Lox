@@ -29,6 +29,11 @@ allocateObject (size_t size, ObjType type)
     object->type = type;
     object->next = vm.objects;
     vm.objects = object;
+
+#ifdef DEBUG_LOG_GC
+    printf ("%s allocate %zu for %d\n", printableHeapAddr (object), size, type);
+#endif
+
     return object;
 }
 

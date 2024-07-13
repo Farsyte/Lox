@@ -2,34 +2,42 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_010 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_012 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_014 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_016 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -51,10 +59,12 @@ Disassembling a ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_022 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_024 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -72,6 +82,7 @@ Disassembling b ... done.
 
 -- gc begin
 -- gc end
+heap_028 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
@@ -82,10 +93,12 @@ Disassembling b ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_033 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_035 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -128,24 +141,28 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_041 allocate 40 for 0
 
 Executing ...
 stack: <script>
 0000    1 OP_CLOSURE          1 <fn a>
 -- gc begin
 -- gc end
+heap_042 allocate 40 for 0
 stack: <script> <fn a>
 0002    | OP_DEFINE_GLOBAL    0 'a'
 stack: <script>
 0004    2 OP_CLOSURE          3 <fn b>
 -- gc begin
 -- gc end
+heap_043 allocate 40 for 0
 stack: <script> <fn b>
 0006    | OP_DEFINE_GLOBAL    2 'b'
 stack: <script>
 0008    5 OP_CLOSURE          5 <fn c>
 -- gc begin
 -- gc end
+heap_044 allocate 40 for 0
 stack: <script> <fn c>
 0010    | OP_DEFINE_GLOBAL    4 'c'
 stack: <script>

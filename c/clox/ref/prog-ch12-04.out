@@ -2,6 +2,27 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
@@ -10,21 +31,6 @@
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_014 allocate 40 for 3
 -- gc begin
 -- gc end

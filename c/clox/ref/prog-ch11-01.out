@@ -2,42 +2,51 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_012 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_015 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
+heap_018 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_020 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -60,6 +69,7 @@ Disassembling showA ... done.
 -- gc end
 -- gc begin
 -- gc end
+heap_026 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -84,6 +94,7 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_029 allocate 40 for 0
 
 Executing ...
 stack: <script>
@@ -94,6 +105,7 @@ stack: <script>
 0004    5 OP_CLOSURE          2 <fn showA>
 -- gc begin
 -- gc end
+heap_030 allocate 40 for 0
 stack: <script> <fn showA>
 0006    7 OP_GET_LOCAL        1
 stack: <script> <fn showA> <fn showA>

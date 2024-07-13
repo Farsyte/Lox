@@ -193,6 +193,7 @@ main (int argc, const char **argv)
 {
     postAll ();
 
+    initMemory ();
     initVM ();
 
     options.bist = bistAll;

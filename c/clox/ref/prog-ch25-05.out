@@ -2,6 +2,27 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
@@ -10,26 +31,12 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_014 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_016 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -59,6 +66,7 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_020 allocate 40 for 0
 
 Executing ...
 stack: <script>
@@ -70,8 +78,10 @@ stack: <script> 3
 -- gc end
 -- gc begin
 -- gc end
+heap_022 allocate 40 for 0
 -- gc begin
 -- gc end
+heap_023 allocate 48 for 4
 stack: <script> 3 <fn f>
 0006    6 OP_POP
 stack: <script> 3

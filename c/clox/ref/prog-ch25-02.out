@@ -2,6 +2,42 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_002 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_004 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_007 allocate 40 for 3
+-- gc begin
+-- gc end
+heap_008 allocate 24 for 2
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_010 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_012 allocate 40 for 3
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_014 allocate 72 for 1
+-- gc begin
+-- gc end
+-- gc begin
+-- gc end
+heap_016 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -10,38 +46,12 @@
 -- gc end
 -- gc begin
 -- gc end
+heap_020 allocate 72 for 1
 -- gc begin
 -- gc end
 -- gc begin
 -- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
--- gc begin
--- gc end
+heap_022 allocate 40 for 3
 -- gc begin
 -- gc end
 -- gc begin
@@ -97,12 +107,14 @@ Disassembling <script> ... done.
 
 -- gc begin
 -- gc end
+heap_031 allocate 40 for 0
 
 Executing ...
 stack: <script>
 0000    7 OP_CLOSURE          1 <fn makeClosure>
 -- gc begin
 -- gc end
+heap_032 allocate 40 for 0
 stack: <script> <fn makeClosure>
 0002    | OP_DEFINE_GLOBAL    0 'makeClosure'
 stack: <script>
@@ -118,8 +130,10 @@ stack: <script> <fn makeClosure> local
 -- gc end
 -- gc begin
 -- gc end
+heap_034 allocate 40 for 0
 -- gc begin
 -- gc end
+heap_035 allocate 48 for 4
 stack: <script> <fn makeClosure> local <fn closure>
 0006    6 OP_GET_LOCAL        2
 stack: <script> <fn makeClosure> local <fn closure> <fn closure>
