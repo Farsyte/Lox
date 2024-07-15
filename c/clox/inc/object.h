@@ -2,6 +2,7 @@
 
 #include "chunk.h"
 #include "common.h"
+#include "table.h"
 #include "value.h"
 
 /** @file object.h
@@ -29,6 +30,9 @@
 /** Return true iff the value is a Native Function. */
 #define IS_NATIVE(value) isObjType(value, OBJ_NATIVE)
 
+/** Return true iff the value is a Class Instance. */
+#define IS_INSTANCE(value) isObjType(value, OBJ_INSTANCE)
+
 /** Return true iff the value is a String. */
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
 
@@ -40,6 +44,9 @@
 
 /** Return the Function object in this Value. */
 #define AS_FUNCTION(value) ((ObjFunction*)AS_OBJ(value))
+
+/** Return the Instance object in this Value. */
+#define AS_INSTANCE(value) ((ObjInstance*)AS_OBJ(value))
 
 /** Return the Native Function object in this Value. */
 #define AS_NATIVE(value) ((ObjNative*)AS_OBJ(value))
@@ -55,6 +62,7 @@ typedef enum {
     OBJ_CLASS,                  ///< Object is a Class
     OBJ_CLOSURE,                ///< Object is a Closure
     OBJ_FUNCTION,               ///< Object is a Function
+    OBJ_INSTANCE,               ///< Object is an Class Instance
     OBJ_NATIVE,                 ///< Object is a Native Function
     OBJ_STRING,                 ///< Object contains a string
     OBJ_UPVALUE,                ///< Object is an Upvalue
@@ -112,9 +120,17 @@ struct ObjClass {
     ObjString *name;            ///< class name
 };
 
+/** Object that is a instance */
+struct ObjInstance {
+    Obj obj;                    ///< Inherit from Obj
+    ObjClass *klass;            ///< the class of the instance
+    Table fields;               ///< instance properties
+};
+
 extern ObjClass *newClass (ObjString *name);
 extern ObjClosure *newClosure (ObjFunction *function);
 extern ObjFunction *newFunction ();
+extern ObjInstance *newInstance (ObjClass *klass);
 extern ObjNative *newNative (NativeFn function);
 extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);

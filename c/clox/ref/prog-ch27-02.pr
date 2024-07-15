@@ -1,5 +1,5 @@
 class Brioche {}
-print Brioche;
+print Brioche();
 ========
 ========
-<class Brioche>
+Brioche instance

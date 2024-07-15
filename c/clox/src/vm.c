@@ -281,8 +281,15 @@ callValue (Value callee, int argCount)
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
 
-        case OBJ_CLASS:
-            STUB ("OBJ_CLASS case");
+        case OBJ_INSTANCE:
+            STUB ("OBJ_INSTANCE case");
+
+        case OBJ_CLASS:{
+                ObjClass *klass = AS_CLASS (callee);
+
+                vm.sp[-argCount - 1] = OBJ_VAL (newInstance (klass));
+                return true;
+            }
 
         case OBJ_CLOSURE:
             return call (AS_CLOSURE (callee), argCount);

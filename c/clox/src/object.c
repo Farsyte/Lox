@@ -91,6 +91,21 @@ newFunction ()
     return function;
 }
 
+/** Create a new Instance object.
+ *
+ * @param klass the Class of the new object
+ * @returns a pointer to a new Instance object.
+ */
+ObjInstance *
+newInstance (ObjClass *klass)
+{
+    ObjInstance *instance = ALLOCATE_OBJ (ObjInstance, OBJ_INSTANCE);
+
+    instance->klass = klass;
+    initTable (&instance->fields);
+    return instance;
+}
+
 /** Create a new Native Function object.
  *
  * @param function the glue code
@@ -269,6 +284,10 @@ printObject (Value value)
 
     case OBJ_FUNCTION:
         printFunction (AS_FUNCTION (value));
+        return;
+
+    case OBJ_INSTANCE:
+        printf ("%s instance", AS_INSTANCE (value)->klass->name->chars);
         return;
 
     case OBJ_NATIVE:

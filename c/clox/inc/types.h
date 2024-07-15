@@ -98,3 +98,7 @@ typedef struct ObjUpvalue ObjUpvalue;
 /** Class Object
  */
 typedef struct ObjClass ObjClass;
+
+/** Instance Object
+ */
+typedef struct ObjInstance ObjInstance;

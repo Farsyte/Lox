@@ -21,4 +21,16 @@ stack: <script>
 0004    2 OP_GET_GLOBAL       2 'Bagel'
 stack: <script> <class Bagel>
 0006    | OP_CALL             0
+stack: <script> Bagel instance
+0008    | OP_DEFINE_GLOBAL    1 'bagel'
+stack: <script>
+0010    3 OP_GET_GLOBAL       3 'bagel'
+stack: <script> Bagel instance
+0012    | OP_PRINT
+Bagel instance
+stack: <script>
+0013    4 OP_NIL
+stack: <script> nil
+0014    | OP_RETURN
+Executing ... done.
 
