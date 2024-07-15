@@ -14,6 +14,7 @@ SRCD            := src/
 # Set up conventional name lists
 
 SRCS            := $(wildcard $(SRCD)*.c)
+INCS            := $(wildcard $(INCD)*.h)
 OBJS            := $(SRCS:$(SRCD)%.c=$(OBJD)%.o)
 DEPS            := $(SRCS:$(SRCD)%.c=$(DEPD)%.d)
 EXES            := $(MAIN:%=$(BIND)%)
