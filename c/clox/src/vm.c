@@ -653,6 +653,10 @@ run ()
             push (result);
             frame = &vm.frames[vm.frameCount - 1];
             break;
+
+        case OP_CLASS:
+            push (OBJ_VAL (newClass (READ_STRING ())));
+            break;
         }
     }
 #undef  READ_SHORT

@@ -2,5 +2,6 @@ class Bagel {}
 var bagel = Bagel();
 print bagel; // Prints "Bagel instance"
 ========
-[line 1] Error at 'class': Expect expression.
+src/vm.c:285: STUB Encountered in callValue
+OBJ_CLASS case
 ========
