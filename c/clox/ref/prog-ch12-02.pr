@@ -2,5 +2,5 @@ class Bagel {}
 var bagel = Bagel();
 print bagel; // Prints "Bagel instance"
 ========
-[line 1] Error at 'class': Expect expression.
 ========
+Bagel instance

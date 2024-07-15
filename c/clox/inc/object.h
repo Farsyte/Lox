@@ -2,6 +2,7 @@
 
 #include "chunk.h"
 #include "common.h"
+#include "table.h"
 #include "value.h"
 
 /** @file object.h
@@ -17,6 +18,9 @@
 /** Extract the enumerated value type from a value. */
 #define OBJ_TYPE(value) (AS_OBJ(value)->type)
 
+/** Return true iff the value is a Class. */
+#define IS_CLASS(value) isObjType(value, OBJ_CLASS)
+
 /** Return true iff the value is a Closure. */
 #define IS_CLOSURE(value) isObjType(value, OBJ_CLOSURE)
 
@@ -26,14 +30,23 @@
 /** Return true iff the value is a Native Function. */
 #define IS_NATIVE(value) isObjType(value, OBJ_NATIVE)
 
+/** Return true iff the value is a Class Instance. */
+#define IS_INSTANCE(value) isObjType(value, OBJ_INSTANCE)
+
 /** Return true iff the value is a String. */
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
+
+/** Return the Class object in this Value. */
+#define AS_CLASS(value) ((ObjClass*)AS_OBJ(value))
 
 /** Return the Closure object in this Value. */
 #define AS_CLOSURE(value) ((ObjClosure*)AS_OBJ(value))
 
 /** Return the Function object in this Value. */
 #define AS_FUNCTION(value) ((ObjFunction*)AS_OBJ(value))
+
+/** Return the Instance object in this Value. */
+#define AS_INSTANCE(value) ((ObjInstance*)AS_OBJ(value))
 
 /** Return the Native Function object in this Value. */
 #define AS_NATIVE(value) ((ObjNative*)AS_OBJ(value))
@@ -46,8 +59,10 @@
 
 /** Enumerate the possible object types. */
 typedef enum {
+    OBJ_CLASS,                  ///< Object is a Class
     OBJ_CLOSURE,                ///< Object is a Closure
     OBJ_FUNCTION,               ///< Object is a Function
+    OBJ_INSTANCE,               ///< Object is an Class Instance
     OBJ_NATIVE,                 ///< Object is a Native Function
     OBJ_STRING,                 ///< Object contains a string
     OBJ_UPVALUE,                ///< Object is an Upvalue
@@ -99,8 +114,23 @@ struct ObjClosure {
     int upvalueCount;           ///< number of upvalues
 };
 
+/** Object that is a class */
+struct ObjClass {
+    Obj obj;                    ///< Inherit from Obj
+    ObjString *name;            ///< class name
+};
+
+/** Object that is a instance */
+struct ObjInstance {
+    Obj obj;                    ///< Inherit from Obj
+    ObjClass *klass;            ///< the class of the instance
+    Table fields;               ///< instance properties
+};
+
+extern ObjClass *newClass (ObjString *name);
 extern ObjClosure *newClosure (ObjFunction *function);
 extern ObjFunction *newFunction ();
+extern ObjInstance *newInstance (ObjClass *klass);
 extern ObjNative *newNative (NativeFn function);
 extern ObjString *takeString (char *chars, int length);
 extern ObjString *copyString (const char *chars, int length);

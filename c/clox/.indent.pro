@@ -21,8 +21,10 @@
 -TInterpretResult
 -TLocal
 -TObj
+-TObjClass
 -TObjClosure
 -TObjFunction
+-TObjInstance
 -TObjString
 -TObjType
 -TOpCode
@@ -41,3 +43,4 @@
 -TValueArray
 -TValueType
 -Tuint8_t
+

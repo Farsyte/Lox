@@ -39,6 +39,20 @@ allocateObject (size_t size, ObjType type)
     return object;
 }
 
+/** Create a new Class object
+ *
+ * @param name the name of the class
+ * @returns a new Class object
+ */
+ObjClass *
+newClass (ObjString *name)
+{
+    ObjClass *klass = ALLOCATE_OBJ (ObjClass, OBJ_CLASS);
+
+    klass->name = name;
+    return klass;
+}
+
 /** Allocate a new Closure object.
  *
  * @param function the compiled code for the closure
@@ -75,6 +89,21 @@ newFunction ()
     function->name = NULL;
     initChunk (&function->chunk);
     return function;
+}
+
+/** Create a new Instance object.
+ *
+ * @param klass the Class of the new object
+ * @returns a pointer to a new Instance object.
+ */
+ObjInstance *
+newInstance (ObjClass *klass)
+{
+    ObjInstance *instance = ALLOCATE_OBJ (ObjInstance, OBJ_INSTANCE);
+
+    instance->klass = klass;
+    initTable (&instance->fields);
+    return instance;
 }
 
 /** Create a new Native Function object.
@@ -245,16 +274,33 @@ printObject (Value value)
 
     switch (OBJ_TYPE (value)) {
 
-        // *INDENT-OFF*
+    case OBJ_CLASS:
+        printf ("<class %s>", AS_CLASS (value)->name->chars);
+        return;
 
-    case OBJ_CLOSURE:   printFunction(
-                            AS_CLOSURE(value)->function);       return;
-    case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));      return;
-    case OBJ_NATIVE:    printf("<native fn>");                  return;
-    case OBJ_STRING:    printf("%s", AS_CSTRING(value));        return;
-    case OBJ_UPVALUE:   printf("<upvalue>");                    return;
+    case OBJ_CLOSURE:
+        printFunction (AS_CLOSURE (value)->function);
+        return;
 
-        // *INDENT-ON*
+    case OBJ_FUNCTION:
+        printFunction (AS_FUNCTION (value));
+        return;
+
+    case OBJ_INSTANCE:
+        printf ("%s instance", AS_INSTANCE (value)->klass->name->chars);
+        return;
+
+    case OBJ_NATIVE:
+        printf ("<native fn>");
+        return;
+
+    case OBJ_STRING:
+        printf ("%s", AS_CSTRING (value));
+        return;
+
+    case OBJ_UPVALUE:
+        printf ("<upvalue>");
+        return;
     }
     UNREACHABLE ("corrupted object type");
 }
