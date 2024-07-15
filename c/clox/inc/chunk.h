@@ -22,6 +22,8 @@ typedef enum {
     OP_SET_GLOBAL,              ///< pop top of stack into global variable
     OP_GET_UPVALUE,             ///< push value of upvalue variable onto the stack
     OP_SET_UPVALUE,             ///< pop top of stack into upvalue variable
+    OP_GET_PROPERTY,            ///< push value of instance property
+    OP_SET_PROPERTY,            ///< pop top of stack into instance property
 
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order

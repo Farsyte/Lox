@@ -569,6 +569,12 @@ run ()
 
 #undef  BINARY_OP
 
+        case OP_GET_PROPERTY:
+            STUB ("OP_GET_PROPERTY case");
+
+        case OP_SET_PROPERTY:
+            STUB ("OP_SET_PROPERTY case");
+
         case OP_EQUAL:{
                 Value b = pop ();
                 Value a = pop ();
