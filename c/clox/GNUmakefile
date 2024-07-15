@@ -204,11 +204,14 @@ clean::
 #
 # NOTE: we are not making the documentation every cycle, as
 # that takes a while.
+#
+# Do not build tags files every time because that just means
+# we have to confirm "yes read the new tags file" so often ...
 
 cycle::
 	$M -k -j
 	$M -k format
-	$M -k -j ctags etags tests docs
+	$M -k -j tests docs
 	$M -k stubs
 	$M -k todos
 

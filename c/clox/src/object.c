@@ -259,16 +259,29 @@ printObject (Value value)
 
     switch (OBJ_TYPE (value)) {
 
-        // *INDENT-OFF*
+    case OBJ_CLASS:
+        printf ("<class %s>", AS_CLASS (value)->name->chars);
+        return;
 
-    case OBJ_CLASS:     printf("%s", AS_CLASS(value)->name->chars);     return;
-    case OBJ_CLOSURE:   printFunction(AS_CLOSURE(value)->function);     return;
-    case OBJ_FUNCTION:  printFunction(AS_FUNCTION(value));              return;
-    case OBJ_NATIVE:    printf("<native fn>");                          return;
-    case OBJ_STRING:    printf("%s", AS_CSTRING(value));                return;
-    case OBJ_UPVALUE:   printf("<upvalue>");                            return;
+    case OBJ_CLOSURE:
+        printFunction (AS_CLOSURE (value)->function);
+        return;
 
-        // *INDENT-ON*
+    case OBJ_FUNCTION:
+        printFunction (AS_FUNCTION (value));
+        return;
+
+    case OBJ_NATIVE:
+        printf ("<native fn>");
+        return;
+
+    case OBJ_STRING:
+        printf ("%s", AS_CSTRING (value));
+        return;
+
+    case OBJ_UPVALUE:
+        printf ("<upvalue>");
+        return;
     }
     UNREACHABLE ("corrupted object type");
 }

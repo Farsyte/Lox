@@ -18,6 +18,7 @@ void
 bistCompiler ()
 {
     printf ("BIST: %s ...\n", "bistCompiler");
+
     // *INDENT-OFF*
     const char source[] =
         "print 1 + 2; // add and print\n"

@@ -1187,8 +1187,6 @@ synchronize ()
 
         switch (parser.current.type) {
 
-            // *INDENT_OFF*
-
         case TOKEN_CLASS:
         case TOKEN_FUN:
         case TOKEN_VAR:
@@ -1201,8 +1199,6 @@ synchronize ()
 
         default:
             break;
-
-            // *INDENT_ON*
         }
 
         advance ();

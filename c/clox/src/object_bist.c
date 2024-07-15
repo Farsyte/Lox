@@ -150,9 +150,9 @@ bistObject ()
     while (objects != NULL) {
         Value v = OBJ_VAL (objects);
 
-        printf ("object exists at end of test: '");
+        printf ("object exists at end of test: ");
         printValue (v);
-        printf ("'\n");
+        printf ("\n");
         objects = objects->next;
     }
 #endif

@@ -20,15 +20,15 @@ popped '<script>'
 popped '<script>'
 popped '<native fn>'
 popped 'testObject'
-object exists at end of test: '<upvalue>'
-object exists at end of test: '<script>'
-object exists at end of test: '<script>'
-object exists at end of test: '<native fn>'
-object exists at end of test: 'testObject'
-object exists at end of test: '<native fn>'
-object exists at end of test: 'gc'
-object exists at end of test: '<native fn>'
-object exists at end of test: 'clock'
+object exists at end of test: <upvalue>
+object exists at end of test: <script>
+object exists at end of test: <script>
+object exists at end of test: <native fn>
+object exists at end of test: testObject
+object exists at end of test: <native fn>
+object exists at end of test: gc
+object exists at end of test: <native fn>
+object exists at end of test: clock
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...
