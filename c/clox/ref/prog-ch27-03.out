@@ -34,4 +34,18 @@ stack: <script> Eclair instance
 0012    | OP_CONSTANT         5 'pastry creme'
 stack: <script> Eclair instance pastry creme
 0014    | OP_SET_PROPERTY     4 'filling'
+stack: <script> pastry creme
+0016    | OP_POP
+stack: <script>
+0017    4 OP_GET_GLOBAL       6 'eclair'
+stack: <script> Eclair instance
+0019    | OP_GET_PROPERTY     7 'filling'
+stack: <script> pastry creme
+0021    | OP_PRINT
+pastry creme
+stack: <script>
+0022    5 OP_NIL
+stack: <script> nil
+0023    | OP_RETURN
+Executing ... done.
 

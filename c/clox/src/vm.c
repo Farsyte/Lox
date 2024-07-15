@@ -569,11 +569,39 @@ run ()
 
 #undef  BINARY_OP
 
-        case OP_GET_PROPERTY:
-            STUB ("OP_GET_PROPERTY case");
+        case OP_GET_PROPERTY:{
+                if (!IS_INSTANCE (peek (0))) {
+                    runtimeError ("Only instances have properties.");
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                ObjInstance *instance = AS_INSTANCE (peek (0));
+                ObjString *name = READ_STRING ();
 
-        case OP_SET_PROPERTY:
-            STUB ("OP_SET_PROPERTY case");
+                Value value;
+
+                if (tableGet (&instance->fields, name, &value)) {
+                    pop ();             // Instance.
+                    push (value);
+                    break;
+                }
+                runtimeError ("Undefined property '%s'.", name->chars);
+                return INTERPRET_RUNTIME_ERROR;
+            }
+
+        case OP_SET_PROPERTY:{
+                if (!IS_INSTANCE (peek (1))) {
+                    runtimeError ("Only instances can have properties.");
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                ObjInstance *instance = AS_INSTANCE (peek (1));
+
+                tableSet (&instance->fields, READ_STRING (), peek (0));
+                Value value = pop ();
+
+                pop ();
+                push (value);
+                break;
+            }
 
         case OP_EQUAL:{
                 Value b = pop ();

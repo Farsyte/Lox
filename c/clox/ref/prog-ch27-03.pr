@@ -3,6 +3,5 @@ var eclair = Eclair();
 eclair.filling = "pastry creme";
 print eclair.filling;
 ========
-src/vm.c:576: STUB Encountered in run
-OP_SET_PROPERTY case
 ========
+pastry creme
