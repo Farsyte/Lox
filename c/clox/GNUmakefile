@@ -217,3 +217,13 @@ cycle::
 
 $(BIND)title:           $(BIND)title.c
 clean::         ; $X $(BIND)title
+
+# wait until an interesting file
+# is created, modified, or deleted.
+
+WEVENTS         := --event delete,modify
+WLIST		:= $(SRCS) $(INCS) $(LSRC) $(MAKEFILE_LIST)
+
+await::
+	$P '  INOTIFYWAIT\n'
+	$C inotifywait $(WEVENTS) $(WLIST) || true

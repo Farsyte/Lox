@@ -1,5 +1,7 @@
 #include "error_log.h"
 
+#include "common.h"
+
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -37,6 +39,16 @@ _error_log (const char *file, int line, const char *func, const char *pfx, const
     printf ("\n");
     fflush (stdout);
 
+#ifdef LOG_ONLY_FUNC_AND_FILE
+
+    fprintf (stderr, "%s()", func);
+    if (pfx && pfx[0])
+        fprintf (stderr, " %s", pfx);
+    fprintf (stderr, " (in %s)\n", file);
+    (void) line;
+
+#else
+
     if (file && file[0])
         if (line)
             fprintf (stderr, "%s:%d: ", file, line);
@@ -50,6 +62,7 @@ _error_log (const char *file, int line, const char *func, const char *pfx, const
 
     if (func && func[0])
         fprintf (stderr, "in %s\n", func);
+#endif
 
     if (cond && cond[0])
         fprintf (stderr, "    %s\n", cond);
@@ -94,6 +107,15 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
 {
     printf ("\n");
 
+#ifdef LOG_ONLY_FUNC_AND_FILE
+    printf ("%s()", func);
+    if (pfx && pfx[0])
+        printf (" %s", pfx);
+    printf (" (in %s)\n", file);
+    (void) line;
+
+#else
+
     if (file && file[0])
         if (line)
             printf ("%s:%d: ", file, line);
@@ -108,6 +130,7 @@ _debug_log (const char *file, int line, const char *func, const char *pfx, const
     if (func && func[0])
         printf ("in %s", func);
     printf ("\n");
+#endif
 
     if (cond && cond[0])
         printf ("    %s\n", cond);

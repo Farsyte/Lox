@@ -16,6 +16,9 @@
  * macros that control optional behaviors.
  */
 
+/** Remove line numbers from error and debug log messages */
+#define LOG_ONLY_FUNC_AND_FILE
+
 /** Enable (or disable) code printing */
 #define DEBUG_PRINT_CODE
 
