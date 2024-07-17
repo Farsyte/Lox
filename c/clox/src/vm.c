@@ -294,9 +294,6 @@ callValue (Value callee, int argCount)
                 return call (bound->method, argCount);
             }
 
-        case OBJ_INSTANCE:
-            STUB ("OBJ_INSTANCE case");
-
         case OBJ_CLASS:{
                 ObjClass *klass = AS_CLASS (callee);
 
@@ -318,10 +315,6 @@ callValue (Value callee, int argCount)
         case OBJ_CLOSURE:
             return call (AS_CLOSURE (callee), argCount);
 
-        case OBJ_FUNCTION:
-            // return call (AS_FUNCTION (callee), argCount);
-            UNREACHABLE ("obsoleted in 25.1.2");
-
         case OBJ_NATIVE:{
                 NativeFn native = AS_NATIVE (callee)->function;
                 Value result = native (argCount, vm.sp - argCount);
@@ -331,11 +324,17 @@ callValue (Value callee, int argCount)
                 return true;
             }
 
+        case OBJ_FUNCTION:
+            UNREACHABLE ("obsoleted in 25.1.2 (use OBJ_CLOSURE)");
+
+        case OBJ_INSTANCE:
+            UNREACHABLE ("You can't call an Instance.");
+
         case OBJ_STRING:
-            break;
+            UNREACHABLE ("You can't call a String.");
 
         case OBJ_UPVALUE:
-            break;
+            UNREACHABLE ("You can't call an Upvalue.");
 
             // yes, force me to look at this switch
             // any time a new Object Type is added.
@@ -385,6 +384,13 @@ invoke (ObjString *name, int argCount)
     }
 
     ObjInstance *instance = AS_INSTANCE (receiver);
+
+    Value value;
+
+    if (tableGet (&instance->fields, name, &value)) {
+        vm.sp[-argCount - 1] = value;
+        return callValue (value, argCount);
+    }
 
     return invokeFromClass (instance->klass, name, argCount);
 }
