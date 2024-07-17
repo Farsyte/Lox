@@ -325,6 +325,29 @@ callValue (Value callee, int argCount)
     return false;
 }
 
+/** Bind a method to an instance
+ *
+ * @param klass the class of the instance
+ * @param name the name of the property
+ * @returns true if successful
+ */
+static bool
+bindMethod (ObjClass *klass, ObjString *name)
+{
+    Value method;
+
+    if (!tableGet (&klass->methods, name, &method)) {
+        runtimeError ("Undefined property '%s'.", name->chars);
+        return false;
+    }
+
+    ObjBoundMethod *bound = newBoundMethod (peek (0), AS_CLOSURE (method));
+
+    pop ();
+    push (OBJ_VAL (bound));
+    return true;
+}
+
 /** Capture an Upvalue
  *
  * @param local where the Upvalue value is stored
@@ -597,8 +620,13 @@ run ()
                     push (value);
                     break;
                 }
-                runtimeError ("Undefined property '%s'.", name->chars);
-                return INTERPRET_RUNTIME_ERROR;
+
+                if (!bindMethod (instance->klass, name)) {
+                    // runtimeError ("Undefined property '%s'.", name->chars);
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+
+                break;
             }
 
         case OP_SET_PROPERTY:{

@@ -1,3 +1,2 @@
-
-RUNTIME ERROR: Undefined property 'eat'.
-[line 7] in script
+src/vm.c:285: STUB Encountered in callValue
+OBJ_BOUND_METHOD case

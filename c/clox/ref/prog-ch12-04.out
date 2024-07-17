@@ -43,3 +43,6 @@ stack: <script> <class Bacon>
 0013    | OP_CALL             0
 stack: <script> Bacon instance
 0015    | OP_GET_PROPERTY     5 'eat'
+stack: <script> <fn eat>
+0017    | OP_CALL             0
+
