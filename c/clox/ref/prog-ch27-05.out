@@ -63,26 +63,26 @@ stack: <script> <fn topping> berries
 0023    | OP_CONSTANT         9 'cream'
 stack: <script> <fn topping> berries cream
 0025    | OP_CALL             2
-stack: <script> <fn topping> berries cream
+stack: <script> Scone instance berries cream
 0000    3 OP_CONSTANT         0 'scone with '
-stack: <script> <fn topping> berries cream scone with 
+stack: <script> Scone instance berries cream scone with 
 0002    | OP_GET_LOCAL        1
-stack: <script> <fn topping> berries cream scone with  berries
+stack: <script> Scone instance berries cream scone with  berries
 0004    | OP_ADD
-stack: <script> <fn topping> berries cream scone with berries
+stack: <script> Scone instance berries cream scone with berries
 0005    | OP_CONSTANT         1 ' and '
-stack: <script> <fn topping> berries cream scone with berries  and 
+stack: <script> Scone instance berries cream scone with berries  and 
 0007    | OP_ADD
-stack: <script> <fn topping> berries cream scone with berries and 
+stack: <script> Scone instance berries cream scone with berries and 
 0008    | OP_GET_LOCAL        2
-stack: <script> <fn topping> berries cream scone with berries and  cream
+stack: <script> Scone instance berries cream scone with berries and  cream
 0010    | OP_ADD
-stack: <script> <fn topping> berries cream scone with berries and cream
+stack: <script> Scone instance berries cream scone with berries and cream
 0011    | OP_PRINT
 scone with berries and cream
-stack: <script> <fn topping> berries cream
+stack: <script> Scone instance berries cream
 0012    4 OP_NIL
-stack: <script> <fn topping> berries cream nil
+stack: <script> Scone instance berries cream nil
 0013    | OP_RETURN
 stack: <script> nil
 0027    | OP_POP

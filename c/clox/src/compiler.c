@@ -69,6 +69,7 @@ struct Upvalue {
  */
 typedef enum {
     TYPE_FUNCTION,
+    TYPE_METHOD,
     TYPE_SCRIPT
 } FunctionType;
 
@@ -370,8 +371,13 @@ initCompiler (Compiler *compiler, FunctionType type)
 
     local->depth = 0;
     local->isCaptured = false;
-    local->name.start = "";
-    local->name.length = 0;
+    if (type == TYPE_METHOD) {
+        local->name.start = "this";
+        local->name.length = 4;
+    } else {
+        local->name.start = "";
+        local->name.length = 0;
+    }
 }
 
 /** Shut down the compiler.
@@ -831,6 +837,17 @@ variable (bool canAssign)
     namedVariable (parser.previous, canAssign);
 }
 
+/** Compile a reference to "this"
+ *
+ * @param canAssign not used in this method
+ */
+static void
+this_ (bool canAssign)
+{
+    (void) canAssign;                   // not used
+    variable (false);
+}
+
 /** Compile a unary operation to the chunk.
  *
  * @param canAssign not used by this function
@@ -914,7 +931,7 @@ ParseRule
     [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE        },   //  "print"
     [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE        },   //  "return"
     [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE        },   //  "super"
-    [TOKEN_THIS]           =  {  NULL,       NULL,     PREC_NONE        },   //  "this"
+    [TOKEN_THIS]           =  {  this_,      NULL,     PREC_NONE        },   //  "this"
     [TOKEN_TRUE]           =  {  literal,    NULL,     PREC_NONE        },   //  "true"
     [TOKEN_VAR]            =  {  NULL,       NULL,     PREC_NONE        },   //  "var"
     [TOKEN_WHILE]          =  {  NULL,       NULL,     PREC_NONE        },   //  "while"
@@ -1031,7 +1048,7 @@ method ()
     consume (TOKEN_IDENTIFIER, "Expect method name.");
     uint8_t constant = identifierConstant (&parser.previous);
 
-    FunctionType type = TYPE_FUNCTION;
+    FunctionType type = TYPE_METHOD;
 
     function (type);
 

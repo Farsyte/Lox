@@ -1,0 +1,159 @@
+
+Disassembling taste ...
+0000    3 OP_CONSTANT         0 'delicious'
+0002    4 OP_CONSTANT         1 'The '
+0004    | OP_GET_LOCAL        0
+0006    | OP_GET_PROPERTY     2 'flavor'
+0008    | OP_ADD
+0009    | OP_CONSTANT         3 ' cake is '
+0011    | OP_ADD
+0012    | OP_GET_LOCAL        1
+0014    | OP_ADD
+0015    | OP_CONSTANT         4 '!'
+0017    | OP_ADD
+0018    | OP_PRINT
+0019    5 OP_NIL
+0020    | OP_RETURN
+Disassembling taste ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Cake'
+0002    | OP_DEFINE_GLOBAL    0 'Cake'
+0004    | OP_GET_GLOBAL       1 'Cake'
+0006    5 OP_CLOSURE          3 <fn taste>
+0008    | OP_METHOD           2 'taste'
+0010    6 OP_POP
+0011    8 OP_GET_GLOBAL       5 'Cake'
+0013    | OP_CALL             0
+0015    | OP_DEFINE_GLOBAL    4 'cake'
+0017    9 OP_GET_GLOBAL       7 'cake'
+0019    | OP_GET_PROPERTY     8 'taste'
+0021    | OP_DEFINE_GLOBAL    6 't'
+0023   10 OP_GET_GLOBAL       9 'cake'
+0025    | OP_CONSTANT        11 'German chocolate'
+0027    | OP_SET_PROPERTY    10 'flavor'
+0029    | OP_POP
+0030   11 OP_GET_GLOBAL      12 'cake'
+0032    | OP_GET_PROPERTY    13 'taste'
+0034    | OP_CALL             0
+0036    | OP_POP
+0037   13 OP_GET_GLOBAL      14 't'
+0039    | OP_CALL             0
+0041    | OP_POP
+0042   14 OP_NIL
+0043    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Cake'
+stack: <script> <class Cake>
+0002    | OP_DEFINE_GLOBAL    0 'Cake'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Cake'
+stack: <script> <class Cake>
+0006    5 OP_CLOSURE          3 <fn taste>
+stack: <script> <class Cake> <fn taste>
+0008    | OP_METHOD           2 'taste'
+stack: <script> <class Cake>
+0010    6 OP_POP
+stack: <script>
+0011    8 OP_GET_GLOBAL       5 'Cake'
+stack: <script> <class Cake>
+0013    | OP_CALL             0
+stack: <script> Cake instance
+0015    | OP_DEFINE_GLOBAL    4 'cake'
+stack: <script>
+0017    9 OP_GET_GLOBAL       7 'cake'
+stack: <script> Cake instance
+0019    | OP_GET_PROPERTY     8 'taste'
+stack: <script> <fn taste>
+0021    | OP_DEFINE_GLOBAL    6 't'
+stack: <script>
+0023   10 OP_GET_GLOBAL       9 'cake'
+stack: <script> Cake instance
+0025    | OP_CONSTANT        11 'German chocolate'
+stack: <script> Cake instance German chocolate
+0027    | OP_SET_PROPERTY    10 'flavor'
+stack: <script> German chocolate
+0029    | OP_POP
+stack: <script>
+0030   11 OP_GET_GLOBAL      12 'cake'
+stack: <script> Cake instance
+0032    | OP_GET_PROPERTY    13 'taste'
+stack: <script> <fn taste>
+0034    | OP_CALL             0
+stack: <script> Cake instance
+0000    3 OP_CONSTANT         0 'delicious'
+stack: <script> Cake instance delicious
+0002    4 OP_CONSTANT         1 'The '
+stack: <script> Cake instance delicious The 
+0004    | OP_GET_LOCAL        0
+stack: <script> Cake instance delicious The  Cake instance
+0006    | OP_GET_PROPERTY     2 'flavor'
+stack: <script> Cake instance delicious The  German chocolate
+0008    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate
+0009    | OP_CONSTANT         3 ' cake is '
+stack: <script> Cake instance delicious The German chocolate  cake is 
+0011    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is 
+0012    | OP_GET_LOCAL        1
+stack: <script> Cake instance delicious The German chocolate cake is  delicious
+0014    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is delicious
+0015    | OP_CONSTANT         4 '!'
+stack: <script> Cake instance delicious The German chocolate cake is delicious !
+0017    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is delicious!
+0018    | OP_PRINT
+The German chocolate cake is delicious!
+stack: <script> Cake instance delicious
+0019    5 OP_NIL
+stack: <script> Cake instance delicious nil
+0020    | OP_RETURN
+stack: <script> nil
+0036    | OP_POP
+stack: <script>
+0037   13 OP_GET_GLOBAL      14 't'
+stack: <script> <fn taste>
+0039    | OP_CALL             0
+stack: <script> Cake instance
+0000    3 OP_CONSTANT         0 'delicious'
+stack: <script> Cake instance delicious
+0002    4 OP_CONSTANT         1 'The '
+stack: <script> Cake instance delicious The 
+0004    | OP_GET_LOCAL        0
+stack: <script> Cake instance delicious The  Cake instance
+0006    | OP_GET_PROPERTY     2 'flavor'
+stack: <script> Cake instance delicious The  German chocolate
+0008    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate
+0009    | OP_CONSTANT         3 ' cake is '
+stack: <script> Cake instance delicious The German chocolate  cake is 
+0011    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is 
+0012    | OP_GET_LOCAL        1
+stack: <script> Cake instance delicious The German chocolate cake is  delicious
+0014    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is delicious
+0015    | OP_CONSTANT         4 '!'
+stack: <script> Cake instance delicious The German chocolate cake is delicious !
+0017    | OP_ADD
+stack: <script> Cake instance delicious The German chocolate cake is delicious!
+0018    | OP_PRINT
+The German chocolate cake is delicious!
+stack: <script> Cake instance delicious
+0019    5 OP_NIL
+stack: <script> Cake instance delicious nil
+0020    | OP_RETURN
+stack: <script> nil
+0041    | OP_POP
+stack: <script>
+0042   14 OP_NIL
+stack: <script> nil
+0043    | OP_RETURN
+Executing ... done.
+

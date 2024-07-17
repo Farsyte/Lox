@@ -12,5 +12,6 @@ cake.taste(); // Prints "The German chocolate cake is delicious!"
 
 t(); // confirm "t" is bound to the "cake" object
 ========
-[line 4] Error at 'this': Expect expression.
 ========
+The German chocolate cake is delicious!
+The German chocolate cake is delicious!

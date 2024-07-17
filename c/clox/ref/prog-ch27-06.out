@@ -1,0 +1,88 @@
+
+Disassembling function ...
+0000    4 OP_GET_UPVALUE      0
+0002    | OP_PRINT
+0003    5 OP_NIL
+0004    | OP_RETURN
+Disassembling function ... done.
+
+
+Disassembling method ...
+0000    5 OP_CLOSURE          0 <fn function>
+0002      | local 0
+0004    7 OP_GET_LOCAL        1
+0006    | OP_CALL             0
+0008    | OP_POP
+0009    8 OP_NIL
+0010    | OP_RETURN
+Disassembling method ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Nested'
+0002    | OP_DEFINE_GLOBAL    0 'Nested'
+0004    | OP_GET_GLOBAL       1 'Nested'
+0006    8 OP_CLOSURE          3 <fn method>
+0008    | OP_METHOD           2 'method'
+0010    9 OP_POP
+0011   11 OP_GET_GLOBAL       4 'Nested'
+0013    | OP_CALL             0
+0015    | OP_GET_PROPERTY     5 'method'
+0017    | OP_CALL             0
+0019    | OP_POP
+0020   12 OP_NIL
+0021    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Nested'
+stack: <script> <class Nested>
+0002    | OP_DEFINE_GLOBAL    0 'Nested'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Nested'
+stack: <script> <class Nested>
+0006    8 OP_CLOSURE          3 <fn method>
+stack: <script> <class Nested> <fn method>
+0008    | OP_METHOD           2 'method'
+stack: <script> <class Nested>
+0010    9 OP_POP
+stack: <script>
+0011   11 OP_GET_GLOBAL       4 'Nested'
+stack: <script> <class Nested>
+0013    | OP_CALL             0
+stack: <script> Nested instance
+0015    | OP_GET_PROPERTY     5 'method'
+stack: <script> <fn method>
+0017    | OP_CALL             0
+stack: <script> Nested instance
+0000    5 OP_CLOSURE          0 <fn function>
+0002      | local 0
+stack: <script> Nested instance <fn function>
+0004    7 OP_GET_LOCAL        1
+stack: <script> Nested instance <fn function> <fn function>
+0006    | OP_CALL             0
+stack: <script> Nested instance <fn function> <fn function>
+0000    4 OP_GET_UPVALUE      0
+stack: <script> Nested instance <fn function> <fn function> Nested instance
+0002    | OP_PRINT
+Nested instance
+stack: <script> Nested instance <fn function> <fn function>
+0003    5 OP_NIL
+stack: <script> Nested instance <fn function> <fn function> nil
+0004    | OP_RETURN
+stack: <script> Nested instance <fn function> nil
+0008    | OP_POP
+stack: <script> Nested instance <fn function>
+0009    8 OP_NIL
+stack: <script> Nested instance <fn function> nil
+0010    | OP_RETURN
+stack: <script> nil
+0019    | OP_POP
+stack: <script>
+0020   12 OP_NIL
+stack: <script> nil
+0021    | OP_RETURN
+Executing ... done.
+
