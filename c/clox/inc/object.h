@@ -118,6 +118,7 @@ struct ObjClosure {
 struct ObjClass {
     Obj obj;                    ///< Inherit from Obj
     ObjString *name;            ///< class name
+    Table methods;              ///< methods (find by method name)
 };
 
 /** Object that is a instance */
