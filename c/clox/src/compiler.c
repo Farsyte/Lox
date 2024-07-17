@@ -383,7 +383,10 @@ initCompiler (Compiler *compiler, FunctionType type)
 
     local->depth = 0;
     local->isCaptured = false;
-    if (type == TYPE_METHOD) {
+
+    // BOOK BUG? I think the code from the book ends up giving
+    // us a "this" in TYPE_SCRIPT which is wrong?
+    if ((type == TYPE_INITIALIZER) || (type == TYPE_METHOD)) {
         local->name.start = "this";
         local->name.length = 4;
     } else {
@@ -1244,6 +1247,9 @@ returnStatement ()
     if (match (TOKEN_SEMICOLON)) {
         emitReturn ();
     } else {
+        if (current->type == TYPE_INITIALIZER) {
+            error ("Can't return a value from an initializer.'");
+        }
         expression ();
         consume (TOKEN_SEMICOLON, "Expect ';' after return value.");
         emitByte (OP_RETURN);
