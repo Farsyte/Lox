@@ -45,6 +45,7 @@ typedef enum {
     OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence
     OP_CLASS,                   ///< make a class
+    OP_METHOD,                  ///< make a class instance method
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing
 } OpCode;

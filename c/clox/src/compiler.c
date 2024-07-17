@@ -1025,14 +1025,17 @@ function (FunctionType type)
 
 /** Compile a class instance method
  */
-static void method() {
-    consume(TOKEN_IDENTIFIER, "Expect method name.");
-    uint8_t constant = identifierConstant(&parser.previous);
+static void
+method ()
+{
+    consume (TOKEN_IDENTIFIER, "Expect method name.");
+    uint8_t constant = identifierConstant (&parser.previous);
 
     FunctionType type = TYPE_FUNCTION;
-    function(type);
 
-    emitBytes(OP_METHOD, constant);
+    function (type);
+
+    emitBytes (OP_METHOD, constant);
 }
 
 /** Compile a class declaration
@@ -1049,15 +1052,15 @@ classDeclaration ()
     emitBytes (OP_CLASS, nameConstant);
     defineVariable (nameConstant);
 
-    namedVariable(className, false);
+    namedVariable (className, false);
 
     consume (TOKEN_LEFT_BRACE, "Expect '{' before class body.");
-    while (!check(TOKEN_RIGHT_BRACE) && !check(TOKEN_EOF)) {
-	method();
+    while (!check (TOKEN_RIGHT_BRACE) && !check (TOKEN_EOF)) {
+        method ();
     }
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after class body.");
 
-    emitByte(OP_POP);
+    emitByte (OP_POP);
 }
 
 /** Compile a fun declaration to its own captive chunk.
