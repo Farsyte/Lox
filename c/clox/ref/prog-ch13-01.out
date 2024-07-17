@@ -1,0 +1,8 @@
+
+Disassembling cook ...
+0000    3 OP_CONSTANT         0 'Fry until golden brown.'
+0002    | OP_PRINT
+0003    4 OP_NIL
+0004    | OP_RETURN
+Disassembling cook ... done.
+

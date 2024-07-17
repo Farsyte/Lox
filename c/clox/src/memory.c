@@ -218,10 +218,19 @@ blackenObject (Obj *object)
 #endif
 
     switch (object->type) {
+    case OBJ_BOUND_METHOD:{
+            ObjBoundMethod *bound = (ObjBoundMethod *) object;
+
+            markValue (bound->receiver);
+            markObject ((Obj *) bound->method);
+            return;
+        }
+
     case OBJ_CLASS:{
             ObjClass *klass = (ObjClass *) object;
 
             markObject ((Obj *) klass->name);
+            markTable (&klass->methods);
             return;
         }
 
@@ -282,6 +291,11 @@ freeObject (Obj *object)
 
     switch (object->type) {
 
+    case OBJ_BOUND_METHOD:{
+            FREE (ObjBoundMethod, object);
+            return;
+        }
+
     case OBJ_INSTANCE:{
             ObjInstance *instance = (ObjInstance *) object;
 
@@ -292,6 +306,9 @@ freeObject (Obj *object)
         }
 
     case OBJ_CLASS:{
+            ObjClass *klass = (ObjClass *) object;
+
+            freeTable (&klass->methods);
             FREE (ObjClass, object);
 
             return;
@@ -373,6 +390,9 @@ markRoots ()
     }
     markTable (&vm.globals);
     markCompilerRoots ();
+    INVAR (NULL != vm.initString, "vm.initString must not be NULL.");
+    INVAR (IS_STRING (OBJ_VAL (vm.initString)), "vm.initString must point to a String object.");
+    markObject ((Obj *) vm.initString);
 }
 
 /** Blacken the grey objects

@@ -39,6 +39,22 @@ allocateObject (size_t size, ObjType type)
     return object;
 }
 
+/** Bind a method to an instance
+ *
+ * @param receiver the instance aka this
+ * @param method the closure to run
+ * @returns a bound method object
+ */
+ObjBoundMethod *
+newBoundMethod (Value receiver, ObjClosure *method)
+{
+    ObjBoundMethod *bound = ALLOCATE_OBJ (ObjBoundMethod, OBJ_BOUND_METHOD);
+
+    bound->receiver = receiver;
+    bound->method = method;
+    return bound;
+}
+
 /** Create a new Class object
  *
  * @param name the name of the class
@@ -50,6 +66,7 @@ newClass (ObjString *name)
     ObjClass *klass = ALLOCATE_OBJ (ObjClass, OBJ_CLASS);
 
     klass->name = name;
+    initTable (&klass->methods);
     return klass;
 }
 
@@ -273,6 +290,10 @@ printObject (Value value)
     INVAR (IS_OBJ (value), "inbound Value must be an Object.");
 
     switch (OBJ_TYPE (value)) {
+
+    case OBJ_BOUND_METHOD:
+        printFunction (AS_BOUND_METHOD (value)->method->function);
+        return;
 
     case OBJ_CLASS:
         printf ("<class %s>", AS_CLASS (value)->name->chars);

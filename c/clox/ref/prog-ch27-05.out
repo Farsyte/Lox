@@ -1,0 +1,91 @@
+
+Disassembling topping ...
+0000    3 OP_CONSTANT         0 'scone with '
+0002    | OP_GET_LOCAL        1
+0004    | OP_ADD
+0005    | OP_CONSTANT         1 ' and '
+0007    | OP_ADD
+0008    | OP_GET_LOCAL        2
+0010    | OP_ADD
+0011    | OP_PRINT
+0012    4 OP_NIL
+0013    | OP_RETURN
+Disassembling topping ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Scone'
+0002    | OP_DEFINE_GLOBAL    0 'Scone'
+0004    | OP_GET_GLOBAL       1 'Scone'
+0006    4 OP_CLOSURE          3 <fn topping>
+0008    | OP_METHOD           2 'topping'
+0010    5 OP_POP
+0011    6 OP_GET_GLOBAL       5 'Scone'
+0013    | OP_CALL             0
+0015    | OP_DEFINE_GLOBAL    4 'scone'
+0017    7 OP_GET_GLOBAL       6 'scone'
+0019    | OP_CONSTANT         8 'berries'
+0021    | OP_CONSTANT         9 'cream'
+0023    | OP_INVOKE        (2 args)    7 'topping'
+0026    | OP_POP
+0027    8 OP_NIL
+0028    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Scone'
+stack: <script> <class Scone>
+0002    | OP_DEFINE_GLOBAL    0 'Scone'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Scone'
+stack: <script> <class Scone>
+0006    4 OP_CLOSURE          3 <fn topping>
+stack: <script> <class Scone> <fn topping>
+0008    | OP_METHOD           2 'topping'
+stack: <script> <class Scone>
+0010    5 OP_POP
+stack: <script>
+0011    6 OP_GET_GLOBAL       5 'Scone'
+stack: <script> <class Scone>
+0013    | OP_CALL             0
+stack: <script> Scone instance
+0015    | OP_DEFINE_GLOBAL    4 'scone'
+stack: <script>
+0017    7 OP_GET_GLOBAL       6 'scone'
+stack: <script> Scone instance
+0019    | OP_CONSTANT         8 'berries'
+stack: <script> Scone instance berries
+0021    | OP_CONSTANT         9 'cream'
+stack: <script> Scone instance berries cream
+0023    | OP_INVOKE        (2 args)    7 'topping'
+stack: <script> Scone instance berries cream
+0000    3 OP_CONSTANT         0 'scone with '
+stack: <script> Scone instance berries cream scone with 
+0002    | OP_GET_LOCAL        1
+stack: <script> Scone instance berries cream scone with  berries
+0004    | OP_ADD
+stack: <script> Scone instance berries cream scone with berries
+0005    | OP_CONSTANT         1 ' and '
+stack: <script> Scone instance berries cream scone with berries  and 
+0007    | OP_ADD
+stack: <script> Scone instance berries cream scone with berries and 
+0008    | OP_GET_LOCAL        2
+stack: <script> Scone instance berries cream scone with berries and  cream
+0010    | OP_ADD
+stack: <script> Scone instance berries cream scone with berries and cream
+0011    | OP_PRINT
+scone with berries and cream
+stack: <script> Scone instance berries cream
+0012    4 OP_NIL
+stack: <script> Scone instance berries cream nil
+0013    | OP_RETURN
+stack: <script> nil
+0026    | OP_POP
+stack: <script>
+0027    8 OP_NIL
+stack: <script> nil
+0028    | OP_RETURN
+Executing ... done.
+

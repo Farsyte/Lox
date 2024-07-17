@@ -1,0 +1,5 @@
+print this; // top level has no "this"
+// accessing "this" is an error when there is no enclosing class.
+========
+[line 1] Error at 'this': Can't use 'this' outside of a class.
+========

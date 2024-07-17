@@ -6,6 +6,5 @@ class Bacon {
 
 Bacon().eat(); // Prints "Crunch crunch crunch!"
 ========
-[line 2] Error at 'eat': Expect '}' after class body.
-[line 4] Error at '}': Expect expression.
 ========
+Crunch crunch crunch!

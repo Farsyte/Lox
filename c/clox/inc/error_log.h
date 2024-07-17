@@ -43,10 +43,11 @@
  * aborted in a way that will dump a core file (if enabled) or
  * drop to a command line in a debugger (if in use).
  */
-#define INVAR(cond, msg)                                \
+#define INVAR(cond, ...)                                \
     do {                                                \
         if (cond) break;                                \
-        ERROR_LOG("Condition Violated", #cond, msg);    \
+        ERROR_LOG("Condition Violated", #cond,          \
+                  __VA_ARGS__);                         \
         abort();                                        \
     } while (0)
 

@@ -41,10 +41,12 @@ typedef enum {
     OP_JUMP_IF_FALSE,           ///< conditional forward branch
     OP_LOOP,                    ///< unconditional backward branch
     OP_CALL,                    ///< function call
+    OP_INVOKE,                  ///< optimized method invocation
     OP_CLOSURE,                 ///< make a closure
     OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence
     OP_CLASS,                   ///< make a class
+    OP_METHOD,                  ///< make a class instance method
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing
 } OpCode;

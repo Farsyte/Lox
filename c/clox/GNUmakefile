@@ -209,11 +209,21 @@ clean::
 # we have to confirm "yes read the new tags file" so often ...
 
 cycle::
-	$M -k -j
-	$M -k format
-	$M -k -j tests docs
-	$M -k stubs
-	$M -k todos
+	$M
+	$M format
+	$M tests docs
+	$M stubs
+	$M todos
 
 $(BIND)title:           $(BIND)title.c
 clean::         ; $X $(BIND)title
+
+# wait until an interesting file
+# is created, modified, or deleted.
+
+WEVENTS         := --event delete,modify
+WLIST		:= $(SRCS) $(INCS) $(LSRC) $(MAKEFILE_LIST)
+
+await::
+	$P '  INOTIFYWAIT\n'
+	$C inotifywait $(WEVENTS) $(WLIST) || true

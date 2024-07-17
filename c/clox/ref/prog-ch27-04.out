@@ -2,25 +2,27 @@
 Disassembling <script> ...
 0000    1 OP_CLASS            0 'Pair'
 0002    | OP_DEFINE_GLOBAL    0 'Pair'
-0004    3 OP_GET_GLOBAL       2 'Pair'
-0006    | OP_CALL             0
-0008    | OP_DEFINE_GLOBAL    1 'pair'
-0010    4 OP_GET_GLOBAL       3 'pair'
-0012    | OP_CONSTANT         5 '1'
-0014    | OP_SET_PROPERTY     4 'first'
-0016    | OP_POP
-0017    5 OP_GET_GLOBAL       6 'pair'
-0019    | OP_CONSTANT         8 '2'
-0021    | OP_SET_PROPERTY     7 'second'
-0023    | OP_POP
-0024    6 OP_GET_GLOBAL       9 'pair'
-0026    | OP_GET_PROPERTY    10 'first'
-0028    | OP_GET_GLOBAL      11 'pair'
-0030    | OP_GET_PROPERTY    12 'second'
-0032    | OP_ADD
-0033    | OP_PRINT
-0034    7 OP_NIL
-0035    | OP_RETURN
+0004    | OP_GET_GLOBAL       1 'Pair'
+0006    | OP_POP
+0007    3 OP_GET_GLOBAL       3 'Pair'
+0009    | OP_CALL             0
+0011    | OP_DEFINE_GLOBAL    2 'pair'
+0013    4 OP_GET_GLOBAL       4 'pair'
+0015    | OP_CONSTANT         6 '1'
+0017    | OP_SET_PROPERTY     5 'first'
+0019    | OP_POP
+0020    5 OP_GET_GLOBAL       7 'pair'
+0022    | OP_CONSTANT         9 '2'
+0024    | OP_SET_PROPERTY     8 'second'
+0026    | OP_POP
+0027    6 OP_GET_GLOBAL      10 'pair'
+0029    | OP_GET_PROPERTY    11 'first'
+0031    | OP_GET_GLOBAL      12 'pair'
+0033    | OP_GET_PROPERTY    13 'second'
+0035    | OP_ADD
+0036    | OP_PRINT
+0037    7 OP_NIL
+0038    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -30,43 +32,47 @@ stack: <script>
 stack: <script> <class Pair>
 0002    | OP_DEFINE_GLOBAL    0 'Pair'
 stack: <script>
-0004    3 OP_GET_GLOBAL       2 'Pair'
+0004    | OP_GET_GLOBAL       1 'Pair'
 stack: <script> <class Pair>
-0006    | OP_CALL             0
-stack: <script> Pair instance
-0008    | OP_DEFINE_GLOBAL    1 'pair'
+0006    | OP_POP
 stack: <script>
-0010    4 OP_GET_GLOBAL       3 'pair'
+0007    3 OP_GET_GLOBAL       3 'Pair'
+stack: <script> <class Pair>
+0009    | OP_CALL             0
 stack: <script> Pair instance
-0012    | OP_CONSTANT         5 '1'
+0011    | OP_DEFINE_GLOBAL    2 'pair'
+stack: <script>
+0013    4 OP_GET_GLOBAL       4 'pair'
+stack: <script> Pair instance
+0015    | OP_CONSTANT         6 '1'
 stack: <script> Pair instance 1
-0014    | OP_SET_PROPERTY     4 'first'
+0017    | OP_SET_PROPERTY     5 'first'
 stack: <script> 1
-0016    | OP_POP
+0019    | OP_POP
 stack: <script>
-0017    5 OP_GET_GLOBAL       6 'pair'
+0020    5 OP_GET_GLOBAL       7 'pair'
 stack: <script> Pair instance
-0019    | OP_CONSTANT         8 '2'
+0022    | OP_CONSTANT         9 '2'
 stack: <script> Pair instance 2
-0021    | OP_SET_PROPERTY     7 'second'
+0024    | OP_SET_PROPERTY     8 'second'
 stack: <script> 2
-0023    | OP_POP
+0026    | OP_POP
 stack: <script>
-0024    6 OP_GET_GLOBAL       9 'pair'
+0027    6 OP_GET_GLOBAL      10 'pair'
 stack: <script> Pair instance
-0026    | OP_GET_PROPERTY    10 'first'
+0029    | OP_GET_PROPERTY    11 'first'
 stack: <script> 1
-0028    | OP_GET_GLOBAL      11 'pair'
+0031    | OP_GET_GLOBAL      12 'pair'
 stack: <script> 1 Pair instance
-0030    | OP_GET_PROPERTY    12 'second'
+0033    | OP_GET_PROPERTY    13 'second'
 stack: <script> 1 2
-0032    | OP_ADD
+0035    | OP_ADD
 stack: <script> 3
-0033    | OP_PRINT
+0036    | OP_PRINT
 3
 stack: <script>
-0034    7 OP_NIL
+0037    7 OP_NIL
 stack: <script> nil
-0035    | OP_RETURN
+0038    | OP_RETURN
 Executing ... done.
 

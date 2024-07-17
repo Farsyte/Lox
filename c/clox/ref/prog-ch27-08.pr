@@ -1,0 +1,7 @@
+fun notMethod() {
+    print this; // functions do not provide "this"
+}
+// accessing "this" is an error when there is no enclosing class.
+========
+[line 2] Error at 'this': Can't use 'this' outside of a class.
+========

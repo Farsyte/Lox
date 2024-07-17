@@ -153,6 +153,12 @@ initVM ()
 
     initTable (&vm.globals);
     initTable (&vm.strings);
+
+    // CAREFUL: GC might trigger in copyString
+    // so it must be initialized before making the call.
+    vm.initString = NULL;
+    vm.initString = copyString ("init", 4);
+
     defineNative ("clock", clockNative);
     defineNative ("gc", gcNative);
 }
@@ -281,22 +287,33 @@ callValue (Value callee, int argCount)
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
 
-        case OBJ_INSTANCE:
-            STUB ("OBJ_INSTANCE case");
+        case OBJ_BOUND_METHOD:{
+                ObjBoundMethod *bound = AS_BOUND_METHOD (callee);
+
+                vm.sp[-argCount - 1] = bound->receiver;
+                return call (bound->method, argCount);
+            }
 
         case OBJ_CLASS:{
                 ObjClass *klass = AS_CLASS (callee);
 
                 vm.sp[-argCount - 1] = OBJ_VAL (newInstance (klass));
+                INVAR (NULL != vm.initString, "vm.initString must not be NULL.");
+                INVAR (IS_STRING (OBJ_VAL (vm.initString)), "vm.initString must point to a String object.");
+                Value initializer;
+
+                if (tableGet (&klass->methods, vm.initString, &initializer)) {
+                    INVAR (IS_CLOSURE (initializer), "init property for '%.*s' is not a closure", vm.initString->length, vm.initString->chars);
+                    return call (AS_CLOSURE (initializer), argCount);
+                } else if (argCount != 0) {
+                    runtimeError ("Expected 0 arguments but got %d.", argCount);
+                    return false;
+                }
                 return true;
             }
 
         case OBJ_CLOSURE:
             return call (AS_CLOSURE (callee), argCount);
-
-        case OBJ_FUNCTION:
-            // return call (AS_FUNCTION (callee), argCount);
-            UNREACHABLE ("obsoleted in 25.1.2");
 
         case OBJ_NATIVE:{
                 NativeFn native = AS_NATIVE (callee)->function;
@@ -307,11 +324,17 @@ callValue (Value callee, int argCount)
                 return true;
             }
 
+        case OBJ_FUNCTION:
+            UNREACHABLE ("obsoleted in 25.1.2 (use OBJ_CLOSURE)");
+
+        case OBJ_INSTANCE:
+            UNREACHABLE ("You can't call an Instance.");
+
         case OBJ_STRING:
-            break;
+            UNREACHABLE ("You can't call a String.");
 
         case OBJ_UPVALUE:
-            break;
+            UNREACHABLE ("You can't call an Upvalue.");
 
             // yes, force me to look at this switch
             // any time a new Object Type is added.
@@ -320,6 +343,79 @@ callValue (Value callee, int argCount)
     }
     runtimeError ("Can only call functions and classes.");
     return false;
+}
+
+/** Optimized method invocation (lower part)
+ *
+ * @param klass the class of the receiver object
+ * @param name the name of the class instance method
+ * @param argCount the number of parameters being passed
+ * @returns true if the call could be made
+ * @returns false if there was an error
+ */
+static bool
+invokeFromClass (ObjClass *klass, ObjString *name, int argCount)
+{
+    Value method;
+
+    if (!tableGet (&klass->methods, name, &method)) {
+        runtimeError ("Undefined property '%s'.", name->chars);
+        return false;
+    }
+
+    return call (AS_CLOSURE (method), argCount);
+}
+
+/** Optimized method invocation (upper part)
+ *
+ * @param name the name of the class instance method
+ * @param argCount the number of parameters being passed
+ * @returns true if the call could be made
+ * @returns false if there was an error
+ */
+static bool
+invoke (ObjString *name, int argCount)
+{
+    Value receiver = peek (argCount);
+
+    if (!IS_INSTANCE (receiver)) {
+        runtimeError ("Only instances have methods.");
+        return false;
+    }
+
+    ObjInstance *instance = AS_INSTANCE (receiver);
+
+    Value value;
+
+    if (tableGet (&instance->fields, name, &value)) {
+        vm.sp[-argCount - 1] = value;
+        return callValue (value, argCount);
+    }
+
+    return invokeFromClass (instance->klass, name, argCount);
+}
+
+/** Bind a method to an instance
+ *
+ * @param klass the class of the instance
+ * @param name the name of the property
+ * @returns true if successful
+ */
+static bool
+bindMethod (ObjClass *klass, ObjString *name)
+{
+    Value method;
+
+    if (!tableGet (&klass->methods, name, &method)) {
+        runtimeError ("Undefined property '%s'.", name->chars);
+        return false;
+    }
+
+    ObjBoundMethod *bound = newBoundMethod (peek (0), AS_CLOSURE (method));
+
+    pop ();
+    push (OBJ_VAL (bound));
+    return true;
 }
 
 /** Capture an Upvalue
@@ -367,6 +463,16 @@ closeUpvalues (Value *last)
         upvalue->location = &upvalue->closed;
         vm.openUpvalues = upvalue->next;
     }
+}
+
+static void
+defineMethod (ObjString *name)
+{
+    Value method = peek (0);
+    ObjClass *klass = AS_CLASS (peek (1));
+
+    tableSet (&klass->methods, name, method);
+    pop ();
 }
 
 /** Return true if the value is falsey.
@@ -584,8 +690,13 @@ run ()
                     push (value);
                     break;
                 }
-                runtimeError ("Undefined property '%s'.", name->chars);
-                return INTERPRET_RUNTIME_ERROR;
+
+                if (!bindMethod (instance->klass, name)) {
+                    // runtimeError ("Undefined property '%s'.", name->chars);
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+
+                break;
             }
 
         case OP_SET_PROPERTY:{
@@ -652,6 +763,17 @@ run ()
             frame = &vm.frames[vm.frameCount - 1];
             break;
 
+        case OP_INVOKE:{
+                ObjString *method = READ_STRING ();
+
+                argCount = READ_BYTE ();
+                if (!invoke (method, argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                frame = &vm.frames[vm.frameCount - 1];
+                break;
+            }
+
         case OP_CLOSURE:
             function = AS_FUNCTION (READ_CONSTANT ());
             closure = newClosure (function);
@@ -697,6 +819,10 @@ run ()
 
         case OP_CLASS:
             push (OBJ_VAL (newClass (READ_STRING ())));
+            break;
+
+        case OP_METHOD:
+            defineMethod (READ_STRING ());
             break;
         }
     }
