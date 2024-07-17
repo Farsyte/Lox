@@ -6,6 +6,7 @@ class Bacon {
 
 Bacon().eat(); // Prints "Crunch crunch crunch!"
 ========
-[line 2] Error at 'eat': Expect '}' after class body.
-[line 4] Error at '}': Expect expression.
+
+RUNTIME ERROR: Undefined property 'eat'.
+[line 7] in script
 ========

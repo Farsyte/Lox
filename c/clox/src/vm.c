@@ -281,6 +281,9 @@ callValue (Value callee, int argCount)
     if (IS_OBJ (callee)) {
         switch (OBJ_TYPE (callee)) {
 
+        case OBJ_BOUND_METHOD:
+            STUB ("OBJ_BOUND_METHOD case");
+
         case OBJ_INSTANCE:
             STUB ("OBJ_INSTANCE case");
 

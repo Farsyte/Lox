@@ -8,7 +8,6 @@ class BostonCream < Doughnut {}
 
 BostonCream().cook();
 ========
-[line 2] Error at 'cook': Expect '}' after class body.
-[line 4] Error at '}': Expect expression.
 [line 7] Error at '<': Expect '{' before class body.
+[line 10] Error at end: Expect '}' after block.
 ========

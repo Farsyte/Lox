@@ -6,7 +6,5 @@ class DevonshireCream {
 
 print DevonshireCream; // Prints "DevonshireCream"
 ========
-[line 2] Error at 'serveOn': Expect '}' after class body.
-[line 3] Error at 'return': Can't return from top-level code.
-[line 4] Error at '}': Expect expression.
 ========
+<class DevonshireCream>

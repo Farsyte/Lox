@@ -102,3 +102,7 @@ typedef struct ObjClass ObjClass;
 /** Instance Object
  */
 typedef struct ObjInstance ObjInstance;
+
+/** Bound Method
+ */
+typedef struct ObjBoundMethod ObjBoundMethod;

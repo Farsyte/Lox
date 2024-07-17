@@ -1,0 +1,45 @@
+
+Disassembling eat ...
+0000    3 OP_CONSTANT         0 'Crunch crunch crunch!'
+0002    | OP_PRINT
+0003    4 OP_NIL
+0004    | OP_RETURN
+Disassembling eat ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Bacon'
+0002    | OP_DEFINE_GLOBAL    0 'Bacon'
+0004    | OP_GET_GLOBAL       1 'Bacon'
+0006    4 OP_CLOSURE          3 <fn eat>
+0008    | OP_METHOD           2 'eat'
+0010    5 OP_POP
+0011    7 OP_GET_GLOBAL       4 'Bacon'
+0013    | OP_CALL             0
+0015    | OP_GET_PROPERTY     5 'eat'
+0017    | OP_CALL             0
+0019    | OP_POP
+0020    8 OP_NIL
+0021    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Bacon'
+stack: <script> <class Bacon>
+0002    | OP_DEFINE_GLOBAL    0 'Bacon'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Bacon'
+stack: <script> <class Bacon>
+0006    4 OP_CLOSURE          3 <fn eat>
+stack: <script> <class Bacon> <fn eat>
+0008    | OP_METHOD           2 'eat'
+stack: <script> <class Bacon>
+0010    5 OP_POP
+stack: <script>
+0011    7 OP_GET_GLOBAL       4 'Bacon'
+stack: <script> <class Bacon>
+0013    | OP_CALL             0
+stack: <script> Bacon instance
+0015    | OP_GET_PROPERTY     5 'eat'

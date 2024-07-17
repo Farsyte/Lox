@@ -18,6 +18,9 @@
 /** Extract the enumerated value type from a value. */
 #define OBJ_TYPE(value) (AS_OBJ(value)->type)
 
+/** Return true iff the value is a Bound Method. */
+#define IS_BOUND_METHOD(value) isObjType(value, OBJ_BOUND_METHOD)
+
 /** Return true iff the value is a Class. */
 #define IS_CLASS(value) isObjType(value, OBJ_CLASS)
 
@@ -35,6 +38,9 @@
 
 /** Return true iff the value is a String. */
 #define IS_STRING(value) isObjType(value, OBJ_STRING)
+
+/** Return the Bound Method object in this Value. */
+#define AS_BOUND_METHOD(value) ((ObjBoundMethod*)AS_OBJ(value))
 
 /** Return the Class object in this Value. */
 #define AS_CLASS(value) ((ObjClass*)AS_OBJ(value))
@@ -59,6 +65,7 @@
 
 /** Enumerate the possible object types. */
 typedef enum {
+    OBJ_BOUND_METHOD,           ///< Object is a Method bound to an Instance
     OBJ_CLASS,                  ///< Object is a Class
     OBJ_CLOSURE,                ///< Object is a Closure
     OBJ_FUNCTION,               ///< Object is a Function
@@ -128,6 +135,13 @@ struct ObjInstance {
     Table fields;               ///< instance properties
 };
 
+struct ObjBoundMethod {
+    Obj obj;                    ///< Inherit from Obj
+    Value receiver;             ///< this
+    ObjClosure *method;         ///< the code to run
+};
+
+extern ObjBoundMethod *newBoundMethod (Value receiver, ObjClosure *method);
 extern ObjClass *newClass (ObjString *name);
 extern ObjClosure *newClosure (ObjFunction *function);
 extern ObjFunction *newFunction ();
