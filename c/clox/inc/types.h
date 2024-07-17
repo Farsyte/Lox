@@ -63,6 +63,9 @@ typedef struct Entry Entry;
 /** Compiler State */
 typedef struct Compiler Compiler;
 
+/** Open "class" compiler with link for stacking */
+typedef struct ClassCompiler ClassCompiler;
+
 /** Local Variables
  */
 typedef struct Local Local;

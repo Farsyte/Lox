@@ -85,8 +85,14 @@ struct Compiler {
     int scopeDepth;             ///< number of blocks surrounding current code
 };
 
+/** Open "class" compiler with link for stacking */
+struct ClassCompiler {
+    ClassCompiler *enclosing;   ///< the class surrounding this one
+};
+
 Parser parser;                  ///< Storage for the parser state.
 Compiler *current = NULL;       ///< the current compiler state
+ClassCompiler *currentClass = NULL;     ///< stack of open "class" compilations
 
 /* Forward Declarations */
 
@@ -845,6 +851,12 @@ static void
 this_ (bool canAssign)
 {
     (void) canAssign;                   // not used
+
+    if (currentClass == NULL) {
+        error ("Can't use 'this' outside of a class.");
+        return;
+    }
+
     variable (false);
 }
 
@@ -1069,6 +1081,11 @@ classDeclaration ()
     emitBytes (OP_CLASS, nameConstant);
     defineVariable (nameConstant);
 
+    ClassCompiler classCompiler;
+
+    classCompiler.enclosing = currentClass;
+    currentClass = &classCompiler;
+
     namedVariable (className, false);
 
     consume (TOKEN_LEFT_BRACE, "Expect '{' before class body.");
@@ -1078,6 +1095,7 @@ classDeclaration ()
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after class body.");
 
     emitByte (OP_POP);
+    currentClass = classCompiler.enclosing;
 }
 
 /** Compile a fun declaration to its own captive chunk.
