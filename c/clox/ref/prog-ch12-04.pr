@@ -6,6 +6,5 @@ class Bacon {
 
 Bacon().eat(); // Prints "Crunch crunch crunch!"
 ========
-src/vm.c:285: STUB Encountered in callValue
-OBJ_BOUND_METHOD case
 ========
+Crunch crunch crunch!

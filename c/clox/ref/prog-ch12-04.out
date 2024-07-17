@@ -45,4 +45,20 @@ stack: <script> Bacon instance
 0015    | OP_GET_PROPERTY     5 'eat'
 stack: <script> <fn eat>
 0017    | OP_CALL             0
+stack: <script> <fn eat>
+0000    3 OP_CONSTANT         0 'Crunch crunch crunch!'
+stack: <script> <fn eat> Crunch crunch crunch!
+0002    | OP_PRINT
+Crunch crunch crunch!
+stack: <script> <fn eat>
+0003    4 OP_NIL
+stack: <script> <fn eat> nil
+0004    | OP_RETURN
+stack: <script> nil
+0019    | OP_POP
+stack: <script>
+0020    8 OP_NIL
+stack: <script> nil
+0021    | OP_RETURN
+Executing ... done.
 
