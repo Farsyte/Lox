@@ -153,6 +153,12 @@ initVM ()
 
     initTable (&vm.globals);
     initTable (&vm.strings);
+
+    // CAREFUL: GC might trigger in copyString
+    // so it must be initialized before making the call.
+    vm.initString = NULL;
+    vm.initString = copyString ("init", 4);
+
     defineNative ("clock", clockNative);
     defineNative ("gc", gcNative);
 }
@@ -295,6 +301,17 @@ callValue (Value callee, int argCount)
                 ObjClass *klass = AS_CLASS (callee);
 
                 vm.sp[-argCount - 1] = OBJ_VAL (newInstance (klass));
+                INVAR (NULL != vm.initString, "vm.initString must not be NULL.");
+                INVAR (IS_STRING (OBJ_VAL (vm.initString)), "vm.initString must point to a String object.");
+                Value initializer;
+
+                if (tableGet (&klass->methods, vm.initString, &initializer)) {
+                    INVAR (IS_CLOSURE (initializer), "init property for '%.*s' is not a closure", vm.initString->length, vm.initString->chars);
+                    return call (AS_CLOSURE (initializer), argCount);
+                } else if (argCount != 0) {
+                    runtimeError ("Expected 0 arguments but got %d.", argCount);
+                    return false;
+                }
                 return true;
             }
 

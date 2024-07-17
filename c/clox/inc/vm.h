@@ -32,6 +32,7 @@ struct VM {
     Value *sp;                  ///< data stack pointer
     Table globals;              ///< hash table of global variables
     Table strings;              ///< hash table for string deduplication
+    ObjString *initString;      ///< name of class constructor methods
     ObjUpvalue *openUpvalues;   ///< linked list of ALL open upvalues on the stack
     Obj *objects;               ///< linked list of all objects
 

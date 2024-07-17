@@ -10,6 +10,7 @@ object exists at top of test: '<native fn>'
 object exists at top of test: 'gc'
 object exists at top of test: '<native fn>'
 object exists at top of test: 'clock'
+object exists at top of test: 'init'
 valString prints as 'testObject'
 valNative prints as '<native fn>'
 valFunction prints as '<script>'
@@ -29,6 +30,7 @@ object exists at end of test: <native fn>
 object exists at end of test: gc
 object exists at end of test: <native fn>
 object exists at end of test: clock
+object exists at end of test: init
 BIST: bistScanner ...
 BIST: bistScanner ... done.
 BIST: bistCompiler ...

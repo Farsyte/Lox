@@ -390,6 +390,9 @@ markRoots ()
     }
     markTable (&vm.globals);
     markCompilerRoots ();
+    INVAR (NULL != vm.initString, "vm.initString must not be NULL.");
+    INVAR (IS_STRING (OBJ_VAL (vm.initString)), "vm.initString must point to a String object.");
+    markObject ((Obj *) vm.initString);
 }
 
 /** Blacken the grey objects
