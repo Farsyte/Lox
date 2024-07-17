@@ -27,11 +27,10 @@ Disassembling <script> ...
 0010    9 OP_POP
 0011   11 OP_GET_GLOBAL       4 'Nested'
 0013    | OP_CALL             0
-0015    | OP_GET_PROPERTY     5 'method'
-0017    | OP_CALL             0
-0019    | OP_POP
-0020   12 OP_NIL
-0021    | OP_RETURN
+0015    | OP_INVOKE        (0 args)    5 'method'
+0018    | OP_POP
+0019   12 OP_NIL
+0020    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -53,9 +52,7 @@ stack: <script>
 stack: <script> <class Nested>
 0013    | OP_CALL             0
 stack: <script> Nested instance
-0015    | OP_GET_PROPERTY     5 'method'
-stack: <script> <fn method>
-0017    | OP_CALL             0
+0015    | OP_INVOKE        (0 args)    5 'method'
 stack: <script> Nested instance
 0000    5 OP_CLOSURE          0 <fn function>
 0002      | local 0
@@ -79,10 +76,10 @@ stack: <script> Nested instance <fn function>
 stack: <script> Nested instance <fn function> nil
 0010    | OP_RETURN
 stack: <script> nil
-0019    | OP_POP
+0018    | OP_POP
 stack: <script>
-0020   12 OP_NIL
+0019   12 OP_NIL
 stack: <script> nil
-0021    | OP_RETURN
+0020    | OP_RETURN
 Executing ... done.
 

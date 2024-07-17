@@ -16,11 +16,10 @@ Disassembling <script> ...
 0010    5 OP_POP
 0011    7 OP_GET_GLOBAL       4 'Bacon'
 0013    | OP_CALL             0
-0015    | OP_GET_PROPERTY     5 'eat'
-0017    | OP_CALL             0
-0019    | OP_POP
-0020    8 OP_NIL
-0021    | OP_RETURN
+0015    | OP_INVOKE        (0 args)    5 'eat'
+0018    | OP_POP
+0019    8 OP_NIL
+0020    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -42,9 +41,7 @@ stack: <script>
 stack: <script> <class Bacon>
 0013    | OP_CALL             0
 stack: <script> Bacon instance
-0015    | OP_GET_PROPERTY     5 'eat'
-stack: <script> <fn eat>
-0017    | OP_CALL             0
+0015    | OP_INVOKE        (0 args)    5 'eat'
 stack: <script> Bacon instance
 0000    3 OP_CONSTANT         0 'Crunch crunch crunch!'
 stack: <script> Bacon instance Crunch crunch crunch!
@@ -55,10 +52,10 @@ stack: <script> Bacon instance
 stack: <script> Bacon instance nil
 0004    | OP_RETURN
 stack: <script> nil
-0019    | OP_POP
+0018    | OP_POP
 stack: <script>
-0020    8 OP_NIL
+0019    8 OP_NIL
 stack: <script> nil
-0021    | OP_RETURN
+0020    | OP_RETURN
 Executing ... done.
 

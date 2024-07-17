@@ -41,6 +41,7 @@ typedef enum {
     OP_JUMP_IF_FALSE,           ///< conditional forward branch
     OP_LOOP,                    ///< unconditional backward branch
     OP_CALL,                    ///< function call
+    OP_INVOKE,                  ///< optimized method invocation
     OP_CLOSURE,                 ///< make a closure
     OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence

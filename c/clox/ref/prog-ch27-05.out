@@ -24,13 +24,12 @@ Disassembling <script> ...
 0013    | OP_CALL             0
 0015    | OP_DEFINE_GLOBAL    4 'scone'
 0017    7 OP_GET_GLOBAL       6 'scone'
-0019    | OP_GET_PROPERTY     7 'topping'
-0021    | OP_CONSTANT         8 'berries'
-0023    | OP_CONSTANT         9 'cream'
-0025    | OP_CALL             2
-0027    | OP_POP
-0028    8 OP_NIL
-0029    | OP_RETURN
+0019    | OP_CONSTANT         8 'berries'
+0021    | OP_CONSTANT         9 'cream'
+0023    | OP_INVOKE        (2 args)    7 'topping'
+0026    | OP_POP
+0027    8 OP_NIL
+0028    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -56,13 +55,11 @@ stack: <script> Scone instance
 stack: <script>
 0017    7 OP_GET_GLOBAL       6 'scone'
 stack: <script> Scone instance
-0019    | OP_GET_PROPERTY     7 'topping'
-stack: <script> <fn topping>
-0021    | OP_CONSTANT         8 'berries'
-stack: <script> <fn topping> berries
-0023    | OP_CONSTANT         9 'cream'
-stack: <script> <fn topping> berries cream
-0025    | OP_CALL             2
+0019    | OP_CONSTANT         8 'berries'
+stack: <script> Scone instance berries
+0021    | OP_CONSTANT         9 'cream'
+stack: <script> Scone instance berries cream
+0023    | OP_INVOKE        (2 args)    7 'topping'
 stack: <script> Scone instance berries cream
 0000    3 OP_CONSTANT         0 'scone with '
 stack: <script> Scone instance berries cream scone with 
@@ -85,10 +82,10 @@ stack: <script> Scone instance berries cream
 stack: <script> Scone instance berries cream nil
 0013    | OP_RETURN
 stack: <script> nil
-0027    | OP_POP
+0026    | OP_POP
 stack: <script>
-0028    8 OP_NIL
+0027    8 OP_NIL
 stack: <script> nil
-0029    | OP_RETURN
+0028    | OP_RETURN
 Executing ... done.
 

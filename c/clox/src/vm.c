@@ -346,6 +346,49 @@ callValue (Value callee, int argCount)
     return false;
 }
 
+/** Optimized method invocation (lower part)
+ *
+ * @param klass the class of the receiver object
+ * @param name the name of the class instance method
+ * @param argCount the number of parameters being passed
+ * @returns true if the call could be made
+ * @returns false if there was an error
+ */
+static bool
+invokeFromClass (ObjClass *klass, ObjString *name, int argCount)
+{
+    Value method;
+
+    if (!tableGet (&klass->methods, name, &method)) {
+        runtimeError ("Undefined property '%s'.", name->chars);
+        return false;
+    }
+
+    return call (AS_CLOSURE (method), argCount);
+}
+
+/** Optimized method invocation (upper part)
+ *
+ * @param name the name of the class instance method
+ * @param argCount the number of parameters being passed
+ * @returns true if the call could be made
+ * @returns false if there was an error
+ */
+static bool
+invoke (ObjString *name, int argCount)
+{
+    Value receiver = peek (argCount);
+
+    if (!IS_INSTANCE (receiver)) {
+        runtimeError ("Only instances have methods.");
+        return false;
+    }
+
+    ObjInstance *instance = AS_INSTANCE (receiver);
+
+    return invokeFromClass (instance->klass, name, argCount);
+}
+
 /** Bind a method to an instance
  *
  * @param klass the class of the instance
@@ -713,6 +756,17 @@ run ()
             }
             frame = &vm.frames[vm.frameCount - 1];
             break;
+
+        case OP_INVOKE:{
+                ObjString *method = READ_STRING ();
+
+                argCount = READ_BYTE ();
+                if (!invoke (method, argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                frame = &vm.frames[vm.frameCount - 1];
+                break;
+            }
 
         case OP_CLOSURE:
             function = AS_FUNCTION (READ_CONSTANT ());

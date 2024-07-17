@@ -38,11 +38,10 @@ Disassembling <script> ...
 0019    | OP_CALL             1
 0021    | OP_DEFINE_GLOBAL    6 'maker'
 0023   15 OP_GET_GLOBAL       9 'maker'
-0025    | OP_GET_PROPERTY    10 'brew'
-0027    | OP_CALL             0
-0029    | OP_POP
-0030   16 OP_NIL
-0031    | OP_RETURN
+0025    | OP_INVOKE        (0 args)   10 'brew'
+0028    | OP_POP
+0029   16 OP_NIL
+0030    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -86,9 +85,7 @@ stack: <script> CoffeeMaker instance
 stack: <script>
 0023   15 OP_GET_GLOBAL       9 'maker'
 stack: <script> CoffeeMaker instance
-0025    | OP_GET_PROPERTY    10 'brew'
-stack: <script> <fn brew>
-0027    | OP_CALL             0
+0025    | OP_INVOKE        (0 args)   10 'brew'
 stack: <script> CoffeeMaker instance
 0000    7 OP_CONSTANT         0 'Enjoy your cup of '
 stack: <script> CoffeeMaker instance Enjoy your cup of 
@@ -113,10 +110,10 @@ stack: <script> CoffeeMaker instance
 stack: <script> CoffeeMaker instance nil
 0015    | OP_RETURN
 stack: <script> nil
-0029    | OP_POP
+0028    | OP_POP
 stack: <script>
-0030   16 OP_NIL
+0029   16 OP_NIL
 stack: <script> nil
-0031    | OP_RETURN
+0030    | OP_RETURN
 Executing ... done.
 
