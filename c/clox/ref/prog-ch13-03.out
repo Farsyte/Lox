@@ -6,3 +6,11 @@ Disassembling method ...
 0004    | OP_RETURN
 Disassembling method ... done.
 
+
+Disassembling method ...
+0000    9 OP_CONSTANT         0 'B method'
+0002    | OP_PRINT
+0003   10 OP_NIL
+0004    | OP_RETURN
+Disassembling method ... done.
+

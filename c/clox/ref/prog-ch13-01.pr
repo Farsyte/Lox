@@ -8,6 +8,5 @@ class BostonCream < Doughnut {}
 
 BostonCream().cook();
 ========
-[line 7] Error at '<': Expect '{' before class body.
-[line 10] Error at end: Expect '}' after block.
 ========
+Fry until golden brown.

@@ -13,5 +13,5 @@ class BostonCream < Doughnut {
 
 BostonCream().cook();
 ========
-[line 7] Error at '<': Expect '{' before class body.
+[line 9] Error at 'super': Expect expression.
 ========

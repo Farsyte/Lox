@@ -18,8 +18,5 @@ class C < B {}
 
 C().test();
 ========
-[line 7] Error at '<': Expect '{' before class body.
 [line 13] Error at 'super': Expect expression.
-[line 17] Error at '<': Expect '{' before class body.
-[line 20] Error at end: Expect '}' after block.
 ========

@@ -17,10 +17,10 @@
  * have reached a stub in the source code, then terminates the
  * program normally.
  */
-#define STUB(msg)                               \
-    do {                                        \
-        ERROR_LOG("STUB Encountered", 0, msg);  \
-        exit(EX_OK);                            \
+#define STUB(...)                                       \
+    do {                                                \
+        ERROR_LOG("STUB Encountered", 0, __VA_ARGS__);  \
+        exit(EX_OK);                                    \
     } while (0)
 
 /** Indicate we reached "unreachable" code.
@@ -30,10 +30,10 @@
  * usually via an enum variable containing a value not in the
  * enumeration, then terminates the program normally.
  */
-#define UNREACHABLE(msg)                                \
-    do {                                                \
-        ERROR_LOG("Reached Unreachable Code!", 0, msg); \
-        abort();                                        \
+#define UNREACHABLE(...)                                        \
+    do {                                                        \
+        ERROR_LOG("Reached Unreachable Code!", 0, __VA_ARGS__); \
+        abort();                                                \
     } while (0)
 
 /** Abort if an invariant is violated.
@@ -43,12 +43,11 @@
  * aborted in a way that will dump a core file (if enabled) or
  * drop to a command line in a debugger (if in use).
  */
-#define INVAR(cond, ...)                                \
-    do {                                                \
-        if (cond) break;                                \
-        ERROR_LOG("Condition Violated", #cond,          \
-                  __VA_ARGS__);                         \
-        abort();                                        \
+#define INVAR(cond, ...)                                        \
+    do {                                                        \
+        if (cond) break;                                        \
+        ERROR_LOG("Condition Violated", #cond, __VA_ARGS__);    \
+        abort();                                                \
     } while (0)
 
 /** Log to stderr with source file name and line.
