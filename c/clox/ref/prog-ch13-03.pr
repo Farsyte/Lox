@@ -18,5 +18,5 @@ class C < B {}
 
 C().test();
 ========
-[line 13] Error at 'super': Expect expression.
 ========
+A method

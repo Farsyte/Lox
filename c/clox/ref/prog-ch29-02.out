@@ -14,3 +14,143 @@ Disassembling method ...
 0004    | OP_RETURN
 Disassembling method ... done.
 
+
+Disassembling test ...
+0000   13 OP_GET_LOCAL        0
+0002    | OP_GET_UPVALUE      0
+0004    | OP_GET_SUPER        0 'method'
+0006    | OP_CALL             0
+0008    | OP_POP
+0009   14 OP_NIL
+0010    | OP_RETURN
+Disassembling test ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'A'
+0002    | OP_DEFINE_GLOBAL    0 'A'
+0004    | OP_GET_GLOBAL       1 'A'
+0006    4 OP_CLOSURE          3 <fn method>
+0008    | OP_METHOD           2 'method'
+0010    5 OP_POP
+0011    7 OP_CLASS            4 'B'
+0013    | OP_DEFINE_GLOBAL    4 'B'
+0015    | OP_GET_GLOBAL       5 'A'
+0017    | OP_GET_GLOBAL       6 'B'
+0019    | OP_INHERIT
+0020    | OP_GET_GLOBAL       7 'B'
+0022   10 OP_CLOSURE          9 <fn method>
+0024    | OP_METHOD           8 'method'
+0026   14 OP_CLOSURE         11 <fn test>
+0028      | local 1
+0030    | OP_METHOD          10 'test'
+0032   15 OP_POP
+0033    | OP_CLOSE_UPVALUE
+0034   17 OP_CLASS           12 'C'
+0036    | OP_DEFINE_GLOBAL   12 'C'
+0038    | OP_GET_GLOBAL      13 'B'
+0040    | OP_GET_GLOBAL      14 'C'
+0042    | OP_INHERIT
+0043    | OP_GET_GLOBAL      15 'C'
+0045    | OP_POP
+0046    | OP_POP
+0047   19 OP_GET_GLOBAL      16 'C'
+0049    | OP_CALL             0
+0051    | OP_INVOKE        (0 args)   17 'test'
+0054    | OP_POP
+0055   20 OP_NIL
+0056    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'A'
+stack: <script> <class A>
+0002    | OP_DEFINE_GLOBAL    0 'A'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'A'
+stack: <script> <class A>
+0006    4 OP_CLOSURE          3 <fn method>
+stack: <script> <class A> <fn method>
+0008    | OP_METHOD           2 'method'
+stack: <script> <class A>
+0010    5 OP_POP
+stack: <script>
+0011    7 OP_CLASS            4 'B'
+stack: <script> <class B>
+0013    | OP_DEFINE_GLOBAL    4 'B'
+stack: <script>
+0015    | OP_GET_GLOBAL       5 'A'
+stack: <script> <class A>
+0017    | OP_GET_GLOBAL       6 'B'
+stack: <script> <class A> <class B>
+0019    | OP_INHERIT
+stack: <script> <class A>
+0020    | OP_GET_GLOBAL       7 'B'
+stack: <script> <class A> <class B>
+0022   10 OP_CLOSURE          9 <fn method>
+stack: <script> <class A> <class B> <fn method>
+0024    | OP_METHOD           8 'method'
+stack: <script> <class A> <class B>
+0026   14 OP_CLOSURE         11 <fn test>
+0028      | local 1
+stack: <script> <class A> <class B> <fn test>
+0030    | OP_METHOD          10 'test'
+stack: <script> <class A> <class B>
+0032   15 OP_POP
+stack: <script> <class A>
+0033    | OP_CLOSE_UPVALUE
+stack: <script>
+0034   17 OP_CLASS           12 'C'
+stack: <script> <class C>
+0036    | OP_DEFINE_GLOBAL   12 'C'
+stack: <script>
+0038    | OP_GET_GLOBAL      13 'B'
+stack: <script> <class B>
+0040    | OP_GET_GLOBAL      14 'C'
+stack: <script> <class B> <class C>
+0042    | OP_INHERIT
+stack: <script> <class B>
+0043    | OP_GET_GLOBAL      15 'C'
+stack: <script> <class B> <class C>
+0045    | OP_POP
+stack: <script> <class B>
+0046    | OP_POP
+stack: <script>
+0047   19 OP_GET_GLOBAL      16 'C'
+stack: <script> <class C>
+0049    | OP_CALL             0
+stack: <script> C instance
+0051    | OP_INVOKE        (0 args)   17 'test'
+stack: <script> C instance
+0000   13 OP_GET_LOCAL        0
+stack: <script> C instance C instance
+0002    | OP_GET_UPVALUE      0
+stack: <script> C instance C instance <class A>
+0004    | OP_GET_SUPER        0 'method'
+stack: <script> C instance <fn method>
+0006    | OP_CALL             0
+stack: <script> C instance C instance
+0000    3 OP_CONSTANT         0 'A method'
+stack: <script> C instance C instance A method
+0002    | OP_PRINT
+A method
+stack: <script> C instance C instance
+0003    4 OP_NIL
+stack: <script> C instance C instance nil
+0004    | OP_RETURN
+stack: <script> C instance nil
+0008    | OP_POP
+stack: <script> C instance
+0009   14 OP_NIL
+stack: <script> C instance nil
+0010    | OP_RETURN
+stack: <script> nil
+0054    | OP_POP
+stack: <script>
+0055   20 OP_NIL
+stack: <script> nil
+0056    | OP_RETURN
+Executing ... done.
+

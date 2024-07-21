@@ -876,21 +876,24 @@ syntheticToken (const char *text)
  *
  * @param canAssign not used in this method
  */
-static void super_(bool canAssign) {
+static void
+super_ (bool canAssign)
+{
+    (void) canAssign;                   // not used.
 
     if (currentClass == NULL) {
-	error("Can't use 'super' outside of a class.");
+        error ("Can't use 'super' outside of a class.");
     } else if (!currentClass->hasSuperclass) {
-	error("Can't use 'super' in a class with no superclass.");
+        error ("Can't use 'super' in a class with no superclass.");
     }
 
-    consume(TOKEN_DOT, "Expect '.' after 'super'.");
-    consume(TOKEN_IDENTIFIER, "Expect superclass method name.");
-    uint8_t name = identifierConstant(&parser.previous);
+    consume (TOKEN_DOT, "Expect '.' after 'super'.");
+    consume (TOKEN_IDENTIFIER, "Expect superclass method name.");
+    uint8_t name = identifierConstant (&parser.previous);
 
-    namedVariable(syntheticToken("this"), false);
-    namedVariable(syntheticToken("super"), false);
-    emitBytes(OP_GET_SUPER, name);
+    namedVariable (syntheticToken ("this"), false);
+    namedVariable (syntheticToken ("super"), false);
+    emitBytes (OP_GET_SUPER, name);
 }
 
 /** Compile a reference to "this"

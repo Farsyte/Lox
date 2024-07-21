@@ -13,5 +13,6 @@ class BostonCream < Doughnut {
 
 BostonCream().cook();
 ========
-[line 9] Error at 'super': Expect expression.
 ========
+Fry until golden brown.
+Pipe full of custard and coat with chocolate.

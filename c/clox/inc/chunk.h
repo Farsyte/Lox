@@ -25,6 +25,8 @@ typedef enum {
     OP_GET_PROPERTY,            ///< push value of instance property
     OP_SET_PROPERTY,            ///< pop top of stack into instance property
 
+    OP_GET_SUPER,               ///< execute a "super" access
+
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order
     OP_LESS,                    ///< compare top two values for order
