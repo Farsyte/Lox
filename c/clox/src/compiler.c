@@ -872,6 +872,27 @@ syntheticToken (const char *text)
     return token;
 }
 
+/** Compile a reference to "super"
+ *
+ * @param canAssign not used in this method
+ */
+static void super_(bool canAssign) {
+
+    if (currentClass == NULL) {
+	error("Can't use 'super' outside of a class.");
+    } else if (!currentClass->hasSuperclass) {
+	error("Can't use 'super' in a class with no superclass.");
+    }
+
+    consume(TOKEN_DOT, "Expect '.' after 'super'.");
+    consume(TOKEN_IDENTIFIER, "Expect superclass method name.");
+    uint8_t name = identifierConstant(&parser.previous);
+
+    namedVariable(syntheticToken("this"), false);
+    namedVariable(syntheticToken("super"), false);
+    emitBytes(OP_GET_SUPER, name);
+}
+
 /** Compile a reference to "this"
  *
  * @param canAssign not used in this method
@@ -971,7 +992,7 @@ ParseRule
     [TOKEN_OR]             =  {  NULL,       or_,      PREC_OR          },   //  "or"
     [TOKEN_PRINT]          =  {  NULL,       NULL,     PREC_NONE        },   //  "print"
     [TOKEN_RETURN]         =  {  NULL,       NULL,     PREC_NONE        },   //  "return"
-    [TOKEN_SUPER]          =  {  NULL,       NULL,     PREC_NONE        },   //  "super"
+    [TOKEN_SUPER]          =  {  super_,     NULL,     PREC_NONE        },   //  "super"
     [TOKEN_THIS]           =  {  this_,      NULL,     PREC_NONE        },   //  "this"
     [TOKEN_TRUE]           =  {  literal,    NULL,     PREC_NONE        },   //  "true"
     [TOKEN_VAR]            =  {  NULL,       NULL,     PREC_NONE        },   //  "var"
