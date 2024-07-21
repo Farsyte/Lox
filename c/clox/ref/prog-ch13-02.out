@@ -6,3 +6,117 @@ Disassembling cook ...
 0004    | OP_RETURN
 Disassembling cook ... done.
 
+
+Disassembling cook ...
+0000    9 OP_GET_LOCAL        0
+0002    | OP_GET_UPVALUE      0
+0004    | OP_SUPER_INVOKE  (0 args)    0 'cook'
+0007    | OP_POP
+0008   10 OP_CONSTANT         1 'Pipe full of custard and coat with chocolate.'
+0010    | OP_PRINT
+0011   11 OP_NIL
+0012    | OP_RETURN
+Disassembling cook ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Doughnut'
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+0006    4 OP_CLOSURE          3 <fn cook>
+0008    | OP_METHOD           2 'cook'
+0010    5 OP_POP
+0011    7 OP_CLASS            4 'BostonCream'
+0013    | OP_DEFINE_GLOBAL    4 'BostonCream'
+0015    | OP_GET_GLOBAL       5 'Doughnut'
+0017    | OP_GET_GLOBAL       6 'BostonCream'
+0019    | OP_INHERIT
+0020    | OP_GET_GLOBAL       7 'BostonCream'
+0022   11 OP_CLOSURE          9 <fn cook>
+0024      | local 1
+0026    | OP_METHOD           8 'cook'
+0028   12 OP_POP
+0029    | OP_CLOSE_UPVALUE
+0030   14 OP_GET_GLOBAL      10 'BostonCream'
+0032    | OP_CALL             0
+0034    | OP_INVOKE        (0 args)   11 'cook'
+0037    | OP_POP
+0038   15 OP_NIL
+0039    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Doughnut'
+stack: <script> <class Doughnut>
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+stack: <script> <class Doughnut>
+0006    4 OP_CLOSURE          3 <fn cook>
+stack: <script> <class Doughnut> <fn cook>
+0008    | OP_METHOD           2 'cook'
+stack: <script> <class Doughnut>
+0010    5 OP_POP
+stack: <script>
+0011    7 OP_CLASS            4 'BostonCream'
+stack: <script> <class BostonCream>
+0013    | OP_DEFINE_GLOBAL    4 'BostonCream'
+stack: <script>
+0015    | OP_GET_GLOBAL       5 'Doughnut'
+stack: <script> <class Doughnut>
+0017    | OP_GET_GLOBAL       6 'BostonCream'
+stack: <script> <class Doughnut> <class BostonCream>
+0019    | OP_INHERIT
+stack: <script> <class Doughnut>
+0020    | OP_GET_GLOBAL       7 'BostonCream'
+stack: <script> <class Doughnut> <class BostonCream>
+0022   11 OP_CLOSURE          9 <fn cook>
+0024      | local 1
+stack: <script> <class Doughnut> <class BostonCream> <fn cook>
+0026    | OP_METHOD           8 'cook'
+stack: <script> <class Doughnut> <class BostonCream>
+0028   12 OP_POP
+stack: <script> <class Doughnut>
+0029    | OP_CLOSE_UPVALUE
+stack: <script>
+0030   14 OP_GET_GLOBAL      10 'BostonCream'
+stack: <script> <class BostonCream>
+0032    | OP_CALL             0
+stack: <script> BostonCream instance
+0034    | OP_INVOKE        (0 args)   11 'cook'
+stack: <script> BostonCream instance
+0000    9 OP_GET_LOCAL        0
+stack: <script> BostonCream instance BostonCream instance
+0002    | OP_GET_UPVALUE      0
+stack: <script> BostonCream instance BostonCream instance <class Doughnut>
+0004    | OP_SUPER_INVOKE  (0 args)    0 'cook'
+stack: <script> BostonCream instance BostonCream instance
+0000    3 OP_CONSTANT         0 'Fry until golden brown.'
+stack: <script> BostonCream instance BostonCream instance Fry until golden brown.
+0002    | OP_PRINT
+Fry until golden brown.
+stack: <script> BostonCream instance BostonCream instance
+0003    4 OP_NIL
+stack: <script> BostonCream instance BostonCream instance nil
+0004    | OP_RETURN
+stack: <script> BostonCream instance nil
+0007    | OP_POP
+stack: <script> BostonCream instance
+0008   10 OP_CONSTANT         1 'Pipe full of custard and coat with chocolate.'
+stack: <script> BostonCream instance Pipe full of custard and coat with chocolate.
+0010    | OP_PRINT
+Pipe full of custard and coat with chocolate.
+stack: <script> BostonCream instance
+0011   11 OP_NIL
+stack: <script> BostonCream instance nil
+0012    | OP_RETURN
+stack: <script> nil
+0037    | OP_POP
+stack: <script>
+0038   15 OP_NIL
+stack: <script> nil
+0039    | OP_RETURN
+Executing ... done.
+

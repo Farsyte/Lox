@@ -6,3 +6,80 @@ Disassembling cook ...
 0004    | OP_RETURN
 Disassembling cook ... done.
 
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Doughnut'
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+0006    4 OP_CLOSURE          3 <fn cook>
+0008    | OP_METHOD           2 'cook'
+0010    5 OP_POP
+0011    7 OP_CLASS            4 'BostonCream'
+0013    | OP_DEFINE_GLOBAL    4 'BostonCream'
+0015    | OP_GET_GLOBAL       5 'Doughnut'
+0017    | OP_GET_GLOBAL       6 'BostonCream'
+0019    | OP_INHERIT
+0020    | OP_GET_GLOBAL       7 'BostonCream'
+0022    | OP_POP
+0023    | OP_POP
+0024    9 OP_GET_GLOBAL       8 'BostonCream'
+0026    | OP_CALL             0
+0028    | OP_INVOKE        (0 args)    9 'cook'
+0031    | OP_POP
+0032   10 OP_NIL
+0033    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Doughnut'
+stack: <script> <class Doughnut>
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+stack: <script> <class Doughnut>
+0006    4 OP_CLOSURE          3 <fn cook>
+stack: <script> <class Doughnut> <fn cook>
+0008    | OP_METHOD           2 'cook'
+stack: <script> <class Doughnut>
+0010    5 OP_POP
+stack: <script>
+0011    7 OP_CLASS            4 'BostonCream'
+stack: <script> <class BostonCream>
+0013    | OP_DEFINE_GLOBAL    4 'BostonCream'
+stack: <script>
+0015    | OP_GET_GLOBAL       5 'Doughnut'
+stack: <script> <class Doughnut>
+0017    | OP_GET_GLOBAL       6 'BostonCream'
+stack: <script> <class Doughnut> <class BostonCream>
+0019    | OP_INHERIT
+stack: <script> <class Doughnut>
+0020    | OP_GET_GLOBAL       7 'BostonCream'
+stack: <script> <class Doughnut> <class BostonCream>
+0022    | OP_POP
+stack: <script> <class Doughnut>
+0023    | OP_POP
+stack: <script>
+0024    9 OP_GET_GLOBAL       8 'BostonCream'
+stack: <script> <class BostonCream>
+0026    | OP_CALL             0
+stack: <script> BostonCream instance
+0028    | OP_INVOKE        (0 args)    9 'cook'
+stack: <script> BostonCream instance
+0000    3 OP_CONSTANT         0 'Fry until golden brown.'
+stack: <script> BostonCream instance Fry until golden brown.
+0002    | OP_PRINT
+Fry until golden brown.
+stack: <script> BostonCream instance
+0003    4 OP_NIL
+stack: <script> BostonCream instance nil
+0004    | OP_RETURN
+stack: <script> nil
+0031    | OP_POP
+stack: <script>
+0032   10 OP_NIL
+stack: <script> nil
+0033    | OP_RETURN
+Executing ... done.
+

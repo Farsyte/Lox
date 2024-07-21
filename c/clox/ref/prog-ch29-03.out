@@ -1,0 +1,165 @@
+
+Disassembling cook ...
+0000    3 OP_CONSTANT         0 'Dunk in the fryer.'
+0002    | OP_PRINT
+0003    4 OP_GET_LOCAL        0
+0005    | OP_CONSTANT         2 'sprinkles'
+0007    | OP_INVOKE        (1 args)    1 'finish'
+0010    | OP_POP
+0011    5 OP_NIL
+0012    | OP_RETURN
+Disassembling cook ... done.
+
+
+Disassembling finish ...
+0000    8 OP_CONSTANT         0 'Finish with '
+0002    | OP_GET_LOCAL        1
+0004    | OP_ADD
+0005    | OP_PRINT
+0006    9 OP_NIL
+0007    | OP_RETURN
+Disassembling finish ... done.
+
+
+Disassembling finish ...
+0000   15 OP_GET_LOCAL        0
+0002    | OP_CONSTANT         1 'icing'
+0004    | OP_GET_UPVALUE      0
+0006    | OP_SUPER_INVOKE  (1 args)    0 'finish'
+0009    | OP_POP
+0010   16 OP_NIL
+0011    | OP_RETURN
+Disassembling finish ... done.
+
+
+Disassembling <script> ...
+0000    1 OP_CLASS            0 'Doughnut'
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+0006    5 OP_CLOSURE          3 <fn cook>
+0008    | OP_METHOD           2 'cook'
+0010    9 OP_CLOSURE          5 <fn finish>
+0012    | OP_METHOD           4 'finish'
+0014   10 OP_POP
+0015   12 OP_CLASS            6 'Cruller'
+0017    | OP_DEFINE_GLOBAL    6 'Cruller'
+0019    | OP_GET_GLOBAL       7 'Doughnut'
+0021    | OP_GET_GLOBAL       8 'Cruller'
+0023    | OP_INHERIT
+0024    | OP_GET_GLOBAL       9 'Cruller'
+0026   16 OP_CLOSURE         11 <fn finish>
+0028      | local 1
+0030    | OP_METHOD          10 'finish'
+0032   17 OP_POP
+0033    | OP_CLOSE_UPVALUE
+0034   19 OP_GET_GLOBAL      13 'Cruller'
+0036    | OP_CALL             0
+0038    | OP_DEFINE_GLOBAL   12 'cruller'
+0040   20 OP_GET_GLOBAL      14 'cruller'
+0042    | OP_INVOKE        (0 args)   15 'cook'
+0045    | OP_POP
+0046   21 OP_NIL
+0047    | OP_RETURN
+Disassembling <script> ... done.
+
+
+Executing ...
+stack: <script>
+0000    1 OP_CLASS            0 'Doughnut'
+stack: <script> <class Doughnut>
+0002    | OP_DEFINE_GLOBAL    0 'Doughnut'
+stack: <script>
+0004    | OP_GET_GLOBAL       1 'Doughnut'
+stack: <script> <class Doughnut>
+0006    5 OP_CLOSURE          3 <fn cook>
+stack: <script> <class Doughnut> <fn cook>
+0008    | OP_METHOD           2 'cook'
+stack: <script> <class Doughnut>
+0010    9 OP_CLOSURE          5 <fn finish>
+stack: <script> <class Doughnut> <fn finish>
+0012    | OP_METHOD           4 'finish'
+stack: <script> <class Doughnut>
+0014   10 OP_POP
+stack: <script>
+0015   12 OP_CLASS            6 'Cruller'
+stack: <script> <class Cruller>
+0017    | OP_DEFINE_GLOBAL    6 'Cruller'
+stack: <script>
+0019    | OP_GET_GLOBAL       7 'Doughnut'
+stack: <script> <class Doughnut>
+0021    | OP_GET_GLOBAL       8 'Cruller'
+stack: <script> <class Doughnut> <class Cruller>
+0023    | OP_INHERIT
+stack: <script> <class Doughnut>
+0024    | OP_GET_GLOBAL       9 'Cruller'
+stack: <script> <class Doughnut> <class Cruller>
+0026   16 OP_CLOSURE         11 <fn finish>
+0028      | local 1
+stack: <script> <class Doughnut> <class Cruller> <fn finish>
+0030    | OP_METHOD          10 'finish'
+stack: <script> <class Doughnut> <class Cruller>
+0032   17 OP_POP
+stack: <script> <class Doughnut>
+0033    | OP_CLOSE_UPVALUE
+stack: <script>
+0034   19 OP_GET_GLOBAL      13 'Cruller'
+stack: <script> <class Cruller>
+0036    | OP_CALL             0
+stack: <script> Cruller instance
+0038    | OP_DEFINE_GLOBAL   12 'cruller'
+stack: <script>
+0040   20 OP_GET_GLOBAL      14 'cruller'
+stack: <script> Cruller instance
+0042    | OP_INVOKE        (0 args)   15 'cook'
+stack: <script> Cruller instance
+0000    3 OP_CONSTANT         0 'Dunk in the fryer.'
+stack: <script> Cruller instance Dunk in the fryer.
+0002    | OP_PRINT
+Dunk in the fryer.
+stack: <script> Cruller instance
+0003    4 OP_GET_LOCAL        0
+stack: <script> Cruller instance Cruller instance
+0005    | OP_CONSTANT         2 'sprinkles'
+stack: <script> Cruller instance Cruller instance sprinkles
+0007    | OP_INVOKE        (1 args)    1 'finish'
+stack: <script> Cruller instance Cruller instance sprinkles
+0000   15 OP_GET_LOCAL        0
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance
+0002    | OP_CONSTANT         1 'icing'
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing
+0004    | OP_GET_UPVALUE      0
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing <class Doughnut>
+0006    | OP_SUPER_INVOKE  (1 args)    0 'finish'
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing
+0000    8 OP_CONSTANT         0 'Finish with '
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing Finish with 
+0002    | OP_GET_LOCAL        1
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing Finish with  icing
+0004    | OP_ADD
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing Finish with icing
+0005    | OP_PRINT
+Finish with icing
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing
+0006    9 OP_NIL
+stack: <script> Cruller instance Cruller instance sprinkles Cruller instance icing nil
+0007    | OP_RETURN
+stack: <script> Cruller instance Cruller instance sprinkles nil
+0009    | OP_POP
+stack: <script> Cruller instance Cruller instance sprinkles
+0010   16 OP_NIL
+stack: <script> Cruller instance Cruller instance sprinkles nil
+0011    | OP_RETURN
+stack: <script> Cruller instance nil
+0010    | OP_POP
+stack: <script> Cruller instance
+0011    5 OP_NIL
+stack: <script> Cruller instance nil
+0012    | OP_RETURN
+stack: <script> nil
+0045    | OP_POP
+stack: <script>
+0046   21 OP_NIL
+stack: <script> nil
+0047    | OP_RETURN
+Executing ... done.
+

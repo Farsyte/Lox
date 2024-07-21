@@ -25,6 +25,8 @@ typedef enum {
     OP_GET_PROPERTY,            ///< push value of instance property
     OP_SET_PROPERTY,            ///< pop top of stack into instance property
 
+    OP_GET_SUPER,               ///< execute a "super" access
+
     OP_EQUAL,                   ///< compare top two values for equality
     OP_GREATER,                 ///< compare top two values for order
     OP_LESS,                    ///< compare top two values for order
@@ -42,10 +44,12 @@ typedef enum {
     OP_LOOP,                    ///< unconditional backward branch
     OP_CALL,                    ///< function call
     OP_INVOKE,                  ///< optimized method invocation
+    OP_SUPER_INVOKE,            ///< optimized superclass method invocation
     OP_CLOSURE,                 ///< make a closure
     OP_CLOSE_UPVALUE,           ///< convert upvalue from stack to heap
     OP_RETURN,                  ///< Stop executing a bytecode sequence
     OP_CLASS,                   ///< make a class
+    OP_INHERIT,                 ///< set superclass of new class
     OP_METHOD,                  ///< make a class instance method
 
     OP__LAST = OP_RETURN        ///< Expose highest opcode for testing

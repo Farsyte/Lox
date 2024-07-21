@@ -563,15 +563,9 @@ run ()
         // can warn us if there are any OpCode num values missing from
         // the switch.
 
-        OpCode instruction;
-        ObjString *name;
-        uint8_t slot;
-        uint16_t offset;
-        int argCount;
-        ObjFunction *function;
-        ObjClosure *closure;
+        const OpCode instruction = (OpCode) READ_BYTE ();
 
-        switch (instruction = (OpCode) READ_BYTE ()) {
+        switch (instruction) {
 
         case OP_CONSTANT:
             push (READ_CONSTANT ());
@@ -590,52 +584,64 @@ run ()
             (void) pop ();
             break;
 
-        case OP_GET_LOCAL:
-            slot = READ_BYTE ();
-            push (frame->slots[slot]);
-            break;
+        case OP_GET_LOCAL:{
+                uint8_t slot = READ_BYTE ();
 
-        case OP_GET_GLOBAL:
-            name = READ_STRING ();
-            Value value;
-
-            if (!tableGet (&vm.globals, name, &value)) {
-                runtimeError ("Undefined variable '%s'.", name->chars);
-                return INTERPRET_RUNTIME_ERROR;
+                push (frame->slots[slot]);
+                break;
             }
-            push (value);
-            break;
 
-        case OP_DEFINE_GLOBAL:
-            name = READ_STRING ();
+        case OP_GET_GLOBAL:{
+                ObjString *name = READ_STRING ();
+                Value value;
 
-            tableSet (&vm.globals, name, peek (0));
-            pop ();
-            break;
-
-        case OP_SET_LOCAL:
-            slot = READ_BYTE ();
-            frame->slots[slot] = peek (0);
-            break;
-
-        case OP_SET_GLOBAL:
-            name = READ_STRING ();
-            if (tableSet (&vm.globals, name, peek (0))) {
-                tableDelete (&vm.globals, name);
-                runtimeError ("Undefined variable '%s'.", name->chars);
-                return INTERPRET_RUNTIME_ERROR;
+                if (!tableGet (&vm.globals, name, &value)) {
+                    runtimeError ("Undefined variable '%s'.", name->chars);
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                push (value);
+                break;
             }
-            break;
 
-        case OP_GET_UPVALUE:
-            slot = READ_BYTE ();
-            push (*frame->closure->upvalues[slot]->location);
-            break;
+        case OP_DEFINE_GLOBAL:{
+                ObjString *name = READ_STRING ();
 
-        case OP_SET_UPVALUE:
-            slot = READ_BYTE ();
-            *frame->closure->upvalues[slot]->location = pop ();
-            break;
+                tableSet (&vm.globals, name, peek (0));
+                pop ();
+                break;
+            }
+
+        case OP_SET_LOCAL:{
+                uint8_t slot = READ_BYTE ();
+
+                frame->slots[slot] = peek (0);
+                break;
+            }
+
+        case OP_SET_GLOBAL:{
+                ObjString *name = READ_STRING ();
+
+                if (tableSet (&vm.globals, name, peek (0))) {
+                    tableDelete (&vm.globals, name);
+                    runtimeError ("Undefined variable '%s'.", name->chars);
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                break;
+            }
+
+        case OP_GET_UPVALUE:{
+                uint8_t slot = READ_BYTE ();
+
+                push (*frame->closure->upvalues[slot]->location);
+                break;
+            }
+
+        case OP_SET_UPVALUE:{
+                uint8_t slot = READ_BYTE ();
+
+                *frame->closure->upvalues[slot]->location = pop ();
+                break;
+            }
 
 #define BINARY_OP(valueType, op)                                        \
             do {                                                        \
@@ -714,6 +720,16 @@ run ()
                 break;
             }
 
+        case OP_GET_SUPER:{
+                ObjString *name = READ_STRING ();
+                ObjClass *superclass = AS_CLASS (pop ());
+
+                if (!bindMethod (superclass, name)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                break;
+            }
+
         case OP_EQUAL:{
                 Value b = pop ();
                 Value a = pop ();
@@ -739,34 +755,42 @@ run ()
             printf ("\n");
             break;
 
-        case OP_JUMP:
-            offset = READ_SHORT ();
-            frame->ip += offset;
-            break;
+        case OP_JUMP:{
+                uint16_t offset = READ_SHORT ();
 
-        case OP_JUMP_IF_FALSE:
-            offset = READ_SHORT ();
-            if (isFalsey (peek (0)))
                 frame->ip += offset;
-            break;
-
-        case OP_LOOP:
-            offset = READ_SHORT ();
-            frame->ip -= offset;
-            break;
-
-        case OP_CALL:
-            argCount = READ_BYTE ();
-            if (!callValue (peek (argCount), argCount)) {
-                return INTERPRET_RUNTIME_ERROR;
+                break;
             }
-            frame = &vm.frames[vm.frameCount - 1];
-            break;
+
+        case OP_JUMP_IF_FALSE:{
+                uint16_t offset = READ_SHORT ();
+
+                if (isFalsey (peek (0)))
+                    frame->ip += offset;
+                break;
+            }
+
+        case OP_LOOP:{
+                uint16_t offset = READ_SHORT ();
+
+                frame->ip -= offset;
+                break;
+            }
+
+        case OP_CALL:{
+                int argCount = READ_BYTE ();
+
+                if (!callValue (peek (argCount), argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                frame = &vm.frames[vm.frameCount - 1];
+                break;
+            }
 
         case OP_INVOKE:{
                 ObjString *method = READ_STRING ();
+                int argCount = READ_BYTE ();
 
-                argCount = READ_BYTE ();
                 if (!invoke (method, argCount)) {
                     return INTERPRET_RUNTIME_ERROR;
                 }
@@ -774,23 +798,37 @@ run ()
                 break;
             }
 
-        case OP_CLOSURE:
-            function = AS_FUNCTION (READ_CONSTANT ());
-            closure = newClosure (function);
-            push (OBJ_VAL (closure));
+        case OP_SUPER_INVOKE:{
+                ObjString *method = READ_STRING ();
+                int argCount = READ_BYTE ();
+                ObjClass *superclass = AS_CLASS (pop ());
 
-            for (int i = 0; i < closure->upvalueCount; i++) {
-                uint8_t isLocal = READ_BYTE ();
-                uint8_t index = READ_BYTE ();
-
-                if (isLocal) {
-                    closure->upvalues[i] = captureUpvalue (frame->slots + index);
-                } else {
-                    closure->upvalues[i] = frame->closure->upvalues[index];
+                if (!invokeFromClass (superclass, method, argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
                 }
+                frame = &vm.frames[vm.frameCount - 1];
+                break;
             }
 
-            break;
+        case OP_CLOSURE:{
+                ObjFunction *function = AS_FUNCTION (READ_CONSTANT ());
+                ObjClosure *closure = newClosure (function);
+
+                push (OBJ_VAL (closure));
+
+                for (int i = 0; i < closure->upvalueCount; i++) {
+                    uint8_t isLocal = READ_BYTE ();
+                    uint8_t index = READ_BYTE ();
+
+                    if (isLocal) {
+                        closure->upvalues[i] = captureUpvalue (frame->slots + index);
+                    } else {
+                        closure->upvalues[i] = frame->closure->upvalues[index];
+                    }
+                }
+
+                break;
+            }
 
         case OP_CLOSE_UPVALUE:
             closeUpvalues (vm.sp - 1);
@@ -820,6 +858,21 @@ run ()
         case OP_CLASS:
             push (OBJ_VAL (newClass (READ_STRING ())));
             break;
+
+        case OP_INHERIT:{
+                Value superclass = peek (1);
+
+                if (!IS_CLASS (superclass)) {
+                    runtimeError ("Superclass must be a class.");
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+
+                ObjClass *subclass = AS_CLASS (peek (0));
+
+                tableAddAll (&AS_CLASS (superclass)->methods, &subclass->methods);
+                pop ();                 // Subclass.
+                break;
+            }
 
         case OP_METHOD:
             defineMethod (READ_STRING ());

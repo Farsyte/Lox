@@ -13,5 +13,6 @@ class BostonCream < Doughnut {
 
 BostonCream().cook();
 ========
-[line 7] Error at '<': Expect '{' before class body.
 ========
+Fry until golden brown.
+Pipe full of custard and coat with chocolate.
