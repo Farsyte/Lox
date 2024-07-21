@@ -89,7 +89,7 @@ struct Compiler {
 /** Open "class" compiler with link for stacking */
 struct ClassCompiler {
     ClassCompiler *enclosing;   ///< the class surrounding this one
-    bool hasSuperclass;
+    bool hasSuperclass;         ///< class is a subclass
 };
 
 Parser parser;                  ///< Storage for the parser state.
@@ -861,6 +861,7 @@ variable (bool canAssign)
 /** Create a synthetic token around a string literal
  *
  * @param text the lexeme to use for synthesis.
+ * @returns the synthesized token
  */
 static Token
 syntheticToken (const char *text)
