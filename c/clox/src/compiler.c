@@ -89,6 +89,7 @@ struct Compiler {
 /** Open "class" compiler with link for stacking */
 struct ClassCompiler {
     ClassCompiler *enclosing;   ///< the class surrounding this one
+    bool hasSuperclass;
 };
 
 Parser parser;                  ///< Storage for the parser state.
@@ -857,6 +858,20 @@ variable (bool canAssign)
     namedVariable (parser.previous, canAssign);
 }
 
+/** Create a synthetic token around a string literal
+ *
+ * @param text the lexeme to use for synthesis.
+ */
+static Token
+syntheticToken (const char *text)
+{
+    Token token;
+
+    token.start = text;
+    token.length = (int) strlen (text);
+    return token;
+}
+
 /** Compile a reference to "this"
  *
  * @param canAssign not used in this method
@@ -1102,6 +1117,7 @@ classDeclaration ()
     ClassCompiler classCompiler;
 
     classCompiler.enclosing = currentClass;
+    classCompiler.hasSuperclass = false;
     currentClass = &classCompiler;
 
     if (match (TOKEN_LESS)) {
@@ -1110,8 +1126,14 @@ classDeclaration ()
         if (identifiersEqual (&className, &parser.previous)) {
             error ("A class can't inherit from itself.");
         }
+
+        beginScope ();
+        addLocal (syntheticToken ("super"));
+        defineVariable (0);
+
         namedVariable (className, false);
         emitByte (OP_INHERIT);
+        classCompiler.hasSuperclass = true;
     }
 
     namedVariable (className, false);
@@ -1123,6 +1145,10 @@ classDeclaration ()
     consume (TOKEN_RIGHT_BRACE, "Expect '}' after class body.");
 
     emitByte (OP_POP);
+
+    if (classCompiler.hasSuperclass) {
+        endScope ();
+    }
     currentClass = classCompiler.enclosing;
 }
 

@@ -21,12 +21,13 @@ Disassembling <script> ...
 0019    | OP_INHERIT
 0020    | OP_GET_GLOBAL       7 'BostonCream'
 0022    | OP_POP
-0023    9 OP_GET_GLOBAL       8 'BostonCream'
-0025    | OP_CALL             0
-0027    | OP_INVOKE        (0 args)    9 'cook'
-0030    | OP_POP
-0031   10 OP_NIL
-0032    | OP_RETURN
+0023    | OP_POP
+0024    9 OP_GET_GLOBAL       8 'BostonCream'
+0026    | OP_CALL             0
+0028    | OP_INVOKE        (0 args)    9 'cook'
+0031    | OP_POP
+0032   10 OP_NIL
+0033    | OP_RETURN
 Disassembling <script> ... done.
 
 
@@ -58,25 +59,27 @@ stack: <script> <class Doughnut>
 stack: <script> <class Doughnut> <class BostonCream>
 0022    | OP_POP
 stack: <script> <class Doughnut>
-0023    9 OP_GET_GLOBAL       8 'BostonCream'
-stack: <script> <class Doughnut> <class BostonCream>
-0025    | OP_CALL             0
-stack: <script> <class Doughnut> BostonCream instance
-0027    | OP_INVOKE        (0 args)    9 'cook'
-stack: <script> <class Doughnut> BostonCream instance
+0023    | OP_POP
+stack: <script>
+0024    9 OP_GET_GLOBAL       8 'BostonCream'
+stack: <script> <class BostonCream>
+0026    | OP_CALL             0
+stack: <script> BostonCream instance
+0028    | OP_INVOKE        (0 args)    9 'cook'
+stack: <script> BostonCream instance
 0000    3 OP_CONSTANT         0 'Fry until golden brown.'
-stack: <script> <class Doughnut> BostonCream instance Fry until golden brown.
+stack: <script> BostonCream instance Fry until golden brown.
 0002    | OP_PRINT
 Fry until golden brown.
-stack: <script> <class Doughnut> BostonCream instance
+stack: <script> BostonCream instance
 0003    4 OP_NIL
-stack: <script> <class Doughnut> BostonCream instance nil
+stack: <script> BostonCream instance nil
 0004    | OP_RETURN
-stack: <script> <class Doughnut> nil
-0030    | OP_POP
-stack: <script> <class Doughnut>
-0031   10 OP_NIL
-stack: <script> <class Doughnut> nil
-0032    | OP_RETURN
+stack: <script> nil
+0031    | OP_POP
+stack: <script>
+0032   10 OP_NIL
+stack: <script> nil
+0033    | OP_RETURN
 Executing ... done.
 
