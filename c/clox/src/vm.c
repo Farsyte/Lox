@@ -564,12 +564,12 @@ run ()
         // the switch.
 
         OpCode instruction;
-        ObjString *name;
-        uint8_t slot;
-        uint16_t offset;
-        int argCount;
-        ObjFunction *function;
-        ObjClosure *closure;
+        ObjString *name;        // TODO declare in cases as needed (like book)
+        uint8_t slot;           // TODO declare in cases as needed (like book)
+        uint16_t offset;        // TODO declare in cases as needed (like book)
+        int argCount;           // TODO declare in cases as needed (like book)
+        ObjFunction *function;  // TODO declare in cases as needed (like book)
+        ObjClosure *closure;    // TODO declare in cases as needed (like book)
 
         switch (instruction = (OpCode) READ_BYTE ()) {
 
@@ -778,6 +778,18 @@ run ()
 
                 argCount = READ_BYTE ();
                 if (!invoke (method, argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                frame = &vm.frames[vm.frameCount - 1];
+                break;
+            }
+
+        case OP_SUPER_INVOKE:{
+                ObjString *method = READ_STRING ();
+                int argCount = READ_BYTE ();
+                ObjClass *superclass = AS_CLASS (pop ());
+
+                if (!invokeFromClass (superclass, method, argCount)) {
                     return INTERPRET_RUNTIME_ERROR;
                 }
                 frame = &vm.frames[vm.frameCount - 1];

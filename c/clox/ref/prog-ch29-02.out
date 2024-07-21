@@ -18,11 +18,10 @@ Disassembling method ... done.
 Disassembling test ...
 0000   13 OP_GET_LOCAL        0
 0002    | OP_GET_UPVALUE      0
-0004    | OP_GET_SUPER        0 'method'
-0006    | OP_CALL             0
-0008    | OP_POP
-0009   14 OP_NIL
-0010    | OP_RETURN
+0004    | OP_SUPER_INVOKE  (0 args)    0 'method'
+0007    | OP_POP
+0008   14 OP_NIL
+0009    | OP_RETURN
 Disassembling test ... done.
 
 
@@ -128,9 +127,7 @@ stack: <script> C instance
 stack: <script> C instance C instance
 0002    | OP_GET_UPVALUE      0
 stack: <script> C instance C instance <class A>
-0004    | OP_GET_SUPER        0 'method'
-stack: <script> C instance <fn method>
-0006    | OP_CALL             0
+0004    | OP_SUPER_INVOKE  (0 args)    0 'method'
 stack: <script> C instance C instance
 0000    3 OP_CONSTANT         0 'A method'
 stack: <script> C instance C instance A method
@@ -141,11 +138,11 @@ stack: <script> C instance C instance
 stack: <script> C instance C instance nil
 0004    | OP_RETURN
 stack: <script> C instance nil
-0008    | OP_POP
+0007    | OP_POP
 stack: <script> C instance
-0009   14 OP_NIL
+0008   14 OP_NIL
 stack: <script> C instance nil
-0010    | OP_RETURN
+0009    | OP_RETURN
 stack: <script> nil
 0054    | OP_POP
 stack: <script>
